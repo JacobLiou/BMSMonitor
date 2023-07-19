@@ -1,0 +1,15 @@
+bin/
+obj/
+.vs/
+packages/
+/A8 BMS电池上位机(NEW)/Publish
+/SofarHVM-new
+/SofarHVM/SofarHVMExe/ViewModel/DownloadPageVm - 4-15.cs
+/SofarHVM/SofarHVMExe/ViewModel/DownloadPageVm - 3-22.cs
+/build/Debug/netstandard2.0
+/SofarHVM/log4net
+/SofarHVM/MonoForFramework.targets
+/SofarHVM/SofarHVMExe/ViewModel/DownloadPageVm_4-10.cs
+/SofarHVM/SofarHVMExe/ViewModel/DownloadPageVm-curr.cs
+/SofarHVM/SofarHVMExe/ViewModel/DownloadPageVm - 3-22 - 副本.cs
+/SofarHVM.rar
