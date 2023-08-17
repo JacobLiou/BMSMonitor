@@ -159,9 +159,15 @@ namespace SofarBMS.UI
             channelDt.Columns.Add("温度2");
             channelDt.Columns.Add("温度3");
             channelDt.Columns.Add("温度4");
+            channelDt.Columns.Add("温度5");
+            channelDt.Columns.Add("温度6");
+            channelDt.Columns.Add("温度7");
+            channelDt.Columns.Add("温度8");
             channelDt.Columns.Add("剩余容量");
             channelDt.Columns.Add("满充容量");
             channelDt.Columns.Add("均衡状态");
+            channelDt.Columns.Add("均衡温度1");
+            channelDt.Columns.Add("均衡温度2");
             this.Invoke(new Action(() =>
             {
                 dgvStorageInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -379,6 +385,16 @@ namespace SofarBMS.UI
                 case 0x3F:
                     channelDr["剩余容量"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
                     channelDr["满充容量"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
+                    break;
+                case 0x50:
+                    channelDr["温度5"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["温度6"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["温度7"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["温度8"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.1).ToString();
+                    break;
+                case 0x51:
+                    channelDr["均衡温度1"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["均衡温度2"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
                     break;
             }
         }

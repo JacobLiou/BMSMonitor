@@ -14,6 +14,7 @@ using System.Runtime.InteropServices;
 using SofarBMS.Helper;
 using SofarBMS.Model;
 using SofarBMS.UI;
+using System.Text;
 
 namespace SofarBMS
 {
@@ -157,6 +158,7 @@ namespace SofarBMS
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_21"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_22"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_23"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            //AddContextMenu(LanguageHelper.GetLanguage("tsmi_13"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
 
             //添加“语言”菜单
             tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_4"), Menu.Items, null);
@@ -184,7 +186,8 @@ namespace SofarBMS
             {
                 { LanguageHelper.GetLanguage("tsmi_21"), new BMSControl() },
                 { LanguageHelper.GetLanguage("tsmi_22"), new BMSMMultipleControl() },
-                { LanguageHelper.GetLanguage("tsmi_23"), new BMSUpgradeControl() }
+                { LanguageHelper.GetLanguage("tsmi_23"), new BMSUpgradeControl() },
+                { LanguageHelper.GetLanguage("tsmi_13"), new ParamControl() }
             };
 
             bool isUserControl = false;
@@ -389,7 +392,6 @@ namespace SofarBMS
                 //SQLiteHelper.Update("delete from RealtimeData");
             }
         }
-
 
         private void btnResetCAN_Click(object sender, EventArgs e)
         {

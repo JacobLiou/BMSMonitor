@@ -60,8 +60,8 @@ BMS过压过流故障,BMSOVOCP
 PackID错误,PackIDErr
 启机短路保护,BusSCP
 母线平均值欠压,SwBusAvgUVP
-时钟故障,Clockfail
-PCU掉线故障,PCUDisconnectnFail
+时钟故障,ClockFault
+PCS通信故障,PCSCommFault
 预留,NULL
 预留,NULL
 预留,NULL
@@ -452,6 +452,21 @@ Can通信故障,Can1CommFault
                 case 0x1040FFFF:
                     txtCumulative_discharge_capacity.Text = (((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] & 0xff)) * 0.001).ToString();//BytesToIntger(data[1], data[0]);
                     break;
+                case 0x1041FFFF:
+                    strs = new string[2] { "0.1", "0.1" };
+                    for (int i = 0; i < strs.Length; i++)
+                    {
+                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
+                    }
+                    controls = new string[2] { "txtBalanceTemperature1", "txtBalanceTemperature2" };
+                    for (int i = 0; i < controls.Length; i++)
+                    {
+                        (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                    }
+
+                    model.BalanceTemperature1 = Convert.ToDouble(strs[0]);
+                    model.BalanceTemperature2 = Convert.ToDouble(strs[1]);
+                    break;
                 case 0x1042FFFF:
                     strs = new string[4] { "0.1", "0.1", "0.1", "0.1" };
                     for (int i = 0; i < strs.Length; i++)
@@ -572,6 +587,15 @@ Can通信故障,Can1CommFault
 
                     //CAN协议版本
                     txtCAN_Version.Text = data[7].ToString("X2") + data[6].ToString("X2");
+                    break;
+                case 0x0B665FFF:
+                    //PCBA硬件版本
+                    string[] pcbaV = new string[3];
+                    for (int i = 0; i < 3; i++)
+                    {
+                        pcbaV[i] = data[i + 1].ToString();
+                    }
+                    txtPcbaHardware_Version.Text = Encoding.ASCII.GetString(new byte[] { data[0] }) + string.Join("", pcbaV);
                     break;
                 case 0x0B78E0FF:
                     txtHV_Charge_Current.Text = BytesToIntger(data[5], data[4], 0.01);
