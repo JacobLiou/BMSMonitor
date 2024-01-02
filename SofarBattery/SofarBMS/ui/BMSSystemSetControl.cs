@@ -58,7 +58,7 @@ namespace SofarBMS.UI
             cbbSetComm.Items.Clear();
             cbbSetComm.Items.AddRange(setComms);
             btnSystemset_47.Text = LanguageHelper.GetLanguage("BmsDebug_Start");
-
+            btnReadpcu.Text = "读取";
             Task.Run(() =>
             {
                 while (!cts.IsCancellationRequested)
@@ -103,6 +103,10 @@ namespace SofarBMS.UI
 
         public void analysisData(uint canID, byte[] data)
         {
+            if (canID == 0x1029E001)
+            {
+
+            }
             byte[] canid = BitConverter.GetBytes(canID);
             //if (canid[0] != FrmMain.CANID || !(canid[0] == FrmMain.CANID && canid[1] == 0xE0 && canid[3] == 0x10)) return;
             if (!(((canID & 0xff) == FrmMain.BMS_ID) || ((canID & 0xff) == FrmMain.PCU_ID))) return;
@@ -115,6 +119,9 @@ namespace SofarBMS.UI
 
             switch (BitConverter.ToUInt32(canid, 0) | 0xff)
             {
+                case 0x1020E0FF:
+                    cbbSetComm2.SelectedIndex = data[3] == 0xAA ? 0 : 1;
+                    break;
                 case 0x0B70E0FF:
                     pcuCode[0] = Encoding.Default.GetString(data).Substring(1);
                     break;
@@ -212,6 +219,8 @@ namespace SofarBMS.UI
                     break;
                 case 0x25://SOC
                     txt_65.Text = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
+                    txt_100.Text = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
+                    txt_101.Text = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.1).ToString();
                     break;
                 case 0x26:
                     StringBuilder date = new StringBuilder();
@@ -265,6 +274,13 @@ namespace SofarBMS.UI
                             File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/data.log", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss.fff") + data[0].ToString() + Environment.NewLine);
                             break;
                     }
+                    break;
+                case 0x29:
+                    int selVal = numbers_bit[0] - 1;
+                    cbb_103.SelectedIndex = selVal;
+
+                    txt_104.Text = numbers_bit[1].ToString();
+                    txtFlag.Text = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"))).ToString();
                     break;
                 case 0x2F:
                     Dictionary<short, Button[]> buttons = new Dictionary<short, Button[]>();
@@ -338,7 +354,7 @@ namespace SofarBMS.UI
         #region 进入调试AND退出调试
         private void btnDebugStart_Click(object sender, System.EventArgs e)
         {
-            if (btnSystemset_47.Text == "结束调试"||btnSystemset_47.Text== "End debugging")
+            if (btnSystemset_47.Text == "结束调试" || btnSystemset_47.Text == "End debugging")
             {
                 DialogResult result = MessageBox.Show(LanguageHelper.GetLanguage("BmsDebug_Exit"), LanguageHelper.GetLanguage("BmsDebug_Tip"), MessageBoxButtons.OKCancel);
 
@@ -733,11 +749,48 @@ namespace SofarBMS.UI
         private void btn_15_Click(object sender, EventArgs e)
         {
             canid[2] = 0x25;
-            bytes = Uint16ToBytes(txt_65, txt_0, txt_0, txt_0, 0.1, 1, 1, 1);
+            bytes = Uint16ToBytes(txt_65, txt_100, txt_101, txt_0, 0.1, 0.1, 0.1, 1);
 
             EcanHelper.Send(bytes, canid);
         }
 
+        #endregion
+
+        #region PCU老化模式
+        private void btnReadpcu_Click(object sender, EventArgs e)
+        {
+            PCUAgingMode(0x00);
+        }
+
+        private void btnSetComm2_Click(object sender, EventArgs e)
+        {
+            if (cbbSetComm2.SelectedIndex == 0)
+            {
+                PCUAgingMode(0xAA);
+            }
+            else if (cbbSetComm2.SelectedIndex == 1)
+            {
+                PCUAgingMode(0x55);
+            }
+        }
+
+
+        /// <summary>
+        /// PCU老化模式指令
+        /// </summary>
+        /// <param name="type">开启：0xAA，关闭：0x55</param>
+        private void PCUAgingMode(int type)
+        {
+            byte[] can_id = new byte[4] { 0xE0, FrmMain.BMS_ID, 0x20, 0x10 };
+
+            byte[] data = new byte[8];
+            data[3] = (byte)(type & 0xff);
+
+            byte crc8 = (byte)(0x10 + 0x20 + FrmMain.BMS_ID + 0xE0 + 0x00 + 0x00 + 0x00 + data[3] + 0x00 + 0x00 + 0x00);
+            data[7] = crc8;
+
+            EcanHelper.Send(data, can_id);
+        }
         #endregion
 
         #region BMS校准系数
@@ -778,6 +831,11 @@ namespace SofarBMS.UI
                         val = Convert.ToInt32(Convert.ToDouble(txtCalibration06.Text.Trim()) / 0.01);
 
                         CalibrationBMS(0x06, val);
+                        break;
+                    case "btnSetCalibration_07":
+                        val = Convert.ToInt32(Convert.ToDouble(txtCalibration07.Text.Trim()) / 0.1);
+
+                        CalibrationBMS(0x07, val);
                         break;
                 }
             }
@@ -1144,6 +1202,20 @@ namespace SofarBMS.UI
             }
             return numbers;
         }
+
+        private byte[] Uint8ToBits(List<int> vals)
+        {
+            if (vals.Count > 8 || vals.Count <= 0)
+                return null;
+
+            byte[] bytes = new byte[8];
+            for (int i = 0; i < vals.Count; i++)
+            {
+                bytes[i] = (byte)Convert.ToByte(vals[i].ToString("X2"), 16);
+            }
+
+            return bytes;
+        }
         #endregion
 
         #region CRC校验
@@ -1177,5 +1249,22 @@ namespace SofarBMS.UI
         }
 
         #endregion
+
+        private void btnSetBatteryinfo_Click(object sender, EventArgs e)
+        {
+            byte[] can_id = new byte[4] { 0xE0, FrmMain.BMS_ID, 0x29, 0x10 };
+
+            List<int> lists = new List<int>();
+
+            int batteryInfo1 = cbb_103.SelectedIndex + 1;
+
+            lists.Add(batteryInfo1);
+            lists.Add(Convert.ToInt32(txt_104.Text));
+            lists.Add(cbb_105.SelectedIndex);
+            lists.Add(cbb_106.SelectedIndex);
+
+            byte[] data = Uint8ToBits(lists);
+            EcanHelper.Send(data, can_id);
+        }
     }
 }

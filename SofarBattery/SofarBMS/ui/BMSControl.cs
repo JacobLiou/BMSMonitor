@@ -62,12 +62,12 @@ namespace SofarBMS.UI
                          EcanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
                                         , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
 
-                         //获取高压放电电流、充电电流；获取低压放电电流、充电电流
+                         /*//获取高压放电电流、充电电流；获取低压放电电流、充电电流
                          EcanHelper.Send(new byte[] { 0x77, 0xAA, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
                                     , new byte[4] { 0xE0, Convert.ToByte(FrmMain.BMS_ID + 0x20), 0x77, 0x0B });
 
                          EcanHelper.Send(new byte[] { 0x66, 0xAA, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
-                                    , new byte[4] { 0xE0, Convert.ToByte(FrmMain.BMS_ID + 0x20), 0x77, 0x0B });
+                                    , new byte[4] { 0xE0, Convert.ToByte(FrmMain.BMS_ID + 0x20), 0x77, 0x0B });*/
 
                          if (model != null && initCount >= 13)
                          {

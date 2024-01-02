@@ -100,9 +100,14 @@ namespace SofarBMS
             {
                 while (true)
                 {
-                    Thread.Sleep(60 * 1000);
+                    Thread.Sleep(60000 * 5);//五分钟轮询一次
 
                     string error = EcanHelper.ReadError();
+
+                    if (!error.Contains("00"))
+                    {
+                        btnResetCAN_Click(sender, e);
+                    }
 
                     this.BeginInvoke(new Action(() => { toolStripStatusLabel1.Text = error; }));
                 }
@@ -127,6 +132,8 @@ namespace SofarBMS
             cbbID.SelectedIndex = 0;
             cbbIDP.SelectedIndex = 0;
             cbbBaud.SelectedIndex = 5;
+
+            //this.Text = LanguageHelper.GetLanguage("Title");
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -397,22 +404,22 @@ namespace SofarBMS
         {
             if (!EcanHelper.IsConnection)
             {
-                MessageBox.Show(LanguageHelper.GetLanguage("Message_NotConn"));
+                //MessageBox.Show(LanguageHelper.GetLanguage("Message_NotConn"));
                 return;
             }
             //复位CAN
             if (ECANHelper.ResetCAN(1, 0, 0) != ECANStatus.STATUS_OK)
             {
-                MessageBox.Show(LanguageHelper.GetLanguage("Message_ResetError"));
+                //MessageBox.Show(LanguageHelper.GetLanguage("Message_ResetError"));
                 return;
             }
             //启动CAN
             if (ECANHelper.StartCAN(1, 0, 0) != ECANStatus.STATUS_OK)
             {
-                MessageBox.Show(LanguageHelper.GetLanguage("Message_StartError"));
+                //MessageBox.Show(LanguageHelper.GetLanguage("Message_StartError"));
                 return;
             }
-            MessageBox.Show(LanguageHelper.GetLanguage("Message_ResetSuccess"));
+            //MessageBox.Show(LanguageHelper.GetLanguage("Message_ResetSuccess"));
         }
         #endregion
 

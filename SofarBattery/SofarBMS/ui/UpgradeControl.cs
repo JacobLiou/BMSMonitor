@@ -75,6 +75,7 @@ namespace SofarBMS.UI
                 GetControls(item);
             }
             cbbChip_role.SelectedIndex = 3;
+            lblUpgradeRole.Text = LanguageHelper.GetLanguage("Upgrade_Role");
 
             Task.Run(() =>
             {
@@ -191,11 +192,12 @@ namespace SofarBMS.UI
 
                 txtUpgradeFile.Text = filename;
 
-                if (filename.Contains("BMS"))
+                string bin = openFile.SafeFileName;
+                if (bin.Contains("BMS"))
                 {
                     cbbChip_role.SelectedIndex = 3;
                 }
-                else if (filename.Contains("PCU"))
+                else if (bin.Contains("PCU"))
                 {
                     cbbChip_role.SelectedIndex = 1;
                 }

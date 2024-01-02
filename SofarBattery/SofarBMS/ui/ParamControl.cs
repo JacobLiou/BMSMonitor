@@ -163,6 +163,9 @@ namespace SofarBMS.UI
                 return;
             }
 
+            Dictionary<string, bool> sendResult = new Dictionary<string, bool>();
+
+            int errorCount = 0;
             byte[] canid = new byte[] { 0xE0, FrmMain.BMS_ID, 0x00, 0x10 };
             byte[] bytes = new byte[8];
             int num = 13;
@@ -243,8 +246,26 @@ namespace SofarBMS.UI
                     }
 
                     //发送指令
-                    EcanHelper.Send(bytes, canid);
+                    bool result = EcanHelper.Send(bytes, canid);
+
+                    //记录信息
+                    sendResult.Add(c.Name, result);
                 }
+            }
+
+            if (sendResult.Count > 0)
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (var item in sendResult)
+                {
+                    if (!item.Value)
+                    {
+                        sb.AppendLine(item.Key + "写入失败");
+                    }
+                }
+
+                string msgInfo = string.IsNullOrEmpty(sb.ToString()) ? "写入成功" : sb.ToString();
+                MessageBox.Show(msgInfo);
             }
         }
 

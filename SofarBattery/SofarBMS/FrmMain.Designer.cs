@@ -61,7 +61,7 @@ namespace SofarBMS
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1232, 800);
+            this.panel1.Size = new System.Drawing.Size(1232, 778);
             this.panel1.TabIndex = 27;
             // 
             // Menu
@@ -79,12 +79,11 @@ namespace SofarBMS
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 795);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 855);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1232, 22);
             this.statusStrip1.TabIndex = 28;
             this.statusStrip1.Text = "statusStrip1";
-            this.statusStrip1.Visible = false;
             // 
             // toolStripStatusLabel1
             // 
@@ -107,7 +106,7 @@ namespace SofarBMS
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1232, 847);
+            this.splitContainer1.Size = new System.Drawing.Size(1232, 825);
             this.splitContainer1.SplitterDistance = 43;
             this.splitContainer1.TabIndex = 29;
             // 
@@ -166,6 +165,7 @@ namespace SofarBMS
             this.btnResetCAN.TabIndex = 50;
             this.btnResetCAN.Text = "重连";
             this.btnResetCAN.UseVisualStyleBackColor = true;
+            this.btnResetCAN.Visible = false;
             this.btnResetCAN.Click += new System.EventHandler(this.btnResetCAN_Click);
             // 
             // cbbBaud
@@ -270,7 +270,7 @@ namespace SofarBMS
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BMS电池上位机V1.0.1.0.20230808";
+            this.Text = "BMS电池上位机V1.0.1.15.20231228";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.statusStrip1.ResumeLayout(false);

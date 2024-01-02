@@ -114,6 +114,8 @@ namespace SofarBMS.UI
             channelDt.Columns.Add("故障byte4");
             channelDt.Columns.Add("故障byte5");
             channelDt.Columns.Add("故障byte6");
+            channelDt.Columns.Add("故障byte7");
+            channelDt.Columns.Add("故障byte8");
             channelDt.Columns.Add("电池状态");
             channelDt.Columns.Add("充电MOS");
             channelDt.Columns.Add("放电MOS");
@@ -345,6 +347,8 @@ namespace SofarBMS.UI
                     channelDr["故障byte4"] = Convert.ToInt32(data[3].ToString("X2"), 16);
                     channelDr["故障byte5"] = Convert.ToInt32(data[4].ToString("X2"), 16);
                     channelDr["故障byte6"] = Convert.ToInt32(data[5].ToString("X2"), 16);
+                    channelDr["故障byte7"] = Convert.ToInt32(data[6].ToString("X2"), 16);
+                    channelDr["故障byte8"] = Convert.ToInt32(data[7].ToString("X2"), 16);
                     break;
                 case 0x39:
                     channelDr["电压1"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
