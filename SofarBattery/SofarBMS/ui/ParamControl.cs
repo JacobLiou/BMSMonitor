@@ -13,6 +13,7 @@ using System.Xml;
 using System.Threading;
 using SofarBMS.Helper;
 using SofarBMS.Model;
+using NPOI.POIFS.Crypt.Dsig;
 
 namespace SofarBMS.UI
 {
@@ -146,20 +147,27 @@ namespace SofarBMS.UI
         {
             if (!EcanHelper.IsConnection)
             {
-                MessageBox.Show("请先打卡CAN口!");
+                MessageBox.Show(FrmMain.GetString("keyOpenPrompt"));            
                 return;
             }
 
             flag = true;
-            byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-            EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
-        }
+            byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };           
+            if (EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 }))
+            {
+                MessageBox.Show(FrmMain.GetString("keyReadSuccess"));
+            }
+            else
+            {
+                MessageBox.Show(FrmMain.GetString("keyReadFail"));
+            }
+        }      
 
         private void btnWrite_Click(object sender, EventArgs e)
         {
             if (!EcanHelper.IsConnection)
             {
-                MessageBox.Show("请先打卡CAN口!");
+                MessageBox.Show(FrmMain.GetString("keyOpenPrompt"));
                 return;
             }
 
@@ -169,87 +177,115 @@ namespace SofarBMS.UI
             byte[] canid = new byte[] { 0xE0, FrmMain.BMS_ID, 0x00, 0x10 };
             byte[] bytes = new byte[8];
             int num = 13;
-            for (int i = 1; i <= num; i++)
+            //检查输入数据的合法性
+            if (!CheckTextBoxRange(txt_1,    0,  4000, "单体过充保护"  ) || !CheckTextBoxRange(txt_2,    0,  3800, "单体过充解除"  ) || !CheckTextBoxRange(txt_3,    0,  3800, "单体过充告警"  ) ||
+                !CheckTextBoxRange(txt_4,    0,  3600, "单体过充解除"  ) || !CheckTextBoxRange(txt_5,    0,  64.0, "总体过充保护"  ) || !CheckTextBoxRange(txt_6,    0,  60.8, "总体过充解除"  ) ||
+                !CheckTextBoxRange(txt_7,    0,  60.8, "总体过充告警"  ) || !CheckTextBoxRange(txt_8,    0,  57.7, "总体过充解除"  ) || !CheckTextBoxRange(txt_9, 2300, 65535, "单体过放保护"  ) ||
+                !CheckTextBoxRange(txt_10,2500, 65535, "单体过放解除"  ) || !CheckTextBoxRange(txt_11,2500, 65535, "单体过放告警"  ) || !CheckTextBoxRange(txt_12,2700, 65535, "单体过放解除"  ) ||
+                !CheckTextBoxRange(txt_13,36.8,6553.5, "总体过放保护"  ) || !CheckTextBoxRange(txt_14,  40,6553.5, "总体过放解除"  ) || !CheckTextBoxRange(txt_15,  40,6553.5, "总体过放告警"  ) ||
+                !CheckTextBoxRange(txt_16,  44,6553.5, "总体过放解除"  ) || !CheckTextBoxRange(txt_17,   0,   200, "充电过流保护"  ) || !CheckTextBoxRange(txt_18,   0,655.35, "充电过流解除"  ) ||
+                !CheckTextBoxRange(txt_19,   0,655.35, "充电过流告警"  ) || !CheckTextBoxRange(txt_20,   0,655.35, "充电过流解除"  ) || !CheckTextBoxRange(txt_21,   0,   200, "放电过流保护"  ) ||
+                !CheckTextBoxRange(txt_22,   0,655.35, "放电过流解除"  ) || !CheckTextBoxRange(txt_23,   0,655.35, "放电过流告警"  ) || !CheckTextBoxRange(txt_24,   0,655.35, "放电过流解除"  ) ||
+                !CheckTextBoxRange(txt_25, -40,    60, "充电高温保护"  ) || !CheckTextBoxRange(txt_26, -40,    50, "充电高温解除"  ) || !CheckTextBoxRange(txt_27, -40,   125, "充电高温告警"  ) ||
+                !CheckTextBoxRange(txt_28, -40,   125, "充电高温解除"  ) || !CheckTextBoxRange(txt_29, -40,    65, "放电高温保护"  ) || !CheckTextBoxRange(txt_30, -40,    56, "放电高温解除"  ) ||
+                !CheckTextBoxRange(txt_31, -40,   125, "放电高温告警"  ) || !CheckTextBoxRange(txt_32, -40,   125, "放电高温解除"  ) || !CheckTextBoxRange(txt_33,   0,   125, "充电低温保护"  ) ||
+                !CheckTextBoxRange(txt_34,   2,   125, "充电低温解除"  ) || !CheckTextBoxRange(txt_35,   0,   125, "充电低温告警"  ) || !CheckTextBoxRange(txt_36,   2,   125, "充电低温告警"  ) ||
+                !CheckTextBoxRange(txt_37, -22,   125, "放电低温保护"  ) || !CheckTextBoxRange(txt_38, -20,   125, "放电低温解除"  ) || !CheckTextBoxRange(txt_39, -40,   125, "放电低温告警"  ) ||
+                !CheckTextBoxRange(txt_40, -40,   125, "放电低温解除"  ) || !CheckTextBoxRange(txt_41, -40,   125, "环境高温保护"  ) || !CheckTextBoxRange(txt_42, -40,   125, "环境高温解除"  ) ||
+                !CheckTextBoxRange(txt_43, -40,   125, "环境高温告警"  ) || !CheckTextBoxRange(txt_44, -40,   125, "环境高温解除"  ) || !CheckTextBoxRange(txt_45, -40,   125, "环境低温保护"  ) ||
+                !CheckTextBoxRange(txt_46, -40,   125, "环境低温解除"  ) || !CheckTextBoxRange(txt_47, -40,   125, "环境低温告警"  ) || !CheckTextBoxRange(txt_48, -40,   125, "环境低温解除"  ) ||
+                !CheckTextBoxRange(txt_49,   0,   100, "低电量保护"    ) || !CheckTextBoxRange(txt_50,   0,   100, "低电量解除"    ) || !CheckTextBoxRange(txt_51,   0,   100, "低电量告警"    ) ||
+                !CheckTextBoxRange(txt_52,   0,   100, "低电量解除"    ) || !CheckTextBoxRange(txt_53,   0,  4000, "均衡开启电压"  ) || !CheckTextBoxRange(txt_54,   0,  1000, "均衡开启压差"  ) ||
+                !CheckTextBoxRange(txt_55,3000,  4000, "满充电压"      ) || !CheckTextBoxRange(txt_56, -40,   125, "加热膜开启温度") || !CheckTextBoxRange(txt_57, -40,   125, "加热膜关闭温度") ||
+                !CheckTextBoxRange(txt_58,   0,  60.8, "电池包截止电压") || !CheckTextBoxRange(txt_59,   0,655.35, "电池包截止电流") || !CheckTextBoxRange(txt_60, -40,   125, "MOS高温保护"   ) ||
+                !CheckTextBoxRange(txt_61, -40,   125, "MOS高温解除"   ) || !CheckTextBoxRange(txt_62, -40,   125, "MOS高温告警"   ) || !CheckTextBoxRange(txt_63, -40,   125, "MOS高温解除"   ) ) 
             {
-                Control c = this.Controls.Find("ckb_" + i, true)[0];
-                if (((CheckBox)c).Checked)
+                return;// 范围检查失败
+            }
+            else
+            {
+                for (int i = 1; i <= num; i++)
                 {
-                    switch (c.Name)
+                    Control c = this.Controls.Find("ckb_" + i, true)[0];
+                    if (((CheckBox)c).Checked)
                     {
-                        case "ckb_1":
-                            canid[2] = 0x10;
-                            bytes = Uint16ToBytes(txt_1, txt_2, txt_3, txt_4, 1, 1, 1, 1);
-                            break;
-                        case "ckb_2":
-                            canid[2] = 0x11;
-                            bytes = Uint16ToBytes(txt_5, txt_6, txt_7, txt_8, 0.1, 0.1, 0.1, 0.1);
-                            break;
-                        case "ckb_3":
-                            canid[2] = 0x12;
-                            bytes = Uint16ToBytes(txt_9, txt_10, txt_11, txt_12, 1, 1, 1, 1);
-                            break;
-                        case "ckb_4":
-                            canid[2] = 0x13;
-                            bytes = Uint16ToBytes(txt_13, txt_14, txt_15, txt_16, 0.1, 0.1, 0.1, 0.1);
-                            break;
-                        case "ckb_5":
-                            canid[2] = 0x14;
-                            bytes = Uint16ToBytes(txt_17, txt_18, txt_19, txt_20, 0.01, 0.01, 0.01, 0.01);
-                            break;
-                        case "ckb_6":
-                            canid[2] = 0x15;
-                            bytes = Uint16ToBytes(txt_21, txt_22, txt_23, txt_24, 0.01, 0.01, 0.01, 0.01);
-                            break;
-                        case "ckb_7":
-                            canid[2] = 0x16;
-                            bytes = Uint8ToBits(Convert.ToInt32(txt_25.Text) + 40, Convert.ToInt32(txt_26.Text) + 40,
-                                            Convert.ToInt32(txt_27.Text) + 40, Convert.ToInt32(txt_28.Text) + 40,
-                                            Convert.ToInt32(txt_29.Text) + 40, Convert.ToInt32(txt_30.Text) + 40,
-                                            Convert.ToInt32(txt_31.Text) + 40, Convert.ToInt32(txt_32.Text) + 40);
-                            break;
-                        case "ckb_8":
-                            canid[2] = 0x17;
-                            bytes = Uint8ToBits(Convert.ToInt32(txt_33.Text) + 40, Convert.ToInt32(txt_34.Text) + 40,
-                                            Convert.ToInt32(txt_35.Text) + 40, Convert.ToInt32(txt_36.Text) + 40,
-                                            Convert.ToInt32(txt_37.Text) + 40, Convert.ToInt32(txt_38.Text) + 40,
-                                            Convert.ToInt32(txt_39.Text) + 40, Convert.ToInt32(txt_40.Text) + 40);
-                            break;
-                        case "ckb_9":
-                            canid[2] = 0x18;
-                            bytes = Uint8ToBits(Convert.ToInt32(txt_41.Text) + 40, Convert.ToInt32(txt_42.Text) + 40,
-                                            Convert.ToInt32(txt_43.Text) + 40, Convert.ToInt32(txt_44.Text) + 40,
-                                            Convert.ToInt32(txt_45.Text) + 40, Convert.ToInt32(txt_46.Text) + 40,
-                                            Convert.ToInt32(txt_47.Text) + 40, Convert.ToInt32(txt_48.Text) + 40);
-                            break;
-                        case "ckb_10":
-                            canid[2] = 0x19;
-                            bytes = Uint16ToBytes(txt_49, txt_50, txt_51, txt_52, 1, 1, 1, 1);
-                            break;
-                        case "ckb_11":
-                            canid[2] = 0x21;
-                            bytes = Uint16ToBytes(txt_53, txt_54, txt_55, txt_0, 1, 1, 1, 1);
-                            bytes[6] = Convert.ToByte(Convert.ToInt32(txt_56.Text) + 40);
-                            bytes[7] = Convert.ToByte(Convert.ToInt32(txt_57.Text) + 40);
-                            break;
-                        case "ckb_12":
-                            canid[2] = 0x22;
-                            bytes = Uint16ToBytes(txt_58, txt_59, txt_0, txt_0, 0.1, 0.01, 1, 1);
-                            break;
-                        case "ckb_13":
-                            canid[2] = 0x1A;
-                            bytes = Uint8ToBits(Convert.ToInt32(txt_60.Text) + 40
-                                , Convert.ToInt32(txt_61.Text) + 40
-                                , Convert.ToInt32(txt_62.Text) + 40
-                                , Convert.ToInt32(txt_63.Text) + 40
-                                , 0, 0, 0, 0);
-                            break;
+                        switch (c.Name)
+                        {
+                            case "ckb_1":
+                                canid[2] = 0x10;
+                                bytes = Uint16ToBytes(txt_1, txt_2, txt_3, txt_4, 1, 1, 1, 1);
+                                break;
+                            case "ckb_2":
+                                canid[2] = 0x11;
+                                bytes = Uint16ToBytes(txt_5, txt_6, txt_7, txt_8, 0.1, 0.1, 0.1, 0.1);
+                                break;
+                            case "ckb_3":
+                                canid[2] = 0x12;
+                                bytes = Uint16ToBytes(txt_9, txt_10, txt_11, txt_12, 1, 1, 1, 1);
+                                break;
+                            case "ckb_4":
+                                canid[2] = 0x13;
+                                bytes = Uint16ToBytes(txt_13, txt_14, txt_15, txt_16, 0.1, 0.1, 0.1, 0.1);
+                                break;
+                            case "ckb_5":
+                                canid[2] = 0x14;
+                                bytes = Uint16ToBytes(txt_17, txt_18, txt_19, txt_20, 0.01, 0.01, 0.01, 0.01);
+                                break;
+                            case "ckb_6":
+                                canid[2] = 0x15;
+                                bytes = Uint16ToBytes(txt_21, txt_22, txt_23, txt_24, 0.01, 0.01, 0.01, 0.01);
+                                break;
+                            case "ckb_7":
+                                canid[2] = 0x16;
+                                bytes = Uint8ToBits(Convert.ToInt32(txt_25.Text) + 40, Convert.ToInt32(txt_26.Text) + 40,
+                                                Convert.ToInt32(txt_27.Text) + 40, Convert.ToInt32(txt_28.Text) + 40,
+                                                Convert.ToInt32(txt_29.Text) + 40, Convert.ToInt32(txt_30.Text) + 40,
+                                                Convert.ToInt32(txt_31.Text) + 40, Convert.ToInt32(txt_32.Text) + 40);
+                                break;
+                            case "ckb_8":
+                                canid[2] = 0x17;
+                                bytes = Uint8ToBits(Convert.ToInt32(txt_33.Text) + 40, Convert.ToInt32(txt_34.Text) + 40,
+                                                Convert.ToInt32(txt_35.Text) + 40, Convert.ToInt32(txt_36.Text) + 40,
+                                                Convert.ToInt32(txt_37.Text) + 40, Convert.ToInt32(txt_38.Text) + 40,
+                                                Convert.ToInt32(txt_39.Text) + 40, Convert.ToInt32(txt_40.Text) + 40);
+                                break;
+                            case "ckb_9":
+                                canid[2] = 0x18;
+                                bytes = Uint8ToBits(Convert.ToInt32(txt_41.Text) + 40, Convert.ToInt32(txt_42.Text) + 40,
+                                                Convert.ToInt32(txt_43.Text) + 40, Convert.ToInt32(txt_44.Text) + 40,
+                                                Convert.ToInt32(txt_45.Text) + 40, Convert.ToInt32(txt_46.Text) + 40,
+                                                Convert.ToInt32(txt_47.Text) + 40, Convert.ToInt32(txt_48.Text) + 40);
+                                break;
+                            case "ckb_10":
+                                canid[2] = 0x19;
+                                bytes = Uint16ToBytes(txt_49, txt_50, txt_51, txt_52, 1, 1, 1, 1);
+                                break;
+                            case "ckb_11":
+                                canid[2] = 0x21;
+                                bytes = Uint16ToBytes(txt_53, txt_54, txt_55, txt_0, 1, 1, 1, 1);
+                                bytes[6] = Convert.ToByte(Convert.ToInt32(txt_56.Text) + 40);
+                                bytes[7] = Convert.ToByte(Convert.ToInt32(txt_57.Text) + 40);
+                                break;
+                            case "ckb_12":
+                                canid[2] = 0x22;
+                                bytes = Uint16ToBytes(txt_58, txt_59, txt_0, txt_0, 0.1, 0.01, 1, 1);
+                                break;
+                            case "ckb_13":
+                                canid[2] = 0x1A;
+                                bytes = Uint8ToBits(Convert.ToInt32(txt_60.Text) + 40
+                                    , Convert.ToInt32(txt_61.Text) + 40
+                                    , Convert.ToInt32(txt_62.Text) + 40
+                                    , Convert.ToInt32(txt_63.Text) + 40
+                                    , 0, 0, 0, 0);
+                                break;
+                        }
+
+                        //发送指令
+                        bool result = EcanHelper.Send(bytes, canid);
+
+                        //记录信息
+                        sendResult.Add(c.Name, result);
                     }
-
-                    //发送指令
-                    bool result = EcanHelper.Send(bytes, canid);
-
-                    //记录信息
-                    sendResult.Add(c.Name, result);
                 }
             }
 
@@ -260,20 +296,38 @@ namespace SofarBMS.UI
                 {
                     if (!item.Value)
                     {
-                        sb.AppendLine(item.Key + "写入失败");
+                        sb.AppendLine(item.Key + FrmMain.GetString("keyWriteFail"));
                     }
                 }
-
-                string msgInfo = string.IsNullOrEmpty(sb.ToString()) ? "写入成功" : sb.ToString();
+               
+                string msgInfo = string.IsNullOrEmpty(sb.ToString()) ? FrmMain.GetString("keyWriteSuccess") : sb.ToString();
                 MessageBox.Show(msgInfo);
             }
+        }
+
+        private bool CheckTextBoxRange(TextBox textBox, double minValue, double maxValue, string fieldName)
+        {
+            double value;
+            if (!double.TryParse(textBox.Text, out value))
+            {
+                MessageBox.Show(fieldName + "应为有效数字！");
+                return false;
+            }
+
+            if (value < minValue || value > maxValue)
+            {
+                MessageBox.Show(fieldName + "的值应在 " + minValue + " 和 " + maxValue + " 之间！");
+                return false;
+            }
+
+            return true;
         }
 
         private void btnInit_Click(object sender, EventArgs e)
         {
             if (!EcanHelper.IsConnection)
             {
-                MessageBox.Show("请先打卡CAN口!");
+                MessageBox.Show(FrmMain.GetString("keyOpenPrompt"));
                 return;
             }
 
@@ -573,7 +627,7 @@ namespace SofarBMS.UI
                     txt_58.Text = (numbers[0] * 0.1).ToString();
                     txt_59.Text = (numbers[1] * 0.01).ToString();
                     break;
-                case 0x1A:
+                case 0x1A://MOS
                     txt_60.Text = (numbers_bit[0] - 40).ToString();
                     txt_61.Text = (numbers_bit[1] - 40).ToString();
                     txt_62.Text = (numbers_bit[2] - 40).ToString();
@@ -641,6 +695,6 @@ namespace SofarBMS.UI
             byte b8 = Convert.ToByte(t8.ToString("X2"), 16);
 
             return new byte[] { b1, b2, b3, b4, b5, b6, b7, b8 };
-        }
+        }       
     }
 }

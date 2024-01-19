@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
+using NPOI.POIFS.Crypt.Dsig;
 using SofarBMS.Helper;
 using SofarBMS.Model;
 
@@ -131,7 +132,7 @@ namespace SofarBMS.UI
                 case 0x0B72E0FF:
                     pcuCode[2] = Encoding.Default.GetString(data).Substring(1);
 
-                    txtPCUSN.Text = String.Join("", pcuCode);
+                    txtPCUSN.Text = String.Join("", pcuCode).Trim();
                     pcuCode = new string[3];
                     break;
                 case 0x0B73E0FF:
@@ -248,7 +249,7 @@ namespace SofarBMS.UI
                             break;
                         case 2:
                             bmsCode[2] = Encoding.Default.GetString(data).Substring(1);
-                            txt_67.Text = String.Join("", bmsCode);
+                            txt_67.Text = String.Join("", bmsCode).Trim();
                             bmsCode = new string[3];
                             break;
                         default:
@@ -267,7 +268,7 @@ namespace SofarBMS.UI
                             break;
                         case 2:
                             boardCode[2] = Encoding.Default.GetString(data).Substring(1);
-                            txtBoardSN.Text = String.Join("", boardCode);
+                            txtBoardSN.Text = String.Join("", boardCode).Trim();
                             boardCode = new string[3];
                             break;
                         default:
@@ -335,7 +336,14 @@ namespace SofarBMS.UI
             }
 
             byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-            EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
+            if (EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 }))
+            {
+                MessageBox.Show(FrmMain.GetString("keyReadSuccess"));
+            }
+            else
+            {
+                MessageBox.Show(FrmMain.GetString("keyReadFail"));
+            }
         }
 
         private void DataSelected(uint type)
@@ -634,7 +642,14 @@ namespace SofarBMS.UI
                                     Convert.ToByte(Convert.ToInt32(date[5])),
                                     0x00, 0x00 };
             //发送指令
-            EcanHelper.Send(bytes, canid);
+            if (EcanHelper.Send(bytes, canid))
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
+            }
+            else
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteFail"));
+            }
         }
 
         #endregion
@@ -658,9 +673,10 @@ namespace SofarBMS.UI
         /// <param name="identity">false=SN号设置，true=单板SN设置</param>
         public void SetSN(string packSn, bool identity = false)
         {
+            bool flag_WriteSuccess = false;
             if (packSn.Length != 20)
             {
-                MessageBox.Show("SN序列号长度不等于20！");
+                MessageBox.Show("SN序列号长度不等于20！输入的序列号长度为" + packSn.Length.ToString() + "位");
                 return;
             }
 
@@ -689,8 +705,18 @@ namespace SofarBMS.UI
                 data[i++] = Convert.ToByte(strs[j++], 16);
                 data[i++] = Convert.ToByte(strs[j++], 16);
                 data[i++] = j == strs.Length ? (byte)0x00 : Convert.ToByte(strs[j], 16);
-
-                EcanHelper.Send(data, can_id);
+                if (EcanHelper.Send(data, can_id))
+                {
+                    flag_WriteSuccess = true;
+                }
+            }
+            if (flag_WriteSuccess)
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
+            }
+            else
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteFail"));
             }
         }
 
@@ -718,7 +744,14 @@ namespace SofarBMS.UI
                 canid[2] = 0x23;
                 bytes = Uint16ToBytes(txt_60, txt_61, txt_62, txt_0, 0.1, 1, 1, 1);
 
-                EcanHelper.Send(bytes, canid);
+                if (EcanHelper.Send(bytes, canid))
+                {
+                    MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
+                }
+                else
+                {
+                    MessageBox.Show(FrmMain.GetString("keyWriteFail"));
+                }
             }
             catch (Exception)
             {
@@ -730,17 +763,31 @@ namespace SofarBMS.UI
         #region 累计充电/放电容量
         private void btn_14_Click(object sender, EventArgs e)
         {
-            canid[2] = 0x24;
+            try
+            {
+                canid[2] = 0x24;
 
-            byte[] buf = new byte[4];
-            ConvertIntToByteArray(Convert.ToInt32(txt_63.Text), ref buf);
+                byte[] buf = new byte[4];
+                ConvertIntToByteArray(Convert.ToInt32(txt_63.Text), ref buf);
 
-            byte[] buf2 = new byte[4];
-            ConvertIntToByteArray(Convert.ToInt32(txt_64.Text), ref buf2);
+                byte[] buf2 = new byte[4];
+                ConvertIntToByteArray(Convert.ToInt32(txt_64.Text), ref buf2);
 
-            bytes = new byte[] { buf[0], buf[1], buf[2], buf[3], buf2[0], buf2[1], buf2[2], buf2[3] };
+                bytes = new byte[] { buf[0], buf[1], buf[2], buf[3], buf2[0], buf2[1], buf2[2], buf2[3] };
 
-            EcanHelper.Send(bytes, canid);
+                if (EcanHelper.Send(bytes, canid))
+                {
+                    MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
+                }
+                else
+                {
+                    MessageBox.Show(FrmMain.GetString("keyWriteFail"));
+                }
+
+            }
+            catch (Exception)
+            {
+            }
         }
 
         #endregion
@@ -751,8 +798,28 @@ namespace SofarBMS.UI
             canid[2] = 0x25;
             bytes = Uint16ToBytes(txt_65, txt_100, txt_101, txt_0, 0.1, 0.1, 0.1, 1);
 
-            EcanHelper.Send(bytes, canid);
+            if (EcanHelper.Send(bytes, canid))
+            {
+                //读取数据
+                List<uint> DataLists = new List<uint>() { 0xAA11, 0xAA22, 0xAA33, 0xAA44, 0xAA55, 0xAA66, 0xAA77, 0xAA88 };
+
+                for (int i = 0; i < DataLists.Count; i++)
+                {
+                    DataSelected(DataLists[i]);
+
+                    Thread.Sleep(100);
+                }
+
+                byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });              
+                MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
+            }
+            else
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteFail"));
+            }
         }
+        
 
         #endregion
 
@@ -787,9 +854,15 @@ namespace SofarBMS.UI
             data[3] = (byte)(type & 0xff);
 
             byte crc8 = (byte)(0x10 + 0x20 + FrmMain.BMS_ID + 0xE0 + 0x00 + 0x00 + 0x00 + data[3] + 0x00 + 0x00 + 0x00);
-            data[7] = crc8;
-
-            EcanHelper.Send(data, can_id);
+            data[7] = crc8;           
+            if (EcanHelper.Send(data, can_id))
+            {
+                MessageBox.Show((type == 0x00) ? FrmMain.GetString("keyReadSuccess") : FrmMain.GetString("keyWriteSuccess"));
+            }
+            else
+            {
+                MessageBox.Show((type == 0x00) ? FrmMain.GetString("keyReadFail"): FrmMain.GetString("keyWriteFail"));
+            }
         }
         #endregion
 
@@ -847,7 +920,14 @@ namespace SofarBMS.UI
 
             byte[] data = new byte[8] { firstData, Convert.ToByte(CalibrationVal & 0xff), Convert.ToByte(CalibrationVal >> 8), 0x00, 0x00, 0x00, 0x00, 0x00 };
 
-            EcanHelper.Send(data, can_id);
+            if (EcanHelper.Send(data, can_id))
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
+            }
+            else
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteFail"));
+            }
         }
 
         #endregion
@@ -965,7 +1045,7 @@ namespace SofarBMS.UI
         private void btnSetSN_Click(object sender, EventArgs e)
         {
             string sn = txtPCUSN.Text.Trim();
-
+            bool flag_WriteSuccess = false;
             if (sn.Length == 20)
             {
                 byte[] can_id = new byte[4];
@@ -986,15 +1066,25 @@ namespace SofarBMS.UI
 
                     Array.Copy(bufferSN, 0, data, 1, bufferSN.Length);
                     data[0] = 0x01;
-
-                    EcanHelper.Send(data, can_id);
-
+                    if (EcanHelper.Send(data, can_id))
+                    {
+                        // 设置写入成功标志
+                        flag_WriteSuccess = true;
+                    }                  
                     Thread.Sleep(100);
+                }
+                if (flag_WriteSuccess)
+                {
+                    MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
+                }
+                else
+                {
+                    MessageBox.Show(FrmMain.GetString("keyWriteFail"));
                 }
             }
             else
             {
-                MessageBox.Show("序列号异常,长度不等于20位");
+                MessageBox.Show("序列号异常,长度不等于20位,输入的序列号为"+sn.Length.ToString()+"位。");
             }
         }
 
@@ -1025,7 +1115,14 @@ namespace SofarBMS.UI
             data[0] = (byte)(type & 0xff);
             data[1] = (byte)(type >> 8);
 
-            EcanHelper.Send(data, can_id);
+            if (EcanHelper.Send(data, can_id))
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
+            }
+            else
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteFail"));
+            }
         }
 
         #endregion
@@ -1044,7 +1141,14 @@ namespace SofarBMS.UI
             data[0] = (byte)(flag & 0xff);
             data[1] = (byte)(flag >> 8);
 
-            EcanHelper.Send(data, can_id);
+            if (EcanHelper.Send(data, can_id))
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
+            }
+            else
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteFail"));
+            }
         }
 
         #endregion
@@ -1098,7 +1202,14 @@ namespace SofarBMS.UI
             data[i++] = (byte)(value & 0xff);
             data[i++] = (byte)(value >> 8);
 
-            EcanHelper.Send(data, can_id);
+            if(EcanHelper.Send(data, can_id))
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
+            }
+            else
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteFail"));
+            }
         }
 
         #endregion
@@ -1264,7 +1375,14 @@ namespace SofarBMS.UI
             lists.Add(cbb_106.SelectedIndex);
 
             byte[] data = Uint8ToBits(lists);
-            EcanHelper.Send(data, can_id);
-        }
+            if(EcanHelper.Send(data, can_id))
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
+            }
+            else
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteFail"));
+            }
+        }     
     }
 }

@@ -84,7 +84,11 @@ namespace SofarBMS
                     new FaultInfo("放电电流小环零点不良,DSG_CURR_LITTLE_RING_BADNESS",7,1,0,0,3),
                     new FaultInfo("电芯温度过大,CELL_TEMP_DIFF_OVER",7,2,0,0,2)
         };
-
+        public static string MessageBoxTextStr = @"keyWriteSuccess,写入成功,WriteSuccess
+keyWriteFail,写入失败,WriteFail
+keyReadSuccess,读取成功,ReadSuccess
+keyReadFail,读取失败,ReadFail
+keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
         public FrmMain()
         {
             InitializeComponent();
@@ -135,7 +139,34 @@ namespace SofarBMS
 
             //this.Text = LanguageHelper.GetLanguage("Title");
         }
+        /// <summary>
+        /// 获取MessageBox语言资源
+        /// </summary>
+        /// <param name="key">关键字</param>
+        /// <param name="languageIndex">1|2 1中文 2英文</param>
+        /// <returns></returns>
+        public static string GetString(string key)
+        {
+            if (key == null || key.Length == 0)
+            {
+                return "";
+            }
+            string[] csvarr = MessageBoxTextStr.Split("\n".ToCharArray());
+            foreach (string s in csvarr)
+            {
+                string[] sarr = s.Split(",".ToCharArray());
+                if (sarr.Length < 3)
+                {
+                    continue;
+                }
+                if (sarr[0].Equals(key))
+                {
+                    return sarr[LanguageHelper.LanaguageIndex].TrimEnd("\r".ToCharArray()).Trim();
+                }
+            }
 
+            return key;
+        }
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(0);

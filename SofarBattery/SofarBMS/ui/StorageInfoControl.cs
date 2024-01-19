@@ -122,54 +122,54 @@ namespace SofarBMS.UI
             channelDt.Columns.Add("预充MOS");
             channelDt.Columns.Add("充电急停");
             channelDt.Columns.Add("加热MOS");
-            channelDt.Columns.Add("电池电压");
-            channelDt.Columns.Add("负载电压");
-            channelDt.Columns.Add("电池电流");
+            channelDt.Columns.Add("电池电压(V)");
+            channelDt.Columns.Add("负载电压(V)");
+            channelDt.Columns.Add("电池电流(A)");
             channelDt.Columns.Add("电池剩余容量(SOC)");
             channelDt.Columns.Add("电池健康程度(SOH)");
             channelDt.Columns.Add("充电电流上限(A)");
             channelDt.Columns.Add("放电电流上限(A)");
-            channelDt.Columns.Add("累计充电容量");
-            channelDt.Columns.Add("累计放电容量");
-            channelDt.Columns.Add("最高单体电压");
+            channelDt.Columns.Add("累计充电容量(Ah)");
+            channelDt.Columns.Add("累计放电容量(Ah)");
+            channelDt.Columns.Add("最高单体电压(mV)");
             channelDt.Columns.Add("最高单体电压编号");
-            channelDt.Columns.Add("最低单体电压");
+            channelDt.Columns.Add("最低单体电压(mV)");
             channelDt.Columns.Add("最低单体电压编号");
-            channelDt.Columns.Add("电压1");
-            channelDt.Columns.Add("电压2");
-            channelDt.Columns.Add("电压3");
-            channelDt.Columns.Add("电压4");
-            channelDt.Columns.Add("电压5");
-            channelDt.Columns.Add("电压6");
-            channelDt.Columns.Add("电压7");
-            channelDt.Columns.Add("电压8");
-            channelDt.Columns.Add("电压9");
-            channelDt.Columns.Add("电压10");
-            channelDt.Columns.Add("电压11");
-            channelDt.Columns.Add("电压12");
-            channelDt.Columns.Add("电压13");
-            channelDt.Columns.Add("电压14");
-            channelDt.Columns.Add("电压15");
-            channelDt.Columns.Add("电压16");
-            channelDt.Columns.Add("环境温度");
-            channelDt.Columns.Add("Mos温度");
-            channelDt.Columns.Add("最高单体温度");
+            channelDt.Columns.Add("电压1(mV)");
+            channelDt.Columns.Add("电压2(mV)");
+            channelDt.Columns.Add("电压3(mV)");
+            channelDt.Columns.Add("电压4(mV)");
+            channelDt.Columns.Add("电压5(mV)");
+            channelDt.Columns.Add("电压6(mV)");
+            channelDt.Columns.Add("电压7(mV)");
+            channelDt.Columns.Add("电压8(mV)");
+            channelDt.Columns.Add("电压9(mV)");
+            channelDt.Columns.Add("电压10(mV)");
+            channelDt.Columns.Add("电压11(mV)");
+            channelDt.Columns.Add("电压12(mV)");
+            channelDt.Columns.Add("电压13(mV)");
+            channelDt.Columns.Add("电压14(mV)");
+            channelDt.Columns.Add("电压15(mV)");
+            channelDt.Columns.Add("电压16(mV)");
+            channelDt.Columns.Add("环境温度(℃)");
+            channelDt.Columns.Add("Mos温度(℃)");
+            channelDt.Columns.Add("最高单体温度(℃)");
             channelDt.Columns.Add("最高单体温度编号");
-            channelDt.Columns.Add("最低单体温度");
+            channelDt.Columns.Add("最低单体温度(℃)");
             channelDt.Columns.Add("最低单体温度编号");
-            channelDt.Columns.Add("温度1");
-            channelDt.Columns.Add("温度2");
-            channelDt.Columns.Add("温度3");
-            channelDt.Columns.Add("温度4");
-            channelDt.Columns.Add("温度5");
-            channelDt.Columns.Add("温度6");
-            channelDt.Columns.Add("温度7");
-            channelDt.Columns.Add("温度8");
-            channelDt.Columns.Add("剩余容量");
-            channelDt.Columns.Add("满充容量");
+            channelDt.Columns.Add("温度1(℃)");
+            channelDt.Columns.Add("温度2(℃)");
+            channelDt.Columns.Add("温度3(℃)");
+            channelDt.Columns.Add("温度4(℃)");
+            channelDt.Columns.Add("温度5(℃)");
+            channelDt.Columns.Add("温度6(℃)");
+            channelDt.Columns.Add("温度7(℃)");
+            channelDt.Columns.Add("温度8(℃)");
+            channelDt.Columns.Add("剩余容量(Ah)");
+            channelDt.Columns.Add("满充容量(Ah)");
             channelDt.Columns.Add("均衡状态");
-            channelDt.Columns.Add("均衡温度1");
-            channelDt.Columns.Add("均衡温度2");
+            channelDt.Columns.Add("均衡温度1(℃)");
+            channelDt.Columns.Add("均衡温度2(℃)");
             this.Invoke(new Action(() =>
             {
                 dgvStorageInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -319,26 +319,26 @@ namespace SofarBMS.UI
                     channelDr["加热MOS"] = GetBit(data[5], 4) == 0 ? "断开" : "闭合";
                     break;
                 case 0x34:
-                    channelDr["电池电压"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["负载电压"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["电池电流"] = (Convert.ToInt16(data[5].ToString("x2") + data[4].ToString("x2"), 16) * 0.01).ToString();
+                    channelDr["电池电压(V)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["负载电压(V)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["电池电流(A)"] = (Convert.ToInt16(data[5].ToString("x2") + data[4].ToString("x2"), 16) * 0.01).ToString();
                     channelDr["电池剩余容量(SOC)"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.1).ToString();
                     break;
                 case 0x35:
-                    channelDr["最高单体电压"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr["最高单体电压(mV)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
                     channelDr["最高单体电压编号"] = Convert.ToInt32(data[2].ToString("X2"), 16).ToString();
-                    channelDr["最低单体电压"] = (Convert.ToInt32(data[4].ToString("X2") + data[3].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr["最低单体电压(mV)"] = (Convert.ToInt32(data[4].ToString("X2") + data[3].ToString("X2"), 16) * 0.001).ToString();
                     channelDr["最低单体电压编号"] = Convert.ToInt32(data[5].ToString("X2"), 16).ToString();
                     break;
                 case 0x36:
-                    channelDr["最高单体温度"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["最高单体温度(℃)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
                     channelDr["最高单体温度编号"] = Convert.ToInt32(data[2].ToString("X2"), 16).ToString();
-                    channelDr["最低单体温度"] = (Convert.ToInt32(data[4].ToString("X2") + data[3].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["最低单体温度(℃)"] = (Convert.ToInt32(data[4].ToString("X2") + data[3].ToString("X2"), 16) * 0.1).ToString();
                     channelDr["最低单体温度编号"] = Convert.ToInt32(data[5].ToString("X2"), 16).ToString();
                     break;
                 case 0x37:
-                    channelDr["累计充电容量"] = (((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] & 0xff)) * 0.001).ToString();
-                    channelDr["累计放电容量"] = (((data[7] << 24) + (data[6] << 16) + (data[5] << 8) + (data[4] & 0xff)) * 0.001).ToString();
+                    channelDr["累计充电容量(Ah)"] = (((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] & 0xff)) * 0.001).ToString();
+                    channelDr["累计放电容量(Ah)"] = (((data[7] << 24) + (data[6] << 16) + (data[5] << 8) + (data[4] & 0xff)) * 0.001).ToString();
                     break;
                 case 0x38:
                     channelDr["故障byte1"] = Convert.ToInt32(data[0].ToString("X2"), 16);
@@ -351,54 +351,54 @@ namespace SofarBMS.UI
                     channelDr["故障byte8"] = Convert.ToInt32(data[7].ToString("X2"), 16);
                     break;
                 case 0x39:
-                    channelDr["电压1"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压2"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压3"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压4"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr["电压1(mV)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr["电压2(mV)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr["电压3(mV)"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr["电压4(mV)"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.001).ToString();
                     break;
                 case 0x3A:
-                    channelDr["电压5"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压6"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压7"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压8"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr["电压5(mV)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr["电压6(mV)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr["电压7(mV)"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr["电压8(mV)"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.001).ToString();
                     break;
                 case 0x3B:
-                    channelDr["电压9"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压10"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压11"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压12"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr["电压9(mV)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr["电压10(mV)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr["电压11(mV)"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr["电压12(mV)"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.001).ToString();
                     break;
                 case 0x3C:
-                    channelDr["电压13"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压14"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压15"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压16"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr["电压13(mV)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr["电压14(mV)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr["电压15(mV)"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr["电压16(mV)"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.001).ToString();
                     break;
                 case 0x3D:
-                    channelDr["温度1"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["温度2"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["温度3"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["温度4"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["温度1(℃)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["温度2(℃)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["温度3(℃)"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["温度4(℃)"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.1).ToString();
                     break;
                 case 0x3E:
-                    channelDr["Mos温度"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["环境温度"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["Mos温度(℃)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["环境温度(℃)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
                     channelDr["电池健康程度(SOH)"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.1).ToString();
                     channelDr["均衡状态"] = $"[1~16]:{Convert.ToString(data[6], 2).PadLeft(8, '0').Insert(4, " ")},{Convert.ToString(data[7], 2).PadLeft(8, '0').Insert(4, " ")}";
                     break;
                 case 0x3F:
-                    channelDr["剩余容量"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["满充容量"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["剩余容量(Ah)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["满充容量(Ah)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
                     break;
                 case 0x50:
-                    channelDr["温度5"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["温度6"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["温度7"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["温度8"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["温度5(℃)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["温度6(℃)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["温度7(℃)"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["温度8(℃)"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.1).ToString();
                     break;
                 case 0x51:
-                    channelDr["均衡温度1"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["均衡温度2"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["均衡温度1(℃)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr["均衡温度2(℃)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
                     break;
             }
         }

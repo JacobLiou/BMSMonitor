@@ -12,6 +12,7 @@ namespace SofarBMS.Helper
     /// </summary>
     public class LanguageHelper
     {
+        
         /// <summary>
         /// 当前语言：1中文 2英文
         /// </summary>
@@ -66,5 +67,6 @@ namespace SofarBMS.Helper
             }
             return result;
         }
+       
     }
 }
