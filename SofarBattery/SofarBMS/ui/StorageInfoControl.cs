@@ -59,7 +59,7 @@ namespace SofarBMS.UI
                         }
                     }
                 }
-            });
+            });        
         }
 
         private void btn_01_Click(object sender, EventArgs e)

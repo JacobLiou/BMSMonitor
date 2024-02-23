@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using SofarBMS.Helper;
+using System.Diagnostics;
+using MySqlX.XDevAPI.Common;
 
 namespace SofarBMS.Model
 {
@@ -81,8 +83,17 @@ namespace SofarBMS.Model
 
                 if (ECANHelper.Transmit(1, 0, 0, coMsg, 1) == ECANStatus.STATUS_OK)
                 {
-                    Console.WriteLine($"发送数据   帧ID:{co.ID.ToString("X8")},帧数据：{co.Data[0].ToString("X2")} {co.Data[1].ToString("X2")} {co.Data[2].ToString("X2")} {co.Data[3].ToString("X2")} {co.Data[4].ToString("X2")} {co.Data[5].ToString("X2")} {co.Data[6].ToString("X2")} {co.Data[7].ToString("X2")}");
-                    return true;
+                    CAN_ERR_INFO err_info = new CAN_ERR_INFO();
+                    var v = ECANHelper.ReadErrInfo(1, 0, 0, out err_info) == ECANStatus.STATUS_OK;
+                    if (err_info.ErrCode == 0x00)//成功
+                    {
+                        Debug.WriteLine($"发送数据   帧ID:{co.ID.ToString("X8")},帧数据：{co.Data[0].ToString("X2")} {co.Data[1].ToString("X2")} {co.Data[2].ToString("X2")} {co.Data[3].ToString("X2")} {co.Data[4].ToString("X2")} {co.Data[5].ToString("X2")} {co.Data[6].ToString("X2")} {co.Data[7].ToString("X2")}");
+                        return true;
+                    }
+                    else if (err_info.ErrCode == 0x400)
+                    {
+                        Debug.WriteLine($"{System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")}-->发送失败");
+                    }
                 }
             }
 
@@ -165,7 +176,7 @@ namespace SofarBMS.Model
                         {
                             Can_error_count = 0;
                             ECANHelper.StartCAN(1, 0, 0);
-                            Console.WriteLine($"当前错误码：{0}，执行了复位CAN操作");
+                            Debug.WriteLine($"当前错误码：{0}，执行了复位CAN操作");
                         }
                     }
                 }

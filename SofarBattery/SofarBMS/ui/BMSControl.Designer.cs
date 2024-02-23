@@ -160,6 +160,8 @@
             this.txtSoftware_Version_Bms = new System.Windows.Forms.TextBox();
             this.lblRealtimeData_72 = new System.Windows.Forms.Label();
             this.lblRealtimeData_71 = new System.Windows.Forms.Label();
+            this.txtHardware_Version_Bms = new System.Windows.Forms.TextBox();
+            this.lblRealtimeData_89 = new System.Windows.Forms.Label();
             this.gbRealtimeData_108.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbHeatEnable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStopChgEnable)).BeginInit();
@@ -624,7 +626,7 @@
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_11);
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_10);
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_09);
-            this.gbRealtimeData_108.Location = new System.Drawing.Point(263, 448);
+            this.gbRealtimeData_108.Location = new System.Drawing.Point(263, 506);
             this.gbRealtimeData_108.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.gbRealtimeData_108.Name = "gbRealtimeData_108";
             this.gbRealtimeData_108.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
@@ -1211,7 +1213,7 @@
             this.gbRealtimeData_102.Controls.Add(this.lblRealtimeData_49);
             this.gbRealtimeData_102.Controls.Add(this.lblRealtimeData_76);
             this.gbRealtimeData_102.Controls.Add(this.lblRealtimeData_50);
-            this.gbRealtimeData_102.Location = new System.Drawing.Point(264, 303);
+            this.gbRealtimeData_102.Location = new System.Drawing.Point(264, 361);
             this.gbRealtimeData_102.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.gbRealtimeData_102.Name = "gbRealtimeData_102";
             this.gbRealtimeData_102.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
@@ -1399,7 +1401,7 @@
             this.gbRealtimeData_101.Controls.Add(this.lblRealtimeData_20);
             this.gbRealtimeData_101.Controls.Add(this.lblRealtimeData_19);
             this.gbRealtimeData_101.Controls.Add(this.lblRealtimeData_18);
-            this.gbRealtimeData_101.Location = new System.Drawing.Point(264, 71);
+            this.gbRealtimeData_101.Location = new System.Drawing.Point(264, 129);
             this.gbRealtimeData_101.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.gbRealtimeData_101.Name = "gbRealtimeData_101";
             this.gbRealtimeData_101.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
@@ -1528,13 +1530,15 @@
             // 
             // gbRealtimeData_109
             // 
+            this.gbRealtimeData_109.Controls.Add(this.txtHardware_Version_Bms);
+            this.gbRealtimeData_109.Controls.Add(this.lblRealtimeData_89);
             this.gbRealtimeData_109.Controls.Add(this.txtSN);
             this.gbRealtimeData_109.Controls.Add(this.txtSoftware_Version_Bms);
             this.gbRealtimeData_109.Controls.Add(this.lblRealtimeData_72);
             this.gbRealtimeData_109.Controls.Add(this.lblRealtimeData_71);
             this.gbRealtimeData_109.Location = new System.Drawing.Point(264, 5);
             this.gbRealtimeData_109.Name = "gbRealtimeData_109";
-            this.gbRealtimeData_109.Size = new System.Drawing.Size(683, 60);
+            this.gbRealtimeData_109.Size = new System.Drawing.Size(683, 112);
             this.gbRealtimeData_109.TabIndex = 64;
             this.gbRealtimeData_109.TabStop = false;
             this.gbRealtimeData_109.Text = "版本号";
@@ -1572,6 +1576,23 @@
             this.lblRealtimeData_71.Size = new System.Drawing.Size(71, 12);
             this.lblRealtimeData_71.TabIndex = 60;
             this.lblRealtimeData_71.Text = "BMS软件版本";
+            // 
+            // txtHardware_Version_Bms
+            // 
+            this.txtHardware_Version_Bms.Location = new System.Drawing.Point(106, 70);
+            this.txtHardware_Version_Bms.Name = "txtHardware_Version_Bms";
+            this.txtHardware_Version_Bms.ReadOnly = true;
+            this.txtHardware_Version_Bms.Size = new System.Drawing.Size(120, 21);
+            this.txtHardware_Version_Bms.TabIndex = 65;
+            // 
+            // lblRealtimeData_89
+            // 
+            this.lblRealtimeData_89.AutoSize = true;
+            this.lblRealtimeData_89.Location = new System.Drawing.Point(12, 74);
+            this.lblRealtimeData_89.Name = "lblRealtimeData_89";
+            this.lblRealtimeData_89.Size = new System.Drawing.Size(71, 12);
+            this.lblRealtimeData_89.TabIndex = 64;
+            this.lblRealtimeData_89.Text = "BMS硬件版本";
             // 
             // BMSControl
             // 
@@ -1742,5 +1763,7 @@
         private System.Windows.Forms.Label lblRealtimeData_84;
         private System.Windows.Forms.TextBox txtCelltemperature8;
         private System.Windows.Forms.TextBox txtCelltemperature6;
+        private System.Windows.Forms.TextBox txtHardware_Version_Bms;
+        private System.Windows.Forms.Label lblRealtimeData_89;
     }
 }

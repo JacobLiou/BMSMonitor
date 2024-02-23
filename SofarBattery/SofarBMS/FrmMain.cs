@@ -104,13 +104,17 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
             {
                 while (true)
                 {
-                    Thread.Sleep(60000 * 5);//五分钟轮询一次
+                    Thread.Sleep(3000);//Thread.Sleep(60000 * 1);//一分钟/次
 
-                    string error = EcanHelper.ReadError();
-
-                    if (!error.Contains("00"))
+                    string error = EcanHelper.ReadError().Replace("当前错误码：", "");
+                    if (error != "00")
                     {
                         btnResetCAN_Click(sender, e);
+                        error = EcanHelper.ReadError();
+                    }
+                    else
+                    {
+                        error = EcanHelper.ReadError().Replace("当前错误码：", "当前状态码：");
                     }
 
                     this.BeginInvoke(new Action(() => { toolStripStatusLabel1.Text = error; }));
@@ -138,7 +142,7 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
             cbbBaud.SelectedIndex = 5;
 
             //this.Text = LanguageHelper.GetLanguage("Title");
-        }
+            }
         /// <summary>
         /// 获取MessageBox语言资源
         /// </summary>

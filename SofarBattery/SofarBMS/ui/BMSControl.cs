@@ -424,14 +424,20 @@ namespace SofarBMS.UI
                         txtSN.Text = strSn;
                     break;
                 case 0x102EE0FF:
+                    //BMS软件版本
                     string[] bsm_soft = new string[3];
-
                     for (int i = 0; i < 3; i++)
                     {
                         bsm_soft[i] = data[i + 2].ToString().PadLeft(2, '0');
                     }
-
                     txtSoftware_Version_Bms.Text = Encoding.ASCII.GetString(new byte[] { data[1] }) + string.Join("", bsm_soft);
+                    //BMS硬件版本
+                    string[] bsm_HW = new string[2];
+                    for (int i = 0; i < 2; i++)
+                    {
+                        bsm_HW[i] = data[i + 5].ToString().PadLeft(2, '0');
+                    }
+                    txtHardware_Version_Bms.Text = string.Join("", bsm_HW);
                     break;
             }
 

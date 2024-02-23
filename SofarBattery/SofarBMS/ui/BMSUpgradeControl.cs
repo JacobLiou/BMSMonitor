@@ -217,7 +217,11 @@ namespace SofarBMS.UI
             try
             {
                 //0.检查CAN连接
-
+                if (!EcanHelper.IsConnection)
+                {
+                    MessageBox.Show("串口未打开，请先连接设备...");
+                    return;
+                }
                 //1.判断文件是否为空
                 if (string.IsNullOrEmpty(txtPath.Text.Trim())
                     && string.IsNullOrEmpty(txtAppFile.Text.Trim())
@@ -255,6 +259,7 @@ namespace SofarBMS.UI
                     GroupIndex = 0;
                     DevState.Clear();
                     DeviceList.Clear();
+                    State = true;
 
                     Task.Factory.StartNew(() =>
                     {
@@ -297,29 +302,29 @@ namespace SofarBMS.UI
                                         }
                                         break;
                                     case 2:
-                                        startDownloadPack2(GroupIndex, 1024);
-                                        Thread.Sleep(TX_INTERVAL_TIME);
-                                        AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FC", "PACK_ID" + GroupIndex);
-                                        int offset = GroupIndex * 1024;
-                                        for (int i = 0; i < 1024; i += 8)
-                                        {
-                                            Thread.Sleep(TX_INTERVAL_TIME_Data);
-                                            startDownloadData3(offset + i);
-                                        }
-                                        Thread.Sleep(TX_INTERVAL_TIME);
-                                        if (GroupIndex == file_size)
-                                            Flag = 4;
-                                        else
-                                            GroupIndex++;
+                                                startDownloadPack2(GroupIndex, 1024);
+                                                Thread.Sleep(TX_INTERVAL_TIME);
+                                                AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FC", "PACK_ID" + GroupIndex);
+                                                int offset = GroupIndex * 1024;
+                                                for (int i = 0; i < 1024; i += 8)
+                                                {
+                                                    Thread.Sleep(TX_INTERVAL_TIME_Data);
+                                                    startDownloadData3(offset + i);
+                                                }
+                                                Thread.Sleep(TX_INTERVAL_TIME);
+                                                if (GroupIndex == file_size)
+                                                    Flag = 4;
+                                                else
+                                                    GroupIndex++;
 
-                                        this.Invoke(new Action(() =>
-                                        {
-                                            progressBar1.Maximum = file_size;
-                                            progressBar1.Value = GroupIndex;
+                                                this.Invoke(new Action(() =>
+                                                {
+                                                    progressBar1.Maximum = file_size;
+                                                    progressBar1.Value = GroupIndex;
 
-                                            //decimal proVal = ((decimal)GroupIndex / file_size) * 100;
-                                            //progressBar1.Text = $"正在升级，当前进度为：{Convert.ToInt32(proVal)}%";
-                                        }));
+                                                    //decimal proVal = ((decimal)GroupIndex / file_size) * 100;
+                                                    //progressBar1.Text = $"正在升级，当前进度为：{Convert.ToInt32(proVal)}%";
+                                                }));
                                         break;
                                     case 4:
                                         do
@@ -432,7 +437,6 @@ namespace SofarBMS.UI
                             MessageBox.Show(LanguageHelper.GetLanguage("BMSUpgrade_ImportError"));// "升级类型选择错误！"
                             return;
                         }
-                        State = true;
                     });
 
                     //注册一个委托：这个委托将任务取消的时候调用
@@ -1004,6 +1008,8 @@ namespace SofarBMS.UI
             }
         }
 
+        public int sendErrorCount { get; set; } = 0;
+
         /// <summary>
         /// 升级指令组装函数
         /// </summary>
@@ -1015,7 +1021,27 @@ namespace SofarBMS.UI
             {
                 byte[] canid = new byte[] { 0xE0, 0x1F, mark, 0x07 };
 
-                EcanHelper.Send(data, canid);
+                //增加判断，确认是否发送成功；
+                bool result = EcanHelper.Send(data, canid);
+                if (!result)
+                {
+                    sendErrorCount++;
+                    if (sendErrorCount >= 10)
+                    {
+                        State = false;
+                        _cts.Cancel();
+                        DevState.Clear();
+                        DeviceList.Clear();
+
+                        Thread.Sleep(1000);
+                        this.Invoke(new Action(() =>
+                        {
+                            lblUpgrade_05.Text = "升级失败，无法下载数据。请检查通讯重新连接！";
+                            lblUpgrade_05.ForeColor = System.Drawing.Color.Red;
+                            progressBar1.Value = 0;
+                        }));
+                    }
+                }
             }
             catch (Exception ex)
             {
