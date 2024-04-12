@@ -26,6 +26,8 @@ namespace SofarBMS.Model
         public Double TotalChgCap { get; set; }                     //累计充电容量
         public Double TotalDsgCap { get; set; }                     //累计放电容量
 
+        public UInt16 LOAD_VOLT_N { get; set; }                       //P-对B-电压
+
         //电池数据
         public UInt16 CycleTIme { get; set; }                       //循环次数
         public UInt16 BatMaxCellVolt { get; set; }                  //最高单体电压

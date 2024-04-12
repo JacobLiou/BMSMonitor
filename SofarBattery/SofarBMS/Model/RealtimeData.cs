@@ -24,6 +24,7 @@ namespace SofarBMS.Model
         public String CumulativeDischargeCapacity { get; set; }     //累计放电量
         public Double TotalChgCap { get; set; }                     //累计充电容量
         public Double TotalDsgCap { get; set; }                     //累计放电容量
+        public String CycleTIme { get; set; }                       //循环次数
         //PCU模块数据
         public String WorkState { get; set; }                       //工作状态
         public String BatteryState { get; set; }                    //电池状态

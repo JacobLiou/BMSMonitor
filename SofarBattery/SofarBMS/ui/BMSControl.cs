@@ -105,6 +105,8 @@ namespace SofarBMS.UI
 
             string[] strs;
             string[] controls;
+            string[] strs_1;
+            string[] controls_1;
 
             switch (canID | 0xff)
             {
@@ -142,6 +144,13 @@ namespace SofarBMS.UI
                         (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
                     }
 
+                    //BMS测量的P-对B-电压
+                    strs_1 = new string[1] { "1"};                           
+                    strs_1[0] = Convert.ToUInt16(data[7].ToString("X2") + data[6].ToString("X2"), 16).ToString();
+                    controls_1 = new string[1] { "txtLOAD_VOLT_N" };                 
+                    (this.Controls.Find(controls_1[0], true)[0] as TextBox).Text = strs_1[0];
+                    
+
                     Dictionary<int, string> setContorls = new Dictionary<int, string>() {
                             {0,"pbChargeMosEnable" },
                             {1,"pbDischargeMosEnable" },
@@ -162,6 +171,7 @@ namespace SofarBMS.UI
                     }
                     model.ChargeCurrentLimitation = Convert.ToDouble(strs[0]);
                     model.DischargeCurrentLimitation = Convert.ToDouble(strs[1]);
+                    model.LOAD_VOLT_N= Convert.ToUInt16(strs_1[0]); 
                     model.ChargeMosEnable = (ushort)GetBit(data[5], 0);
                     model.DischargeMosEnable = (ushort)GetBit(data[5], 1);
                     model.PrechgMosEnable = (ushort)GetBit(data[5], 2);
@@ -333,7 +343,7 @@ namespace SofarBMS.UI
                     model.CellTemperature2 = Convert.ToDouble(strs[1]);
                     model.CellTemperature3 = Convert.ToDouble(strs[2]);
                     model.CellTemperature4 = Convert.ToDouble(strs[3]);
-                    break;
+                    break;            
                 case 0x100EFFFF:
                     initCount++;
                     strs = new string[3] { "0.1", "0.1", "0.1" };
@@ -382,7 +392,7 @@ namespace SofarBMS.UI
                     initCount++;
                     txtRemainCap.Text = BytesToIntger(data[1], data[0], 0.1);
                     txtFullCap.Text = BytesToIntger(data[3], data[2], 0.1);
-                    txtCycleTIme.Text = BytesToIntger(data[5], data[4], 0.1);
+                    txtCycleTIme.Text = BytesToIntger(data[5], data[4]);
                     model.RemainingCapacity = txtRemainCap.Text;
                     model.FullCapacity = txtFullCap.Text;
                     model.CycleTIme = Convert.ToUInt16(txtCycleTIme.Text);
@@ -399,7 +409,7 @@ namespace SofarBMS.UI
                     model.BalanceTemperature2 = txtBalance_temperature2.Text;
                     break;
                 case 0x1042FFFF:
-                    //initCount++;
+                    initCount++;
                     strs = new string[4] { "0.1", "0.1", "0.1", "0.1" };
                     for (int i = 0; i < strs.Length; i++)
                     {

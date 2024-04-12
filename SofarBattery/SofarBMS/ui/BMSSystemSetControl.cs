@@ -294,6 +294,7 @@ namespace SofarBMS.UI
                     buttons.Add(6, new Button[] { btnSystemset_45_Lifted7, btnSystemset_43_Close7, btnSystemset_44_Open7 });
                     buttons.Add(8, new Button[] { btnSystemset_45_Lifted8, btnSystemset_43_Close8, btnSystemset_44_Open8 });
                     buttons.Add(10, new Button[] { btnSystemset_45_Lifted9, btnSystemset_43_Close9, btnSystemset_44_Open9 });
+                    buttons.Add(7, new Button[] { btnSystemset_45_Lifted10, btnSystemset_43_Close10, btnSystemset_44_Open10});
 
                     //byte[]转为二进制字符串
                     strResult = string.Empty;
@@ -315,10 +316,10 @@ namespace SofarBMS.UI
                     //根据short得值来找到对应得button
                     foreach (var item in buttons.Keys)
                     {
-                        Button btn = buttons[item][bitResult[item]];
-                        string name = btn.Name;
-                        btn.Enabled = false;
-                    }
+                            Button btn = buttons[item][bitResult[item]];
+                            string name = btn.Name;
+                            btn.Enabled = false;
+                        }
                     break;
             }
         }
@@ -521,6 +522,15 @@ namespace SofarBMS.UI
                     case "btnSystemset_44_Open7":
                         bitResult[6] = 2;
                         break;
+                    case "btnSystemset_45_Lifted10":
+                        bitResult[7] = 0;
+                        break;
+                    case "btnSystemset_43_Close10":
+                        bitResult[7] = 1;
+                        break;
+                    case "btnSystemset_44_Open10":
+                        bitResult[7] = 2;
+                        break;
                     case "btnSystemset_45_Lifted8":
                         bitResult[8] = 0;
                         break;
@@ -539,6 +549,7 @@ namespace SofarBMS.UI
                     case "btnSystemset_44_Open9":
                         bitResult[10] = 2;
                         break;
+                   
                 }
 
                 //short[]转为二级制数组
@@ -623,6 +634,10 @@ namespace SofarBMS.UI
                 btnSystemset_45_Lifted9.Enabled = state;
                 btnSystemset_43_Close9.Enabled = state;
                 btnSystemset_44_Open9.Enabled = state;
+
+                btnSystemset_45_Lifted10.Enabled = state;
+                btnSystemset_43_Close10.Enabled = state;
+                btnSystemset_44_Open10.Enabled = state;
             }));
         }
 

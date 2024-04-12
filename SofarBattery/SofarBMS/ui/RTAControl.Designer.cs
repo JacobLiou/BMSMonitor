@@ -98,7 +98,9 @@
             this.lblRealtimeData_52 = new System.Windows.Forms.Label();
             this.lblRealtimeData_55 = new System.Windows.Forms.Label();
             this.gbRealtimeData_100 = new System.Windows.Forms.GroupBox();
+            this.lblRealtimeData_83 = new System.Windows.Forms.Label();
             this.txtFull_capacity = new System.Windows.Forms.TextBox();
+            this.txtCycleTime = new System.Windows.Forms.TextBox();
             this.txtCumulative_discharge_capacity = new System.Windows.Forms.TextBox();
             this.txtRemaining_capacity = new System.Windows.Forms.TextBox();
             this.txtLoadVolt = new System.Windows.Forms.TextBox();
@@ -109,7 +111,6 @@
             this.lblRealtimeData_17 = new System.Windows.Forms.Label();
             this.lblRealtimeData_16 = new System.Windows.Forms.Label();
             this.lblRealtimeData_14 = new System.Windows.Forms.Label();
-            this.txtCycleTIme = new System.Windows.Forms.TextBox();
             this.txtPcbaHardware_Version = new System.Windows.Forms.TextBox();
             this.lblRealtimeData_88 = new System.Windows.Forms.Label();
             this.txtDatetime = new System.Windows.Forms.TextBox();
@@ -195,6 +196,8 @@
             this.txtSoftware_Version = new System.Windows.Forms.TextBox();
             this.gbRealtimeData_109 = new System.Windows.Forms.GroupBox();
             this.gbRealtimeData_110 = new System.Windows.Forms.GroupBox();
+            this.lblRealtimeData_89 = new System.Windows.Forms.Label();
+            this.txtHardware_Version_Bms = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbPrechgMosEnable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDischargeMosEnable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHeatEnable)).BeginInit();
@@ -216,433 +219,425 @@
             // 
             // txtCellvoltage16
             // 
-            this.txtCellvoltage16.Location = new System.Drawing.Point(516, 177);
-            this.txtCellvoltage16.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCellvoltage16.Location = new System.Drawing.Point(688, 221);
+            this.txtCellvoltage16.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCellvoltage16.Name = "txtCellvoltage16";
             this.txtCellvoltage16.ReadOnly = true;
-            this.txtCellvoltage16.Size = new System.Drawing.Size(70, 21);
+            this.txtCellvoltage16.Size = new System.Drawing.Size(92, 25);
             this.txtCellvoltage16.TabIndex = 41;
             // 
             // txtCellvoltage2
             // 
-            this.txtCellvoltage2.Location = new System.Drawing.Point(227, 63);
-            this.txtCellvoltage2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCellvoltage2.Location = new System.Drawing.Point(303, 79);
+            this.txtCellvoltage2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCellvoltage2.Name = "txtCellvoltage2";
             this.txtCellvoltage2.ReadOnly = true;
-            this.txtCellvoltage2.Size = new System.Drawing.Size(70, 21);
+            this.txtCellvoltage2.Size = new System.Drawing.Size(92, 25);
             this.txtCellvoltage2.TabIndex = 34;
             // 
             // txtCellvoltage13
             // 
-            this.txtCellvoltage13.Location = new System.Drawing.Point(81, 177);
-            this.txtCellvoltage13.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCellvoltage13.Location = new System.Drawing.Point(108, 221);
+            this.txtCellvoltage13.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCellvoltage13.Name = "txtCellvoltage13";
             this.txtCellvoltage13.ReadOnly = true;
-            this.txtCellvoltage13.Size = new System.Drawing.Size(70, 21);
+            this.txtCellvoltage13.Size = new System.Drawing.Size(92, 25);
             this.txtCellvoltage13.TabIndex = 32;
             // 
             // txtCellvoltage14
             // 
-            this.txtCellvoltage14.Location = new System.Drawing.Point(227, 177);
-            this.txtCellvoltage14.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCellvoltage14.Location = new System.Drawing.Point(303, 221);
+            this.txtCellvoltage14.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCellvoltage14.Name = "txtCellvoltage14";
             this.txtCellvoltage14.ReadOnly = true;
-            this.txtCellvoltage14.Size = new System.Drawing.Size(70, 21);
+            this.txtCellvoltage14.Size = new System.Drawing.Size(92, 25);
             this.txtCellvoltage14.TabIndex = 40;
             // 
             // txtCellvoltage12
             // 
-            this.txtCellvoltage12.Location = new System.Drawing.Point(516, 139);
-            this.txtCellvoltage12.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCellvoltage12.Location = new System.Drawing.Point(688, 174);
+            this.txtCellvoltage12.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCellvoltage12.Name = "txtCellvoltage12";
             this.txtCellvoltage12.ReadOnly = true;
-            this.txtCellvoltage12.Size = new System.Drawing.Size(70, 21);
+            this.txtCellvoltage12.Size = new System.Drawing.Size(92, 25);
             this.txtCellvoltage12.TabIndex = 39;
             // 
             // txtCellvoltage10
             // 
-            this.txtCellvoltage10.Location = new System.Drawing.Point(227, 139);
-            this.txtCellvoltage10.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCellvoltage10.Location = new System.Drawing.Point(303, 174);
+            this.txtCellvoltage10.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCellvoltage10.Name = "txtCellvoltage10";
             this.txtCellvoltage10.ReadOnly = true;
-            this.txtCellvoltage10.Size = new System.Drawing.Size(70, 21);
+            this.txtCellvoltage10.Size = new System.Drawing.Size(92, 25);
             this.txtCellvoltage10.TabIndex = 38;
             // 
             // txtCellvoltage8
             // 
-            this.txtCellvoltage8.Location = new System.Drawing.Point(516, 101);
-            this.txtCellvoltage8.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCellvoltage8.Location = new System.Drawing.Point(688, 126);
+            this.txtCellvoltage8.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCellvoltage8.Name = "txtCellvoltage8";
             this.txtCellvoltage8.ReadOnly = true;
-            this.txtCellvoltage8.Size = new System.Drawing.Size(70, 21);
+            this.txtCellvoltage8.Size = new System.Drawing.Size(92, 25);
             this.txtCellvoltage8.TabIndex = 37;
             // 
             // txtCellvoltage15
             // 
-            this.txtCellvoltage15.Location = new System.Drawing.Point(373, 177);
-            this.txtCellvoltage15.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCellvoltage15.Location = new System.Drawing.Point(497, 221);
+            this.txtCellvoltage15.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCellvoltage15.Name = "txtCellvoltage15";
             this.txtCellvoltage15.ReadOnly = true;
-            this.txtCellvoltage15.Size = new System.Drawing.Size(70, 21);
+            this.txtCellvoltage15.Size = new System.Drawing.Size(92, 25);
             this.txtCellvoltage15.TabIndex = 33;
             // 
             // txtCellvoltage4
             // 
-            this.txtCellvoltage4.Location = new System.Drawing.Point(516, 63);
-            this.txtCellvoltage4.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCellvoltage4.Location = new System.Drawing.Point(688, 79);
+            this.txtCellvoltage4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCellvoltage4.Name = "txtCellvoltage4";
             this.txtCellvoltage4.ReadOnly = true;
-            this.txtCellvoltage4.Size = new System.Drawing.Size(70, 21);
+            this.txtCellvoltage4.Size = new System.Drawing.Size(92, 25);
             this.txtCellvoltage4.TabIndex = 35;
             // 
             // txtCellvoltage9
             // 
-            this.txtCellvoltage9.Location = new System.Drawing.Point(81, 139);
-            this.txtCellvoltage9.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCellvoltage9.Location = new System.Drawing.Point(108, 174);
+            this.txtCellvoltage9.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCellvoltage9.Name = "txtCellvoltage9";
             this.txtCellvoltage9.ReadOnly = true;
-            this.txtCellvoltage9.Size = new System.Drawing.Size(70, 21);
+            this.txtCellvoltage9.Size = new System.Drawing.Size(92, 25);
             this.txtCellvoltage9.TabIndex = 30;
             // 
             // txtCellvoltage7
             // 
-            this.txtCellvoltage7.Location = new System.Drawing.Point(373, 101);
-            this.txtCellvoltage7.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCellvoltage7.Location = new System.Drawing.Point(497, 126);
+            this.txtCellvoltage7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCellvoltage7.Name = "txtCellvoltage7";
             this.txtCellvoltage7.ReadOnly = true;
-            this.txtCellvoltage7.Size = new System.Drawing.Size(70, 21);
+            this.txtCellvoltage7.Size = new System.Drawing.Size(92, 25);
             this.txtCellvoltage7.TabIndex = 29;
             // 
             // txtCellvoltage5
             // 
-            this.txtCellvoltage5.Location = new System.Drawing.Point(81, 101);
-            this.txtCellvoltage5.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCellvoltage5.Location = new System.Drawing.Point(108, 126);
+            this.txtCellvoltage5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCellvoltage5.Name = "txtCellvoltage5";
             this.txtCellvoltage5.ReadOnly = true;
-            this.txtCellvoltage5.Size = new System.Drawing.Size(70, 21);
+            this.txtCellvoltage5.Size = new System.Drawing.Size(92, 25);
             this.txtCellvoltage5.TabIndex = 28;
             // 
             // txtCelltemperature2
             // 
-            this.txtCelltemperature2.Location = new System.Drawing.Point(261, 104);
-            this.txtCelltemperature2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCelltemperature2.Location = new System.Drawing.Point(348, 130);
+            this.txtCelltemperature2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCelltemperature2.Name = "txtCelltemperature2";
             this.txtCelltemperature2.ReadOnly = true;
-            this.txtCelltemperature2.Size = new System.Drawing.Size(70, 21);
+            this.txtCelltemperature2.Size = new System.Drawing.Size(92, 25);
             this.txtCelltemperature2.TabIndex = 7;
             // 
             // txtCellvoltage6
             // 
-            this.txtCellvoltage6.Location = new System.Drawing.Point(227, 101);
-            this.txtCellvoltage6.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCellvoltage6.Location = new System.Drawing.Point(303, 126);
+            this.txtCellvoltage6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCellvoltage6.Name = "txtCellvoltage6";
             this.txtCellvoltage6.ReadOnly = true;
-            this.txtCellvoltage6.Size = new System.Drawing.Size(70, 21);
+            this.txtCellvoltage6.Size = new System.Drawing.Size(92, 25);
             this.txtCellvoltage6.TabIndex = 36;
             // 
             // lblRealtimeData_50
             // 
             this.lblRealtimeData_50.AutoSize = true;
-            this.lblRealtimeData_50.Location = new System.Drawing.Point(9, 34);
-            this.lblRealtimeData_50.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_50.Location = new System.Drawing.Point(12, 42);
             this.lblRealtimeData_50.Name = "lblRealtimeData_50";
-            this.lblRealtimeData_50.Size = new System.Drawing.Size(53, 12);
+            this.lblRealtimeData_50.Size = new System.Drawing.Size(67, 15);
             this.lblRealtimeData_50.TabIndex = 0;
             this.lblRealtimeData_50.Text = "内部温度";
             // 
             // txtCellvoltage11
             // 
-            this.txtCellvoltage11.Location = new System.Drawing.Point(373, 139);
-            this.txtCellvoltage11.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCellvoltage11.Location = new System.Drawing.Point(497, 174);
+            this.txtCellvoltage11.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCellvoltage11.Name = "txtCellvoltage11";
             this.txtCellvoltage11.ReadOnly = true;
-            this.txtCellvoltage11.Size = new System.Drawing.Size(70, 21);
+            this.txtCellvoltage11.Size = new System.Drawing.Size(92, 25);
             this.txtCellvoltage11.TabIndex = 31;
             // 
             // txtCelltemperature4
             // 
-            this.txtCelltemperature4.Location = new System.Drawing.Point(590, 104);
-            this.txtCelltemperature4.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCelltemperature4.Location = new System.Drawing.Point(787, 130);
+            this.txtCelltemperature4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCelltemperature4.Name = "txtCelltemperature4";
             this.txtCelltemperature4.ReadOnly = true;
-            this.txtCelltemperature4.Size = new System.Drawing.Size(70, 21);
+            this.txtCelltemperature4.Size = new System.Drawing.Size(92, 25);
             this.txtCelltemperature4.TabIndex = 9;
             // 
             // txtCellvoltage3
             // 
-            this.txtCellvoltage3.Location = new System.Drawing.Point(373, 63);
-            this.txtCellvoltage3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCellvoltage3.Location = new System.Drawing.Point(497, 79);
+            this.txtCellvoltage3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCellvoltage3.Name = "txtCellvoltage3";
             this.txtCellvoltage3.ReadOnly = true;
-            this.txtCellvoltage3.Size = new System.Drawing.Size(70, 21);
+            this.txtCellvoltage3.Size = new System.Drawing.Size(92, 25);
             this.txtCellvoltage3.TabIndex = 27;
             // 
             // lblRealtimeData_13
             // 
             this.lblRealtimeData_13.AutoSize = true;
-            this.lblRealtimeData_13.Location = new System.Drawing.Point(485, 27);
+            this.lblRealtimeData_13.Location = new System.Drawing.Point(647, 34);
+            this.lblRealtimeData_13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_13.Name = "lblRealtimeData_13";
-            this.lblRealtimeData_13.Size = new System.Drawing.Size(47, 12);
+            this.lblRealtimeData_13.Size = new System.Drawing.Size(61, 15);
             this.lblRealtimeData_13.TabIndex = 4;
             this.lblRealtimeData_13.Text = "加热MOS";
             // 
             // lblRealtimeData_11
             // 
             this.lblRealtimeData_11.AutoSize = true;
-            this.lblRealtimeData_11.Location = new System.Drawing.Point(253, 27);
+            this.lblRealtimeData_11.Location = new System.Drawing.Point(337, 34);
+            this.lblRealtimeData_11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_11.Name = "lblRealtimeData_11";
-            this.lblRealtimeData_11.Size = new System.Drawing.Size(47, 12);
+            this.lblRealtimeData_11.Size = new System.Drawing.Size(61, 15);
             this.lblRealtimeData_11.TabIndex = 2;
             this.lblRealtimeData_11.Text = "预充MOS";
             // 
             // lblRealtimeData_10
             // 
             this.lblRealtimeData_10.AutoSize = true;
-            this.lblRealtimeData_10.Location = new System.Drawing.Point(140, 27);
+            this.lblRealtimeData_10.Location = new System.Drawing.Point(187, 34);
+            this.lblRealtimeData_10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_10.Name = "lblRealtimeData_10";
-            this.lblRealtimeData_10.Size = new System.Drawing.Size(47, 12);
+            this.lblRealtimeData_10.Size = new System.Drawing.Size(61, 15);
             this.lblRealtimeData_10.TabIndex = 1;
             this.lblRealtimeData_10.Text = "放电MOS";
             // 
             // lblRealtimeData_09
             // 
             this.lblRealtimeData_09.AutoSize = true;
-            this.lblRealtimeData_09.Location = new System.Drawing.Point(27, 27);
+            this.lblRealtimeData_09.Location = new System.Drawing.Point(36, 34);
+            this.lblRealtimeData_09.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_09.Name = "lblRealtimeData_09";
-            this.lblRealtimeData_09.Size = new System.Drawing.Size(47, 12);
+            this.lblRealtimeData_09.Size = new System.Drawing.Size(61, 15);
             this.lblRealtimeData_09.TabIndex = 0;
             this.lblRealtimeData_09.Text = "充电MOS";
             // 
             // txtCellvoltage1
             // 
-            this.txtCellvoltage1.Location = new System.Drawing.Point(81, 63);
-            this.txtCellvoltage1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCellvoltage1.Location = new System.Drawing.Point(108, 79);
+            this.txtCellvoltage1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCellvoltage1.Name = "txtCellvoltage1";
             this.txtCellvoltage1.ReadOnly = true;
-            this.txtCellvoltage1.Size = new System.Drawing.Size(70, 21);
+            this.txtCellvoltage1.Size = new System.Drawing.Size(92, 25);
             this.txtCellvoltage1.TabIndex = 26;
             // 
             // txtBatMinCellVolt
             // 
             this.txtBatMinCellVolt.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.txtBatMinCellVolt.Location = new System.Drawing.Point(516, 25);
-            this.txtBatMinCellVolt.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtBatMinCellVolt.Location = new System.Drawing.Point(688, 31);
+            this.txtBatMinCellVolt.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtBatMinCellVolt.Name = "txtBatMinCellVolt";
             this.txtBatMinCellVolt.ReadOnly = true;
-            this.txtBatMinCellVolt.Size = new System.Drawing.Size(70, 21);
+            this.txtBatMinCellVolt.Size = new System.Drawing.Size(92, 25);
             this.txtBatMinCellVolt.TabIndex = 25;
             // 
             // txtBatMinCellVoltNum
             // 
-            this.txtBatMinCellVoltNum.Location = new System.Drawing.Point(373, 25);
-            this.txtBatMinCellVoltNum.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtBatMinCellVoltNum.Location = new System.Drawing.Point(497, 31);
+            this.txtBatMinCellVoltNum.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtBatMinCellVoltNum.Name = "txtBatMinCellVoltNum";
             this.txtBatMinCellVoltNum.ReadOnly = true;
-            this.txtBatMinCellVoltNum.Size = new System.Drawing.Size(70, 21);
+            this.txtBatMinCellVoltNum.Size = new System.Drawing.Size(92, 25);
             this.txtBatMinCellVoltNum.TabIndex = 24;
             // 
             // txtBatMaxCellVolt
             // 
             this.txtBatMaxCellVolt.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.txtBatMaxCellVolt.Location = new System.Drawing.Point(227, 25);
-            this.txtBatMaxCellVolt.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtBatMaxCellVolt.Location = new System.Drawing.Point(303, 31);
+            this.txtBatMaxCellVolt.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtBatMaxCellVolt.Name = "txtBatMaxCellVolt";
             this.txtBatMaxCellVolt.ReadOnly = true;
-            this.txtBatMaxCellVolt.Size = new System.Drawing.Size(70, 21);
+            this.txtBatMaxCellVolt.Size = new System.Drawing.Size(92, 25);
             this.txtBatMaxCellVolt.TabIndex = 23;
             // 
             // txtBatMaxCellVoltNum
             // 
-            this.txtBatMaxCellVoltNum.Location = new System.Drawing.Point(81, 25);
-            this.txtBatMaxCellVoltNum.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtBatMaxCellVoltNum.Location = new System.Drawing.Point(108, 31);
+            this.txtBatMaxCellVoltNum.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtBatMaxCellVoltNum.Name = "txtBatMaxCellVoltNum";
             this.txtBatMaxCellVoltNum.ReadOnly = true;
-            this.txtBatMaxCellVoltNum.Size = new System.Drawing.Size(70, 21);
+            this.txtBatMaxCellVoltNum.Size = new System.Drawing.Size(92, 25);
             this.txtBatMaxCellVoltNum.TabIndex = 22;
             // 
             // lblCellvoltage16
             // 
             this.lblCellvoltage16.AutoSize = true;
-            this.lblCellvoltage16.Location = new System.Drawing.Point(444, 181);
-            this.lblCellvoltage16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCellvoltage16.Location = new System.Drawing.Point(592, 226);
             this.lblCellvoltage16.Name = "lblCellvoltage16";
-            this.lblCellvoltage16.Size = new System.Drawing.Size(41, 12);
+            this.lblCellvoltage16.Size = new System.Drawing.Size(53, 15);
             this.lblCellvoltage16.TabIndex = 19;
             this.lblCellvoltage16.Text = "电池16";
             // 
             // lblCellvoltage14
             // 
             this.lblCellvoltage14.AutoSize = true;
-            this.lblCellvoltage14.Location = new System.Drawing.Point(155, 181);
-            this.lblCellvoltage14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCellvoltage14.Location = new System.Drawing.Point(207, 226);
             this.lblCellvoltage14.Name = "lblCellvoltage14";
-            this.lblCellvoltage14.Size = new System.Drawing.Size(41, 12);
+            this.lblCellvoltage14.Size = new System.Drawing.Size(53, 15);
             this.lblCellvoltage14.TabIndex = 18;
             this.lblCellvoltage14.Text = "电池14";
             // 
             // lblCellvoltage12
             // 
             this.lblCellvoltage12.AutoSize = true;
-            this.lblCellvoltage12.Location = new System.Drawing.Point(444, 143);
-            this.lblCellvoltage12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCellvoltage12.Location = new System.Drawing.Point(592, 179);
             this.lblCellvoltage12.Name = "lblCellvoltage12";
-            this.lblCellvoltage12.Size = new System.Drawing.Size(41, 12);
+            this.lblCellvoltage12.Size = new System.Drawing.Size(53, 15);
             this.lblCellvoltage12.TabIndex = 17;
             this.lblCellvoltage12.Text = "电池12";
             // 
             // lblCellvoltage10
             // 
             this.lblCellvoltage10.AutoSize = true;
-            this.lblCellvoltage10.Location = new System.Drawing.Point(155, 143);
-            this.lblCellvoltage10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCellvoltage10.Location = new System.Drawing.Point(207, 179);
             this.lblCellvoltage10.Name = "lblCellvoltage10";
-            this.lblCellvoltage10.Size = new System.Drawing.Size(41, 12);
+            this.lblCellvoltage10.Size = new System.Drawing.Size(53, 15);
             this.lblCellvoltage10.TabIndex = 16;
             this.lblCellvoltage10.Text = "电池10";
             // 
             // lblCellvoltage8
             // 
             this.lblCellvoltage8.AutoSize = true;
-            this.lblCellvoltage8.Location = new System.Drawing.Point(444, 105);
-            this.lblCellvoltage8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCellvoltage8.Location = new System.Drawing.Point(592, 131);
             this.lblCellvoltage8.Name = "lblCellvoltage8";
-            this.lblCellvoltage8.Size = new System.Drawing.Size(35, 12);
+            this.lblCellvoltage8.Size = new System.Drawing.Size(45, 15);
             this.lblCellvoltage8.TabIndex = 15;
             this.lblCellvoltage8.Text = "电池8";
             // 
             // lblCellvoltage6
             // 
             this.lblCellvoltage6.AutoSize = true;
-            this.lblCellvoltage6.Location = new System.Drawing.Point(155, 105);
-            this.lblCellvoltage6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCellvoltage6.Location = new System.Drawing.Point(207, 131);
             this.lblCellvoltage6.Name = "lblCellvoltage6";
-            this.lblCellvoltage6.Size = new System.Drawing.Size(35, 12);
+            this.lblCellvoltage6.Size = new System.Drawing.Size(45, 15);
             this.lblCellvoltage6.TabIndex = 14;
             this.lblCellvoltage6.Text = "电池6";
             // 
             // lblCellvoltage4
             // 
             this.lblCellvoltage4.AutoSize = true;
-            this.lblCellvoltage4.Location = new System.Drawing.Point(444, 67);
-            this.lblCellvoltage4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCellvoltage4.Location = new System.Drawing.Point(592, 84);
             this.lblCellvoltage4.Name = "lblCellvoltage4";
-            this.lblCellvoltage4.Size = new System.Drawing.Size(35, 12);
+            this.lblCellvoltage4.Size = new System.Drawing.Size(45, 15);
             this.lblCellvoltage4.TabIndex = 13;
             this.lblCellvoltage4.Text = "电池4";
             // 
             // lblCellvoltage2
             // 
             this.lblCellvoltage2.AutoSize = true;
-            this.lblCellvoltage2.Location = new System.Drawing.Point(155, 67);
-            this.lblCellvoltage2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCellvoltage2.Location = new System.Drawing.Point(207, 84);
             this.lblCellvoltage2.Name = "lblCellvoltage2";
-            this.lblCellvoltage2.Size = new System.Drawing.Size(35, 12);
+            this.lblCellvoltage2.Size = new System.Drawing.Size(45, 15);
             this.lblCellvoltage2.TabIndex = 12;
             this.lblCellvoltage2.Text = "电池2";
             // 
             // lblCellvoltage15
             // 
             this.lblCellvoltage15.AutoSize = true;
-            this.lblCellvoltage15.Location = new System.Drawing.Point(300, 181);
-            this.lblCellvoltage15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCellvoltage15.Location = new System.Drawing.Point(400, 226);
             this.lblCellvoltage15.Name = "lblCellvoltage15";
-            this.lblCellvoltage15.Size = new System.Drawing.Size(41, 12);
+            this.lblCellvoltage15.Size = new System.Drawing.Size(53, 15);
             this.lblCellvoltage15.TabIndex = 11;
             this.lblCellvoltage15.Text = "电池15";
             // 
             // lblCellvoltage13
             // 
             this.lblCellvoltage13.AutoSize = true;
-            this.lblCellvoltage13.Location = new System.Drawing.Point(9, 181);
-            this.lblCellvoltage13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCellvoltage13.Location = new System.Drawing.Point(12, 226);
             this.lblCellvoltage13.Name = "lblCellvoltage13";
-            this.lblCellvoltage13.Size = new System.Drawing.Size(41, 12);
+            this.lblCellvoltage13.Size = new System.Drawing.Size(53, 15);
             this.lblCellvoltage13.TabIndex = 10;
             this.lblCellvoltage13.Text = "电池13";
             // 
             // lblCellvoltage11
             // 
             this.lblCellvoltage11.AutoSize = true;
-            this.lblCellvoltage11.Location = new System.Drawing.Point(300, 143);
-            this.lblCellvoltage11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCellvoltage11.Location = new System.Drawing.Point(400, 179);
             this.lblCellvoltage11.Name = "lblCellvoltage11";
-            this.lblCellvoltage11.Size = new System.Drawing.Size(41, 12);
+            this.lblCellvoltage11.Size = new System.Drawing.Size(53, 15);
             this.lblCellvoltage11.TabIndex = 9;
             this.lblCellvoltage11.Text = "电池11";
             // 
             // lblRealtimeData_03
             // 
             this.lblRealtimeData_03.AutoSize = true;
-            this.lblRealtimeData_03.Location = new System.Drawing.Point(15, 22);
+            this.lblRealtimeData_03.Location = new System.Drawing.Point(20, 28);
+            this.lblRealtimeData_03.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_03.Name = "lblRealtimeData_03";
-            this.lblRealtimeData_03.Size = new System.Drawing.Size(53, 12);
+            this.lblRealtimeData_03.Size = new System.Drawing.Size(67, 15);
             this.lblRealtimeData_03.TabIndex = 45;
             this.lblRealtimeData_03.Text = "电池状态";
             // 
             // lblRealtimeData_12
             // 
             this.lblRealtimeData_12.AutoSize = true;
-            this.lblRealtimeData_12.Location = new System.Drawing.Point(366, 27);
+            this.lblRealtimeData_12.Location = new System.Drawing.Point(488, 34);
+            this.lblRealtimeData_12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_12.Name = "lblRealtimeData_12";
-            this.lblRealtimeData_12.Size = new System.Drawing.Size(53, 12);
+            this.lblRealtimeData_12.Size = new System.Drawing.Size(67, 15);
             this.lblRealtimeData_12.TabIndex = 3;
             this.lblRealtimeData_12.Text = "充电急停";
             // 
             // lblCellvoltage9
             // 
             this.lblCellvoltage9.AutoSize = true;
-            this.lblCellvoltage9.Location = new System.Drawing.Point(9, 143);
-            this.lblCellvoltage9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCellvoltage9.Location = new System.Drawing.Point(12, 179);
             this.lblCellvoltage9.Name = "lblCellvoltage9";
-            this.lblCellvoltage9.Size = new System.Drawing.Size(35, 12);
+            this.lblCellvoltage9.Size = new System.Drawing.Size(45, 15);
             this.lblCellvoltage9.TabIndex = 8;
             this.lblCellvoltage9.Text = "电池9";
             // 
             // pbPrechgMosEnable
             // 
             this.pbPrechgMosEnable.BackColor = System.Drawing.Color.Green;
-            this.pbPrechgMosEnable.Location = new System.Drawing.Point(237, 29);
+            this.pbPrechgMosEnable.Location = new System.Drawing.Point(316, 36);
+            this.pbPrechgMosEnable.Margin = new System.Windows.Forms.Padding(4);
             this.pbPrechgMosEnable.Name = "pbPrechgMosEnable";
-            this.pbPrechgMosEnable.Size = new System.Drawing.Size(10, 9);
+            this.pbPrechgMosEnable.Size = new System.Drawing.Size(13, 11);
             this.pbPrechgMosEnable.TabIndex = 7;
             this.pbPrechgMosEnable.TabStop = false;
             // 
             // pbDischargeMosEnable
             // 
             this.pbDischargeMosEnable.BackColor = System.Drawing.Color.Green;
-            this.pbDischargeMosEnable.Location = new System.Drawing.Point(124, 29);
+            this.pbDischargeMosEnable.Location = new System.Drawing.Point(165, 36);
+            this.pbDischargeMosEnable.Margin = new System.Windows.Forms.Padding(4);
             this.pbDischargeMosEnable.Name = "pbDischargeMosEnable";
-            this.pbDischargeMosEnable.Size = new System.Drawing.Size(10, 9);
+            this.pbDischargeMosEnable.Size = new System.Drawing.Size(13, 11);
             this.pbDischargeMosEnable.TabIndex = 6;
             this.pbDischargeMosEnable.TabStop = false;
             // 
             // lblCellvoltage7
             // 
             this.lblCellvoltage7.AutoSize = true;
-            this.lblCellvoltage7.Location = new System.Drawing.Point(300, 105);
-            this.lblCellvoltage7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCellvoltage7.Location = new System.Drawing.Point(400, 131);
             this.lblCellvoltage7.Name = "lblCellvoltage7";
-            this.lblCellvoltage7.Size = new System.Drawing.Size(35, 12);
+            this.lblCellvoltage7.Size = new System.Drawing.Size(45, 15);
             this.lblCellvoltage7.TabIndex = 7;
             this.lblCellvoltage7.Text = "电池7";
             // 
             // lblCellvoltage5
             // 
             this.lblCellvoltage5.AutoSize = true;
-            this.lblCellvoltage5.Location = new System.Drawing.Point(9, 105);
-            this.lblCellvoltage5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCellvoltage5.Location = new System.Drawing.Point(12, 131);
             this.lblCellvoltage5.Name = "lblCellvoltage5";
-            this.lblCellvoltage5.Size = new System.Drawing.Size(35, 12);
+            this.lblCellvoltage5.Size = new System.Drawing.Size(45, 15);
             this.lblCellvoltage5.TabIndex = 6;
             this.lblCellvoltage5.Text = "电池5";
             // 
             // lblCellvoltage3
             // 
             this.lblCellvoltage3.AutoSize = true;
-            this.lblCellvoltage3.Location = new System.Drawing.Point(300, 67);
-            this.lblCellvoltage3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCellvoltage3.Location = new System.Drawing.Point(400, 84);
             this.lblCellvoltage3.Name = "lblCellvoltage3";
-            this.lblCellvoltage3.Size = new System.Drawing.Size(35, 12);
+            this.lblCellvoltage3.Size = new System.Drawing.Size(45, 15);
             this.lblCellvoltage3.TabIndex = 5;
             this.lblCellvoltage3.Text = "电池3";
             // 
@@ -650,10 +645,9 @@
             // 
             this.lblCellvoltage1.AutoSize = true;
             this.lblCellvoltage1.BackColor = System.Drawing.Color.Transparent;
-            this.lblCellvoltage1.Location = new System.Drawing.Point(9, 67);
-            this.lblCellvoltage1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCellvoltage1.Location = new System.Drawing.Point(12, 84);
             this.lblCellvoltage1.Name = "lblCellvoltage1";
-            this.lblCellvoltage1.Size = new System.Drawing.Size(35, 12);
+            this.lblCellvoltage1.Size = new System.Drawing.Size(45, 15);
             this.lblCellvoltage1.TabIndex = 4;
             this.lblCellvoltage1.Text = "电池1";
             // 
@@ -661,28 +655,29 @@
             // 
             this.lblRealtimeData_21.AutoSize = true;
             this.lblRealtimeData_21.BackColor = System.Drawing.Color.Transparent;
-            this.lblRealtimeData_21.Location = new System.Drawing.Point(444, 29);
-            this.lblRealtimeData_21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_21.Location = new System.Drawing.Point(592, 36);
             this.lblRealtimeData_21.Name = "lblRealtimeData_21";
-            this.lblRealtimeData_21.Size = new System.Drawing.Size(53, 12);
+            this.lblRealtimeData_21.Size = new System.Drawing.Size(67, 15);
             this.lblRealtimeData_21.TabIndex = 3;
             this.lblRealtimeData_21.Text = "最低电压";
             // 
             // pbHeatEnable
             // 
             this.pbHeatEnable.BackColor = System.Drawing.Color.Green;
-            this.pbHeatEnable.Location = new System.Drawing.Point(469, 29);
+            this.pbHeatEnable.Location = new System.Drawing.Point(625, 36);
+            this.pbHeatEnable.Margin = new System.Windows.Forms.Padding(4);
             this.pbHeatEnable.Name = "pbHeatEnable";
-            this.pbHeatEnable.Size = new System.Drawing.Size(10, 9);
+            this.pbHeatEnable.Size = new System.Drawing.Size(13, 11);
             this.pbHeatEnable.TabIndex = 9;
             this.pbHeatEnable.TabStop = false;
             // 
             // pbStopChgEnable
             // 
             this.pbStopChgEnable.BackColor = System.Drawing.Color.Green;
-            this.pbStopChgEnable.Location = new System.Drawing.Point(350, 29);
+            this.pbStopChgEnable.Location = new System.Drawing.Point(467, 36);
+            this.pbStopChgEnable.Margin = new System.Windows.Forms.Padding(4);
             this.pbStopChgEnable.Name = "pbStopChgEnable";
-            this.pbStopChgEnable.Size = new System.Drawing.Size(10, 9);
+            this.pbStopChgEnable.Size = new System.Drawing.Size(13, 11);
             this.pbStopChgEnable.TabIndex = 8;
             this.pbStopChgEnable.TabStop = false;
             // 
@@ -698,11 +693,11 @@
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_11);
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_10);
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_09);
-            this.gbRealtimeData_108.Location = new System.Drawing.Point(286, 562);
-            this.gbRealtimeData_108.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.gbRealtimeData_108.Location = new System.Drawing.Point(381, 702);
+            this.gbRealtimeData_108.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.gbRealtimeData_108.Name = "gbRealtimeData_108";
-            this.gbRealtimeData_108.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.gbRealtimeData_108.Size = new System.Drawing.Size(674, 60);
+            this.gbRealtimeData_108.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.gbRealtimeData_108.Size = new System.Drawing.Size(899, 75);
             this.gbRealtimeData_108.TabIndex = 39;
             this.gbRealtimeData_108.TabStop = false;
             this.gbRealtimeData_108.Text = "系统状态";
@@ -710,164 +705,164 @@
             // pbChargeMosEnable
             // 
             this.pbChargeMosEnable.BackColor = System.Drawing.Color.Green;
-            this.pbChargeMosEnable.Location = new System.Drawing.Point(11, 29);
+            this.pbChargeMosEnable.Location = new System.Drawing.Point(15, 36);
+            this.pbChargeMosEnable.Margin = new System.Windows.Forms.Padding(4);
             this.pbChargeMosEnable.Name = "pbChargeMosEnable";
-            this.pbChargeMosEnable.Size = new System.Drawing.Size(10, 9);
+            this.pbChargeMosEnable.Size = new System.Drawing.Size(13, 11);
             this.pbChargeMosEnable.TabIndex = 5;
             this.pbChargeMosEnable.TabStop = false;
             // 
             // txtBatteryStatus
             // 
-            this.txtBatteryStatus.Location = new System.Drawing.Point(129, 18);
-            this.txtBatteryStatus.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtBatteryStatus.Location = new System.Drawing.Point(172, 22);
+            this.txtBatteryStatus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBatteryStatus.Name = "txtBatteryStatus";
             this.txtBatteryStatus.ReadOnly = true;
-            this.txtBatteryStatus.Size = new System.Drawing.Size(80, 21);
+            this.txtBatteryStatus.Size = new System.Drawing.Size(105, 25);
             this.txtBatteryStatus.TabIndex = 47;
             // 
             // txtDischargeCurrentLimitation
             // 
-            this.txtDischargeCurrentLimitation.Location = new System.Drawing.Point(129, 279);
-            this.txtDischargeCurrentLimitation.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtDischargeCurrentLimitation.Location = new System.Drawing.Point(172, 349);
+            this.txtDischargeCurrentLimitation.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtDischargeCurrentLimitation.Name = "txtDischargeCurrentLimitation";
             this.txtDischargeCurrentLimitation.ReadOnly = true;
-            this.txtDischargeCurrentLimitation.Size = new System.Drawing.Size(80, 21);
+            this.txtDischargeCurrentLimitation.Size = new System.Drawing.Size(105, 25);
             this.txtDischargeCurrentLimitation.TabIndex = 15;
             // 
             // lblRealtimeData_05
             // 
             this.lblRealtimeData_05.AutoSize = true;
-            this.lblRealtimeData_05.Location = new System.Drawing.Point(15, 283);
+            this.lblRealtimeData_05.Location = new System.Drawing.Point(20, 354);
+            this.lblRealtimeData_05.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_05.Name = "lblRealtimeData_05";
-            this.lblRealtimeData_05.Size = new System.Drawing.Size(95, 12);
+            this.lblRealtimeData_05.Size = new System.Drawing.Size(121, 15);
             this.lblRealtimeData_05.TabIndex = 11;
             this.lblRealtimeData_05.Text = "放电电流上限(A)";
             // 
             // txtChargeCurrentLimitation
             // 
-            this.txtChargeCurrentLimitation.Location = new System.Drawing.Point(129, 250);
-            this.txtChargeCurrentLimitation.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtChargeCurrentLimitation.Location = new System.Drawing.Point(172, 312);
+            this.txtChargeCurrentLimitation.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtChargeCurrentLimitation.Name = "txtChargeCurrentLimitation";
             this.txtChargeCurrentLimitation.ReadOnly = true;
-            this.txtChargeCurrentLimitation.Size = new System.Drawing.Size(80, 21);
+            this.txtChargeCurrentLimitation.Size = new System.Drawing.Size(105, 25);
             this.txtChargeCurrentLimitation.TabIndex = 14;
             // 
             // lblRealtimeData_04
             // 
             this.lblRealtimeData_04.AutoSize = true;
-            this.lblRealtimeData_04.Location = new System.Drawing.Point(15, 254);
+            this.lblRealtimeData_04.Location = new System.Drawing.Point(20, 318);
+            this.lblRealtimeData_04.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_04.Name = "lblRealtimeData_04";
-            this.lblRealtimeData_04.Size = new System.Drawing.Size(95, 12);
+            this.lblRealtimeData_04.Size = new System.Drawing.Size(121, 15);
             this.lblRealtimeData_04.TabIndex = 10;
             this.lblRealtimeData_04.Text = "充电电流上限(A)";
             // 
             // lblRealtimeData_20
             // 
             this.lblRealtimeData_20.AutoSize = true;
-            this.lblRealtimeData_20.Location = new System.Drawing.Point(300, 29);
-            this.lblRealtimeData_20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_20.Location = new System.Drawing.Point(400, 36);
             this.lblRealtimeData_20.Name = "lblRealtimeData_20";
-            this.lblRealtimeData_20.Size = new System.Drawing.Size(29, 12);
+            this.lblRealtimeData_20.Size = new System.Drawing.Size(37, 15);
             this.lblRealtimeData_20.TabIndex = 2;
             this.lblRealtimeData_20.Text = "编号";
             // 
             // lblRealtimeData_45
             // 
             this.lblRealtimeData_45.AutoSize = true;
-            this.lblRealtimeData_45.Location = new System.Drawing.Point(9, 108);
-            this.lblRealtimeData_45.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_45.Location = new System.Drawing.Point(12, 135);
             this.lblRealtimeData_45.Name = "lblRealtimeData_45";
-            this.lblRealtimeData_45.Size = new System.Drawing.Size(35, 12);
+            this.lblRealtimeData_45.Size = new System.Drawing.Size(45, 15);
             this.lblRealtimeData_45.TabIndex = 1;
             this.lblRealtimeData_45.Text = "温度1";
             // 
             // txtTotalDsgCap
             // 
-            this.txtTotalDsgCap.Location = new System.Drawing.Point(129, 366);
-            this.txtTotalDsgCap.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtTotalDsgCap.Location = new System.Drawing.Point(172, 458);
+            this.txtTotalDsgCap.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtTotalDsgCap.Name = "txtTotalDsgCap";
             this.txtTotalDsgCap.ReadOnly = true;
-            this.txtTotalDsgCap.Size = new System.Drawing.Size(80, 21);
+            this.txtTotalDsgCap.Size = new System.Drawing.Size(105, 25);
             this.txtTotalDsgCap.TabIndex = 13;
             // 
             // txtTotalChgCap
             // 
-            this.txtTotalChgCap.Location = new System.Drawing.Point(129, 337);
-            this.txtTotalChgCap.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtTotalChgCap.Location = new System.Drawing.Point(172, 421);
+            this.txtTotalChgCap.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtTotalChgCap.Name = "txtTotalChgCap";
             this.txtTotalChgCap.ReadOnly = true;
-            this.txtTotalChgCap.Size = new System.Drawing.Size(80, 21);
+            this.txtTotalChgCap.Size = new System.Drawing.Size(105, 25);
             this.txtTotalChgCap.TabIndex = 11;
             // 
             // txtSOH
             // 
-            this.txtSOH.Location = new System.Drawing.Point(129, 163);
-            this.txtSOH.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtSOH.Location = new System.Drawing.Point(172, 204);
+            this.txtSOH.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtSOH.Name = "txtSOH";
             this.txtSOH.ReadOnly = true;
-            this.txtSOH.Size = new System.Drawing.Size(80, 21);
+            this.txtSOH.Size = new System.Drawing.Size(105, 25);
             this.txtSOH.TabIndex = 10;
             // 
             // txtSOC
             // 
-            this.txtSOC.Location = new System.Drawing.Point(129, 134);
-            this.txtSOC.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtSOC.Location = new System.Drawing.Point(172, 168);
+            this.txtSOC.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtSOC.Name = "txtSOC";
             this.txtSOC.ReadOnly = true;
-            this.txtSOC.Size = new System.Drawing.Size(80, 21);
+            this.txtSOC.Size = new System.Drawing.Size(105, 25);
             this.txtSOC.TabIndex = 9;
             // 
             // txtBatteryCurrent
             // 
-            this.txtBatteryCurrent.Location = new System.Drawing.Point(129, 105);
-            this.txtBatteryCurrent.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtBatteryCurrent.Location = new System.Drawing.Point(172, 131);
+            this.txtBatteryCurrent.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtBatteryCurrent.Name = "txtBatteryCurrent";
             this.txtBatteryCurrent.ReadOnly = true;
-            this.txtBatteryCurrent.Size = new System.Drawing.Size(80, 21);
+            this.txtBatteryCurrent.Size = new System.Drawing.Size(105, 25);
             this.txtBatteryCurrent.TabIndex = 8;
             // 
             // txtBatteryVolt
             // 
-            this.txtBatteryVolt.Location = new System.Drawing.Point(129, 47);
-            this.txtBatteryVolt.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtBatteryVolt.Location = new System.Drawing.Point(172, 59);
+            this.txtBatteryVolt.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtBatteryVolt.Name = "txtBatteryVolt";
             this.txtBatteryVolt.ReadOnly = true;
-            this.txtBatteryVolt.Size = new System.Drawing.Size(80, 21);
+            this.txtBatteryVolt.Size = new System.Drawing.Size(105, 25);
             this.txtBatteryVolt.TabIndex = 7;
             // 
             // lblRealtimeData_53
             // 
             this.lblRealtimeData_53.AutoSize = true;
-            this.lblRealtimeData_53.Location = new System.Drawing.Point(15, 225);
-            this.lblRealtimeData_53.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_53.Location = new System.Drawing.Point(20, 281);
             this.lblRealtimeData_53.Name = "lblRealtimeData_53";
-            this.lblRealtimeData_53.Size = new System.Drawing.Size(77, 12);
+            this.lblRealtimeData_53.Size = new System.Drawing.Size(99, 15);
             this.lblRealtimeData_53.TabIndex = 6;
             this.lblRealtimeData_53.Text = "满充容量(Ah)";
             // 
             // lblRealtimeData_52
             // 
             this.lblRealtimeData_52.AutoSize = true;
-            this.lblRealtimeData_52.Location = new System.Drawing.Point(15, 196);
-            this.lblRealtimeData_52.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_52.Location = new System.Drawing.Point(20, 245);
             this.lblRealtimeData_52.Name = "lblRealtimeData_52";
-            this.lblRealtimeData_52.Size = new System.Drawing.Size(77, 12);
+            this.lblRealtimeData_52.Size = new System.Drawing.Size(99, 15);
             this.lblRealtimeData_52.TabIndex = 4;
             this.lblRealtimeData_52.Text = "剩余容量(Ah)";
             // 
             // lblRealtimeData_55
             // 
             this.lblRealtimeData_55.AutoSize = true;
-            this.lblRealtimeData_55.Location = new System.Drawing.Point(15, 167);
-            this.lblRealtimeData_55.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_55.Location = new System.Drawing.Point(20, 209);
             this.lblRealtimeData_55.Name = "lblRealtimeData_55";
-            this.lblRealtimeData_55.Size = new System.Drawing.Size(41, 12);
+            this.lblRealtimeData_55.Size = new System.Drawing.Size(55, 15);
             this.lblRealtimeData_55.TabIndex = 3;
             this.lblRealtimeData_55.Text = "SOH(%)";
             // 
             // gbRealtimeData_100
             // 
+            this.gbRealtimeData_100.Controls.Add(this.lblRealtimeData_83);
             this.gbRealtimeData_100.Controls.Add(this.txtFull_capacity);
+            this.gbRealtimeData_100.Controls.Add(this.txtCycleTime);
             this.gbRealtimeData_100.Controls.Add(this.txtCumulative_discharge_capacity);
             this.gbRealtimeData_100.Controls.Add(this.txtRemaining_capacity);
             this.gbRealtimeData_100.Controls.Add(this.txtBatteryStatus);
@@ -893,496 +888,525 @@
             this.gbRealtimeData_100.Controls.Add(this.lblRealtimeData_17);
             this.gbRealtimeData_100.Controls.Add(this.lblRealtimeData_16);
             this.gbRealtimeData_100.Controls.Add(this.lblRealtimeData_14);
-            this.gbRealtimeData_100.Location = new System.Drawing.Point(2, 5);
-            this.gbRealtimeData_100.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.gbRealtimeData_100.Location = new System.Drawing.Point(3, 6);
+            this.gbRealtimeData_100.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.gbRealtimeData_100.Name = "gbRealtimeData_100";
-            this.gbRealtimeData_100.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.gbRealtimeData_100.Size = new System.Drawing.Size(280, 422);
+            this.gbRealtimeData_100.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.gbRealtimeData_100.Size = new System.Drawing.Size(373, 528);
             this.gbRealtimeData_100.TabIndex = 32;
             this.gbRealtimeData_100.TabStop = false;
             this.gbRealtimeData_100.Text = "BMS/版本信息";
             // 
+            // lblRealtimeData_83
+            // 
+            this.lblRealtimeData_83.AutoSize = true;
+            this.lblRealtimeData_83.Location = new System.Drawing.Point(20, 498);
+            this.lblRealtimeData_83.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRealtimeData_83.Name = "lblRealtimeData_83";
+            this.lblRealtimeData_83.Size = new System.Drawing.Size(67, 15);
+            this.lblRealtimeData_83.TabIndex = 68;
+            this.lblRealtimeData_83.Text = "循环次数";
+            // 
             // txtFull_capacity
             // 
-            this.txtFull_capacity.Location = new System.Drawing.Point(129, 221);
-            this.txtFull_capacity.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtFull_capacity.Location = new System.Drawing.Point(172, 276);
+            this.txtFull_capacity.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtFull_capacity.Name = "txtFull_capacity";
             this.txtFull_capacity.ReadOnly = true;
-            this.txtFull_capacity.Size = new System.Drawing.Size(80, 21);
+            this.txtFull_capacity.Size = new System.Drawing.Size(105, 25);
             this.txtFull_capacity.TabIndex = 66;
+            // 
+            // txtCycleTime
+            // 
+            this.txtCycleTime.Location = new System.Drawing.Point(172, 495);
+            this.txtCycleTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtCycleTime.Name = "txtCycleTime";
+            this.txtCycleTime.ReadOnly = true;
+            this.txtCycleTime.Size = new System.Drawing.Size(105, 25);
+            this.txtCycleTime.TabIndex = 81;
             // 
             // txtCumulative_discharge_capacity
             // 
-            this.txtCumulative_discharge_capacity.Location = new System.Drawing.Point(129, 308);
+            this.txtCumulative_discharge_capacity.Location = new System.Drawing.Point(172, 385);
+            this.txtCumulative_discharge_capacity.Margin = new System.Windows.Forms.Padding(4);
             this.txtCumulative_discharge_capacity.Name = "txtCumulative_discharge_capacity";
             this.txtCumulative_discharge_capacity.ReadOnly = true;
-            this.txtCumulative_discharge_capacity.Size = new System.Drawing.Size(80, 21);
+            this.txtCumulative_discharge_capacity.Size = new System.Drawing.Size(105, 25);
             this.txtCumulative_discharge_capacity.TabIndex = 54;
             // 
             // txtRemaining_capacity
             // 
-            this.txtRemaining_capacity.Location = new System.Drawing.Point(129, 192);
-            this.txtRemaining_capacity.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtRemaining_capacity.Location = new System.Drawing.Point(172, 240);
+            this.txtRemaining_capacity.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtRemaining_capacity.Name = "txtRemaining_capacity";
             this.txtRemaining_capacity.ReadOnly = true;
-            this.txtRemaining_capacity.Size = new System.Drawing.Size(80, 21);
+            this.txtRemaining_capacity.Size = new System.Drawing.Size(105, 25);
             this.txtRemaining_capacity.TabIndex = 65;
             // 
             // txtLoadVolt
             // 
-            this.txtLoadVolt.Location = new System.Drawing.Point(129, 76);
-            this.txtLoadVolt.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtLoadVolt.Location = new System.Drawing.Point(172, 95);
+            this.txtLoadVolt.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtLoadVolt.Name = "txtLoadVolt";
             this.txtLoadVolt.ReadOnly = true;
-            this.txtLoadVolt.Size = new System.Drawing.Size(80, 21);
+            this.txtLoadVolt.Size = new System.Drawing.Size(105, 25);
             this.txtLoadVolt.TabIndex = 15;
             // 
             // lblRealtimeData_28
             // 
             this.lblRealtimeData_28.AutoSize = true;
-            this.lblRealtimeData_28.Location = new System.Drawing.Point(15, 370);
+            this.lblRealtimeData_28.Location = new System.Drawing.Point(20, 462);
+            this.lblRealtimeData_28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_28.Name = "lblRealtimeData_28";
-            this.lblRealtimeData_28.Size = new System.Drawing.Size(77, 12);
+            this.lblRealtimeData_28.Size = new System.Drawing.Size(97, 15);
             this.lblRealtimeData_28.TabIndex = 66;
             this.lblRealtimeData_28.Text = "累计放电容量";
             // 
             // lblRealtimeData_27
             // 
             this.lblRealtimeData_27.AutoSize = true;
-            this.lblRealtimeData_27.Location = new System.Drawing.Point(15, 341);
+            this.lblRealtimeData_27.Location = new System.Drawing.Point(20, 426);
+            this.lblRealtimeData_27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_27.Name = "lblRealtimeData_27";
-            this.lblRealtimeData_27.Size = new System.Drawing.Size(77, 12);
+            this.lblRealtimeData_27.Size = new System.Drawing.Size(97, 15);
             this.lblRealtimeData_27.TabIndex = 65;
             this.lblRealtimeData_27.Text = "累计充电容量";
             // 
             // lblRealtimeData_54
             // 
             this.lblRealtimeData_54.AutoSize = true;
-            this.lblRealtimeData_54.Location = new System.Drawing.Point(15, 312);
+            this.lblRealtimeData_54.Location = new System.Drawing.Point(20, 390);
+            this.lblRealtimeData_54.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_54.Name = "lblRealtimeData_54";
-            this.lblRealtimeData_54.Size = new System.Drawing.Size(65, 12);
+            this.lblRealtimeData_54.Size = new System.Drawing.Size(82, 15);
             this.lblRealtimeData_54.TabIndex = 53;
             this.lblRealtimeData_54.Text = "累计放电量";
             // 
             // lblRealtimeData_15
             // 
             this.lblRealtimeData_15.AutoSize = true;
-            this.lblRealtimeData_15.Location = new System.Drawing.Point(15, 80);
-            this.lblRealtimeData_15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_15.Location = new System.Drawing.Point(20, 100);
             this.lblRealtimeData_15.Name = "lblRealtimeData_15";
-            this.lblRealtimeData_15.Size = new System.Drawing.Size(71, 12);
+            this.lblRealtimeData_15.Size = new System.Drawing.Size(91, 15);
             this.lblRealtimeData_15.TabIndex = 14;
             this.lblRealtimeData_15.Text = "负载电压(V)";
             // 
             // lblRealtimeData_17
             // 
             this.lblRealtimeData_17.AutoSize = true;
-            this.lblRealtimeData_17.Location = new System.Drawing.Point(15, 138);
-            this.lblRealtimeData_17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_17.Location = new System.Drawing.Point(20, 172);
             this.lblRealtimeData_17.Name = "lblRealtimeData_17";
-            this.lblRealtimeData_17.Size = new System.Drawing.Size(41, 12);
+            this.lblRealtimeData_17.Size = new System.Drawing.Size(55, 15);
             this.lblRealtimeData_17.TabIndex = 2;
             this.lblRealtimeData_17.Text = "SOC(%)";
             // 
             // lblRealtimeData_16
             // 
             this.lblRealtimeData_16.AutoSize = true;
-            this.lblRealtimeData_16.Location = new System.Drawing.Point(15, 109);
-            this.lblRealtimeData_16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_16.Location = new System.Drawing.Point(20, 136);
             this.lblRealtimeData_16.Name = "lblRealtimeData_16";
-            this.lblRealtimeData_16.Size = new System.Drawing.Size(95, 12);
+            this.lblRealtimeData_16.Size = new System.Drawing.Size(121, 15);
             this.lblRealtimeData_16.TabIndex = 1;
             this.lblRealtimeData_16.Text = "低压电池电流(A)";
             // 
             // lblRealtimeData_14
             // 
             this.lblRealtimeData_14.AutoSize = true;
-            this.lblRealtimeData_14.Location = new System.Drawing.Point(15, 51);
-            this.lblRealtimeData_14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_14.Location = new System.Drawing.Point(20, 64);
             this.lblRealtimeData_14.Name = "lblRealtimeData_14";
-            this.lblRealtimeData_14.Size = new System.Drawing.Size(71, 12);
+            this.lblRealtimeData_14.Size = new System.Drawing.Size(91, 15);
             this.lblRealtimeData_14.TabIndex = 0;
             this.lblRealtimeData_14.Text = "电池电压(V)";
             // 
-            // txtCycleTIme
-            // 
-            this.txtCycleTIme.Location = new System.Drawing.Point(131, 683);
-            this.txtCycleTIme.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txtCycleTIme.Name = "txtCycleTIme";
-            this.txtCycleTIme.ReadOnly = true;
-            this.txtCycleTIme.Size = new System.Drawing.Size(140, 21);
-            this.txtCycleTIme.TabIndex = 81;
-            this.txtCycleTIme.Visible = false;
-            // 
             // txtPcbaHardware_Version
             // 
-            this.txtPcbaHardware_Version.Location = new System.Drawing.Point(134, 393);
+            this.txtPcbaHardware_Version.Location = new System.Drawing.Point(179, 491);
+            this.txtPcbaHardware_Version.Margin = new System.Windows.Forms.Padding(4);
             this.txtPcbaHardware_Version.Name = "txtPcbaHardware_Version";
             this.txtPcbaHardware_Version.ReadOnly = true;
-            this.txtPcbaHardware_Version.Size = new System.Drawing.Size(100, 21);
+            this.txtPcbaHardware_Version.Size = new System.Drawing.Size(132, 25);
             this.txtPcbaHardware_Version.TabIndex = 67;
             // 
             // lblRealtimeData_88
             // 
             this.lblRealtimeData_88.AutoSize = true;
-            this.lblRealtimeData_88.Location = new System.Drawing.Point(16, 397);
+            this.lblRealtimeData_88.Location = new System.Drawing.Point(21, 496);
+            this.lblRealtimeData_88.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_88.Name = "lblRealtimeData_88";
-            this.lblRealtimeData_88.Size = new System.Drawing.Size(77, 12);
+            this.lblRealtimeData_88.Size = new System.Drawing.Size(99, 15);
             this.lblRealtimeData_88.TabIndex = 66;
             this.lblRealtimeData_88.Text = "PCBA硬件版本";
             // 
             // txtDatetime
             // 
-            this.txtDatetime.Location = new System.Drawing.Point(129, 60);
+            this.txtDatetime.Location = new System.Drawing.Point(172, 75);
+            this.txtDatetime.Margin = new System.Windows.Forms.Padding(4);
             this.txtDatetime.Name = "txtDatetime";
             this.txtDatetime.ReadOnly = true;
-            this.txtDatetime.Size = new System.Drawing.Size(140, 21);
+            this.txtDatetime.Size = new System.Drawing.Size(185, 25);
             this.txtDatetime.TabIndex = 65;
             // 
             // lblRealtimeData_82
             // 
             this.lblRealtimeData_82.AutoSize = true;
-            this.lblRealtimeData_82.Location = new System.Drawing.Point(15, 63);
+            this.lblRealtimeData_82.Location = new System.Drawing.Point(20, 79);
+            this.lblRealtimeData_82.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_82.Name = "lblRealtimeData_82";
-            this.lblRealtimeData_82.Size = new System.Drawing.Size(71, 12);
+            this.lblRealtimeData_82.Size = new System.Drawing.Size(91, 15);
             this.lblRealtimeData_82.TabIndex = 64;
             this.lblRealtimeData_82.Text = "BMS当前时间";
             // 
             // txtSN
             // 
-            this.txtSN.Location = new System.Drawing.Point(129, 30);
+            this.txtSN.Location = new System.Drawing.Point(172, 38);
+            this.txtSN.Margin = new System.Windows.Forms.Padding(4);
             this.txtSN.Name = "txtSN";
             this.txtSN.ReadOnly = true;
-            this.txtSN.Size = new System.Drawing.Size(140, 21);
+            this.txtSN.Size = new System.Drawing.Size(185, 25);
             this.txtSN.TabIndex = 63;
             // 
             // txtSoftware_Version_Bms
             // 
-            this.txtSoftware_Version_Bms.Location = new System.Drawing.Point(129, 90);
+            this.txtSoftware_Version_Bms.Location = new System.Drawing.Point(172, 112);
+            this.txtSoftware_Version_Bms.Margin = new System.Windows.Forms.Padding(4);
             this.txtSoftware_Version_Bms.Name = "txtSoftware_Version_Bms";
             this.txtSoftware_Version_Bms.ReadOnly = true;
-            this.txtSoftware_Version_Bms.Size = new System.Drawing.Size(140, 21);
+            this.txtSoftware_Version_Bms.Size = new System.Drawing.Size(185, 25);
             this.txtSoftware_Version_Bms.TabIndex = 62;
             // 
             // lblRealtimeData_72
             // 
             this.lblRealtimeData_72.AutoSize = true;
-            this.lblRealtimeData_72.Location = new System.Drawing.Point(15, 33);
+            this.lblRealtimeData_72.Location = new System.Drawing.Point(20, 41);
+            this.lblRealtimeData_72.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_72.Name = "lblRealtimeData_72";
-            this.lblRealtimeData_72.Size = new System.Drawing.Size(53, 12);
+            this.lblRealtimeData_72.Size = new System.Drawing.Size(68, 15);
             this.lblRealtimeData_72.TabIndex = 61;
             this.lblRealtimeData_72.Text = "SN序列号";
             // 
             // lblRealtimeData_71
             // 
             this.lblRealtimeData_71.AutoSize = true;
-            this.lblRealtimeData_71.Location = new System.Drawing.Point(15, 93);
+            this.lblRealtimeData_71.Location = new System.Drawing.Point(20, 116);
+            this.lblRealtimeData_71.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_71.Name = "lblRealtimeData_71";
-            this.lblRealtimeData_71.Size = new System.Drawing.Size(71, 12);
+            this.lblRealtimeData_71.Size = new System.Drawing.Size(91, 15);
             this.lblRealtimeData_71.TabIndex = 60;
             this.lblRealtimeData_71.Text = "BMS软件版本";
             // 
             // txtHV_Discharge_Current
             // 
-            this.txtHV_Discharge_Current.Location = new System.Drawing.Point(134, 277);
+            this.txtHV_Discharge_Current.Location = new System.Drawing.Point(179, 346);
+            this.txtHV_Discharge_Current.Margin = new System.Windows.Forms.Padding(4);
             this.txtHV_Discharge_Current.Name = "txtHV_Discharge_Current";
             this.txtHV_Discharge_Current.ReadOnly = true;
-            this.txtHV_Discharge_Current.Size = new System.Drawing.Size(100, 21);
+            this.txtHV_Discharge_Current.Size = new System.Drawing.Size(132, 25);
             this.txtHV_Discharge_Current.TabIndex = 58;
             // 
             // txtDC_Low_Power
             // 
-            this.txtDC_Low_Power.Location = new System.Drawing.Point(134, 219);
+            this.txtDC_Low_Power.Location = new System.Drawing.Point(179, 274);
+            this.txtDC_Low_Power.Margin = new System.Windows.Forms.Padding(4);
             this.txtDC_Low_Power.Name = "txtDC_Low_Power";
             this.txtDC_Low_Power.ReadOnly = true;
-            this.txtDC_Low_Power.Size = new System.Drawing.Size(100, 21);
+            this.txtDC_Low_Power.Size = new System.Drawing.Size(132, 25);
             this.txtDC_Low_Power.TabIndex = 16;
             // 
             // txtDC_Low_Current
             // 
-            this.txtDC_Low_Current.Location = new System.Drawing.Point(134, 190);
+            this.txtDC_Low_Current.Location = new System.Drawing.Point(179, 238);
+            this.txtDC_Low_Current.Margin = new System.Windows.Forms.Padding(4);
             this.txtDC_Low_Current.Name = "txtDC_Low_Current";
             this.txtDC_Low_Current.ReadOnly = true;
-            this.txtDC_Low_Current.Size = new System.Drawing.Size(100, 21);
+            this.txtDC_Low_Current.Size = new System.Drawing.Size(132, 25);
             this.txtDC_Low_Current.TabIndex = 15;
             // 
             // txtDC_Low_voltage
             // 
-            this.txtDC_Low_voltage.Location = new System.Drawing.Point(134, 161);
+            this.txtDC_Low_voltage.Location = new System.Drawing.Point(179, 201);
+            this.txtDC_Low_voltage.Margin = new System.Windows.Forms.Padding(4);
             this.txtDC_Low_voltage.Name = "txtDC_Low_voltage";
             this.txtDC_Low_voltage.ReadOnly = true;
-            this.txtDC_Low_voltage.Size = new System.Drawing.Size(100, 21);
+            this.txtDC_Low_voltage.Size = new System.Drawing.Size(132, 25);
             this.txtDC_Low_voltage.TabIndex = 14;
             // 
             // txtHV_Charge_Current
             // 
-            this.txtHV_Charge_Current.Location = new System.Drawing.Point(134, 248);
-            this.txtHV_Charge_Current.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtHV_Charge_Current.Location = new System.Drawing.Point(179, 310);
+            this.txtHV_Charge_Current.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtHV_Charge_Current.Name = "txtHV_Charge_Current";
             this.txtHV_Charge_Current.ReadOnly = true;
-            this.txtHV_Charge_Current.Size = new System.Drawing.Size(100, 21);
+            this.txtHV_Charge_Current.Size = new System.Drawing.Size(132, 25);
             this.txtHV_Charge_Current.TabIndex = 56;
             // 
             // txtDC_high_voltage
             // 
-            this.txtDC_high_voltage.Location = new System.Drawing.Point(134, 132);
+            this.txtDC_high_voltage.Location = new System.Drawing.Point(179, 165);
+            this.txtDC_high_voltage.Margin = new System.Windows.Forms.Padding(4);
             this.txtDC_high_voltage.Name = "txtDC_high_voltage";
             this.txtDC_high_voltage.ReadOnly = true;
-            this.txtDC_high_voltage.Size = new System.Drawing.Size(100, 21);
+            this.txtDC_high_voltage.Size = new System.Drawing.Size(132, 25);
             this.txtDC_high_voltage.TabIndex = 13;
             // 
             // txtRadiator_temperature
             // 
-            this.txtRadiator_temperature.Location = new System.Drawing.Point(134, 103);
+            this.txtRadiator_temperature.Location = new System.Drawing.Point(179, 129);
+            this.txtRadiator_temperature.Margin = new System.Windows.Forms.Padding(4);
             this.txtRadiator_temperature.Name = "txtRadiator_temperature";
             this.txtRadiator_temperature.ReadOnly = true;
-            this.txtRadiator_temperature.Size = new System.Drawing.Size(100, 21);
+            this.txtRadiator_temperature.Size = new System.Drawing.Size(132, 25);
             this.txtRadiator_temperature.TabIndex = 12;
             // 
             // txtInternal_temperature
             // 
-            this.txtInternal_temperature.Location = new System.Drawing.Point(134, 74);
+            this.txtInternal_temperature.Location = new System.Drawing.Point(179, 92);
+            this.txtInternal_temperature.Margin = new System.Windows.Forms.Padding(4);
             this.txtInternal_temperature.Name = "txtInternal_temperature";
             this.txtInternal_temperature.ReadOnly = true;
-            this.txtInternal_temperature.Size = new System.Drawing.Size(100, 21);
+            this.txtInternal_temperature.Size = new System.Drawing.Size(132, 25);
             this.txtInternal_temperature.TabIndex = 11;
             // 
             // txtBattery_State
             // 
-            this.txtBattery_State.Location = new System.Drawing.Point(134, 45);
+            this.txtBattery_State.Location = new System.Drawing.Point(179, 56);
+            this.txtBattery_State.Margin = new System.Windows.Forms.Padding(4);
             this.txtBattery_State.Name = "txtBattery_State";
             this.txtBattery_State.ReadOnly = true;
-            this.txtBattery_State.Size = new System.Drawing.Size(100, 21);
+            this.txtBattery_State.Size = new System.Drawing.Size(132, 25);
             this.txtBattery_State.TabIndex = 10;
             // 
             // txtWork_State
             // 
-            this.txtWork_State.Location = new System.Drawing.Point(134, 16);
+            this.txtWork_State.Location = new System.Drawing.Point(179, 20);
+            this.txtWork_State.Margin = new System.Windows.Forms.Padding(4);
             this.txtWork_State.Name = "txtWork_State";
             this.txtWork_State.ReadOnly = true;
-            this.txtWork_State.Size = new System.Drawing.Size(100, 21);
+            this.txtWork_State.Size = new System.Drawing.Size(132, 25);
             this.txtWork_State.TabIndex = 0;
             // 
             // lblRealtimeData_74
             // 
             this.lblRealtimeData_74.AutoSize = true;
-            this.lblRealtimeData_74.Location = new System.Drawing.Point(16, 281);
+            this.lblRealtimeData_74.Location = new System.Drawing.Point(21, 351);
+            this.lblRealtimeData_74.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_74.Name = "lblRealtimeData_74";
-            this.lblRealtimeData_74.Size = new System.Drawing.Size(77, 12);
+            this.lblRealtimeData_74.Size = new System.Drawing.Size(97, 15);
             this.lblRealtimeData_74.TabIndex = 57;
             this.lblRealtimeData_74.Text = "高压放电电流";
             // 
             // lblRealtimeData_73
             // 
             this.lblRealtimeData_73.AutoSize = true;
-            this.lblRealtimeData_73.Location = new System.Drawing.Point(16, 252);
+            this.lblRealtimeData_73.Location = new System.Drawing.Point(21, 315);
+            this.lblRealtimeData_73.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_73.Name = "lblRealtimeData_73";
-            this.lblRealtimeData_73.Size = new System.Drawing.Size(77, 12);
+            this.lblRealtimeData_73.Size = new System.Drawing.Size(97, 15);
             this.lblRealtimeData_73.TabIndex = 55;
             this.lblRealtimeData_73.Text = "高压充电电流";
             // 
             // lblRealtimeData_67
             // 
             this.lblRealtimeData_67.AutoSize = true;
-            this.lblRealtimeData_67.Location = new System.Drawing.Point(16, 223);
+            this.lblRealtimeData_67.Location = new System.Drawing.Point(21, 279);
+            this.lblRealtimeData_67.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_67.Name = "lblRealtimeData_67";
-            this.lblRealtimeData_67.Size = new System.Drawing.Size(65, 12);
+            this.lblRealtimeData_67.Size = new System.Drawing.Size(82, 15);
             this.lblRealtimeData_67.TabIndex = 7;
             this.lblRealtimeData_67.Text = "低压侧功率";
             // 
             // lblRealtimeData_66
             // 
             this.lblRealtimeData_66.AutoSize = true;
-            this.lblRealtimeData_66.Location = new System.Drawing.Point(16, 194);
+            this.lblRealtimeData_66.Location = new System.Drawing.Point(21, 242);
+            this.lblRealtimeData_66.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_66.Name = "lblRealtimeData_66";
-            this.lblRealtimeData_66.Size = new System.Drawing.Size(65, 12);
+            this.lblRealtimeData_66.Size = new System.Drawing.Size(82, 15);
             this.lblRealtimeData_66.TabIndex = 6;
             this.lblRealtimeData_66.Text = "低压侧电流";
             // 
             // lblRealtimeData_65
             // 
             this.lblRealtimeData_65.AutoSize = true;
-            this.lblRealtimeData_65.Location = new System.Drawing.Point(16, 165);
+            this.lblRealtimeData_65.Location = new System.Drawing.Point(21, 206);
+            this.lblRealtimeData_65.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_65.Name = "lblRealtimeData_65";
-            this.lblRealtimeData_65.Size = new System.Drawing.Size(65, 12);
+            this.lblRealtimeData_65.Size = new System.Drawing.Size(82, 15);
             this.lblRealtimeData_65.TabIndex = 5;
             this.lblRealtimeData_65.Text = "低压侧电压";
             // 
             // lblRealtimeData_64
             // 
             this.lblRealtimeData_64.AutoSize = true;
-            this.lblRealtimeData_64.Location = new System.Drawing.Point(16, 136);
+            this.lblRealtimeData_64.Location = new System.Drawing.Point(21, 170);
+            this.lblRealtimeData_64.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_64.Name = "lblRealtimeData_64";
-            this.lblRealtimeData_64.Size = new System.Drawing.Size(65, 12);
+            this.lblRealtimeData_64.Size = new System.Drawing.Size(82, 15);
             this.lblRealtimeData_64.TabIndex = 4;
             this.lblRealtimeData_64.Text = "高压侧电压";
             // 
             // lblRealtimeData_63
             // 
             this.lblRealtimeData_63.AutoSize = true;
-            this.lblRealtimeData_63.Location = new System.Drawing.Point(16, 107);
+            this.lblRealtimeData_63.Location = new System.Drawing.Point(21, 134);
+            this.lblRealtimeData_63.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_63.Name = "lblRealtimeData_63";
-            this.lblRealtimeData_63.Size = new System.Drawing.Size(65, 12);
+            this.lblRealtimeData_63.Size = new System.Drawing.Size(82, 15);
             this.lblRealtimeData_63.TabIndex = 3;
             this.lblRealtimeData_63.Text = "散热器温度";
             // 
             // lblRealtimeData_62
             // 
             this.lblRealtimeData_62.AutoSize = true;
-            this.lblRealtimeData_62.Location = new System.Drawing.Point(16, 78);
+            this.lblRealtimeData_62.Location = new System.Drawing.Point(21, 98);
+            this.lblRealtimeData_62.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_62.Name = "lblRealtimeData_62";
-            this.lblRealtimeData_62.Size = new System.Drawing.Size(53, 12);
+            this.lblRealtimeData_62.Size = new System.Drawing.Size(67, 15);
             this.lblRealtimeData_62.TabIndex = 2;
             this.lblRealtimeData_62.Text = "机箱温度";
             // 
             // lblRealtimeData_61
             // 
             this.lblRealtimeData_61.AutoSize = true;
-            this.lblRealtimeData_61.Location = new System.Drawing.Point(16, 49);
+            this.lblRealtimeData_61.Location = new System.Drawing.Point(21, 61);
+            this.lblRealtimeData_61.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_61.Name = "lblRealtimeData_61";
-            this.lblRealtimeData_61.Size = new System.Drawing.Size(53, 12);
+            this.lblRealtimeData_61.Size = new System.Drawing.Size(67, 15);
             this.lblRealtimeData_61.TabIndex = 1;
             this.lblRealtimeData_61.Text = "电池状态";
             // 
             // lblRealtimeData_60
             // 
             this.lblRealtimeData_60.AutoSize = true;
-            this.lblRealtimeData_60.Location = new System.Drawing.Point(16, 20);
+            this.lblRealtimeData_60.Location = new System.Drawing.Point(21, 25);
+            this.lblRealtimeData_60.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_60.Name = "lblRealtimeData_60";
-            this.lblRealtimeData_60.Size = new System.Drawing.Size(53, 12);
+            this.lblRealtimeData_60.Size = new System.Drawing.Size(67, 15);
             this.lblRealtimeData_60.TabIndex = 0;
             this.lblRealtimeData_60.Text = "工作状态";
             // 
             // txtCelltemperature3
             // 
-            this.txtCelltemperature3.Location = new System.Drawing.Point(425, 104);
-            this.txtCelltemperature3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCelltemperature3.Location = new System.Drawing.Point(567, 130);
+            this.txtCelltemperature3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCelltemperature3.Name = "txtCelltemperature3";
             this.txtCelltemperature3.ReadOnly = true;
-            this.txtCelltemperature3.Size = new System.Drawing.Size(70, 21);
+            this.txtCelltemperature3.Size = new System.Drawing.Size(92, 25);
             this.txtCelltemperature3.TabIndex = 8;
             // 
             // txtBatMinCellTemp
             // 
-            this.txtBatMinCellTemp.Location = new System.Drawing.Point(590, 67);
-            this.txtBatMinCellTemp.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtBatMinCellTemp.Location = new System.Drawing.Point(787, 84);
+            this.txtBatMinCellTemp.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtBatMinCellTemp.Name = "txtBatMinCellTemp";
             this.txtBatMinCellTemp.ReadOnly = true;
-            this.txtBatMinCellTemp.Size = new System.Drawing.Size(70, 21);
+            this.txtBatMinCellTemp.Size = new System.Drawing.Size(92, 25);
             this.txtBatMinCellTemp.TabIndex = 17;
             // 
             // txtBatMinCellTempNum
             // 
-            this.txtBatMinCellTempNum.Location = new System.Drawing.Point(425, 67);
-            this.txtBatMinCellTempNum.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtBatMinCellTempNum.Location = new System.Drawing.Point(567, 84);
+            this.txtBatMinCellTempNum.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtBatMinCellTempNum.Name = "txtBatMinCellTempNum";
             this.txtBatMinCellTempNum.ReadOnly = true;
-            this.txtBatMinCellTempNum.Size = new System.Drawing.Size(70, 21);
+            this.txtBatMinCellTempNum.Size = new System.Drawing.Size(92, 25);
             this.txtBatMinCellTempNum.TabIndex = 16;
             // 
             // txtBatMaxCellTemp
             // 
-            this.txtBatMaxCellTemp.Location = new System.Drawing.Point(261, 67);
-            this.txtBatMaxCellTemp.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtBatMaxCellTemp.Location = new System.Drawing.Point(348, 84);
+            this.txtBatMaxCellTemp.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtBatMaxCellTemp.Name = "txtBatMaxCellTemp";
             this.txtBatMaxCellTemp.ReadOnly = true;
-            this.txtBatMaxCellTemp.Size = new System.Drawing.Size(70, 21);
+            this.txtBatMaxCellTemp.Size = new System.Drawing.Size(92, 25);
             this.txtBatMaxCellTemp.TabIndex = 15;
             // 
             // txtBatMaxCellTempNum
             // 
-            this.txtBatMaxCellTempNum.Location = new System.Drawing.Point(90, 67);
-            this.txtBatMaxCellTempNum.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtBatMaxCellTempNum.Location = new System.Drawing.Point(120, 84);
+            this.txtBatMaxCellTempNum.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtBatMaxCellTempNum.Name = "txtBatMaxCellTempNum";
             this.txtBatMaxCellTempNum.ReadOnly = true;
-            this.txtBatMaxCellTempNum.Size = new System.Drawing.Size(70, 21);
+            this.txtBatMaxCellTempNum.Size = new System.Drawing.Size(92, 25);
             this.txtBatMaxCellTempNum.TabIndex = 14;
             // 
             // lblRealtimeData_26
             // 
             this.lblRealtimeData_26.AutoSize = true;
-            this.lblRealtimeData_26.Location = new System.Drawing.Point(500, 71);
-            this.lblRealtimeData_26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_26.Location = new System.Drawing.Point(667, 89);
             this.lblRealtimeData_26.Name = "lblRealtimeData_26";
-            this.lblRealtimeData_26.Size = new System.Drawing.Size(53, 12);
+            this.lblRealtimeData_26.Size = new System.Drawing.Size(67, 15);
             this.lblRealtimeData_26.TabIndex = 13;
             this.lblRealtimeData_26.Text = "最低温度";
             // 
             // lblRealtimeData_25
             // 
             this.lblRealtimeData_25.AutoSize = true;
-            this.lblRealtimeData_25.Location = new System.Drawing.Point(336, 71);
-            this.lblRealtimeData_25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_25.Location = new System.Drawing.Point(448, 89);
             this.lblRealtimeData_25.Name = "lblRealtimeData_25";
-            this.lblRealtimeData_25.Size = new System.Drawing.Size(29, 12);
+            this.lblRealtimeData_25.Size = new System.Drawing.Size(37, 15);
             this.lblRealtimeData_25.TabIndex = 12;
             this.lblRealtimeData_25.Text = "编号";
             // 
             // lblRealtimeData_24
             // 
             this.lblRealtimeData_24.AutoSize = true;
-            this.lblRealtimeData_24.Location = new System.Drawing.Point(164, 71);
-            this.lblRealtimeData_24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_24.Location = new System.Drawing.Point(219, 89);
             this.lblRealtimeData_24.Name = "lblRealtimeData_24";
-            this.lblRealtimeData_24.Size = new System.Drawing.Size(53, 12);
+            this.lblRealtimeData_24.Size = new System.Drawing.Size(67, 15);
             this.lblRealtimeData_24.TabIndex = 11;
             this.lblRealtimeData_24.Text = "最高温度";
             // 
             // lblRealtimeData_23
             // 
             this.lblRealtimeData_23.AutoSize = true;
-            this.lblRealtimeData_23.Location = new System.Drawing.Point(9, 71);
-            this.lblRealtimeData_23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_23.Location = new System.Drawing.Point(12, 89);
             this.lblRealtimeData_23.Name = "lblRealtimeData_23";
-            this.lblRealtimeData_23.Size = new System.Drawing.Size(29, 12);
+            this.lblRealtimeData_23.Size = new System.Drawing.Size(37, 15);
             this.lblRealtimeData_23.TabIndex = 10;
             this.lblRealtimeData_23.Text = "编号";
             // 
             // txtCelltemperature1
             // 
-            this.txtCelltemperature1.Location = new System.Drawing.Point(90, 104);
-            this.txtCelltemperature1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCelltemperature1.Location = new System.Drawing.Point(120, 130);
+            this.txtCelltemperature1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCelltemperature1.Name = "txtCelltemperature1";
             this.txtCelltemperature1.ReadOnly = true;
-            this.txtCelltemperature1.Size = new System.Drawing.Size(70, 21);
+            this.txtCelltemperature1.Size = new System.Drawing.Size(92, 25);
             this.txtCelltemperature1.TabIndex = 6;
             // 
             // txtEnvTemperature
             // 
-            this.txtEnvTemperature.Location = new System.Drawing.Point(90, 30);
-            this.txtEnvTemperature.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtEnvTemperature.Location = new System.Drawing.Point(120, 38);
+            this.txtEnvTemperature.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtEnvTemperature.Name = "txtEnvTemperature";
             this.txtEnvTemperature.ReadOnly = true;
-            this.txtEnvTemperature.Size = new System.Drawing.Size(70, 21);
+            this.txtEnvTemperature.Size = new System.Drawing.Size(92, 25);
             this.txtEnvTemperature.TabIndex = 5;
             // 
             // lblRealtimeData_48
             // 
             this.lblRealtimeData_48.AutoSize = true;
-            this.lblRealtimeData_48.Location = new System.Drawing.Point(500, 108);
-            this.lblRealtimeData_48.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_48.Location = new System.Drawing.Point(667, 135);
             this.lblRealtimeData_48.Name = "lblRealtimeData_48";
-            this.lblRealtimeData_48.Size = new System.Drawing.Size(35, 12);
+            this.lblRealtimeData_48.Size = new System.Drawing.Size(45, 15);
             this.lblRealtimeData_48.TabIndex = 4;
             this.lblRealtimeData_48.Text = "温度4";
             // 
             // lblRealtimeData_47
             // 
             this.lblRealtimeData_47.AutoSize = true;
-            this.lblRealtimeData_47.Location = new System.Drawing.Point(336, 108);
-            this.lblRealtimeData_47.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_47.Location = new System.Drawing.Point(448, 135);
             this.lblRealtimeData_47.Name = "lblRealtimeData_47";
-            this.lblRealtimeData_47.Size = new System.Drawing.Size(35, 12);
+            this.lblRealtimeData_47.Size = new System.Drawing.Size(45, 15);
             this.lblRealtimeData_47.TabIndex = 3;
             this.lblRealtimeData_47.Text = "温度3";
             // 
             // lblRealtimeData_46
             // 
             this.lblRealtimeData_46.AutoSize = true;
-            this.lblRealtimeData_46.Location = new System.Drawing.Point(164, 108);
-            this.lblRealtimeData_46.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_46.Location = new System.Drawing.Point(219, 135);
             this.lblRealtimeData_46.Name = "lblRealtimeData_46";
-            this.lblRealtimeData_46.Size = new System.Drawing.Size(35, 12);
+            this.lblRealtimeData_46.Size = new System.Drawing.Size(45, 15);
             this.lblRealtimeData_46.TabIndex = 2;
             this.lblRealtimeData_46.Text = "温度2";
             // 
@@ -1420,145 +1444,138 @@
             this.gbRealtimeData_102.Controls.Add(this.lblRealtimeData_47);
             this.gbRealtimeData_102.Controls.Add(this.lblRealtimeData_26);
             this.gbRealtimeData_102.Controls.Add(this.lblRealtimeData_48);
-            this.gbRealtimeData_102.Location = new System.Drawing.Point(286, 232);
-            this.gbRealtimeData_102.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.gbRealtimeData_102.Location = new System.Drawing.Point(381, 290);
+            this.gbRealtimeData_102.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.gbRealtimeData_102.Name = "gbRealtimeData_102";
-            this.gbRealtimeData_102.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.gbRealtimeData_102.Size = new System.Drawing.Size(674, 195);
+            this.gbRealtimeData_102.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.gbRealtimeData_102.Size = new System.Drawing.Size(899, 244);
             this.gbRealtimeData_102.TabIndex = 35;
             this.gbRealtimeData_102.TabStop = false;
             this.gbRealtimeData_102.Text = "温度信息(°C)";
             // 
             // txtBalanceTemperature2
             // 
-            this.txtBalanceTemperature2.Location = new System.Drawing.Point(590, 30);
-            this.txtBalanceTemperature2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtBalanceTemperature2.Location = new System.Drawing.Point(787, 38);
+            this.txtBalanceTemperature2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBalanceTemperature2.Name = "txtBalanceTemperature2";
             this.txtBalanceTemperature2.ReadOnly = true;
-            this.txtBalanceTemperature2.Size = new System.Drawing.Size(70, 21);
+            this.txtBalanceTemperature2.Size = new System.Drawing.Size(92, 25);
             this.txtBalanceTemperature2.TabIndex = 94;
             // 
             // txtBalanceTemperature1
             // 
-            this.txtBalanceTemperature1.Location = new System.Drawing.Point(425, 30);
-            this.txtBalanceTemperature1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtBalanceTemperature1.Location = new System.Drawing.Point(567, 38);
+            this.txtBalanceTemperature1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtBalanceTemperature1.Name = "txtBalanceTemperature1";
             this.txtBalanceTemperature1.ReadOnly = true;
-            this.txtBalanceTemperature1.Size = new System.Drawing.Size(70, 21);
+            this.txtBalanceTemperature1.Size = new System.Drawing.Size(92, 25);
             this.txtBalanceTemperature1.TabIndex = 92;
             // 
             // lblRealtimeData_111
             // 
             this.lblRealtimeData_111.AutoSize = true;
-            this.lblRealtimeData_111.Location = new System.Drawing.Point(336, 34);
-            this.lblRealtimeData_111.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_111.Location = new System.Drawing.Point(448, 42);
             this.lblRealtimeData_111.Name = "lblRealtimeData_111";
-            this.lblRealtimeData_111.Size = new System.Drawing.Size(59, 12);
+            this.lblRealtimeData_111.Size = new System.Drawing.Size(75, 15);
             this.lblRealtimeData_111.TabIndex = 91;
             this.lblRealtimeData_111.Text = "均衡温度1";
             // 
             // lblRealtimeData_112
             // 
             this.lblRealtimeData_112.AutoSize = true;
-            this.lblRealtimeData_112.Location = new System.Drawing.Point(500, 34);
-            this.lblRealtimeData_112.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_112.Location = new System.Drawing.Point(667, 42);
             this.lblRealtimeData_112.Name = "lblRealtimeData_112";
-            this.lblRealtimeData_112.Size = new System.Drawing.Size(59, 12);
+            this.lblRealtimeData_112.Size = new System.Drawing.Size(75, 15);
             this.lblRealtimeData_112.TabIndex = 93;
             this.lblRealtimeData_112.Text = "均衡温度2";
             // 
             // txtCelltemperature7
             // 
-            this.txtCelltemperature7.Location = new System.Drawing.Point(425, 141);
-            this.txtCelltemperature7.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCelltemperature7.Location = new System.Drawing.Point(567, 176);
+            this.txtCelltemperature7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCelltemperature7.Name = "txtCelltemperature7";
             this.txtCelltemperature7.ReadOnly = true;
-            this.txtCelltemperature7.Size = new System.Drawing.Size(70, 21);
+            this.txtCelltemperature7.Size = new System.Drawing.Size(92, 25);
             this.txtCelltemperature7.TabIndex = 89;
             // 
             // txtCelltemperature5
             // 
-            this.txtCelltemperature5.Location = new System.Drawing.Point(90, 141);
-            this.txtCelltemperature5.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCelltemperature5.Location = new System.Drawing.Point(120, 176);
+            this.txtCelltemperature5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCelltemperature5.Name = "txtCelltemperature5";
             this.txtCelltemperature5.ReadOnly = true;
-            this.txtCelltemperature5.Size = new System.Drawing.Size(70, 21);
+            this.txtCelltemperature5.Size = new System.Drawing.Size(92, 25);
             this.txtCelltemperature5.TabIndex = 87;
             // 
             // lblRealtimeData_87
             // 
             this.lblRealtimeData_87.AutoSize = true;
-            this.lblRealtimeData_87.Location = new System.Drawing.Point(500, 145);
-            this.lblRealtimeData_87.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_87.Location = new System.Drawing.Point(667, 181);
             this.lblRealtimeData_87.Name = "lblRealtimeData_87";
-            this.lblRealtimeData_87.Size = new System.Drawing.Size(35, 12);
+            this.lblRealtimeData_87.Size = new System.Drawing.Size(45, 15);
             this.lblRealtimeData_87.TabIndex = 86;
             this.lblRealtimeData_87.Text = "温度8";
             // 
             // lblRealtimeData_86
             // 
             this.lblRealtimeData_86.AutoSize = true;
-            this.lblRealtimeData_86.Location = new System.Drawing.Point(336, 145);
-            this.lblRealtimeData_86.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_86.Location = new System.Drawing.Point(448, 181);
             this.lblRealtimeData_86.Name = "lblRealtimeData_86";
-            this.lblRealtimeData_86.Size = new System.Drawing.Size(35, 12);
+            this.lblRealtimeData_86.Size = new System.Drawing.Size(45, 15);
             this.lblRealtimeData_86.TabIndex = 85;
             this.lblRealtimeData_86.Text = "温度7";
             // 
             // lblRealtimeData_85
             // 
             this.lblRealtimeData_85.AutoSize = true;
-            this.lblRealtimeData_85.Location = new System.Drawing.Point(164, 145);
-            this.lblRealtimeData_85.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_85.Location = new System.Drawing.Point(219, 181);
             this.lblRealtimeData_85.Name = "lblRealtimeData_85";
-            this.lblRealtimeData_85.Size = new System.Drawing.Size(35, 12);
+            this.lblRealtimeData_85.Size = new System.Drawing.Size(45, 15);
             this.lblRealtimeData_85.TabIndex = 84;
             this.lblRealtimeData_85.Text = "温度6";
             // 
             // lblRealtimeData_84
             // 
             this.lblRealtimeData_84.AutoSize = true;
-            this.lblRealtimeData_84.Location = new System.Drawing.Point(9, 145);
-            this.lblRealtimeData_84.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_84.Location = new System.Drawing.Point(12, 181);
             this.lblRealtimeData_84.Name = "lblRealtimeData_84";
-            this.lblRealtimeData_84.Size = new System.Drawing.Size(35, 12);
+            this.lblRealtimeData_84.Size = new System.Drawing.Size(45, 15);
             this.lblRealtimeData_84.TabIndex = 83;
             this.lblRealtimeData_84.Text = "温度5";
             // 
             // txtCelltemperature8
             // 
-            this.txtCelltemperature8.Location = new System.Drawing.Point(590, 141);
-            this.txtCelltemperature8.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCelltemperature8.Location = new System.Drawing.Point(787, 176);
+            this.txtCelltemperature8.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCelltemperature8.Name = "txtCelltemperature8";
             this.txtCelltemperature8.ReadOnly = true;
-            this.txtCelltemperature8.Size = new System.Drawing.Size(70, 21);
+            this.txtCelltemperature8.Size = new System.Drawing.Size(92, 25);
             this.txtCelltemperature8.TabIndex = 90;
             // 
             // txtCelltemperature6
             // 
-            this.txtCelltemperature6.Location = new System.Drawing.Point(261, 141);
-            this.txtCelltemperature6.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtCelltemperature6.Location = new System.Drawing.Point(348, 176);
+            this.txtCelltemperature6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtCelltemperature6.Name = "txtCelltemperature6";
             this.txtCelltemperature6.ReadOnly = true;
-            this.txtCelltemperature6.Size = new System.Drawing.Size(70, 21);
+            this.txtCelltemperature6.Size = new System.Drawing.Size(92, 25);
             this.txtCelltemperature6.TabIndex = 88;
             // 
             // txtMosTemperature
             // 
-            this.txtMosTemperature.Location = new System.Drawing.Point(261, 30);
-            this.txtMosTemperature.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtMosTemperature.Location = new System.Drawing.Point(348, 38);
+            this.txtMosTemperature.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtMosTemperature.Name = "txtMosTemperature";
             this.txtMosTemperature.ReadOnly = true;
-            this.txtMosTemperature.Size = new System.Drawing.Size(70, 21);
+            this.txtMosTemperature.Size = new System.Drawing.Size(92, 25);
             this.txtMosTemperature.TabIndex = 19;
             // 
             // lblRealtimeData_49
             // 
             this.lblRealtimeData_49.AutoSize = true;
-            this.lblRealtimeData_49.Location = new System.Drawing.Point(164, 34);
-            this.lblRealtimeData_49.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_49.Location = new System.Drawing.Point(219, 42);
             this.lblRealtimeData_49.Name = "lblRealtimeData_49";
-            this.lblRealtimeData_49.Size = new System.Drawing.Size(47, 12);
+            this.lblRealtimeData_49.Size = new System.Drawing.Size(61, 15);
             this.lblRealtimeData_49.TabIndex = 18;
             this.lblRealtimeData_49.Text = "MOS温度";
             // 
@@ -1566,20 +1583,18 @@
             // 
             this.lblRealtimeData_19.AutoSize = true;
             this.lblRealtimeData_19.BackColor = System.Drawing.Color.Transparent;
-            this.lblRealtimeData_19.Location = new System.Drawing.Point(155, 29);
-            this.lblRealtimeData_19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_19.Location = new System.Drawing.Point(207, 36);
             this.lblRealtimeData_19.Name = "lblRealtimeData_19";
-            this.lblRealtimeData_19.Size = new System.Drawing.Size(53, 12);
+            this.lblRealtimeData_19.Size = new System.Drawing.Size(67, 15);
             this.lblRealtimeData_19.TabIndex = 1;
             this.lblRealtimeData_19.Text = "最高电压";
             // 
             // lblRealtimeData_18
             // 
             this.lblRealtimeData_18.AutoSize = true;
-            this.lblRealtimeData_18.Location = new System.Drawing.Point(9, 29);
-            this.lblRealtimeData_18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_18.Location = new System.Drawing.Point(12, 36);
             this.lblRealtimeData_18.Name = "lblRealtimeData_18";
-            this.lblRealtimeData_18.Size = new System.Drawing.Size(29, 12);
+            this.lblRealtimeData_18.Size = new System.Drawing.Size(37, 15);
             this.lblRealtimeData_18.TabIndex = 0;
             this.lblRealtimeData_18.Text = "编号";
             // 
@@ -1629,11 +1644,11 @@
             this.gbRealtimeData_101.Controls.Add(this.lblRealtimeData_19);
             this.gbRealtimeData_101.Controls.Add(this.lblRealtimeData_18);
             this.gbRealtimeData_101.Controls.Add(this.txtBatDiffCellVolt);
-            this.gbRealtimeData_101.Location = new System.Drawing.Point(286, 6);
-            this.gbRealtimeData_101.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.gbRealtimeData_101.Location = new System.Drawing.Point(381, 8);
+            this.gbRealtimeData_101.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.gbRealtimeData_101.Name = "gbRealtimeData_101";
-            this.gbRealtimeData_101.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.gbRealtimeData_101.Size = new System.Drawing.Size(674, 224);
+            this.gbRealtimeData_101.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.gbRealtimeData_101.Size = new System.Drawing.Size(899, 280);
             this.gbRealtimeData_101.TabIndex = 34;
             this.gbRealtimeData_101.TabStop = false;
             this.gbRealtimeData_101.Text = "单体电压(mV)";
@@ -1641,51 +1656,49 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(603, 128);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(804, 160);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.Size = new System.Drawing.Size(67, 15);
             this.label1.TabIndex = 44;
             this.label1.Text = "单体总压";
             this.label1.Visible = false;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(592, 101);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.textBox1.Location = new System.Drawing.Point(789, 126);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(70, 21);
+            this.textBox1.Size = new System.Drawing.Size(92, 25);
             this.textBox1.TabIndex = 45;
             this.textBox1.Visible = false;
             // 
             // lblRealtimeData_57
             // 
             this.lblRealtimeData_57.AutoSize = true;
-            this.lblRealtimeData_57.Location = new System.Drawing.Point(597, 51);
-            this.lblRealtimeData_57.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRealtimeData_57.Location = new System.Drawing.Point(796, 64);
             this.lblRealtimeData_57.Name = "lblRealtimeData_57";
-            this.lblRealtimeData_57.Size = new System.Drawing.Size(53, 12);
+            this.lblRealtimeData_57.Size = new System.Drawing.Size(67, 15);
             this.lblRealtimeData_57.TabIndex = 42;
             this.lblRealtimeData_57.Text = "单体压差";
             // 
             // txtBatDiffCellVolt
             // 
-            this.txtBatDiffCellVolt.Location = new System.Drawing.Point(592, 25);
-            this.txtBatDiffCellVolt.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtBatDiffCellVolt.Location = new System.Drawing.Point(789, 31);
+            this.txtBatDiffCellVolt.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtBatDiffCellVolt.Name = "txtBatDiffCellVolt";
             this.txtBatDiffCellVolt.ReadOnly = true;
-            this.txtBatDiffCellVolt.Size = new System.Drawing.Size(70, 21);
+            this.txtBatDiffCellVolt.Size = new System.Drawing.Size(92, 25);
             this.txtBatDiffCellVolt.TabIndex = 43;
             // 
             // gbRealtimeData_105
             // 
             this.gbRealtimeData_105.Controls.Add(this.richTextBox3);
-            this.gbRealtimeData_105.Location = new System.Drawing.Point(740, 431);
-            this.gbRealtimeData_105.Margin = new System.Windows.Forms.Padding(2);
+            this.gbRealtimeData_105.Location = new System.Drawing.Point(987, 539);
+            this.gbRealtimeData_105.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbRealtimeData_105.Name = "gbRealtimeData_105";
-            this.gbRealtimeData_105.Padding = new System.Windows.Forms.Padding(2);
-            this.gbRealtimeData_105.Size = new System.Drawing.Size(220, 130);
+            this.gbRealtimeData_105.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbRealtimeData_105.Size = new System.Drawing.Size(293, 162);
             this.gbRealtimeData_105.TabIndex = 50;
             this.gbRealtimeData_105.TabStop = false;
             this.gbRealtimeData_105.Text = "告警状态";
@@ -1693,22 +1706,22 @@
             // richTextBox3
             // 
             this.richTextBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox3.Location = new System.Drawing.Point(2, 16);
-            this.richTextBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBox3.Location = new System.Drawing.Point(3, 20);
+            this.richTextBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.ReadOnly = true;
-            this.richTextBox3.Size = new System.Drawing.Size(216, 112);
+            this.richTextBox3.Size = new System.Drawing.Size(287, 140);
             this.richTextBox3.TabIndex = 0;
             this.richTextBox3.Text = "";
             // 
             // gbRealtimeData_103
             // 
             this.gbRealtimeData_103.Controls.Add(this.richTextBox2);
-            this.gbRealtimeData_103.Location = new System.Drawing.Point(286, 431);
-            this.gbRealtimeData_103.Margin = new System.Windows.Forms.Padding(2);
+            this.gbRealtimeData_103.Location = new System.Drawing.Point(381, 539);
+            this.gbRealtimeData_103.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbRealtimeData_103.Name = "gbRealtimeData_103";
-            this.gbRealtimeData_103.Padding = new System.Windows.Forms.Padding(2);
-            this.gbRealtimeData_103.Size = new System.Drawing.Size(220, 130);
+            this.gbRealtimeData_103.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbRealtimeData_103.Size = new System.Drawing.Size(293, 162);
             this.gbRealtimeData_103.TabIndex = 51;
             this.gbRealtimeData_103.TabStop = false;
             this.gbRealtimeData_103.Text = "保护状态";
@@ -1717,22 +1730,22 @@
             // richTextBox2
             // 
             this.richTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox2.Location = new System.Drawing.Point(2, 16);
-            this.richTextBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBox2.Location = new System.Drawing.Point(3, 20);
+            this.richTextBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.ReadOnly = true;
-            this.richTextBox2.Size = new System.Drawing.Size(216, 112);
+            this.richTextBox2.Size = new System.Drawing.Size(287, 140);
             this.richTextBox2.TabIndex = 1;
             this.richTextBox2.Text = "";
             // 
             // gbRealtimeData_104
             // 
             this.gbRealtimeData_104.Controls.Add(this.richTextBox1);
-            this.gbRealtimeData_104.Location = new System.Drawing.Point(513, 431);
-            this.gbRealtimeData_104.Margin = new System.Windows.Forms.Padding(2);
+            this.gbRealtimeData_104.Location = new System.Drawing.Point(684, 539);
+            this.gbRealtimeData_104.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbRealtimeData_104.Name = "gbRealtimeData_104";
-            this.gbRealtimeData_104.Padding = new System.Windows.Forms.Padding(2);
-            this.gbRealtimeData_104.Size = new System.Drawing.Size(220, 130);
+            this.gbRealtimeData_104.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbRealtimeData_104.Size = new System.Drawing.Size(293, 162);
             this.gbRealtimeData_104.TabIndex = 52;
             this.gbRealtimeData_104.TabStop = false;
             this.gbRealtimeData_104.Text = "故障状态";
@@ -1741,20 +1754,22 @@
             // richTextBox1
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(2, 16);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBox1.Location = new System.Drawing.Point(3, 20);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(216, 112);
+            this.richTextBox1.Size = new System.Drawing.Size(287, 140);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
             // gbRealtimeData_107
             // 
             this.gbRealtimeData_107.Controls.Add(this.dataGridView1);
-            this.gbRealtimeData_107.Location = new System.Drawing.Point(965, 433);
+            this.gbRealtimeData_107.Location = new System.Drawing.Point(1287, 541);
+            this.gbRealtimeData_107.Margin = new System.Windows.Forms.Padding(4);
             this.gbRealtimeData_107.Name = "gbRealtimeData_107";
-            this.gbRealtimeData_107.Size = new System.Drawing.Size(250, 189);
+            this.gbRealtimeData_107.Padding = new System.Windows.Forms.Padding(4);
+            this.gbRealtimeData_107.Size = new System.Drawing.Size(333, 236);
             this.gbRealtimeData_107.TabIndex = 59;
             this.gbRealtimeData_107.TabStop = false;
             this.gbRealtimeData_107.Text = "事件列表";
@@ -1765,25 +1780,29 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.ColumnHeadersHeight = 29;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 17);
+            this.dataGridView1.Location = new System.Drawing.Point(4, 22);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(244, 169);
+            this.dataGridView1.Size = new System.Drawing.Size(325, 210);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
             // 
             this.Column1.DataPropertyName = "item";
             this.Column1.HeaderText = "no";
+            this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
@@ -1791,80 +1810,88 @@
             // 
             this.Column2.DataPropertyName = "value";
             this.Column2.HeaderText = "event";
+            this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiClearData,
             this.tsmiExportData});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(139, 52);
             // 
             // tsmiClearData
             // 
             this.tsmiClearData.Name = "tsmiClearData";
-            this.tsmiClearData.Size = new System.Drawing.Size(124, 22);
+            this.tsmiClearData.Size = new System.Drawing.Size(138, 24);
             this.tsmiClearData.Text = "清空数据";
             this.tsmiClearData.Click += new System.EventHandler(this.tsmiClearData_Click);
             // 
             // tsmiExportData
             // 
             this.tsmiExportData.Name = "tsmiExportData";
-            this.tsmiExportData.Size = new System.Drawing.Size(124, 22);
+            this.tsmiExportData.Size = new System.Drawing.Size(138, 24);
             this.tsmiExportData.Text = "导出数据";
             this.tsmiExportData.Click += new System.EventHandler(this.tsmiExportData_Click);
             // 
             // lblRealtimeData_69
             // 
             this.lblRealtimeData_69.AutoSize = true;
-            this.lblRealtimeData_69.Location = new System.Drawing.Point(16, 339);
+            this.lblRealtimeData_69.Location = new System.Drawing.Point(21, 424);
+            this.lblRealtimeData_69.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_69.Name = "lblRealtimeData_69";
-            this.lblRealtimeData_69.Size = new System.Drawing.Size(53, 12);
+            this.lblRealtimeData_69.Size = new System.Drawing.Size(67, 15);
             this.lblRealtimeData_69.TabIndex = 8;
             this.lblRealtimeData_69.Text = "硬件版本";
             // 
             // lblRealtimeData_70
             // 
             this.lblRealtimeData_70.AutoSize = true;
-            this.lblRealtimeData_70.Location = new System.Drawing.Point(16, 368);
+            this.lblRealtimeData_70.Location = new System.Drawing.Point(21, 460);
+            this.lblRealtimeData_70.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_70.Name = "lblRealtimeData_70";
-            this.lblRealtimeData_70.Size = new System.Drawing.Size(53, 12);
+            this.lblRealtimeData_70.Size = new System.Drawing.Size(67, 15);
             this.lblRealtimeData_70.TabIndex = 9;
             this.lblRealtimeData_70.Text = "协议版本";
             // 
             // txtCAN_Version
             // 
-            this.txtCAN_Version.Location = new System.Drawing.Point(134, 364);
+            this.txtCAN_Version.Location = new System.Drawing.Point(179, 455);
+            this.txtCAN_Version.Margin = new System.Windows.Forms.Padding(4);
             this.txtCAN_Version.Name = "txtCAN_Version";
             this.txtCAN_Version.ReadOnly = true;
-            this.txtCAN_Version.Size = new System.Drawing.Size(100, 21);
+            this.txtCAN_Version.Size = new System.Drawing.Size(132, 25);
             this.txtCAN_Version.TabIndex = 19;
             // 
             // lblRealtimeData_68
             // 
             this.lblRealtimeData_68.AutoSize = true;
-            this.lblRealtimeData_68.Location = new System.Drawing.Point(16, 310);
+            this.lblRealtimeData_68.Location = new System.Drawing.Point(21, 388);
+            this.lblRealtimeData_68.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_68.Name = "lblRealtimeData_68";
-            this.lblRealtimeData_68.Size = new System.Drawing.Size(71, 12);
+            this.lblRealtimeData_68.Size = new System.Drawing.Size(91, 15);
             this.lblRealtimeData_68.TabIndex = 2;
             this.lblRealtimeData_68.Text = "PCU软件版本";
             // 
             // txtHardware_Version
             // 
-            this.txtHardware_Version.Location = new System.Drawing.Point(134, 335);
+            this.txtHardware_Version.Location = new System.Drawing.Point(179, 419);
+            this.txtHardware_Version.Margin = new System.Windows.Forms.Padding(4);
             this.txtHardware_Version.Name = "txtHardware_Version";
             this.txtHardware_Version.ReadOnly = true;
-            this.txtHardware_Version.Size = new System.Drawing.Size(100, 21);
+            this.txtHardware_Version.Size = new System.Drawing.Size(132, 25);
             this.txtHardware_Version.TabIndex = 18;
             // 
             // txtSoftware_Version
             // 
-            this.txtSoftware_Version.Location = new System.Drawing.Point(134, 306);
+            this.txtSoftware_Version.Location = new System.Drawing.Point(179, 382);
+            this.txtSoftware_Version.Margin = new System.Windows.Forms.Padding(4);
             this.txtSoftware_Version.Name = "txtSoftware_Version";
             this.txtSoftware_Version.ReadOnly = true;
-            this.txtSoftware_Version.Size = new System.Drawing.Size(100, 21);
+            this.txtSoftware_Version.Size = new System.Drawing.Size(132, 25);
             this.txtSoftware_Version.TabIndex = 17;
             // 
             // gbRealtimeData_109
@@ -1897,35 +1924,59 @@
             this.gbRealtimeData_109.Controls.Add(this.lblRealtimeData_69);
             this.gbRealtimeData_109.Controls.Add(this.txtCAN_Version);
             this.gbRealtimeData_109.Controls.Add(this.lblRealtimeData_70);
-            this.gbRealtimeData_109.Location = new System.Drawing.Point(965, 3);
+            this.gbRealtimeData_109.Location = new System.Drawing.Point(1287, 4);
+            this.gbRealtimeData_109.Margin = new System.Windows.Forms.Padding(4);
             this.gbRealtimeData_109.Name = "gbRealtimeData_109";
-            this.gbRealtimeData_109.Size = new System.Drawing.Size(250, 424);
+            this.gbRealtimeData_109.Padding = new System.Windows.Forms.Padding(4);
+            this.gbRealtimeData_109.Size = new System.Drawing.Size(333, 530);
             this.gbRealtimeData_109.TabIndex = 64;
             this.gbRealtimeData_109.TabStop = false;
             this.gbRealtimeData_109.Text = "PCU/版本信息";
             // 
             // gbRealtimeData_110
             // 
+            this.gbRealtimeData_110.Controls.Add(this.lblRealtimeData_89);
+            this.gbRealtimeData_110.Controls.Add(this.txtHardware_Version_Bms);
             this.gbRealtimeData_110.Controls.Add(this.lblRealtimeData_72);
             this.gbRealtimeData_110.Controls.Add(this.lblRealtimeData_71);
             this.gbRealtimeData_110.Controls.Add(this.txtDatetime);
             this.gbRealtimeData_110.Controls.Add(this.txtSoftware_Version_Bms);
             this.gbRealtimeData_110.Controls.Add(this.txtSN);
             this.gbRealtimeData_110.Controls.Add(this.lblRealtimeData_82);
-            this.gbRealtimeData_110.Location = new System.Drawing.Point(3, 431);
+            this.gbRealtimeData_110.Location = new System.Drawing.Point(4, 539);
+            this.gbRealtimeData_110.Margin = new System.Windows.Forms.Padding(4);
             this.gbRealtimeData_110.Name = "gbRealtimeData_110";
-            this.gbRealtimeData_110.Size = new System.Drawing.Size(281, 191);
+            this.gbRealtimeData_110.Padding = new System.Windows.Forms.Padding(4);
+            this.gbRealtimeData_110.Size = new System.Drawing.Size(375, 239);
             this.gbRealtimeData_110.TabIndex = 82;
             this.gbRealtimeData_110.TabStop = false;
             this.gbRealtimeData_110.Text = "BMS版本信息";
             // 
+            // lblRealtimeData_89
+            // 
+            this.lblRealtimeData_89.AutoSize = true;
+            this.lblRealtimeData_89.Location = new System.Drawing.Point(19, 158);
+            this.lblRealtimeData_89.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRealtimeData_89.Name = "lblRealtimeData_89";
+            this.lblRealtimeData_89.Size = new System.Drawing.Size(91, 15);
+            this.lblRealtimeData_89.TabIndex = 66;
+            this.lblRealtimeData_89.Text = "BMS硬件版本";
+            // 
+            // txtHardware_Version_Bms
+            // 
+            this.txtHardware_Version_Bms.Location = new System.Drawing.Point(171, 154);
+            this.txtHardware_Version_Bms.Margin = new System.Windows.Forms.Padding(4);
+            this.txtHardware_Version_Bms.Name = "txtHardware_Version_Bms";
+            this.txtHardware_Version_Bms.ReadOnly = true;
+            this.txtHardware_Version_Bms.Size = new System.Drawing.Size(185, 25);
+            this.txtHardware_Version_Bms.TabIndex = 67;
+            // 
             // RTAControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Controls.Add(this.gbRealtimeData_110);
-            this.Controls.Add(this.txtCycleTIme);
             this.Controls.Add(this.gbRealtimeData_107);
             this.Controls.Add(this.gbRealtimeData_105);
             this.Controls.Add(this.gbRealtimeData_100);
@@ -1935,8 +1986,9 @@
             this.Controls.Add(this.gbRealtimeData_103);
             this.Controls.Add(this.gbRealtimeData_101);
             this.Controls.Add(this.gbRealtimeData_109);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RTAControl";
-            this.Size = new System.Drawing.Size(1237, 675);
+            this.Size = new System.Drawing.Size(1709, 888);
             this.Load += new System.EventHandler(this.RTAControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbPrechgMosEnable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDischargeMosEnable)).EndInit();
@@ -1962,7 +2014,6 @@
             this.gbRealtimeData_110.ResumeLayout(false);
             this.gbRealtimeData_110.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -2118,7 +2169,7 @@
         private System.Windows.Forms.GroupBox gbRealtimeData_109;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.TextBox txtCycleTIme;
+        private System.Windows.Forms.TextBox txtCycleTime;
         private System.Windows.Forms.TextBox txtCelltemperature7;
         private System.Windows.Forms.TextBox txtCelltemperature5;
         private System.Windows.Forms.Label lblRealtimeData_87;
@@ -2134,5 +2185,8 @@
         private System.Windows.Forms.Label lblRealtimeData_111;
         private System.Windows.Forms.Label lblRealtimeData_112;
         private System.Windows.Forms.GroupBox gbRealtimeData_110;
+        private System.Windows.Forms.Label lblRealtimeData_83;
+        private System.Windows.Forms.Label lblRealtimeData_89;
+        private System.Windows.Forms.TextBox txtHardware_Version_Bms;
     }
 }

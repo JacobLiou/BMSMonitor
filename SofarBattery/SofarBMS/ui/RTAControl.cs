@@ -435,12 +435,12 @@ Can通信故障,Can1CommFault
                     break;
                 case 0x100FFFFF:
                     initCount++;
-                    strs = new string[3] { "0.1", "0.1", "0.1" };
+                    strs = new string[3] { "0.1", "0.1", "1" };
                     for (int i = 0; i < strs.Length; i++)
                     {
                         strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
                     }
-                    controls = new string[3] { "txtRemaining_capacity", "txtFull_capacity", "txtCycleTIme" };
+                    controls = new string[3] { "txtRemaining_capacity", "txtFull_capacity", "txtCycleTime" };
                     for (int i = 0; i < controls.Length; i++)
                     {
                         (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
@@ -448,6 +448,7 @@ Can通信故障,Can1CommFault
 
                     model.RemainingCapacity = txtRemaining_capacity.Text;
                     model.FullCapacity = txtFull_capacity.Text;
+                    model.CycleTIme = txtCycleTime.Text;
                     break;
                 case 0x1040FFFF:
                     txtCumulative_discharge_capacity.Text = (((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] & 0xff)) * 0.001).ToString();//BytesToIntger(data[1], data[0]);
@@ -633,6 +634,14 @@ Can通信故障,Can1CommFault
                         bsm_soft[i] = data[i + 2].ToString().PadLeft(2, '0');
                     }
                     txtSoftware_Version_Bms.Text = Encoding.ASCII.GetString(new byte[] { data[1] }) + string.Join("", bsm_soft);
+
+                    //BMS硬件版本
+                    string[] bsm_HW = new string[2];
+                    for (int i = 0; i < 2; i++)
+                    {
+                        bsm_HW[i] = data[i + 5].ToString().PadLeft(2, '0');
+                    }
+                    txtHardware_Version_Bms.Text = string.Join("", bsm_HW);
                     break;
             }
         }

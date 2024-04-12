@@ -271,7 +271,7 @@ namespace SofarBMS
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BMS电池上位机V1.0.1.17.20240223";
+            this.Text = "BMS电池上位机T1.0.1.18.20240407";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.statusStrip1.ResumeLayout(false);
