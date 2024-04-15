@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SofarBMS.Helper;
 using SofarBMS.Model;
+using Org.BouncyCastle.Crypto.Generators;
 
 namespace SofarBMS.UI
 {
@@ -103,6 +104,7 @@ Can通信故障,Can1CommFault
         }
 
         string[] packSN = new string[3];
+        string[] packSN_BDU = new string[3];
 
         public static CancellationTokenSource cts = null;
 
@@ -149,6 +151,9 @@ Can通信故障,Can1CommFault
                         EcanHelper.Send(new byte[] { 0x66, 0xAA, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
                                    , new byte[4] { 0xE0, Convert.ToByte(FrmMain.BMS_ID + 0x20), 0x77, 0x0B });
 
+                        //读取BDU序列号
+                        GetBduSn();
+
                         if (model != null && initCount >= 13)
                         {
                             //判断指定的文件夹是否存在
@@ -174,10 +179,22 @@ Can通信故障,Can1CommFault
             });
         }
 
+        private void GetBduSn()
+        {
+            //读取SN从4开始-6结束
+            for (int i = 4; i < 7; i++)
+            {
+                byte[] data = new byte[8];
+                data[0] = (byte)i;
+                EcanHelper.Send(data, new byte[] { 0xE0, FrmMain.BDU_ID, 0x00, 0x14 });
+            }
+        }
+
         public void analysisData(uint canID, byte[] data)
         {
             if (!(((canID & 0xff) == FrmMain.BMS_ID)
-                || ((canID & 0xff) == FrmMain.PCU_ID)))
+                || ((canID & 0xff) == FrmMain.PCU_ID)
+                || ((canID & 0xff) == FrmMain.BDU_ID)))
                 return;
 
             if (model == null)
@@ -643,6 +660,28 @@ Can通信故障,Can1CommFault
                     }
                     txtHardware_Version_Bms.Text = string.Join("", bsm_HW);
                     break;
+                case 0x1403FFFF:
+                    //软件版本
+                    string[] bdu_soft = new string[3];
+                    for (int i = 0; i < 3; i++)
+                    {
+                        bdu_soft[i] = data[i + 1].ToString().PadLeft(2, '0');
+                    }
+                    txtSoftware_Version_BDU.Text = Encoding.ASCII.GetString(new byte[] { data[0] }) + string.Join("", bdu_soft);
+
+                    //硬件版本
+                    string[] bdu_hard = new string[2];
+                    for (int i = 0; i < 2; i++)
+                    {
+                        bdu_hard[i] = data[i + 4].ToString("X2");
+                    }
+                    txtHardware_Version_BDU.Text = string.Join("", bdu_hard);
+                    break;
+                case 0x1400E0FF:
+                    string strSn_BDU = GetPackSN_BDU(data);
+                    if (!string.IsNullOrEmpty(strSn_BDU))
+                        txtSN_BDU.Text = strSn_BDU;
+                    break;
             }
         }
 
@@ -666,6 +705,33 @@ Can通信故障,Can1CommFault
             if (packSN[0] != null && packSN[1] != null && packSN[2] != null)
             {
                 string strSN = String.Join("", packSN);
+                return strSN.Substring(0, strSN.Length - 1);
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+        private string GetPackSN_BDU(byte[] data)
+        {
+            //条形码解析
+            switch (data[0])
+            {
+                case 4:
+                    packSN_BDU[0] = Encoding.Default.GetString(data).Substring(1);
+                    break;
+                case 5:
+                    packSN_BDU[1] = Encoding.Default.GetString(data).Substring(1);
+                    break;
+                case 6:
+                    packSN_BDU[2] = Encoding.Default.GetString(data).Substring(1);
+                    break;
+            }
+
+            //判断sn是否接收完成
+            if (packSN_BDU[0] != null && packSN_BDU[1] != null && packSN_BDU[2] != null)
+            {
+                string strSN = String.Join("", packSN_BDU);
                 return strSN.Substring(0, strSN.Length - 1);
             }
             else

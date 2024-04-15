@@ -170,10 +170,15 @@
             this.btnSetBatteryinfo = new System.Windows.Forms.Button();
             this.lblSystemset_103 = new System.Windows.Forms.Label();
             this.lblSystemset_104 = new System.Windows.Forms.Label();
+            this.gbSystemset_54 = new System.Windows.Forms.GroupBox();
+            this.btnSetBDUSN = new System.Windows.Forms.Button();
+            this.txtBDUSN = new System.Windows.Forms.TextBox();
+            this.lblSystemset_53 = new System.Windows.Forms.Label();
             this.gbSystemset_04.SuspendLayout();
             this.gbSystemset_27.SuspendLayout();
             this.gbSystemset_14.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.gbSystemset_54.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbSystemset_04
@@ -220,10 +225,10 @@
             this.gbSystemset_04.Controls.Add(this.lblSystemset_09);
             this.gbSystemset_04.Controls.Add(this.lblSystemset_05);
             this.gbSystemset_04.Location = new System.Drawing.Point(10, 10);
-            this.gbSystemset_04.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.gbSystemset_04.Margin = new System.Windows.Forms.Padding(10);
             this.gbSystemset_04.Name = "gbSystemset_04";
-            this.gbSystemset_04.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.gbSystemset_04.Size = new System.Drawing.Size(333, 488);
+            this.gbSystemset_04.Padding = new System.Windows.Forms.Padding(5);
+            this.gbSystemset_04.Size = new System.Drawing.Size(333, 480);
             this.gbSystemset_04.TabIndex = 37;
             this.gbSystemset_04.TabStop = false;
             this.gbSystemset_04.Text = "开关控制";
@@ -838,7 +843,7 @@
             // txt_62
             // 
             this.txt_62.Location = new System.Drawing.Point(606, 146);
-            this.txt_62.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_62.Margin = new System.Windows.Forms.Padding(2);
             this.txt_62.Name = "txt_62";
             this.txt_62.Size = new System.Drawing.Size(70, 21);
             this.txt_62.TabIndex = 13;
@@ -856,7 +861,7 @@
             // txt_61
             // 
             this.txt_61.Location = new System.Drawing.Point(606, 111);
-            this.txt_61.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_61.Margin = new System.Windows.Forms.Padding(2);
             this.txt_61.Name = "txt_61";
             this.txt_61.Size = new System.Drawing.Size(70, 21);
             this.txt_61.TabIndex = 11;
@@ -864,7 +869,7 @@
             // txt_60
             // 
             this.txt_60.Location = new System.Drawing.Point(606, 71);
-            this.txt_60.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_60.Margin = new System.Windows.Forms.Padding(2);
             this.txt_60.Name = "txt_60";
             this.txt_60.Size = new System.Drawing.Size(70, 21);
             this.txt_60.TabIndex = 10;
@@ -905,7 +910,7 @@
             // txt_65
             // 
             this.txt_65.Location = new System.Drawing.Point(606, 264);
-            this.txt_65.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_65.Margin = new System.Windows.Forms.Padding(2);
             this.txt_65.Name = "txt_65";
             this.txt_65.Size = new System.Drawing.Size(70, 21);
             this.txt_65.TabIndex = 10;
@@ -936,7 +941,7 @@
             // txt_64
             // 
             this.txt_64.Location = new System.Drawing.Point(606, 223);
-            this.txt_64.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_64.Margin = new System.Windows.Forms.Padding(2);
             this.txt_64.Name = "txt_64";
             this.txt_64.Size = new System.Drawing.Size(70, 21);
             this.txt_64.TabIndex = 11;
@@ -944,7 +949,7 @@
             // txt_63
             // 
             this.txt_63.Location = new System.Drawing.Point(606, 187);
-            this.txt_63.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_63.Margin = new System.Windows.Forms.Padding(2);
             this.txt_63.Name = "txt_63";
             this.txt_63.Size = new System.Drawing.Size(70, 21);
             this.txt_63.TabIndex = 10;
@@ -1006,7 +1011,7 @@
             this.gbSystemset_27.Controls.Add(this.lblSystemset_28);
             this.gbSystemset_27.Location = new System.Drawing.Point(351, 445);
             this.gbSystemset_27.Name = "gbSystemset_27";
-            this.gbSystemset_27.Size = new System.Drawing.Size(878, 337);
+            this.gbSystemset_27.Size = new System.Drawing.Size(878, 313);
             this.gbSystemset_27.TabIndex = 44;
             this.gbSystemset_27.TabStop = false;
             this.gbSystemset_27.Text = "PCU参数设置";
@@ -1014,7 +1019,7 @@
             // btnSetCalibration_17
             // 
             this.btnSetCalibration_17.AutoSize = true;
-            this.btnSetCalibration_17.Location = new System.Drawing.Point(290, 296);
+            this.btnSetCalibration_17.Location = new System.Drawing.Point(289, 282);
             this.btnSetCalibration_17.Name = "btnSetCalibration_17";
             this.btnSetCalibration_17.Padding = new System.Windows.Forms.Padding(1);
             this.btnSetCalibration_17.Size = new System.Drawing.Size(75, 27);
@@ -1026,7 +1031,7 @@
             // btnSetCalibration_16
             // 
             this.btnSetCalibration_16.AutoSize = true;
-            this.btnSetCalibration_16.Location = new System.Drawing.Point(290, 257);
+            this.btnSetCalibration_16.Location = new System.Drawing.Point(289, 244);
             this.btnSetCalibration_16.Name = "btnSetCalibration_16";
             this.btnSetCalibration_16.Padding = new System.Windows.Forms.Padding(1);
             this.btnSetCalibration_16.Size = new System.Drawing.Size(75, 27);
@@ -1038,7 +1043,7 @@
             // btnSetCalibration_15
             // 
             this.btnSetCalibration_15.AutoSize = true;
-            this.btnSetCalibration_15.Location = new System.Drawing.Point(290, 218);
+            this.btnSetCalibration_15.Location = new System.Drawing.Point(289, 206);
             this.btnSetCalibration_15.Name = "btnSetCalibration_15";
             this.btnSetCalibration_15.Padding = new System.Windows.Forms.Padding(1);
             this.btnSetCalibration_15.Size = new System.Drawing.Size(75, 27);
@@ -1050,7 +1055,7 @@
             // btnSetCalibration_14
             // 
             this.btnSetCalibration_14.AutoSize = true;
-            this.btnSetCalibration_14.Location = new System.Drawing.Point(290, 179);
+            this.btnSetCalibration_14.Location = new System.Drawing.Point(289, 168);
             this.btnSetCalibration_14.Name = "btnSetCalibration_14";
             this.btnSetCalibration_14.Padding = new System.Windows.Forms.Padding(1);
             this.btnSetCalibration_14.Size = new System.Drawing.Size(75, 27);
@@ -1062,7 +1067,7 @@
             // btnSetCalibration_13
             // 
             this.btnSetCalibration_13.AutoSize = true;
-            this.btnSetCalibration_13.Location = new System.Drawing.Point(290, 140);
+            this.btnSetCalibration_13.Location = new System.Drawing.Point(289, 130);
             this.btnSetCalibration_13.Name = "btnSetCalibration_13";
             this.btnSetCalibration_13.Padding = new System.Windows.Forms.Padding(1);
             this.btnSetCalibration_13.Size = new System.Drawing.Size(75, 27);
@@ -1074,7 +1079,7 @@
             // btnSetCalibration_12
             // 
             this.btnSetCalibration_12.AutoSize = true;
-            this.btnSetCalibration_12.Location = new System.Drawing.Point(290, 101);
+            this.btnSetCalibration_12.Location = new System.Drawing.Point(289, 92);
             this.btnSetCalibration_12.Name = "btnSetCalibration_12";
             this.btnSetCalibration_12.Padding = new System.Windows.Forms.Padding(1);
             this.btnSetCalibration_12.Size = new System.Drawing.Size(75, 27);
@@ -1086,7 +1091,7 @@
             // btnSetCalibration_11
             // 
             this.btnSetCalibration_11.AutoSize = true;
-            this.btnSetCalibration_11.Location = new System.Drawing.Point(290, 63);
+            this.btnSetCalibration_11.Location = new System.Drawing.Point(289, 54);
             this.btnSetCalibration_11.Name = "btnSetCalibration_11";
             this.btnSetCalibration_11.Padding = new System.Windows.Forms.Padding(1);
             this.btnSetCalibration_11.Size = new System.Drawing.Size(75, 27);
@@ -1098,7 +1103,7 @@
             // btnSetTestFlag
             // 
             this.btnSetTestFlag.AutoSize = true;
-            this.btnSetTestFlag.Location = new System.Drawing.Point(767, 57);
+            this.btnSetTestFlag.Location = new System.Drawing.Point(767, 125);
             this.btnSetTestFlag.Name = "btnSetTestFlag";
             this.btnSetTestFlag.Padding = new System.Windows.Forms.Padding(1);
             this.btnSetTestFlag.Size = new System.Drawing.Size(75, 27);
@@ -1110,7 +1115,7 @@
             // btnSetComm
             // 
             this.btnSetComm.AutoSize = true;
-            this.btnSetComm.Location = new System.Drawing.Point(290, 18);
+            this.btnSetComm.Location = new System.Drawing.Point(290, 16);
             this.btnSetComm.Name = "btnSetComm";
             this.btnSetComm.Padding = new System.Windows.Forms.Padding(1);
             this.btnSetComm.Size = new System.Drawing.Size(75, 27);
@@ -1133,49 +1138,49 @@
             // 
             // txtHV_Discharge_Current_Calibration_Coefficient
             // 
-            this.txtHV_Discharge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(211, 298);
+            this.txtHV_Discharge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(210, 285);
             this.txtHV_Discharge_Current_Calibration_Coefficient.Name = "txtHV_Discharge_Current_Calibration_Coefficient";
             this.txtHV_Discharge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(70, 21);
             this.txtHV_Discharge_Current_Calibration_Coefficient.TabIndex = 22;
             // 
             // txtHV_Charge_Current_Calibration_Coefficient
             // 
-            this.txtHV_Charge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(211, 259);
+            this.txtHV_Charge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(210, 247);
             this.txtHV_Charge_Current_Calibration_Coefficient.Name = "txtHV_Charge_Current_Calibration_Coefficient";
             this.txtHV_Charge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(70, 21);
             this.txtHV_Charge_Current_Calibration_Coefficient.TabIndex = 21;
             // 
             // txtVpbus_Calibration_Coefficient
             // 
-            this.txtVpbus_Calibration_Coefficient.Location = new System.Drawing.Point(211, 220);
+            this.txtVpbus_Calibration_Coefficient.Location = new System.Drawing.Point(210, 209);
             this.txtVpbus_Calibration_Coefficient.Name = "txtVpbus_Calibration_Coefficient";
             this.txtVpbus_Calibration_Coefficient.Size = new System.Drawing.Size(70, 21);
             this.txtVpbus_Calibration_Coefficient.TabIndex = 20;
             // 
             // txtVhvbus_Calibration_Coefficient
             // 
-            this.txtVhvbus_Calibration_Coefficient.Location = new System.Drawing.Point(211, 181);
+            this.txtVhvbus_Calibration_Coefficient.Location = new System.Drawing.Point(210, 171);
             this.txtVhvbus_Calibration_Coefficient.Name = "txtVhvbus_Calibration_Coefficient";
             this.txtVhvbus_Calibration_Coefficient.Size = new System.Drawing.Size(70, 21);
             this.txtVhvbus_Calibration_Coefficient.TabIndex = 19;
             // 
             // txtLV_Discharge_Current_Calibration_Coefficient
             // 
-            this.txtLV_Discharge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(211, 142);
+            this.txtLV_Discharge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(210, 133);
             this.txtLV_Discharge_Current_Calibration_Coefficient.Name = "txtLV_Discharge_Current_Calibration_Coefficient";
             this.txtLV_Discharge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(70, 21);
             this.txtLV_Discharge_Current_Calibration_Coefficient.TabIndex = 18;
             // 
             // txtLV_Charge_Current_Calibration_Coefficient
             // 
-            this.txtLV_Charge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(211, 103);
+            this.txtLV_Charge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(210, 95);
             this.txtLV_Charge_Current_Calibration_Coefficient.Name = "txtLV_Charge_Current_Calibration_Coefficient";
             this.txtLV_Charge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(70, 21);
             this.txtLV_Charge_Current_Calibration_Coefficient.TabIndex = 17;
             // 
             // txtLV_Calibration_Coefficient
             // 
-            this.txtLV_Calibration_Coefficient.Location = new System.Drawing.Point(211, 64);
+            this.txtLV_Calibration_Coefficient.Location = new System.Drawing.Point(210, 57);
             this.txtLV_Calibration_Coefficient.Name = "txtLV_Calibration_Coefficient";
             this.txtLV_Calibration_Coefficient.Size = new System.Drawing.Size(70, 21);
             this.txtLV_Calibration_Coefficient.TabIndex = 16;
@@ -1183,7 +1188,7 @@
             // lblSystemset_41
             // 
             this.lblSystemset_41.AutoSize = true;
-            this.lblSystemset_41.Location = new System.Drawing.Point(15, 301);
+            this.lblSystemset_41.Location = new System.Drawing.Point(14, 290);
             this.lblSystemset_41.Name = "lblSystemset_41";
             this.lblSystemset_41.Size = new System.Drawing.Size(137, 12);
             this.lblSystemset_41.TabIndex = 15;
@@ -1192,7 +1197,7 @@
             // lblSystemset_40
             // 
             this.lblSystemset_40.AutoSize = true;
-            this.lblSystemset_40.Location = new System.Drawing.Point(15, 262);
+            this.lblSystemset_40.Location = new System.Drawing.Point(14, 252);
             this.lblSystemset_40.Name = "lblSystemset_40";
             this.lblSystemset_40.Size = new System.Drawing.Size(137, 12);
             this.lblSystemset_40.TabIndex = 14;
@@ -1201,7 +1206,7 @@
             // lblSystemset_39
             // 
             this.lblSystemset_39.AutoSize = true;
-            this.lblSystemset_39.Location = new System.Drawing.Point(15, 223);
+            this.lblSystemset_39.Location = new System.Drawing.Point(14, 214);
             this.lblSystemset_39.Name = "lblSystemset_39";
             this.lblSystemset_39.Size = new System.Drawing.Size(143, 12);
             this.lblSystemset_39.TabIndex = 13;
@@ -1210,7 +1215,7 @@
             // lblSystemset_38
             // 
             this.lblSystemset_38.AutoSize = true;
-            this.lblSystemset_38.Location = new System.Drawing.Point(15, 184);
+            this.lblSystemset_38.Location = new System.Drawing.Point(14, 176);
             this.lblSystemset_38.Name = "lblSystemset_38";
             this.lblSystemset_38.Size = new System.Drawing.Size(149, 12);
             this.lblSystemset_38.TabIndex = 12;
@@ -1219,7 +1224,7 @@
             // lblSystemset_37
             // 
             this.lblSystemset_37.AutoSize = true;
-            this.lblSystemset_37.Location = new System.Drawing.Point(15, 145);
+            this.lblSystemset_37.Location = new System.Drawing.Point(14, 138);
             this.lblSystemset_37.Name = "lblSystemset_37";
             this.lblSystemset_37.Size = new System.Drawing.Size(137, 12);
             this.lblSystemset_37.TabIndex = 11;
@@ -1228,7 +1233,7 @@
             // lblSystemset_36
             // 
             this.lblSystemset_36.AutoSize = true;
-            this.lblSystemset_36.Location = new System.Drawing.Point(15, 106);
+            this.lblSystemset_36.Location = new System.Drawing.Point(14, 100);
             this.lblSystemset_36.Name = "lblSystemset_36";
             this.lblSystemset_36.Size = new System.Drawing.Size(137, 12);
             this.lblSystemset_36.TabIndex = 10;
@@ -1237,7 +1242,7 @@
             // lblSystemset_35
             // 
             this.lblSystemset_35.AutoSize = true;
-            this.lblSystemset_35.Location = new System.Drawing.Point(15, 68);
+            this.lblSystemset_35.Location = new System.Drawing.Point(14, 62);
             this.lblSystemset_35.Name = "lblSystemset_35";
             this.lblSystemset_35.Size = new System.Drawing.Size(113, 12);
             this.lblSystemset_35.TabIndex = 9;
@@ -1246,7 +1251,7 @@
             // ckSystemset_33
             // 
             this.ckSystemset_33.AutoSize = true;
-            this.ckSystemset_33.Location = new System.Drawing.Point(537, 144);
+            this.ckSystemset_33.Location = new System.Drawing.Point(538, 134);
             this.ckSystemset_33.Name = "ckSystemset_33";
             this.ckSystemset_33.Size = new System.Drawing.Size(60, 16);
             this.ckSystemset_33.TabIndex = 8;
@@ -1256,7 +1261,7 @@
             // ckSystemset_32
             // 
             this.ckSystemset_32.AutoSize = true;
-            this.ckSystemset_32.Location = new System.Drawing.Point(537, 118);
+            this.ckSystemset_32.Location = new System.Drawing.Point(538, 108);
             this.ckSystemset_32.Name = "ckSystemset_32";
             this.ckSystemset_32.Size = new System.Drawing.Size(72, 16);
             this.ckSystemset_32.TabIndex = 7;
@@ -1266,7 +1271,7 @@
             // ckSystemset_31
             // 
             this.ckSystemset_31.AutoSize = true;
-            this.ckSystemset_31.Location = new System.Drawing.Point(537, 92);
+            this.ckSystemset_31.Location = new System.Drawing.Point(538, 82);
             this.ckSystemset_31.Name = "ckSystemset_31";
             this.ckSystemset_31.Size = new System.Drawing.Size(60, 16);
             this.ckSystemset_31.TabIndex = 6;
@@ -1276,7 +1281,7 @@
             // ckSystemset_30
             // 
             this.ckSystemset_30.AutoSize = true;
-            this.ckSystemset_30.Location = new System.Drawing.Point(537, 66);
+            this.ckSystemset_30.Location = new System.Drawing.Point(538, 56);
             this.ckSystemset_30.Name = "ckSystemset_30";
             this.ckSystemset_30.Size = new System.Drawing.Size(72, 16);
             this.ckSystemset_30.TabIndex = 5;
@@ -1289,7 +1294,7 @@
             this.cbbSetComm.Items.AddRange(new object[] {
             "停机",
             "正常"});
-            this.cbbSetComm.Location = new System.Drawing.Point(211, 20);
+            this.cbbSetComm.Location = new System.Drawing.Point(210, 20);
             this.cbbSetComm.Name = "cbbSetComm";
             this.cbbSetComm.Size = new System.Drawing.Size(70, 20);
             this.cbbSetComm.TabIndex = 4;
@@ -1304,7 +1309,7 @@
             // lblSystemset_29
             // 
             this.lblSystemset_29.AutoSize = true;
-            this.lblSystemset_29.Location = new System.Drawing.Point(453, 69);
+            this.lblSystemset_29.Location = new System.Drawing.Point(454, 59);
             this.lblSystemset_29.Name = "lblSystemset_29";
             this.lblSystemset_29.Size = new System.Drawing.Size(53, 12);
             this.lblSystemset_29.TabIndex = 2;
@@ -1313,7 +1318,7 @@
             // lblSystemset_34
             // 
             this.lblSystemset_34.AutoSize = true;
-            this.lblSystemset_34.Location = new System.Drawing.Point(18, 24);
+            this.lblSystemset_34.Location = new System.Drawing.Point(14, 24);
             this.lblSystemset_34.Name = "lblSystemset_34";
             this.lblSystemset_34.Size = new System.Drawing.Size(53, 12);
             this.lblSystemset_34.TabIndex = 1;
@@ -1402,7 +1407,7 @@
             // txt_101
             // 
             this.txt_101.Location = new System.Drawing.Point(606, 297);
-            this.txt_101.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_101.Margin = new System.Windows.Forms.Padding(2);
             this.txt_101.Name = "txt_101";
             this.txt_101.Size = new System.Drawing.Size(70, 21);
             this.txt_101.TabIndex = 54;
@@ -1723,9 +1728,9 @@
             this.groupBox1.Controls.Add(this.btnSetBatteryinfo);
             this.groupBox1.Controls.Add(this.lblSystemset_103);
             this.groupBox1.Controls.Add(this.lblSystemset_104);
-            this.groupBox1.Location = new System.Drawing.Point(10, 510);
+            this.groupBox1.Location = new System.Drawing.Point(10, 493);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(333, 271);
+            this.groupBox1.Size = new System.Drawing.Size(333, 158);
             this.groupBox1.TabIndex = 46;
             this.groupBox1.TabStop = false;
             // 
@@ -1743,7 +1748,7 @@
             // txtFlag
             // 
             this.txtFlag.Location = new System.Drawing.Point(226, 124);
-            this.txtFlag.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFlag.Margin = new System.Windows.Forms.Padding(2);
             this.txtFlag.Name = "txtFlag";
             this.txtFlag.Size = new System.Drawing.Size(41, 21);
             this.txtFlag.TabIndex = 60;
@@ -1774,7 +1779,7 @@
             // txt_104
             // 
             this.txt_104.Location = new System.Drawing.Point(101, 59);
-            this.txt_104.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_104.Margin = new System.Windows.Forms.Padding(2);
             this.txt_104.Name = "txt_104";
             this.txt_104.Size = new System.Drawing.Size(120, 21);
             this.txt_104.TabIndex = 55;
@@ -1832,11 +1837,52 @@
             this.lblSystemset_104.TabIndex = 13;
             this.lblSystemset_104.Text = "电芯型号编号";
             // 
+            // gbSystemset_54
+            // 
+            this.gbSystemset_54.Controls.Add(this.btnSetBDUSN);
+            this.gbSystemset_54.Controls.Add(this.txtBDUSN);
+            this.gbSystemset_54.Controls.Add(this.lblSystemset_53);
+            this.gbSystemset_54.Location = new System.Drawing.Point(10, 658);
+            this.gbSystemset_54.Name = "gbSystemset_54";
+            this.gbSystemset_54.Size = new System.Drawing.Size(333, 100);
+            this.gbSystemset_54.TabIndex = 47;
+            this.gbSystemset_54.TabStop = false;
+            this.gbSystemset_54.Text = "BDU参数设置";
+            // 
+            // btnSetBDUSN
+            // 
+            this.btnSetBDUSN.AutoSize = true;
+            this.btnSetBDUSN.Location = new System.Drawing.Point(248, 20);
+            this.btnSetBDUSN.Name = "btnSetBDUSN";
+            this.btnSetBDUSN.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSetBDUSN.Size = new System.Drawing.Size(72, 27);
+            this.btnSetBDUSN.TabIndex = 26;
+            this.btnSetBDUSN.Text = "写入";
+            this.btnSetBDUSN.UseVisualStyleBackColor = true;
+            this.btnSetBDUSN.Click += new System.EventHandler(this.btnSetBDUSN_Click);
+            // 
+            // txtBDUSN
+            // 
+            this.txtBDUSN.Location = new System.Drawing.Point(100, 24);
+            this.txtBDUSN.Name = "txtBDUSN";
+            this.txtBDUSN.Size = new System.Drawing.Size(145, 21);
+            this.txtBDUSN.TabIndex = 25;
+            // 
+            // lblSystemset_53
+            // 
+            this.lblSystemset_53.AutoSize = true;
+            this.lblSystemset_53.Location = new System.Drawing.Point(6, 27);
+            this.lblSystemset_53.Name = "lblSystemset_53";
+            this.lblSystemset_53.Size = new System.Drawing.Size(59, 12);
+            this.lblSystemset_53.TabIndex = 24;
+            this.lblSystemset_53.Text = "BDU序列号";
+            // 
             // BMSSystemSetControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Controls.Add(this.gbSystemset_54);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSystemset_46);
             this.Controls.Add(this.gbSystemset_27);
@@ -1853,6 +1899,8 @@
             this.gbSystemset_14.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.gbSystemset_54.ResumeLayout(false);
+            this.gbSystemset_54.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2002,5 +2050,9 @@
         private System.Windows.Forms.Button btnSystemset_43_Close10;
         private System.Windows.Forms.Button btnSystemset_44_Open10;
         private System.Windows.Forms.Label lblSystemset_52;
+        private System.Windows.Forms.GroupBox gbSystemset_54;
+        private System.Windows.Forms.Button btnSetBDUSN;
+        private System.Windows.Forms.TextBox txtBDUSN;
+        private System.Windows.Forms.Label lblSystemset_53;
     }
 }

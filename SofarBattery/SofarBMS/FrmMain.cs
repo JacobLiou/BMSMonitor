@@ -23,6 +23,7 @@ namespace SofarBMS
         public static string WIN_ID = "";
         public static byte BMS_ID = 0x01;
         public static byte PCU_ID = 0x21;
+        public static byte BDU_ID = 0xA1;
         public static List<FaultInfo> FaultInfos = new List<FaultInfo>() {
                     new FaultInfo("单体过压保护,CELL_U_H1",0,0,0,0,2),
                     new FaultInfo("单体过压告警,CELL_U_H2",0,1,0,0,1),
@@ -466,6 +467,7 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
                 int num = cbbIDP.SelectedIndex == 1 ? 0x10 : 0x0;
                 FrmMain.BMS_ID = Convert.ToByte(cbbID.SelectedIndex + 1 + num);
                 FrmMain.PCU_ID = Convert.ToByte(FrmMain.BMS_ID + 0x20);
+                FrmMain.BDU_ID = Convert.ToByte(FrmMain.BMS_ID + 0xA0);
             }
         }
 
@@ -475,6 +477,7 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
             int num = cbbIDP.SelectedIndex == 1 ? 0x10 : 0x0;
             FrmMain.BMS_ID = Convert.ToByte(cbbID.SelectedIndex + 1 + num);
             FrmMain.PCU_ID = Convert.ToByte(FrmMain.BMS_ID + 0x20);
+            FrmMain.BDU_ID = Convert.ToByte(FrmMain.BMS_ID + 0xA0);
         }
         #endregion
 

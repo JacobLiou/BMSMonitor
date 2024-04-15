@@ -40,6 +40,7 @@ namespace SofarBMS.Model
             ,new Protocols(3,0x07FB41FF),new Protocols(3,0x07FC41FF),new Protocols(3,0x07FD41FF),new Protocols(3,0x07FE41FF),new Protocols(3,0x07FF41FF),new Protocols(3,0x07FF5FFF)
             ,new Protocols(3,0xB605FFF),new Protocols(3,0xB615FFF),new Protocols(3,0xB625FFF),new Protocols(3,0xB635FFF),new Protocols(3,0xB665FFF),new Protocols(3,0x0B70E0FF),new Protocols(3,0x0B71E0FF),new Protocols(3,0x0B72E0FF),new Protocols(3,0x0B73E0FF),new Protocols(3,0x0B74E0FF),new Protocols(3,0x0B75E0FF),new Protocols(3,0x0B76E0FF),new Protocols(3,0x0B77E0FF),new Protocols(3,0x0B78E0FF),new Protocols(3,0x0B6A5FFF)
             ,new Protocols(3,0xB70E0FF),new Protocols(3,0xB71E0FF),new Protocols(3,0xB72E0FF),new Protocols(3,0xB73E0FF),new Protocols(3,0xB74E0FF),new Protocols(3,0xB76E0FF),new Protocols(3,0xB77E0FF),new Protocols(3,0x0B78E0FF),new Protocols(3,0x0B6A5FFF)
+            ,new Protocols(3,0x1403FFFF),new Protocols(3,0x1400E0FF)
         };
         public static bool IsConnection { get; set; }
         private static int Can_error_count = 0;
