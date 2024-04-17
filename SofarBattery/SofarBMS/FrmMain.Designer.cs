@@ -59,9 +59,9 @@ namespace SofarBMS
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1232, 750);
+            this.panel1.Size = new System.Drawing.Size(1643, 949);
             this.panel1.TabIndex = 27;
             // 
             // Menu
@@ -70,8 +70,8 @@ namespace SofarBMS
             this.Menu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.Menu.Location = new System.Drawing.Point(0, 0);
             this.Menu.Name = "Menu";
-            this.Menu.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.Menu.Size = new System.Drawing.Size(1232, 30);
+            this.Menu.Padding = new System.Windows.Forms.Padding(5, 1, 0, 1);
+            this.Menu.Size = new System.Drawing.Size(1643, 38);
             this.Menu.TabIndex = 0;
             this.Menu.Text = "menuStrip1";
             // 
@@ -80,23 +80,25 @@ namespace SofarBMS
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 827);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 1035);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1232, 22);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1643, 26);
             this.statusStrip1.TabIndex = 28;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(80, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(99, 20);
             this.toolStripStatusLabel1.Text = "错误码反馈值";
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 30);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 38);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -107,8 +109,9 @@ namespace SofarBMS
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1232, 797);
+            this.splitContainer1.Size = new System.Drawing.Size(1643, 997);
             this.splitContainer1.SplitterDistance = 43;
+            this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 29;
             // 
             // panel2
@@ -125,17 +128,18 @@ namespace SofarBMS
             this.panel2.Controls.Add(this.lblSp_02);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1232, 43);
+            this.panel2.Size = new System.Drawing.Size(1643, 43);
             this.panel2.TabIndex = 1;
             // 
             // btnClearInit
             // 
             this.btnClearInit.AutoSize = true;
-            this.btnClearInit.Location = new System.Drawing.Point(1071, 8);
+            this.btnClearInit.Location = new System.Drawing.Point(1428, 10);
+            this.btnClearInit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClearInit.Name = "btnClearInit";
-            this.btnClearInit.Size = new System.Drawing.Size(149, 28);
+            this.btnClearInit.Size = new System.Drawing.Size(199, 35);
             this.btnClearInit.TabIndex = 54;
             this.btnClearInit.Text = "清除出厂设置";
             this.btnClearInit.UseVisualStyleBackColor = true;
@@ -150,19 +154,20 @@ namespace SofarBMS
             this.cbbIDP.Items.AddRange(new object[] {
             "1",
             "2"});
-            this.cbbIDP.Location = new System.Drawing.Point(58, 10);
-            this.cbbIDP.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.cbbIDP.Location = new System.Drawing.Point(77, 12);
+            this.cbbIDP.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.cbbIDP.Name = "cbbIDP";
-            this.cbbIDP.Size = new System.Drawing.Size(60, 23);
+            this.cbbIDP.Size = new System.Drawing.Size(79, 27);
             this.cbbIDP.TabIndex = 53;
             this.cbbIDP.SelectedIndexChanged += new System.EventHandler(this.cbbIDP_SelectedIndexChanged);
             // 
             // btnResetCAN
             // 
             this.btnResetCAN.AutoSize = true;
-            this.btnResetCAN.Location = new System.Drawing.Point(472, 7);
+            this.btnResetCAN.Location = new System.Drawing.Point(629, 9);
+            this.btnResetCAN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnResetCAN.Name = "btnResetCAN";
-            this.btnResetCAN.Size = new System.Drawing.Size(67, 28);
+            this.btnResetCAN.Size = new System.Drawing.Size(89, 35);
             this.btnResetCAN.TabIndex = 50;
             this.btnResetCAN.Text = "重连";
             this.btnResetCAN.UseVisualStyleBackColor = true;
@@ -185,9 +190,10 @@ namespace SofarBMS
             "666Kbps",
             "800Kbps",
             "1000Kbps"});
-            this.cbbBaud.Location = new System.Drawing.Point(313, 10);
+            this.cbbBaud.Location = new System.Drawing.Point(417, 12);
+            this.cbbBaud.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbbBaud.Name = "cbbBaud";
-            this.cbbBaud.Size = new System.Drawing.Size(71, 23);
+            this.cbbBaud.Size = new System.Drawing.Size(93, 27);
             this.cbbBaud.TabIndex = 42;
             // 
             // cbbID
@@ -204,10 +210,10 @@ namespace SofarBMS
             "6",
             "7",
             "8"});
-            this.cbbID.Location = new System.Drawing.Point(158, 10);
-            this.cbbID.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.cbbID.Location = new System.Drawing.Point(211, 12);
+            this.cbbID.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.cbbID.Name = "cbbID";
-            this.cbbID.Size = new System.Drawing.Size(60, 23);
+            this.cbbID.Size = new System.Drawing.Size(79, 27);
             this.cbbID.TabIndex = 31;
             this.cbbID.SelectedIndexChanged += new System.EventHandler(this.cbbID_SelectedIndexChanged);
             // 
@@ -215,9 +221,10 @@ namespace SofarBMS
             // 
             this.lblSp_01.AutoSize = true;
             this.lblSp_01.ForeColor = System.Drawing.Color.Black;
-            this.lblSp_01.Location = new System.Drawing.Point(262, 15);
+            this.lblSp_01.Location = new System.Drawing.Point(349, 19);
+            this.lblSp_01.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSp_01.Name = "lblSp_01";
-            this.lblSp_01.Size = new System.Drawing.Size(41, 12);
+            this.lblSp_01.Size = new System.Drawing.Size(52, 15);
             this.lblSp_01.TabIndex = 41;
             this.lblSp_01.Text = "波特率";
             // 
@@ -225,18 +232,20 @@ namespace SofarBMS
             // 
             this.lblSp_03.AutoSize = true;
             this.lblSp_03.ForeColor = System.Drawing.Color.Black;
-            this.lblSp_03.Location = new System.Drawing.Point(136, 15);
+            this.lblSp_03.Location = new System.Drawing.Point(181, 19);
+            this.lblSp_03.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSp_03.Name = "lblSp_03";
-            this.lblSp_03.Size = new System.Drawing.Size(17, 12);
+            this.lblSp_03.Size = new System.Drawing.Size(23, 15);
             this.lblSp_03.TabIndex = 47;
             this.lblSp_03.Text = "ID";
             // 
             // btnConnectionCAN
             // 
             this.btnConnectionCAN.AutoSize = true;
-            this.btnConnectionCAN.Location = new System.Drawing.Point(399, 7);
+            this.btnConnectionCAN.Location = new System.Drawing.Point(532, 9);
+            this.btnConnectionCAN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnConnectionCAN.Name = "btnConnectionCAN";
-            this.btnConnectionCAN.Size = new System.Drawing.Size(67, 28);
+            this.btnConnectionCAN.Size = new System.Drawing.Size(89, 35);
             this.btnConnectionCAN.TabIndex = 43;
             this.btnConnectionCAN.Text = "连接";
             this.btnConnectionCAN.UseVisualStyleBackColor = true;
@@ -246,10 +255,9 @@ namespace SofarBMS
             // 
             this.lblSp_02.AutoSize = true;
             this.lblSp_02.ForeColor = System.Drawing.Color.Black;
-            this.lblSp_02.Location = new System.Drawing.Point(13, 15);
-            this.lblSp_02.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSp_02.Location = new System.Drawing.Point(17, 19);
             this.lblSp_02.Name = "lblSp_02";
-            this.lblSp_02.Size = new System.Drawing.Size(41, 12);
+            this.lblSp_02.Size = new System.Drawing.Size(52, 15);
             this.lblSp_02.TabIndex = 30;
             this.lblSp_02.Text = "电池簇";
             // 
@@ -260,18 +268,18 @@ namespace SofarBMS
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1232, 849);
+            this.ClientSize = new System.Drawing.Size(1643, 1061);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.Menu);
             this.Controls.Add(this.statusStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.Menu;
-            this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BMS电池上位机T1.0.1.19.20240415";
+            this.Text = "BMS电池上位机T1.0.1.19.20240416";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.statusStrip1.ResumeLayout(false);
