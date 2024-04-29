@@ -130,7 +130,7 @@ namespace SofarBMS.UI
                     {
                         //获取实时数据指令
                         EcanHelper.Send(new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
-                                       , new byte[] { 0xE0, 0xFF, 0x02C, 0x10 });
+                                       , new byte[] { 0xE0, 0xFF, 0x2C, 0x10 });
                     }
 
                     lock (EcanHelper._locker)
@@ -235,7 +235,7 @@ namespace SofarBMS.UI
                             strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
                         }
 
-                        controls = new string[4] { "txtBatteryVolt_" + id, "txtLoadVolt", "txtBatteryCurrent_" + id, "txtSOC" };
+                        controls = new string[4] { "txtBatteryVolt_" + id, "txtLoadVolt", "txtBatteryCurrent_" + id, "txtSOC_" + id };
                         for (int i = 0; i < strs.Length; i++)
                         {
                             if (this.Controls.Find(controls[i], true).Length >= 1)
@@ -259,6 +259,19 @@ namespace SofarBMS.UI
                         strs[1] = BytesToIntger(data[4], data[3], 0.1);
 
                         controls = new string[2] { "txtBatMaxCellTemp_" + id, "txtBatMinCellTemp_" + id };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
+                        break;
+
+                    case 0x100FFFFF:
+                        strs = new string[2] { "0.1", "0.1" };
+                        for (int i = 0; i < strs.Length; i++)
+                        {
+                            strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
+                        }
+                        controls = new string[2] { "txtRemainingcapacity_" + id, "txtFullcapacity_" + id };
                         for (int i = 0; i < controls.Length; i++)
                         {
                             (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
@@ -349,7 +362,7 @@ namespace SofarBMS.UI
 
                         if (this.Controls.Find(BmsDsgReady, true).Length > 0)
                         {
-                            if (GetBit(data[6], 3) == 1)
+                            if (GetBit(data[6], 4) == 1)
                             {
                                 (this.Controls.Find(BmsDsgReady, true)[0] as Label).BackColor = Color.FromArgb(255, 0, 51);
                             }
@@ -363,7 +376,7 @@ namespace SofarBMS.UI
 
                         if (this.Controls.Find(BmsChgReady, true).Length > 0)
                         {
-                            if (GetBit(data[6], 4) == 1)
+                            if (GetBit(data[6], 3) == 1)
                             {
                                 (this.Controls.Find(BmsChgReady, true)[0] as Label).BackColor = Color.FromArgb(255, 0, 51);
                             }
@@ -426,7 +439,8 @@ namespace SofarBMS.UI
 
                 string[] labelContrl = new string[] { "lblRealtimeData_19", "lblRealtimeData_21", "lblRealtimeData_24", "lblRealtimeData_26", "lblRealtimeData_14", "lblRealtimeData_16",
                 "ChargeMosEnable","DischargeMosEnable","PrechgMosEnable","FaultEnable","ProtectionEnable","AlarmEnable",
-                "lblBmsStartState","lblBmsDsgReady","lblBmsChgReady"};
+                "lblBmsStartState","lblBmsDsgReady","lblBmsChgReady",
+                "lblRealtimeData_17","lblRealtimeData_52","lblRealtimeData_53"};
 
                 foreach (var item in labelContrl)
                 {
@@ -591,6 +605,11 @@ namespace SofarBMS.UI
             }
 
             return (b & _byte) == _byte ? 1 : 0;
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

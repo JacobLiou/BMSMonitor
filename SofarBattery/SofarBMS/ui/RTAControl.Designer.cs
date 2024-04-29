@@ -1966,12 +1966,12 @@
             // 
             // gbRealtimeData_120
             // 
-            this.gbRealtimeData_120.Controls.Add(this.lblRealtimeData_92);
             this.gbRealtimeData_120.Controls.Add(this.txtHardware_Version_BDU);
-            this.gbRealtimeData_120.Controls.Add(this.lblRealtimeData_91);
             this.gbRealtimeData_120.Controls.Add(this.txtSoftware_Version_BDU);
-            this.gbRealtimeData_120.Controls.Add(this.lblRealtimeData_90);
             this.gbRealtimeData_120.Controls.Add(this.txtSN_BDU);
+            this.gbRealtimeData_120.Controls.Add(this.lblRealtimeData_92);
+            this.gbRealtimeData_120.Controls.Add(this.lblRealtimeData_91);
+            this.gbRealtimeData_120.Controls.Add(this.lblRealtimeData_90);
             this.gbRealtimeData_120.Location = new System.Drawing.Point(286, 474);
             this.gbRealtimeData_120.Name = "gbRealtimeData_120";
             this.gbRealtimeData_120.Size = new System.Drawing.Size(221, 138);

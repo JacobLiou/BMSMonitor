@@ -7,6 +7,7 @@ using System.Threading;
 using SofarBMS.Helper;
 using System.Diagnostics;
 using MySqlX.XDevAPI.Common;
+using SofarBMS.Queue;
 
 namespace SofarBMS.Model
 {
@@ -24,10 +25,11 @@ namespace SofarBMS.Model
         public static uint gSendMsgBufHead;
         public static uint gSendMsgBufTail;
 
-
         /*创建一个更新收发数据显示的线程*/
         public readonly static object _locker = new object();
         public static Queue<CAN_OBJ> _task = new Queue<CAN_OBJ>();
+        public static MultiLevelQueueManager _queueManager = new MultiLevelQueueManager();
+
         public static EventWaitHandle _wh = new AutoResetEvent(false);
         public static List<Protocols> protocols = new List<Protocols>() {
             new Protocols(3,0x1020FFFF),new Protocols(3,0x1020E0FF),
@@ -136,8 +138,8 @@ namespace SofarBMS.Model
                         }
 
                         uint revId = coMsg.ID | index;
-
-                        if (revId == item.Id)
+                        uint devId= AnalysisID(coMsg.ID);
+                        //if (revId == item.Id)
                         {
                             string ss = "";
                             for (int i = 0; i < coMsg.Data.Length; i++)
@@ -146,13 +148,37 @@ namespace SofarBMS.Model
                             }
 
                             Console.WriteLine($"CAN_ID:{coMsg.ID.ToString("X8")},Data：{ss.ToString()}");
+                            //EnqueueTask(coMsg);
 
-                            EnqueueTask(coMsg);
+                            QueueItem itemQ = new QueueItem((int)devId, coMsg);
+                            _queueManager.Enqueue(itemQ);
                             break;
                         }
                     }
                 }
             }
+        }
+
+        private static uint AnalysisID(uint id)
+        {
+            // SA源地址（bit0~bit7）
+            uint sa = (id & 0xFF);
+
+            // TA目标地址（bit8~bit15）
+            uint ta = ((id >> 8) & 0xFF);
+
+            // PF功能码(bit16~bit26)
+            uint pf = ((id >> 16) & 0x7FF);
+
+            // PR优先级(bit27~bit28)
+            uint pr = ((id >> 27) & 0x3);
+
+            // R预留(bit29~31)
+            uint r = ((id >> 29) & 0x7);
+
+            // 打印每行数据
+            //Debug.WriteLine($"0x{id:X},{sa:X},{ta:X},{pf:X},{pr:X},{r:X}");
+            return sa;
         }
 
         public static string ReadError()
