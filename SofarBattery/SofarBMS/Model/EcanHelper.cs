@@ -158,13 +158,12 @@ namespace SofarBMS.Model
                             //用于确定指定文件是否存在
                             if (!File.Exists(filePath))
                             {
-                                File.AppendAllText(filePath, RealtimeData.GetHeader() + "\r\n");
+                                File.AppendAllText(filePath, new RealtimeData2().GetHeader() + "\r\n");
                             }
-                            Console.WriteLine($"CAN_ID:{coMsg.ID.ToString("X8")},Data：{ss.ToString()}");
+                            Console.WriteLine($"Priority:{devId} CAN_ID:{coMsg.ID.ToString("X8")},Data：{ss.ToString()}");
                             //EnqueueTask(coMsg);
 
-                            QueueItem itemQ = new QueueItem((int)devId, coMsg);
-                            _queueManager.Enqueue(itemQ);
+                            _queueManager.Enqueue(new QueueItem((int)devId, coMsg));
                             break;
                         }
                     }

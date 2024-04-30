@@ -66,9 +66,9 @@ namespace SofarBMS
                         if (!EcanHelper.IsConnection)
                             continue;
 
-                        //获取实时数据指令
-                        EcanHelper.Send(new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
-                                       , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2C, 0x10 });
+                        ////获取实时数据指令
+                        //EcanHelper.Send(new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                        //               , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2C, 0x10 });
 
                         // 等待一段时间，然后停止消费者线程（仅为示例，实际应用中可能有其他停止条件）  
                         Task.Delay(1000 * 1).Wait();
@@ -98,11 +98,11 @@ namespace SofarBMS
 
                     var filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//BTS5K_{id}_{DateTime.Now.ToString("yyyy-MM-dd")}.csv";
 
-                    //用于确定指定文件是否存在
-                    if (!File.Exists(filePath))
-                    {
-                        File.AppendAllText(filePath, item.GetHeader() + "\r\n");
-                    }
+                    ////用于确定指定文件是否存在
+                    //if (!File.Exists(filePath))
+                    //{
+                    //    File.AppendAllText(filePath, item.GetHeader() + "\r\n");
+                    //}
                     File.AppendAllText(filePath, item.GetValue() + "\r\n");
                 }
 
@@ -223,7 +223,7 @@ namespace SofarBMS
             return true;
         }
 
-        private void PrintInfo(CAN_OBJ coMsg)
+        private void PrintInfo(CAN_OBJ coMsg, int p = -1)
         {
             if (this.InvokeRequired)
             {
@@ -235,7 +235,7 @@ namespace SofarBMS
                         ss += " " + coMsg.Data[i].ToString("X2");
                     }
 
-                    richTextBox1.AppendText($"{System.DateTime.Now.ToString("HH:mm:ss:fff")} Dequeu   CAN_ID:{coMsg.ID.ToString("X8")},Data：{ss.ToString()}\r\n");
+                    richTextBox1.AppendText($"{System.DateTime.Now.ToString("HH:mm:ss:fff")} Priority{p} Dequeu   CAN_ID:{coMsg.ID.ToString("X8")},Data：{ss.ToString()}\r\n");
                     richTextBox1.ScrollToCaret();
                 }));
             }
@@ -253,11 +253,18 @@ namespace SofarBMS
 
         public void analysisData(uint canID, byte[] data)
         {
-            if ((canID & 0xff) != FrmMain.BMS_ID)
-                return;
+            // if ((canID & 0xff) != FrmMain.BMS_ID)
+            //     return;
 
             uint devID = EcanHelper.AnalysisID(canID);
+            if (devID == 0x2)
+            {
 
+            }
+            else if (devID == 0x1)
+            {
+
+            }
             if (model == null)
                 model = new RealtimeData2();
 
@@ -319,14 +326,14 @@ namespace SofarBMS
                         };
                     for (short i = 0; i < setContorls.Count; i++)
                     {
-                        if (GetBit(data[5], i) == 1 && this.Controls.Find(setContorls[i], true) != null)
-                        {
-                            (this.Controls.Find(setContorls[i], true)[0] as PictureBox).BackColor = Color.Red;
-                        }
-                        else
-                        {
-                            (this.Controls.Find(setContorls[i], true)[0] as PictureBox).BackColor = Color.Green;
-                        }
+                        //if (GetBit(data[5], i) == 1 && this.Controls.Find(setContorls[i], true) != null)
+                        //{
+                        //    (this.Controls.Find(setContorls[i], true)[0] as PictureBox).BackColor = Color.Red;
+                        //}
+                        //else
+                        //{
+                        //    (this.Controls.Find(setContorls[i], true)[0] as PictureBox).BackColor = Color.Green;
+                        //}
                     }
                     model.ChargeCurrentLimitation = allQueue[devID].ChargeCurrentLimitation = Convert.ToDouble(strs[0]);
                     model.DischargeCurrentLimitation = allQueue[devID].DischargeCurrentLimitation = Convert.ToDouble(strs[1]);
@@ -779,21 +786,36 @@ namespace SofarBMS
                 cts = new CancellationTokenSource();
             }
 
-            foreach (var queue in EcanHelper._queueManager._queues.Values)
+            Task.Run(() =>
             {
-                Task.Run(() =>
+                foreach (var queue in EcanHelper._queueManager._queues.Values)
                 {
-                    foreach (var item in queue.GetConsumingEnumerable())
+                    try
                     {
-                        if (item.Data == null)
-                            continue;
+                        foreach (var item in queue.GetConsumingEnumerable(cts.Token))
+                        {
+                            if (item.Data == null)
+                                continue;
 
-                        CAN_OBJ v = (CAN_OBJ)item.Data;
-                        analysisData(v.ID, v.Data);
-                        PrintInfo(v);
+                            if (item.Priority == 1)
+                            {
+
+                            }
+                            else if (item.Priority == 2)
+                            {
+
+                            }
+
+                            CAN_OBJ v = (CAN_OBJ)item.Data;
+                            analysisData(v.ID, v.Data);
+                            PrintInfo(v, item.Priority);
+                        }
                     }
-                }, cts.Token);
-            }
+                    catch (Exception)
+                    {
+                    }
+                }
+            }, cts.Token);
         }
 
         private void btnStartThread_Click(object sender, EventArgs e)
