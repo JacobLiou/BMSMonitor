@@ -8,6 +8,7 @@ using SofarBMS.Helper;
 using System.Diagnostics;
 using MySqlX.XDevAPI.Common;
 using SofarBMS.Queue;
+using System.IO;
 
 namespace SofarBMS.Model
 {
@@ -40,8 +41,8 @@ namespace SofarBMS.Model
             ,new Protocols(3,0x1010E0FF),new Protocols(3,0x1011E0FF),new Protocols(3,0x1012E0FF),new Protocols(3,0x1013E0FF),new Protocols(3,0x1014E0FF),new Protocols(3,0x1015E0FF),new Protocols(3,0x1016E0FF),new Protocols(3,0x1017E0FF),new Protocols(3,0x1018E0FF),new Protocols(3,0x1019E0FF),new Protocols(3,0x101AE0FF),new Protocols(3,0x1021E0FF),new Protocols(3,0x1022E0FF),new Protocols(3,0x1023E0FF),new Protocols(3,0x1024E0FF),new Protocols(3,0x1025E0FF),new Protocols(3,0x1026E0FF),new Protocols(3,0x1027E0FF),new Protocols(3,0x1028E0FF),new Protocols(3,0x1029E0FF),new Protocols(3,0x102AE0FF),new Protocols(3,0x102EE0FF),new Protocols(3,0x102FE0FF)
             ,new Protocols(3,0x07FAE0FF),new Protocols(3,0x07FBE0FF),new Protocols(3,0x07FCE0FF),new Protocols(3,0x07FDE0FF),new Protocols(3,0x07FEE0FF),new Protocols(3,0x07FFE0FF)
             ,new Protocols(3,0x07FB41FF),new Protocols(3,0x07FC41FF),new Protocols(3,0x07FD41FF),new Protocols(3,0x07FE41FF),new Protocols(3,0x07FF41FF),new Protocols(3,0x07FF5FFF)
-            ,new Protocols(3,0xB605FFF),new Protocols(3,0xB615FFF),new Protocols(3,0xB625FFF),new Protocols(3,0xB635FFF),new Protocols(3,0xB665FFF),new Protocols(3,0x0B70E0FF),new Protocols(3,0x0B71E0FF),new Protocols(3,0x0B72E0FF),new Protocols(3,0x0B73E0FF),new Protocols(3,0x0B74E0FF),new Protocols(3,0x0B75E0FF),new Protocols(3,0x0B76E0FF),new Protocols(3,0x0B77E0FF),new Protocols(3,0x0B78E0FF),new Protocols(3,0x0B6A5FFF)
-            ,new Protocols(3,0xB70E0FF),new Protocols(3,0xB71E0FF),new Protocols(3,0xB72E0FF),new Protocols(3,0xB73E0FF),new Protocols(3,0xB74E0FF),new Protocols(3,0xB76E0FF),new Protocols(3,0xB77E0FF),new Protocols(3,0x0B78E0FF),new Protocols(3,0x0B6A5FFF)
+            //,new Protocols(3,0xB605FFF),new Protocols(3,0xB615FFF),new Protocols(3,0xB625FFF),new Protocols(3,0xB635FFF),new Protocols(3,0xB665FFF),new Protocols(3,0x0B70E0FF),new Protocols(3,0x0B71E0FF),new Protocols(3,0x0B72E0FF),new Protocols(3,0x0B73E0FF),new Protocols(3,0x0B74E0FF),new Protocols(3,0x0B75E0FF),new Protocols(3,0x0B76E0FF),new Protocols(3,0x0B77E0FF),new Protocols(3,0x0B78E0FF),new Protocols(3,0x0B6A5FFF)
+            //,new Protocols(3,0xB70E0FF),new Protocols(3,0xB71E0FF),new Protocols(3,0xB72E0FF),new Protocols(3,0xB73E0FF),new Protocols(3,0xB74E0FF),new Protocols(3,0xB76E0FF),new Protocols(3,0xB77E0FF),new Protocols(3,0x0B78E0FF),new Protocols(3,0x0B6A5FFF)
             ,new Protocols(3,0x1403FFFF),new Protocols(3,0x1400E0FF)
         };
         public static bool IsConnection { get; set; }
@@ -139,7 +140,7 @@ namespace SofarBMS.Model
 
                         uint revId = coMsg.ID | index;
                         uint devId= AnalysisID(coMsg.ID);
-                        //if (revId == item.Id)
+                        if (revId == item.Id)
                         {
                             string ss = "";
                             for (int i = 0; i < coMsg.Data.Length; i++)
@@ -147,6 +148,18 @@ namespace SofarBMS.Model
                                 ss += " " + coMsg.Data[i].ToString("X2");
                             }
 
+                            //判断指定的文件夹是否存在
+                            if (!Directory.Exists("Log"))
+                            {
+                                Directory.CreateDirectory("Log");
+                            }
+                            var filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//BTS5K_{devId}_{DateTime.Now.ToString("yyyy-MM-dd")}.csv";
+
+                            //用于确定指定文件是否存在
+                            if (!File.Exists(filePath))
+                            {
+                                File.AppendAllText(filePath, RealtimeData.GetHeader() + "\r\n");
+                            }
                             Console.WriteLine($"CAN_ID:{coMsg.ID.ToString("X8")},Data：{ss.ToString()}");
                             //EnqueueTask(coMsg);
 
@@ -159,7 +172,7 @@ namespace SofarBMS.Model
             }
         }
 
-        private static uint AnalysisID(uint id)
+        public static uint AnalysisID(uint id)
         {
             // SA源地址（bit0~bit7）
             uint sa = (id & 0xFF);

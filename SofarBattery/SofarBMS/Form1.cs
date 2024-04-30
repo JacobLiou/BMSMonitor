@@ -1,11 +1,18 @@
-﻿using SofarBMS.Helper;
+﻿using Microsoft.Office.Interop.Excel;
+using SofarBMS.Helper;
 using SofarBMS.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
+using System.IO;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Application = System.Windows.Forms.Application;
+using DataTable = System.Data.DataTable;
 
 namespace SofarBMS
 {
@@ -20,6 +27,7 @@ namespace SofarBMS
         private bool flag = false;
         private int initCount = 0;
         private RealtimeData model = null;
+        private Dictionary<uint, RealtimeData> allQueue = new Dictionary<uint, RealtimeData>();
 
         // 启动消费者线程，这里假设我们处理每个优先级的队列  
         CancellationTokenSource cts;
@@ -42,15 +50,25 @@ namespace SofarBMS
                         if (!EcanHelper.IsConnection)
                             continue;
 
-                        model = new RealtimeData();
+                        Consumer();
+                    }
+                });
+
+                Task.Run(() =>
+                {
+                    while (true)
+                    {
+                        if (!EcanHelper.IsConnection)
+                            continue;
+
                         //获取实时数据指令
                         EcanHelper.Send(new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
                                        , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2C, 0x10 });
 
-                        Consumer();
-
                         // 等待一段时间，然后停止消费者线程（仅为示例，实际应用中可能有其他停止条件）  
-                        Task.Delay(1000 * 30).Wait();
+                        Task.Delay(1000 * 1).Wait();
+
+                        SaveRealtimeData();
                     }
                 });
             }
@@ -60,6 +78,94 @@ namespace SofarBMS
                 btnConnect.Text = "Connect";
                 EcanHelper.IsConnection = false;
             }
+        }
+
+        private void SaveRealtimeData()
+        {
+            lock (allQueue)
+            {
+
+                //List<RealtimeData> lists = new List<RealtimeData>();
+                foreach (var _queue in allQueue)
+                {
+                    uint id = _queue.Key;
+                    RealtimeData item = _queue.Value;
+                    //lists.Add(item);
+                    
+                    var filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//BTS5K_{id}_{DateTime.Now.ToString("yyyy-MM-dd")}.csv";
+
+                    //用于确定指定文件是否存在
+                    if (!File.Exists(filePath))
+                    {
+                        File.AppendAllText(filePath, RealtimeData.GetHeader() + "\r\n");
+                    }
+                    File.AppendAllText(filePath, item.GetValue() + "\r\n");
+                }
+
+
+                //DataTable dt = ModelsToDataTable(lists);
+                //List<DataTable> dtList = new List<DataTable>();
+                //foreach (var item in dt.Rows)
+                //{
+                //    dtList.Add(item);
+                //}
+
+                //EPPlusHelpr.LoadFromDataTables(new List<DataTable>(){dt });
+            }
+        }
+        /// <summary>
+        /// List泛型转换DataTable.
+        /// </summary>
+        public static DataTable ModelsToDataTable<T>(List<T> items)
+        {
+            var tb = new DataTable(typeof(T).Name);
+
+            PropertyInfo[] props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+            foreach (PropertyInfo prop in props)
+            {
+                Type t = GetCoreType(prop.PropertyType);
+                tb.Columns.Add(prop.Name, t);
+            }
+            foreach (T item in items)
+            {
+                var values = new object[props.Length];
+
+                for (int i = 0; i < props.Length; i++)
+                {
+                    values[i] = props[i].GetValue(item, null);
+                }
+                tb.Rows.Add(values);
+            }
+            return tb;
+        }
+        /// <summary>
+         /// 如果类型可空，则返回基础类型，否则返回类型
+         /// </summary>
+        private static Type GetCoreType(Type t)
+        {
+            if (t != null && IsNullable(t))
+            {
+                if (!t.IsValueType)
+                {
+                    return t;
+                }
+                else
+                {
+                    return Nullable.GetUnderlyingType(t);
+                }
+            }
+            else
+            {
+                return t;
+            }
+        }
+        /// <summary>
+         /// 指定类型是否可为空
+         /// </summary>
+        private static bool IsNullable(Type t)
+        {
+            return !t.IsValueType || (t.IsGenericType && t.GetGenericTypeDefinition() == typeof(Nullable<>));
         }
 
         private bool Connect(string baud = "500Kbps")
@@ -143,6 +249,8 @@ namespace SofarBMS
 
         public void analysisData(uint canID, byte[] data)
         {
+            uint devID = EcanHelper.AnalysisID(canID);
+
             if (!(((canID & 0xff) == FrmMain.BMS_ID)
                 || ((canID & 0xff) == FrmMain.PCU_ID)
                 || ((canID & 0xff) == FrmMain.BDU_ID)))
@@ -154,7 +262,6 @@ namespace SofarBMS
             model.PackID = FrmMain.BMS_ID.ToString("X2");
 
             string[] strs;
-            string[] controls;
             switch (canID | 0xff)
             {
                 case 0x1003FFFF:
@@ -167,22 +274,21 @@ namespace SofarBMS
                     //    case 2: batteryStatus = LanguageHelper.GetLanguage("State_Discharge"); break;
                     //    case 3: batteryStatus = LanguageHelper.GetLanguage("State_Hibernate"); break;
                     //}
-                    model.BatteryStatus = batteryStatus;
+                    model.BatteryStatus = allQueue[devID].BatteryStatus = batteryStatus;
 
                     strs = new string[2] { "0.1", "0.1" };
                     for (int i = 0; i < strs.Length; i++)
                     {
                         strs[i] = BytesToIntger(data[i * 2 + 2], data[i * 2 + 1], Convert.ToDouble(strs[i]));
-                        controls = new string[2] { "txtChargeCurrentLimitation", "txtDischargeCurrentLimitation" };
                     }
-                    model.ChargeCurrentLimitation = Convert.ToDouble(strs[0]);
-                    model.DischargeCurrentLimitation = Convert.ToDouble(strs[1]);
+                    model.ChargeCurrentLimitation = allQueue[devID].ChargeCurrentLimitation = Convert.ToDouble(strs[0]);
+                    model.DischargeCurrentLimitation = allQueue[devID].DischargeCurrentLimitation = Convert.ToDouble(strs[1]);
 
-                    model.ChargeMosEnable = (ushort)GetBit(data[5], 0);
-                    model.DischargeMosEnable = (ushort)GetBit(data[5], 1);
-                    model.PrechgMosEnable = (ushort)GetBit(data[5], 2);
-                    model.StopChgEnable = (ushort)GetBit(data[5], 3);
-                    model.HeatEnable = (ushort)GetBit(data[5], 4);
+                    model.ChargeMosEnable = allQueue[devID].ChargeMosEnable = (ushort)GetBit(data[5], 0);
+                    model.DischargeMosEnable = allQueue[devID].DischargeMosEnable = (ushort)GetBit(data[5], 1);
+                    model.PrechgMosEnable = allQueue[devID].PrechgMosEnable = (ushort)GetBit(data[5], 2);
+                    model.StopChgEnable = allQueue[devID].StopChgEnable = (ushort)GetBit(data[5], 3);
+                    model.HeatEnable = allQueue[devID].HeatEnable = (ushort)GetBit(data[5], 4);
                     break;
                 case 0x1004FFFF:
                     initCount++;
@@ -192,10 +298,10 @@ namespace SofarBMS
                         strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
                     }
 
-                    model.BatteryVolt = Convert.ToDouble(strs[0]);
-                    model.LoadVolt = Convert.ToDouble(strs[1]);
-                    model.BatteryCurrent = Convert.ToDouble(strs[2]);
-                    model.SOC = Convert.ToDouble(strs[3]);
+                    model.BatteryVolt = allQueue[devID].BatteryVolt = Convert.ToDouble(strs[0]);
+                    model.LoadVolt = allQueue[devID].LoadVolt = Convert.ToDouble(strs[1]);
+                    model.BatteryCurrent = allQueue[devID].BatteryCurrent = Convert.ToDouble(strs[2]);
+                    model.SOC = allQueue[devID].SOC = Convert.ToDouble(strs[3]);
                     break;
                 case 0x1005FFFF:
                     initCount++;
@@ -310,21 +416,6 @@ namespace SofarBMS
                     model.MosTemperature = Convert.ToDouble(strs[0]);
                     model.EnvTemperature = Convert.ToDouble(strs[1]);
                     model.SOH = Convert.ToDouble(strs[2]);
-
-                    for (int i = 6; i < 8; i++)
-                    {
-                        for (short j = 0; j < 8; j++)
-                        {
-                            if (GetBit(data[i], j) == 1)
-                            {
-                                (this.Controls.Find(string.Format("txtCellvoltage{0}", j + 1 + ((i - 6) * 8)), true)[0] as TextBox).BackColor = Color.Aquamarine;
-                            }
-                            else
-                            {
-                                (this.Controls.Find(string.Format("txtCellvoltage{0}", j + 1 + ((i - 6) * 8)), true)[0] as TextBox).BackColor = Color.White;
-                            }
-                        }
-                    }
                     break;
             }
         }
@@ -468,6 +559,11 @@ namespace SofarBMS
         {
             SQLiteHelper.ConStr = "Data Source=" + Application.StartupPath + "\\DB\\RealtimeDataBase;Pooling=true;FailIfMissing=false";
 
+            allQueue = new Dictionary<uint, RealtimeData>()
+            {
+                { 1, new RealtimeData() {}},
+                { 2, new RealtimeData() {}}
+            };
         }
     }
 }
