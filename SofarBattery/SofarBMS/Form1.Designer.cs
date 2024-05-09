@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnStartThread = new System.Windows.Forms.Button();
             this.btnConnect = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -39,6 +41,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnStartThread);
             this.groupBox1.Controls.Add(this.btnConnect);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -47,6 +51,26 @@
             this.groupBox1.Size = new System.Drawing.Size(863, 60);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(320, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "00:00:00";
+            this.label2.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(219, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 12);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "已运行周期(s)：";
+            this.label1.Visible = false;
             // 
             // btnStartThread
             // 
@@ -100,6 +124,7 @@
             this.Text = "总线管理";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -112,5 +137,7 @@
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnStartThread;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
