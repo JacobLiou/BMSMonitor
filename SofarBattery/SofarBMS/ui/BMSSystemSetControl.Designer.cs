@@ -127,13 +127,15 @@
             this.lblSystemset_34 = new System.Windows.Forms.Label();
             this.lblSystemset_28 = new System.Windows.Forms.Label();
             this.gbSystemset_14 = new System.Windows.Forms.GroupBox();
+            this.lblSystemset_83 = new System.Windows.Forms.Label();
+            this.lblSystemset_82 = new System.Windows.Forms.Label();
+            this.txt_102 = new System.Windows.Forms.TextBox();
             this.txt_100 = new System.Windows.Forms.TextBox();
             this.txt_101 = new System.Windows.Forms.TextBox();
             this.lblSystemset_101 = new System.Windows.Forms.Label();
             this.btnReadpcu = new System.Windows.Forms.Button();
             this.btnSetComm2 = new System.Windows.Forms.Button();
             this.cbbSetComm2 = new System.Windows.Forms.ComboBox();
-            this.lblSystemset_51 = new System.Windows.Forms.Label();
             this.lblSystemset_50 = new System.Windows.Forms.Label();
             this.txtCalibration07 = new System.Windows.Forms.TextBox();
             this.btnSetCalibration_07 = new System.Windows.Forms.Button();
@@ -174,11 +176,76 @@
             this.btnSetBDUSN = new System.Windows.Forms.Button();
             this.txtBDUSN = new System.Windows.Forms.TextBox();
             this.lblSystemset_53 = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.gbControl020 = new System.Windows.Forms.GroupBox();
+            this.cbbRequest3 = new System.Windows.Forms.ComboBox();
+            this.cbbRequest2 = new System.Windows.Forms.ComboBox();
+            this.cbbRequest0 = new System.Windows.Forms.ComboBox();
+            this.cbbRequest1 = new System.Windows.Forms.ComboBox();
+            this.lblSystemset_51 = new System.Windows.Forms.Label();
+            this.txtSlaveAddr = new System.Windows.Forms.TextBox();
+            this.btnSet020_1 = new System.Windows.Forms.Button();
+            this.lblSystemset_81 = new System.Windows.Forms.Label();
+            this.lblSystemset_78 = new System.Windows.Forms.Label();
+            this.lblSystemset_80 = new System.Windows.Forms.Label();
+            this.lblSystemset_79 = new System.Windows.Forms.Label();
+            this.cbbRequest5 = new System.Windows.Forms.ComboBox();
+            this.cbbRequest4 = new System.Windows.Forms.ComboBox();
+            this.lblSystemset_77 = new System.Windows.Forms.Label();
+            this.lblSystemset_76 = new System.Windows.Forms.Label();
+            this.gbSystemset_71 = new System.Windows.Forms.GroupBox();
+            this.btnSetControlInfo = new System.Windows.Forms.Button();
+            this.txtPackActiveBalanceCap = new System.Windows.Forms.TextBox();
+            this.txtPackActiveBalanceCur = new System.Windows.Forms.TextBox();
+            this.cbbActiveBalanceCtrl = new System.Windows.Forms.ComboBox();
+            this.lblSystemset_74 = new System.Windows.Forms.Label();
+            this.lblSystemset_73 = new System.Windows.Forms.Label();
+            this.lblSystemset_72 = new System.Windows.Forms.Label();
+            this.gbSystemset_64 = new System.Windows.Forms.GroupBox();
+            this.btnSetStateParam = new System.Windows.Forms.Button();
+            this.txtSyncFallSoc = new System.Windows.Forms.TextBox();
+            this.cbbState = new System.Windows.Forms.ComboBox();
+            this.txtPackCurrent = new System.Windows.Forms.TextBox();
+            this.ckSystemset_69 = new System.Windows.Forms.CheckBox();
+            this.ckSystemset_68 = new System.Windows.Forms.CheckBox();
+            this.ckSystemset_67 = new System.Windows.Forms.CheckBox();
+            this.lblSystemset_70 = new System.Windows.Forms.Label();
+            this.lblSystemset_66 = new System.Windows.Forms.Label();
+            this.lblSystemset_65 = new System.Windows.Forms.Label();
+            this.gbSystemset_60 = new System.Windows.Forms.GroupBox();
+            this.btnSystemset_45_Unique_Lifted3 = new System.Windows.Forms.Button();
+            this.btnSystemset_43_Unique_Close3 = new System.Windows.Forms.Button();
+            this.btnSystemset_44_Unique_Open3 = new System.Windows.Forms.Button();
+            this.lblSystemset_63 = new System.Windows.Forms.Label();
+            this.btnSystemset_45_Unique_Lifted2 = new System.Windows.Forms.Button();
+            this.btnSystemset_45_Unique_Lifted1 = new System.Windows.Forms.Button();
+            this.btnSystemset_43_Unique_Close2 = new System.Windows.Forms.Button();
+            this.btnSystemset_44_Unique_Open2 = new System.Windows.Forms.Button();
+            this.btnSystemset_43_Unique_Close1 = new System.Windows.Forms.Button();
+            this.btnSystemset_44_Unique_Open1 = new System.Windows.Forms.Button();
+            this.lblSystemset_62 = new System.Windows.Forms.Label();
+            this.lblSystemset_61 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSetComm3 = new System.Windows.Forms.Button();
             this.gbSystemset_04.SuspendLayout();
             this.gbSystemset_27.SuspendLayout();
             this.gbSystemset_14.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbSystemset_54.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.gbControl020.SuspendLayout();
+            this.gbSystemset_71.SuspendLayout();
+            this.gbSystemset_64.SuspendLayout();
+            this.gbSystemset_60.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbSystemset_04
@@ -224,7 +291,7 @@
             this.gbSystemset_04.Controls.Add(this.lblSystemset_06);
             this.gbSystemset_04.Controls.Add(this.lblSystemset_09);
             this.gbSystemset_04.Controls.Add(this.lblSystemset_05);
-            this.gbSystemset_04.Location = new System.Drawing.Point(10, 10);
+            this.gbSystemset_04.Location = new System.Drawing.Point(10, 13);
             this.gbSystemset_04.Margin = new System.Windows.Forms.Padding(10);
             this.gbSystemset_04.Name = "gbSystemset_04";
             this.gbSystemset_04.Padding = new System.Windows.Forms.Padding(5);
@@ -1009,7 +1076,7 @@
             this.gbSystemset_27.Controls.Add(this.lblSystemset_29);
             this.gbSystemset_27.Controls.Add(this.lblSystemset_34);
             this.gbSystemset_27.Controls.Add(this.lblSystemset_28);
-            this.gbSystemset_27.Location = new System.Drawing.Point(351, 445);
+            this.gbSystemset_27.Location = new System.Drawing.Point(17, 16);
             this.gbSystemset_27.Name = "gbSystemset_27";
             this.gbSystemset_27.Size = new System.Drawing.Size(878, 313);
             this.gbSystemset_27.TabIndex = 44;
@@ -1335,13 +1402,15 @@
             // 
             // gbSystemset_14
             // 
+            this.gbSystemset_14.Controls.Add(this.lblSystemset_83);
+            this.gbSystemset_14.Controls.Add(this.lblSystemset_82);
+            this.gbSystemset_14.Controls.Add(this.txt_102);
             this.gbSystemset_14.Controls.Add(this.txt_100);
             this.gbSystemset_14.Controls.Add(this.txt_101);
             this.gbSystemset_14.Controls.Add(this.lblSystemset_101);
             this.gbSystemset_14.Controls.Add(this.btnReadpcu);
             this.gbSystemset_14.Controls.Add(this.btnSetComm2);
             this.gbSystemset_14.Controls.Add(this.cbbSetComm2);
-            this.gbSystemset_14.Controls.Add(this.lblSystemset_51);
             this.gbSystemset_14.Controls.Add(this.lblSystemset_50);
             this.gbSystemset_14.Controls.Add(this.txtCalibration07);
             this.gbSystemset_14.Controls.Add(this.btnSetCalibration_07);
@@ -1388,21 +1457,48 @@
             this.gbSystemset_14.Controls.Add(this.lblSystemset_22);
             this.gbSystemset_14.Controls.Add(this.lblSystemset_24);
             this.gbSystemset_14.Controls.Add(this.lblSystemset_23);
-            this.gbSystemset_14.Location = new System.Drawing.Point(351, 73);
+            this.gbSystemset_14.Location = new System.Drawing.Point(347, 13);
             this.gbSystemset_14.Name = "gbSystemset_14";
-            this.gbSystemset_14.Size = new System.Drawing.Size(878, 366);
+            this.gbSystemset_14.Size = new System.Drawing.Size(878, 421);
             this.gbSystemset_14.TabIndex = 43;
             this.gbSystemset_14.TabStop = false;
             this.gbSystemset_14.Text = "BMS参数设置";
             // 
+            // lblSystemset_83
+            // 
+            this.lblSystemset_83.AutoSize = true;
+            this.lblSystemset_83.Location = new System.Drawing.Point(474, 368);
+            this.lblSystemset_83.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_83.Name = "lblSystemset_83";
+            this.lblSystemset_83.Size = new System.Drawing.Size(23, 12);
+            this.lblSystemset_83.TabIndex = 61;
+            this.lblSystemset_83.Text = "SOH";
+            // 
+            // lblSystemset_82
+            // 
+            this.lblSystemset_82.AutoSize = true;
+            this.lblSystemset_82.Location = new System.Drawing.Point(471, 336);
+            this.lblSystemset_82.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_82.Name = "lblSystemset_82";
+            this.lblSystemset_82.Size = new System.Drawing.Size(101, 12);
+            this.lblSystemset_82.TabIndex = 60;
+            this.lblSystemset_82.Text = "满充容量(0~110%)";
+            // 
+            // txt_102
+            // 
+            this.txt_102.Location = new System.Drawing.Point(606, 363);
+            this.txt_102.Name = "txt_102";
+            this.txt_102.Size = new System.Drawing.Size(70, 21);
+            this.txt_102.TabIndex = 59;
+            this.txt_102.Text = "0";
+            // 
             // txt_100
             // 
-            this.txt_100.Location = new System.Drawing.Point(803, 297);
+            this.txt_100.Location = new System.Drawing.Point(606, 330);
             this.txt_100.Name = "txt_100";
-            this.txt_100.Size = new System.Drawing.Size(65, 21);
+            this.txt_100.Size = new System.Drawing.Size(70, 21);
             this.txt_100.TabIndex = 55;
             this.txt_100.Text = "0";
-            this.txt_100.Visible = false;
             // 
             // txt_101
             // 
@@ -1432,6 +1528,7 @@
             this.btnReadpcu.TabIndex = 52;
             this.btnReadpcu.Text = "读取";
             this.btnReadpcu.UseVisualStyleBackColor = true;
+            this.btnReadpcu.Visible = false;
             this.btnReadpcu.Click += new System.EventHandler(this.btnReadpcu_Click);
             // 
             // btnSetComm2
@@ -1444,6 +1541,7 @@
             this.btnSetComm2.TabIndex = 51;
             this.btnSetComm2.Text = "写入";
             this.btnSetComm2.UseVisualStyleBackColor = true;
+            this.btnSetComm2.Visible = false;
             this.btnSetComm2.Click += new System.EventHandler(this.btnSetComm2_Click);
             // 
             // cbbSetComm2
@@ -1456,16 +1554,7 @@
             this.cbbSetComm2.Name = "cbbSetComm2";
             this.cbbSetComm2.Size = new System.Drawing.Size(65, 20);
             this.cbbSetComm2.TabIndex = 50;
-            // 
-            // lblSystemset_51
-            // 
-            this.lblSystemset_51.AutoSize = true;
-            this.lblSystemset_51.Location = new System.Drawing.Point(18, 340);
-            this.lblSystemset_51.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSystemset_51.Name = "lblSystemset_51";
-            this.lblSystemset_51.Size = new System.Drawing.Size(71, 12);
-            this.lblSystemset_51.TabIndex = 49;
-            this.lblSystemset_51.Text = "PCU老化模式";
+            this.cbbSetComm2.Visible = false;
             // 
             // lblSystemset_50
             // 
@@ -1708,9 +1797,9 @@
             this.btnSystemset_46.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSystemset_46.ForeColor = System.Drawing.Color.White;
             this.btnSystemset_46.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSystemset_46.Location = new System.Drawing.Point(352, 32);
+            this.btnSystemset_46.Location = new System.Drawing.Point(10, 14);
             this.btnSystemset_46.Name = "btnSystemset_46";
-            this.btnSystemset_46.Size = new System.Drawing.Size(873, 30);
+            this.btnSystemset_46.Size = new System.Drawing.Size(132, 30);
             this.btnSystemset_46.TabIndex = 45;
             this.btnSystemset_46.Text = "读取";
             this.btnSystemset_46.UseVisualStyleBackColor = false;
@@ -1728,7 +1817,7 @@
             this.groupBox1.Controls.Add(this.btnSetBatteryinfo);
             this.groupBox1.Controls.Add(this.lblSystemset_103);
             this.groupBox1.Controls.Add(this.lblSystemset_104);
-            this.groupBox1.Location = new System.Drawing.Point(10, 493);
+            this.groupBox1.Location = new System.Drawing.Point(10, 506);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(333, 158);
             this.groupBox1.TabIndex = 46;
@@ -1842,7 +1931,7 @@
             this.gbSystemset_54.Controls.Add(this.btnSetBDUSN);
             this.gbSystemset_54.Controls.Add(this.txtBDUSN);
             this.gbSystemset_54.Controls.Add(this.lblSystemset_53);
-            this.gbSystemset_54.Location = new System.Drawing.Point(10, 658);
+            this.gbSystemset_54.Location = new System.Drawing.Point(6, 6);
             this.gbSystemset_54.Name = "gbSystemset_54";
             this.gbSystemset_54.Size = new System.Drawing.Size(333, 100);
             this.gbSystemset_54.TabIndex = 47;
@@ -1877,17 +1966,648 @@
             this.lblSystemset_53.TabIndex = 24;
             this.lblSystemset_53.Text = "BDU序列号";
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 54);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1378, 799);
+            this.tabControl1.TabIndex = 48;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.gbSystemset_04);
+            this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Controls.Add(this.gbSystemset_14);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1370, 773);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "BTS5K-bms";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.gbSystemset_27);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1370, 773);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "BTS5K-pcu";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.gbSystemset_54);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1370, 773);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "BTS5K-bdu";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.gbControl020);
+            this.tabPage4.Controls.Add(this.gbSystemset_71);
+            this.tabPage4.Controls.Add(this.gbSystemset_64);
+            this.tabPage4.Controls.Add(this.gbSystemset_60);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1370, 773);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "CBS5000";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // gbControl020
+            // 
+            this.gbControl020.Controls.Add(this.cbbRequest3);
+            this.gbControl020.Controls.Add(this.cbbRequest2);
+            this.gbControl020.Controls.Add(this.cbbRequest0);
+            this.gbControl020.Controls.Add(this.cbbRequest1);
+            this.gbControl020.Controls.Add(this.lblSystemset_51);
+            this.gbControl020.Controls.Add(this.txtSlaveAddr);
+            this.gbControl020.Controls.Add(this.btnSet020_1);
+            this.gbControl020.Controls.Add(this.lblSystemset_81);
+            this.gbControl020.Controls.Add(this.lblSystemset_78);
+            this.gbControl020.Controls.Add(this.lblSystemset_80);
+            this.gbControl020.Controls.Add(this.lblSystemset_79);
+            this.gbControl020.Controls.Add(this.cbbRequest5);
+            this.gbControl020.Controls.Add(this.cbbRequest4);
+            this.gbControl020.Controls.Add(this.lblSystemset_77);
+            this.gbControl020.Controls.Add(this.lblSystemset_76);
+            this.gbControl020.Location = new System.Drawing.Point(744, 6);
+            this.gbControl020.Name = "gbControl020";
+            this.gbControl020.Size = new System.Drawing.Size(287, 395);
+            this.gbControl020.TabIndex = 41;
+            this.gbControl020.TabStop = false;
+            this.gbControl020.Text = "0x020上位机控制";
+            // 
+            // cbbRequest3
+            // 
+            this.cbbRequest3.FormattingEnabled = true;
+            this.cbbRequest3.Items.AddRange(new object[] {
+            "0x00：查询",
+            "0xAA：开启",
+            "0x55：关闭"});
+            this.cbbRequest3.Location = new System.Drawing.Point(146, 132);
+            this.cbbRequest3.Name = "cbbRequest3";
+            this.cbbRequest3.Size = new System.Drawing.Size(120, 20);
+            this.cbbRequest3.TabIndex = 63;
+            // 
+            // cbbRequest2
+            // 
+            this.cbbRequest2.FormattingEnabled = true;
+            this.cbbRequest2.Items.AddRange(new object[] {
+            "0x00：查询",
+            "0xAA：开启",
+            "0x55：关闭"});
+            this.cbbRequest2.Location = new System.Drawing.Point(146, 99);
+            this.cbbRequest2.Name = "cbbRequest2";
+            this.cbbRequest2.Size = new System.Drawing.Size(120, 20);
+            this.cbbRequest2.TabIndex = 62;
+            // 
+            // cbbRequest0
+            // 
+            this.cbbRequest0.FormattingEnabled = true;
+            this.cbbRequest0.Items.AddRange(new object[] {
+            "0x00：查询",
+            "0xAA：开启",
+            "0x55：关闭"});
+            this.cbbRequest0.Location = new System.Drawing.Point(146, 33);
+            this.cbbRequest0.Name = "cbbRequest0";
+            this.cbbRequest0.Size = new System.Drawing.Size(120, 20);
+            this.cbbRequest0.TabIndex = 61;
+            // 
+            // cbbRequest1
+            // 
+            this.cbbRequest1.FormattingEnabled = true;
+            this.cbbRequest1.Items.AddRange(new object[] {
+            "0x00：查询",
+            "0xAA：开启",
+            "0x55：关闭"});
+            this.cbbRequest1.Location = new System.Drawing.Point(146, 66);
+            this.cbbRequest1.Name = "cbbRequest1";
+            this.cbbRequest1.Size = new System.Drawing.Size(120, 20);
+            this.cbbRequest1.TabIndex = 61;
+            // 
+            // lblSystemset_51
+            // 
+            this.lblSystemset_51.AutoSize = true;
+            this.lblSystemset_51.Location = new System.Drawing.Point(19, 135);
+            this.lblSystemset_51.Name = "lblSystemset_51";
+            this.lblSystemset_51.Size = new System.Drawing.Size(71, 12);
+            this.lblSystemset_51.TabIndex = 3;
+            this.lblSystemset_51.Text = "PCU老化模式";
+            // 
+            // txtSlaveAddr
+            // 
+            this.txtSlaveAddr.Location = new System.Drawing.Point(146, 231);
+            this.txtSlaveAddr.Name = "txtSlaveAddr";
+            this.txtSlaveAddr.Size = new System.Drawing.Size(120, 21);
+            this.txtSlaveAddr.TabIndex = 60;
+            // 
+            // btnSet020_1
+            // 
+            this.btnSet020_1.AutoSize = true;
+            this.btnSet020_1.Location = new System.Drawing.Point(191, 267);
+            this.btnSet020_1.Name = "btnSet020_1";
+            this.btnSet020_1.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSet020_1.Size = new System.Drawing.Size(75, 27);
+            this.btnSet020_1.TabIndex = 55;
+            this.btnSet020_1.Text = "写入";
+            this.btnSet020_1.UseVisualStyleBackColor = true;
+            this.btnSet020_1.Click += new System.EventHandler(this.btnSet020_1_Click);
+            // 
+            // lblSystemset_81
+            // 
+            this.lblSystemset_81.AutoSize = true;
+            this.lblSystemset_81.Location = new System.Drawing.Point(19, 101);
+            this.lblSystemset_81.Name = "lblSystemset_81";
+            this.lblSystemset_81.Size = new System.Drawing.Size(71, 12);
+            this.lblSystemset_81.TabIndex = 2;
+            this.lblSystemset_81.Text = "ATE测试模式";
+            // 
+            // lblSystemset_78
+            // 
+            this.lblSystemset_78.AutoSize = true;
+            this.lblSystemset_78.Location = new System.Drawing.Point(19, 237);
+            this.lblSystemset_78.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_78.Name = "lblSystemset_78";
+            this.lblSystemset_78.Size = new System.Drawing.Size(95, 12);
+            this.lblSystemset_78.TabIndex = 59;
+            this.lblSystemset_78.Text = "设置地址(1~255)";
+            // 
+            // lblSystemset_80
+            // 
+            this.lblSystemset_80.AutoSize = true;
+            this.lblSystemset_80.Location = new System.Drawing.Point(19, 67);
+            this.lblSystemset_80.Name = "lblSystemset_80";
+            this.lblSystemset_80.Size = new System.Drawing.Size(53, 12);
+            this.lblSystemset_80.TabIndex = 1;
+            this.lblSystemset_80.Text = "标定模式";
+            // 
+            // lblSystemset_79
+            // 
+            this.lblSystemset_79.AutoSize = true;
+            this.lblSystemset_79.Location = new System.Drawing.Point(19, 33);
+            this.lblSystemset_79.Name = "lblSystemset_79";
+            this.lblSystemset_79.Size = new System.Drawing.Size(53, 12);
+            this.lblSystemset_79.TabIndex = 0;
+            this.lblSystemset_79.Text = "老化模式";
+            // 
+            // cbbRequest5
+            // 
+            this.cbbRequest5.FormattingEnabled = true;
+            this.cbbRequest5.Items.AddRange(new object[] {
+            "0x00：无效操作",
+            "0xAA：恢复所有默认设置",
+            "0x55：其他"});
+            this.cbbRequest5.Location = new System.Drawing.Point(146, 198);
+            this.cbbRequest5.Name = "cbbRequest5";
+            this.cbbRequest5.Size = new System.Drawing.Size(120, 20);
+            this.cbbRequest5.TabIndex = 57;
+            // 
+            // cbbRequest4
+            // 
+            this.cbbRequest4.FormattingEnabled = true;
+            this.cbbRequest4.Items.AddRange(new object[] {
+            "0x00：无效操作",
+            "0xAA：开启",
+            "0x55：关闭"});
+            this.cbbRequest4.Location = new System.Drawing.Point(146, 165);
+            this.cbbRequest4.Name = "cbbRequest4";
+            this.cbbRequest4.Size = new System.Drawing.Size(120, 20);
+            this.cbbRequest4.TabIndex = 54;
+            // 
+            // lblSystemset_77
+            // 
+            this.lblSystemset_77.AutoSize = true;
+            this.lblSystemset_77.Location = new System.Drawing.Point(19, 203);
+            this.lblSystemset_77.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_77.Name = "lblSystemset_77";
+            this.lblSystemset_77.Size = new System.Drawing.Size(77, 12);
+            this.lblSystemset_77.TabIndex = 56;
+            this.lblSystemset_77.Text = "标定参数恢复";
+            // 
+            // lblSystemset_76
+            // 
+            this.lblSystemset_76.AutoSize = true;
+            this.lblSystemset_76.Location = new System.Drawing.Point(19, 169);
+            this.lblSystemset_76.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_76.Name = "lblSystemset_76";
+            this.lblSystemset_76.Size = new System.Drawing.Size(77, 12);
+            this.lblSystemset_76.TabIndex = 53;
+            this.lblSystemset_76.Text = "强制控制开关";
+            // 
+            // gbSystemset_71
+            // 
+            this.gbSystemset_71.Controls.Add(this.btnSetControlInfo);
+            this.gbSystemset_71.Controls.Add(this.txtPackActiveBalanceCap);
+            this.gbSystemset_71.Controls.Add(this.txtPackActiveBalanceCur);
+            this.gbSystemset_71.Controls.Add(this.cbbActiveBalanceCtrl);
+            this.gbSystemset_71.Controls.Add(this.lblSystemset_74);
+            this.gbSystemset_71.Controls.Add(this.lblSystemset_73);
+            this.gbSystemset_71.Controls.Add(this.lblSystemset_72);
+            this.gbSystemset_71.Location = new System.Drawing.Point(349, 238);
+            this.gbSystemset_71.Name = "gbSystemset_71";
+            this.gbSystemset_71.Size = new System.Drawing.Size(380, 163);
+            this.gbSystemset_71.TabIndex = 40;
+            this.gbSystemset_71.TabStop = false;
+            this.gbSystemset_71.Text = "BMS控制信息4-均衡设置";
+            // 
+            // btnSetControlInfo
+            // 
+            this.btnSetControlInfo.AutoSize = true;
+            this.btnSetControlInfo.Location = new System.Drawing.Point(272, 38);
+            this.btnSetControlInfo.Name = "btnSetControlInfo";
+            this.btnSetControlInfo.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSetControlInfo.Size = new System.Drawing.Size(75, 27);
+            this.btnSetControlInfo.TabIndex = 63;
+            this.btnSetControlInfo.Text = "写入";
+            this.btnSetControlInfo.UseVisualStyleBackColor = true;
+            this.btnSetControlInfo.Click += new System.EventHandler(this.btnSetControlInfo_Click);
+            // 
+            // txtPackActiveBalanceCap
+            // 
+            this.txtPackActiveBalanceCap.Location = new System.Drawing.Point(132, 118);
+            this.txtPackActiveBalanceCap.Name = "txtPackActiveBalanceCap";
+            this.txtPackActiveBalanceCap.Size = new System.Drawing.Size(120, 21);
+            this.txtPackActiveBalanceCap.TabIndex = 62;
+            // 
+            // txtPackActiveBalanceCur
+            // 
+            this.txtPackActiveBalanceCur.Location = new System.Drawing.Point(132, 80);
+            this.txtPackActiveBalanceCur.Name = "txtPackActiveBalanceCur";
+            this.txtPackActiveBalanceCur.Size = new System.Drawing.Size(120, 21);
+            this.txtPackActiveBalanceCur.TabIndex = 61;
+            // 
+            // cbbActiveBalanceCtrl
+            // 
+            this.cbbActiveBalanceCtrl.FormattingEnabled = true;
+            this.cbbActiveBalanceCtrl.Items.AddRange(new object[] {
+            "禁止",
+            "充电",
+            "放电",
+            "无效"});
+            this.cbbActiveBalanceCtrl.Location = new System.Drawing.Point(132, 42);
+            this.cbbActiveBalanceCtrl.Name = "cbbActiveBalanceCtrl";
+            this.cbbActiveBalanceCtrl.Size = new System.Drawing.Size(120, 20);
+            this.cbbActiveBalanceCtrl.TabIndex = 55;
+            // 
+            // lblSystemset_74
+            // 
+            this.lblSystemset_74.AutoSize = true;
+            this.lblSystemset_74.Location = new System.Drawing.Point(25, 121);
+            this.lblSystemset_74.Name = "lblSystemset_74";
+            this.lblSystemset_74.Size = new System.Drawing.Size(101, 12);
+            this.lblSystemset_74.TabIndex = 2;
+            this.lblSystemset_74.Text = "设置主动均衡容量";
+            // 
+            // lblSystemset_73
+            // 
+            this.lblSystemset_73.AutoSize = true;
+            this.lblSystemset_73.Location = new System.Drawing.Point(25, 83);
+            this.lblSystemset_73.Name = "lblSystemset_73";
+            this.lblSystemset_73.Size = new System.Drawing.Size(101, 12);
+            this.lblSystemset_73.TabIndex = 1;
+            this.lblSystemset_73.Text = "设置主动均衡电流";
+            // 
+            // lblSystemset_72
+            // 
+            this.lblSystemset_72.AutoSize = true;
+            this.lblSystemset_72.Location = new System.Drawing.Point(25, 45);
+            this.lblSystemset_72.Name = "lblSystemset_72";
+            this.lblSystemset_72.Size = new System.Drawing.Size(101, 12);
+            this.lblSystemset_72.TabIndex = 0;
+            this.lblSystemset_72.Text = "主动均衡充电使能";
+            // 
+            // gbSystemset_64
+            // 
+            this.gbSystemset_64.Controls.Add(this.btnSetStateParam);
+            this.gbSystemset_64.Controls.Add(this.txtSyncFallSoc);
+            this.gbSystemset_64.Controls.Add(this.cbbState);
+            this.gbSystemset_64.Controls.Add(this.txtPackCurrent);
+            this.gbSystemset_64.Controls.Add(this.ckSystemset_69);
+            this.gbSystemset_64.Controls.Add(this.ckSystemset_68);
+            this.gbSystemset_64.Controls.Add(this.ckSystemset_67);
+            this.gbSystemset_64.Controls.Add(this.lblSystemset_70);
+            this.gbSystemset_64.Controls.Add(this.lblSystemset_66);
+            this.gbSystemset_64.Controls.Add(this.lblSystemset_65);
+            this.gbSystemset_64.Location = new System.Drawing.Point(349, 6);
+            this.gbSystemset_64.Name = "gbSystemset_64";
+            this.gbSystemset_64.Size = new System.Drawing.Size(380, 226);
+            this.gbSystemset_64.TabIndex = 39;
+            this.gbSystemset_64.TabStop = false;
+            this.gbSystemset_64.Text = "设置状态参数/电流";
+            // 
+            // btnSetStateParam
+            // 
+            this.btnSetStateParam.AutoSize = true;
+            this.btnSetStateParam.Location = new System.Drawing.Point(272, 29);
+            this.btnSetStateParam.Name = "btnSetStateParam";
+            this.btnSetStateParam.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSetStateParam.Size = new System.Drawing.Size(75, 27);
+            this.btnSetStateParam.TabIndex = 56;
+            this.btnSetStateParam.Text = "写入";
+            this.btnSetStateParam.UseVisualStyleBackColor = true;
+            this.btnSetStateParam.Click += new System.EventHandler(this.btnSetStateParam_Click);
+            // 
+            // txtSyncFallSoc
+            // 
+            this.txtSyncFallSoc.Location = new System.Drawing.Point(131, 191);
+            this.txtSyncFallSoc.Name = "txtSyncFallSoc";
+            this.txtSyncFallSoc.Size = new System.Drawing.Size(121, 21);
+            this.txtSyncFallSoc.TabIndex = 11;
+            // 
+            // cbbState
+            // 
+            this.cbbState.FormattingEnabled = true;
+            this.cbbState.Items.AddRange(new object[] {
+            "待机状态",
+            "充电状态",
+            "放电状态"});
+            this.cbbState.Location = new System.Drawing.Point(131, 69);
+            this.cbbState.Name = "cbbState";
+            this.cbbState.Size = new System.Drawing.Size(121, 20);
+            this.cbbState.TabIndex = 10;
+            // 
+            // txtPackCurrent
+            // 
+            this.txtPackCurrent.Location = new System.Drawing.Point(131, 33);
+            this.txtPackCurrent.Name = "txtPackCurrent";
+            this.txtPackCurrent.Size = new System.Drawing.Size(121, 21);
+            this.txtPackCurrent.TabIndex = 9;
+            // 
+            // ckSystemset_69
+            // 
+            this.ckSystemset_69.AutoSize = true;
+            this.ckSystemset_69.Location = new System.Drawing.Point(131, 157);
+            this.ckSystemset_69.Name = "ckSystemset_69";
+            this.ckSystemset_69.Size = new System.Drawing.Size(48, 16);
+            this.ckSystemset_69.TabIndex = 8;
+            this.ckSystemset_69.Text = "关机";
+            this.ckSystemset_69.UseVisualStyleBackColor = true;
+            // 
+            // ckSystemset_68
+            // 
+            this.ckSystemset_68.AutoSize = true;
+            this.ckSystemset_68.Location = new System.Drawing.Point(131, 130);
+            this.ckSystemset_68.Name = "ckSystemset_68";
+            this.ckSystemset_68.Size = new System.Drawing.Size(48, 16);
+            this.ckSystemset_68.TabIndex = 7;
+            this.ckSystemset_68.Text = "放空";
+            this.ckSystemset_68.UseVisualStyleBackColor = true;
+            // 
+            // ckSystemset_67
+            // 
+            this.ckSystemset_67.AutoSize = true;
+            this.ckSystemset_67.Location = new System.Drawing.Point(131, 103);
+            this.ckSystemset_67.Name = "ckSystemset_67";
+            this.ckSystemset_67.Size = new System.Drawing.Size(48, 16);
+            this.ckSystemset_67.TabIndex = 6;
+            this.ckSystemset_67.Text = "充满";
+            this.ckSystemset_67.UseVisualStyleBackColor = true;
+            // 
+            // lblSystemset_70
+            // 
+            this.lblSystemset_70.AutoSize = true;
+            this.lblSystemset_70.Location = new System.Drawing.Point(25, 193);
+            this.lblSystemset_70.Name = "lblSystemset_70";
+            this.lblSystemset_70.Size = new System.Drawing.Size(71, 12);
+            this.lblSystemset_70.TabIndex = 5;
+            this.lblSystemset_70.Text = "同步下降soc";
+            // 
+            // lblSystemset_66
+            // 
+            this.lblSystemset_66.AutoSize = true;
+            this.lblSystemset_66.Location = new System.Drawing.Point(25, 71);
+            this.lblSystemset_66.Name = "lblSystemset_66";
+            this.lblSystemset_66.Size = new System.Drawing.Size(65, 12);
+            this.lblSystemset_66.TabIndex = 1;
+            this.lblSystemset_66.Text = "充放电状态";
+            // 
+            // lblSystemset_65
+            // 
+            this.lblSystemset_65.AutoSize = true;
+            this.lblSystemset_65.Location = new System.Drawing.Point(25, 36);
+            this.lblSystemset_65.Name = "lblSystemset_65";
+            this.lblSystemset_65.Size = new System.Drawing.Size(65, 12);
+            this.lblSystemset_65.TabIndex = 0;
+            this.lblSystemset_65.Text = "电池包电流";
+            // 
+            // gbSystemset_60
+            // 
+            this.gbSystemset_60.Controls.Add(this.btnSetComm3);
+            this.gbSystemset_60.Controls.Add(this.btnSystemset_45_Unique_Lifted3);
+            this.gbSystemset_60.Controls.Add(this.btnSystemset_43_Unique_Close3);
+            this.gbSystemset_60.Controls.Add(this.btnSystemset_44_Unique_Open3);
+            this.gbSystemset_60.Controls.Add(this.lblSystemset_63);
+            this.gbSystemset_60.Controls.Add(this.btnSystemset_45_Unique_Lifted2);
+            this.gbSystemset_60.Controls.Add(this.btnSystemset_45_Unique_Lifted1);
+            this.gbSystemset_60.Controls.Add(this.btnSystemset_43_Unique_Close2);
+            this.gbSystemset_60.Controls.Add(this.btnSystemset_44_Unique_Open2);
+            this.gbSystemset_60.Controls.Add(this.btnSystemset_43_Unique_Close1);
+            this.gbSystemset_60.Controls.Add(this.btnSystemset_44_Unique_Open1);
+            this.gbSystemset_60.Controls.Add(this.lblSystemset_62);
+            this.gbSystemset_60.Controls.Add(this.lblSystemset_61);
+            this.gbSystemset_60.Dock = System.Windows.Forms.DockStyle.Left;
+            this.gbSystemset_60.Location = new System.Drawing.Point(3, 3);
+            this.gbSystemset_60.Margin = new System.Windows.Forms.Padding(10);
+            this.gbSystemset_60.Name = "gbSystemset_60";
+            this.gbSystemset_60.Padding = new System.Windows.Forms.Padding(5);
+            this.gbSystemset_60.Size = new System.Drawing.Size(333, 767);
+            this.gbSystemset_60.TabIndex = 38;
+            this.gbSystemset_60.TabStop = false;
+            this.gbSystemset_60.Text = "开关控制";
+            // 
+            // btnSystemset_45_Unique_Lifted3
+            // 
+            this.btnSystemset_45_Unique_Lifted3.AutoSize = true;
+            this.btnSystemset_45_Unique_Lifted3.Location = new System.Drawing.Point(248, 156);
+            this.btnSystemset_45_Unique_Lifted3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_Unique_Lifted3.Name = "btnSystemset_45_Unique_Lifted3";
+            this.btnSystemset_45_Unique_Lifted3.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_45_Unique_Lifted3.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_Unique_Lifted3.TabIndex = 42;
+            this.btnSystemset_45_Unique_Lifted3.Text = "解除";
+            this.btnSystemset_45_Unique_Lifted3.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_Unique_Lifted3.Click += new System.EventHandler(this.btnDebugCommandUnique_Click);
+            // 
+            // btnSystemset_43_Unique_Close3
+            // 
+            this.btnSystemset_43_Unique_Close3.AutoSize = true;
+            this.btnSystemset_43_Unique_Close3.Location = new System.Drawing.Point(173, 157);
+            this.btnSystemset_43_Unique_Close3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_Unique_Close3.Name = "btnSystemset_43_Unique_Close3";
+            this.btnSystemset_43_Unique_Close3.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_43_Unique_Close3.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_Unique_Close3.TabIndex = 41;
+            this.btnSystemset_43_Unique_Close3.Text = "关闭";
+            this.btnSystemset_43_Unique_Close3.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_Unique_Close3.Click += new System.EventHandler(this.btnDebugCommandUnique_Click);
+            // 
+            // btnSystemset_44_Unique_Open3
+            // 
+            this.btnSystemset_44_Unique_Open3.AutoSize = true;
+            this.btnSystemset_44_Unique_Open3.Location = new System.Drawing.Point(99, 157);
+            this.btnSystemset_44_Unique_Open3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_Unique_Open3.Name = "btnSystemset_44_Unique_Open3";
+            this.btnSystemset_44_Unique_Open3.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_44_Unique_Open3.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_Unique_Open3.TabIndex = 40;
+            this.btnSystemset_44_Unique_Open3.Text = "打开";
+            this.btnSystemset_44_Unique_Open3.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_Unique_Open3.Click += new System.EventHandler(this.btnDebugCommandUnique_Click);
+            // 
+            // lblSystemset_63
+            // 
+            this.lblSystemset_63.AutoSize = true;
+            this.lblSystemset_63.Location = new System.Drawing.Point(7, 162);
+            this.lblSystemset_63.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_63.Name = "lblSystemset_63";
+            this.lblSystemset_63.Size = new System.Drawing.Size(59, 12);
+            this.lblSystemset_63.TabIndex = 39;
+            this.lblSystemset_63.Text = "LED灯控制";
+            // 
+            // btnSystemset_45_Unique_Lifted2
+            // 
+            this.btnSystemset_45_Unique_Lifted2.AutoSize = true;
+            this.btnSystemset_45_Unique_Lifted2.Location = new System.Drawing.Point(248, 115);
+            this.btnSystemset_45_Unique_Lifted2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_Unique_Lifted2.Name = "btnSystemset_45_Unique_Lifted2";
+            this.btnSystemset_45_Unique_Lifted2.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_45_Unique_Lifted2.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_Unique_Lifted2.TabIndex = 22;
+            this.btnSystemset_45_Unique_Lifted2.Text = "解除";
+            this.btnSystemset_45_Unique_Lifted2.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_Unique_Lifted2.Click += new System.EventHandler(this.btnDebugCommandUnique_Click);
+            // 
+            // btnSystemset_45_Unique_Lifted1
+            // 
+            this.btnSystemset_45_Unique_Lifted1.AutoSize = true;
+            this.btnSystemset_45_Unique_Lifted1.Location = new System.Drawing.Point(248, 74);
+            this.btnSystemset_45_Unique_Lifted1.Name = "btnSystemset_45_Unique_Lifted1";
+            this.btnSystemset_45_Unique_Lifted1.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_45_Unique_Lifted1.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_Unique_Lifted1.TabIndex = 21;
+            this.btnSystemset_45_Unique_Lifted1.Text = "解除";
+            this.btnSystemset_45_Unique_Lifted1.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_Unique_Lifted1.Click += new System.EventHandler(this.btnDebugCommandUnique_Click);
+            // 
+            // btnSystemset_43_Unique_Close2
+            // 
+            this.btnSystemset_43_Unique_Close2.AutoSize = true;
+            this.btnSystemset_43_Unique_Close2.Location = new System.Drawing.Point(173, 116);
+            this.btnSystemset_43_Unique_Close2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_Unique_Close2.Name = "btnSystemset_43_Unique_Close2";
+            this.btnSystemset_43_Unique_Close2.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_43_Unique_Close2.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_Unique_Close2.TabIndex = 11;
+            this.btnSystemset_43_Unique_Close2.Text = "关闭";
+            this.btnSystemset_43_Unique_Close2.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_Unique_Close2.Click += new System.EventHandler(this.btnDebugCommandUnique_Click);
+            // 
+            // btnSystemset_44_Unique_Open2
+            // 
+            this.btnSystemset_44_Unique_Open2.AutoSize = true;
+            this.btnSystemset_44_Unique_Open2.Location = new System.Drawing.Point(99, 116);
+            this.btnSystemset_44_Unique_Open2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_Unique_Open2.Name = "btnSystemset_44_Unique_Open2";
+            this.btnSystemset_44_Unique_Open2.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_44_Unique_Open2.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_Unique_Open2.TabIndex = 10;
+            this.btnSystemset_44_Unique_Open2.Text = "打开";
+            this.btnSystemset_44_Unique_Open2.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_Unique_Open2.Click += new System.EventHandler(this.btnDebugCommandUnique_Click);
+            // 
+            // btnSystemset_43_Unique_Close1
+            // 
+            this.btnSystemset_43_Unique_Close1.AutoSize = true;
+            this.btnSystemset_43_Unique_Close1.Location = new System.Drawing.Point(173, 75);
+            this.btnSystemset_43_Unique_Close1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_Unique_Close1.Name = "btnSystemset_43_Unique_Close1";
+            this.btnSystemset_43_Unique_Close1.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_43_Unique_Close1.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_Unique_Close1.TabIndex = 9;
+            this.btnSystemset_43_Unique_Close1.Text = "关闭";
+            this.btnSystemset_43_Unique_Close1.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_Unique_Close1.Click += new System.EventHandler(this.btnDebugCommandUnique_Click);
+            // 
+            // btnSystemset_44_Unique_Open1
+            // 
+            this.btnSystemset_44_Unique_Open1.AutoSize = true;
+            this.btnSystemset_44_Unique_Open1.Location = new System.Drawing.Point(99, 75);
+            this.btnSystemset_44_Unique_Open1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_Unique_Open1.Name = "btnSystemset_44_Unique_Open1";
+            this.btnSystemset_44_Unique_Open1.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_44_Unique_Open1.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_Unique_Open1.TabIndex = 8;
+            this.btnSystemset_44_Unique_Open1.Text = "打开";
+            this.btnSystemset_44_Unique_Open1.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_Unique_Open1.Click += new System.EventHandler(this.btnDebugCommandUnique_Click);
+            // 
+            // lblSystemset_62
+            // 
+            this.lblSystemset_62.AutoSize = true;
+            this.lblSystemset_62.Location = new System.Drawing.Point(7, 121);
+            this.lblSystemset_62.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_62.Name = "lblSystemset_62";
+            this.lblSystemset_62.Size = new System.Drawing.Size(71, 12);
+            this.lblSystemset_62.TabIndex = 1;
+            this.lblSystemset_62.Text = "llc强制充电";
+            // 
+            // lblSystemset_61
+            // 
+            this.lblSystemset_61.AutoSize = true;
+            this.lblSystemset_61.Location = new System.Drawing.Point(7, 80);
+            this.lblSystemset_61.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_61.Name = "lblSystemset_61";
+            this.lblSystemset_61.Size = new System.Drawing.Size(71, 12);
+            this.lblSystemset_61.TabIndex = 0;
+            this.lblSystemset_61.Text = "llc强制放电";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnSystemset_46);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1378, 54);
+            this.panel1.TabIndex = 49;
+            // 
+            // btnSetComm3
+            // 
+            this.btnSetComm3.AutoSize = true;
+            this.btnSetComm3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(152)))), ((int)(((byte)(142)))));
+            this.btnSetComm3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetComm3.ForeColor = System.Drawing.Color.White;
+            this.btnSetComm3.Image = global::SofarBMS.Properties.Resources.debugtool;
+            this.btnSetComm3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSetComm3.Location = new System.Drawing.Point(9, 30);
+            this.btnSetComm3.Name = "btnSetComm3";
+            this.btnSetComm3.Size = new System.Drawing.Size(309, 30);
+            this.btnSetComm3.TabIndex = 60;
+            this.btnSetComm3.Text = "开始调试";
+            this.btnSetComm3.UseVisualStyleBackColor = false;
+            this.btnSetComm3.Click += new System.EventHandler(this.btnSetComm3_Click);
+            // 
             // BMSSystemSetControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Controls.Add(this.gbSystemset_54);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnSystemset_46);
-            this.Controls.Add(this.gbSystemset_27);
-            this.Controls.Add(this.gbSystemset_14);
-            this.Controls.Add(this.gbSystemset_04);
+            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.panel1);
             this.Name = "BMSSystemSetControl";
             this.Size = new System.Drawing.Size(1378, 853);
             this.Load += new System.EventHandler(this.SystemSetControl_Load);
@@ -1901,8 +2621,22 @@
             this.groupBox1.PerformLayout();
             this.gbSystemset_54.ResumeLayout(false);
             this.gbSystemset_54.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.gbControl020.ResumeLayout(false);
+            this.gbControl020.PerformLayout();
+            this.gbSystemset_71.ResumeLayout(false);
+            this.gbSystemset_71.PerformLayout();
+            this.gbSystemset_64.ResumeLayout(false);
+            this.gbSystemset_64.PerformLayout();
+            this.gbSystemset_60.ResumeLayout(false);
+            this.gbSystemset_60.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -2028,7 +2762,6 @@
         private System.Windows.Forms.Label lblSystemset_50;
         private System.Windows.Forms.TextBox txtCalibration07;
         private System.Windows.Forms.Button btnSetCalibration_07;
-        private System.Windows.Forms.Label lblSystemset_51;
         private System.Windows.Forms.Button btnSetComm2;
         private System.Windows.Forms.ComboBox cbbSetComm2;
         private System.Windows.Forms.Button btnReadpcu;
@@ -2054,5 +2787,63 @@
         private System.Windows.Forms.Button btnSetBDUSN;
         private System.Windows.Forms.TextBox txtBDUSN;
         private System.Windows.Forms.Label lblSystemset_53;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Button btnSet020_1;
+        private System.Windows.Forms.ComboBox cbbRequest4;
+        private System.Windows.Forms.Label lblSystemset_76;
+        private System.Windows.Forms.ComboBox cbbRequest5;
+        private System.Windows.Forms.Label lblSystemset_77;
+        private System.Windows.Forms.Label lblSystemset_78;
+        private System.Windows.Forms.TextBox txtSlaveAddr;
+        private System.Windows.Forms.GroupBox gbSystemset_60;
+        private System.Windows.Forms.Button btnSystemset_45_Unique_Lifted3;
+        private System.Windows.Forms.Button btnSystemset_43_Unique_Close3;
+        private System.Windows.Forms.Button btnSystemset_44_Unique_Open3;
+        private System.Windows.Forms.Label lblSystemset_63;
+        private System.Windows.Forms.Button btnSystemset_45_Unique_Lifted2;
+        private System.Windows.Forms.Button btnSystemset_45_Unique_Lifted1;
+        private System.Windows.Forms.Button btnSystemset_43_Unique_Close2;
+        private System.Windows.Forms.Button btnSystemset_44_Unique_Open2;
+        private System.Windows.Forms.Button btnSystemset_43_Unique_Close1;
+        private System.Windows.Forms.Button btnSystemset_44_Unique_Open1;
+        private System.Windows.Forms.Label lblSystemset_62;
+        private System.Windows.Forms.Label lblSystemset_61;
+        private System.Windows.Forms.GroupBox gbSystemset_64;
+        private System.Windows.Forms.Label lblSystemset_70;
+        private System.Windows.Forms.Label lblSystemset_66;
+        private System.Windows.Forms.Label lblSystemset_65;
+        private System.Windows.Forms.CheckBox ckSystemset_69;
+        private System.Windows.Forms.CheckBox ckSystemset_68;
+        private System.Windows.Forms.CheckBox ckSystemset_67;
+        private System.Windows.Forms.ComboBox cbbState;
+        private System.Windows.Forms.TextBox txtPackCurrent;
+        private System.Windows.Forms.TextBox txtSyncFallSoc;
+        private System.Windows.Forms.GroupBox gbSystemset_71;
+        private System.Windows.Forms.Label lblSystemset_74;
+        private System.Windows.Forms.Label lblSystemset_73;
+        private System.Windows.Forms.Label lblSystemset_72;
+        private System.Windows.Forms.ComboBox cbbActiveBalanceCtrl;
+        private System.Windows.Forms.TextBox txtPackActiveBalanceCap;
+        private System.Windows.Forms.TextBox txtPackActiveBalanceCur;
+        private System.Windows.Forms.Button btnSetControlInfo;
+        private System.Windows.Forms.Button btnSetStateParam;
+        private System.Windows.Forms.TextBox txt_102;
+        private System.Windows.Forms.GroupBox gbControl020;
+        private System.Windows.Forms.Label lblSystemset_79;
+        private System.Windows.Forms.Label lblSystemset_80;
+        private System.Windows.Forms.Label lblSystemset_81;
+        private System.Windows.Forms.Label lblSystemset_51;
+        private System.Windows.Forms.ComboBox cbbRequest3;
+        private System.Windows.Forms.ComboBox cbbRequest2;
+        private System.Windows.Forms.ComboBox cbbRequest0;
+        private System.Windows.Forms.ComboBox cbbRequest1;
+        private System.Windows.Forms.Label lblSystemset_82;
+        private System.Windows.Forms.Label lblSystemset_83;
+        private System.Windows.Forms.Button btnSetComm3;
     }
 }

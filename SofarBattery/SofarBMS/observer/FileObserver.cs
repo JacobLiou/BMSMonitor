@@ -15,13 +15,7 @@ namespace SofarBMS.Observer
         {
             try
             {
-                //判断指定的文件夹是否存在
-                if (!Directory.Exists("log"))
-                {
-                    Directory.CreateDirectory("log");
-                }
-
-                var filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//log//{DateTime.Now.ToString("yyyy-MM-dd")}.csv";
+                var filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//{DateTime.Now.ToString("yyyy-MM-dd")}.csv";
 
                 //用于确定指定文件是否存在
                 if (!File.Exists(filePath))

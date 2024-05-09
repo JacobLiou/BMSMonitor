@@ -1,18 +1,13 @@
-﻿using System;
+﻿using SofarBMS.Helper;
+using SofarBMS.Model;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Timers;
 using System.Windows.Forms;
-using NPOI.POIFS.Crypt.Dsig;
-using SofarBMS.Helper;
-using SofarBMS.Model;
 
 namespace SofarBMS.UI
 {
@@ -50,6 +45,15 @@ namespace SofarBMS.UI
                 GetControls(item);
             }
 
+            foreach (Control item in this.gbControl020.Controls)
+            {
+                if (item is ComboBox)
+                {
+                    ComboBox cbb = item as ComboBox;
+                    cbb.SelectedIndex = 0;
+                }
+            }
+            txtSlaveAddr.Text = FrmMain.BMS_ID.ToString();
 
             string[] setComms = new string[2] {
                 LanguageHelper.GetLanguage("PCUCmd_Stop"),
@@ -78,9 +82,12 @@ namespace SofarBMS.UI
                                 Thread.Sleep(100);
                             }
 
-                            //byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-                            //EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
+                            //首次进入读取一遍
+                            byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                            EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
 
+                            byte[] bytes2 = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                            EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2C, 0x10 });
                             flag = false;
                         }
 
@@ -104,13 +111,10 @@ namespace SofarBMS.UI
 
         public void analysisData(uint canID, byte[] data)
         {
-            if (canID == 0x1029E001)
-            {
-
-            }
             byte[] canid = BitConverter.GetBytes(canID);
             //if (canid[0] != FrmMain.CANID || !(canid[0] == FrmMain.CANID && canid[1] == 0xE0 && canid[3] == 0x10)) return;
-            if (!(((canID & 0xff) == FrmMain.BMS_ID) || ((canID & 0xff) == FrmMain.PCU_ID))) return;
+            if (!(((canID & 0xff) == FrmMain.BMS_ID) || ((canID & 0xff) == FrmMain.PCU_ID)))
+                return;
 
             string[] strs;
             string[] controls;
@@ -321,6 +325,37 @@ namespace SofarBMS.UI
                         btn.Enabled = false;
                     }
                     break;
+                case 0x1E:
+                    Dictionary<short, Button[]> buttons_unique = new Dictionary<short, Button[]>();
+                    buttons_unique.Add(0, new Button[] { btnSystemset_45_Unique_Lifted1, btnSystemset_43_Unique_Close1, btnSystemset_44_Unique_Open1 });
+                    buttons_unique.Add(1, new Button[] { btnSystemset_45_Unique_Lifted2, btnSystemset_43_Unique_Close2, btnSystemset_44_Unique_Open2 });
+                    buttons_unique.Add(2, new Button[] { btnSystemset_45_Unique_Lifted3, btnSystemset_43_Unique_Close3, btnSystemset_44_Unique_Open3 });
+
+                    //byte[]转为二进制字符串
+                    strResult = string.Empty;
+                    for (int i = 0; i <= 2; i++)
+                    {
+                        string strTemp = Convert.ToString(data[i], 2);
+                        strTemp = strTemp.Insert(0, new string('0', 8 - strTemp.Length));
+                        strResult = strTemp + strResult;
+                    }
+
+                    //二进制字符串转化为short[]
+                    bitResult = new short[strResult.Length / 2];
+                    int index2 = bitResult.Length - 1;
+                    for (int i = 0; i < bitResult.Length; i++)
+                    {
+                        bitResult[index2--] = (short)Convert.ToByte(Convert.ToInt32(strResult.Substring(i * 2, 2)) & 0x03);
+                    }
+
+                    //根据short得值来找到对应得button
+                    foreach (var item in buttons_unique.Keys)
+                    {
+                        Button btn = buttons_unique[item][bitResult[item]];
+                        string name = btn.Name;
+                        btn.Enabled = false;
+                    }
+                    break;
             }
         }
 
@@ -441,6 +476,34 @@ namespace SofarBMS.UI
             byte[] id = new byte[] { 0xE0, FrmMain.BMS_ID, 0x2F, 0x10 };
 
             byte[] crcData = new byte[11] { 0xE0, FrmMain.BMS_ID, 0x2F, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+            Array.Copy(data, 0, crcData, 4, data.Length);
+
+            byte[] dataNew = new byte[8];
+            Array.Copy(data, 0, dataNew, 0, data.Length);
+            dataNew[7] = (byte)(Crc8_8210_nBytesCalculate(crcData, 11, 0) & 0xff);
+
+            EcanHelper.Send(dataNew, id);
+        }
+
+
+        public static void TestAte()
+        {
+            byte[] id = new byte[] { 0xE0, FrmMain.BMS_ID, 0x1E, 0x10 };
+
+            byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+            byte[] crcData = new byte[11] { 0xE0, FrmMain.BMS_ID, 0x1E, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+            data[7] = (byte)(Crc8_8210_nBytesCalculate(crcData, 11, 0) & 0xff);
+
+            EcanHelper.Send(data, id);
+        }
+        public static void TestAte(byte[] data)
+        {
+            byte[] id = new byte[] { 0xE0, FrmMain.BMS_ID, 0x1E, 0x10 };
+
+            byte[] crcData = new byte[11] { 0xE0, FrmMain.BMS_ID, 0x1E, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
             Array.Copy(data, 0, crcData, 4, data.Length);
 
@@ -589,6 +652,115 @@ namespace SofarBMS.UI
                     Thread.Sleep(500);
 
                     ReadCurrentState();
+                }));
+            }
+        }
+
+        private bool testF = false;
+        private void btnDebugCommandUnique_Click(object sender, EventArgs e)
+        {
+            if (!testF)
+            {
+                DialogResult result = MessageBox.Show(LanguageHelper.GetLanguage("BmsDebug_Enter"), LanguageHelper.GetLanguage("BmsDebug_Tip"), MessageBoxButtons.OKCancel);
+
+                if (result == DialogResult.OK)
+                {
+                    TestAte();
+
+                    byte[] can_id = new byte[] { 0xE0, FrmMain.BMS_ID, 0x20, 0x10 };
+
+                    int num = 0x10 + 0x20 + FrmMain.BMS_ID + 0xe0 + 0x00 + 0x00 + 0xAA + 0xAA + 0x00 + 0x00 + FrmMain.BMS_ID;
+
+                    byte crc8 = (byte)(num & 0xff);
+
+                    byte[] data = new byte[8] { 0x00, 0x00, 0xAA, 0xAA, 0x00, 0x00, FrmMain.BMS_ID, crc8 };
+
+                    EcanHelper.Send(data, can_id);
+
+                    foreach (Control c in gbSystemset_60.Controls)
+                    {
+                        if (c is Button)
+                        {
+                            c.Enabled = true;
+                        }
+                    }
+                }
+
+                testF = true;
+                return;
+            }
+
+
+            if (sender is Button btn)
+            {
+                switch (btn.Name)
+                {
+                    case "btnSystemset_45_Unique_Lifted1":
+                        bitResult[0] = 0;
+                        break;
+                    case "btnSystemset_43_Unique_Close1":
+                        bitResult[0] = 1;
+                        break;
+                    case "btnSystemset_44_Unique_Open1":
+                        bitResult[0] = 2;
+                        break;
+                    case "btnSystemset_45_Unique_Lifted2":
+                        bitResult[1] = 0;
+                        break;
+                    case "btnSystemset_43_Unique_Close2":
+                        bitResult[1] = 1;
+                        break;
+                    case "btnSystemset_44_Unique_Open2":
+                        bitResult[1] = 2;
+                        break;
+                    case "btnSystemset_45_Unique_Lifted3":
+                        bitResult[2] = 0;
+                        break;
+                    case "btnSystemset_43_Unique_Close3":
+                        bitResult[2] = 1;
+                        break;
+                    case "btnSystemset_44_Unique_Open3":
+                        bitResult[2] = 2;
+                        break;
+                }
+
+                //short[]转为二级制数组
+                strResult = string.Empty;
+                for (int i = 0; i < bitResult.Length; i++)
+                {
+                    string strTemp = Convert.ToString(bitResult[i], 2);
+                    strTemp = strTemp.Insert(0, new string('0', 2 - strTemp.Length));
+                    strResult = strTemp + strResult;
+                }
+
+
+                //数组转byte[]:0x.... 0xAA CRC8
+                byte[] data2 = new byte[strResult.Length / 8];
+                for (int i = 0; i < data2.Length; i++)
+                {
+                    data2[i] = (byte)Convert.ToInt32(strResult.Substring(i * 8, 8), 2);
+                }
+
+                //byte数组组装
+                int index = 0;
+                byte[] data = new byte[7];
+                data[index++] = data2[2];
+                data[index++] = data2[1];
+                data[index++] = data2[0];
+                data[index++] = 0x00;
+                data[index++] = 0x00;
+                data[index++] = 0x00;
+                data[index++] = 0xAA;
+
+                TestAte(data);
+
+                Task.Run(new Action(() =>
+                {
+                    setUI(true);
+
+                    Thread.Sleep(500);
+
+                    TestAte();
                 }));
             }
         }
@@ -811,7 +983,7 @@ namespace SofarBMS.UI
         private void btn_15_Click(object sender, EventArgs e)
         {
             canid[2] = 0x25;
-            bytes = Uint16ToBytes(txt_65, txt_100, txt_101, txt_0, 0.1, 0.1, 0.1, 1);
+            bytes = Uint16ToBytes(txt_65, txt_100, txt_101, txt_102, 0.1, 0.1, 0.1, 0.1);
 
             if (EcanHelper.Send(bytes, canid))
             {
@@ -838,7 +1010,7 @@ namespace SofarBMS.UI
 
         #endregion
 
-        #region PCU老化模式
+        #region PCU老化模式（代码待移除）
         private void btnReadpcu_Click(object sender, EventArgs e)
         {
             PCUAgingMode(0x00);
@@ -856,7 +1028,6 @@ namespace SofarBMS.UI
             }
         }
 
-
         /// <summary>
         /// PCU老化模式指令
         /// </summary>
@@ -869,6 +1040,25 @@ namespace SofarBMS.UI
             data[3] = (byte)(type & 0xff);
 
             byte crc8 = (byte)(0x10 + 0x20 + FrmMain.BMS_ID + 0xE0 + 0x00 + 0x00 + 0x00 + data[3] + 0x00 + 0x00 + 0x00);
+            data[7] = crc8;
+            if (EcanHelper.Send(data, can_id))
+            {
+                MessageBox.Show((type == 0x00) ? FrmMain.GetString("keyReadSuccess") : FrmMain.GetString("keyWriteSuccess"));
+            }
+            else
+            {
+                MessageBox.Show((type == 0x00) ? FrmMain.GetString("keyReadFail") : FrmMain.GetString("keyWriteFail"));
+            }
+        }
+
+        private void TestMode(int type)
+        {
+            byte[] can_id = new byte[4] { 0xE0, FrmMain.BMS_ID, 0x20, 0x10 };
+
+            byte[] data = new byte[8];
+            data[1] = (byte)(type & 0xff);
+
+            byte crc8 = (byte)(0x10 + 0x20 + FrmMain.BMS_ID + 0xE0 + 0x00 + data[1] + 0x00 + 0x00 + 0x00 + 0x00 + FrmMain.BMS_ID);
             data[7] = crc8;
             if (EcanHelper.Send(data, can_id))
             {
@@ -1421,20 +1611,67 @@ namespace SofarBMS.UI
 
         #endregion
 
+        private void Send(byte[] id, List<int> lists)
+        {
+            byte[] data = Uint8ToBits(lists);
+            if (EcanHelper.Send(data, id))
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
+            }
+            else
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteFail"));
+            }
+        }
+
         private void btnSetBatteryinfo_Click(object sender, EventArgs e)
         {
             byte[] can_id = new byte[4] { 0xE0, FrmMain.BMS_ID, 0x29, 0x10 };
 
             List<int> lists = new List<int>();
-
             int batteryInfo1 = cbb_103.SelectedIndex + 1;
-
             lists.Add(batteryInfo1);
             lists.Add(Convert.ToInt32(txt_104.Text));
             lists.Add(cbb_105.SelectedIndex);
             lists.Add(cbb_106.SelectedIndex);
 
-            byte[] data = Uint8ToBits(lists);
+            Send(can_id, lists);
+        }
+
+        #region CBS5000 特有属性
+
+        private void btnSet020_1_Click(object sender, EventArgs e)
+        {
+            byte[] can_id = new byte[4] { 0xE0, FrmMain.BMS_ID, 0x20, 0x10 };
+
+            byte[] data = new byte[8];
+            foreach (Control item in this.gbControl020.Controls)
+            {
+                if (item is ComboBox)
+                {
+                    ComboBox cbb = item as ComboBox;
+                    int index = 0;
+                    int.TryParse(cbb.Name.Replace("cbbRequest", ""), out index);
+                    int value = 0;
+                    switch (cbb.SelectedIndex)
+                    {
+                        case 0: value = 0x00; break;
+                        case 1: value = 0xAA; break;
+                        case 2: value = 0x55; break;
+                        default:
+                            break;
+                    }
+                    data[index] = (byte)(value & 0xff);
+                }
+            }
+            data[6] = Convert.ToByte(txtSlaveAddr.Text.Trim());
+            byte crc8 = (byte)(0x10 + 0x20 + data[6] + 0xE0);
+            for (int i = 0; i < data.Length - 1; i++)
+            {
+                crc8 += data[i];
+            }
+
+            data[7] = crc8;
             if (EcanHelper.Send(data, can_id))
             {
                 MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
@@ -1443,6 +1680,56 @@ namespace SofarBMS.UI
             {
                 MessageBox.Show(FrmMain.GetString("keyWriteFail"));
             }
+        }
+
+        private void btnSetStateParam_Click(object sender, EventArgs e)
+        {
+            byte[] can_id = new byte[4] { 0xE0, FrmMain.BMS_ID, 0x60, 0x10 };//0x1060FF01
+
+            List<int> lists = new List<int>();
+            lists.Add(Convert.ToInt32(txtPackCurrent.Text.Trim()));
+            int value = cbbState.SelectedIndex & 0x03;
+
+            if (ckSystemset_67.Checked)
+            {
+                value = value | 0x4;
+            }
+            if (ckSystemset_68.Checked)
+            {
+                value = value | 0x8;
+            }
+            if (ckSystemset_69.Checked)
+            {
+                value = value | 0x10;
+            }
+            lists.Add(value);
+            lists.Add(Convert.ToInt32(txtSyncFallSoc.Text.Trim()));
+
+            Send(can_id, lists);
+        }
+
+        private void btnSetControlInfo_Click(object sender, EventArgs e)
+        {
+            byte[] can_id = new byte[4] { 0xE0, FrmMain.BMS_ID, 0x61, 0x10 };//0x1061FF01
+
+            byte[] data = new byte[8];
+            //主动均衡充电使能
+            data[0] = (byte)Convert.ToByte(cbbActiveBalanceCtrl.Text.Trim(), 16);
+            //主动均衡电流
+            int current = Convert.ToInt32(txtPackActiveBalanceCur.Text.Trim());
+            data[1] = (byte)(current & 0xff);
+            data[2] = (byte)(current >> 8);
+            //主动均衡容量
+            int capacity = Convert.ToInt32(txtPackActiveBalanceCap.Text.Trim());
+            data[3] = (byte)(capacity & 0xff);
+            data[4] = (byte)(capacity >> 8);
+            EcanHelper.Send(data, can_id);
+        }
+        #endregion
+
+        private void btnSetComm3_Click(object sender, EventArgs e)
+        {
+            TestMode(0xAA);
         }
     }
 }

@@ -1,24 +1,19 @@
-﻿using Microsoft.Win32;
-using NPOI.HSSF.UserModel;
-using NPOI.SS.UserModel;
+﻿using SofarBMS.Helper;
+using SofarBMS.Model;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SofarBMS.Helper;
-using SofarBMS.Model;
 
 namespace SofarBMS.UI
 {
-    public partial class BMSControl : UserControl
+    public partial class CBSControl : UserControl
     {
-        public BMSControl()
+        public CBSControl()
         {
             InitializeComponent();
 
@@ -34,63 +29,63 @@ namespace SofarBMS.UI
 
         private void RTAControl_Load(object sender, EventArgs e)
         {
+            //多语言翻译
             foreach (Control item in this.Controls)
             {
                 GetControls(item);
             }
 
-            Task.Factory.StartNew(async () =>
-             {
-                 while (!cts.IsCancellationRequested)
-                 {
-                     lock (EcanHelper._locker)
-                     {
-                         while (EcanHelper._task.Count > 0)
-                         {
-                             CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-
-                             this.Invoke(new Action(() =>
-                             {
-                                 analysisData(ch.ID, ch.Data);
-                             }));
-                         }
-                     }
-
-                     if (EcanHelper.IsConnection)
-                     {
-                         //读取BMS序列号
-                         EcanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
-                                        , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
-
-                         /*//获取高压放电电流、充电电流；获取低压放电电流、充电电流
-                         EcanHelper.Send(new byte[] { 0x77, 0xAA, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
-                                    , new byte[4] { 0xE0, Convert.ToByte(FrmMain.BMS_ID + 0x20), 0x77, 0x0B });
-
-                         EcanHelper.Send(new byte[] { 0x66, 0xAA, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
-                                    , new byte[4] { 0xE0, Convert.ToByte(FrmMain.BMS_ID + 0x20), 0x77, 0x0B });*/
-
-                         if (model != null && initCount >= 13)
-                         {
-                             var filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//GTX5000S_{DateTime.Now.ToString("yyyy-MM-dd")}.csv";
-
-                             //用于确定指定文件是否存在
-                             if (!File.Exists(filePath))
-                             {
-                                 File.AppendAllText(filePath, model.GetHeader() + "\r\n");
-                             }
-                             File.AppendAllText(filePath, model.GetValue() + "\r\n");
-                             initCount = 0;
-                             model = null;
-                         }
-
-                         //定时一秒存储一次数据
-                         await Task.Delay(1000);
-                     }
-                 }
-             }, cts.Token);
+            StartRun();
         }
 
-        public void analysisData(uint canID, byte[] data)
+        private void StartRun()
+        {
+            Task.Factory.StartNew(async () =>
+            {
+                while (!cts.IsCancellationRequested)
+                {
+                    lock (EcanHelper._locker)
+                    {
+                        while (EcanHelper._task.Count > 0)
+                        {
+                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+
+                            this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
+                        }
+                    }
+
+                    if (model != null && initCount >= 13)
+                    {
+                        var filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//CBS5000_{DateTime.Now.ToString("yyyy-MM-dd")}.csv";
+
+                        if (!File.Exists(filePath))
+                        {
+                            File.AppendAllText(filePath, model.GetHeader() + "\r\n");
+                        }
+                        File.AppendAllText(filePath, model.GetValue() + "\r\n");
+                        initCount = 0;
+                        model = null;
+                    }
+
+                    if (EcanHelper.IsConnection)
+                    {
+                        //读取BMS序列号
+                        EcanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                                       , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
+
+                        //获取实时数据指令
+                        EcanHelper.Send(new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                                       , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2C, 0x10 });
+
+                        //定时一秒存储一次数据
+                        await Task.Delay(1000);
+                    }
+
+                }
+            }, cts.Token);
+        }
+
+        public void AnalysisData(uint canID, byte[] data)
         {
             if ((canID & 0xff) != FrmMain.BMS_ID)
                 return;
@@ -100,80 +95,11 @@ namespace SofarBMS.UI
 
             string[] strs;
             string[] controls;
-            string[] strs_1;
-            string[] controls_1;
 
             switch (canID | 0xff)
             {
-                case 0x1003FFFF:
-                    initCount++;
-                    switch (Convert.ToInt32(data[0].ToString("X2"), 16) & 0x0f)//低四位
-                    {
-                        case 0: txtBatteryStatus.Text = LanguageHelper.GetLanguage("State_Standby"); break;
-                        case 1: txtBatteryStatus.Text = LanguageHelper.GetLanguage("State_Charging"); break;
-                        case 2: txtBatteryStatus.Text = LanguageHelper.GetLanguage("State_Discharge"); break;
-                        case 3: txtBatteryStatus.Text = LanguageHelper.GetLanguage("State_Hibernate"); break;
-                        default: txtBatteryStatus.Text = ""; break;
-                    }
-                    model.BatteryStatus = txtBatteryStatus.Text;
-
-                    switch (((Convert.ToInt32(data[0].ToString("X2"), 16) & 0xf0) >> 4))//高四位
-                    {
-                        case 0: txtBmsStatus.Text = LanguageHelper.GetLanguage("BmsStatus_Post"); break;
-                        case 1: txtBmsStatus.Text = LanguageHelper.GetLanguage("BmsStatus_Run"); break;
-                        case 2: txtBmsStatus.Text = LanguageHelper.GetLanguage("BmsStatus_Fault"); break;
-                        case 3: txtBmsStatus.Text = LanguageHelper.GetLanguage("BmsStatus_Upgrade"); break;
-                        case 4: txtBmsStatus.Text = LanguageHelper.GetLanguage("BmsStatus_Shutdown"); break;
-                    }
-                    model.BmsStatus = txtBmsStatus.Text;
-
-                    strs = new string[2] { "0.1", "0.1" };
-                    for (int i = 0; i < strs.Length; i++)
-                    {
-                        strs[i] = BytesToIntger(data[i * 2 + 2], data[i * 2 + 1], Convert.ToDouble(strs[i]));
-                    }
-
-                    controls = new string[2] { "txtChargeCurrentLimitation", "txtDischargeCurrentLimitation" };
-                    for (int i = 0; i < controls.Length; i++)
-                    {
-                        (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
-                    }
-
-                    //BMS测量的P-对B-电压
-                    strs_1 = new string[1] { "1"};                           
-                    strs_1[0] = Convert.ToUInt16(data[7].ToString("X2") + data[6].ToString("X2"), 16).ToString();
-                    controls_1 = new string[1] { "txtLOAD_VOLT_N" };                 
-                    (this.Controls.Find(controls_1[0], true)[0] as TextBox).Text = strs_1[0];
-                    
-
-                    Dictionary<int, string> setContorls = new Dictionary<int, string>() {
-                            {0,"pbChargeMosEnable" },
-                            {1,"pbDischargeMosEnable" },
-                            {2,"pbPrechgMosEnable" },
-                            {3,"pbStopChgEnable" },
-                            {4,"pbHeatEnable" }
-                        };
-                    for (short i = 0; i < setContorls.Count; i++)
-                    {
-                        if (GetBit(data[5], i) == 1 && this.Controls.Find(setContorls[i], true) != null)
-                        {
-                            (this.Controls.Find(setContorls[i], true)[0] as PictureBox).BackColor = Color.Red;
-                        }
-                        else
-                        {
-                            (this.Controls.Find(setContorls[i], true)[0] as PictureBox).BackColor = Color.Green;
-                        }
-                    }
-                    model.ChargeCurrentLimitation = Convert.ToDouble(strs[0]);
-                    model.DischargeCurrentLimitation = Convert.ToDouble(strs[1]);
-                    model.LOAD_VOLT_N= Convert.ToUInt16(strs_1[0]); 
-                    model.ChargeMosEnable = (ushort)GetBit(data[5], 0);
-                    model.DischargeMosEnable = (ushort)GetBit(data[5], 1);
-                    model.PrechgMosEnable = (ushort)GetBit(data[5], 2);
-                    model.StopChgEnable = (ushort)GetBit(data[5], 3);
-                    model.HeatEnable = (ushort)GetBit(data[5], 4);
-                    break;
                 case 0x1004FFFF:
+                case 0x1004E0FF:
                     initCount++;
                     strs = new string[4] { "0.1", "0.1", "0.01", "0.1" };
                     for (int i = 0; i < strs.Length; i++)
@@ -193,6 +119,7 @@ namespace SofarBMS.UI
                     model.SOC = Convert.ToDouble(strs[3]);
                     break;
                 case 0x1005FFFF:
+                case 0x1005E0FF:
                     initCount++;
                     strs = new string[5];
                     strs[0] = BytesToIntger(data[1], data[0]);
@@ -214,6 +141,7 @@ namespace SofarBMS.UI
                     model.BatDiffCellVolt = Convert.ToUInt16(strs[4]);
                     break;
                 case 0x1006FFFF:
+                case 0x1006E0FF:
                     initCount++;
                     strs = new string[4] { "0.1", "1", "0.1", "1" };
                     strs[0] = BytesToIntger(data[1], data[0], 0.1);
@@ -233,6 +161,7 @@ namespace SofarBMS.UI
                     model.BatMinCellTempNum = Convert.ToUInt16(strs[3]);
                     break;
                 case 0x1007FFFF:
+                case 0x1007E0FF:
                     initCount++;
                     model.TotalChgCap = Convert.ToDouble(((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] & 0xff)) * 0.001);
                     model.TotalDsgCap = Convert.ToDouble(((data[7] << 24) + (data[6] << 16) + (data[5] << 8) + (data[4] & 0xff)) * 0.001);
@@ -240,11 +169,13 @@ namespace SofarBMS.UI
                     txtTotalDsgCap.Text = model.TotalDsgCap.ToString();
                     break;
                 case 0x1008FFFF:
+                case 0x1008E0FF:
                     initCount++;
                     richTextBox1.Clear(); richTextBox2.Clear(); richTextBox3.Clear();
-                    analysisLog(data);
+                    analysisLog(data, 0);
                     break;
                 case 0x1009FFFF:
+                case 0x1009E0FF:
                     initCount++;
                     strs = new string[4];
                     for (int i = 0; i < strs.Length; i++)
@@ -264,6 +195,7 @@ namespace SofarBMS.UI
                     model.CellVoltage4 = Convert.ToUInt32(strs[3]);
                     break;
                 case 0x100AFFFF:
+                case 0x100AE0FF:
                     initCount++;
                     strs = new string[4];
                     for (int i = 0; i < strs.Length; i++)
@@ -283,6 +215,7 @@ namespace SofarBMS.UI
                     model.CellVoltage8 = Convert.ToUInt32(strs[3]);
                     break;
                 case 0x100BFFFF:
+                case 0x100BE0FF:
                     initCount++;
                     strs = new string[4];
                     for (int i = 0; i < strs.Length; i++)
@@ -302,6 +235,7 @@ namespace SofarBMS.UI
                     model.CellVoltage12 = Convert.ToUInt32(strs[3]);
                     break;
                 case 0x100CFFFF:
+                case 0x100CE0FF:
                     initCount++;
                     strs = new string[4];
                     for (int i = 0; i < strs.Length; i++)
@@ -321,6 +255,7 @@ namespace SofarBMS.UI
                     model.CellVoltage16 = Convert.ToUInt32(strs[3]);
                     break;
                 case 0x100DFFFF:
+                case 0x100DE0FF:
                     initCount++;
                     strs = new string[4] { "0.1", "0.1", "0.1", "0.1" };
                     for (int i = 0; i < strs.Length; i++)
@@ -338,8 +273,9 @@ namespace SofarBMS.UI
                     model.CellTemperature2 = Convert.ToDouble(strs[1]);
                     model.CellTemperature3 = Convert.ToDouble(strs[2]);
                     model.CellTemperature4 = Convert.ToDouble(strs[3]);
-                    break;            
+                    break;
                 case 0x100EFFFF:
+                case 0x100EE0FF:
                     initCount++;
                     strs = new string[3] { "0.1", "0.1", "0.1" };
                     for (int i = 0; i < strs.Length; i++)
@@ -384,26 +320,34 @@ namespace SofarBMS.UI
                     model.EquaState = strAdd;
                     break;
                 case 0x100FFFFF:
+                case 0x100FE0FF:
                     initCount++;
                     txtRemainCap.Text = BytesToIntger(data[1], data[0], 0.1);
                     txtFullCap.Text = BytesToIntger(data[3], data[2], 0.1);
                     txtCycleTIme.Text = BytesToIntger(data[5], data[4]);
-                    model.RemainingCapacity = txtRemainCap.Text;
-                    model.FullCapacity = txtFullCap.Text;
-                    model.CycleTIme = Convert.ToUInt16(txtCycleTIme.Text);
+                    //model.RemainingCapacity = txtRemainCap.Text;
+                    //model.FullCapacity = txtFullCap.Text;
+                    //model.CycleTIme = Convert.ToUInt16(txtCycleTIme.Text);
                     break;
                 case 0x1040FFFF:
+                case 0x1040E0FF:
                     txtCumulative_discharge_capacity.Text = (((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] & 0xff))).ToString();
                     model.CumulativeDischargeCapacity = txtCumulative_discharge_capacity.Text;
+                    txtCumulative_charge_capacity.Text = (((data[7] << 24) + (data[6] << 16) + (data[5] << 8) + (data[4] & 0xff))).ToString(); ;
+
                     break;
                 case 0x1041FFFF:
+                case 0x1041E0FF:
                     txtBalance_temperature1.Text = BytesToIntger(data[1], data[0], 0.1);
                     txtBalance_temperature2.Text = BytesToIntger(data[3], data[2], 0.1);
+                    txtDCDC_temperature1.Text = BytesToIntger(data[5], data[4], 0.1);
+                    txtDCDC_temperature2.Text = BytesToIntger(data[7], data[6], 0.1);
 
                     model.BalanceTemperature1 = txtBalance_temperature1.Text;
                     model.BalanceTemperature2 = txtBalance_temperature2.Text;
                     break;
                 case 0x1042FFFF:
+                case 0x1042E0FF:
                     initCount++;
                     strs = new string[4] { "0.1", "0.1", "0.1", "0.1" };
                     for (int i = 0; i < strs.Length; i++)
@@ -421,6 +365,24 @@ namespace SofarBMS.UI
                     model.CellTemperature6 = Convert.ToDouble(strs[1]);
                     model.CellTemperature7 = Convert.ToDouble(strs[2]);
                     model.CellTemperature8 = Convert.ToDouble(strs[3]);
+                    break;
+                case 0x1045FFFF:
+                case 0x1045E0FF:
+                    analysisLog(data, 1);
+                    break;
+                case 0x104AFFFF:
+                case 0x104AE0FF:
+                    strs = new string[2] { "0.1", "0.1" };
+                    for (int i = 0; i < strs.Length; i++)
+                    {
+                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
+                    }
+
+                    controls = new string[2] { "txtPowerTemperture1", "txtPowerTemperture2" };
+                    for (int i = 0; i < controls.Length; i++)
+                    {
+                        (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                    }
                     break;
                 case 0x1027E0FF:
                     string strSn = GetPackSN(data);
@@ -443,6 +405,172 @@ namespace SofarBMS.UI
                         bsm_HW[i] = data[i + 5].ToString().PadLeft(2, '0');
                     }
                     txtHardware_Version_Bms.Text = string.Join("", bsm_HW);
+                    break;
+                case 0x1046FFFF:
+                case 0x1046E0FF:
+                    //加热请求
+                    string headRequest = "0:无请求无禁止 1:请求加热 2:禁止加热";
+                    switch (data[1] & 0x03)
+                    {
+                        case 0:
+                            headRequest = "NONE";
+                            break;
+                        case 1:
+                            headRequest = "请求加热";
+                            break;
+                        case 2:
+                            headRequest = "禁止加热";
+                            break;
+                        default:
+                            break;
+                    }
+                    txtHeatRequest.Text = headRequest.ToString();
+
+                    Dictionary<int, string> setContorls_Byte0 = new Dictionary<int, string>() {
+                            {0,"pbChargeEnable" },
+                            {1,"pbDischargeEnable" },
+                            {2,"pbBmuCutOffRequest" },
+                            {3,"pbBmuPowOffRequest" },
+                            {4,"pbForceChrgRequest" }
+                    };
+                    Dictionary<int, string> setContorls_Byte2 = new Dictionary<int, string>() {
+                            {0,"pbChagreStatus"},
+                            {1,"pbDischargeStatus" }
+                    };
+                    Dictionary<int, string> setContorls_Byte6 = new Dictionary<int, string>() {
+                            {0,"pbDiIO" },
+                            {1,"pbChargeIO"}
+                    };
+
+                    for (short i = 0; i < setContorls_Byte0.Count; i++)
+                    {
+                        if (GetBit(data[0], i) == 1 && this.Controls.Find(setContorls_Byte0[i], true) != null)
+                        {
+                            (this.Controls.Find(setContorls_Byte0[i], true)[0] as PictureBox).BackColor = Color.Red;
+                        }
+                        else
+                        {
+                            (this.Controls.Find(setContorls_Byte0[i], true)[0] as PictureBox).BackColor = Color.Green;
+                        }
+                    }
+
+                    for (short i = 0; i < setContorls_Byte2.Count; i++)
+                    {
+                        if (GetBit(data[1], i) == 1 && this.Controls.Find(setContorls_Byte2[i], true) != null)
+                        {
+                            (this.Controls.Find(setContorls_Byte2[i], true)[0] as PictureBox).BackColor = Color.Red;
+                        }
+                        else
+                        {
+                            (this.Controls.Find(setContorls_Byte2[i], true)[0] as PictureBox).BackColor = Color.Green;
+                        }
+                    }
+
+                    for (short i = 0; i < setContorls_Byte6.Count; i++)
+                    {
+                        if (GetBit(data[6], i) == 1 && this.Controls.Find(setContorls_Byte6[i], true) != null)
+                        {
+                            (this.Controls.Find(setContorls_Byte6[i], true)[0] as PictureBox).BackColor = Color.Red;
+                        }
+                        else
+                        {
+                            (this.Controls.Find(setContorls_Byte6[i], true)[0] as PictureBox).BackColor = Color.Green;
+                        }
+                    }
+                    break;
+                case 0x1047FFFF:
+                case 0x1047E0FF:
+                    txtSyncFallSoc.Text = Convert.ToInt32(data[0].ToString("X2"), 16).ToString();
+                    txtBMSStatus.Text = Enum.Parse(typeof(BMSState), (Convert.ToInt32(data[1].ToString("X2"), 16) & 0x0f).ToString()).ToString();
+                    string balanceStatus = "";
+                    switch ((Convert.ToInt32(data[2].ToString("X2"), 16) & 0x0f))
+                    {
+                        case 0: balanceStatus = "禁止"; break;
+                        case 1: balanceStatus = "放电"; break;
+                        case 2: balanceStatus = "充电"; break;
+                        default:
+                            break;
+                    }
+                    txtActiveBalanceStatus.Text = balanceStatus;
+
+                    txtChargeCurrentLimitation.Text = BytesToIntger(data[5], data[4], 0.01);
+                    txtDischargeCurrentLimitation.Text = BytesToIntger(data[7], data[6], 0.01);
+                    break;
+                case 0x1048FFFF:
+                case 0x1048E0FF:
+                    strs = new string[4] { "0.1", "0.1", "1", "0.1" };
+                    for (int i = 0; i < strs.Length; i++)
+                    {
+                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
+                    }
+
+                    controls = new string[4] { "txtBalanceBusVoltage", "txtBalanceCurrent", "txtActiveBalanceMaxCellVolt", "txtBatAverageTemp" };
+                    for (int i = 0; i < controls.Length; i++)
+                    {
+                        (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                    }
+                    break;
+                case 0x1049FFFF:
+                case 0x1049E0FF:
+                    strs = new string[3] { "0.01", "1", "1" };
+                    for (int i = 0; i < strs.Length; i++)
+                    {
+                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
+                    }
+
+                    controls = new string[3] { "txtActiveBalanceCellSoc", "txtActiveBalanceAccCap", "txtActiveBalanceRemainCap" };
+                    for (int i = 0; i < controls.Length; i++)
+                    {
+                        (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                    }
+                    break;
+                case 0x106AFFFF:
+                case 0x106AE0FF:
+                    string[] softwareVersion = new string[3];
+                    for (int i = 0; i < 3; i++)
+                    {
+                        softwareVersion[i] = data[i + 1].ToString().PadLeft(2, '0');
+                    }
+                    txt06A_softwareversion.Text = Encoding.ASCII.GetString(new byte[] { data[0] }) + string.Join("", softwareVersion);
+
+                    txt06A_canversion.Text = Encoding.ASCII.GetString(new byte[] { data[5], data[6] });
+                    break;
+                case 0x106BFFFF:
+                case 0x106BE0FF:
+                    strs = new string[3] { "0.1", "1", "1" };
+                    for (int i = 0; i < strs.Length; i++)
+                    {
+                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
+                    }
+
+                    controls = new string[3] { "txtBatNominalCapacity", "txtRegisterID", "txtBatType" };
+                    for (int i = 0; i < controls.Length; i++)
+                    {
+                        (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                    }
+                    break;
+                case 0x106CFFFF:
+                case 0x106CE0FF:
+                    //厂家信息
+                    StringBuilder ManufacturerName = new StringBuilder();
+                    ManufacturerName.Append(Encoding.ASCII.GetString(data));
+                    txtManufacturerName.Text = ManufacturerName.ToString();
+                    break;
+                case 0x106DFFFF:
+                case 0x106DE0FF:
+                    strs = new string[3] { "0.001", "0.001", "0.001" };
+                    for (int i = 0; i < strs.Length; i++)
+                    {
+                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
+                    }
+
+                    controls = new string[3] { "txtAuxVolt", "txtChgCurOffsetVolt", "txtDsgCurOffsetVolt" };
+                    for (int i = 0; i < controls.Length; i++)
+                    {
+                        (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                    }
+
+                    txtResetMode.Text = Enum.Parse(typeof(ResetMode), (Convert.ToInt32(data[6].ToString("X2"), 16) & 0x0f).ToString()).ToString();
                     break;
             }
 
@@ -644,7 +772,7 @@ namespace SofarBMS.UI
         /// </summary>
         /// <param name="_bytes"></param>
         /// <returns></returns>
-        private void analysisLog(byte[] data)
+        private void analysisLog(byte[] data, int faultNum)
         {
             string[] msg = new string[2];
 
@@ -654,7 +782,7 @@ namespace SofarBMS.UI
                 {
                     if (GetBit(data[i], j) == 1)
                     {
-                        getLog(out msg, i, j);
+                        getLog(out msg, i, j, faultNum);
                         switch (msg[1])
                         {
                             case "1":
@@ -701,10 +829,14 @@ namespace SofarBMS.UI
             return (b & _byte) == _byte ? 1 : 0;
         }
 
-        public static string[] getLog(out string[] msg, int row, int column)
+        public static string[] getLog(out string[] msg, int row, int column, int faultNum = 0)
         {
             msg = new string[2];
             List<FaultInfo> faultInfos = FrmMain.FaultInfos;
+            if (faultNum != 0)
+            {
+                faultInfos = FrmMain.FaultInfos2;
+            }
 
             for (int i = 0; i < faultInfos.Count; i++)
             {
