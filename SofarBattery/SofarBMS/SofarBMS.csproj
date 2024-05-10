@@ -227,6 +227,24 @@
     <Compile Include="UI\BMSMMultipleControl.Designer.cs">
       <DependentUpon>BMSMMultipleControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\CBSParamControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CBSParamControl.Designer.cs">
+      <DependentUpon>CBSParamControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CBSControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CBSControl.Designer.cs">
+      <DependentUpon>CBSControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CBSUpgradeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CBSUpgradeControl.Designer.cs">
+      <DependentUpon>CBSUpgradeControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ParamControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -288,6 +306,15 @@
     </Compile>
     <EmbeddedResource Include="UI\BMSMMultipleControl.resx">
       <DependentUpon>BMSMMultipleControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CBSParamControl.resx">
+      <DependentUpon>CBSParamControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CBSControl.resx">
+      <DependentUpon>CBSControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CBSUpgradeControl.resx">
+      <DependentUpon>CBSUpgradeControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ParamControl.resx">
       <DependentUpon>ParamControl.cs</DependentUpon>

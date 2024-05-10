@@ -83,8 +83,63 @@ namespace SofarBMS
                     new FaultInfo("电池欠压严重故障,CELL_VOLT_LOW_MAJOR_FAULT",6,7,0,0,3),
                     new FaultInfo("放电电流大环零点不良,DSG_CURR_BIG_RING_BADNESS",7,0,0,0,3),
                     new FaultInfo("放电电流小环零点不良,DSG_CURR_LITTLE_RING_BADNESS",7,1,0,0,3),
-                    new FaultInfo("电芯温度过大,CELL_TEMP_DIFF_OVER",7,2,0,0,2)
+                    new FaultInfo("电芯温度过大,CELL_TEMP_DIFF_OVER",7,2,0,0,2),
+                    new FaultInfo("绝缘检测,INSUALATION_FAULT",7,3,0,0,2),
+                    new FaultInfo("端子温度过高保护,FLT_TERMINAL_TEMP_OVER",7,4,0,0,2),
+                    new FaultInfo("充电严重过流故障锁定,FLT_CHG_CUR_OVER_SERIOUS_LOCK",7,5,0,0,3),
+                    new FaultInfo("放电严重过流故障锁定,FLT_DCHG_CUR_OVER_SERIOUS_LOCK",7,6,0,0,3),
+                    new FaultInfo("加热回路失控故障,FLT_HEAT_LOSE_CONTROL",7,7,0,0,3),
         };
+        public static List<FaultInfo> FaultInfos2 = new List<FaultInfo>()
+        {
+                    new FaultInfo("主动均衡失效,ACTIVE_BALANCE_ERR",0,0,0,0,1),
+                    new FaultInfo("主动均衡参考电流均衡电流差值异常,ACT_BAL_CHG_CURR_ABNORMAL_ERR",0,1,0,0,1),
+                    new FaultInfo("主动均衡原边放电慢过流保护,ACT_BAL_DIS_OVER_CURR_PROTECT",0,2,0,0,1),
+                    new FaultInfo("主动均衡原边充电慢过流保护,ACT_BAL_CHG_OVER_CURR_PROTECT",0,3,0,0,1),
+                    new FaultInfo("主动均衡硬件过流保护,ACT_BAL_HARD_OVER_CURR_PROTECT",0,4,0,0,1),
+                    new FaultInfo("主动均衡过流锁死,ACT_BAL_OVER_CURR_LOCK",0,5,0,0,1),
+                    new FaultInfo("主动均衡原边慢过压,ACT_BAL_PRI_OVER_VOLT_PROTECT",0,6,0,0,1),
+                    new FaultInfo("主动均衡副边慢过压,ACT_BAL_SEC_OVER_VOLT_PROTECT",0,7,0,0,1),
+                    new FaultInfo("主动均衡副边慢欠压,ACT_BAL_SEC_UNDER_VOLT_PROTECT",1,0,0,0,1),
+                    new FaultInfo("主动均衡原边快过压,ACT_BAL_PRI_FAST_OVER_VOLT_PROTECT",1,1,0,0,1),
+                    new FaultInfo("主动均衡副边快过压,ACT_BAL_SEC_FAST_OVER_VOLT_PROTECT",1,2,0,0,1),
+                    new FaultInfo("主动均衡原边放电快过流保护,ACT_BAL_DIS_FAST_OVER_CURR_PROTECT",1,3,0,0,1),
+                    new FaultInfo("主动均衡原边充电快过流保护,ACT_BAL_CHG_FAST_OVER_CURR_PROTECT",1,4,0,0,1),
+                    new FaultInfo("主动均衡功率过大,ACT_BAL_POWER_OVER_PROTECT",1,5,0,0,1),
+                    new FaultInfo("保留,res",1,6,0,0,3),
+                    new FaultInfo("保留,res",1,7,0,0,3),
+                    new FaultInfo("保留,res",2,0,0,0,1),
+                    new FaultInfo("功率端子温度采样线异常,PWR_TEMP_WIRE_ABNORMAL_FAULT",2,1,0,0,3),
+                    new FaultInfo("被动均衡温度过高告警,BAT_BALANCE_TEMP_OVER_ALARM",2,2,0,0,1),
+                    new FaultInfo("电芯电压严重不均衡故障,BAT_CELL_UNBALANCE_SERIOUS",2,3,0,0,3),
+                    new FaultInfo("电芯过温故障,BAT_CELL_TEMP_OVER_ERR",2,4,0,0,3),
+                    new FaultInfo("过流锁死,BAT_CURR_LOCK",2,5,0,0,3),
+                    new FaultInfo("电池过压锁死,BAT_VOLT_HIGH_LOCK",2,6,0,0,3),
+                    new FaultInfo("电池欠压锁死,BAT_VOLT_LOW_LOCK",2,7,0,0,3),
+                    new FaultInfo("电池高低温锁死,BAT_CELL_TEMP_OVER_OR_LOW_LOCK",3,0,0,0,3),
+                    new FaultInfo("温升过大,BAT_TEMP_RISE_DIFF_OVER",3,1,0,0,3),
+                    new FaultInfo("保留,res",3,2,0,0,3),
+                    new FaultInfo("放电电流过高保护2,BAT_DISCHG_CURR_OVER_PROTECT2",3,3,0,0,2),
+                    new FaultInfo("充电温度过高提示,BAT_CHG_TEMP_OVER_TIPS",3,4,0,0,1),
+                    new FaultInfo("充电温度过低提示,BAT_CHG_TEMP_LOW_TIPS",3,5,0,0,1),
+                    new FaultInfo("放电温度过高提示,BAT_DCHG_TEMP_OVER_TIPS",3,6,0,0,1),
+                    new FaultInfo("放电温度过低提示,BAT_DCHG_TEMP_LOW_TIPS",3,7,0,0,1),
+                    new FaultInfo("flash异常,FLASH_SAVE_INVALID",4,0,0,0,3),
+                    new FaultInfo("保留,res",4,1,0,0,3),
+                    new FaultInfo("mos过温锁死,FLT_MOS_T_LOCK",4,2,0,0,1),
+                    new FaultInfo("电芯严重过压锁死故障,BAT_CELL_VOLT_HIGH_SERIOUS_LOCK",4,3,0,0,3),
+                    new FaultInfo("电芯电压采样线异常,CELL_VOLT_WIRE_ABNORMAL_FAULT",4,4,0,0,3),
+                    new FaultInfo("电芯温度采样线异常,CELL_TEMP_WIRE_ABNORMAL_FAULT",4,5,0,0,3),
+                    new FaultInfo("均衡电阻温度采样线异常,BAL_TEMP_WIRE_ABNORMAL_FAULT",4,6,0,0,3),
+                    new FaultInfo("功率端子温度采样线异常,PWR_TEMP_WIRE_ABNORMAL_FAULT",4,7,0,0,3),
+        };
+        public static List<FaultInfo> FaultInfos3 = new List<FaultInfo>()
+        {
+                    new FaultInfo("加热异常,FLT_HEAT_ERROR",0,0,0,0,1),
+                    new FaultInfo("加热继电器粘连,FLT_HEAT_RELAY_ADHESION",0,1,0,0,1),
+                    new FaultInfo("加热继电器断路,FLT_HEAT_RELAY_OPEN",0,2,0,0,1),
+        };
+
         public static string MessageBoxTextStr = @"keyWriteSuccess,写入成功,WriteSuccess
 keyWriteFail,写入失败,WriteFail
 keyReadSuccess,读取成功,ReadSuccess
@@ -203,6 +258,11 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_23"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
             //AddContextMenu(LanguageHelper.GetLanguage("tsmi_13"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
 
+            tsmiMenu = AddContextMenu("CBS5000",Menu.Items, null);
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_21"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_13"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_23"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+
             //添加“语言”菜单
             tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_4"), Menu.Items, null);
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_41"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
@@ -233,6 +293,13 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
                 { LanguageHelper.GetLanguage("tsmi_13"), new ParamControl() }
             };
 
+            Dictionary<string, UserControl> MenuAndControl3 = new Dictionary<string, UserControl>()
+            {
+                { LanguageHelper.GetLanguage("tsmi_11"), new CBSControl() },
+                { LanguageHelper.GetLanguage("tsmi_13"), new CBSParamControl() },
+                { LanguageHelper.GetLanguage("tsmi_23"), new CBSUpgradeControl() }
+            };
+
             bool isUserControl = false;
 
             string parentTitle = ((System.Windows.Forms.ToolStripItem)sender).OwnerItem?.ToString();
@@ -257,6 +324,20 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
             else if (parentTitle == "BMS低压储能电池" || parentTitle == "BMS")
             {
                 foreach (var item in MenuAndControl2)
+                {
+                    if (item.Key == title)
+                    {
+                        AddMenuClick(item.Value);
+
+                        isUserControl = true;
+                        break;
+                    }
+                }
+            }
+            else if (parentTitle == "BMS低压储能电池" || parentTitle == "CBS5000")
+            {
+
+                foreach (var item in MenuAndControl3)
                 {
                     if (item.Key == title)
                     {
@@ -333,6 +414,14 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
             if (bc.Name != "BMSSystemSetControl")
             {
                 BMSSystemSetControl.cts?.Cancel();
+            }
+            if (bc.Name != "CBSControl")
+            {
+                CBSControl.cts?.Cancel();
+            }
+            if (bc.Name != "CBSParamControl")
+            {
+                CBSParamControl.cts?.Cancel();
             }
         }
 
