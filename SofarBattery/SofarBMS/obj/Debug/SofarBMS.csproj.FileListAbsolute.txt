@@ -457,6 +457,7 @@ D:\VS2022_CodeClone\A4_BMS电池上位机\SofarBattery\SofarBMS\obj\Debug\SofarB
 D:\VS2022_CodeClone\A4_BMS电池上位机\SofarBattery\SofarBMS\obj\Debug\SofarBMS.csproj.CopyComplete
 D:\VS2022_CodeClone\A4_BMS电池上位机\SofarBattery\SofarBMS\obj\Debug\SofarBMS.exe
 D:\VS2022_CodeClone\A4_BMS电池上位机\SofarBattery\SofarBMS\obj\Debug\SofarBMS.pdb
+<<<<<<< HEAD
 D:\ProgramData\Gitblit\A4_BMS电池上位机\SofarBattery\SofarBMS\obj\Debug\SofarBMS.csproj.AssemblyReference.cache
 D:\ProgramData\Gitblit\A4_BMS电池上位机\SofarBattery\SofarBMS\obj\Debug\SofarBMS.csproj.SuggestedBindingRedirects.cache
 D:\ProgramData\Gitblit\A4_BMS电池上位机\SofarBattery\SofarBMS\obj\Debug\SofarBMS.exe.config
@@ -614,3 +615,6 @@ D:\ProgramData\Gitblit\A4_BMS电池上位机\SofarBattery\SofarBMS\bin\Debug\Sys
 D:\ProgramData\Gitblit\A4_BMS电池上位机\SofarBattery\SofarBMS\obj\Debug\SofarBMS.csproj.CopyComplete
 D:\ProgramData\Gitblit\A4_BMS电池上位机\SofarBattery\SofarBMS\obj\Debug\SofarBMS.exe
 D:\ProgramData\Gitblit\A4_BMS电池上位机\SofarBattery\SofarBMS\obj\Debug\SofarBMS.pdb
+=======
+D:\ProgramData\Gitblit\A4_BMS电池上位机\SofarBattery\SofarBMS\obj\Debug\SofarBMS.Form1.resources
+>>>>>>> test

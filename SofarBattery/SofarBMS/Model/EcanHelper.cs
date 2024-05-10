@@ -1,12 +1,9 @@
-﻿using System;
+﻿using SofarBMS.Helper;
+using SofarBMS.Queue;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
-using SofarBMS.Helper;
 using System.Diagnostics;
-using MySqlX.XDevAPI.Common;
+using System.Threading;
 
 namespace SofarBMS.Model
 {
@@ -24,23 +21,31 @@ namespace SofarBMS.Model
         public static uint gSendMsgBufHead;
         public static uint gSendMsgBufTail;
 
-
         /*创建一个更新收发数据显示的线程*/
         public readonly static object _locker = new object();
         public static Queue<CAN_OBJ> _task = new Queue<CAN_OBJ>();
+        public static MultiLevelQueueManager _queueManager = new MultiLevelQueueManager();
+
         public static EventWaitHandle _wh = new AutoResetEvent(false);
         public static List<Protocols> protocols = new List<Protocols>() {
-            new Protocols(3,0x1020FFFF),new Protocols(3,0x1020E0FF),
-            new Protocols(3,0x1003FFFF), new Protocols(3,0x1004FFFF),new Protocols(3,0x1005FFFF),new Protocols(3,0x1006FFFF),new Protocols(3,0x1007FFFF),new Protocols(3,0x1008FFFF),new Protocols(3,0x1009FFFF),new Protocols(3,0x100AFFFF),new Protocols(3,0x100BFFFF),new Protocols(3,0x100CFFFF),new Protocols(3,0x100DFFFF),new Protocols(3,0x100EFFFF),new Protocols(3,0x100FFFFF),new Protocols(3,0x1040FFFF),new Protocols(3,0x1041FFFF),new Protocols(3,0x1042FFFF)
-            ,new Protocols(3,0x104EFFFF),new Protocols(3,0x104FFFFF)
+            new Protocols(3,0x1020FFFF),new Protocols(3,0x1020E0FF)
+            ,new Protocols(3,0x1003FFFF), new Protocols(3,0x1004FFFF),new Protocols(3,0x1005FFFF),new Protocols(3,0x1006FFFF),new Protocols(3,0x1007FFFF),new Protocols(3,0x1008FFFF),new Protocols(3,0x1009FFFF),new Protocols(3,0x100AFFFF),new Protocols(3,0x100BFFFF),new Protocols(3,0x100CFFFF),new Protocols(3,0x100DFFFF),new Protocols(3,0x100EFFFF),new Protocols(3,0x100FFFFF)
+            ,new Protocols(3,0x1040FFFF),new Protocols(3,0x1041FFFF),new Protocols(3,0x1042FFFF), new Protocols(3,0x1043FFFF),new Protocols(3,0x1044FFFF),new Protocols(3,0x104AFFFF),new Protocols(3,0x104EFFFF),new Protocols(3,0x104FFFFF),new Protocols(3,0x1045FFFF),new Protocols(3,0x1046FFFF),new Protocols(3,0x1047FFFF),new Protocols(3,0x1048FFFF),new Protocols(3,0x1049FFFF)
+
+            ,new Protocols(3,0x1003E0FF), new Protocols(3,0x1004E0FF),new Protocols(3,0x1005E0FF),new Protocols(3,0x1006E0FF),new Protocols(3,0x1007E0FF),new Protocols(3,0x1008E0FF),new Protocols(3,0x1009E0FF),new Protocols(3,0x100AE0FF),new Protocols(3,0x100BE0FF),new Protocols(3,0x100CE0FF),new Protocols(3,0x100DE0FF),new Protocols(3,0x100EE0FF),new Protocols(3,0x100FE0FF)
+            ,new Protocols(3,0x1040E0FF),new Protocols(3,0x1041E0FF),new Protocols(3,0x1042E0FF), new Protocols(3,0x1043E0FF),new Protocols(3,0x1044E0FF),new Protocols(3,0x104AE0FF),new Protocols(3,0x104EE0FF),new Protocols(3,0x104E0FFF),new Protocols(3,0x1045E0FF),new Protocols(3,0x1046E0FF),new Protocols(3,0x1047E0FF),new Protocols(3,0x1048E0FF),new Protocols(3,0x1049E0FF)
+
+            ,new Protocols(3,0x106AE0FF),new Protocols(3,0x106BE0FF),new Protocols(3,0x106CE0FF),new Protocols(3,0x106DE0FF)
             ,new Protocols(2,0x102FFFE0)
             ,new Protocols(3,0x1030FFFF),new Protocols(3,0x1031FFFF),new Protocols(3,0x1033FFFF),new Protocols(3,0x1034FFFF),new Protocols(3,0x1035FFFF),new Protocols(3,0x1036FFFF),new Protocols(3,0x1037FFFF),new Protocols(3,0x1038FFFF),new Protocols(3,0x1039FFFF),new Protocols(3,0x103AFFFF),new Protocols(3,0x103BFFFF),new Protocols(3,0x103CFFFF),new Protocols(3,0x103DFFFF),new Protocols(3,0x103EFFFF),new Protocols(3,0x103FFFFF),new Protocols(3,0x1050FFFF),new Protocols(3,0x1051FFFF),new Protocols(3,0x102DFFFF)
-            ,new Protocols(3,0x1010E0FF),new Protocols(3,0x1011E0FF),new Protocols(3,0x1012E0FF),new Protocols(3,0x1013E0FF),new Protocols(3,0x1014E0FF),new Protocols(3,0x1015E0FF),new Protocols(3,0x1016E0FF),new Protocols(3,0x1017E0FF),new Protocols(3,0x1018E0FF),new Protocols(3,0x1019E0FF),new Protocols(3,0x101AE0FF),new Protocols(3,0x1021E0FF),new Protocols(3,0x1022E0FF),new Protocols(3,0x1023E0FF),new Protocols(3,0x1024E0FF),new Protocols(3,0x1025E0FF),new Protocols(3,0x1026E0FF),new Protocols(3,0x1027E0FF),new Protocols(3,0x1028E0FF),new Protocols(3,0x1029E0FF),new Protocols(3,0x102AE0FF),new Protocols(3,0x102EE0FF),new Protocols(3,0x102FE0FF)
+            ,new Protocols(3,0x1010E0FF),new Protocols(3,0x1011E0FF),new Protocols(3,0x1012E0FF),new Protocols(3,0x1013E0FF),new Protocols(3,0x1014E0FF),new Protocols(3,0x1015E0FF),new Protocols(3,0x1016E0FF),new Protocols(3,0x1017E0FF),new Protocols(3,0x1018E0FF),new Protocols(3,0x1019E0FF),new Protocols(3,0x101AE0FF),new Protocols(3,0x101BE0FF),new Protocols(3,0x101CE0FF)
+            ,new Protocols(3,0x1021E0FF),new Protocols(3,0x1022E0FF),new Protocols(3,0x1023E0FF),new Protocols(3,0x1024E0FF),new Protocols(3,0x1025E0FF),new Protocols(3,0x1026E0FF),new Protocols(3,0x1027E0FF),new Protocols(3,0x1028E0FF),new Protocols(3,0x1029E0FF),new Protocols(3,0x102AE0FF),new Protocols(3,0x102EE0FF),new Protocols(3,0x102FE0FF),new Protocols(3,0x101EE0FF)
             ,new Protocols(3,0x07FAE0FF),new Protocols(3,0x07FBE0FF),new Protocols(3,0x07FCE0FF),new Protocols(3,0x07FDE0FF),new Protocols(3,0x07FEE0FF),new Protocols(3,0x07FFE0FF)
             ,new Protocols(3,0x07FB41FF),new Protocols(3,0x07FC41FF),new Protocols(3,0x07FD41FF),new Protocols(3,0x07FE41FF),new Protocols(3,0x07FF41FF),new Protocols(3,0x07FF5FFF)
             ,new Protocols(3,0xB605FFF),new Protocols(3,0xB615FFF),new Protocols(3,0xB625FFF),new Protocols(3,0xB635FFF),new Protocols(3,0xB665FFF),new Protocols(3,0x0B70E0FF),new Protocols(3,0x0B71E0FF),new Protocols(3,0x0B72E0FF),new Protocols(3,0x0B73E0FF),new Protocols(3,0x0B74E0FF),new Protocols(3,0x0B75E0FF),new Protocols(3,0x0B76E0FF),new Protocols(3,0x0B77E0FF),new Protocols(3,0x0B78E0FF),new Protocols(3,0x0B6A5FFF)
             ,new Protocols(3,0xB70E0FF),new Protocols(3,0xB71E0FF),new Protocols(3,0xB72E0FF),new Protocols(3,0xB73E0FF),new Protocols(3,0xB74E0FF),new Protocols(3,0xB76E0FF),new Protocols(3,0xB77E0FF),new Protocols(3,0x0B78E0FF),new Protocols(3,0x0B6A5FFF)
             ,new Protocols(3,0x1403FFFF),new Protocols(3,0x1400E0FF)
+            ,new Protocols(3,0x1060FFFF),new Protocols(3,0x1060FF1F),new Protocols(3, 0x1061FFFF),new Protocols(3,0x1061FF1F),
         };
         public static bool IsConnection { get; set; }
         private static int Can_error_count = 0;
@@ -136,23 +141,60 @@ namespace SofarBMS.Model
                         }
 
                         uint revId = coMsg.ID | index;
-
+                        uint devId= AnalysisID(coMsg.ID);
                         if (revId == item.Id)
                         {
-                            string ss = "";
+                            /*string ss = "";
                             for (int i = 0; i < coMsg.Data.Length; i++)
                             {
                                 ss += " " + coMsg.Data[i].ToString("X2");
                             }
 
-                            Console.WriteLine($"CAN_ID:{coMsg.ID.ToString("X8")},Data：{ss.ToString()}");
+                            //判断指定的文件夹是否存在
+                            if (!Directory.Exists("Log"))
+                            {
+                                Directory.CreateDirectory("Log");
+                            }
+                            var filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//BTS5K_{devId}_{DateTime.Now.ToString("yyyy-MM-dd")}.csv";
 
+                            //用于确定指定文件是否存在
+                            if (!File.Exists(filePath))
+                            {
+                                File.AppendAllText(filePath, new RealtimeData2().GetHeader() + "\r\n");
+                            }
+                            Console.WriteLine($"Priority:{devId} CAN_ID:{coMsg.ID.ToString("X8")},Data：{ss.ToString()}");
+                            _queueManager.Enqueue(new QueueItem((int)devId, coMsg));
+                            
+                             */
                             EnqueueTask(coMsg);
+
                             break;
                         }
                     }
                 }
             }
+        }
+
+        public static uint AnalysisID(uint id)
+        {
+            // SA源地址（bit0~bit7）
+            uint sa = (id & 0xFF);
+
+            // TA目标地址（bit8~bit15）
+            uint ta = ((id >> 8) & 0xFF);
+
+            // PF功能码(bit16~bit26)
+            uint pf = ((id >> 16) & 0x7FF);
+
+            // PR优先级(bit27~bit28)
+            uint pr = ((id >> 27) & 0x3);
+
+            // R预留(bit29~31)
+            uint r = ((id >> 29) & 0x7);
+
+            // 打印每行数据
+            //Debug.WriteLine($"0x{id:X},{sa:X},{ta:X},{pf:X},{pr:X},{r:X}");
+            return sa;
         }
 
         public static string ReadError()
@@ -195,6 +237,9 @@ namespace SofarBMS.Model
         {
             lock (_locker)
             {
+                //测试打印接收报文
+                Debug.WriteLine($"接收数据   帧ID:{CANOBJ.ID.ToString("X8")},帧数据：{CANOBJ.Data[0].ToString("X2")} {CANOBJ.Data[1].ToString("X2")} {CANOBJ.Data[2].ToString("X2")} {CANOBJ.Data[3].ToString("X2")} {CANOBJ.Data[4].ToString("X2")} {CANOBJ.Data[5].ToString("X2")} {CANOBJ.Data[6].ToString("X2")} {CANOBJ.Data[7].ToString("X2")}");
+
                 _task.Enqueue(CANOBJ);
                 _wh.Set();
             }

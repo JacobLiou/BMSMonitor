@@ -152,6 +152,12 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
+            //程序确保Log文件的存在性
+            if (!Directory.Exists("Log"))
+            {
+                Directory.CreateDirectory("Log");
+            }
+
             //本地SQLite数据库连接字符串（后期需要去除冗余，要调整为MySQL数据库）
             SQLiteHelper.ConStr = "Data Source=" + Application.StartupPath + "\\DB\\RealtimeDataBase;Pooling=true;FailIfMissing=false";
 
@@ -198,7 +204,7 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
             cbbBaud.SelectedIndex = 5;
 
             //this.Text = LanguageHelper.GetLanguage("Title");
-            }
+        }
         /// <summary>
         /// 获取MessageBox语言资源
         /// </summary>

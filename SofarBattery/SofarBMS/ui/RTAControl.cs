@@ -156,11 +156,6 @@ Can通信故障,Can1CommFault
 
                         if (model != null && initCount >= 13)
                         {
-                            //判断指定的文件夹是否存在
-                            if (!Directory.Exists("Log"))
-                            {
-                                Directory.CreateDirectory("Log");
-                            }
                             var filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//BTS5K_{DateTime.Now.ToString("yyyy-MM-dd")}.csv";
 
                             //用于确定指定文件是否存在
