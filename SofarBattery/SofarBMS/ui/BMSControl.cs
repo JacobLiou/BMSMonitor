@@ -62,13 +62,6 @@ namespace SofarBMS.UI
                          EcanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
                                         , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
 
-                         /*//获取高压放电电流、充电电流；获取低压放电电流、充电电流
-                         EcanHelper.Send(new byte[] { 0x77, 0xAA, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
-                                    , new byte[4] { 0xE0, Convert.ToByte(FrmMain.BMS_ID + 0x20), 0x77, 0x0B });
-
-                         EcanHelper.Send(new byte[] { 0x66, 0xAA, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
-                                    , new byte[4] { 0xE0, Convert.ToByte(FrmMain.BMS_ID + 0x20), 0x77, 0x0B });*/
-
                          if (model != null && initCount >= 13)
                          {
                              var filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//GTX5000S_{DateTime.Now.ToString("yyyy-MM-dd")}.csv";
@@ -140,11 +133,11 @@ namespace SofarBMS.UI
                     }
 
                     //BMS测量的P-对B-电压
-                    strs_1 = new string[1] { "1"};                           
+                    strs_1 = new string[1] { "1" };
                     strs_1[0] = Convert.ToUInt16(data[7].ToString("X2") + data[6].ToString("X2"), 16).ToString();
-                    controls_1 = new string[1] { "txtLOAD_VOLT_N" };                 
+                    controls_1 = new string[1] { "txtLOAD_VOLT_N" };
                     (this.Controls.Find(controls_1[0], true)[0] as TextBox).Text = strs_1[0];
-                    
+
 
                     Dictionary<int, string> setContorls = new Dictionary<int, string>() {
                             {0,"pbChargeMosEnable" },
@@ -166,7 +159,7 @@ namespace SofarBMS.UI
                     }
                     model.ChargeCurrentLimitation = Convert.ToDouble(strs[0]);
                     model.DischargeCurrentLimitation = Convert.ToDouble(strs[1]);
-                    model.LOAD_VOLT_N= Convert.ToUInt16(strs_1[0]); 
+                    model.LOAD_VOLT_N = Convert.ToUInt16(strs_1[0]);
                     model.ChargeMosEnable = (ushort)GetBit(data[5], 0);
                     model.DischargeMosEnable = (ushort)GetBit(data[5], 1);
                     model.PrechgMosEnable = (ushort)GetBit(data[5], 2);
@@ -338,7 +331,7 @@ namespace SofarBMS.UI
                     model.CellTemperature2 = Convert.ToDouble(strs[1]);
                     model.CellTemperature3 = Convert.ToDouble(strs[2]);
                     model.CellTemperature4 = Convert.ToDouble(strs[3]);
-                    break;            
+                    break;
                 case 0x100EFFFF:
                     initCount++;
                     strs = new string[3] { "0.1", "0.1", "0.1" };
@@ -399,6 +392,9 @@ namespace SofarBMS.UI
                 case 0x1041FFFF:
                     txtBalance_temperature1.Text = BytesToIntger(data[1], data[0], 0.1);
                     txtBalance_temperature2.Text = BytesToIntger(data[3], data[2], 0.1);
+                    //加热膜电流A，加热膜继电器电压V
+                    txtHeatCur.Text = BytesToIntger(data[5], data[4], 0.1);
+                    txtHeatRelayVol.Text = BytesToIntger(data[7], data[6], 0.1);
 
                     model.BalanceTemperature1 = txtBalance_temperature1.Text;
                     model.BalanceTemperature2 = txtBalance_temperature2.Text;
@@ -421,6 +417,10 @@ namespace SofarBMS.UI
                     model.CellTemperature6 = Convert.ToDouble(strs[1]);
                     model.CellTemperature7 = Convert.ToDouble(strs[2]);
                     model.CellTemperature8 = Convert.ToDouble(strs[3]);
+                    break;
+                case 0x1043FFFF:
+                    //加热异常，加热继电器粘连，加热继电器断路Byte[0],0/1/2
+                    analysisLog(data, 2);
                     break;
                 case 0x1027E0FF:
                     string strSn = GetPackSN(data);
@@ -644,7 +644,7 @@ namespace SofarBMS.UI
         /// </summary>
         /// <param name="_bytes"></param>
         /// <returns></returns>
-        private void analysisLog(byte[] data)
+        private void analysisLog(byte[] data, int faultNum = 0)
         {
             string[] msg = new string[2];
 
@@ -654,7 +654,7 @@ namespace SofarBMS.UI
                 {
                     if (GetBit(data[i], j) == 1)
                     {
-                        getLog(out msg, i, j);
+                        getLog(out msg, i, j, faultNum);
                         switch (msg[1])
                         {
                             case "1":
@@ -701,10 +701,21 @@ namespace SofarBMS.UI
             return (b & _byte) == _byte ? 1 : 0;
         }
 
-        public static string[] getLog(out string[] msg, int row, int column)
+        public static string[] getLog(out string[] msg, int row, int column, int faultNum)
         {
             msg = new string[2];
             List<FaultInfo> faultInfos = FrmMain.FaultInfos;
+            switch (faultNum)
+            {
+                case 1:
+                    faultInfos = FrmMain.FaultInfos2;
+                    break;
+                case 2:
+                    faultInfos = FrmMain.FaultInfos3;
+                    break;
+                default:
+                    break;
+            }
 
             for (int i = 0; i < faultInfos.Count; i++)
             {

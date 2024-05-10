@@ -833,9 +833,16 @@ namespace SofarBMS.UI
         {
             msg = new string[2];
             List<FaultInfo> faultInfos = FrmMain.FaultInfos;
-            if (faultNum != 0)
+            switch (faultNum)
             {
-                faultInfos = FrmMain.FaultInfos2;
+                case 1:
+                    faultInfos = FrmMain.FaultInfos2;
+                    break;
+                case 2:
+                    faultInfos = FrmMain.FaultInfos3;
+                    break;
+                default:
+                    break;
             }
 
             for (int i = 0; i < faultInfos.Count; i++)

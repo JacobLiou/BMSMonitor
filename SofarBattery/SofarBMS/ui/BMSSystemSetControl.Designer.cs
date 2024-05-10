@@ -230,7 +230,6 @@
             this.lblSystemset_62 = new System.Windows.Forms.Label();
             this.lblSystemset_61 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSetComm3 = new System.Windows.Forms.Button();
             this.gbSystemset_04.SuspendLayout();
             this.gbSystemset_27.SuspendLayout();
             this.gbSystemset_14.SuspendLayout();
@@ -2407,7 +2406,6 @@
             // 
             // gbSystemset_60
             // 
-            this.gbSystemset_60.Controls.Add(this.btnSetComm3);
             this.gbSystemset_60.Controls.Add(this.btnSystemset_45_Unique_Lifted3);
             this.gbSystemset_60.Controls.Add(this.btnSystemset_43_Unique_Close3);
             this.gbSystemset_60.Controls.Add(this.btnSystemset_44_Unique_Open3);
@@ -2433,7 +2431,7 @@
             // btnSystemset_45_Unique_Lifted3
             // 
             this.btnSystemset_45_Unique_Lifted3.AutoSize = true;
-            this.btnSystemset_45_Unique_Lifted3.Location = new System.Drawing.Point(248, 156);
+            this.btnSystemset_45_Unique_Lifted3.Location = new System.Drawing.Point(258, 112);
             this.btnSystemset_45_Unique_Lifted3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnSystemset_45_Unique_Lifted3.Name = "btnSystemset_45_Unique_Lifted3";
             this.btnSystemset_45_Unique_Lifted3.Padding = new System.Windows.Forms.Padding(1);
@@ -2446,7 +2444,7 @@
             // btnSystemset_43_Unique_Close3
             // 
             this.btnSystemset_43_Unique_Close3.AutoSize = true;
-            this.btnSystemset_43_Unique_Close3.Location = new System.Drawing.Point(173, 157);
+            this.btnSystemset_43_Unique_Close3.Location = new System.Drawing.Point(183, 113);
             this.btnSystemset_43_Unique_Close3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnSystemset_43_Unique_Close3.Name = "btnSystemset_43_Unique_Close3";
             this.btnSystemset_43_Unique_Close3.Padding = new System.Windows.Forms.Padding(1);
@@ -2459,7 +2457,7 @@
             // btnSystemset_44_Unique_Open3
             // 
             this.btnSystemset_44_Unique_Open3.AutoSize = true;
-            this.btnSystemset_44_Unique_Open3.Location = new System.Drawing.Point(99, 157);
+            this.btnSystemset_44_Unique_Open3.Location = new System.Drawing.Point(109, 113);
             this.btnSystemset_44_Unique_Open3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnSystemset_44_Unique_Open3.Name = "btnSystemset_44_Unique_Open3";
             this.btnSystemset_44_Unique_Open3.Padding = new System.Windows.Forms.Padding(1);
@@ -2472,7 +2470,7 @@
             // lblSystemset_63
             // 
             this.lblSystemset_63.AutoSize = true;
-            this.lblSystemset_63.Location = new System.Drawing.Point(7, 162);
+            this.lblSystemset_63.Location = new System.Drawing.Point(17, 118);
             this.lblSystemset_63.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSystemset_63.Name = "lblSystemset_63";
             this.lblSystemset_63.Size = new System.Drawing.Size(59, 12);
@@ -2482,7 +2480,7 @@
             // btnSystemset_45_Unique_Lifted2
             // 
             this.btnSystemset_45_Unique_Lifted2.AutoSize = true;
-            this.btnSystemset_45_Unique_Lifted2.Location = new System.Drawing.Point(248, 115);
+            this.btnSystemset_45_Unique_Lifted2.Location = new System.Drawing.Point(258, 71);
             this.btnSystemset_45_Unique_Lifted2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnSystemset_45_Unique_Lifted2.Name = "btnSystemset_45_Unique_Lifted2";
             this.btnSystemset_45_Unique_Lifted2.Padding = new System.Windows.Forms.Padding(1);
@@ -2495,7 +2493,7 @@
             // btnSystemset_45_Unique_Lifted1
             // 
             this.btnSystemset_45_Unique_Lifted1.AutoSize = true;
-            this.btnSystemset_45_Unique_Lifted1.Location = new System.Drawing.Point(248, 74);
+            this.btnSystemset_45_Unique_Lifted1.Location = new System.Drawing.Point(258, 30);
             this.btnSystemset_45_Unique_Lifted1.Name = "btnSystemset_45_Unique_Lifted1";
             this.btnSystemset_45_Unique_Lifted1.Padding = new System.Windows.Forms.Padding(1);
             this.btnSystemset_45_Unique_Lifted1.Size = new System.Drawing.Size(70, 27);
@@ -2507,7 +2505,7 @@
             // btnSystemset_43_Unique_Close2
             // 
             this.btnSystemset_43_Unique_Close2.AutoSize = true;
-            this.btnSystemset_43_Unique_Close2.Location = new System.Drawing.Point(173, 116);
+            this.btnSystemset_43_Unique_Close2.Location = new System.Drawing.Point(183, 72);
             this.btnSystemset_43_Unique_Close2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnSystemset_43_Unique_Close2.Name = "btnSystemset_43_Unique_Close2";
             this.btnSystemset_43_Unique_Close2.Padding = new System.Windows.Forms.Padding(1);
@@ -2520,7 +2518,7 @@
             // btnSystemset_44_Unique_Open2
             // 
             this.btnSystemset_44_Unique_Open2.AutoSize = true;
-            this.btnSystemset_44_Unique_Open2.Location = new System.Drawing.Point(99, 116);
+            this.btnSystemset_44_Unique_Open2.Location = new System.Drawing.Point(109, 72);
             this.btnSystemset_44_Unique_Open2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnSystemset_44_Unique_Open2.Name = "btnSystemset_44_Unique_Open2";
             this.btnSystemset_44_Unique_Open2.Padding = new System.Windows.Forms.Padding(1);
@@ -2533,7 +2531,7 @@
             // btnSystemset_43_Unique_Close1
             // 
             this.btnSystemset_43_Unique_Close1.AutoSize = true;
-            this.btnSystemset_43_Unique_Close1.Location = new System.Drawing.Point(173, 75);
+            this.btnSystemset_43_Unique_Close1.Location = new System.Drawing.Point(183, 31);
             this.btnSystemset_43_Unique_Close1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnSystemset_43_Unique_Close1.Name = "btnSystemset_43_Unique_Close1";
             this.btnSystemset_43_Unique_Close1.Padding = new System.Windows.Forms.Padding(1);
@@ -2546,7 +2544,7 @@
             // btnSystemset_44_Unique_Open1
             // 
             this.btnSystemset_44_Unique_Open1.AutoSize = true;
-            this.btnSystemset_44_Unique_Open1.Location = new System.Drawing.Point(99, 75);
+            this.btnSystemset_44_Unique_Open1.Location = new System.Drawing.Point(109, 31);
             this.btnSystemset_44_Unique_Open1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnSystemset_44_Unique_Open1.Name = "btnSystemset_44_Unique_Open1";
             this.btnSystemset_44_Unique_Open1.Padding = new System.Windows.Forms.Padding(1);
@@ -2559,7 +2557,7 @@
             // lblSystemset_62
             // 
             this.lblSystemset_62.AutoSize = true;
-            this.lblSystemset_62.Location = new System.Drawing.Point(7, 121);
+            this.lblSystemset_62.Location = new System.Drawing.Point(17, 77);
             this.lblSystemset_62.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSystemset_62.Name = "lblSystemset_62";
             this.lblSystemset_62.Size = new System.Drawing.Size(71, 12);
@@ -2569,7 +2567,7 @@
             // lblSystemset_61
             // 
             this.lblSystemset_61.AutoSize = true;
-            this.lblSystemset_61.Location = new System.Drawing.Point(7, 80);
+            this.lblSystemset_61.Location = new System.Drawing.Point(17, 36);
             this.lblSystemset_61.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSystemset_61.Name = "lblSystemset_61";
             this.lblSystemset_61.Size = new System.Drawing.Size(71, 12);
@@ -2584,22 +2582,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1378, 54);
             this.panel1.TabIndex = 49;
-            // 
-            // btnSetComm3
-            // 
-            this.btnSetComm3.AutoSize = true;
-            this.btnSetComm3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(152)))), ((int)(((byte)(142)))));
-            this.btnSetComm3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetComm3.ForeColor = System.Drawing.Color.White;
-            this.btnSetComm3.Image = global::SofarBMS.Properties.Resources.debugtool;
-            this.btnSetComm3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSetComm3.Location = new System.Drawing.Point(9, 30);
-            this.btnSetComm3.Name = "btnSetComm3";
-            this.btnSetComm3.Size = new System.Drawing.Size(309, 30);
-            this.btnSetComm3.TabIndex = 60;
-            this.btnSetComm3.Text = "开始调试";
-            this.btnSetComm3.UseVisualStyleBackColor = false;
-            this.btnSetComm3.Click += new System.EventHandler(this.btnSetComm3_Click);
             // 
             // BMSSystemSetControl
             // 
@@ -2844,6 +2826,5 @@
         private System.Windows.Forms.ComboBox cbbRequest1;
         private System.Windows.Forms.Label lblSystemset_82;
         private System.Windows.Forms.Label lblSystemset_83;
-        private System.Windows.Forms.Button btnSetComm3;
     }
 }

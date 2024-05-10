@@ -1,4 +1,5 @@
-﻿using SofarBMS.Helper;
+﻿using NPOI.SS.Formula.Functions;
+using SofarBMS.Helper;
 using SofarBMS.Model;
 using System;
 using System.Collections.Generic;
@@ -125,7 +126,34 @@ namespace SofarBMS.UI
             switch (BitConverter.ToUInt32(canid, 0) | 0xff)
             {
                 case 0x1020E0FF:
-                    cbbSetComm2.SelectedIndex = data[3] == 0xAA ? 0 : 1;
+                    // cbbSetComm2.SelectedIndex = data[3] == 0xAA ? 0 : 1;
+
+                    foreach (Control item in this.gbControl020.Controls)
+                    {
+                        if (item is ComboBox)
+                        {
+                            ComboBox cbb = item as ComboBox;
+                            int index = 0;
+                            int.TryParse(cbb.Name.Replace("cbbRequest", ""), out index);
+
+                            int value = -1;
+                            switch (data[index])
+                            {
+                                case 0x00:
+                                    value = 0;
+                                    break;
+                                case 0xAA:
+                                    value = 1;
+                                    break;
+                                case 0x55:
+                                    value = 2;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            cbb.SelectedIndex = value;
+                        }
+                    }
                     break;
                 case 0x0B70E0FF:
                     pcuCode[0] = Encoding.Default.GetString(data).Substring(1);
@@ -659,7 +687,7 @@ namespace SofarBMS.UI
         private bool testF = false;
         private void btnDebugCommandUnique_Click(object sender, EventArgs e)
         {
-            if (!testF)
+            /*if (!testF)
             {
                 DialogResult result = MessageBox.Show(LanguageHelper.GetLanguage("BmsDebug_Enter"), LanguageHelper.GetLanguage("BmsDebug_Tip"), MessageBoxButtons.OKCancel);
 
@@ -689,7 +717,7 @@ namespace SofarBMS.UI
                 testF = true;
                 return;
             }
-
+            */
 
             if (sender is Button btn)
             {
@@ -810,6 +838,18 @@ namespace SofarBMS.UI
                 btnSystemset_45_Lifted10.Enabled = state;
                 btnSystemset_43_Close10.Enabled = state;
                 btnSystemset_44_Open10.Enabled = state;
+
+                btnSystemset_44_Unique_Open1.Enabled = state;
+                btnSystemset_43_Unique_Close1.Enabled = state;
+                btnSystemset_45_Unique_Lifted1.Enabled = state;
+
+                btnSystemset_44_Unique_Open2.Enabled = state;
+                btnSystemset_43_Unique_Close2.Enabled = state;
+                btnSystemset_45_Unique_Lifted2.Enabled = state;
+
+                btnSystemset_44_Unique_Open3.Enabled = state;
+                btnSystemset_43_Unique_Close3.Enabled = state;
+                btnSystemset_45_Unique_Lifted3.Enabled = state;
             }));
         }
 

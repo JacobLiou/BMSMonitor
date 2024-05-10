@@ -237,6 +237,9 @@ namespace SofarBMS.Model
         {
             lock (_locker)
             {
+                //测试打印接收报文
+                Debug.WriteLine($"接收数据   帧ID:{CANOBJ.ID.ToString("X8")},帧数据：{CANOBJ.Data[0].ToString("X2")} {CANOBJ.Data[1].ToString("X2")} {CANOBJ.Data[2].ToString("X2")} {CANOBJ.Data[3].ToString("X2")} {CANOBJ.Data[4].ToString("X2")} {CANOBJ.Data[5].ToString("X2")} {CANOBJ.Data[6].ToString("X2")} {CANOBJ.Data[7].ToString("X2")}");
+
                 _task.Enqueue(CANOBJ);
                 _wh.Set();
             }

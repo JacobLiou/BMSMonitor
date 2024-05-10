@@ -1,4 +1,5 @@
-﻿using SofarBMS.Helper;
+﻿using NPOI.SS.Formula.Functions;
+using SofarBMS.Helper;
 using SofarBMS.Model;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,8 @@ namespace SofarBMS.UI
         //定义芯片角色和固件编码
         private string chip_role = "";
         private string chip_code = "E0";
+
+
 
         Dictionary<uint, int> DevState = new Dictionary<uint, int>();
         HashSet<uint> DeviceList = new HashSet<uint>();
@@ -80,6 +83,8 @@ namespace SofarBMS.UI
                 GetControls(item);
             }
 
+            cbbChiprole.SelectedIndex = 1;
+            cbbChipcode.SelectedIndex = 1;
             Task.Factory.StartNew(() =>
             {
                 while (true)
@@ -144,8 +149,6 @@ namespace SofarBMS.UI
             else
             {
                 txtPath.Text = "";
-                ckLocal_Upgrade_Control0.Checked = false;
-                ckLocal_Upgrade_Control1.Checked = false;
             }
         }
 
@@ -165,8 +168,7 @@ namespace SofarBMS.UI
                     return;
                 }
                 //1.判断文件是否为空
-                if (string.IsNullOrEmpty(txtPath.Text.Trim())
-                    && (!ckLocal_Upgrade_Control0.Checked && !ckLocal_Upgrade_Control1.Checked))
+                if (string.IsNullOrEmpty(txtPath.Text.Trim()))
                 {
                     MessageBox.Show(LanguageHelper.GetLanguage("BMSUpgrade_ImportNull"), LanguageHelper.GetLanguage("BmsDebug_Tip"));
                     return;
@@ -195,6 +197,7 @@ namespace SofarBMS.UI
                 //3.判断当前升级状态
                 if (State == false)
                 {
+                    cts = new CancellationTokenSource();
                     stepFlag = StepFlag.FB升级文件传输开始帧;
                     GroupIndex = 0;
                     DevState.Clear();
@@ -206,12 +209,19 @@ namespace SofarBMS.UI
                         int retryCount = 0;
                         do
                         {
+                            if (cts.IsCancellationRequested)
+                            {
+                                this.Invoke(new Action(() => { progressBar1.Value = 0; }));
+                                
+                                return;
+                            }
+
                             switch (stepFlag)
                             {
                                 case StepFlag.None:
                                     break;
                                 case StepFlag.FB升级文件传输开始帧:
-                                    Thread.Sleep(3000);
+                                    Thread.Sleep(3000);//待优化
 
                                     if (DeviceList.Count == 0)
                                     {
@@ -254,17 +264,21 @@ namespace SofarBMS.UI
                                     }
                                     Thread.Sleep(TX_INTERVAL_TIME);
                                     if (GroupIndex == file_size)
+                                    {
                                         stepFlag = StepFlag.FE升级文件接收结果查询帧;
+                                    }
                                     else
+                                    {
                                         GroupIndex++;
+                                    }
 
                                     this.Invoke(new Action(() =>
                                     {
                                         progressBar1.Maximum = file_size;
                                         progressBar1.Value = GroupIndex;
 
-                                        //decimal proVal = ((decimal)GroupIndex / file_size) * 100;
-                                        //progressBar1.Text = $"正在升级，当前进度为：{Convert.ToInt32(proVal)}%";
+                                        decimal proVal = ((decimal)GroupIndex / file_size) * 100;
+                                        progressBar1.Text = $"正在升级，当前进度为：{Convert.ToInt32(proVal)}%";
                                     }));
                                     break;
                                 case StepFlag.FE升级文件接收结果查询帧:
@@ -297,7 +311,7 @@ namespace SofarBMS.UI
                                                 Thread.Sleep(TX_INTERVAL_TIME);
 
                                                 GroupIndex = ErrorList[i] % 24 == 0 ? ErrorList[i] / 24 - 1 : ErrorList[i] / 24;
-                                                //AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FE", $"等{GroupIndex}组异常，Pack为{ErrorList[i]} ");
+                                                AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FE", $"等{GroupIndex}组异常，Pack为{ErrorList[i]} ");
                                                 offset = (ErrorList[i] - 1) * 1024;
 
                                                 for (int j = 0; j < 1024; j += 8)
@@ -340,14 +354,14 @@ namespace SofarBMS.UI
                             }
                         } while (stepFlag != StepFlag.FF升级完成状态查询帧);
 
-                    });
+                    }, cts.Token);
 
-                    //注册一个委托：这个委托将任务取消的时候调用
-                    cts.Token.Register(() =>
-                    {
-                        State = false;
-                        stepFlag = 0;
-                    });
+                    ////注册一个委托：这个委托将任务取消的时候调用
+                    //cts.Token.Register(() =>
+                    //{
+                    //    State = false;
+                    //    stepFlag = 0;
+                    //});
                 }
                 else
                 {
@@ -355,7 +369,9 @@ namespace SofarBMS.UI
                     DevState.Clear();
                     cts.Cancel();
 
+                    lblUpgrade_05.Text = "";
                     progressBar1.Value = 0;
+                    stepFlag = 0;
                     State = false;
                 }
             }
@@ -414,7 +430,7 @@ namespace SofarBMS.UI
         private void AnalysisData(uint obj_ID, byte[] data)
         {
             uint id = obj_ID | 0xff;
-
+            
             switch (stepFlag)
             {
                 case StepFlag.None:
@@ -459,7 +475,8 @@ namespace SofarBMS.UI
                                         lblUpgrade_05.Text = $"{LanguageHelper.GetLanguage("Upgrade_Result")}" + totalSussces;
                                         lblUpgrade_05.ForeColor = System.Drawing.Color.Green;
 
-                                        State = false;//初始化变量
+                                        stepFlag = StepFlag.None;
+                                        State = false;
                                         cts.Cancel();
                                     }
                                 }));
@@ -683,18 +700,19 @@ namespace SofarBMS.UI
                     sendErrorCount++;
                     if (sendErrorCount >= 10)
                     {
-                        State = false;
-                        cts.Cancel();
-                        DevState.Clear();
-                        DeviceList.Clear();
+                        //State = false;
+                        //cts.Cancel();
+                        //DevState.Clear();
+                        //DeviceList.Clear();
 
-                        Thread.Sleep(1000);
                         this.Invoke(new Action(() =>
                         {
-                            lblUpgrade_05.Text = "升级失败，无法下载数据。请检查通讯重新连接！";
+                            //lblUpgrade_05.Text = "升级失败，无法下载数据。请检查通讯重新连接！";
+                            lblUpgrade_05.Text = "发送失败，请检查通讯重新连接！";
                             lblUpgrade_05.ForeColor = System.Drawing.Color.Red;
-                            progressBar1.Value = 0;
+                            //progressBar1.Value = 0;
                         }));
+                        Thread.Sleep(1000 * 10);
                     }
                 }
             }
