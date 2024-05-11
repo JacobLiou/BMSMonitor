@@ -350,6 +350,9 @@
     <EmbeddedResource Include="UI\UpgradeControl.resx">
       <DependentUpon>UpgradeControl.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DB\RealtimeDataBase">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

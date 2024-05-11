@@ -158,8 +158,8 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
                 Directory.CreateDirectory("Log");
             }
 
-            //本地SQLite数据库连接字符串（后期需要去除冗余，要调整为MySQL数据库）
-            SQLiteHelper.ConStr = "Data Source=" + Application.StartupPath + "\\DB\\RealtimeDataBase;Pooling=true;FailIfMissing=false";
+            //本地SQLite数据库连接字符串（后期需要去除冗余，要调整为MySQL数据库）Pooling=true;FailIfMissing=false;
+            SQLiteHelper.ConStr = "Data Source=DB//RealtimeDataBase;Version=3;";
 
             //使用多线程轮询获取CAN错误码（后期需要去除冗余，改为异常后自动复位）
             Task.Run(() =>
