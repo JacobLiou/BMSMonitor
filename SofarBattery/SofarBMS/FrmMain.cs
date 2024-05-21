@@ -84,11 +84,7 @@ namespace SofarBMS
                     new FaultInfo("放电电流大环零点不良,DSG_CURR_BIG_RING_BADNESS",7,0,0,0,3),
                     new FaultInfo("放电电流小环零点不良,DSG_CURR_LITTLE_RING_BADNESS",7,1,0,0,3),
                     new FaultInfo("电芯温度过大,CELL_TEMP_DIFF_OVER",7,2,0,0,2),
-                    new FaultInfo("绝缘检测,INSUALATION_FAULT",7,3,0,0,2),
-                    new FaultInfo("端子温度过高保护,FLT_TERMINAL_TEMP_OVER",7,4,0,0,2),
-                    new FaultInfo("充电严重过流故障锁定,FLT_CHG_CUR_OVER_SERIOUS_LOCK",7,5,0,0,3),
-                    new FaultInfo("放电严重过流故障锁定,FLT_DCHG_CUR_OVER_SERIOUS_LOCK",7,6,0,0,3),
-                    new FaultInfo("加热回路失控故障,FLT_HEAT_LOSE_CONTROL",7,7,0,0,3),
+                    new FaultInfo("绝缘检测,INSUALATION_FAULT",7,3,0,0,2)
         };
         public static List<FaultInfo> FaultInfos2 = new List<FaultInfo>()
         {
@@ -125,19 +121,20 @@ namespace SofarBMS
                     new FaultInfo("放电温度过高提示,BAT_DCHG_TEMP_OVER_TIPS",3,6,0,0,1),
                     new FaultInfo("放电温度过低提示,BAT_DCHG_TEMP_LOW_TIPS",3,7,0,0,1),
                     new FaultInfo("flash异常,FLASH_SAVE_INVALID",4,0,0,0,3),
-                    new FaultInfo("保留,res",4,1,0,0,3),
+                    new FaultInfo("功率端子过温锁死,POWER_TEMP_LOCK",4,1,0,0,3),
                     new FaultInfo("mos过温锁死,FLT_MOS_T_LOCK",4,2,0,0,1),
                     new FaultInfo("电芯严重过压锁死故障,BAT_CELL_VOLT_HIGH_SERIOUS_LOCK",4,3,0,0,3),
                     new FaultInfo("电芯电压采样线异常,CELL_VOLT_WIRE_ABNORMAL_FAULT",4,4,0,0,3),
                     new FaultInfo("电芯温度采样线异常,CELL_TEMP_WIRE_ABNORMAL_FAULT",4,5,0,0,3),
                     new FaultInfo("均衡电阻温度采样线异常,BAL_TEMP_WIRE_ABNORMAL_FAULT",4,6,0,0,3),
                     new FaultInfo("功率端子温度采样线异常,PWR_TEMP_WIRE_ABNORMAL_FAULT",4,7,0,0,3),
-        };
-        public static List<FaultInfo> FaultInfos3 = new List<FaultInfo>()
-        {
-                    new FaultInfo("加热异常,FLT_HEAT_ERROR",0,0,0,0,1),
-                    new FaultInfo("加热继电器粘连,FLT_HEAT_RELAY_ADHESION",0,1,0,0,1),
-                    new FaultInfo("加热继电器断路,FLT_HEAT_RELAY_OPEN",0,2,0,0,1),
+                    new FaultInfo("功率端子过温保护,POWER_TEMP_PROT",5,0,0,0,2),
+                    new FaultInfo("加热异常,FLT_HEAT_ERROR",5,1,0,0,1),
+                    new FaultInfo("加热继电器粘连,FLT_HEAT_RELAY_ADHESION",5,2,0,0,1),
+                    new FaultInfo("加热继电器断路,FLT_HEAT_RELAY_OPEN",5,3,0,0,1),
+                    new FaultInfo("充电严重过流故障锁定,FLT_CHG_CUR_OVER_SERIOUS_LOCK",7,5,0,0,3),
+                    new FaultInfo("放电严重过流故障锁定,FLT_DCHG_CUR_OVER_SERIOUS_LOCK",7,6,0,0,3),
+                    new FaultInfo("加热回路失控故障,FLT_HEAT_LOSE_CONTROL",7,7,0,0,3),
         };
 
         public static string MessageBoxTextStr = @"keyWriteSuccess,写入成功,WriteSuccess
@@ -145,6 +142,7 @@ keyWriteFail,写入失败,WriteFail
 keyReadSuccess,读取成功,ReadSuccess
 keyReadFail,读取失败,ReadFail
 keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
+
         public FrmMain()
         {
             InitializeComponent();
@@ -152,6 +150,8 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
+            string s = Guid.NewGuid().ToString();
+
             //程序确保Log文件的存在性
             if (!Directory.Exists("Log"))
             {

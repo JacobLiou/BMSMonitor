@@ -609,6 +609,24 @@ Can通信故障,Can1CommFault
                         pcbaV[i] = data[i + 1].ToString();
                     }
                     txtPcbaHardware_Version.Text = Encoding.ASCII.GetString(new byte[] { data[0] }) + string.Join("", pcbaV);
+
+                    if (data[4] == 1 && this.Controls.Find("pbHfilmState", true) != null)
+                    {
+                        (this.Controls.Find("pbHfilmState", true)[0] as PictureBox).BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        (this.Controls.Find("pbHfilmState", true)[0] as PictureBox).BackColor = Color.Green;
+                    }
+
+                    if (data[5] == 1 && this.Controls.Find("pbHfimForbiddenCmd", true) != null)
+                    {
+                        (this.Controls.Find("pbHfimForbiddenCmd", true)[0] as PictureBox).BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        (this.Controls.Find("pbHfimForbiddenCmd", true)[0] as PictureBox).BackColor = Color.Green;
+                    }
                     break;
                 case 0x0B78E0FF:
                     txtHV_Charge_Current.Text = BytesToIntger(data[5], data[4], 0.01);

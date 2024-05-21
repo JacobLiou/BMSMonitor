@@ -418,9 +418,9 @@ namespace SofarBMS.UI
                     model.CellTemperature7 = Convert.ToDouble(strs[2]);
                     model.CellTemperature8 = Convert.ToDouble(strs[3]);
                     break;
-                case 0x1043FFFF:
+                case 0x1045FFFF:
                     //加热异常，加热继电器粘连，加热继电器断路Byte[0],0/1/2
-                    analysisLog(data, 2);
+                    analysisLog(data, 1);
                     break;
                 case 0x1027E0FF:
                     string strSn = GetPackSN(data);
@@ -705,16 +705,9 @@ namespace SofarBMS.UI
         {
             msg = new string[2];
             List<FaultInfo> faultInfos = FrmMain.FaultInfos;
-            switch (faultNum)
+            if (faultNum==1)
             {
-                case 1:
-                    faultInfos = FrmMain.FaultInfos2;
-                    break;
-                case 2:
-                    faultInfos = FrmMain.FaultInfos3;
-                    break;
-                default:
-                    break;
+                faultInfos = FrmMain.FaultInfos2;
             }
 
             for (int i = 0; i < faultInfos.Count; i++)

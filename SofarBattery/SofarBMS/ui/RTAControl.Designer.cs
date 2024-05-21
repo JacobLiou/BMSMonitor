@@ -199,12 +199,16 @@
             this.lblRealtimeData_89 = new System.Windows.Forms.Label();
             this.txtHardware_Version_Bms = new System.Windows.Forms.TextBox();
             this.gbRealtimeData_120 = new System.Windows.Forms.GroupBox();
-            this.lblRealtimeData_92 = new System.Windows.Forms.Label();
             this.txtHardware_Version_BDU = new System.Windows.Forms.TextBox();
-            this.lblRealtimeData_91 = new System.Windows.Forms.Label();
             this.txtSoftware_Version_BDU = new System.Windows.Forms.TextBox();
-            this.lblRealtimeData_90 = new System.Windows.Forms.Label();
             this.txtSN_BDU = new System.Windows.Forms.TextBox();
+            this.lblRealtimeData_92 = new System.Windows.Forms.Label();
+            this.lblRealtimeData_91 = new System.Windows.Forms.Label();
+            this.lblRealtimeData_90 = new System.Windows.Forms.Label();
+            this.pbHfimForbiddenCmd = new System.Windows.Forms.PictureBox();
+            this.pbHfilmState = new System.Windows.Forms.PictureBox();
+            this.lblRealtimeData_155 = new System.Windows.Forms.Label();
+            this.lblRealtimeData_154 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbPrechgMosEnable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDischargeMosEnable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHeatEnable)).BeginInit();
@@ -223,6 +227,8 @@
             this.gbRealtimeData_109.SuspendLayout();
             this.gbRealtimeData_110.SuspendLayout();
             this.gbRealtimeData_120.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHfimForbiddenCmd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHfilmState)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCellvoltage16
@@ -391,7 +397,7 @@
             // lblRealtimeData_13
             // 
             this.lblRealtimeData_13.AutoSize = true;
-            this.lblRealtimeData_13.Location = new System.Drawing.Point(166, 46);
+            this.lblRealtimeData_13.Location = new System.Drawing.Point(166, 45);
             this.lblRealtimeData_13.Name = "lblRealtimeData_13";
             this.lblRealtimeData_13.Size = new System.Drawing.Size(47, 12);
             this.lblRealtimeData_13.TabIndex = 4;
@@ -409,7 +415,7 @@
             // lblRealtimeData_10
             // 
             this.lblRealtimeData_10.AutoSize = true;
-            this.lblRealtimeData_10.Location = new System.Drawing.Point(35, 46);
+            this.lblRealtimeData_10.Location = new System.Drawing.Point(35, 45);
             this.lblRealtimeData_10.Name = "lblRealtimeData_10";
             this.lblRealtimeData_10.Size = new System.Drawing.Size(47, 12);
             this.lblRealtimeData_10.TabIndex = 1;
@@ -418,7 +424,7 @@
             // lblRealtimeData_09
             // 
             this.lblRealtimeData_09.AutoSize = true;
-            this.lblRealtimeData_09.Location = new System.Drawing.Point(35, 22);
+            this.lblRealtimeData_09.Location = new System.Drawing.Point(35, 20);
             this.lblRealtimeData_09.Name = "lblRealtimeData_09";
             this.lblRealtimeData_09.Size = new System.Drawing.Size(47, 12);
             this.lblRealtimeData_09.TabIndex = 0;
@@ -593,7 +599,7 @@
             // lblRealtimeData_12
             // 
             this.lblRealtimeData_12.AutoSize = true;
-            this.lblRealtimeData_12.Location = new System.Drawing.Point(166, 22);
+            this.lblRealtimeData_12.Location = new System.Drawing.Point(166, 20);
             this.lblRealtimeData_12.Name = "lblRealtimeData_12";
             this.lblRealtimeData_12.Size = new System.Drawing.Size(53, 12);
             this.lblRealtimeData_12.TabIndex = 3;
@@ -621,7 +627,7 @@
             // pbDischargeMosEnable
             // 
             this.pbDischargeMosEnable.BackColor = System.Drawing.Color.Green;
-            this.pbDischargeMosEnable.Location = new System.Drawing.Point(19, 46);
+            this.pbDischargeMosEnable.Location = new System.Drawing.Point(19, 47);
             this.pbDischargeMosEnable.Name = "pbDischargeMosEnable";
             this.pbDischargeMosEnable.Size = new System.Drawing.Size(10, 9);
             this.pbDischargeMosEnable.TabIndex = 6;
@@ -682,7 +688,7 @@
             // pbHeatEnable
             // 
             this.pbHeatEnable.BackColor = System.Drawing.Color.Green;
-            this.pbHeatEnable.Location = new System.Drawing.Point(150, 46);
+            this.pbHeatEnable.Location = new System.Drawing.Point(150, 47);
             this.pbHeatEnable.Name = "pbHeatEnable";
             this.pbHeatEnable.Size = new System.Drawing.Size(10, 9);
             this.pbHeatEnable.TabIndex = 9;
@@ -699,6 +705,10 @@
             // 
             // gbRealtimeData_108
             // 
+            this.gbRealtimeData_108.Controls.Add(this.pbHfimForbiddenCmd);
+            this.gbRealtimeData_108.Controls.Add(this.pbHfilmState);
+            this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_155);
+            this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_154);
             this.gbRealtimeData_108.Controls.Add(this.pbHeatEnable);
             this.gbRealtimeData_108.Controls.Add(this.pbStopChgEnable);
             this.gbRealtimeData_108.Controls.Add(this.pbPrechgMosEnable);
@@ -1979,6 +1989,30 @@
             this.gbRealtimeData_120.TabStop = false;
             this.gbRealtimeData_120.Text = "BDU版本信息";
             // 
+            // txtHardware_Version_BDU
+            // 
+            this.txtHardware_Version_BDU.Location = new System.Drawing.Point(68, 78);
+            this.txtHardware_Version_BDU.Name = "txtHardware_Version_BDU";
+            this.txtHardware_Version_BDU.ReadOnly = true;
+            this.txtHardware_Version_BDU.Size = new System.Drawing.Size(140, 21);
+            this.txtHardware_Version_BDU.TabIndex = 69;
+            // 
+            // txtSoftware_Version_BDU
+            // 
+            this.txtSoftware_Version_BDU.Location = new System.Drawing.Point(68, 49);
+            this.txtSoftware_Version_BDU.Name = "txtSoftware_Version_BDU";
+            this.txtSoftware_Version_BDU.ReadOnly = true;
+            this.txtSoftware_Version_BDU.Size = new System.Drawing.Size(140, 21);
+            this.txtSoftware_Version_BDU.TabIndex = 67;
+            // 
+            // txtSN_BDU
+            // 
+            this.txtSN_BDU.Location = new System.Drawing.Point(67, 22);
+            this.txtSN_BDU.Name = "txtSN_BDU";
+            this.txtSN_BDU.ReadOnly = true;
+            this.txtSN_BDU.Size = new System.Drawing.Size(140, 21);
+            this.txtSN_BDU.TabIndex = 65;
+            // 
             // lblRealtimeData_92
             // 
             this.lblRealtimeData_92.AutoSize = true;
@@ -1987,14 +2021,6 @@
             this.lblRealtimeData_92.Size = new System.Drawing.Size(53, 12);
             this.lblRealtimeData_92.TabIndex = 68;
             this.lblRealtimeData_92.Text = "硬件版本";
-            // 
-            // txtHardware_Version_BDU
-            // 
-            this.txtHardware_Version_BDU.Location = new System.Drawing.Point(68, 78);
-            this.txtHardware_Version_BDU.Name = "txtHardware_Version_BDU";
-            this.txtHardware_Version_BDU.ReadOnly = true;
-            this.txtHardware_Version_BDU.Size = new System.Drawing.Size(140, 21);
-            this.txtHardware_Version_BDU.TabIndex = 69;
             // 
             // lblRealtimeData_91
             // 
@@ -2005,14 +2031,6 @@
             this.lblRealtimeData_91.TabIndex = 66;
             this.lblRealtimeData_91.Text = "软件版本";
             // 
-            // txtSoftware_Version_BDU
-            // 
-            this.txtSoftware_Version_BDU.Location = new System.Drawing.Point(68, 49);
-            this.txtSoftware_Version_BDU.Name = "txtSoftware_Version_BDU";
-            this.txtSoftware_Version_BDU.ReadOnly = true;
-            this.txtSoftware_Version_BDU.Size = new System.Drawing.Size(140, 21);
-            this.txtSoftware_Version_BDU.TabIndex = 67;
-            // 
             // lblRealtimeData_90
             // 
             this.lblRealtimeData_90.AutoSize = true;
@@ -2022,13 +2040,41 @@
             this.lblRealtimeData_90.TabIndex = 64;
             this.lblRealtimeData_90.Text = "SN序列号";
             // 
-            // txtSN_BDU
+            // pbHfimForbiddenCmd
             // 
-            this.txtSN_BDU.Location = new System.Drawing.Point(67, 22);
-            this.txtSN_BDU.Name = "txtSN_BDU";
-            this.txtSN_BDU.ReadOnly = true;
-            this.txtSN_BDU.Size = new System.Drawing.Size(140, 21);
-            this.txtSN_BDU.TabIndex = 65;
+            this.pbHfimForbiddenCmd.BackColor = System.Drawing.Color.Green;
+            this.pbHfimForbiddenCmd.Location = new System.Drawing.Point(291, 47);
+            this.pbHfimForbiddenCmd.Name = "pbHfimForbiddenCmd";
+            this.pbHfimForbiddenCmd.Size = new System.Drawing.Size(10, 9);
+            this.pbHfimForbiddenCmd.TabIndex = 13;
+            this.pbHfimForbiddenCmd.TabStop = false;
+            // 
+            // pbHfilmState
+            // 
+            this.pbHfilmState.BackColor = System.Drawing.Color.Green;
+            this.pbHfilmState.Location = new System.Drawing.Point(291, 22);
+            this.pbHfilmState.Name = "pbHfilmState";
+            this.pbHfilmState.Size = new System.Drawing.Size(10, 9);
+            this.pbHfilmState.TabIndex = 12;
+            this.pbHfilmState.TabStop = false;
+            // 
+            // lblRealtimeData_155
+            // 
+            this.lblRealtimeData_155.AutoSize = true;
+            this.lblRealtimeData_155.Location = new System.Drawing.Point(307, 45);
+            this.lblRealtimeData_155.Name = "lblRealtimeData_155";
+            this.lblRealtimeData_155.Size = new System.Drawing.Size(65, 12);
+            this.lblRealtimeData_155.TabIndex = 11;
+            this.lblRealtimeData_155.Text = "加热膜状态";
+            // 
+            // lblRealtimeData_154
+            // 
+            this.lblRealtimeData_154.AutoSize = true;
+            this.lblRealtimeData_154.Location = new System.Drawing.Point(307, 20);
+            this.lblRealtimeData_154.Name = "lblRealtimeData_154";
+            this.lblRealtimeData_154.Size = new System.Drawing.Size(53, 12);
+            this.lblRealtimeData_154.TabIndex = 10;
+            this.lblRealtimeData_154.Text = "加热状态";
             // 
             // RTAControl
             // 
@@ -2074,6 +2120,8 @@
             this.gbRealtimeData_110.PerformLayout();
             this.gbRealtimeData_120.ResumeLayout(false);
             this.gbRealtimeData_120.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHfimForbiddenCmd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHfilmState)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2256,5 +2304,9 @@
         private System.Windows.Forms.TextBox txtSN_BDU;
         private System.Windows.Forms.Label lblRealtimeData_92;
         private System.Windows.Forms.TextBox txtHardware_Version_BDU;
+        private System.Windows.Forms.PictureBox pbHfimForbiddenCmd;
+        private System.Windows.Forms.PictureBox pbHfilmState;
+        private System.Windows.Forms.Label lblRealtimeData_155;
+        private System.Windows.Forms.Label lblRealtimeData_154;
     }
 }

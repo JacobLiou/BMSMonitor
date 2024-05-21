@@ -1754,7 +1754,7 @@ namespace SofarBMS.UI
 
             byte[] data = new byte[8];
             //主动均衡充电使能
-            data[0] = (byte)Convert.ToByte(cbbActiveBalanceCtrl.Text.Trim(), 16);
+            data[0] = (byte)Convert.ToByte(cbbActiveBalanceCtrl.SelectedIndex);
             //主动均衡电流
             int current = Convert.ToInt32(txtPackActiveBalanceCur.Text.Trim());
             data[1] = (byte)(current & 0xff);
