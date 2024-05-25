@@ -15,12 +15,13 @@ using SofarBMS.Helper;
 using SofarBMS.Model;
 using SofarBMS.UI;
 using System.Text;
+using NPOI.SS.Formula.Functions;
 
 namespace SofarBMS
 {
     public partial class FrmMain : Form
     {
-        public static string WIN_ID = "";
+        public static string WIN_ID;
         public static byte BMS_ID = 0x01;
         public static byte PCU_ID = 0x21;
         public static byte BDU_ID = 0xA1;
@@ -101,18 +102,18 @@ namespace SofarBMS
                     new FaultInfo("主动均衡副边快过压,ACT_BAL_SEC_FAST_OVER_VOLT_PROTECT",1,2,0,0,1),
                     new FaultInfo("主动均衡原边放电快过流保护,ACT_BAL_DIS_FAST_OVER_CURR_PROTECT",1,3,0,0,1),
                     new FaultInfo("主动均衡原边充电快过流保护,ACT_BAL_CHG_FAST_OVER_CURR_PROTECT",1,4,0,0,1),
-                    new FaultInfo("主动均衡功率过大,ACT_BAL_POWER_OVER_PROTECT",1,5,0,0,1),
-                    new FaultInfo("保留,res",1,6,0,0,3),
-                    new FaultInfo("保留,res",1,7,0,0,3),
+                    new FaultInfo("主动均衡硬件过压保护,ACT_BAL_HARD_VOLT_H",1,5,0,0,1),
+                    new FaultInfo("主动均衡功率过大,ACT_BAL_POWER_OVER_PROTECT",1,6,0,0,3),
+                    new FaultInfo("主动均衡电流零点不良,BAL_CURR_RING_BADNESS",1,7,0,0,3),
                     new FaultInfo("保留,res",2,0,0,0,1),
                     new FaultInfo("功率端子温度采样线异常,PWR_TEMP_WIRE_ABNORMAL_FAULT",2,1,0,0,3),
                     new FaultInfo("被动均衡温度过高告警,BAT_BALANCE_TEMP_OVER_ALARM",2,2,0,0,1),
                     new FaultInfo("电芯电压严重不均衡故障,BAT_CELL_UNBALANCE_SERIOUS",2,3,0,0,3),
                     new FaultInfo("电芯过温故障,BAT_CELL_TEMP_OVER_ERR",2,4,0,0,3),
-                    new FaultInfo("过流锁死,BAT_CURR_LOCK",2,5,0,0,3),
-                    new FaultInfo("电池过压锁死,BAT_VOLT_HIGH_LOCK",2,6,0,0,3),
-                    new FaultInfo("电池欠压锁死,BAT_VOLT_LOW_LOCK",2,7,0,0,3),
-                    new FaultInfo("电池高低温锁死,BAT_CELL_TEMP_OVER_OR_LOW_LOCK",3,0,0,0,3),
+                    new FaultInfo("过流失能,BAT_CURR_DISABLE",2,5,0,0,3),
+                    new FaultInfo("电池过压失能,BAT_VOLT_HIGH_DISABLE",2,6,0,0,3),
+                    new FaultInfo("电池欠压失能,BAT_VOLT_LOW_DISABLE",2,7,0,0,3),
+                    new FaultInfo("电池高低温失能,BAT_CELL_TEMP_OVER_OR_LOW_DISABLE",3,0,0,0,3),
                     new FaultInfo("温升过大,BAT_TEMP_RISE_DIFF_OVER",3,1,0,0,3),
                     new FaultInfo("保留,res",3,2,0,0,3),
                     new FaultInfo("放电电流过高保护2,BAT_DISCHG_CURR_OVER_PROTECT2",3,3,0,0,2),
@@ -121,8 +122,8 @@ namespace SofarBMS
                     new FaultInfo("放电温度过高提示,BAT_DCHG_TEMP_OVER_TIPS",3,6,0,0,1),
                     new FaultInfo("放电温度过低提示,BAT_DCHG_TEMP_LOW_TIPS",3,7,0,0,1),
                     new FaultInfo("flash异常,FLASH_SAVE_INVALID",4,0,0,0,3),
-                    new FaultInfo("功率端子过温锁死,POWER_TEMP_LOCK",4,1,0,0,3),
-                    new FaultInfo("mos过温锁死,FLT_MOS_T_LOCK",4,2,0,0,1),
+                    new FaultInfo("功率端子过温失能,POWER_TEMP_DISABLE_H",4,1,0,0,3),
+                    new FaultInfo("mos过温失效,MOS_TEMP_DISABLE_H",4,2,0,0,1),
                     new FaultInfo("电芯严重过压锁死故障,BAT_CELL_VOLT_HIGH_SERIOUS_LOCK",4,3,0,0,3),
                     new FaultInfo("电芯电压采样线异常,CELL_VOLT_WIRE_ABNORMAL_FAULT",4,4,0,0,3),
                     new FaultInfo("电芯温度采样线异常,CELL_TEMP_WIRE_ABNORMAL_FAULT",4,5,0,0,3),
@@ -132,11 +133,14 @@ namespace SofarBMS
                     new FaultInfo("加热异常,FLT_HEAT_ERROR",5,1,0,0,1),
                     new FaultInfo("加热继电器粘连,FLT_HEAT_RELAY_ADHESION",5,2,0,0,1),
                     new FaultInfo("加热继电器断路,FLT_HEAT_RELAY_OPEN",5,3,0,0,1),
-                    new FaultInfo("充电严重过流故障锁定,FLT_CHG_CUR_OVER_SERIOUS_LOCK",7,5,0,0,3),
-                    new FaultInfo("放电严重过流故障锁定,FLT_DCHG_CUR_OVER_SERIOUS_LOCK",7,6,0,0,3),
-                    new FaultInfo("加热回路失控故障,FLT_HEAT_LOSE_CONTROL",7,7,0,0,3),
+                    new FaultInfo("保留,res",5,4,0,0,3),
+                    new FaultInfo("保留,res",5,5,0,0,3),
+                    new FaultInfo("保留,res",5,6,0,0,3),
+                    new FaultInfo("保留,res",5,7,0,0,3),
+                    new FaultInfo("充电严重过流故障锁定,FLT_CHG_CUR_OVER_SERIOUS_LOCK",6,0,0,0,3),
+                    new FaultInfo("放电严重过流故障锁定,FLT_DCHG_CUR_OVER_SERIOUS_LOCK",6,1,0,0,3),
+                    new FaultInfo("加热回路失控故障,FLT_HEAT_LOSE_CONTROL",6,2,0,0,3),
         };
-
         public static string MessageBoxTextStr = @"keyWriteSuccess,写入成功,WriteSuccess
 keyWriteFail,写入失败,WriteFail
 keyReadSuccess,读取成功,ReadSuccess
@@ -162,12 +166,10 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
             SQLiteHelper.ConStr = "Data Source=DB//RealtimeDataBase;Version=3;";
 
             //使用多线程轮询获取CAN错误码（后期需要去除冗余，改为异常后自动复位）
-            Task.Run(() =>
+            Task.Run(async () =>
             {
                 while (true)
                 {
-                    Thread.Sleep(3000);//Thread.Sleep(60000 * 1);//一分钟/次
-
                     string error = EcanHelper.ReadError().Replace("当前错误码：", "");
                     if (error != "00")
                     {
@@ -180,14 +182,13 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
                     }
 
                     this.BeginInvoke(new Action(() => { toolStripStatusLabel1.Text = error; }));
+
+                    await Task.Delay(1000 * 10);
                 }
             });
 
             //使用多线程实时获取接收数据
-            Task.Run(() =>
-            {
-                EcanHelper.Receive();
-            });
+            EcanHelper.Receive();
 
             //加载菜单栏和初始化界面
             InitMenuStrip();
@@ -195,48 +196,22 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
             lblSp_02.Text = LanguageHelper.GetLanguage("Sp_02");
             btnConnectionCAN.Text = LanguageHelper.GetLanguage("ConnectionCAN");
             btnResetCAN.Text = LanguageHelper.GetLanguage("ResetCAN");
-            //启动定时器
-            timer1.Start();
 
             this.panel1.Controls.Add(new RTAControl());
+            WIN_ID = "RTAControl";
+
             cbbID.SelectedIndex = 0;
             cbbIDP.SelectedIndex = 0;
             cbbBaud.SelectedIndex = 5;
 
             //this.Text = LanguageHelper.GetLanguage("Title");
         }
-        /// <summary>
-        /// 获取MessageBox语言资源
-        /// </summary>
-        /// <param name="key">关键字</param>
-        /// <param name="languageIndex">1|2 1中文 2英文</param>
-        /// <returns></returns>
-        public static string GetString(string key)
-        {
-            if (key == null || key.Length == 0)
-            {
-                return "";
-            }
-            string[] csvarr = MessageBoxTextStr.Split("\n".ToCharArray());
-            foreach (string s in csvarr)
-            {
-                string[] sarr = s.Split(",".ToCharArray());
-                if (sarr.Length < 3)
-                {
-                    continue;
-                }
-                if (sarr[0].Equals(key))
-                {
-                    return sarr[LanguageHelper.LanaguageIndex].TrimEnd("\r".ToCharArray()).Trim();
-                }
-            }
 
-            return key;
-        }
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(0);
         }
+
 
         #region Menu菜单栏，添加子菜单，事件函数等
         /// <summary>
@@ -264,10 +239,11 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_23"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
             //AddContextMenu(LanguageHelper.GetLanguage("tsmi_13"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
 
-            tsmiMenu = AddContextMenu("CBS5000",Menu.Items, null);
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_21"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_13"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_23"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_5"), Menu.Items, null);
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_51"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_52"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_53"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_54"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
 
             //添加“语言”菜单
             tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_4"), Menu.Items, null);
@@ -301,9 +277,10 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
 
             Dictionary<string, UserControl> MenuAndControl3 = new Dictionary<string, UserControl>()
             {
-                { LanguageHelper.GetLanguage("tsmi_11"), new CBSControl() },
-                { LanguageHelper.GetLanguage("tsmi_13"), new CBSParamControl() },
-                { LanguageHelper.GetLanguage("tsmi_23"), new CBSUpgradeControl() }
+                { LanguageHelper.GetLanguage("tsmi_51"), new CBSControl() },
+                { LanguageHelper.GetLanguage("tsmi_52"), new CBSParamControl() },
+                { LanguageHelper.GetLanguage("tsmi_53"), new CBSUpgradeControl() },
+                { LanguageHelper.GetLanguage("tsmi_54"), new CBSFileTransmit() }
             };
 
             bool isUserControl = false;
@@ -340,9 +317,8 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
                     }
                 }
             }
-            else if (parentTitle == "BMS低压储能电池" || parentTitle == "CBS5000")
+            else if (parentTitle == "CBS高压储能电池" || parentTitle == "CBS5000")
             {
-
                 foreach (var item in MenuAndControl3)
                 {
                     if (item.Key == title)
@@ -385,9 +361,9 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
         {
             EcanHelper._task.Clear();
             panel1.Controls.Clear();
-
             bc.Dock = DockStyle.Fill;
             panel1.Controls.Add(bc);
+            WIN_ID = bc.Name;
 
             if (bc.Name != "RTAControl")
             {
@@ -428,6 +404,10 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
             if (bc.Name != "CBSParamControl")
             {
                 CBSParamControl.cts?.Cancel();
+            }
+            if (bc.Name != "CBSUpgradeControl")
+            {
+                CBSUpgradeControl.cts?.Cancel();
             }
         }
 
@@ -730,6 +710,8 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
 
         private void btnClearInit_Click(object sender, EventArgs e)
         {
+            timer1.Start();
+
             try
             {
                 bool result = true;
@@ -755,7 +737,38 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
             {
                 MessageBox.Show("执行失败！");
             }
+
+            timer1.Stop();
         }
         #endregion
+
+        /// <summary>
+        /// 获取MessageBox语言资源
+        /// </summary>
+        /// <param name="key">关键字</param>
+        /// <param name="languageIndex">1|2 1中文 2英文</param>
+        /// <returns></returns>
+        public static string GetString(string key)
+        {
+            if (key == null || key.Length == 0)
+            {
+                return "";
+            }
+            string[] csvarr = MessageBoxTextStr.Split("\n".ToCharArray());
+            foreach (string s in csvarr)
+            {
+                string[] sarr = s.Split(",".ToCharArray());
+                if (sarr.Length < 3)
+                {
+                    continue;
+                }
+                if (sarr[0].Equals(key))
+                {
+                    return sarr[LanguageHelper.LanaguageIndex].TrimEnd("\r".ToCharArray()).Trim();
+                }
+            }
+
+            return key;
+        }
     }
 }

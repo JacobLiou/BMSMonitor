@@ -30,8 +30,10 @@
         {
             this.lblUpgrade_07 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtChiprole = new System.Windows.Forms.TextBox();
+            this.txtSlaveAddress = new System.Windows.Forms.TextBox();
             this.cbbChipcode = new System.Windows.Forms.ComboBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.lblUpgrade_02 = new System.Windows.Forms.Label();
             this.cbbChiprole = new System.Windows.Forms.ComboBox();
             this.btnUpgrade_03 = new System.Windows.Forms.Button();
             this.lblUpgrade_01 = new System.Windows.Forms.Label();
@@ -40,13 +42,12 @@
             this.btnUpgrade_04 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.ckUpgrade_06 = new System.Windows.Forms.CheckBox();
-            this.lblUpgrade_02 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cbbChiprole_val = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -54,7 +55,7 @@
             // lblUpgrade_07
             // 
             this.lblUpgrade_07.AutoSize = true;
-            this.lblUpgrade_07.Location = new System.Drawing.Point(59, 109);
+            this.lblUpgrade_07.Location = new System.Drawing.Point(59, 107);
             this.lblUpgrade_07.Name = "lblUpgrade_07";
             this.lblUpgrade_07.Size = new System.Drawing.Size(53, 12);
             this.lblUpgrade_07.TabIndex = 25;
@@ -62,7 +63,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtChiprole);
+            this.groupBox2.Controls.Add(this.cbbChiprole_val);
+            this.groupBox2.Controls.Add(this.txtSlaveAddress);
             this.groupBox2.Controls.Add(this.cbbChipcode);
             this.groupBox2.Controls.Add(this.progressBar1);
             this.groupBox2.Controls.Add(this.lblUpgrade_02);
@@ -83,13 +85,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "升级固件";
             // 
-            // txtChiprole
+            // txtSlaveAddress
             // 
-            this.txtChiprole.Location = new System.Drawing.Point(567, 107);
-            this.txtChiprole.Name = "txtChiprole";
-            this.txtChiprole.ReadOnly = true;
-            this.txtChiprole.Size = new System.Drawing.Size(75, 21);
-            this.txtChiprole.TabIndex = 31;
+            this.txtSlaveAddress.Location = new System.Drawing.Point(673, 103);
+            this.txtSlaveAddress.Name = "txtSlaveAddress";
+            this.txtSlaveAddress.ReadOnly = true;
+            this.txtSlaveAddress.Size = new System.Drawing.Size(75, 21);
+            this.txtSlaveAddress.TabIndex = 32;
             // 
             // cbbChipcode
             // 
@@ -98,11 +100,27 @@
             "E0",
             "S3",
             "N2"});
-            this.cbbChipcode.Location = new System.Drawing.Point(660, 107);
+            this.cbbChipcode.Location = new System.Drawing.Point(754, 103);
             this.cbbChipcode.Name = "cbbChipcode";
-            this.cbbChipcode.Size = new System.Drawing.Size(121, 20);
+            this.cbbChipcode.Size = new System.Drawing.Size(100, 20);
             this.cbbChipcode.TabIndex = 30;
             this.cbbChipcode.SelectedIndexChanged += new System.EventHandler(this.cbbChipcode_SelectedIndexChanged);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(146, 62);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(875, 24);
+            this.progressBar1.TabIndex = 3;
+            // 
+            // lblUpgrade_02
+            // 
+            this.lblUpgrade_02.AutoSize = true;
+            this.lblUpgrade_02.Location = new System.Drawing.Point(59, 68);
+            this.lblUpgrade_02.Name = "lblUpgrade_02";
+            this.lblUpgrade_02.Size = new System.Drawing.Size(53, 12);
+            this.lblUpgrade_02.TabIndex = 24;
+            this.lblUpgrade_02.Text = "升级进度";
             // 
             // cbbChiprole
             // 
@@ -110,7 +128,7 @@
             this.cbbChiprole.Items.AddRange(new object[] {
             "BCU",
             "BMU"});
-            this.cbbChiprole.Location = new System.Drawing.Point(440, 107);
+            this.cbbChiprole.Location = new System.Drawing.Point(440, 103);
             this.cbbChiprole.Name = "cbbChiprole";
             this.cbbChiprole.Size = new System.Drawing.Size(121, 20);
             this.cbbChiprole.TabIndex = 29;
@@ -170,7 +188,7 @@
             this.dateTimePicker1.Checked = false;
             this.dateTimePicker1.CustomFormat = "yy-MM-dd HH:mm:ss";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(146, 105);
+            this.dateTimePicker1.Location = new System.Drawing.Point(146, 103);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.ShowUpDown = true;
             this.dateTimePicker1.Size = new System.Drawing.Size(165, 21);
@@ -179,28 +197,12 @@
             // ckUpgrade_06
             // 
             this.ckUpgrade_06.AutoSize = true;
-            this.ckUpgrade_06.Location = new System.Drawing.Point(317, 107);
+            this.ckUpgrade_06.Location = new System.Drawing.Point(317, 105);
             this.ckUpgrade_06.Name = "ckUpgrade_06";
             this.ckUpgrade_06.Size = new System.Drawing.Size(96, 16);
             this.ckUpgrade_06.TabIndex = 18;
             this.ckUpgrade_06.Text = "开启定时升级";
             this.ckUpgrade_06.UseVisualStyleBackColor = true;
-            // 
-            // lblUpgrade_02
-            // 
-            this.lblUpgrade_02.AutoSize = true;
-            this.lblUpgrade_02.Location = new System.Drawing.Point(59, 68);
-            this.lblUpgrade_02.Name = "lblUpgrade_02";
-            this.lblUpgrade_02.Size = new System.Drawing.Size(53, 12);
-            this.lblUpgrade_02.TabIndex = 24;
-            this.lblUpgrade_02.Text = "升级进度";
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(146, 62);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(875, 24);
-            this.progressBar1.TabIndex = 3;
             // 
             // groupBox1
             // 
@@ -241,6 +243,18 @@
             this.columnHeader3.Text = "Data";
             this.columnHeader3.Width = 500;
             // 
+            // cbbChiprole_val
+            // 
+            this.cbbChiprole_val.FormattingEnabled = true;
+            this.cbbChiprole_val.Items.AddRange(new object[] {
+            "0x24",
+            "0x2D"});
+            this.cbbChiprole_val.Location = new System.Drawing.Point(567, 103);
+            this.cbbChiprole_val.Name = "cbbChiprole_val";
+            this.cbbChiprole_val.Size = new System.Drawing.Size(100, 20);
+            this.cbbChiprole_val.TabIndex = 33;
+            this.cbbChiprole_val.SelectedIndexChanged += new System.EventHandler(this.cbbChiprole_val_SelectedIndexChanged);
+            // 
             // CBSUpgradeControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -270,12 +284,13 @@
         private System.Windows.Forms.Label lblUpgrade_02;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtChiprole;
         private System.Windows.Forms.ComboBox cbbChipcode;
         private System.Windows.Forms.ComboBox cbbChiprole;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.TextBox txtSlaveAddress;
+        private System.Windows.Forms.ComboBox cbbChiprole_val;
     }
 }

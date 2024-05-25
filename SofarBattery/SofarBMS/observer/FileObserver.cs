@@ -11,7 +11,7 @@ namespace SofarBMS.Observer
 {
     public class FileObserver : RealtimeDataObserver
     {
-        public override void SaveData(RealtimeData model)
+        public override void SaveData(RealtimeData_BTS5K model)
         {
             try
             {

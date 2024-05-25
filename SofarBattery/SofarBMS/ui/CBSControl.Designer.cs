@@ -143,9 +143,9 @@
             this.txtSoftware_Version_Bms = new System.Windows.Forms.TextBox();
             this.lblRealtimeData_72 = new System.Windows.Forms.Label();
             this.gbRealtimeData_109 = new System.Windows.Forms.GroupBox();
-            this.txt06A_canversion = new System.Windows.Forms.TextBox();
+            this.txtBMUCanVersion = new System.Windows.Forms.TextBox();
             this.txtManufacturerName = new System.Windows.Forms.TextBox();
-            this.txt06A_softwareversion = new System.Windows.Forms.TextBox();
+            this.txtBMUSaftwareVersion = new System.Windows.Forms.TextBox();
             this.lblRealtimeData_146 = new System.Windows.Forms.Label();
             this.lblRealtimeData_145 = new System.Windows.Forms.Label();
             this.txtHardware_Version_Bms = new System.Windows.Forms.TextBox();
@@ -216,6 +216,9 @@
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.gbRealtimeData_105 = new System.Windows.Forms.GroupBox();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox5 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox6 = new System.Windows.Forms.RichTextBox();
             this.gbRealtimeData_100.SuspendLayout();
             this.gbRealtimeData_102.SuspendLayout();
             this.gbRealtimeData_101.SuspendLayout();
@@ -1422,9 +1425,9 @@
             // 
             // gbRealtimeData_109
             // 
-            this.gbRealtimeData_109.Controls.Add(this.txt06A_canversion);
+            this.gbRealtimeData_109.Controls.Add(this.txtBMUCanVersion);
             this.gbRealtimeData_109.Controls.Add(this.txtManufacturerName);
-            this.gbRealtimeData_109.Controls.Add(this.txt06A_softwareversion);
+            this.gbRealtimeData_109.Controls.Add(this.txtBMUSaftwareVersion);
             this.gbRealtimeData_109.Controls.Add(this.lblRealtimeData_146);
             this.gbRealtimeData_109.Controls.Add(this.lblRealtimeData_145);
             this.gbRealtimeData_109.Controls.Add(this.txtHardware_Version_Bms);
@@ -1440,13 +1443,13 @@
             this.gbRealtimeData_109.TabStop = false;
             this.gbRealtimeData_109.Text = "版本号";
             // 
-            // txt06A_canversion
+            // txtBMUCanVersion
             // 
-            this.txt06A_canversion.Location = new System.Drawing.Point(195, 57);
-            this.txt06A_canversion.Name = "txt06A_canversion";
-            this.txt06A_canversion.ReadOnly = true;
-            this.txt06A_canversion.Size = new System.Drawing.Size(62, 21);
-            this.txt06A_canversion.TabIndex = 72;
+            this.txtBMUCanVersion.Location = new System.Drawing.Point(195, 57);
+            this.txtBMUCanVersion.Name = "txtBMUCanVersion";
+            this.txtBMUCanVersion.ReadOnly = true;
+            this.txtBMUCanVersion.Size = new System.Drawing.Size(62, 21);
+            this.txtBMUCanVersion.TabIndex = 72;
             // 
             // txtManufacturerName
             // 
@@ -1456,13 +1459,13 @@
             this.txtManufacturerName.Size = new System.Drawing.Size(100, 21);
             this.txtManufacturerName.TabIndex = 71;
             // 
-            // txt06A_softwareversion
+            // txtBMUSaftwareVersion
             // 
-            this.txt06A_softwareversion.Location = new System.Drawing.Point(94, 57);
-            this.txt06A_softwareversion.Name = "txt06A_softwareversion";
-            this.txt06A_softwareversion.ReadOnly = true;
-            this.txt06A_softwareversion.Size = new System.Drawing.Size(100, 21);
-            this.txt06A_softwareversion.TabIndex = 69;
+            this.txtBMUSaftwareVersion.Location = new System.Drawing.Point(94, 57);
+            this.txtBMUSaftwareVersion.Name = "txtBMUSaftwareVersion";
+            this.txtBMUSaftwareVersion.ReadOnly = true;
+            this.txtBMUSaftwareVersion.Size = new System.Drawing.Size(100, 21);
+            this.txtBMUSaftwareVersion.TabIndex = 69;
             // 
             // lblRealtimeData_146
             // 
@@ -2113,6 +2116,7 @@
             // 
             // gbRealtimeData_104
             // 
+            this.gbRealtimeData_104.Controls.Add(this.richTextBox4);
             this.gbRealtimeData_104.Controls.Add(this.richTextBox1);
             this.gbRealtimeData_104.Location = new System.Drawing.Point(5, 488);
             this.gbRealtimeData_104.Margin = new System.Windows.Forms.Padding(2);
@@ -2126,17 +2130,17 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Location = new System.Drawing.Point(2, 16);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(296, 132);
+            this.richTextBox1.Size = new System.Drawing.Size(141, 130);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
             // gbRealtimeData_103
             // 
+            this.gbRealtimeData_103.Controls.Add(this.richTextBox5);
             this.gbRealtimeData_103.Controls.Add(this.richTextBox2);
             this.gbRealtimeData_103.Location = new System.Drawing.Point(327, 488);
             this.gbRealtimeData_103.Margin = new System.Windows.Forms.Padding(2);
@@ -2150,17 +2154,17 @@
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox2.Location = new System.Drawing.Point(2, 16);
             this.richTextBox2.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.ReadOnly = true;
-            this.richTextBox2.Size = new System.Drawing.Size(296, 132);
+            this.richTextBox2.Size = new System.Drawing.Size(141, 130);
             this.richTextBox2.TabIndex = 1;
             this.richTextBox2.Text = "";
             // 
             // gbRealtimeData_105
             // 
+            this.gbRealtimeData_105.Controls.Add(this.richTextBox6);
             this.gbRealtimeData_105.Controls.Add(this.richTextBox3);
             this.gbRealtimeData_105.Location = new System.Drawing.Point(649, 490);
             this.gbRealtimeData_105.Margin = new System.Windows.Forms.Padding(2);
@@ -2173,14 +2177,43 @@
             // 
             // richTextBox3
             // 
-            this.richTextBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox3.Location = new System.Drawing.Point(2, 16);
+            this.richTextBox3.Location = new System.Drawing.Point(5, 14);
             this.richTextBox3.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.ReadOnly = true;
-            this.richTextBox3.Size = new System.Drawing.Size(296, 132);
+            this.richTextBox3.Size = new System.Drawing.Size(141, 130);
             this.richTextBox3.TabIndex = 0;
             this.richTextBox3.Text = "";
+            // 
+            // richTextBox4
+            // 
+            this.richTextBox4.Location = new System.Drawing.Point(149, 16);
+            this.richTextBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBox4.Name = "richTextBox4";
+            this.richTextBox4.ReadOnly = true;
+            this.richTextBox4.Size = new System.Drawing.Size(141, 130);
+            this.richTextBox4.TabIndex = 2;
+            this.richTextBox4.Text = "";
+            // 
+            // richTextBox5
+            // 
+            this.richTextBox5.Location = new System.Drawing.Point(153, 16);
+            this.richTextBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBox5.Name = "richTextBox5";
+            this.richTextBox5.ReadOnly = true;
+            this.richTextBox5.Size = new System.Drawing.Size(141, 130);
+            this.richTextBox5.TabIndex = 2;
+            this.richTextBox5.Text = "";
+            // 
+            // richTextBox6
+            // 
+            this.richTextBox6.Location = new System.Drawing.Point(150, 14);
+            this.richTextBox6.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBox6.Name = "richTextBox6";
+            this.richTextBox6.ReadOnly = true;
+            this.richTextBox6.Size = new System.Drawing.Size(141, 130);
+            this.richTextBox6.TabIndex = 3;
+            this.richTextBox6.Text = "";
             // 
             // CBSControl
             // 
@@ -2387,7 +2420,7 @@
         private System.Windows.Forms.Label lblRealtimeData_136;
         private System.Windows.Forms.TextBox txtManufacturerName;
         private System.Windows.Forms.TextBox txtBatNominalCapacity;
-        private System.Windows.Forms.TextBox txt06A_softwareversion;
+        private System.Windows.Forms.TextBox txtBMUSaftwareVersion;
         private System.Windows.Forms.Label lblRealtimeData_138;
         private System.Windows.Forms.TextBox txtResetMode;
         private System.Windows.Forms.TextBox txtSyncFallSoc;
@@ -2396,7 +2429,7 @@
         private System.Windows.Forms.Label lblRealtimeData_148;
         private System.Windows.Forms.PictureBox pbDiIO;
         private System.Windows.Forms.Label lblRealtimeData_147;
-        private System.Windows.Forms.TextBox txt06A_canversion;
+        private System.Windows.Forms.TextBox txtBMUCanVersion;
         private System.Windows.Forms.TextBox txtBatType;
         private System.Windows.Forms.TextBox txtRegisterID;
         private System.Windows.Forms.Label lblRealtimeData_143;
@@ -2409,5 +2442,8 @@
         private System.Windows.Forms.Label lblRealtimeData_03;
         private System.Windows.Forms.TextBox txtDischargeCurrentLimitation;
         private System.Windows.Forms.Label lblRealtimeData_05;
+        private System.Windows.Forms.RichTextBox richTextBox4;
+        private System.Windows.Forms.RichTextBox richTextBox5;
+        private System.Windows.Forms.RichTextBox richTextBox6;
     }
 }

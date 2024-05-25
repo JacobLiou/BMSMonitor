@@ -28,7 +28,7 @@ namespace SofarBMS.UI
         string[] packSN = new string[3];
 
         int initCount = 0;
-        RealtimeData2 model = null;
+        RealtimeData_GTX5000S model = null;
 
         public static CancellationTokenSource cts = null;
 
@@ -39,29 +39,12 @@ namespace SofarBMS.UI
                 GetControls(item);
             }
 
-            Task.Factory.StartNew(async () =>
+            Task.Run(async delegate
              {
                  while (!cts.IsCancellationRequested)
                  {
-                     lock (EcanHelper._locker)
-                     {
-                         while (EcanHelper._task.Count > 0)
-                         {
-                             CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-
-                             this.Invoke(new Action(() =>
-                             {
-                                 analysisData(ch.ID, ch.Data);
-                             }));
-                         }
-                     }
-
                      if (EcanHelper.IsConnection)
                      {
-                         //读取BMS序列号
-                         EcanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
-                                        , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
-
                          if (model != null && initCount >= 13)
                          {
                              var filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//GTX5000S_{DateTime.Now.ToString("yyyy-MM-dd")}.csv";
@@ -76,8 +59,26 @@ namespace SofarBMS.UI
                              model = null;
                          }
 
+                         //读取BMS序列号
+                         EcanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                                        , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
+
                          //定时一秒存储一次数据
                          await Task.Delay(1000);
+                     }
+
+                     lock (EcanHelper._locker)
+                     {
+                         while (EcanHelper._task.Count > 0
+                            && !cts.IsCancellationRequested)
+                         {
+                             CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+
+                             this.Invoke(new Action(() =>
+                             {
+                                 analysisData(ch.ID, ch.Data);
+                             }));
+                         }
                      }
                  }
              }, cts.Token);
@@ -89,364 +90,384 @@ namespace SofarBMS.UI
                 return;
 
             if (model == null)
-                model = new RealtimeData2();
+                model = new RealtimeData_GTX5000S();
 
             string[] strs;
             string[] controls;
             string[] strs_1;
             string[] controls_1;
 
-            switch (canID | 0xff)
+            try
             {
-                case 0x1003FFFF:
-                    initCount++;
-                    switch (Convert.ToInt32(data[0].ToString("X2"), 16) & 0x0f)//低四位
-                    {
-                        case 0: txtBatteryStatus.Text = LanguageHelper.GetLanguage("State_Standby"); break;
-                        case 1: txtBatteryStatus.Text = LanguageHelper.GetLanguage("State_Charging"); break;
-                        case 2: txtBatteryStatus.Text = LanguageHelper.GetLanguage("State_Discharge"); break;
-                        case 3: txtBatteryStatus.Text = LanguageHelper.GetLanguage("State_Hibernate"); break;
-                        default: txtBatteryStatus.Text = ""; break;
-                    }
-                    model.BatteryStatus = txtBatteryStatus.Text;
+                switch (canID | 0xff)
+                {
+                    case 0x1003FFFF:
+                        initCount++;
+                        switch (Convert.ToInt32(data[0].ToString("X2"), 16) & 0x0f)//低四位
+                        {
+                            case 0: txtBatteryStatus.Text = LanguageHelper.GetLanguage("State_Standby"); break;
+                            case 1: txtBatteryStatus.Text = LanguageHelper.GetLanguage("State_Charging"); break;
+                            case 2: txtBatteryStatus.Text = LanguageHelper.GetLanguage("State_Discharge"); break;
+                            case 3: txtBatteryStatus.Text = LanguageHelper.GetLanguage("State_Hibernate"); break;
+                            default: txtBatteryStatus.Text = ""; break;
+                        }
+                        model.BatteryStatus = txtBatteryStatus.Text;
 
-                    switch (((Convert.ToInt32(data[0].ToString("X2"), 16) & 0xf0) >> 4))//高四位
-                    {
-                        case 0: txtBmsStatus.Text = LanguageHelper.GetLanguage("BmsStatus_Post"); break;
-                        case 1: txtBmsStatus.Text = LanguageHelper.GetLanguage("BmsStatus_Run"); break;
-                        case 2: txtBmsStatus.Text = LanguageHelper.GetLanguage("BmsStatus_Fault"); break;
-                        case 3: txtBmsStatus.Text = LanguageHelper.GetLanguage("BmsStatus_Upgrade"); break;
-                        case 4: txtBmsStatus.Text = LanguageHelper.GetLanguage("BmsStatus_Shutdown"); break;
-                    }
-                    model.BmsStatus = txtBmsStatus.Text;
+                        switch (((Convert.ToInt32(data[0].ToString("X2"), 16) & 0xf0) >> 4))//高四位
+                        {
+                            case 0: txtBmsStatus.Text = LanguageHelper.GetLanguage("BmsStatus_Post"); break;
+                            case 1: txtBmsStatus.Text = LanguageHelper.GetLanguage("BmsStatus_Run"); break;
+                            case 2: txtBmsStatus.Text = LanguageHelper.GetLanguage("BmsStatus_Fault"); break;
+                            case 3: txtBmsStatus.Text = LanguageHelper.GetLanguage("BmsStatus_Upgrade"); break;
+                            case 4: txtBmsStatus.Text = LanguageHelper.GetLanguage("BmsStatus_Shutdown"); break;
+                        }
+                        model.BmsStatus = txtBmsStatus.Text;
 
-                    strs = new string[2] { "0.1", "0.1" };
-                    for (int i = 0; i < strs.Length; i++)
-                    {
-                        strs[i] = BytesToIntger(data[i * 2 + 2], data[i * 2 + 1], Convert.ToDouble(strs[i]));
-                    }
+                        strs = new string[2] { "0.1", "0.1" };
+                        for (int i = 0; i < strs.Length; i++)
+                        {
+                            strs[i] = BytesToIntger(data[i * 2 + 2], data[i * 2 + 1], Convert.ToDouble(strs[i]));
+                        }
 
-                    controls = new string[2] { "txtChargeCurrentLimitation", "txtDischargeCurrentLimitation" };
-                    for (int i = 0; i < controls.Length; i++)
-                    {
-                        (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
-                    }
+                        controls = new string[2] { "txtChargeCurrentLimitation", "txtDischargeCurrentLimitation" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
 
-                    //BMS测量的P-对B-电压
-                    strs_1 = new string[1] { "1" };
-                    strs_1[0] = Convert.ToUInt16(data[7].ToString("X2") + data[6].ToString("X2"), 16).ToString();
-                    controls_1 = new string[1] { "txtLOAD_VOLT_N" };
-                    (this.Controls.Find(controls_1[0], true)[0] as TextBox).Text = strs_1[0];
+                        //BMS测量的P-对B-电压
+                        strs_1 = new string[1] { "1" };
+                        strs_1[0] = Convert.ToUInt16(data[7].ToString("X2") + data[6].ToString("X2"), 16).ToString();
+                        controls_1 = new string[1] { "txtLOAD_VOLT_N" };
+                        (this.Controls.Find(controls_1[0], true)[0] as TextBox).Text = strs_1[0];
 
 
-                    Dictionary<int, string> setContorls = new Dictionary<int, string>() {
+                        Dictionary<int, string> setContorls = new Dictionary<int, string>() {
                             {0,"pbChargeMosEnable" },
                             {1,"pbDischargeMosEnable" },
                             {2,"pbPrechgMosEnable" },
                             {3,"pbStopChgEnable" },
                             {4,"pbHeatEnable" }
                         };
-                    for (short i = 0; i < setContorls.Count; i++)
-                    {
-                        if (GetBit(data[5], i) == 1 && this.Controls.Find(setContorls[i], true) != null)
+                        for (short i = 0; i < setContorls.Count; i++)
                         {
-                            (this.Controls.Find(setContorls[i], true)[0] as PictureBox).BackColor = Color.Red;
-                        }
-                        else
-                        {
-                            (this.Controls.Find(setContorls[i], true)[0] as PictureBox).BackColor = Color.Green;
-                        }
-                    }
-                    model.ChargeCurrentLimitation = Convert.ToDouble(strs[0]);
-                    model.DischargeCurrentLimitation = Convert.ToDouble(strs[1]);
-                    model.LOAD_VOLT_N = Convert.ToUInt16(strs_1[0]);
-                    model.ChargeMosEnable = (ushort)GetBit(data[5], 0);
-                    model.DischargeMosEnable = (ushort)GetBit(data[5], 1);
-                    model.PrechgMosEnable = (ushort)GetBit(data[5], 2);
-                    model.StopChgEnable = (ushort)GetBit(data[5], 3);
-                    model.HeatEnable = (ushort)GetBit(data[5], 4);
-                    break;
-                case 0x1004FFFF:
-                    initCount++;
-                    strs = new string[4] { "0.1", "0.1", "0.01", "0.1" };
-                    for (int i = 0; i < strs.Length; i++)
-                    {
-                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
-                    }
-
-                    controls = new string[4] { "txtBatteryVolt", "txtLoadVolt", "txtBatteryCurrent", "txtSOC" };
-                    for (int i = 0; i < strs.Length; i++)
-                    {
-                        (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
-                    }
-
-                    model.BatteryVolt = Convert.ToDouble(strs[0]);
-                    model.LoadVolt = Convert.ToDouble(strs[1]);
-                    model.BatteryCurrent = Convert.ToDouble(strs[2]);
-                    model.SOC = Convert.ToDouble(strs[3]);
-                    break;
-                case 0x1005FFFF:
-                    initCount++;
-                    strs = new string[5];
-                    strs[0] = BytesToIntger(data[1], data[0]);
-                    strs[1] = BytesToIntger(0x00, data[2]);
-                    strs[2] = BytesToIntger(data[4], data[3]);
-                    strs[3] = BytesToIntger(0x00, data[5]);
-                    strs[4] = (Convert.ToInt32(strs[0]) - Convert.ToInt32(strs[2])).ToString();
-
-                    controls = new string[5] { "txtBatMaxCellVolt", "txtBatMaxCellVoltNum", "txtBatMinCellVolt", "txtBatMinCellVoltNum", "txtBatDiffCellVolt" };
-                    for (int i = 0; i < controls.Length; i++)
-                    {
-                        (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
-                    }
-
-                    model.BatMaxCellVolt = Convert.ToUInt16(strs[0]);
-                    model.BatMaxCellVoltNum = Convert.ToUInt16(strs[1]);
-                    model.BatMinCellVolt = Convert.ToUInt16(strs[2]);
-                    model.BatMinCellVoltNum = Convert.ToUInt16(strs[3]);
-                    model.BatDiffCellVolt = Convert.ToUInt16(strs[4]);
-                    break;
-                case 0x1006FFFF:
-                    initCount++;
-                    strs = new string[4] { "0.1", "1", "0.1", "1" };
-                    strs[0] = BytesToIntger(data[1], data[0], 0.1);
-                    strs[1] = BytesToIntger(0x00, data[2]);
-                    strs[2] = BytesToIntger(data[4], data[3], 0.1);
-                    strs[3] = BytesToIntger(0x00, data[5]);
-
-                    controls = new string[4] { "txtBatMaxCellTemp", "txtBatMaxCellTempNum", "txtBatMinCellTemp", "txtBatMinCellTempNum" };
-                    for (int i = 0; i < controls.Length; i++)
-                    {
-                        (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
-                    }
-
-                    model.BatMaxCellTemp = Convert.ToDouble(strs[0]);
-                    model.BatMaxCellTempNum = Convert.ToUInt16(strs[1]);
-                    model.BatMinCellTemp = Convert.ToDouble(strs[2]);
-                    model.BatMinCellTempNum = Convert.ToUInt16(strs[3]);
-                    break;
-                case 0x1007FFFF:
-                    initCount++;
-                    model.TotalChgCap = Convert.ToDouble(((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] & 0xff)) * 0.001);
-                    model.TotalDsgCap = Convert.ToDouble(((data[7] << 24) + (data[6] << 16) + (data[5] << 8) + (data[4] & 0xff)) * 0.001);
-                    txtTotalChgCap.Text = model.TotalChgCap.ToString();
-                    txtTotalDsgCap.Text = model.TotalDsgCap.ToString();
-                    break;
-                case 0x1008FFFF:
-                    initCount++;
-                    richTextBox1.Clear(); richTextBox2.Clear(); richTextBox3.Clear();
-                    analysisLog(data);
-                    break;
-                case 0x1009FFFF:
-                    initCount++;
-                    strs = new string[4];
-                    for (int i = 0; i < strs.Length; i++)
-                    {
-                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
-                    }
-
-                    controls = new string[4] { "txtCellvoltage1", "txtCellvoltage2", "txtCellvoltage3", "txtCellvoltage4" };
-                    for (int i = 0; i < controls.Length; i++)
-                    {
-                        (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
-                    }
-
-                    model.CellVoltage1 = Convert.ToUInt32(strs[0]);
-                    model.CellVoltage2 = Convert.ToUInt32(strs[1]);
-                    model.CellVoltage3 = Convert.ToUInt32(strs[2]);
-                    model.CellVoltage4 = Convert.ToUInt32(strs[3]);
-                    break;
-                case 0x100AFFFF:
-                    initCount++;
-                    strs = new string[4];
-                    for (int i = 0; i < strs.Length; i++)
-                    {
-                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
-                    }
-
-                    controls = new string[4] { "txtCellvoltage5", "txtCellvoltage6", "txtCellvoltage7", "txtCellvoltage8" };
-                    for (int i = 0; i < controls.Length; i++)
-                    {
-                        (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
-                    }
-
-                    model.CellVoltage5 = Convert.ToUInt32(strs[0]);
-                    model.CellVoltage6 = Convert.ToUInt32(strs[1]);
-                    model.CellVoltage7 = Convert.ToUInt32(strs[2]);
-                    model.CellVoltage8 = Convert.ToUInt32(strs[3]);
-                    break;
-                case 0x100BFFFF:
-                    initCount++;
-                    strs = new string[4];
-                    for (int i = 0; i < strs.Length; i++)
-                    {
-                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
-                    }
-
-                    controls = new string[4] { "txtCellvoltage9", "txtCellvoltage10", "txtCellvoltage11", "txtCellvoltage12" };
-                    for (int i = 0; i < controls.Length; i++)
-                    {
-                        (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
-                    }
-
-                    model.CellVoltage9 = Convert.ToUInt32(strs[0]);
-                    model.CellVoltage10 = Convert.ToUInt32(strs[1]);
-                    model.CellVoltage11 = Convert.ToUInt32(strs[2]);
-                    model.CellVoltage12 = Convert.ToUInt32(strs[3]);
-                    break;
-                case 0x100CFFFF:
-                    initCount++;
-                    strs = new string[4];
-                    for (int i = 0; i < strs.Length; i++)
-                    {
-                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
-                    }
-
-                    controls = new string[4] { "txtCellvoltage13", "txtCellvoltage14", "txtCellvoltage15", "txtCellvoltage16" };
-                    for (int i = 0; i < controls.Length; i++)
-                    {
-                        (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
-                    }
-
-                    model.CellVoltage13 = Convert.ToUInt32(strs[0]);
-                    model.CellVoltage14 = Convert.ToUInt32(strs[1]);
-                    model.CellVoltage15 = Convert.ToUInt32(strs[2]);
-                    model.CellVoltage16 = Convert.ToUInt32(strs[3]);
-                    break;
-                case 0x100DFFFF:
-                    initCount++;
-                    strs = new string[4] { "0.1", "0.1", "0.1", "0.1" };
-                    for (int i = 0; i < strs.Length; i++)
-                    {
-                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
-                    }
-
-                    controls = new string[4] { "txtCelltemperature1", "txtCelltemperature2", "txtCelltemperature3", "txtCelltemperature4" };
-                    for (int i = 0; i < controls.Length; i++)
-                    {
-                        (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
-                    }
-
-                    model.CellTemperature1 = Convert.ToDouble(strs[0]);
-                    model.CellTemperature2 = Convert.ToDouble(strs[1]);
-                    model.CellTemperature3 = Convert.ToDouble(strs[2]);
-                    model.CellTemperature4 = Convert.ToDouble(strs[3]);
-                    break;
-                case 0x100EFFFF:
-                    initCount++;
-                    strs = new string[3] { "0.1", "0.1", "0.1" };
-                    for (int i = 0; i < strs.Length; i++)
-                    {
-                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
-                    }
-
-                    controls = new string[3] { "txtMosTemperature", "txtEnvTemperature", "txtSOH" };
-                    for (int i = 0; i < controls.Length; i++)
-                    {
-                        (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
-                    }
-
-                    string strAdd = "[1~16]:";
-                    for (int i = 6; i < 8; i++)
-                    {
-                        for (short j = 0; j < 8; j++)
-                        {
-                            if (GetBit(data[i], j) == 1)
+                            if (GetBit(data[5], i) == 1 && this.Controls.Find(setContorls[i], true) != null)
                             {
-                                (this.Controls.Find(string.Format("txtCellvoltage{0}", j + 1 + ((i - 6) * 8)), true)[0] as TextBox).BackColor = Color.Aquamarine;
-                                strAdd += "1";
+                                (this.Controls.Find(setContorls[i], true)[0] as PictureBox).BackColor = Color.Red;
                             }
                             else
                             {
-                                (this.Controls.Find(string.Format("txtCellvoltage{0}", j + 1 + ((i - 6) * 8)), true)[0] as TextBox).BackColor = Color.White;
-                                strAdd = strAdd + "0";
-                            }
-                            if (j != 0)
-                            {
-                                if (j + 1 % 8 == 0)
-                                    strAdd += ",";
-                                else if (j + 1 % 4 == 0)
-                                    strAdd += " ";
+                                (this.Controls.Find(setContorls[i], true)[0] as PictureBox).BackColor = Color.Green;
                             }
                         }
-                    }
+                        model.ChargeCurrentLimitation = Convert.ToDouble(strs[0]);
+                        model.DischargeCurrentLimitation = Convert.ToDouble(strs[1]);
+                        model.LOAD_VOLT_N = Convert.ToUInt16(strs_1[0]);
+                        model.ChargeMosEnable = (ushort)GetBit(data[5], 0);
+                        model.DischargeMosEnable = (ushort)GetBit(data[5], 1);
+                        model.PrechgMosEnable = (ushort)GetBit(data[5], 2);
+                        model.StopChgEnable = (ushort)GetBit(data[5], 3);
+                        model.HeatEnable = (ushort)GetBit(data[5], 4);
+                        break;
+                    case 0x1004FFFF:
+                        initCount++;
+                        strs = new string[4] { "0.1", "0.1", "0.01", "0.1" };
+                        for (int i = 0; i < strs.Length; i++)
+                        {
+                            strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
+                        }
 
-                    model.MosTemperature = Convert.ToDouble(strs[0]);
-                    model.EnvTemperature = Convert.ToDouble(strs[1]);
-                    model.SOH = Convert.ToDouble(strs[2]);
-                    model.EquaState = strAdd;
-                    break;
-                case 0x100FFFFF:
-                    initCount++;
-                    txtRemainCap.Text = BytesToIntger(data[1], data[0], 0.1);
-                    txtFullCap.Text = BytesToIntger(data[3], data[2], 0.1);
-                    txtCycleTIme.Text = BytesToIntger(data[5], data[4]);
-                    model.RemainingCapacity = txtRemainCap.Text;
-                    model.FullCapacity = txtFullCap.Text;
-                    model.CycleTIme = Convert.ToUInt16(txtCycleTIme.Text);
-                    break;
-                case 0x1040FFFF:
-                    txtCumulative_discharge_capacity.Text = (((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] & 0xff))).ToString();
-                    model.CumulativeDischargeCapacity = txtCumulative_discharge_capacity.Text;
-                    break;
-                case 0x1041FFFF:
-                    txtBalance_temperature1.Text = BytesToIntger(data[1], data[0], 0.1);
-                    txtBalance_temperature2.Text = BytesToIntger(data[3], data[2], 0.1);
-                    //加热膜电流A，加热膜继电器电压V
-                    txtHeatCur.Text = BytesToIntger(data[5], data[4], 0.1);
-                    txtHeatRelayVol.Text = BytesToIntger(data[7], data[6], 0.1);
+                        controls = new string[4] { "txtBatteryVolt", "txtLoadVolt", "txtBatteryCurrent", "txtSOC" };
+                        for (int i = 0; i < strs.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
 
-                    model.BalanceTemperature1 = txtBalance_temperature1.Text;
-                    model.BalanceTemperature2 = txtBalance_temperature2.Text;
-                    break;
-                case 0x1042FFFF:
-                    initCount++;
-                    strs = new string[4] { "0.1", "0.1", "0.1", "0.1" };
-                    for (int i = 0; i < strs.Length; i++)
-                    {
-                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
-                    }
+                        model.BatteryVolt = Convert.ToDouble(strs[0]);
+                        model.LoadVolt = Convert.ToDouble(strs[1]);
+                        model.BatteryCurrent = Convert.ToDouble(strs[2]);
+                        model.SOC = Convert.ToDouble(strs[3]);
+                        break;
+                    case 0x1005FFFF:
+                        initCount++;
+                        strs = new string[5];
+                        strs[0] = BytesToIntger(data[1], data[0]);
+                        strs[1] = BytesToIntger(0x00, data[2]);
+                        strs[2] = BytesToIntger(data[4], data[3]);
+                        strs[3] = BytesToIntger(0x00, data[5]);
+                        strs[4] = (Convert.ToInt32(strs[0]) - Convert.ToInt32(strs[2])).ToString();
 
-                    controls = new string[4] { "txtCelltemperature5", "txtCelltemperature6", "txtCelltemperature7", "txtCelltemperature8" };
-                    for (int i = 0; i < controls.Length; i++)
-                    {
-                        (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
-                    }
+                        controls = new string[5] { "txtBatMaxCellVolt", "txtBatMaxCellVoltNum", "txtBatMinCellVolt", "txtBatMinCellVoltNum", "txtBatDiffCellVolt" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
 
-                    model.CellTemperature5 = Convert.ToDouble(strs[0]);
-                    model.CellTemperature6 = Convert.ToDouble(strs[1]);
-                    model.CellTemperature7 = Convert.ToDouble(strs[2]);
-                    model.CellTemperature8 = Convert.ToDouble(strs[3]);
-                    break;
-                case 0x1045FFFF:
-                    //加热异常，加热继电器粘连，加热继电器断路Byte[0],0/1/2
-                    analysisLog(data, 1);
-                    break;
-                case 0x1027E0FF:
-                    string strSn = GetPackSN(data);
+                        model.BatMaxCellVolt = Convert.ToUInt16(strs[0]);
+                        model.BatMaxCellVoltNum = Convert.ToUInt16(strs[1]);
+                        model.BatMinCellVolt = Convert.ToUInt16(strs[2]);
+                        model.BatMinCellVoltNum = Convert.ToUInt16(strs[3]);
+                        model.BatDiffCellVolt = Convert.ToUInt16(strs[4]);
+                        break;
+                    case 0x1006FFFF:
+                        initCount++;
+                        strs = new string[4] { "0.1", "1", "0.1", "1" };
+                        strs[0] = BytesToIntger(data[1], data[0], 0.1);
+                        strs[1] = BytesToIntger(0x00, data[2]);
+                        strs[2] = BytesToIntger(data[4], data[3], 0.1);
+                        strs[3] = BytesToIntger(0x00, data[5]);
 
-                    if (!string.IsNullOrEmpty(strSn))
-                        txtSN.Text = strSn;
-                    break;
-                case 0x102EE0FF:
-                    //BMS软件版本
-                    string[] bsm_soft = new string[3];
-                    for (int i = 0; i < 3; i++)
-                    {
-                        bsm_soft[i] = data[i + 2].ToString().PadLeft(2, '0');
-                    }
-                    txtSoftware_Version_Bms.Text = Encoding.ASCII.GetString(new byte[] { data[1] }) + string.Join("", bsm_soft);
-                    //BMS硬件版本
-                    string[] bsm_HW = new string[2];
-                    for (int i = 0; i < 2; i++)
-                    {
-                        bsm_HW[i] = data[i + 5].ToString().PadLeft(2, '0');
-                    }
-                    txtHardware_Version_Bms.Text = string.Join("", bsm_HW);
-                    break;
+                        controls = new string[4] { "txtBatMaxCellTemp", "txtBatMaxCellTempNum", "txtBatMinCellTemp", "txtBatMinCellTempNum" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
+
+                        model.BatMaxCellTemp = Convert.ToDouble(strs[0]);
+                        model.BatMaxCellTempNum = Convert.ToUInt16(strs[1]);
+                        model.BatMinCellTemp = Convert.ToDouble(strs[2]);
+                        model.BatMinCellTempNum = Convert.ToUInt16(strs[3]);
+                        break;
+                    case 0x1007FFFF:
+                        initCount++;
+                        model.TotalChgCap = Convert.ToDouble(((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] & 0xff)) * 0.001);
+                        model.TotalDsgCap = Convert.ToDouble(((data[7] << 24) + (data[6] << 16) + (data[5] << 8) + (data[4] & 0xff)) * 0.001);
+                        txtTotalChgCap.Text = model.TotalChgCap.ToString();
+                        txtTotalDsgCap.Text = model.TotalDsgCap.ToString();
+                        break;
+                    case 0x1008FFFF:
+                        initCount++;
+                        richTextBox1.Clear(); richTextBox2.Clear(); richTextBox3.Clear();
+                        analysisLog(data);
+                        break;
+                    case 0x1009FFFF:
+                        initCount++;
+                        strs = new string[4];
+                        for (int i = 0; i < strs.Length; i++)
+                        {
+                            strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
+                        }
+
+                        controls = new string[4] { "txtCellvoltage1", "txtCellvoltage2", "txtCellvoltage3", "txtCellvoltage4" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
+
+                        model.CellVoltage1 = Convert.ToUInt32(strs[0]);
+                        model.CellVoltage2 = Convert.ToUInt32(strs[1]);
+                        model.CellVoltage3 = Convert.ToUInt32(strs[2]);
+                        model.CellVoltage4 = Convert.ToUInt32(strs[3]);
+                        break;
+                    case 0x100AFFFF:
+                        initCount++;
+                        strs = new string[4];
+                        for (int i = 0; i < strs.Length; i++)
+                        {
+                            strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
+                        }
+
+                        controls = new string[4] { "txtCellvoltage5", "txtCellvoltage6", "txtCellvoltage7", "txtCellvoltage8" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
+
+                        model.CellVoltage5 = Convert.ToUInt32(strs[0]);
+                        model.CellVoltage6 = Convert.ToUInt32(strs[1]);
+                        model.CellVoltage7 = Convert.ToUInt32(strs[2]);
+                        model.CellVoltage8 = Convert.ToUInt32(strs[3]);
+                        break;
+                    case 0x100BFFFF:
+                        initCount++;
+                        strs = new string[4];
+                        for (int i = 0; i < strs.Length; i++)
+                        {
+                            strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
+                        }
+
+                        controls = new string[4] { "txtCellvoltage9", "txtCellvoltage10", "txtCellvoltage11", "txtCellvoltage12" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
+
+                        model.CellVoltage9 = Convert.ToUInt32(strs[0]);
+                        model.CellVoltage10 = Convert.ToUInt32(strs[1]);
+                        model.CellVoltage11 = Convert.ToUInt32(strs[2]);
+                        model.CellVoltage12 = Convert.ToUInt32(strs[3]);
+                        break;
+                    case 0x100CFFFF:
+                        initCount++;
+                        strs = new string[4];
+                        for (int i = 0; i < strs.Length; i++)
+                        {
+                            strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
+                        }
+
+                        controls = new string[4] { "txtCellvoltage13", "txtCellvoltage14", "txtCellvoltage15", "txtCellvoltage16" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
+
+                        model.CellVoltage13 = Convert.ToUInt32(strs[0]);
+                        model.CellVoltage14 = Convert.ToUInt32(strs[1]);
+                        model.CellVoltage15 = Convert.ToUInt32(strs[2]);
+                        model.CellVoltage16 = Convert.ToUInt32(strs[3]);
+                        break;
+                    case 0x100DFFFF:
+                        initCount++;
+                        strs = new string[4] { "0.1", "0.1", "0.1", "0.1" };
+                        for (int i = 0; i < strs.Length; i++)
+                        {
+                            strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
+                        }
+
+                        controls = new string[4] { "txtCelltemperature1", "txtCelltemperature2", "txtCelltemperature3", "txtCelltemperature4" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
+
+                        model.CellTemperature1 = Convert.ToDouble(strs[0]);
+                        model.CellTemperature2 = Convert.ToDouble(strs[1]);
+                        model.CellTemperature3 = Convert.ToDouble(strs[2]);
+                        model.CellTemperature4 = Convert.ToDouble(strs[3]);
+                        break;
+                    case 0x100EFFFF:
+                        initCount++;
+                        strs = new string[3] { "0.1", "0.1", "0.1" };
+                        for (int i = 0; i < strs.Length; i++)
+                        {
+                            strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
+                        }
+
+                        controls = new string[3] { "txtMosTemperature", "txtEnvTemperature", "txtSOH" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
+
+                        string strAdd = "[1~16]:";
+                        for (int i = 6; i < 8; i++)
+                        {
+                            for (short j = 0; j < 8; j++)
+                            {
+                                if (GetBit(data[i], j) == 1)
+                                {
+                                    (this.Controls.Find(string.Format("txtCellvoltage{0}", j + 1 + ((i - 6) * 8)), true)[0] as TextBox).BackColor = Color.Aquamarine;
+                                    strAdd += "1";
+                                }
+                                else
+                                {
+                                    (this.Controls.Find(string.Format("txtCellvoltage{0}", j + 1 + ((i - 6) * 8)), true)[0] as TextBox).BackColor = Color.White;
+                                    strAdd = strAdd + "0";
+                                }
+                                if (j != 0)
+                                {
+                                    if (j + 1 % 8 == 0)
+                                        strAdd += ",";
+                                    else if (j + 1 % 4 == 0)
+                                        strAdd += " ";
+                                }
+                            }
+                        }
+
+                        model.MosTemperature = Convert.ToDouble(strs[0]);
+                        model.EnvTemperature = Convert.ToDouble(strs[1]);
+                        model.SOH = Convert.ToDouble(strs[2]);
+                        model.EquaState = strAdd;
+                        break;
+                    case 0x100FFFFF:
+                        initCount++;
+                        txtRemainCap.Text = BytesToIntger(data[1], data[0], 0.1);
+                        txtFullCap.Text = BytesToIntger(data[3], data[2], 0.1);
+                        txtCycleTIme.Text = BytesToIntger(data[5], data[4]);
+                        model.RemainingCapacity = txtRemainCap.Text;
+                        model.FullCapacity = txtFullCap.Text;
+                        model.CycleTIme = Convert.ToUInt16(txtCycleTIme.Text);
+                        break;
+                    case 0x1040FFFF:
+                        txtCumulative_discharge_capacity.Text = (((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] & 0xff))).ToString();
+                        model.CumulativeDischargeCapacity = txtCumulative_discharge_capacity.Text;
+                        break;
+                    case 0x1041FFFF:
+                        txtBalance_temperature1.Text = BytesToIntger(data[1], data[0], 0.1);
+                        txtBalance_temperature2.Text = BytesToIntger(data[3], data[2], 0.1);
+
+                        model.BalanceTemperature1 = txtBalance_temperature1.Text;
+                        model.BalanceTemperature2 = txtBalance_temperature2.Text;
+                        break;
+                    case 0x1042FFFF:
+                        initCount++;
+                        strs = new string[4] { "0.1", "0.1", "0.1", "0.1" };
+                        for (int i = 0; i < strs.Length; i++)
+                        {
+                            strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
+                        }
+
+                        controls = new string[4] { "txtCelltemperature5", "txtCelltemperature6", "txtCelltemperature7", "txtCelltemperature8" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
+
+                        model.CellTemperature5 = Convert.ToDouble(strs[0]);
+                        model.CellTemperature6 = Convert.ToDouble(strs[1]);
+                        model.CellTemperature7 = Convert.ToDouble(strs[2]);
+                        model.CellTemperature8 = Convert.ToDouble(strs[3]);
+                        break;
+                    case 0x1045FFFF:
+                        //加热异常，加热继电器粘连，加热继电器断路Byte[0],0/1/2
+                        richTextBox1_Fault.Clear(); richTextBox2_Pro.Clear(); richTextBox3_W.Clear();
+                        analysisLog(data, 1);
+                        break;
+                    case 0x104AFFFF:
+
+                        strs = new string[4] { "0.1", "0.1", "0.1", "0.1" };
+                        for (int i = 0; i < strs.Length; i++)
+                        {
+                            strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
+                        }
+
+                        controls = new string[4] { "txtPowerTemperture1", "txtPowerTemperture2", "txtHeatCur", "txtHeatRelayVol" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
+
+                        break;
+                    case 0x1027E0FF:
+                        string strSn = GetPackSN(data);
+
+                        if (!string.IsNullOrEmpty(strSn))
+                            txtSN.Text = strSn;
+                        break;
+                    case 0x102EE0FF:
+                        //BMS软件版本
+                        string[] bsm_soft = new string[3];
+                        for (int i = 0; i < 3; i++)
+                        {
+                            bsm_soft[i] = data[i + 2].ToString().PadLeft(2, '0');
+                        }
+                        txtSoftware_Version_Bms.Text = Encoding.ASCII.GetString(new byte[] { data[1] }) + string.Join("", bsm_soft);
+                        //BMS硬件版本
+                        string[] bsm_HW = new string[2];
+                        for (int i = 0; i < 2; i++)
+                        {
+                            bsm_HW[i] = data[i + 5].ToString().PadLeft(2, '0');
+                        }
+                        txtHardware_Version_Bms.Text = string.Join("", bsm_HW);
+                        break;
+                }
+
+                model.PackID = FrmMain.BMS_ID.ToString("X2");
             }
+            catch (Exception)
+            {
 
-            model.PackID = FrmMain.BMS_ID.ToString("X2");
+            }
         }
 
         private string GetPackSN(byte[] data)
@@ -655,20 +676,42 @@ namespace SofarBMS.UI
                     if (GetBit(data[i], j) == 1)
                     {
                         getLog(out msg, i, j, faultNum);
-                        switch (msg[1])
+
+                        if (faultNum == 1)
                         {
-                            case "1":
-                                richTextBox3.AppendText(msg[0] + "\r");
-                                model.Warning = richTextBox3.Text.Replace("\n", "，").Replace("\r", "，");
-                                break;
-                            case "2":
-                                richTextBox2.AppendText(msg[0] + "\r");
-                                model.Protection = richTextBox2.Text.Replace("\n", "，").Replace("\r", "，");
-                                break;
-                            case "3":
-                                richTextBox1.AppendText(msg[0] + "\r");
-                                model.Fault = richTextBox1.Text.Replace("\n", "，").Replace("\r", "，");
-                                break;
+                            switch (msg[1])
+                            {
+                                case "1":
+                                    richTextBox3_W.AppendText(msg[0] + "\r");
+                                    //model.Warning = richTextBox3_W.Text.Replace("\n", "，").Replace("\r", "，");
+                                    break;
+                                case "2":
+                                    richTextBox2_Pro.AppendText(msg[0] + "\r");
+                                    //model.Protection = richTextBox2_Pro.Text.Replace("\n", "，").Replace("\r", "，");
+                                    break;
+                                case "3":
+                                    richTextBox1_Fault.AppendText(msg[0] + "\r");
+                                    //model.Fault = richTextBox1_Fault.Text.Replace("\n", "，").Replace("\r", "，");
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            switch (msg[1])
+                            {
+                                case "1":
+                                    richTextBox3.AppendText(msg[0] + "\r");
+                                    model.Warning = richTextBox3.Text.Replace("\n", "，").Replace("\r", "，");
+                                    break;
+                                case "2":
+                                    richTextBox2.AppendText(msg[0] + "\r");
+                                    model.Protection = richTextBox2.Text.Replace("\n", "，").Replace("\r", "，");
+                                    break;
+                                case "3":
+                                    richTextBox1.AppendText(msg[0] + "\r");
+                                    model.Fault = richTextBox1.Text.Replace("\n", "，").Replace("\r", "，");
+                                    break;
+                            }
                         }
                     }
                 }
@@ -705,7 +748,7 @@ namespace SofarBMS.UI
         {
             msg = new string[2];
             List<FaultInfo> faultInfos = FrmMain.FaultInfos;
-            if (faultNum==1)
+            if (faultNum == 1)
             {
                 faultInfos = FrmMain.FaultInfos2;
             }

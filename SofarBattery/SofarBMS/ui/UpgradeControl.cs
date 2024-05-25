@@ -77,27 +77,25 @@ namespace SofarBMS.UI
             cbbChip_role.SelectedIndex = 3;
             lblUpgradeRole.Text = LanguageHelper.GetLanguage("Upgrade_Role");
 
-            Task.Run(() =>
+            Task.Run(()=>
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    if (EcanHelper.IsConnection)
+                    lock (EcanHelper._locker)
                     {
-                        lock (EcanHelper._locker)
+                        while (EcanHelper._task.Count > 0
+                        && !cts.IsCancellationRequested)
                         {
-                            while (EcanHelper._task.Count > 0)
-                            {
-                                CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
-                                this.Invoke(new Action(() =>
-                                {
-                                    AnalysisData(ch.ID, ch.Data);
-                                }));
-                            }
+                            this.Invoke(new Action(() =>
+                            {
+                                AnalysisData(ch.ID, ch.Data);
+                            }));
                         }
                     }
                 }
-            });
+            }, cts.Token);
         }
 
         private void AnalysisData(uint obj_ID, byte[] data)

@@ -65,7 +65,7 @@ namespace SofarBMS.UI
             cbbSetComm.Items.AddRange(setComms);
             btnSystemset_47.Text = LanguageHelper.GetLanguage("BmsDebug_Start");
             btnReadpcu.Text = "读取";
-            Task.Run(() =>
+            Task.Run(async delegate
             {
                 while (!cts.IsCancellationRequested)
                 {
@@ -73,8 +73,7 @@ namespace SofarBMS.UI
                     {
                         if (flag)
                         {
-                            Thread.Sleep(1000);
-                            List<uint> DataLists = new List<uint>() { 0xAA11, 0xAA22, 0xAA33, 0xAA44, 0xAA55, 0xAA66, 0xAA77, 0xAA88 };//
+                            List<uint> DataLists = new List<uint>() { 0xAA11, 0xAA22, 0xAA33, 0xAA44, 0xAA55, 0xAA66, 0xAA77, 0xAA88 };
 
                             for (int i = 0; i < DataLists.Count; i++)
                             {
@@ -89,31 +88,33 @@ namespace SofarBMS.UI
 
                             byte[] bytes2 = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
                             EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2C, 0x10 });
+
                             flag = false;
+                            await Task.Delay(1000);
                         }
+                    }
 
-                        lock (EcanHelper._locker)
+                    lock (EcanHelper._locker)
+                    {
+                        while (EcanHelper._task.Count > 0
+                            && !cts.IsCancellationRequested)
                         {
-                            while (EcanHelper._task.Count > 0)
-                            {
-                                CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
-                                this.Invoke(new Action(() =>
-                                {
-                                    //解析数据
-                                    analysisData(ch.ID, ch.Data);
-                                }));
-                            }
+                            this.Invoke(new Action(() =>
+                            {
+                                analysisData(ch.ID, ch.Data);
+                            }));
                         }
                     }
                 }
-            });
+            }, cts.Token);
         }
 
         public void analysisData(uint canID, byte[] data)
         {
             byte[] canid = BitConverter.GetBytes(canID);
-            //if (canid[0] != FrmMain.CANID || !(canid[0] == FrmMain.CANID && canid[1] == 0xE0 && canid[3] == 0x10)) return;
+
             if (!(((canID & 0xff) == FrmMain.BMS_ID) || ((canID & 0xff) == FrmMain.PCU_ID)))
                 return;
 
@@ -1750,7 +1751,7 @@ namespace SofarBMS.UI
 
         private void btnSetControlInfo_Click(object sender, EventArgs e)
         {
-            byte[] can_id = new byte[4] { 0xE0, FrmMain.BMS_ID, 0x61, 0x10 };//0x1061FF01
+            byte[] can_id = new byte[4] { 0xE0, FrmMain.BMS_ID, 0x61, 0x10 };
 
             byte[] data = new byte[8];
             //主动均衡充电使能
@@ -1763,6 +1764,9 @@ namespace SofarBMS.UI
             int capacity = Convert.ToInt32(txtPackActiveBalanceCap.Text.Trim());
             data[3] = (byte)(capacity & 0xff);
             data[4] = (byte)(capacity >> 8);
+
+            data[7] = (byte)(Crc8_8210_nBytesCalculate(data, 11, 0) & 0xff);
+
             EcanHelper.Send(data, can_id);
         }
         #endregion

@@ -42,16 +42,14 @@ namespace SofarBMS.UI
                 GetControls(item);
             }
 
-            Task.Factory.StartNew(() =>
+            Task.Run(() =>
             {
-                while (true)
+                while (!cts.IsCancellationRequested)
                 {
-                    if (cts.IsCancellationRequested)
-                        return;
-
                     lock (EcanHelper._locker)
                     {
-                        while (EcanHelper._task.Count > 0)
+                        while (EcanHelper._task.Count > 0 
+                            && !cts.IsCancellationRequested)
                         {
                             CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
@@ -59,7 +57,7 @@ namespace SofarBMS.UI
                         }
                     }
                 }
-            });        
+            },cts.Token);        
         }
 
         private void btn_01_Click(object sender, EventArgs e)

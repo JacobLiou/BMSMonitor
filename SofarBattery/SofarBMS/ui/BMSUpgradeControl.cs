@@ -83,23 +83,22 @@ namespace SofarBMS.UI
                 GetControls(item);
             }
 
-            Task.Factory.StartNew(() =>
+            Task.Run(delegate
             {
                 while (!cts.IsCancellationRequested)
                 {
                     lock (EcanHelper._locker)
                     {
-                        while (EcanHelper._task.Count > 0)
+                        while (EcanHelper._task.Count > 0
+                        && !cts.IsCancellationRequested)
                         {
-                            //出队
                             CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
-                            //解析
                             this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
                         }
                     }
                 }
-            });
+            }, cts.Token);
 
             cbbChipcode.SelectedIndex = 0;
         }
@@ -302,29 +301,29 @@ namespace SofarBMS.UI
                                         }
                                         break;
                                     case 2:
-                                                startDownloadPack2(GroupIndex, 1024);
-                                                Thread.Sleep(TX_INTERVAL_TIME);
-                                                AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FC", "PACK_ID" + GroupIndex);
-                                                int offset = GroupIndex * 1024;
-                                                for (int i = 0; i < 1024; i += 8)
-                                                {
-                                                    Thread.Sleep(TX_INTERVAL_TIME_Data);
-                                                    startDownloadData3(offset + i);
-                                                }
-                                                Thread.Sleep(TX_INTERVAL_TIME);
-                                                if (GroupIndex == file_size)
-                                                    Flag = 4;
-                                                else
-                                                    GroupIndex++;
+                                        startDownloadPack2(GroupIndex, 1024);
+                                        Thread.Sleep(TX_INTERVAL_TIME);
+                                        AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FC", "PACK_ID" + GroupIndex);
+                                        int offset = GroupIndex * 1024;
+                                        for (int i = 0; i < 1024; i += 8)
+                                        {
+                                            Thread.Sleep(TX_INTERVAL_TIME_Data);
+                                            startDownloadData3(offset + i);
+                                        }
+                                        Thread.Sleep(TX_INTERVAL_TIME);
+                                        if (GroupIndex == file_size)
+                                            Flag = 4;
+                                        else
+                                            GroupIndex++;
 
-                                                this.Invoke(new Action(() =>
-                                                {
-                                                    progressBar1.Maximum = file_size;
-                                                    progressBar1.Value = GroupIndex;
+                                        this.Invoke(new Action(() =>
+                                        {
+                                            progressBar1.Maximum = file_size;
+                                            progressBar1.Value = GroupIndex;
 
-                                                    //decimal proVal = ((decimal)GroupIndex / file_size) * 100;
-                                                    //progressBar1.Text = $"正在升级，当前进度为：{Convert.ToInt32(proVal)}%";
-                                                }));
+                                            //decimal proVal = ((decimal)GroupIndex / file_size) * 100;
+                                            //progressBar1.Text = $"正在升级，当前进度为：{Convert.ToInt32(proVal)}%";
+                                        }));
                                         break;
                                     case 4:
                                         do

@@ -45,6 +45,24 @@ namespace SofarBMS.Helper
             return strDest;
         }
 
+        public static byte getCRC8(byte[] buffer)
+        {
+            byte crc = 0xFF;// Initial value
+            for (int i = 0; i < buffer.Length; i++)
+            {
+                crc ^= buffer[i];
+                for (int j = 0; j < 8; j++)
+                {
+                    if ((crc & 1) > 0)
+                        crc = (byte)((crc >> 1) ^ 0xE0);// 0xE0 = reverse 0x07
+                    else
+                        crc = (byte)(crc >> 1);
+                }
+            }
+            return crc;
+        }
+
+
         public Crc16(Crc16Model model)
         {
             ushort polynomial = (ushort)model;

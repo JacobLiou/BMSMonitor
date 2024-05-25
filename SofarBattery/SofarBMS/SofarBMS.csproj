@@ -217,7 +217,8 @@
     <Compile Include="Model\fw_info.cs" />
     <Compile Include="Model\ProtocolModel.cs" />
     <Compile Include="Model\Protocols.cs" />
-    <Compile Include="Model\RealtimeData2.cs" />
+    <Compile Include="Model\RealtimeData_CBS5000S.cs" />
+    <Compile Include="Model\RealtimeData_GTX5000S.cs" />
     <Compile Include="Model\UpgradeModel.cs" />
     <Compile Include="Observer\DBObserver.cs" />
     <Compile Include="Observer\FileObserver.cs" />
@@ -226,7 +227,7 @@
     <Compile Include="Model\FaultInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Model\RealtimeData.cs" />
+    <Compile Include="Model\RealtimeData_BTS5K.cs" />
     <Compile Include="Helper\SQLiteHelper.cs" />
     <Compile Include="Queue\MultiLevelQueueManager.cs" />
     <Compile Include="Queue\QueueItem.cs" />
@@ -235,6 +236,12 @@
     </Compile>
     <Compile Include="UI\BMSMMultipleControl.Designer.cs">
       <DependentUpon>BMSMMultipleControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CBSFileTransmit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CBSFileTransmit.Designer.cs">
+      <DependentUpon>CBSFileTransmit.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\CBSParamControl.cs">
       <SubType>UserControl</SubType>
@@ -318,6 +325,9 @@
     </Compile>
     <EmbeddedResource Include="UI\BMSMMultipleControl.resx">
       <DependentUpon>BMSMMultipleControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CBSFileTransmit.resx">
+      <DependentUpon>CBSFileTransmit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\CBSParamControl.resx">
       <DependentUpon>CBSParamControl.cs</DependentUpon>

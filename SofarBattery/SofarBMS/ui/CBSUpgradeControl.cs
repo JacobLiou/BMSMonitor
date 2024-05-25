@@ -24,9 +24,8 @@ namespace SofarBMS.UI
         public StepFlag stepFlag = StepFlag.None;
         //定义芯片角色和固件编码
         private string chip_role = "";
-        private string chip_code = "E0";
-
-
+        private string chip_code = "0xE0";
+        private string slaveAddress = "0x1F";//常规0x1F，BCU为0x9F
 
         Dictionary<uint, int> DevState = new Dictionary<uint, int>();
         HashSet<uint> DeviceList = new HashSet<uint>();
@@ -85,13 +84,14 @@ namespace SofarBMS.UI
 
             cbbChiprole.SelectedIndex = 1;
             cbbChipcode.SelectedIndex = 1;
-            Task.Factory.StartNew(() =>
+            Task.Run(() =>
             {
-                while (true)
+                while (!cts.IsCancellationRequested)
                 {
                     lock (EcanHelper._locker)
                     {
-                        while (EcanHelper._task.Count > 0)
+                        while (EcanHelper._task.Count > 0
+                            && !cts.IsCancellationRequested)
                         {
                             //出队
                             CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
@@ -101,7 +101,7 @@ namespace SofarBMS.UI
                         }
                     }
                 }
-            });
+            }, cts.Token);
         }
 
         /// <summary>
@@ -212,7 +212,6 @@ namespace SofarBMS.UI
                             if (cts.IsCancellationRequested)
                             {
                                 this.Invoke(new Action(() => { progressBar1.Value = 0; }));
-                                
                                 return;
                             }
 
@@ -430,7 +429,7 @@ namespace SofarBMS.UI
         private void AnalysisData(uint obj_ID, byte[] data)
         {
             uint id = obj_ID | 0xff;
-            
+
             switch (stepFlag)
             {
                 case StepFlag.None:
@@ -691,7 +690,7 @@ namespace SofarBMS.UI
         {
             try
             {
-                byte[] canid = new byte[] { 0xE0, 0x1F, mark, 0x07 };
+                byte[] canid = new byte[] { 0xE0, Convert.ToByte(slaveAddress, 16), mark, 0x07 };
 
                 //增加判断，确认是否发送成功；
                 bool result = EcanHelper.Send(data, canid);
@@ -877,10 +876,12 @@ namespace SofarBMS.UI
             switch (cbbChiprole.SelectedIndex)
             {
                 case 0:
-                    txtChiprole.Text = chip_role = "0x24";
+                    cbbChiprole_val.Text = "0x24";
+                    txtSlaveAddress.Text = slaveAddress = "0x9F";
                     break;
                 case 1:
-                    txtChiprole.Text = chip_role = "0x2D";
+                    cbbChiprole_val.Text = "0x2D";
+                    txtSlaveAddress.Text = slaveAddress = "0x1F";
                     break;
                 default:
                     break;
@@ -890,6 +891,12 @@ namespace SofarBMS.UI
         private void cbbChipcode_SelectedIndexChanged(object sender, EventArgs e)
         {
             chip_code = cbbChipcode.Text.Trim();
+            slaveAddress = txtSlaveAddress.Text;
+        }
+
+        private void cbbChiprole_val_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            chip_role = cbbChiprole_val.Text;
         }
     }
 

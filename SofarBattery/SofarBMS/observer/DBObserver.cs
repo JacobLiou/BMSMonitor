@@ -12,7 +12,7 @@ namespace SofarBMS.Observer
     {
         PackageMysqlHelper mysqlHelper = new PackageMysqlHelper();
 
-        public override void SaveData(RealtimeData data)
+        public override void SaveData(RealtimeData_BTS5K data)
         {
 #pragma warning disable CS0168 // 声明了变量“ex”，但从未使用过
             try

@@ -114,7 +114,7 @@ namespace SofarBMS.UI
             }
             #endregion
 
-            Task.Run(() =>
+            Task.Run(async delegate
             {
                 while (!cts.IsCancellationRequested)
                 {
@@ -126,21 +126,22 @@ namespace SofarBMS.UI
                             EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
 
                             flag = false;
+                            await Task.Delay(1000);
                         }
+                    }
 
-
-                        lock (EcanHelper._locker)
+                    lock (EcanHelper._locker)
+                    {
+                        while (EcanHelper._task.Count > 0 
+                            && !cts.IsCancellationRequested)
                         {
-                            while (EcanHelper._task.Count > 0)
-                            {
-                                CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
-                                this.Invoke(new Action(() => { analysisData(ch.ID, ch.Data); }));
-                            }
+                            this.Invoke(new Action(() => { analysisData(ch.ID, ch.Data); }));
                         }
                     }
                 }
-            });
+            }, cts.Token);
         }
 
         private void btnRead_Click(object sender, EventArgs e)
@@ -207,7 +208,7 @@ namespace SofarBMS.UI
             {
                 for (int i = 1; i <= num; i++)
                 {
-                    if (this.Controls.Find("ckb_" + i, true).Length<=0)
+                    if (this.Controls.Find("ckb_" + i, true).Length <= 0)
                         continue;
 
                     Control c = this.Controls.Find("ckb_" + i, true)[0];
@@ -534,7 +535,7 @@ namespace SofarBMS.UI
         public void analysisData(uint canID, byte[] data)
         {
             byte[] canid = BitConverter.GetBytes(canID);
-            if (canid[0] != FrmMain.BMS_ID || !(canid[0] == FrmMain.BMS_ID && canid[1] == 0xE0 && canid[3] == 0x10)) return;
+            if (canid[0] != FrmMain.BMS_ID || !(canid[0] == FrmMain.BMS_ID && (canid[1] == 0xE0|| canid[1] == 0xFF) && canid[3] == 0x10)) return;
 
             int[] numbers = BytesToUint16(data);
             int[] numbers_bit = BytesToBit(data);

@@ -203,7 +203,9 @@ namespace SofarBMS
             "5",
             "6",
             "7",
-            "8"});
+            "8",
+            "9",
+            "10"});
             this.cbbID.Location = new System.Drawing.Point(158, 10);
             this.cbbID.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.cbbID.Name = "cbbID";
@@ -271,7 +273,7 @@ namespace SofarBMS
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BMS电池上位机T1.0.2.1.20240517";
+            this.Text = "BMS电池上位机T1.0.2.1.20240524";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.statusStrip1.ResumeLayout(false);

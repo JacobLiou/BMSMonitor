@@ -27,8 +27,8 @@ namespace SofarBMS
 
         //线程状态
         private bool flag = false;
-        private RealtimeData2 model = null;
-        private Dictionary<uint, RealtimeData2> allQueue = new Dictionary<uint, RealtimeData2>();
+        private RealtimeData_GTX5000S model = null;
+        private Dictionary<uint, RealtimeData_GTX5000S> allQueue = new Dictionary<uint, RealtimeData_GTX5000S>();
 
         // 启动消费者线程，这里假设我们处理每个优先级的队列  
         CancellationTokenSource cts;
@@ -96,7 +96,7 @@ namespace SofarBMS
                 foreach (var _queue in allQueue)
                 {
                     uint id = _queue.Key;
-                    RealtimeData2 item = _queue.Value;
+                    RealtimeData_GTX5000S item = _queue.Value;
                     //lists.Add(item);
 
                     var filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//GTX5000S_{id}_{DateTime.Now.ToString("yyyy-MM-dd")}.csv";
@@ -262,7 +262,7 @@ namespace SofarBMS
             uint devID = EcanHelper.AnalysisID(canID);
 
             if (model == null)
-                model = new RealtimeData2();
+                model = new RealtimeData_GTX5000S();
 
             string[] strs;
             string[] strs_1;
@@ -770,12 +770,12 @@ namespace SofarBMS
         {
             SQLiteHelper.ConStr = "Data Source=" + Application.StartupPath + "\\DB\\RealtimeDataBase;Pooling=true;FailIfMissing=false";
 
-            allQueue = new Dictionary<uint, RealtimeData2>()
+            allQueue = new Dictionary<uint, RealtimeData_GTX5000S>()
             {
-                { 1, new RealtimeData2() {}},
-                { 2, new RealtimeData2() {}},
-                { 3, new RealtimeData2() {}},
-                { 4, new RealtimeData2() {}},
+                { 1, new RealtimeData_GTX5000S() {}},
+                { 2, new RealtimeData_GTX5000S() {}},
+                { 3, new RealtimeData_GTX5000S() {}},
+                { 4, new RealtimeData_GTX5000S() {}},
             };
         }
     }

@@ -2255,8 +2255,8 @@
             this.cbbActiveBalanceCtrl.FormattingEnabled = true;
             this.cbbActiveBalanceCtrl.Items.AddRange(new object[] {
             "禁止",
-            "充电",
             "放电",
+            "充电",
             "无效"});
             this.cbbActiveBalanceCtrl.Location = new System.Drawing.Point(132, 42);
             this.cbbActiveBalanceCtrl.Name = "cbbActiveBalanceCtrl";

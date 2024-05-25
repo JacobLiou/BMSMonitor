@@ -11,7 +11,7 @@ namespace SofarBMS.Observer
     public static class RealtimeDataManager
     {
         private static List<RealtimeDataObserver> observers = new List<RealtimeDataObserver>();
-        private static Queue<RealtimeData> QueueDatas = new Queue<RealtimeData>();
+        private static Queue<RealtimeData_BTS5K> QueueDatas = new Queue<RealtimeData_BTS5K>();
 
         static RealtimeDataManager()
         {
@@ -31,7 +31,7 @@ namespace SofarBMS.Observer
             observers.Add(observer);
         }
 
-        public static void WriteData(RealtimeData data)
+        public static void WriteData(RealtimeData_BTS5K data)
         {
             QueueDatas.Enqueue(data);
         }
@@ -40,7 +40,7 @@ namespace SofarBMS.Observer
         {
             try
             {
-                RealtimeData data = QueueDatas.Dequeue();
+                RealtimeData_BTS5K data = QueueDatas.Dequeue();
 
                 if (data != null)
                 {
@@ -52,7 +52,7 @@ namespace SofarBMS.Observer
             }
         }
 
-        private static void NotifyAllObservers(RealtimeData data)
+        private static void NotifyAllObservers(RealtimeData_BTS5K data)
         {
             foreach (var observer in observers)
             {

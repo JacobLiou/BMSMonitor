@@ -112,11 +112,10 @@ namespace SofarBMS.UI
                 GetControls(item);
             }
 
-            Task.Run(() =>
+            Task.Run(async delegate
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    Thread.Sleep(1000);
                     string controlState = "lblDevState_";
                     for (int i = 1; i <= 8; i++)
                     {
@@ -131,25 +130,27 @@ namespace SofarBMS.UI
                         //获取实时数据指令
                         EcanHelper.Send(new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
                                        , new byte[] { 0xE0, 0xFF, 0x2C, 0x10 });
+
+                        //发送条形码读取
+                        EcanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                                        , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
                     }
 
                     lock (EcanHelper._locker)
                     {
-                        while (EcanHelper._task.Count > 0)
+                        //增加信号量状态的检查
+                        while (EcanHelper._task.Count > 0 
+                            && !cts.IsCancellationRequested)
                         {
                             CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
                             analysisData(ch.ID, ch.Data);
                         }
                     }
+
+                    await Task.Delay(1000);
                 }
             }, cts.Token);
-
-            if (EcanHelper.IsConnection)
-            {
-                //获取实时数据
-                EcanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });//发送条形码读取
-            }
         }
 
         public void analysisData(uint canID, byte[] data)

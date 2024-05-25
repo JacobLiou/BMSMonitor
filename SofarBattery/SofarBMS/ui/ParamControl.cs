@@ -114,7 +114,7 @@ namespace SofarBMS.UI
             }
             #endregion
 
-            Task.Run(() =>
+            Task.Run(async delegate
             {
                 while (!cts.IsCancellationRequested)
                 {
@@ -126,12 +126,13 @@ namespace SofarBMS.UI
                             EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
 
                             flag = false;
+                            await Task.Delay(1000);
                         }
-
 
                         lock (EcanHelper._locker)
                         {
-                            while (EcanHelper._task.Count > 0)
+                            while (EcanHelper._task.Count > 0 
+                                && !cts.IsCancellationRequested)
                             {
                                 CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
@@ -140,19 +141,19 @@ namespace SofarBMS.UI
                         }
                     }
                 }
-            });
+            }, cts.Token);
         }
 
         private void btnRead_Click(object sender, EventArgs e)
         {
             if (!EcanHelper.IsConnection)
             {
-                MessageBox.Show(FrmMain.GetString("keyOpenPrompt"));            
+                MessageBox.Show(FrmMain.GetString("keyOpenPrompt"));
                 return;
             }
 
             flag = true;
-            byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };           
+            byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
             if (EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 }))
             {
                 MessageBox.Show(FrmMain.GetString("keyReadSuccess"));
@@ -161,7 +162,7 @@ namespace SofarBMS.UI
             {
                 MessageBox.Show(FrmMain.GetString("keyReadFail"));
             }
-        }      
+        }
 
         private void btnWrite_Click(object sender, EventArgs e)
         {
@@ -178,27 +179,27 @@ namespace SofarBMS.UI
             byte[] bytes = new byte[8];
             int num = 13;
             //检查输入数据的合法性
-            if (!CheckTextBoxRange(txt_1,    0,  4000, "单体过充保护"  ) || !CheckTextBoxRange(txt_2,    0,  3800, "单体过充解除"  ) || !CheckTextBoxRange(txt_3,    0,  3800, "单体过充告警"  ) ||
-                !CheckTextBoxRange(txt_4,    0,  3600, "单体过充解除"  ) || !CheckTextBoxRange(txt_5,    0,  64.0, "总体过充保护"  ) || !CheckTextBoxRange(txt_6,    0,  60.8, "总体过充解除"  ) ||
-                !CheckTextBoxRange(txt_7,    0,  60.8, "总体过充告警"  ) || !CheckTextBoxRange(txt_8,    0,  57.7, "总体过充解除"  ) || !CheckTextBoxRange(txt_9, 2300, 65535, "单体过放保护"  ) ||
-                !CheckTextBoxRange(txt_10,2500, 65535, "单体过放解除"  ) || !CheckTextBoxRange(txt_11,2500, 65535, "单体过放告警"  ) || !CheckTextBoxRange(txt_12,2700, 65535, "单体过放解除"  ) ||
-                !CheckTextBoxRange(txt_13,36.8,6553.5, "总体过放保护"  ) || !CheckTextBoxRange(txt_14,  40,6553.5, "总体过放解除"  ) || !CheckTextBoxRange(txt_15,  40,6553.5, "总体过放告警"  ) ||
-                !CheckTextBoxRange(txt_16,  44,6553.5, "总体过放解除"  ) || !CheckTextBoxRange(txt_17,   0,   200, "充电过流保护"  ) || !CheckTextBoxRange(txt_18,   0,655.35, "充电过流解除"  ) ||
-                !CheckTextBoxRange(txt_19,   0,655.35, "充电过流告警"  ) || !CheckTextBoxRange(txt_20,   0,655.35, "充电过流解除"  ) || !CheckTextBoxRange(txt_21,   0,   200, "放电过流保护"  ) ||
-                !CheckTextBoxRange(txt_22,   0,655.35, "放电过流解除"  ) || !CheckTextBoxRange(txt_23,   0,655.35, "放电过流告警"  ) || !CheckTextBoxRange(txt_24,   0,655.35, "放电过流解除"  ) ||
-                !CheckTextBoxRange(txt_25, -40,    60, "充电高温保护"  ) || !CheckTextBoxRange(txt_26, -40,    50, "充电高温解除"  ) || !CheckTextBoxRange(txt_27, -40,   125, "充电高温告警"  ) ||
-                !CheckTextBoxRange(txt_28, -40,   125, "充电高温解除"  ) || !CheckTextBoxRange(txt_29, -40,    65, "放电高温保护"  ) || !CheckTextBoxRange(txt_30, -40,    56, "放电高温解除"  ) ||
-                !CheckTextBoxRange(txt_31, -40,   125, "放电高温告警"  ) || !CheckTextBoxRange(txt_32, -40,   125, "放电高温解除"  ) || !CheckTextBoxRange(txt_33,   0,   125, "充电低温保护"  ) ||
-                !CheckTextBoxRange(txt_34,   2,   125, "充电低温解除"  ) || !CheckTextBoxRange(txt_35,   0,   125, "充电低温告警"  ) || !CheckTextBoxRange(txt_36,   2,   125, "充电低温告警"  ) ||
-                !CheckTextBoxRange(txt_37, -22,   125, "放电低温保护"  ) || !CheckTextBoxRange(txt_38, -20,   125, "放电低温解除"  ) || !CheckTextBoxRange(txt_39, -40,   125, "放电低温告警"  ) ||
-                !CheckTextBoxRange(txt_40, -40,   125, "放电低温解除"  ) || !CheckTextBoxRange(txt_41, -40,   125, "环境高温保护"  ) || !CheckTextBoxRange(txt_42, -40,   125, "环境高温解除"  ) ||
-                !CheckTextBoxRange(txt_43, -40,   125, "环境高温告警"  ) || !CheckTextBoxRange(txt_44, -40,   125, "环境高温解除"  ) || !CheckTextBoxRange(txt_45, -40,   125, "环境低温保护"  ) ||
-                !CheckTextBoxRange(txt_46, -40,   125, "环境低温解除"  ) || !CheckTextBoxRange(txt_47, -40,   125, "环境低温告警"  ) || !CheckTextBoxRange(txt_48, -40,   125, "环境低温解除"  ) ||
-                !CheckTextBoxRange(txt_49,   0,   100, "低电量保护"    ) || !CheckTextBoxRange(txt_50,   0,   100, "低电量解除"    ) || !CheckTextBoxRange(txt_51,   0,   100, "低电量告警"    ) ||
-                !CheckTextBoxRange(txt_52,   0,   100, "低电量解除"    ) || !CheckTextBoxRange(txt_53,   0,  4000, "均衡开启电压"  ) || !CheckTextBoxRange(txt_54,   0,  1000, "均衡开启压差"  ) ||
-                !CheckTextBoxRange(txt_55,3000,  4000, "满充电压"      ) || !CheckTextBoxRange(txt_56, -40,   125, "加热膜开启温度") || !CheckTextBoxRange(txt_57, -40,   125, "加热膜关闭温度") ||
-                !CheckTextBoxRange(txt_58,   0,  60.8, "电池包截止电压") || !CheckTextBoxRange(txt_59,   0,655.35, "电池包截止电流") || !CheckTextBoxRange(txt_60, -40,   125, "MOS高温保护"   ) ||
-                !CheckTextBoxRange(txt_61, -40,   125, "MOS高温解除"   ) || !CheckTextBoxRange(txt_62, -40,   125, "MOS高温告警"   ) || !CheckTextBoxRange(txt_63, -40,   125, "MOS高温解除"   ) ) 
+            if (!CheckTextBoxRange(txt_1, 0, 4000, "单体过充保护") || !CheckTextBoxRange(txt_2, 0, 3800, "单体过充解除") || !CheckTextBoxRange(txt_3, 0, 3800, "单体过充告警") ||
+                !CheckTextBoxRange(txt_4, 0, 3600, "单体过充解除") || !CheckTextBoxRange(txt_5, 0, 64.0, "总体过充保护") || !CheckTextBoxRange(txt_6, 0, 60.8, "总体过充解除") ||
+                !CheckTextBoxRange(txt_7, 0, 60.8, "总体过充告警") || !CheckTextBoxRange(txt_8, 0, 57.7, "总体过充解除") || !CheckTextBoxRange(txt_9, 2300, 65535, "单体过放保护") ||
+                !CheckTextBoxRange(txt_10, 2500, 65535, "单体过放解除") || !CheckTextBoxRange(txt_11, 2500, 65535, "单体过放告警") || !CheckTextBoxRange(txt_12, 2700, 65535, "单体过放解除") ||
+                !CheckTextBoxRange(txt_13, 36.8, 6553.5, "总体过放保护") || !CheckTextBoxRange(txt_14, 40, 6553.5, "总体过放解除") || !CheckTextBoxRange(txt_15, 40, 6553.5, "总体过放告警") ||
+                !CheckTextBoxRange(txt_16, 44, 6553.5, "总体过放解除") || !CheckTextBoxRange(txt_17, 0, 200, "充电过流保护") || !CheckTextBoxRange(txt_18, 0, 655.35, "充电过流解除") ||
+                !CheckTextBoxRange(txt_19, 0, 655.35, "充电过流告警") || !CheckTextBoxRange(txt_20, 0, 655.35, "充电过流解除") || !CheckTextBoxRange(txt_21, 0, 200, "放电过流保护") ||
+                !CheckTextBoxRange(txt_22, 0, 655.35, "放电过流解除") || !CheckTextBoxRange(txt_23, 0, 655.35, "放电过流告警") || !CheckTextBoxRange(txt_24, 0, 655.35, "放电过流解除") ||
+                !CheckTextBoxRange(txt_25, -40, 60, "充电高温保护") || !CheckTextBoxRange(txt_26, -40, 50, "充电高温解除") || !CheckTextBoxRange(txt_27, -40, 125, "充电高温告警") ||
+                !CheckTextBoxRange(txt_28, -40, 125, "充电高温解除") || !CheckTextBoxRange(txt_29, -40, 65, "放电高温保护") || !CheckTextBoxRange(txt_30, -40, 56, "放电高温解除") ||
+                !CheckTextBoxRange(txt_31, -40, 125, "放电高温告警") || !CheckTextBoxRange(txt_32, -40, 125, "放电高温解除") || !CheckTextBoxRange(txt_33, 0, 125, "充电低温保护") ||
+                !CheckTextBoxRange(txt_34, 2, 125, "充电低温解除") || !CheckTextBoxRange(txt_35, 0, 125, "充电低温告警") || !CheckTextBoxRange(txt_36, 2, 125, "充电低温告警") ||
+                !CheckTextBoxRange(txt_37, -22, 125, "放电低温保护") || !CheckTextBoxRange(txt_38, -20, 125, "放电低温解除") || !CheckTextBoxRange(txt_39, -40, 125, "放电低温告警") ||
+                !CheckTextBoxRange(txt_40, -40, 125, "放电低温解除") || !CheckTextBoxRange(txt_41, -40, 125, "环境高温保护") || !CheckTextBoxRange(txt_42, -40, 125, "环境高温解除") ||
+                !CheckTextBoxRange(txt_43, -40, 125, "环境高温告警") || !CheckTextBoxRange(txt_44, -40, 125, "环境高温解除") || !CheckTextBoxRange(txt_45, -40, 125, "环境低温保护") ||
+                !CheckTextBoxRange(txt_46, -40, 125, "环境低温解除") || !CheckTextBoxRange(txt_47, -40, 125, "环境低温告警") || !CheckTextBoxRange(txt_48, -40, 125, "环境低温解除") ||
+                !CheckTextBoxRange(txt_49, 0, 100, "低电量保护") || !CheckTextBoxRange(txt_50, 0, 100, "低电量解除") || !CheckTextBoxRange(txt_51, 0, 100, "低电量告警") ||
+                !CheckTextBoxRange(txt_52, 0, 100, "低电量解除") || !CheckTextBoxRange(txt_53, 0, 4000, "均衡开启电压") || !CheckTextBoxRange(txt_54, 0, 1000, "均衡开启压差") ||
+                !CheckTextBoxRange(txt_55, 3000, 4000, "满充电压") || !CheckTextBoxRange(txt_56, -40, 125, "加热膜开启温度") || !CheckTextBoxRange(txt_57, -40, 125, "加热膜关闭温度") ||
+                !CheckTextBoxRange(txt_58, 0, 60.8, "电池包截止电压") || !CheckTextBoxRange(txt_59, 0, 655.35, "电池包截止电流") || !CheckTextBoxRange(txt_60, -40, 125, "MOS高温保护") ||
+                !CheckTextBoxRange(txt_61, -40, 125, "MOS高温解除") || !CheckTextBoxRange(txt_62, -40, 125, "MOS高温告警") || !CheckTextBoxRange(txt_63, -40, 125, "MOS高温解除"))
             {
                 return;// 范围检查失败
             }
@@ -299,7 +300,7 @@ namespace SofarBMS.UI
                         sb.AppendLine(item.Key + FrmMain.GetString("keyWriteFail"));
                     }
                 }
-               
+
                 string msgInfo = string.IsNullOrEmpty(sb.ToString()) ? FrmMain.GetString("keyWriteSuccess") : sb.ToString();
                 MessageBox.Show(msgInfo);
             }
@@ -695,6 +696,6 @@ namespace SofarBMS.UI
             byte b8 = Convert.ToByte(t8.ToString("X2"), 16);
 
             return new byte[] { b1, b2, b3, b4, b5, b6, b7, b8 };
-        }       
+        }
     }
 }
