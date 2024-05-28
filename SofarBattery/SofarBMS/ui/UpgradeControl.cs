@@ -77,7 +77,7 @@ namespace SofarBMS.UI
             cbbChip_role.SelectedIndex = 3;
             lblUpgradeRole.Text = LanguageHelper.GetLanguage("Upgrade_Role");
 
-            Task.Run(()=>
+            Task.Run(() =>
             {
                 while (!cts.IsCancellationRequested)
                 {
@@ -108,7 +108,7 @@ namespace SofarBMS.UI
                     if (data[0] == 0x01 && data[1] == 0x01 && id == 0x07FB41FF)
                     {
                         DevList.Add(obj_ID);
-                        AddLog(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), obj_ID.ToString("X8"), LanguageHelper.GetLanguage("Upgrade_Success"));
+                        AddLog(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), obj_ID.ToString("X8"), BitConverter.ToString(data));
                         //LogHelper.AddLog($"[received]-{DateTime.Now.ToString("HH:mm:ss.fff"),-15}\t0x{obj_ID.ToString("X")}    {BitConverter.ToString(data)}\r\n");
                     }
                     break;
@@ -128,7 +128,7 @@ namespace SofarBMS.UI
                         {
                             if (data[0] == 0x01 && data[1] == 0x00)
                             {
-                                if (!DevState.ContainsKey(obj_ID))
+                                if (!DevState.ContainsKey(obj_ID) && (obj_ID & 0xff) != 0x0f)
                                 {
                                     DevState.Add(obj_ID, 1);
                                     AddLog(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), obj_ID.ToString("X8"), LanguageHelper.GetLanguage("Upgrade_Success"));
@@ -405,11 +405,22 @@ namespace SofarBMS.UI
                                         startDownloadState5(Convert.ToByte(cbbChip_role.SelectedIndex), txtChip_code.Text);
                                     }));
                                 }
-                                else if (counter > 60)
+                                else if (counter > 10)
                                 {
+                                    StringBuilder sb = new StringBuilder();
+
+                                    if (DevState.Count != 0)
+                                    {
+                                        sb.Append("已完成升级的设备ID帧：");
+                                        foreach (var item in DevState)
+                                        {
+                                            sb.Append(item.ToString() + ",");
+                                        }
+                                    }
+
                                     this.Invoke(new Action(() =>
                                     {
-                                        lblUpgrade_05.Text = LanguageHelper.GetLanguage("Response_Timed");
+                                        lblUpgrade_05.Text = LanguageHelper.GetLanguage("Response_Timed") + sb.ToString();
                                         lblUpgrade_05.ForeColor = System.Drawing.Color.Red;
                                     }));
 

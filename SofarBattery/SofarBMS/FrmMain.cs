@@ -154,8 +154,6 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            string s = Guid.NewGuid().ToString();
-
             //程序确保Log文件的存在性
             if (!Directory.Exists("Log"))
             {
