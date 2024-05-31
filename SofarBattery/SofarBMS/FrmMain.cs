@@ -196,7 +196,6 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
             btnResetCAN.Text = LanguageHelper.GetLanguage("ResetCAN");
 
             this.panel1.Controls.Add(new RTAControl());
-            WIN_ID = "RTAControl";
 
             cbbID.SelectedIndex = 0;
             cbbIDP.SelectedIndex = 0;
@@ -357,11 +356,9 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
 
         private void AddMenuClick(UserControl bc)
         {
-            EcanHelper._task.Clear();
             panel1.Controls.Clear();
             bc.Dock = DockStyle.Fill;
             panel1.Controls.Add(bc);
-            WIN_ID = bc.Name;
 
             if (bc.Name != "RTAControl")
             {
@@ -407,6 +404,12 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
             {
                 CBSUpgradeControl.cts?.Cancel();
             }
+            if (bc.Name != "CBSFileTransmit")
+            {
+                CBSFileTransmit.cts?.Cancel();
+            }
+
+            EcanHelper._task.Clear();
         }
 
         /// <summary>

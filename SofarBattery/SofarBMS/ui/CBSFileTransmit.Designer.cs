@@ -76,6 +76,7 @@
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 2;
             this.label3.Text = "访问模块";
+            this.label3.Visible = false;
             // 
             // txtSlaveAddress
             // 
@@ -110,14 +111,15 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 20);
             this.comboBox2.TabIndex = 5;
+            this.comboBox2.Visible = false;
             // 
             // btnFileTransmit
             // 
-            this.btnFileTransmit.Location = new System.Drawing.Point(638, 58);
+            this.btnFileTransmit.Location = new System.Drawing.Point(641, 29);
             this.btnFileTransmit.Name = "btnFileTransmit";
-            this.btnFileTransmit.Size = new System.Drawing.Size(75, 54);
+            this.btnFileTransmit.Size = new System.Drawing.Size(75, 51);
             this.btnFileTransmit.TabIndex = 6;
-            this.btnFileTransmit.Text = "确认";
+            this.btnFileTransmit.Text = "启动";
             this.btnFileTransmit.UseVisualStyleBackColor = true;
             this.btnFileTransmit.Click += new System.EventHandler(this.btnFileTransmit_Click);
             // 
@@ -140,6 +142,7 @@
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 8;
             this.label4.Text = "起始位置";
+            this.label4.Visible = false;
             // 
             // label5
             // 
@@ -149,6 +152,7 @@
             this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 9;
             this.label5.Text = "读取条数";
+            this.label5.Visible = false;
             // 
             // txtStartLocal
             // 
@@ -156,6 +160,7 @@
             this.txtStartLocal.Name = "txtStartLocal";
             this.txtStartLocal.Size = new System.Drawing.Size(100, 21);
             this.txtStartLocal.TabIndex = 10;
+            this.txtStartLocal.Visible = false;
             // 
             // txtReadCount
             // 
@@ -163,6 +168,7 @@
             this.txtReadCount.Name = "txtReadCount";
             this.txtReadCount.Size = new System.Drawing.Size(100, 21);
             this.txtReadCount.TabIndex = 11;
+            this.txtReadCount.Visible = false;
             // 
             // groupBox1
             // 
@@ -233,6 +239,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "CBSFileTransmit";
             this.Size = new System.Drawing.Size(1266, 718);
+            this.Load += new System.EventHandler(this.CBSFileTransmit_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

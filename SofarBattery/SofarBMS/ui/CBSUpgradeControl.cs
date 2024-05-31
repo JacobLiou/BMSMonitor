@@ -20,6 +20,7 @@ namespace SofarBMS.UI
         private static Crc16 _crc = new Crc16(Crc16Model.CcittKermit);
         //定义固件升级任务信号源对象
         public static CancellationTokenSource cts = new CancellationTokenSource();
+        private CancellationTokenSource _token = new CancellationTokenSource();
         //定义固件升级工步枚举对象
         public StepFlag stepFlag = StepFlag.None;
         //定义芯片角色和固件编码
@@ -34,9 +35,9 @@ namespace SofarBMS.UI
         byte[] upgradeTime = null;
         //int Flag = 0; //当前标识：步骤1 FB /步骤2 FC + FD /步骤4 FE /步骤5 FF
         int GroupIndex = 0;
-        const int MAX_RETRY_COUNT = 5;
-        const int TX_INTERVAL_TIME = 200;
-        const int TX_INTERVAL_TIME_Data = 3;
+        int MAX_RETRY_COUNT = 5;
+        int TX_INTERVAL_TIME = 200;
+        int TX_INTERVAL_TIME_Data = 3;
         private bool state = false;
         public bool State
         {
@@ -68,6 +69,8 @@ namespace SofarBMS.UI
         public CBSUpgradeControl()
         {
             InitializeComponent();
+
+            cts = new CancellationTokenSource();
         }
 
         /// <summary>
@@ -91,7 +94,7 @@ namespace SofarBMS.UI
                     lock (EcanHelper._locker)
                     {
                         while (EcanHelper._task.Count > 0
-                            && !cts.IsCancellationRequested)
+                            && !_token.IsCancellationRequested)
                         {
                             //出队
                             CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
@@ -117,7 +120,7 @@ namespace SofarBMS.UI
             openFileDialog.FilterIndex = 1;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                cts = new CancellationTokenSource();
+                _token = new CancellationTokenSource();
                 DevState = new Dictionary<uint, int>();
                 DeviceList = new HashSet<uint>();
                 ResultList = new List<byte[]>();
@@ -197,19 +200,21 @@ namespace SofarBMS.UI
                 //3.判断当前升级状态
                 if (State == false)
                 {
-                    cts = new CancellationTokenSource();
+                    _token = new CancellationTokenSource();
                     stepFlag = StepFlag.FB升级文件传输开始帧;
                     GroupIndex = 0;
                     DevState.Clear();
                     DeviceList.Clear();
                     State = true;
+                    int.TryParse(txtFC.Text.Trim(), out TX_INTERVAL_TIME);
+                    int.TryParse(txtFD.Text.Trim(), out TX_INTERVAL_TIME_Data);
 
                     Task.Factory.StartNew(() =>
                     {
                         int retryCount = 0;
                         do
                         {
-                            if (cts.IsCancellationRequested)
+                            if (_token.IsCancellationRequested)
                             {
                                 this.Invoke(new Action(() => { progressBar1.Value = 0; }));
                                 return;
@@ -236,7 +241,7 @@ namespace SofarBMS.UI
                                             {
                                                 lblUpgrade_05.Text = LanguageHelper.GetLanguage("Response_Timed");
                                             }));
-                                            cts.Cancel();
+                                            _token.Cancel();
                                         }
                                     }
                                     else
@@ -353,7 +358,7 @@ namespace SofarBMS.UI
                             }
                         } while (stepFlag != StepFlag.FF升级完成状态查询帧);
 
-                    }, cts.Token);
+                    }, _token.Token);
 
                     ////注册一个委托：这个委托将任务取消的时候调用
                     //cts.Token.Register(() =>
@@ -366,7 +371,7 @@ namespace SofarBMS.UI
                 {
                     DeviceList.Clear();
                     DevState.Clear();
-                    cts.Cancel();
+                    _token.Cancel();
 
                     lblUpgrade_05.Text = "";
                     progressBar1.Value = 0;
@@ -476,7 +481,7 @@ namespace SofarBMS.UI
 
                                         stepFlag = StepFlag.None;
                                         State = false;
-                                        cts.Cancel();
+                                        _token.Cancel();
                                     }
                                 }));
                                 break;

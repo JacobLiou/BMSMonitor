@@ -321,7 +321,7 @@ Can通信故障,Can1CommFault
                     case 0x1008FFFF:
                         initCount++;
                         richTextBox1.Clear(); richTextBox2.Clear(); richTextBox3.Clear();
-                        analysisLog(data);
+                        analysisLog(data, 0);
                         break;
                     case 0x1009FFFF:
                         initCount++;
@@ -628,9 +628,8 @@ Can通信故障,Can1CommFault
                             (this.Controls.Find("pbHfimForbiddenCmd", true)[0] as PictureBox).BackColor = Color.Green;
                         }
 
-
-                        model.HfilmState = data[4] == 1 ? "加热状态" : "未加热状态";
-                        model.HfimForbiddenCmd = data[4] == 1 ? "加热膜禁用" : "加热膜正常";
+                        model.HfilmState = Convert.ToInt32(data[4]).ToString();
+                        model.HfimForbiddenCmd = Convert.ToInt32(data[5]).ToString();
                         break;
                     case 0x0B78E0FF:
                         txtHV_Charge_Current.Text = BytesToIntger(data[5], data[4], 0.01);
@@ -698,6 +697,11 @@ Can通信故障,Can1CommFault
                         string strSn_BDU = GetPackSN_BDU(data);
                         if (!string.IsNullOrEmpty(strSn_BDU))
                             txtSN_BDU.Text = strSn_BDU;
+                        break;
+                    case 0x1045E0FF:
+                        initCount++;
+                        richTextBox1_45.Clear(); richTextBox2_45.Clear(); richTextBox3_45.Clear();
+                        analysisLog(data, 1);
                         break;
                 }
 
@@ -986,7 +990,7 @@ Can通信故障,Can1CommFault
         /// </summary>
         /// <param name="_bytes"></param>
         /// <returns></returns>
-        private void analysisLog(byte[] data)
+        private void analysisLog(byte[] data, int faultNum)
         {
             string[] msg = new string[2];
 
@@ -996,7 +1000,25 @@ Can通信故障,Can1CommFault
                 {
                     if (GetBit(data[i], j) == 1)
                     {
-                        getLog(out msg, i, j);
+                        getLog(out msg, i, j, faultNum);
+                        if (faultNum == 1)
+                        {
+                            switch (msg[1])
+                            {
+                                case "1":
+                                    richTextBox3_45.AppendText(msg[0] + "\r");
+                                    model.Warning2 = richTextBox3.Text.Replace("\n", "，").Replace("\r", "，");
+                                    break;
+                                case "2":
+                                    richTextBox2_45.AppendText(msg[0] + "\r");
+                                    model.Protection2 = richTextBox2.Text.Replace("\n", "，").Replace("\r", "，");
+                                    break;
+                                case "3":
+                                    richTextBox1_45.AppendText(msg[0] + "\r");
+                                    model.Fault2 = richTextBox1.Text.Replace("\n", "，").Replace("\r", "，");
+                                    break;
+                            }
+                        }
                         switch (msg[1])
                         {
                             case "1":
@@ -1043,10 +1065,14 @@ Can通信故障,Can1CommFault
             return (b & _byte) == _byte ? 1 : 0;
         }
 
-        public static string[] getLog(out string[] msg, int row, int column)
+        public static string[] getLog(out string[] msg, int row, int column, int faultNum = 0)
         {
             msg = new string[2];
             List<FaultInfo> faultInfos = FrmMain.FaultInfos;
+            if (faultNum != 0)
+            {
+                faultInfos = FrmMain.FaultInfos2;
+            }
 
             for (int i = 0; i < faultInfos.Count; i++)
             {

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -510,6 +511,7 @@ namespace SofarBMS.UI
 
             byte[] dataNew = new byte[8];
             Array.Copy(data, 0, dataNew, 0, data.Length);
+
             dataNew[7] = (byte)(Crc8_8210_nBytesCalculate(crcData, 11, 0) & 0xff);
 
             EcanHelper.Send(dataNew, id);
@@ -1725,10 +1727,13 @@ namespace SofarBMS.UI
 
         private void btnSetStateParam_Click(object sender, EventArgs e)
         {
-            byte[] can_id = new byte[4] { 0xE0, FrmMain.BMS_ID, 0x60, 0x10 };//0x1060FF01
+            //List<byte> bytes = new List<byte>();
 
-            List<int> lists = new List<int>();
-            lists.Add(Convert.ToInt32(txtPackCurrent.Text.Trim()));
+            byte[] can_id = new byte[4] { 0xE0, FrmMain.BMS_ID, 0x60, 0x10 };
+            //bytes.AddRange(can_id);
+
+            byte[] data = new byte[8];
+
             int value = cbbState.SelectedIndex & 0x03;
 
             if (ckSystemset_67.Checked)
@@ -1743,15 +1748,26 @@ namespace SofarBMS.UI
             {
                 value = value | 0x10;
             }
-            lists.Add(value);
-            lists.Add(Convert.ToInt32(txtSyncFallSoc.Text.Trim()));
 
-            Send(can_id, lists);
+            int current = Convert.ToInt32(txtPackCurrent.Text.Trim());
+            data[0] = (byte)(current & 0xff);
+            data[1] = (byte)(current >> 8);
+            data[2] = Convert.ToByte(value);
+            data[3] = Convert.ToByte(Convert.ToInt32(txtSyncFallSoc.Text, 16));
+            //bytes.AddRange(data);
+
+            byte[] crcData = new byte[11] { 0xE0, FrmMain.BMS_ID, 0x60, 0x10, data[0], data[1], data[2], data[3], data[4], data[5], data[6] };
+
+            data[7] = (byte)(Crc8_8210_nBytesCalculate(crcData, 11, 0) & 0xff);
+            EcanHelper.Send(data, can_id);
         }
 
         private void btnSetControlInfo_Click(object sender, EventArgs e)
         {
+            //List<byte> bytes = new List<byte>();
+
             byte[] can_id = new byte[4] { 0xE0, FrmMain.BMS_ID, 0x61, 0x10 };
+            //bytes.AddRange(canid);
 
             byte[] data = new byte[8];
             //主动均衡充电使能
@@ -1764,8 +1780,10 @@ namespace SofarBMS.UI
             int capacity = Convert.ToInt32(txtPackActiveBalanceCap.Text.Trim());
             data[3] = (byte)(capacity & 0xff);
             data[4] = (byte)(capacity >> 8);
+            //bytes.AddRange(data);
 
-            data[7] = (byte)(Crc8_8210_nBytesCalculate(data, 11, 0) & 0xff);
+            byte[] crcData = new byte[11] { 0xE0, FrmMain.BMS_ID, 0x61, 0x10, data[0], data[1], data[2], data[3], data[4], data[5], data[6] };
+            data[7] = (byte)(Crc8_8210_nBytesCalculate(crcData, 11, 0) & 0xff);
 
             EcanHelper.Send(data, can_id);
         }

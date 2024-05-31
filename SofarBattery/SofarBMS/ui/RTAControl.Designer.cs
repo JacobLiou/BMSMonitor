@@ -80,6 +80,10 @@
             this.pbHeatEnable = new System.Windows.Forms.PictureBox();
             this.pbStopChgEnable = new System.Windows.Forms.PictureBox();
             this.gbRealtimeData_108 = new System.Windows.Forms.GroupBox();
+            this.pbHfimForbiddenCmd = new System.Windows.Forms.PictureBox();
+            this.pbHfilmState = new System.Windows.Forms.PictureBox();
+            this.lblRealtimeData_155 = new System.Windows.Forms.Label();
+            this.lblRealtimeData_154 = new System.Windows.Forms.Label();
             this.pbChargeMosEnable = new System.Windows.Forms.PictureBox();
             this.txtBatteryStatus = new System.Windows.Forms.TextBox();
             this.txtDischargeCurrentLimitation = new System.Windows.Forms.TextBox();
@@ -205,15 +209,16 @@
             this.lblRealtimeData_92 = new System.Windows.Forms.Label();
             this.lblRealtimeData_91 = new System.Windows.Forms.Label();
             this.lblRealtimeData_90 = new System.Windows.Forms.Label();
-            this.pbHfimForbiddenCmd = new System.Windows.Forms.PictureBox();
-            this.pbHfilmState = new System.Windows.Forms.PictureBox();
-            this.lblRealtimeData_155 = new System.Windows.Forms.Label();
-            this.lblRealtimeData_154 = new System.Windows.Forms.Label();
+            this.richTextBox2_45 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox1_45 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox3_45 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbPrechgMosEnable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDischargeMosEnable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHeatEnable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStopChgEnable)).BeginInit();
             this.gbRealtimeData_108.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHfimForbiddenCmd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHfilmState)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbChargeMosEnable)).BeginInit();
             this.gbRealtimeData_100.SuspendLayout();
             this.gbRealtimeData_102.SuspendLayout();
@@ -227,8 +232,6 @@
             this.gbRealtimeData_109.SuspendLayout();
             this.gbRealtimeData_110.SuspendLayout();
             this.gbRealtimeData_120.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHfimForbiddenCmd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHfilmState)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCellvoltage16
@@ -727,6 +730,42 @@
             this.gbRealtimeData_108.TabIndex = 39;
             this.gbRealtimeData_108.TabStop = false;
             this.gbRealtimeData_108.Text = "系统状态";
+            // 
+            // pbHfimForbiddenCmd
+            // 
+            this.pbHfimForbiddenCmd.BackColor = System.Drawing.Color.Green;
+            this.pbHfimForbiddenCmd.Location = new System.Drawing.Point(291, 47);
+            this.pbHfimForbiddenCmd.Name = "pbHfimForbiddenCmd";
+            this.pbHfimForbiddenCmd.Size = new System.Drawing.Size(10, 9);
+            this.pbHfimForbiddenCmd.TabIndex = 13;
+            this.pbHfimForbiddenCmd.TabStop = false;
+            // 
+            // pbHfilmState
+            // 
+            this.pbHfilmState.BackColor = System.Drawing.Color.Green;
+            this.pbHfilmState.Location = new System.Drawing.Point(291, 22);
+            this.pbHfilmState.Name = "pbHfilmState";
+            this.pbHfilmState.Size = new System.Drawing.Size(10, 9);
+            this.pbHfilmState.TabIndex = 12;
+            this.pbHfilmState.TabStop = false;
+            // 
+            // lblRealtimeData_155
+            // 
+            this.lblRealtimeData_155.AutoSize = true;
+            this.lblRealtimeData_155.Location = new System.Drawing.Point(307, 45);
+            this.lblRealtimeData_155.Name = "lblRealtimeData_155";
+            this.lblRealtimeData_155.Size = new System.Drawing.Size(65, 12);
+            this.lblRealtimeData_155.TabIndex = 11;
+            this.lblRealtimeData_155.Text = "加热膜状态";
+            // 
+            // lblRealtimeData_154
+            // 
+            this.lblRealtimeData_154.AutoSize = true;
+            this.lblRealtimeData_154.Location = new System.Drawing.Point(307, 20);
+            this.lblRealtimeData_154.Name = "lblRealtimeData_154";
+            this.lblRealtimeData_154.Size = new System.Drawing.Size(53, 12);
+            this.lblRealtimeData_154.TabIndex = 10;
+            this.lblRealtimeData_154.Text = "加热状态";
             // 
             // pbChargeMosEnable
             // 
@@ -1711,6 +1750,7 @@
             // 
             // gbRealtimeData_105
             // 
+            this.gbRealtimeData_105.Controls.Add(this.richTextBox3_45);
             this.gbRealtimeData_105.Controls.Add(this.richTextBox3);
             this.gbRealtimeData_105.Location = new System.Drawing.Point(738, 351);
             this.gbRealtimeData_105.Margin = new System.Windows.Forms.Padding(2);
@@ -1723,17 +1763,17 @@
             // 
             // richTextBox3
             // 
-            this.richTextBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox3.Location = new System.Drawing.Point(2, 16);
             this.richTextBox3.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.ReadOnly = true;
-            this.richTextBox3.Size = new System.Drawing.Size(216, 102);
+            this.richTextBox3.Size = new System.Drawing.Size(105, 102);
             this.richTextBox3.TabIndex = 0;
             this.richTextBox3.Text = "";
             // 
             // gbRealtimeData_103
             // 
+            this.gbRealtimeData_103.Controls.Add(this.richTextBox2_45);
             this.gbRealtimeData_103.Controls.Add(this.richTextBox2);
             this.gbRealtimeData_103.Location = new System.Drawing.Point(286, 351);
             this.gbRealtimeData_103.Margin = new System.Windows.Forms.Padding(2);
@@ -1747,17 +1787,17 @@
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox2.Location = new System.Drawing.Point(2, 16);
             this.richTextBox2.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.ReadOnly = true;
-            this.richTextBox2.Size = new System.Drawing.Size(216, 102);
+            this.richTextBox2.Size = new System.Drawing.Size(108, 102);
             this.richTextBox2.TabIndex = 1;
             this.richTextBox2.Text = "";
             // 
             // gbRealtimeData_104
             // 
+            this.gbRealtimeData_104.Controls.Add(this.richTextBox1_45);
             this.gbRealtimeData_104.Controls.Add(this.richTextBox1);
             this.gbRealtimeData_104.Location = new System.Drawing.Point(511, 351);
             this.gbRealtimeData_104.Margin = new System.Windows.Forms.Padding(2);
@@ -1771,12 +1811,11 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Location = new System.Drawing.Point(2, 16);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(216, 102);
+            this.richTextBox1.Size = new System.Drawing.Size(108, 102);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
@@ -2040,41 +2079,35 @@
             this.lblRealtimeData_90.TabIndex = 64;
             this.lblRealtimeData_90.Text = "SN序列号";
             // 
-            // pbHfimForbiddenCmd
+            // richTextBox2_45
             // 
-            this.pbHfimForbiddenCmd.BackColor = System.Drawing.Color.Green;
-            this.pbHfimForbiddenCmd.Location = new System.Drawing.Point(291, 47);
-            this.pbHfimForbiddenCmd.Name = "pbHfimForbiddenCmd";
-            this.pbHfimForbiddenCmd.Size = new System.Drawing.Size(10, 9);
-            this.pbHfimForbiddenCmd.TabIndex = 13;
-            this.pbHfimForbiddenCmd.TabStop = false;
+            this.richTextBox2_45.Location = new System.Drawing.Point(112, 16);
+            this.richTextBox2_45.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBox2_45.Name = "richTextBox2_45";
+            this.richTextBox2_45.ReadOnly = true;
+            this.richTextBox2_45.Size = new System.Drawing.Size(108, 102);
+            this.richTextBox2_45.TabIndex = 2;
+            this.richTextBox2_45.Text = "";
             // 
-            // pbHfilmState
+            // richTextBox1_45
             // 
-            this.pbHfilmState.BackColor = System.Drawing.Color.Green;
-            this.pbHfilmState.Location = new System.Drawing.Point(291, 22);
-            this.pbHfilmState.Name = "pbHfilmState";
-            this.pbHfilmState.Size = new System.Drawing.Size(10, 9);
-            this.pbHfilmState.TabIndex = 12;
-            this.pbHfilmState.TabStop = false;
+            this.richTextBox1_45.Location = new System.Drawing.Point(113, 16);
+            this.richTextBox1_45.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBox1_45.Name = "richTextBox1_45";
+            this.richTextBox1_45.ReadOnly = true;
+            this.richTextBox1_45.Size = new System.Drawing.Size(108, 102);
+            this.richTextBox1_45.TabIndex = 2;
+            this.richTextBox1_45.Text = "";
             // 
-            // lblRealtimeData_155
+            // richTextBox3_45
             // 
-            this.lblRealtimeData_155.AutoSize = true;
-            this.lblRealtimeData_155.Location = new System.Drawing.Point(307, 45);
-            this.lblRealtimeData_155.Name = "lblRealtimeData_155";
-            this.lblRealtimeData_155.Size = new System.Drawing.Size(65, 12);
-            this.lblRealtimeData_155.TabIndex = 11;
-            this.lblRealtimeData_155.Text = "加热膜状态";
-            // 
-            // lblRealtimeData_154
-            // 
-            this.lblRealtimeData_154.AutoSize = true;
-            this.lblRealtimeData_154.Location = new System.Drawing.Point(307, 20);
-            this.lblRealtimeData_154.Name = "lblRealtimeData_154";
-            this.lblRealtimeData_154.Size = new System.Drawing.Size(53, 12);
-            this.lblRealtimeData_154.TabIndex = 10;
-            this.lblRealtimeData_154.Text = "加热状态";
+            this.richTextBox3_45.Location = new System.Drawing.Point(110, 16);
+            this.richTextBox3_45.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBox3_45.Name = "richTextBox3_45";
+            this.richTextBox3_45.ReadOnly = true;
+            this.richTextBox3_45.Size = new System.Drawing.Size(108, 102);
+            this.richTextBox3_45.TabIndex = 3;
+            this.richTextBox3_45.Text = "";
             // 
             // RTAControl
             // 
@@ -2101,6 +2134,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbStopChgEnable)).EndInit();
             this.gbRealtimeData_108.ResumeLayout(false);
             this.gbRealtimeData_108.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHfimForbiddenCmd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHfilmState)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbChargeMosEnable)).EndInit();
             this.gbRealtimeData_100.ResumeLayout(false);
             this.gbRealtimeData_100.PerformLayout();
@@ -2120,8 +2155,6 @@
             this.gbRealtimeData_110.PerformLayout();
             this.gbRealtimeData_120.ResumeLayout(false);
             this.gbRealtimeData_120.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHfimForbiddenCmd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHfilmState)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2308,5 +2341,8 @@
         private System.Windows.Forms.PictureBox pbHfilmState;
         private System.Windows.Forms.Label lblRealtimeData_155;
         private System.Windows.Forms.Label lblRealtimeData_154;
+        private System.Windows.Forms.RichTextBox richTextBox3_45;
+        private System.Windows.Forms.RichTextBox richTextBox2_45;
+        private System.Windows.Forms.RichTextBox richTextBox1_45;
     }
 }

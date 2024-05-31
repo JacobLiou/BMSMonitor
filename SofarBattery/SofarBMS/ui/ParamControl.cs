@@ -29,8 +29,6 @@ namespace SofarBMS.UI
         {
             InitializeComponent();
 
-            EcanHelper._task.Clear();
-
             cts = new CancellationTokenSource();
         }
 

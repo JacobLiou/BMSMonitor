@@ -76,6 +76,9 @@ namespace SofarBMS.Model
         public String Fault { get; set; }                           //故障状态
         public String Warning { get; set; }                         //告警状态
         public String Protection { get; set; }                      //保护状态
+        public String Fault2 { get; set; }                           //故障状态
+        public String Warning2 { get; set; }                         //告警状态
+        public String Protection2 { get; set; }                      //保护状态
         public ushort ChargeMosEnable { get; set; }                 //充电MOS 0断开，1闭合
         public ushort DischargeMosEnable { get; set; }              //放电MOS
         public ushort PrechgMosEnable { get; set; }                 //预充MOS

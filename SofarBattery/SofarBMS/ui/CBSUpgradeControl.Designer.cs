@@ -30,6 +30,8 @@
         {
             this.lblUpgrade_07 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtFC = new System.Windows.Forms.TextBox();
+            this.cbbChiprole_val = new System.Windows.Forms.ComboBox();
             this.txtSlaveAddress = new System.Windows.Forms.TextBox();
             this.cbbChipcode = new System.Windows.Forms.ComboBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -47,7 +49,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cbbChiprole_val = new System.Windows.Forms.ComboBox();
+            this.txtFD = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -63,6 +65,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtFD);
+            this.groupBox2.Controls.Add(this.txtFC);
             this.groupBox2.Controls.Add(this.cbbChiprole_val);
             this.groupBox2.Controls.Add(this.txtSlaveAddress);
             this.groupBox2.Controls.Add(this.cbbChipcode);
@@ -84,6 +88,26 @@
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "升级固件";
+            // 
+            // txtFC
+            // 
+            this.txtFC.Location = new System.Drawing.Point(882, 103);
+            this.txtFC.Name = "txtFC";
+            this.txtFC.Size = new System.Drawing.Size(68, 21);
+            this.txtFC.TabIndex = 34;
+            this.txtFC.Text = "20";
+            // 
+            // cbbChiprole_val
+            // 
+            this.cbbChiprole_val.FormattingEnabled = true;
+            this.cbbChiprole_val.Items.AddRange(new object[] {
+            "0x24",
+            "0x2D"});
+            this.cbbChiprole_val.Location = new System.Drawing.Point(567, 103);
+            this.cbbChiprole_val.Name = "cbbChiprole_val";
+            this.cbbChiprole_val.Size = new System.Drawing.Size(100, 20);
+            this.cbbChiprole_val.TabIndex = 33;
+            this.cbbChiprole_val.SelectedIndexChanged += new System.EventHandler(this.cbbChiprole_val_SelectedIndexChanged);
             // 
             // txtSlaveAddress
             // 
@@ -243,17 +267,13 @@
             this.columnHeader3.Text = "Data";
             this.columnHeader3.Width = 500;
             // 
-            // cbbChiprole_val
+            // txtFD
             // 
-            this.cbbChiprole_val.FormattingEnabled = true;
-            this.cbbChiprole_val.Items.AddRange(new object[] {
-            "0x24",
-            "0x2D"});
-            this.cbbChiprole_val.Location = new System.Drawing.Point(567, 103);
-            this.cbbChiprole_val.Name = "cbbChiprole_val";
-            this.cbbChiprole_val.Size = new System.Drawing.Size(100, 20);
-            this.cbbChiprole_val.TabIndex = 33;
-            this.cbbChiprole_val.SelectedIndexChanged += new System.EventHandler(this.cbbChiprole_val_SelectedIndexChanged);
+            this.txtFD.Location = new System.Drawing.Point(953, 102);
+            this.txtFD.Name = "txtFD";
+            this.txtFD.Size = new System.Drawing.Size(68, 21);
+            this.txtFD.TabIndex = 35;
+            this.txtFD.Text = "3";
             // 
             // CBSUpgradeControl
             // 
@@ -292,5 +312,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.TextBox txtSlaveAddress;
         private System.Windows.Forms.ComboBox cbbChiprole_val;
+        private System.Windows.Forms.TextBox txtFC;
+        private System.Windows.Forms.TextBox txtFD;
     }
 }

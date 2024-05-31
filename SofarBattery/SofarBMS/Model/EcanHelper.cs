@@ -30,6 +30,8 @@ namespace SofarBMS.Model
         public static EventWaitHandle _wh = new AutoResetEvent(false);
         public static List<Protocols> protocols = new List<Protocols>() {
             new Protocols(3,0x1020FFFF),new Protocols(3,0x1020E0FF)
+            ,new Protocols(3,0x07F0E0FF),new Protocols(3,0x07F1E0FF),new Protocols(3,0x07F2E0FF),new Protocols(3,0x07F3E0FF),new Protocols(3,0x07F4E0FF)
+
             ,new Protocols(3,0x1003E0FF), new Protocols(3,0x1004E0FF),new Protocols(3,0x1005E0FF),new Protocols(3,0x1006E0FF),new Protocols(3,0x1007E0FF),new Protocols(3,0x1008E0FF),new Protocols(3,0x1009E0FF),new Protocols(3,0x100AE0FF),new Protocols(3,0x100BE0FF),new Protocols(3,0x100CE0FF),new Protocols(3,0x100DE0FF),new Protocols(3,0x100EE0FF),new Protocols(3,0x100FE0FF)
             ,new Protocols(3,0x1040E0FF),new Protocols(3,0x1041E0FF),new Protocols(3,0x1042E0FF), new Protocols(3,0x1043E0FF),new Protocols(3,0x1044E0FF),new Protocols(3,0x104AE0FF),new Protocols(3,0x104EE0FF),new Protocols(3,0x104E0FFF),new Protocols(3,0x1045E0FF),new Protocols(3,0x1046E0FF),new Protocols(3,0x1047E0FF),new Protocols(3,0x1048E0FF),new Protocols(3,0x1049E0FF)
 
@@ -53,7 +55,6 @@ namespace SofarBMS.Model
             ,new Protocols(3,0xB70E0FF),new Protocols(3,0xB71E0FF),new Protocols(3,0xB72E0FF),new Protocols(3,0xB73E0FF),new Protocols(3,0xB74E0FF),new Protocols(3,0xB76E0FF),new Protocols(3,0xB77E0FF),new Protocols(3,0x0B78E0FF),new Protocols(3,0x0B6A5FFF)
             ,new Protocols(3,0x1403FFFF),new Protocols(3,0x1400E0FF)
             ,new Protocols(3,0x1060FFFF),new Protocols(3,0x1060FF1F),new Protocols(3, 0x1061FFFF),new Protocols(3,0x1061FF1F)
-            ,new Protocols(3,0x07F0E0FF),new Protocols(3,0x07F1E0FF),new Protocols(3,0x07F2E0FF),new Protocols(3,0x07F3E0FF),new Protocols(3,0x07F4E0FF)
         };
         public static bool IsConnection { get; set; }
         private static int Can_error_count = 0;

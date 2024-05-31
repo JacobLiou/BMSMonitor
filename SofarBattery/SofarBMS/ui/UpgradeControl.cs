@@ -411,11 +411,12 @@ namespace SofarBMS.UI
 
                                     if (DevState.Count != 0)
                                     {
-                                        sb.Append("已完成升级的设备ID帧：");
-                                        foreach (var item in DevState)
+                                        sb.Append("，检查到完成升级设备已有：");
+                                        foreach (uint item in DevState.Keys)
                                         {
-                                            sb.Append(item.ToString() + ",");
+                                            sb.Append((item & 0x1f) + ",");
                                         }
+                                        sb.ToString().Substring(0, sb.Length - 1);
                                     }
 
                                     this.Invoke(new Action(() =>
