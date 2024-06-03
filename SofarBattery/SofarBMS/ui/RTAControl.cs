@@ -1,20 +1,17 @@
-﻿using Microsoft.Win32;
-using NPOI.HSSF.UserModel;
+﻿using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
+using SofarBMS.Helper;
+using SofarBMS.Model;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SofarBMS.Helper;
-using SofarBMS.Model;
-using Org.BouncyCastle.Crypto.Generators;
 
 namespace SofarBMS.UI
 {
@@ -102,7 +99,6 @@ Can通信故障,Can1CommFault
                 return eventStr.Split("\n".ToCharArray());
             }
         }
-
         string[] packSN = new string[3];
         string[] packSN_BDU = new string[3];
 

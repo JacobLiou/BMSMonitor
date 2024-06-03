@@ -199,6 +199,7 @@
     <Compile Include="Helper\LogHelper.cs" />
     <Compile Include="Helper\PackageMysqlHelper.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
+    <Compile Include="Helper\TxtHleper.cs" />
     <Compile Include="ListViewBuff.cs">
       <SubType>Component</SubType>
     </Compile>

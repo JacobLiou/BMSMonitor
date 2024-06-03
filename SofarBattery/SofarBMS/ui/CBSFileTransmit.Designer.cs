@@ -33,7 +33,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtSlaveAddress = new System.Windows.Forms.TextBox();
             this.cbbFileNumber = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbbModeName = new System.Windows.Forms.ComboBox();
             this.btnFileTransmit = new System.Windows.Forms.Button();
             this.ckReadAll = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -76,7 +76,6 @@
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 2;
             this.label3.Text = "访问模块";
-            this.label3.Visible = false;
             // 
             // txtSlaveAddress
             // 
@@ -101,21 +100,20 @@
             this.cbbFileNumber.Size = new System.Drawing.Size(121, 20);
             this.cbbFileNumber.TabIndex = 4;
             // 
-            // comboBox2
+            // cbbModeName
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "BMU",
-            "BCU"});
-            this.comboBox2.Location = new System.Drawing.Point(93, 89);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 20);
-            this.comboBox2.TabIndex = 5;
-            this.comboBox2.Visible = false;
+            this.cbbModeName.FormattingEnabled = true;
+            this.cbbModeName.Items.AddRange(new object[] {
+            "BCU",
+            "BMU"});
+            this.cbbModeName.Location = new System.Drawing.Point(93, 89);
+            this.cbbModeName.Name = "cbbModeName";
+            this.cbbModeName.Size = new System.Drawing.Size(121, 20);
+            this.cbbModeName.TabIndex = 5;
             // 
             // btnFileTransmit
             // 
-            this.btnFileTransmit.Location = new System.Drawing.Point(641, 29);
+            this.btnFileTransmit.Location = new System.Drawing.Point(619, 58);
             this.btnFileTransmit.Name = "btnFileTransmit";
             this.btnFileTransmit.Size = new System.Drawing.Size(75, 51);
             this.btnFileTransmit.TabIndex = 6;
@@ -137,7 +135,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(426, 63);
+            this.label4.Location = new System.Drawing.Point(406, 63);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 8;
@@ -147,7 +145,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(426, 94);
+            this.label5.Location = new System.Drawing.Point(406, 94);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 9;
@@ -156,7 +154,7 @@
             // 
             // txtStartLocal
             // 
-            this.txtStartLocal.Location = new System.Drawing.Point(503, 59);
+            this.txtStartLocal.Location = new System.Drawing.Point(483, 59);
             this.txtStartLocal.Name = "txtStartLocal";
             this.txtStartLocal.Size = new System.Drawing.Size(100, 21);
             this.txtStartLocal.TabIndex = 10;
@@ -164,7 +162,7 @@
             // 
             // txtReadCount
             // 
-            this.txtReadCount.Location = new System.Drawing.Point(503, 90);
+            this.txtReadCount.Location = new System.Drawing.Point(483, 90);
             this.txtReadCount.Name = "txtReadCount";
             this.txtReadCount.Size = new System.Drawing.Size(100, 21);
             this.txtReadCount.TabIndex = 11;
@@ -182,7 +180,7 @@
             this.groupBox1.Controls.Add(this.txtSlaveAddress);
             this.groupBox1.Controls.Add(this.cbbFileNumber);
             this.groupBox1.Controls.Add(this.ckReadAll);
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.cbbModeName);
             this.groupBox1.Controls.Add(this.btnFileTransmit);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
@@ -254,7 +252,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtSlaveAddress;
         private System.Windows.Forms.ComboBox cbbFileNumber;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbbModeName;
         private System.Windows.Forms.Button btnFileTransmit;
         private System.Windows.Forms.CheckBox ckReadAll;
         private System.Windows.Forms.Label label4;

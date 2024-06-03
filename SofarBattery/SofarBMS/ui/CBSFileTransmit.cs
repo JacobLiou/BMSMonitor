@@ -18,7 +18,7 @@ namespace SofarBMS.UI
         public static CancellationTokenSource cts = new CancellationTokenSource();
         private CancellationTokenSource _token = new CancellationTokenSource();
 
-        //变量定义｛｝
+        //变量定义
         private readonly string FiveMinHeadStr = "时间年,月,日,时,分,秒,电池采集电压(mV),电池累计电压(mV),SOC显示值(%),SOH显示值(%),SOC计算值,SOH计算值,电池电流(mA),最高单体电压(mV),最低单体电压(mV),最高单体电压序号,最低单体电压序号,最高单体温度(℃),最低单体温度(℃),最高单体温度序号,最低单体温度序号,BMU编号,系统状态,充放电使能,切断请求,关机请求,充电电流上限(A),放电电流上限(A),保护1,保护2,告警1,告警2,故障1,故障2,故障1,故障2,故障3,故障4,主动均衡状态,均衡母线电压(mV),均衡母线电流(mA),辅助供电电压(mV),满充容量(Ah),循环次数,累计放电安时(Ah),累计充电安时(Ah),累计放电瓦时(Wh),累计充电瓦时(Wh),环境温度(℃),DCDC温度1(℃),均衡温度1(℃),均衡温度2(℃),功率端子温度1(℃),功率端子温度2(℃),其他温度1(℃),其他温度2(℃),其他温度3(℃),其他温度4(℃),1-16串均衡状态,单体电压1(mV),单体电压2(mV),单体电压3(mV),单体电压4(mV),单体电压5(mV),单体电压6(mV),单体电压7(mV),单体电压8(mV),单体电压9(mV),单体电压10(mV),单体电压11(mV),单体电压12(mV),单体电压13(mV),单体电压14(mV),单体电压15(mV),单体电压16(mV),单体温度1(℃),单体温度2(℃),单体温度3(℃),单体温度4(℃),单体温度5(℃),单体温度6(℃),单体温度7(℃),单体温度8(℃),单体温度9(℃),单体温度10(℃),单体温度11(℃),单体温度12(℃),单体温度13(℃),单体温度14(℃),单体温度15(℃),单体温度16(℃),RSV1,RSV2,RSV3,RSV4,RSV5,RSV6\r\n";
         private readonly string FaultRecordStr = "电流(A),最大电压(mV),最小电压(mV),最大温度(℃),最小温度(℃)\r\n";
         private readonly string HistoryEventStr = "时间年,月,日,时,分,秒,事件类型\r\n";
@@ -134,15 +134,34 @@ RSV6,U32,1,,";
 时间-秒,U8,1,1,1,
 事件类型,U16,1,1,";
 
-        bool state = false;
-        bool isResponse = false;
+        private bool _state;
+        public bool state
+        {
+            get { return _state; }
+            set
+            {
+                _state = value;
+                this.Invoke(new Action(() =>
+                {
+                    if (_state)
+                    {
+                        btnFileTransmit.Text = "终止";
+                    }
+                    else
+                    {
+                        btnFileTransmit.Text = "启动";
+                    }
+                }));
+            }
+        }
+
         StepRemark stepFlag;
+        bool isResponse;
 
         int slaveAddress = -1;
         int fileNumber = -1;
         int readType = -1;
 
-        // byteSize = 0;
         int questCycle = 0;
         int fileOffset = 200;
         int dataLength = 200;
@@ -151,6 +170,7 @@ RSV6,U32,1,,";
         string textStr = "";
         string headStr = "";
         string filePath = "";
+        string fileName = "";
         List<byte> dataBuffer = new List<byte>();
 
 
@@ -167,7 +187,6 @@ RSV6,U32,1,,";
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    //Debug.WriteLine("打印...");
                     lock (EcanHelper._locker)
                     {
                         while (EcanHelper._task.Count > 0
@@ -186,6 +205,8 @@ RSV6,U32,1,,";
             //初始化值
             this.txtSlaveAddress.Text = FrmMain.BMS_ID.ToString();
             this.cbbFileNumber.SelectedIndex = 3;
+            this.cbbModeName.SelectedIndex = 1;
+            this.cbbModeName.Enabled = false;
             this.ckReadAll.Checked = true;
         }
 
@@ -207,66 +228,70 @@ RSV6,U32,1,,";
                 case StepRemark.None:
                     break;
                 case StepRemark.读文件指令帧:
-                    if (id == 0x7F0E0FF && data[3] == 0x0)
+                    if (id == 0x7F0E0FF)
                     {
-                        isResponse = true;
-                        string headName = "";
                         AddLog(System.DateTime.Now.ToString("HH:mm:ss:fff"), id.ToString("X8"), byteToHexString(data));
 
-                        if (fileNumber == 0 || fileNumber == 1 || fileNumber == 2)
+                        if (data[3] == 0x0)
                         {
-                            headStr = FaultRecordStr;
-                            headName = "故障录波";
-                        }
-                        else if (fileNumber == 3)
-                        {
-                            headStr = FiveMinHeadStr;
-                            headName = "五分钟特性数据";
-                        }
-                        else if (fileNumber == 4)
-                        {
-                            headStr = "none";
-                            headName = "运行日志";
-                        }
-                        else if (fileNumber == 5)
-                        {
-                            headStr = HistoryEventStr;
-                            headName = "历史事件";
-                        }
+                            isResponse = true;
+                            string headName = "";
 
-                        fileSize = Convert.ToInt32(data[6].ToString("X2") + data[5].ToString("X2") + data[4].ToString("X2"), 16);
-
-                        if (!string.IsNullOrEmpty(headStr))
-                        {
-                            filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//BMU_{headName}_{DateTime.Now.ToString("yyyy-MM-dd")}.csv";
-
-                            if ((fileNumber < 3 && fileNumber >= 0) || fileNumber == 5)
+                            if (fileNumber == 0 || fileNumber == 1 || fileNumber == 2)
                             {
-                                fileOffset = 8;
-                                dataLength = 8;
+                                headStr = FaultRecordStr;
+                                headName = "故障录波";
                             }
-                            else if (fileNumber == 3 || fileNumber == 4)
+                            else if (fileNumber == 3)
                             {
-                                if (fileNumber == 4)
+                                headStr = FiveMinHeadStr;
+                                headName = "五分钟特性数据";
+                            }
+                            else if (fileNumber == 4)
+                            {
+                                headStr = "none";
+                                headName = "运行日志";
+                            }
+                            else if (fileNumber == 5)
+                            {
+                                headStr = HistoryEventStr;
+                                headName = "历史事件";
+                            }
+
+                            fileSize = Convert.ToInt32(data[6].ToString("X2") + data[5].ToString("X2") + data[4].ToString("X2"), 16);
+
+                            if (!string.IsNullOrEmpty(headStr))
+                            {
+                                fileName = string.Format("{0}_{1}_{2}_{3}", headName, cbbModeName.Text.Trim(), slaveAddress, System.DateTime.Now.ToString("yy-MM-dd-HH-mm-ss"));
+                                filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//{fileName}.csv";
+
+                                if ((fileNumber < 3 && fileNumber >= 0) || fileNumber == 5)
                                 {
-                                    filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//BMU_运行日志_{DateTime.Now.ToString("yyyy-MM-dd")}.txt";
+                                    fileOffset = 8;
+                                    dataLength = 8;
                                 }
-                                fileOffset = 200;
-                                dataLength = 200;
+                                else if (fileNumber == 3 || fileNumber == 4)
+                                {
+                                    if (fileNumber == 4)
+                                    {
+                                        filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//{fileName}.txt";
+                                    }
+                                    fileOffset = 200;
+                                    dataLength = 200;
+                                }
+                                questCycle = fileSize % fileOffset == 0 ? (fileSize / fileOffset - 1) : fileSize / fileOffset;//一般结果为true
                             }
-                            questCycle = fileSize % fileOffset == 0 ? (fileSize / fileOffset - 1) : fileSize / fileOffset;
-                        }
 
-                        if (!File.Exists(filePath))
-                        {
-                            File.AppendAllText(filePath, headStr);
-                        }
+                            if (!File.Exists(filePath))
+                            {
+                                File.AppendAllText(filePath, headStr);
+                            }
 
-                        stepFlag = StepRemark.读文件数据内容帧;
+                            stepFlag = StepRemark.读文件数据内容帧;
+                        }
                     }
                     break;
                 case StepRemark.读文件数据内容帧:
-                    //文件数据
                     if (id == 0x7F2E0FF)
                     {
                         dataBuffer.AddRange(data);
@@ -322,15 +347,16 @@ RSV6,U32,1,,";
                     }
                     break;
                 case StepRemark.查询完成状态帧:
-                    if (id == 0x7F4E0FF && data[3] == 0x0)
+                    if (id == 0x7F4E0FF)
                     {
-                        isResponse = true;
                         AddLog(System.DateTime.Now.ToString("HH:mm:ss:fff"), id.ToString("X8"), byteToHexString(data));
-                        Debug.WriteLine("success：查询完成状态帧！");
 
-                        this.Invoke(new Action(() => { btnFileTransmit.Text = "启动"; }));
-
-                        EndTransmit();
+                        if (data[3] == 0x0)
+                        {
+                            AddLog(System.DateTime.Now.ToString("HH:mm:ss:fff"), id.ToString("X8"), "已完成本次读取...");
+                            isResponse = true;
+                            EndTransmit();
+                        }
                     }
                     break;
                 default:
@@ -360,14 +386,11 @@ RSV6,U32,1,,";
                         int byte1 = bytes[0] = dataBuffer[index++];
                         int byte2 = bytes[1] = dataBuffer[index++];
                         val = byte1 + (byte2 << 8);
-
-                        //val = (dataBuffer[index++] & 0xff) + (dataBuffer[index++] << 8);
                         break;
                     case "I16":
                         string byteStr1 = dataBuffer[index++].ToString("X2");
                         string byteStr2 = dataBuffer[index++].ToString("X2");
                         val = Convert.ToInt16(byteStr2 + byteStr1, 16);
-                        //    val = Convert.ToInt16(dataBuffer[index++].ToString("X2") + (dataBuffer[index++].ToString("X2"), 16));
                         break;
                     case "U32":
                         val = (dataBuffer[index++] & 0xff) + (dataBuffer[index++] << 8) + (dataBuffer[index++] << 16) + (dataBuffer[index++] << 24);
@@ -415,7 +438,6 @@ RSV6,U32,1,,";
                 state = true;
                 stepFlag = StepRemark.读文件指令帧;
                 _token = new CancellationTokenSource();
-                btnFileTransmit.Text = "终止";
 
                 Task.Factory.StartNew(() =>
                 {
@@ -500,13 +522,21 @@ RSV6,U32,1,,";
                 stepFlag = StepRemark.读文件指令帧;
 
                 EndTransmit();
-                state = false;
-                btnFileTransmit.Text = "启动";
             }
         }
 
         private void EndTransmit()
         {
+            //按钮禁用15s
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            Task.Run(async delegate
+            {
+                this.Invoke(new Action(() => { btnFileTransmit.Enabled = false; }));
+                await Task.Delay(1000 * 15);
+                this.Invoke(new Action(() => { btnFileTransmit.Enabled = true; }));
+            });
+
+            //关闭线程，清除缓存
             _token.Cancel();
             dataBuffer.Clear();
 
@@ -525,6 +555,7 @@ RSV6,U32,1,,";
             textStr = "";
             headStr = "";
             filePath = "";
+            fileName = "";
         }
 
         private bool ReadFileCommand()
