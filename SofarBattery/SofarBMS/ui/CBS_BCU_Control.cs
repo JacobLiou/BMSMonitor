@@ -70,13 +70,13 @@ namespace SofarBMS.UI
                             }
                         }
 
-                        //读取BCU序列号
+                        //一键操作标定参数
                         EcanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
                                        , new byte[] { 0xE0, FrmMain.BCU_ID, 0xF9, 0x10 });
 
                         await Task.Delay(500);
 
-                        //获取实时数据指令
+                        //上位机监控读取
                         EcanHelper.Send(new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
                                        , new byte[] { 0xE0, FrmMain.BCU_ID, 0xF7, 0x10 });
 

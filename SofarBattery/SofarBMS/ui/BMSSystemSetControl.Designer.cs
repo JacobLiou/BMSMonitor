@@ -247,7 +247,7 @@
             this.lblSystemset_BCU_27 = new System.Windows.Forms.Label();
             this.lblSystemset_BCU_26 = new System.Windows.Forms.Label();
             this.gb0FA = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSystemset_Read = new System.Windows.Forms.Button();
             this.btnSystemset_45_BCU_Lifted21 = new System.Windows.Forms.Button();
             this.btnSystemset_43_BCU_Close21 = new System.Windows.Forms.Button();
             this.btnSystemset_44_BCU_Open21 = new System.Windows.Forms.Button();
@@ -2722,8 +2722,8 @@
             this.cbbRequestF0_3.FormattingEnabled = true;
             this.cbbRequestF0_3.Items.AddRange(new object[] {
             "0x00：查询",
-            "0xAA：开启",
-            "0x55：关闭"});
+            "0xAA：使能",
+            "0x55：失能"});
             this.cbbRequestF0_3.Location = new System.Drawing.Point(146, 132);
             this.cbbRequestF0_3.Name = "cbbRequestF0_3";
             this.cbbRequestF0_3.Size = new System.Drawing.Size(120, 20);
@@ -2780,7 +2780,6 @@
             this.txtSlaveAddr_BCU.Name = "txtSlaveAddr_BCU";
             this.txtSlaveAddr_BCU.Size = new System.Drawing.Size(120, 21);
             this.txtSlaveAddr_BCU.TabIndex = 60;
-            this.txtSlaveAddr_BCU.Text = "1";
             // 
             // btnSet0F0
             // 
@@ -2877,7 +2876,7 @@
             // 
             // gb0FA
             // 
-            this.gb0FA.Controls.Add(this.button1);
+            this.gb0FA.Controls.Add(this.btnSystemset_Read);
             this.gb0FA.Controls.Add(this.btnSystemset_45_BCU_Lifted21);
             this.gb0FA.Controls.Add(this.btnSystemset_43_BCU_Close21);
             this.gb0FA.Controls.Add(this.btnSystemset_44_BCU_Open21);
@@ -2972,20 +2971,20 @@
             this.gb0FA.TabStop = false;
             this.gb0FA.Text = "0xFA控制";
             // 
-            // button1
+            // btnSystemset_Read
             // 
-            this.button1.AutoSize = true;
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(152)))), ((int)(((byte)(142)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(636, 486);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 30);
-            this.button1.TabIndex = 46;
-            this.button1.Text = "读取";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.btnSystemset_Read.AutoSize = true;
+            this.btnSystemset_Read.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(152)))), ((int)(((byte)(142)))));
+            this.btnSystemset_Read.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSystemset_Read.ForeColor = System.Drawing.Color.White;
+            this.btnSystemset_Read.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSystemset_Read.Location = new System.Drawing.Point(412, 24);
+            this.btnSystemset_Read.Name = "btnSystemset_Read";
+            this.btnSystemset_Read.Size = new System.Drawing.Size(369, 30);
+            this.btnSystemset_Read.TabIndex = 46;
+            this.btnSystemset_Read.Text = "读取";
+            this.btnSystemset_Read.UseVisualStyleBackColor = false;
+            this.btnSystemset_Read.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // btnSystemset_45_BCU_Lifted21
             // 
@@ -2998,7 +2997,7 @@
             this.btnSystemset_45_BCU_Lifted21.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_45_BCU_Lifted21.TabIndex = 90;
             this.btnSystemset_45_BCU_Lifted21.Text = "解除";
-            this.btnSystemset_45_BCU_Lifted21.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BCU_Lifted21.UseVisualStyleBackColor = false;
             this.btnSystemset_45_BCU_Lifted21.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_43_BCU_Close21
@@ -3012,7 +3011,7 @@
             this.btnSystemset_43_BCU_Close21.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_43_BCU_Close21.TabIndex = 89;
             this.btnSystemset_43_BCU_Close21.Text = "关闭";
-            this.btnSystemset_43_BCU_Close21.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BCU_Close21.UseVisualStyleBackColor = false;
             this.btnSystemset_43_BCU_Close21.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_44_BCU_Open21
@@ -3026,7 +3025,7 @@
             this.btnSystemset_44_BCU_Open21.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_44_BCU_Open21.TabIndex = 88;
             this.btnSystemset_44_BCU_Open21.Text = "打开";
-            this.btnSystemset_44_BCU_Open21.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BCU_Open21.UseVisualStyleBackColor = false;
             this.btnSystemset_44_BCU_Open21.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // lblSystemset_BCU_21
@@ -3049,7 +3048,7 @@
             this.btnSystemset_45_BCU_Lifted20.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_45_BCU_Lifted20.TabIndex = 86;
             this.btnSystemset_45_BCU_Lifted20.Text = "解除";
-            this.btnSystemset_45_BCU_Lifted20.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BCU_Lifted20.UseVisualStyleBackColor = false;
             this.btnSystemset_45_BCU_Lifted20.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_43_BCU_Close20
@@ -3063,7 +3062,7 @@
             this.btnSystemset_43_BCU_Close20.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_43_BCU_Close20.TabIndex = 85;
             this.btnSystemset_43_BCU_Close20.Text = "关闭";
-            this.btnSystemset_43_BCU_Close20.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BCU_Close20.UseVisualStyleBackColor = false;
             this.btnSystemset_43_BCU_Close20.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_44_BCU_Open20
@@ -3077,7 +3076,7 @@
             this.btnSystemset_44_BCU_Open20.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_44_BCU_Open20.TabIndex = 84;
             this.btnSystemset_44_BCU_Open20.Text = "打开";
-            this.btnSystemset_44_BCU_Open20.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BCU_Open20.UseVisualStyleBackColor = false;
             this.btnSystemset_44_BCU_Open20.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // lblSystemset_BCU_20
@@ -3100,7 +3099,7 @@
             this.btnSystemset_45_BCU_Lifted19.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_45_BCU_Lifted19.TabIndex = 82;
             this.btnSystemset_45_BCU_Lifted19.Text = "解除";
-            this.btnSystemset_45_BCU_Lifted19.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BCU_Lifted19.UseVisualStyleBackColor = false;
             this.btnSystemset_45_BCU_Lifted19.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_43_BCU_Close19
@@ -3114,7 +3113,7 @@
             this.btnSystemset_43_BCU_Close19.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_43_BCU_Close19.TabIndex = 81;
             this.btnSystemset_43_BCU_Close19.Text = "关闭";
-            this.btnSystemset_43_BCU_Close19.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BCU_Close19.UseVisualStyleBackColor = false;
             this.btnSystemset_43_BCU_Close19.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_44_BCU_Open19
@@ -3128,7 +3127,7 @@
             this.btnSystemset_44_BCU_Open19.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_44_BCU_Open19.TabIndex = 80;
             this.btnSystemset_44_BCU_Open19.Text = "打开";
-            this.btnSystemset_44_BCU_Open19.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BCU_Open19.UseVisualStyleBackColor = false;
             this.btnSystemset_44_BCU_Open19.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // lblSystemset_BCU_19
@@ -3151,7 +3150,7 @@
             this.btnSystemset_45_BCU_Lifted18.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_45_BCU_Lifted18.TabIndex = 78;
             this.btnSystemset_45_BCU_Lifted18.Text = "解除";
-            this.btnSystemset_45_BCU_Lifted18.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BCU_Lifted18.UseVisualStyleBackColor = false;
             this.btnSystemset_45_BCU_Lifted18.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_43_BCU_Close18
@@ -3165,7 +3164,7 @@
             this.btnSystemset_43_BCU_Close18.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_43_BCU_Close18.TabIndex = 77;
             this.btnSystemset_43_BCU_Close18.Text = "关闭";
-            this.btnSystemset_43_BCU_Close18.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BCU_Close18.UseVisualStyleBackColor = false;
             this.btnSystemset_43_BCU_Close18.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_44_BCU_Open18
@@ -3179,7 +3178,7 @@
             this.btnSystemset_44_BCU_Open18.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_44_BCU_Open18.TabIndex = 76;
             this.btnSystemset_44_BCU_Open18.Text = "打开";
-            this.btnSystemset_44_BCU_Open18.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BCU_Open18.UseVisualStyleBackColor = false;
             this.btnSystemset_44_BCU_Open18.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // lblSystemset_BCU_18
@@ -3202,7 +3201,7 @@
             this.btnSystemset_45_BCU_Lifted17.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_45_BCU_Lifted17.TabIndex = 74;
             this.btnSystemset_45_BCU_Lifted17.Text = "解除";
-            this.btnSystemset_45_BCU_Lifted17.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BCU_Lifted17.UseVisualStyleBackColor = false;
             this.btnSystemset_45_BCU_Lifted17.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_43_BCU_Close17
@@ -3216,7 +3215,7 @@
             this.btnSystemset_43_BCU_Close17.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_43_BCU_Close17.TabIndex = 73;
             this.btnSystemset_43_BCU_Close17.Text = "关闭";
-            this.btnSystemset_43_BCU_Close17.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BCU_Close17.UseVisualStyleBackColor = false;
             this.btnSystemset_43_BCU_Close17.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_44_BCU_Open17
@@ -3230,7 +3229,7 @@
             this.btnSystemset_44_BCU_Open17.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_44_BCU_Open17.TabIndex = 72;
             this.btnSystemset_44_BCU_Open17.Text = "打开";
-            this.btnSystemset_44_BCU_Open17.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BCU_Open17.UseVisualStyleBackColor = false;
             this.btnSystemset_44_BCU_Open17.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // lblSystemset_BCU_17
@@ -3253,7 +3252,7 @@
             this.btnSystemset_45_BCU_Lifted16.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_45_BCU_Lifted16.TabIndex = 70;
             this.btnSystemset_45_BCU_Lifted16.Text = "解除";
-            this.btnSystemset_45_BCU_Lifted16.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BCU_Lifted16.UseVisualStyleBackColor = false;
             this.btnSystemset_45_BCU_Lifted16.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_43_BCU_Close16
@@ -3267,7 +3266,7 @@
             this.btnSystemset_43_BCU_Close16.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_43_BCU_Close16.TabIndex = 69;
             this.btnSystemset_43_BCU_Close16.Text = "关闭";
-            this.btnSystemset_43_BCU_Close16.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BCU_Close16.UseVisualStyleBackColor = false;
             this.btnSystemset_43_BCU_Close16.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_44_BCU_Open16
@@ -3281,7 +3280,7 @@
             this.btnSystemset_44_BCU_Open16.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_44_BCU_Open16.TabIndex = 68;
             this.btnSystemset_44_BCU_Open16.Text = "打开";
-            this.btnSystemset_44_BCU_Open16.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BCU_Open16.UseVisualStyleBackColor = false;
             this.btnSystemset_44_BCU_Open16.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // lblSystemset_BCU_16
@@ -3304,7 +3303,7 @@
             this.btnSystemset_45_BCU_Lifted15.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_45_BCU_Lifted15.TabIndex = 66;
             this.btnSystemset_45_BCU_Lifted15.Text = "解除";
-            this.btnSystemset_45_BCU_Lifted15.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BCU_Lifted15.UseVisualStyleBackColor = false;
             this.btnSystemset_45_BCU_Lifted15.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_43_BCU_Close15
@@ -3318,7 +3317,7 @@
             this.btnSystemset_43_BCU_Close15.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_43_BCU_Close15.TabIndex = 65;
             this.btnSystemset_43_BCU_Close15.Text = "关闭";
-            this.btnSystemset_43_BCU_Close15.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BCU_Close15.UseVisualStyleBackColor = false;
             this.btnSystemset_43_BCU_Close15.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_44_BCU_Open15
@@ -3332,7 +3331,7 @@
             this.btnSystemset_44_BCU_Open15.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_44_BCU_Open15.TabIndex = 64;
             this.btnSystemset_44_BCU_Open15.Text = "打开";
-            this.btnSystemset_44_BCU_Open15.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BCU_Open15.UseVisualStyleBackColor = false;
             this.btnSystemset_44_BCU_Open15.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // lblSystemset_BCU_15
@@ -3355,7 +3354,7 @@
             this.btnSystemset_45_BCU_Lifted14.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_45_BCU_Lifted14.TabIndex = 62;
             this.btnSystemset_45_BCU_Lifted14.Text = "解除";
-            this.btnSystemset_45_BCU_Lifted14.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BCU_Lifted14.UseVisualStyleBackColor = false;
             this.btnSystemset_45_BCU_Lifted14.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_43_BCU_Close14
@@ -3369,7 +3368,7 @@
             this.btnSystemset_43_BCU_Close14.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_43_BCU_Close14.TabIndex = 61;
             this.btnSystemset_43_BCU_Close14.Text = "关闭";
-            this.btnSystemset_43_BCU_Close14.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BCU_Close14.UseVisualStyleBackColor = false;
             this.btnSystemset_43_BCU_Close14.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_44_BCU_Open14
@@ -3383,7 +3382,7 @@
             this.btnSystemset_44_BCU_Open14.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_44_BCU_Open14.TabIndex = 60;
             this.btnSystemset_44_BCU_Open14.Text = "打开";
-            this.btnSystemset_44_BCU_Open14.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BCU_Open14.UseVisualStyleBackColor = false;
             this.btnSystemset_44_BCU_Open14.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // lblSystemset_BCU_14
@@ -3406,7 +3405,7 @@
             this.btnSystemset_45_BCU_Lifted13.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_45_BCU_Lifted13.TabIndex = 58;
             this.btnSystemset_45_BCU_Lifted13.Text = "解除";
-            this.btnSystemset_45_BCU_Lifted13.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BCU_Lifted13.UseVisualStyleBackColor = false;
             this.btnSystemset_45_BCU_Lifted13.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_43_BCU_Close13
@@ -3420,7 +3419,7 @@
             this.btnSystemset_43_BCU_Close13.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_43_BCU_Close13.TabIndex = 57;
             this.btnSystemset_43_BCU_Close13.Text = "关闭";
-            this.btnSystemset_43_BCU_Close13.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BCU_Close13.UseVisualStyleBackColor = false;
             this.btnSystemset_43_BCU_Close13.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_44_BCU_Open13
@@ -3434,7 +3433,7 @@
             this.btnSystemset_44_BCU_Open13.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_44_BCU_Open13.TabIndex = 56;
             this.btnSystemset_44_BCU_Open13.Text = "打开";
-            this.btnSystemset_44_BCU_Open13.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BCU_Open13.UseVisualStyleBackColor = false;
             this.btnSystemset_44_BCU_Open13.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // lblSystemset_BCU_13
@@ -3457,7 +3456,7 @@
             this.btnSystemset_45_BCU_Lifted12.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_45_BCU_Lifted12.TabIndex = 54;
             this.btnSystemset_45_BCU_Lifted12.Text = "解除";
-            this.btnSystemset_45_BCU_Lifted12.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BCU_Lifted12.UseVisualStyleBackColor = false;
             this.btnSystemset_45_BCU_Lifted12.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_43_BCU_Close12
@@ -3471,7 +3470,7 @@
             this.btnSystemset_43_BCU_Close12.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_43_BCU_Close12.TabIndex = 53;
             this.btnSystemset_43_BCU_Close12.Text = "关闭";
-            this.btnSystemset_43_BCU_Close12.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BCU_Close12.UseVisualStyleBackColor = false;
             this.btnSystemset_43_BCU_Close12.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // btnSystemset_44_BCU_Open12
@@ -3485,7 +3484,7 @@
             this.btnSystemset_44_BCU_Open12.Size = new System.Drawing.Size(70, 27);
             this.btnSystemset_44_BCU_Open12.TabIndex = 52;
             this.btnSystemset_44_BCU_Open12.Text = "打开";
-            this.btnSystemset_44_BCU_Open12.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BCU_Open12.UseVisualStyleBackColor = false;
             this.btnSystemset_44_BCU_Open12.Click += new System.EventHandler(this.btnDebugCommandBCU_Click);
             // 
             // lblSystemset_BCU_12
@@ -3661,7 +3660,7 @@
             this.btnSystemset_debug.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSystemset_debug.Location = new System.Drawing.Point(11, 22);
             this.btnSystemset_debug.Name = "btnSystemset_debug";
-            this.btnSystemset_debug.Size = new System.Drawing.Size(770, 30);
+            this.btnSystemset_debug.Size = new System.Drawing.Size(362, 30);
             this.btnSystemset_debug.TabIndex = 38;
             this.btnSystemset_debug.Text = "开始调试";
             this.btnSystemset_debug.UseVisualStyleBackColor = false;
@@ -4440,6 +4439,6 @@
         private System.Windows.Forms.ComboBox cbbRequestF0_4;
         private System.Windows.Forms.Label lblSystemset_BCU_27;
         private System.Windows.Forms.Label lblSystemset_BCU_26;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSystemset_Read;
     }
 }

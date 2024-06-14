@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -100,10 +101,9 @@ namespace SofarBMS.UI
                             byte[] bytes2 = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
                             EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2C, 0x10 });
 
+                            //BCU
                             byte[] byte3 = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
                             EcanHelper.Send(byte3, new byte[] { 0xE0, FrmMain.BCU_ID, 0xF9, 0x10 });
-
-                           
 
                             flag = false;
                             await Task.Delay(1000);
@@ -152,6 +152,34 @@ namespace SofarBMS.UI
                             ComboBox cbb = item as ComboBox;
                             int index = 0;
                             int.TryParse(cbb.Name.Replace("cbbRequest", ""), out index);
+
+                            int value = -1;
+                            switch (data[index])
+                            {
+                                case 0x00:
+                                    value = 0;
+                                    break;
+                                case 0xAA:
+                                    value = 1;
+                                    break;
+                                case 0x55:
+                                    value = 2;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            cbb.SelectedIndex = value;
+                        }
+                    }
+                    break;
+                case 0x10F0E0FF:
+                    foreach (Control item in this.gbControl0F0.Controls)
+                    {
+                        if (item is ComboBox)
+                        {
+                            ComboBox cbb = item as ComboBox;
+                            int index = 0;
+                            int.TryParse(cbb.Name.Replace("cbbRequestF0_", ""), out index);
 
                             int value = -1;
                             switch (data[index])
@@ -432,16 +460,16 @@ namespace SofarBMS.UI
                     break;
                 case 0xFA:
                     Dictionary<short, Button[]> buttons_bcu = new Dictionary<short, Button[]>();
-                    buttons_bcu.Add(0,  new Button[] { btnSystemset_45_BCU_Lifted1,  btnSystemset_43_BCU_Close1,  btnSystemset_44_BCU_Open1  });
-                    buttons_bcu.Add(1,  new Button[] { btnSystemset_45_BCU_Lifted2,  btnSystemset_43_BCU_Close2,  btnSystemset_44_BCU_Open2  });
-                    buttons_bcu.Add(2,  new Button[] { btnSystemset_45_BCU_Lifted3,  btnSystemset_43_BCU_Close3,  btnSystemset_44_BCU_Open3  });
-                    buttons_bcu.Add(3,  new Button[] { btnSystemset_45_BCU_Lifted4,  btnSystemset_43_BCU_Close4,  btnSystemset_44_BCU_Open4  });
-                    buttons_bcu.Add(4,  new Button[] { btnSystemset_45_BCU_Lifted5,  btnSystemset_43_BCU_Close5,  btnSystemset_44_BCU_Open5  });
-                    buttons_bcu.Add(5,  new Button[] { btnSystemset_45_BCU_Lifted6,  btnSystemset_43_BCU_Close6,  btnSystemset_44_BCU_Open6  });
-                    buttons_bcu.Add(6,  new Button[] { btnSystemset_45_BCU_Lifted7,  btnSystemset_43_BCU_Close7,  btnSystemset_44_BCU_Open7  });
-                    buttons_bcu.Add(7,  new Button[] { btnSystemset_45_BCU_Lifted8,  btnSystemset_43_BCU_Close8,  btnSystemset_44_BCU_Open8  });
-                    buttons_bcu.Add(8,  new Button[] { btnSystemset_45_BCU_Lifted9,  btnSystemset_43_BCU_Close9,  btnSystemset_44_BCU_Open9  });
-                    buttons_bcu.Add(9,  new Button[] { btnSystemset_45_BCU_Lifted10, btnSystemset_43_BCU_Close10, btnSystemset_44_BCU_Open10 });
+                    buttons_bcu.Add(0, new Button[] { btnSystemset_45_BCU_Lifted1, btnSystemset_43_BCU_Close1, btnSystemset_44_BCU_Open1 });
+                    buttons_bcu.Add(1, new Button[] { btnSystemset_45_BCU_Lifted2, btnSystemset_43_BCU_Close2, btnSystemset_44_BCU_Open2 });
+                    buttons_bcu.Add(2, new Button[] { btnSystemset_45_BCU_Lifted3, btnSystemset_43_BCU_Close3, btnSystemset_44_BCU_Open3 });
+                    buttons_bcu.Add(3, new Button[] { btnSystemset_45_BCU_Lifted4, btnSystemset_43_BCU_Close4, btnSystemset_44_BCU_Open4 });
+                    buttons_bcu.Add(4, new Button[] { btnSystemset_45_BCU_Lifted5, btnSystemset_43_BCU_Close5, btnSystemset_44_BCU_Open5 });
+                    buttons_bcu.Add(5, new Button[] { btnSystemset_45_BCU_Lifted6, btnSystemset_43_BCU_Close6, btnSystemset_44_BCU_Open6 });
+                    buttons_bcu.Add(6, new Button[] { btnSystemset_45_BCU_Lifted7, btnSystemset_43_BCU_Close7, btnSystemset_44_BCU_Open7 });
+                    buttons_bcu.Add(7, new Button[] { btnSystemset_45_BCU_Lifted8, btnSystemset_43_BCU_Close8, btnSystemset_44_BCU_Open8 });
+                    buttons_bcu.Add(8, new Button[] { btnSystemset_45_BCU_Lifted9, btnSystemset_43_BCU_Close9, btnSystemset_44_BCU_Open9 });
+                    buttons_bcu.Add(9, new Button[] { btnSystemset_45_BCU_Lifted10, btnSystemset_43_BCU_Close10, btnSystemset_44_BCU_Open10 });
                     buttons_bcu.Add(10, new Button[] { btnSystemset_45_BCU_Lifted11, btnSystemset_43_BCU_Close11, btnSystemset_44_BCU_Open11 });
                     buttons_bcu.Add(11, new Button[] { btnSystemset_45_BCU_Lifted12, btnSystemset_43_BCU_Close12, btnSystemset_44_BCU_Open12 });
                     buttons_bcu.Add(12, new Button[] { btnSystemset_45_BCU_Lifted13, btnSystemset_43_BCU_Close13, btnSystemset_44_BCU_Open13 });
@@ -454,57 +482,26 @@ namespace SofarBMS.UI
                     buttons_bcu.Add(19, new Button[] { btnSystemset_45_BCU_Lifted20, btnSystemset_43_BCU_Close20, btnSystemset_44_BCU_Open20 });
                     buttons_bcu.Add(20, new Button[] { btnSystemset_45_BCU_Lifted21, btnSystemset_43_BCU_Close21, btnSystemset_44_BCU_Open21 });
 
-                    //byte[]转为二进制字符串
+                    //byte[] 转为二进制字符串
                     strResult = string.Empty;
-                    for (int i = 0; i <= 2; i++)
+                    foreach (byte b in data)
                     {
-                        string strTemp = Convert.ToString(data[i], 2);
-                        strTemp = strTemp.Insert(0, new string('0', 8 - strTemp.Length));
-                        strResult = strTemp + strResult;
+                        strResult += Convert.ToString(b, 2).PadLeft(8, '0');
                     }
-
                     //二进制字符串转化为short[]
-                    bitResult = new short[strResult.Length / 2];
-                    int index3 = bitResult.Length - 1;
-                    for (int i = 0; i < bitResult.Length; i++)
+                    short[] bitResult1 = new short[strResult.Length / 3];
+                    int index3 = bitResult1.Length - 1;
+                    for (int i = 0; i < bitResult1.Length; i++)
                     {
-                        bitResult[index3--] = (short)Convert.ToByte(Convert.ToInt32(strResult.Substring(i * 2, 2)) & 0x03);
+                        bitResult1[index3--] = (short)Convert.ToByte(Convert.ToInt32(strResult.Substring(i * 2, 2)) & 0x03);
                     }
 
                     //根据short得值来找到对应得button
                     foreach (var item in buttons_bcu.Keys)
                     {
-                        Button btn = buttons_bcu[item][bitResult[item]];
+                        Button btn = buttons_bcu[item][bitResult1[item]];
                         string name = btn.Name;
                         btn.Enabled = false;
-                    }
-                    break;
-                case 0xF0:
-                    foreach (Control item in this.gbControl0F0.Controls)
-                    {
-                        if (item is ComboBox)
-                        {
-                            ComboBox cbb = item as ComboBox;
-                            //int index = 0;
-                            int.TryParse(cbb.Name.Replace("cbbRequestF0_", ""), out index);
-
-                            int value = -1;
-                            switch (data[index])
-                            {
-                                case 0x00:
-                                    value = 0;
-                                    break;
-                                case 0xAA:
-                                    value = 1;
-                                    break;
-                                case 0x55:
-                                    value = 2;
-                                    break;
-                                default:
-                                    break;
-                            }
-                            cbb.SelectedIndex = value;
-                        }
                     }
                     break;
             }
@@ -668,7 +665,7 @@ namespace SofarBMS.UI
 
                     byte[] can_id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xFA, 0x10 };
 
-                    int num = 0x10 + 0x20 + FrmMain.BCU_ID + 0xe0 + 0x00 + 0x00 + 0xAA + 0x00 + 0x00 + 0x00 + 0x00;
+                    int num = 0x10 + 0x20 + FrmMain.BCU_ID + 0xFA + 0x00 + 0x00 + 0xAA + 0x00 + 0x00 + 0x00 + 0x00;
 
                     byte crc8 = (byte)(num & 0xff);
 
@@ -703,19 +700,7 @@ namespace SofarBMS.UI
 
             EcanHelper.Send(data, id);
         }
-
-        public static void ReadCurrentState_BCU()
-        {
-            byte[] id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xF9, 0x10 };
-
-            byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-
-            byte[] crcData = new byte[11] { 0xE0, FrmMain.BCU_ID, 0xF9, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-
-            data[7] = (byte)(Crc8_8210_nBytesCalculate(crcData, 11, 0) & 0xff);
-
-            EcanHelper.Send(data, id);
-        }
+       
         public static void ReadCurrentState(byte[] data)
         {
             byte[] id = new byte[] { 0xE0, FrmMain.BMS_ID, 0x2F, 0x10 };
@@ -732,6 +717,18 @@ namespace SofarBMS.UI
             EcanHelper.Send(dataNew, id);
         }
 
+        public static void ReadCurrentState_BCU()
+        {
+            byte[] id = new byte[] { 0xE0, FrmMain.BMS_ID, 0xFA, 0x10 };
+
+            byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+            byte[] crcData = new byte[11] { 0xE0, FrmMain.BMS_ID, 0xFA, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+            data[7] = (byte)(Crc8_8210_nBytesCalculate(crcData, 11, 0) & 0xff);
+
+            EcanHelper.Send(data, id);
+        }
 
         public static void TestAte()
         {
@@ -746,18 +743,6 @@ namespace SofarBMS.UI
             EcanHelper.Send(data, id);
         }
 
-        public static void TestAte_BCU()
-        {
-            byte[] id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xFA, 0x10 };
-
-            byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-
-            byte[] crcData = new byte[11] { 0xE0, FrmMain.BCU_ID, 0xFA, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-
-            data[7] = (byte)(Crc8_8210_nBytesCalculate(crcData, 11, 0) & 0xff);
-
-            EcanHelper.Send(data, id);
-        }
         public static void TestAte(byte[] data)
         {
             byte[] id = new byte[] { 0xE0, FrmMain.BMS_ID, 0x1E, 0x10 };
@@ -773,11 +758,24 @@ namespace SofarBMS.UI
             EcanHelper.Send(dataNew, id);
         }
 
+        public static void TestAte_BCU()
+        {
+            byte[] id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xFA, 0x10 };
+
+            byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+            byte[] crcData = new byte[11] { 0xE0, FrmMain.BCU_ID, 0xFA, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+            data[7] = (byte)(Crc8_8210_nBytesCalculate(crcData, 11, 0) & 0xff);
+
+            EcanHelper.Send(data, id);
+        }
+
         public static void TestAte_BCU(byte[] data)
         {
-            byte[] id = new byte[] { 0xE0, FrmMain.BMS_ID, 0xFA, 0x10 };
+            byte[] id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xFA, 0x10 };
 
-            byte[] crcData = new byte[11] { 0xE0, FrmMain.BMS_ID, 0xFA, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+            byte[] crcData = new byte[11] { 0xE0, FrmMain.BCU_ID, 0xFA, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
             Array.Copy(data, 0, crcData, 4, data.Length);
 
@@ -1116,7 +1114,7 @@ namespace SofarBMS.UI
 
             if (sender is Button btn)
             {
-                int[] bitResult = new int[20];
+                short[] bitResult = new short[21];
                 switch (btn.Name)
                 {
 
@@ -1337,7 +1335,7 @@ namespace SofarBMS.UI
                 data[num++] = 0x00;
                 data[num++] = 0x00;
                 data[num++] = 0xAA;
-
+                //ReadCurrentState_BCU(data);
                 TestAte_BCU(data);
 
                 Task.Run(new Action(() =>
@@ -1345,7 +1343,7 @@ namespace SofarBMS.UI
                     setUI(true);
 
                     Thread.Sleep(500);
-
+                    //ReadCurrentState_BCU();
                     TestAte_BCU();
                 }));
             } 

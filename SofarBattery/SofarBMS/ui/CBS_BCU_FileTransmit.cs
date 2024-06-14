@@ -159,6 +159,7 @@ RSV6,U32,1,,";
         bool isResponse;
 
         int slaveAddress = -1;
+        int subDeviceAddress = -1;
         int fileNumber = -1;
         int readType = -1;
 
@@ -203,9 +204,10 @@ RSV6,U32,1,,";
             }, cts.Token);
 
             //初始化值
-            this.txtSlaveAddress.Text = FrmMain.BMS_ID.ToString();
+            this.txtSlaveAddress.Text = FrmMain.BCU_ID.ToString();
+            this.txtSubDeviceAddress.Text = "1" ;
             this.cbbFileNumber.SelectedIndex = 3;
-            this.cbbModeName.SelectedIndex = 1;
+            this.cbbModeName.SelectedIndex = 0;
             this.cbbModeName.Enabled = false;
             this.ckReadAll.Checked = true;
         }
@@ -262,7 +264,7 @@ RSV6,U32,1,,";
 
                             if (!string.IsNullOrEmpty(headStr))
                             {
-                                fileName = string.Format("{0}_{1}_{2}_{3}", headName, cbbModeName.Text.Trim(), slaveAddress, System.DateTime.Now.ToString("yy-MM-dd-HH-mm-ss"));
+                                fileName = string.Format("{0}_{1}_{2}_{3}", headName, cbbModeName.Text.Trim(), subDeviceAddress, System.DateTime.Now.ToString("yy-MM-dd-HH-mm-ss"));
                                 filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//{fileName}.csv";
 
                                 if ((fileNumber < 3 && fileNumber >= 0) || fileNumber == 5)
@@ -564,7 +566,7 @@ RSV6,U32,1,,";
 
             byte[] data = new byte[8];
             data[0] = 0x0;
-            data[1] = (byte)slaveAddress;
+            data[1] = (byte)subDeviceAddress;
             data[2] = (byte)fileNumber;
             data[3] = (byte)readType;
 
@@ -579,7 +581,7 @@ RSV6,U32,1,,";
 
             byte[] data = new byte[8];
             data[0] = 0x0;
-            data[1] = (byte)slaveAddress;
+            data[1] = (byte)subDeviceAddress;
             data[2] = (byte)fileNumber;
             data[3] = (byte)(fileOffset & 0xff);
             data[4] = (byte)(fileOffset >> 8);
@@ -598,7 +600,7 @@ RSV6,U32,1,,";
 
             byte[] data = new byte[8];
             data[0] = 0x0;
-            data[1] = (byte)slaveAddress;
+            data[1] = (byte)subDeviceAddress;
             data[2] = (byte)fileNumber;
             data[3] = (byte)0x01;
 
@@ -670,6 +672,11 @@ RSV6,U32,1,,";
                 txtStartLocal.Enabled = true;
                 txtReadCount.Enabled = true;
             }
+        }
+
+        private void txtSubDeviceAddress_TextChanged(object sender, EventArgs e)
+        {
+            subDeviceAddress = Convert.ToInt32(txtSubDeviceAddress.Text);
         }
     }
 

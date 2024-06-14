@@ -395,7 +395,7 @@ namespace SofarBMS.UI
             {
                 StreamWriter sw = File.CreateText(ShowSaveFileDialog());
                 sw.WriteLine("<documentParams>");
-                for (int i = 0; i < 59; i++)
+                for (int i = 0; i < 26; i++)
                 {
                     string controlName1 = string.Format("txt_{0}", i + 1);
                     string val = (Controls.Find(controlName1, true)[0]).Text.Trim().Length != 0 ? (Controls.Find(controlName1, true)[0]).Text : null;

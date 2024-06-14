@@ -41,6 +41,8 @@
             this.txtStartLocal = new System.Windows.Forms.TextBox();
             this.txtReadCount = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtSubDeviceAddress = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lvPrintBlock = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -55,9 +57,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(20, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.Size = new System.Drawing.Size(71, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "设备地址";
+            this.label1.Text = "BCU设备地址";
             // 
             // label2
             // 
@@ -124,7 +126,7 @@
             // ckReadAll
             // 
             this.ckReadAll.AutoSize = true;
-            this.ckReadAll.Location = new System.Drawing.Point(220, 29);
+            this.ckReadAll.Location = new System.Drawing.Point(220, 60);
             this.ckReadAll.Name = "ckReadAll";
             this.ckReadAll.Size = new System.Drawing.Size(96, 16);
             this.ckReadAll.TabIndex = 7;
@@ -140,7 +142,6 @@
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 8;
             this.label4.Text = "起始位置";
-            this.label4.Visible = false;
             // 
             // label5
             // 
@@ -150,7 +151,6 @@
             this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 9;
             this.label5.Text = "读取条数";
-            this.label5.Visible = false;
             // 
             // txtStartLocal
             // 
@@ -158,7 +158,6 @@
             this.txtStartLocal.Name = "txtStartLocal";
             this.txtStartLocal.Size = new System.Drawing.Size(100, 21);
             this.txtStartLocal.TabIndex = 10;
-            this.txtStartLocal.Visible = false;
             // 
             // txtReadCount
             // 
@@ -166,10 +165,11 @@
             this.txtReadCount.Name = "txtReadCount";
             this.txtReadCount.Size = new System.Drawing.Size(100, 21);
             this.txtReadCount.TabIndex = 11;
-            this.txtReadCount.Visible = false;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.txtSubDeviceAddress);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtReadCount);
@@ -188,6 +188,24 @@
             this.groupBox1.Size = new System.Drawing.Size(1266, 130);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(225, 32);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(83, 12);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "子设备BMU地址";
+            // 
+            // txtSubDeviceAddress
+            // 
+            this.txtSubDeviceAddress.Location = new System.Drawing.Point(313, 26);
+            this.txtSubDeviceAddress.Name = "txtSubDeviceAddress";
+            this.txtSubDeviceAddress.Size = new System.Drawing.Size(121, 21);
+            this.txtSubDeviceAddress.TabIndex = 13;
+            this.txtSubDeviceAddress.Text = "0";
+            this.txtSubDeviceAddress.TextChanged += new System.EventHandler(this.txtSubDeviceAddress_TextChanged);
             // 
             // groupBox2
             // 
@@ -229,13 +247,13 @@
             this.columnHeader3.Text = "Data";
             this.columnHeader3.Width = 500;
             // 
-            // CBSFileTransmit
+            // CBS_BCU_FileTransmit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "CBSFileTransmit";
+            this.Name = "CBS_BCU_FileTransmit";
             this.Size = new System.Drawing.Size(1266, 718);
             this.Load += new System.EventHandler(this.CBSFileTransmit_Load);
             this.groupBox1.ResumeLayout(false);
@@ -265,5 +283,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtSubDeviceAddress;
     }
 }
