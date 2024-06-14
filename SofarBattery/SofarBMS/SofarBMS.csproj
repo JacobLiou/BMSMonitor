@@ -218,6 +218,7 @@
     <Compile Include="Model\fw_info.cs" />
     <Compile Include="Model\ProtocolModel.cs" />
     <Compile Include="Model\Protocols.cs" />
+    <Compile Include="Model\RealtimeData_CBS5000S_BCU.cs" />
     <Compile Include="Model\RealtimeData_CBS5000S.cs" />
     <Compile Include="Model\RealtimeData_GTX5000S.cs" />
     <Compile Include="Model\UpgradeModel.cs" />
@@ -237,6 +238,24 @@
     </Compile>
     <Compile Include="UI\BMSMMultipleControl.Designer.cs">
       <DependentUpon>BMSMMultipleControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CBS_BCU_FileTransmit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CBS_BCU_FileTransmit.Designer.cs">
+      <DependentUpon>CBS_BCU_FileTransmit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CBS_BCU_ParamControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CBS_BCU_ParamControl.Designer.cs">
+      <DependentUpon>CBS_BCU_ParamControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CBS_BCU_Control.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CBS_BCU_Control.Designer.cs">
+      <DependentUpon>CBS_BCU_Control.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\CBSFileTransmit.cs">
       <SubType>UserControl</SubType>
@@ -326,6 +345,15 @@
     </Compile>
     <EmbeddedResource Include="UI\BMSMMultipleControl.resx">
       <DependentUpon>BMSMMultipleControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CBS_BCU_FileTransmit.resx">
+      <DependentUpon>CBS_BCU_FileTransmit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CBS_BCU_ParamControl.resx">
+      <DependentUpon>CBS_BCU_ParamControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CBS_BCU_Control.resx">
+      <DependentUpon>CBS_BCU_Control.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\CBSFileTransmit.resx">
       <DependentUpon>CBSFileTransmit.cs</DependentUpon>

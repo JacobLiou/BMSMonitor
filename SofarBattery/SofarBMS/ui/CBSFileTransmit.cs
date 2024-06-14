@@ -206,7 +206,7 @@ RSV6,U32,1,,";
             this.txtSlaveAddress.Text = FrmMain.BMS_ID.ToString();
             this.cbbFileNumber.SelectedIndex = 3;
             this.cbbModeName.SelectedIndex = 1;
-            this.cbbModeName.Enabled = false;
+            this.cbbModeName.Enabled = true;
             this.ckReadAll.Checked = true;
         }
 
@@ -670,6 +670,11 @@ RSV6,U32,1,,";
                 txtStartLocal.Enabled = true;
                 txtReadCount.Enabled = true;
             }
+        }
+
+        private void cbbModeName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

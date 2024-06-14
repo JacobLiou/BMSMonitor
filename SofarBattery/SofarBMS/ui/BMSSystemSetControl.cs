@@ -57,6 +57,16 @@ namespace SofarBMS.UI
             }
             txtSlaveAddr.Text = FrmMain.BMS_ID.ToString();
 
+            foreach (Control item in this.gbControl0F0.Controls)
+            {
+                if (item is ComboBox)
+                {
+                    ComboBox cbb = item as ComboBox;
+                    cbb.SelectedIndex = 0;
+                }
+            }
+            txtSlaveAddr_BCU.Text = FrmMain.BCU_ID.ToString();
+
             string[] setComms = new string[2] {
                 LanguageHelper.GetLanguage("PCUCmd_Stop"),
                 LanguageHelper.GetLanguage("PCUCmd_Normal")
@@ -90,6 +100,11 @@ namespace SofarBMS.UI
                             byte[] bytes2 = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
                             EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2C, 0x10 });
 
+                            byte[] byte3 = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                            EcanHelper.Send(byte3, new byte[] { 0xE0, FrmMain.BCU_ID, 0xF9, 0x10 });
+
+                           
+
                             flag = false;
                             await Task.Delay(1000);
                         }
@@ -116,7 +131,7 @@ namespace SofarBMS.UI
         {
             byte[] canid = BitConverter.GetBytes(canID);
 
-            if (!(((canID & 0xff) == FrmMain.BMS_ID) || ((canID & 0xff) == FrmMain.PCU_ID)))
+            if (!(((canID & 0xff) == FrmMain.BMS_ID) || ((canID & 0xff) == FrmMain.PCU_ID)|| ((canID & 0xff) == FrmMain.BCU_ID)))
                 return;
 
             string[] strs;
@@ -137,6 +152,35 @@ namespace SofarBMS.UI
                             ComboBox cbb = item as ComboBox;
                             int index = 0;
                             int.TryParse(cbb.Name.Replace("cbbRequest", ""), out index);
+
+                            int value = -1;
+                            switch (data[index])
+                            {
+                                case 0x00:
+                                    value = 0;
+                                    break;
+                                case 0xAA:
+                                    value = 1;
+                                    break;
+                                case 0x55:
+                                    value = 2;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            cbb.SelectedIndex = value;
+                        }
+                    }
+                    break;
+                case 0x10F0E081:
+                   
+                    foreach (Control item in this.gbControl0F0.Controls)
+                    {
+                        if (item is ComboBox)
+                        {
+                            ComboBox cbb = item as ComboBox;
+                            int index = 0;
+                            int.TryParse(cbb.Name.Replace("cbbRequestF0_", ""), out index);
 
                             int value = -1;
                             switch (data[index])
@@ -386,6 +430,83 @@ namespace SofarBMS.UI
                         btn.Enabled = false;
                     }
                     break;
+                case 0xFA:
+                    Dictionary<short, Button[]> buttons_bcu = new Dictionary<short, Button[]>();
+                    buttons_bcu.Add(0,  new Button[] { btnSystemset_45_BCU_Lifted1,  btnSystemset_43_BCU_Close1,  btnSystemset_44_BCU_Open1  });
+                    buttons_bcu.Add(1,  new Button[] { btnSystemset_45_BCU_Lifted2,  btnSystemset_43_BCU_Close2,  btnSystemset_44_BCU_Open2  });
+                    buttons_bcu.Add(2,  new Button[] { btnSystemset_45_BCU_Lifted3,  btnSystemset_43_BCU_Close3,  btnSystemset_44_BCU_Open3  });
+                    buttons_bcu.Add(3,  new Button[] { btnSystemset_45_BCU_Lifted4,  btnSystemset_43_BCU_Close4,  btnSystemset_44_BCU_Open4  });
+                    buttons_bcu.Add(4,  new Button[] { btnSystemset_45_BCU_Lifted5,  btnSystemset_43_BCU_Close5,  btnSystemset_44_BCU_Open5  });
+                    buttons_bcu.Add(5,  new Button[] { btnSystemset_45_BCU_Lifted6,  btnSystemset_43_BCU_Close6,  btnSystemset_44_BCU_Open6  });
+                    buttons_bcu.Add(6,  new Button[] { btnSystemset_45_BCU_Lifted7,  btnSystemset_43_BCU_Close7,  btnSystemset_44_BCU_Open7  });
+                    buttons_bcu.Add(7,  new Button[] { btnSystemset_45_BCU_Lifted8,  btnSystemset_43_BCU_Close8,  btnSystemset_44_BCU_Open8  });
+                    buttons_bcu.Add(8,  new Button[] { btnSystemset_45_BCU_Lifted9,  btnSystemset_43_BCU_Close9,  btnSystemset_44_BCU_Open9  });
+                    buttons_bcu.Add(9,  new Button[] { btnSystemset_45_BCU_Lifted10, btnSystemset_43_BCU_Close10, btnSystemset_44_BCU_Open10 });
+                    buttons_bcu.Add(10, new Button[] { btnSystemset_45_BCU_Lifted11, btnSystemset_43_BCU_Close11, btnSystemset_44_BCU_Open11 });
+                    buttons_bcu.Add(11, new Button[] { btnSystemset_45_BCU_Lifted12, btnSystemset_43_BCU_Close12, btnSystemset_44_BCU_Open12 });
+                    buttons_bcu.Add(12, new Button[] { btnSystemset_45_BCU_Lifted13, btnSystemset_43_BCU_Close13, btnSystemset_44_BCU_Open13 });
+                    buttons_bcu.Add(13, new Button[] { btnSystemset_45_BCU_Lifted14, btnSystemset_43_BCU_Close14, btnSystemset_44_BCU_Open14 });
+                    buttons_bcu.Add(14, new Button[] { btnSystemset_45_BCU_Lifted15, btnSystemset_43_BCU_Close15, btnSystemset_44_BCU_Open15 });
+                    buttons_bcu.Add(15, new Button[] { btnSystemset_45_BCU_Lifted16, btnSystemset_43_BCU_Close16, btnSystemset_44_BCU_Open16 });
+                    buttons_bcu.Add(16, new Button[] { btnSystemset_45_BCU_Lifted17, btnSystemset_43_BCU_Close17, btnSystemset_44_BCU_Open17 });
+                    buttons_bcu.Add(17, new Button[] { btnSystemset_45_BCU_Lifted18, btnSystemset_43_BCU_Close18, btnSystemset_44_BCU_Open18 });
+                    buttons_bcu.Add(18, new Button[] { btnSystemset_45_BCU_Lifted19, btnSystemset_43_BCU_Close19, btnSystemset_44_BCU_Open19 });
+                    buttons_bcu.Add(19, new Button[] { btnSystemset_45_BCU_Lifted20, btnSystemset_43_BCU_Close20, btnSystemset_44_BCU_Open20 });
+                    buttons_bcu.Add(20, new Button[] { btnSystemset_45_BCU_Lifted21, btnSystemset_43_BCU_Close21, btnSystemset_44_BCU_Open21 });
+
+                    //byte[]转为二进制字符串
+                    strResult = string.Empty;
+                    for (int i = 0; i <= 2; i++)
+                    {
+                        string strTemp = Convert.ToString(data[i], 2);
+                        strTemp = strTemp.Insert(0, new string('0', 8 - strTemp.Length));
+                        strResult = strTemp + strResult;
+                    }
+
+                    //二进制字符串转化为short[]
+                    bitResult = new short[strResult.Length / 2];
+                    int index3 = bitResult.Length - 1;
+                    for (int i = 0; i < bitResult.Length; i++)
+                    {
+                        bitResult[index3--] = (short)Convert.ToByte(Convert.ToInt32(strResult.Substring(i * 2, 2)) & 0x03);
+                    }
+
+                    //根据short得值来找到对应得button
+                    foreach (var item in buttons_bcu.Keys)
+                    {
+                        Button btn = buttons_bcu[item][bitResult[item]];
+                        string name = btn.Name;
+                        btn.Enabled = false;
+                    }
+                    break;
+                case 0xF0:
+                    foreach (Control item in this.gbControl0F0.Controls)
+                    {
+                        if (item is ComboBox)
+                        {
+                            ComboBox cbb = item as ComboBox;
+                            //int index = 0;
+                            int.TryParse(cbb.Name.Replace("cbbRequestF0_", ""), out index);
+
+                            int value = -1;
+                            switch (data[index])
+                            {
+                                case 0x00:
+                                    value = 0;
+                                    break;
+                                case 0xAA:
+                                    value = 1;
+                                    break;
+                                case 0x55:
+                                    value = 2;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            cbb.SelectedIndex = value;
+                        }
+                    }
+                    break;
             }
         }
 
@@ -403,6 +524,28 @@ namespace SofarBMS.UI
 
             byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
             if (EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 }))
+            {
+                MessageBox.Show(FrmMain.GetString("keyReadSuccess"));
+            }
+            else
+            {
+                MessageBox.Show(FrmMain.GetString("keyReadFail"));
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            List<uint> DataLists = new List<uint>() { 0xAA11, 0xAA22, 0xAA33, 0xAA44, 0xAA55, 0xAA66, 0xAA77, 0xAA88 };//
+
+            for (int i = 0; i < DataLists.Count; i++)
+            {
+                DataSelected(DataLists[i]);
+
+                Thread.Sleep(100);
+            }
+
+            byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+            if (EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BCU_ID, 0xF9, 0x10 }))
             {
                 MessageBox.Show(FrmMain.GetString("keyReadSuccess"));
             }
@@ -485,6 +628,66 @@ namespace SofarBMS.UI
                 }
             }
         }
+
+        private void btnDebugStart_BCU_Click(object sender, System.EventArgs e)
+        {
+            if (btnSystemset_debug.Text == "结束调试" || btnSystemset_debug.Text == "End debugging")
+            {
+                DialogResult result = MessageBox.Show(LanguageHelper.GetLanguage("BmsDebug_Exit"), LanguageHelper.GetLanguage("BmsDebug_Tip"), MessageBoxButtons.OKCancel);
+
+                if (result == DialogResult.OK)
+                {
+                    byte[] can_id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xFA, 0x10 };
+
+                    int num = 0x10 + 0x20 + FrmMain.BCU_ID + 0xFA + 0x00 + 0x00 + 0x55 + 0x00 + 0x00 + 0x00 + 0x00;
+
+                    byte crc8 = (byte)(num & 0xff);
+
+                    byte[] data = new byte[8] { 0x00, 0x00, 0x55, 0x00, 0x00, 0x00, 0x00, crc8 };
+
+                    EcanHelper.Send(data, can_id);
+
+                    foreach (Control c in gb0FA.Controls)
+                    {
+                        if (c is Button)
+                        {
+                            c.Enabled = false;
+                        }
+                    }
+
+                    btnSystemset_debug.Text = LanguageHelper.GetLanguage("BmsDebug_Start");
+                }
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show(LanguageHelper.GetLanguage("BmsDebug_Enter"), LanguageHelper.GetLanguage("BmsDebug_Tip"), MessageBoxButtons.OKCancel);
+
+                if (result == DialogResult.OK)
+                {
+                    ReadCurrentState_BCU();
+
+                    byte[] can_id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xFA, 0x10 };
+
+                    int num = 0x10 + 0x20 + FrmMain.BCU_ID + 0xe0 + 0x00 + 0x00 + 0xAA + 0x00 + 0x00 + 0x00 + 0x00;
+
+                    byte crc8 = (byte)(num & 0xff);
+
+                    byte[] data = new byte[8] { 0x00, 0x00, 0xAA, 0x00, 0x00, 0x00, 0x00, crc8 };
+
+                    EcanHelper.Send(data, can_id);
+
+                    foreach (Control c in gb0FA.Controls)
+                    {
+                        if (c is Button)
+                        {
+                            c.Enabled = true;
+                        }
+                    }
+
+                    btnSystemset_debug.Text = LanguageHelper.GetLanguage("BmsDebug_End");
+                }
+            }
+        }
         #endregion
 
         #region 读取当前开关机状态
@@ -501,6 +704,18 @@ namespace SofarBMS.UI
             EcanHelper.Send(data, id);
         }
 
+        public static void ReadCurrentState_BCU()
+        {
+            byte[] id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xF9, 0x10 };
+
+            byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+            byte[] crcData = new byte[11] { 0xE0, FrmMain.BCU_ID, 0xF9, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+            data[7] = (byte)(Crc8_8210_nBytesCalculate(crcData, 11, 0) & 0xff);
+
+            EcanHelper.Send(data, id);
+        }
         public static void ReadCurrentState(byte[] data)
         {
             byte[] id = new byte[] { 0xE0, FrmMain.BMS_ID, 0x2F, 0x10 };
@@ -530,11 +745,39 @@ namespace SofarBMS.UI
 
             EcanHelper.Send(data, id);
         }
+
+        public static void TestAte_BCU()
+        {
+            byte[] id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xFA, 0x10 };
+
+            byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+            byte[] crcData = new byte[11] { 0xE0, FrmMain.BCU_ID, 0xFA, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+            data[7] = (byte)(Crc8_8210_nBytesCalculate(crcData, 11, 0) & 0xff);
+
+            EcanHelper.Send(data, id);
+        }
         public static void TestAte(byte[] data)
         {
             byte[] id = new byte[] { 0xE0, FrmMain.BMS_ID, 0x1E, 0x10 };
 
             byte[] crcData = new byte[11] { 0xE0, FrmMain.BMS_ID, 0x1E, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+            Array.Copy(data, 0, crcData, 4, data.Length);
+
+            byte[] dataNew = new byte[8];
+            Array.Copy(data, 0, dataNew, 0, data.Length);
+            dataNew[7] = (byte)(Crc8_8210_nBytesCalculate(crcData, 11, 0) & 0xff);
+
+            EcanHelper.Send(dataNew, id);
+        }
+
+        public static void TestAte_BCU(byte[] data)
+        {
+            byte[] id = new byte[] { 0xE0, FrmMain.BMS_ID, 0xFA, 0x10 };
+
+            byte[] crcData = new byte[11] { 0xE0, FrmMain.BMS_ID, 0xFA, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
             Array.Copy(data, 0, crcData, 4, data.Length);
 
@@ -795,6 +1038,319 @@ namespace SofarBMS.UI
                 }));
             }
         }
+
+        private void btnDebugCommandBCU_Click(object sender, EventArgs e)
+        {
+
+            //Dictionary<string, (int index, short value)> buttonMappings = new Dictionary<string, (int index, short value)>()
+            //               {
+            //                   {"btnSystemset_45_BCU_Lifted1", (0,  0)},
+            //                   {"btnSystemset_43_BCU_Close1",  (0,  1)},
+            //                   {"btnSystemset_44_BCU_Open1",   (0,  2)},
+            //                   {"btnSystemset_45_BCU_Lifted2", (1,  0)},
+            //                   {"btnSystemset_43_BCU_Close2",  (1,  1)},
+            //                   {"btnSystemset_44_BCU_Open2",   (1,  2)},
+            //                   {"btnSystemset_45_BCU_Lifted3", (2,  0)},
+            //                   {"btnSystemset_43_BCU_Close3",  (2,  1)},
+            //                   {"btnSystemset_44_BCU_Open3",   (2,  2)},
+            //                   {"btnSystemset_45_BCU_Lifted4", (3,  0)},
+            //                   {"btnSystemset_43_BCU_Close4",  (3,  1)},
+            //                   {"btnSystemset_44_BCU_Open4",   (3,  2)},
+            //                   {"btnSystemset_45_BCU_Lifted5", (4,  0)},
+            //                   {"btnSystemset_43_BCU_Close5",  (4,  1)},
+            //                   {"btnSystemset_44_BCU_Open5",   (4,  2)},
+            //                   {"btnSystemset_45_BCU_Lifted6", (5,  0)},
+            //                   {"btnSystemset_43_BCU_Close6",  (5,  1)},
+            //                   {"btnSystemset_44_BCU_Open6",   (5,  2)},
+            //                   {"btnSystemset_45_BCU_Lifted7", (6,  0)},
+            //                   {"btnSystemset_43_BCU_Close7",  (6,  1)},
+            //                   {"btnSystemset_44_BCU_Open7",   (6,  2)},
+            //                   {"btnSystemset_45_BCU_Lifted8", (7,  0)},
+            //                   {"btnSystemset_43_BCU_Close8",  (7,  1)},
+            //                   {"btnSystemset_44_BCU_Open8",   (7,  2)},
+            //                   {"btnSystemset_45_BCU_Lifted9", (8,  0)},
+            //                   {"btnSystemset_43_BCU_Close9",  (8,  1)},
+            //                   {"btnSystemset_44_BCU_Open9",   (8,  2)},
+            //                   {"btnSystemset_45_BCU_Lifted10",(9,  0)},
+            //                   {"btnSystemset_43_BCU_Close10", (9,  1)},
+            //                   {"btnSystemset_44_BCU_Open10",  (9,  2)},
+            //                   {"btnSystemset_45_BCU_Lifted11",(10, 0)},
+            //                   {"btnSystemset_43_BCU_Close11", (10, 1)},
+            //                   {"btnSystemset_44_BCU_Open11",  (10, 2)},
+            //                   {"btnSystemset_45_BCU_Lifted12",(11, 0)},
+            //                   {"btnSystemset_43_BCU_Close12", (11, 1)},
+            //                   {"btnSystemset_44_BCU_Open12",  (11, 2)},
+            //                   {"btnSystemset_45_BCU_Lifted13",(12, 0)},
+            //                   {"btnSystemset_43_BCU_Close13", (12, 1)},
+            //                   {"btnSystemset_44_BCU_Open13",  (12, 2)},
+            //                   {"btnSystemset_45_BCU_Lifted14",(13, 0)},
+            //                   {"btnSystemset_43_BCU_Close14", (13, 1)},
+            //                   {"btnSystemset_44_BCU_Open14",  (13, 2)},
+            //                   {"btnSystemset_45_BCU_Lifted15",(14, 0)},
+            //                   {"btnSystemset_43_BCU_Close15", (14, 1)},
+            //                   {"btnSystemset_44_BCU_Open15",  (14, 2)},
+            //                   {"btnSystemset_45_BCU_Lifted16",(15, 0)},
+            //                   {"btnSystemset_43_BCU_Close16", (15, 1)},
+            //                   {"btnSystemset_44_BCU_Open16",  (15, 2)},
+            //                   {"btnSystemset_45_BCU_Lifted17",(16, 0)},
+            //                   {"btnSystemset_43_BCU_Close17", (16, 1)},
+            //                   {"btnSystemset_44_BCU_Open17",  (16, 2)},
+            //                   {"btnSystemset_45_BCU_Lifted18",(17, 0)},
+            //                   {"btnSystemset_43_BCU_Close18", (17, 1)},
+            //                   {"btnSystemset_44_BCU_Open18",  (17, 2)},
+            //                   {"btnSystemset_45_BCU_Lifted19",(18, 0)},
+            //                   {"btnSystemset_43_BCU_Close19", (18, 1)},
+            //                   {"btnSystemset_44_BCU_Open19",  (18, 2)},
+            //                   {"btnSystemset_45_BCU_Lifted20",(19, 0)},
+            //                   {"btnSystemset_43_BCU_Close20", (19, 1)},
+            //                   {"btnSystemset_44_BCU_Open20",  (19, 2)},
+            //                   {"btnSystemset_45_BCU_Lifted21",(20, 0)},
+            //                   {"btnSystemset_43_BCU_Close21", (20, 1)},
+            //                   {"btnSystemset_44_BCU_Open21",  (20, 2)},
+            //               };
+
+            //if (sender is Button btn && buttonMappings.ContainsKey(btn.Name))
+            //{
+            //    var (index, value) = buttonMappings[btn.Name];
+            //    bitResult[index] = value;
+
+            if (sender is Button btn)
+            {
+                int[] bitResult = new int[20];
+                switch (btn.Name)
+                {
+
+                    case "btnSystemset_45_BCU_Lifted1":
+                        bitResult[0] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close1":
+                        bitResult[0] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open1":
+                        bitResult[0] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted2":
+                        bitResult[1] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close2":
+                        bitResult[1] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open2":
+                        bitResult[1] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted3":
+                        bitResult[2] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close3":
+                        bitResult[2] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open3":
+                        bitResult[2] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted4":
+                        bitResult[3] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close4":
+                        bitResult[3] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open4":
+                        bitResult[3] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted5":
+                        bitResult[4] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close5":
+                        bitResult[4] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open5":
+                        bitResult[4] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted6":
+                        bitResult[5] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close36":
+                        bitResult[5] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open6":
+                        bitResult[5] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted7":
+                        bitResult[6] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close7":
+                        bitResult[6] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open7":
+                        bitResult[6] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted8":
+                        bitResult[7] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close8":
+                        bitResult[7] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open8":
+                        bitResult[7] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted9":
+                        bitResult[8] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close9":
+                        bitResult[8] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open9":
+                        bitResult[8] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted10":
+                        bitResult[9] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close10":
+                        bitResult[9] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open10":
+                        bitResult[9] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted11":
+                        bitResult[10] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close11":
+                        bitResult[10] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open11":
+                        bitResult[10] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted12":
+                        bitResult[11] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close12":
+                        bitResult[11] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open12":
+                        bitResult[11] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted13":
+                        bitResult[12] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close13":
+                        bitResult[12] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open13":
+                        bitResult[12] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted14":
+                        bitResult[13] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close14":
+                        bitResult[13] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open14":
+                        bitResult[13] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted15":
+                        bitResult[14] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close15":
+                        bitResult[14] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open15":
+                        bitResult[14] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted16":
+                        bitResult[15] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close16":
+                        bitResult[15] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open16":
+                        bitResult[15] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted17":
+                        bitResult[16] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close17":
+                        bitResult[16] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open17":
+                        bitResult[16] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted18":
+                        bitResult[17] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close18":
+                        bitResult[17] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open18":
+                        bitResult[17] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted19":
+                        bitResult[18] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close19":
+                        bitResult[18] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open19":
+                        bitResult[18] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted20":
+                        bitResult[19] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close20":
+                        bitResult[19] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open20":
+                        bitResult[19] = 2;
+                        break;
+                    case "btnSystemset_45_BCU_Lifted21":
+                        bitResult[20] = 0;
+                        break;
+                    case "btnSystemset_43_BCU_Close21":
+                        bitResult[20] = 1;
+                        break;
+                    case "btnSystemset_44_BCU_Open21":
+                        bitResult[20] = 2;
+                        break;
+                }
+                //short[]转为二级制数组
+                strResult = string.Empty;
+                for (int i = 0; i < bitResult.Length; i++)
+                {
+                    string strTemp = Convert.ToString(bitResult[i], 2);
+                    strTemp = strTemp.Insert(0, new string('0', 2 - strTemp.Length));
+                    strResult = strTemp + strResult;
+                }
+
+
+                //数组转byte[]:0x.... 0xAA CRC8
+                byte[] data2 = new byte[strResult.Length / 8];
+                for (int i = 0; i < data2.Length; i++)
+                {
+                    data2[i] = (byte)Convert.ToInt32(strResult.Substring(i * 8, 8), 2);
+                }
+
+                //byte数组组装
+                int num = 0;
+                byte[] data = new byte[7];
+                data[num++] = data2[2];
+                data[num++] = data2[1];
+                data[num++] = data2[0];
+                data[num++] = 0x00;
+                data[num++] = 0x00;
+                data[num++] = 0x00;
+                data[num++] = 0xAA;
+
+                TestAte_BCU(data);
+
+                Task.Run(new Action(() =>
+                {
+                    setUI(true);
+
+                    Thread.Sleep(500);
+
+                    TestAte_BCU();
+                }));
+            } 
+        }
+
         #endregion
 
         #region UI启用和禁用设置
@@ -853,6 +1409,87 @@ namespace SofarBMS.UI
                 btnSystemset_44_Unique_Open3.Enabled = state;
                 btnSystemset_43_Unique_Close3.Enabled = state;
                 btnSystemset_45_Unique_Lifted3.Enabled = state;
+
+                btnSystemset_44_BCU_Open1.Enabled = state;
+                btnSystemset_43_BCU_Close1.Enabled = state;
+                btnSystemset_45_BCU_Lifted1.Enabled = state;
+
+                btnSystemset_44_BCU_Open2.Enabled = state;
+                btnSystemset_43_BCU_Close2.Enabled = state;
+                btnSystemset_45_BCU_Lifted2.Enabled = state;
+
+                btnSystemset_44_BCU_Open3.Enabled = state;
+                btnSystemset_43_BCU_Close3.Enabled = state;
+                btnSystemset_45_BCU_Lifted3.Enabled = state;
+
+                btnSystemset_44_BCU_Open4.Enabled = state;
+                btnSystemset_43_BCU_Close4.Enabled = state;
+                btnSystemset_45_BCU_Lifted4.Enabled = state;
+
+                btnSystemset_44_BCU_Open5.Enabled = state;
+                btnSystemset_43_BCU_Close5.Enabled = state;
+                btnSystemset_45_BCU_Lifted5.Enabled = state;
+
+                btnSystemset_44_BCU_Open6.Enabled = state;
+                btnSystemset_43_BCU_Close6.Enabled = state;
+                btnSystemset_45_BCU_Lifted6.Enabled = state;
+
+                btnSystemset_44_BCU_Open7.Enabled = state;
+                btnSystemset_43_BCU_Close7.Enabled = state;
+                btnSystemset_45_BCU_Lifted7.Enabled = state;
+
+                btnSystemset_44_BCU_Open8.Enabled = state;
+                btnSystemset_43_BCU_Close8.Enabled = state;
+                btnSystemset_45_BCU_Lifted8.Enabled = state;
+
+                btnSystemset_44_BCU_Open9.Enabled = state;
+                btnSystemset_43_BCU_Close9.Enabled = state;
+                btnSystemset_45_BCU_Lifted9.Enabled = state;
+
+                btnSystemset_44_BCU_Open10.Enabled = state;
+                btnSystemset_43_BCU_Close10.Enabled = state;
+                btnSystemset_45_BCU_Lifted10.Enabled = state;
+
+                btnSystemset_44_BCU_Open11.Enabled = state;
+                btnSystemset_43_BCU_Close11.Enabled = state;
+                btnSystemset_45_BCU_Lifted11.Enabled = state;
+
+                btnSystemset_44_BCU_Open12.Enabled = state;
+                btnSystemset_43_BCU_Close12.Enabled = state;
+                btnSystemset_45_BCU_Lifted12.Enabled = state;
+
+                btnSystemset_44_BCU_Open13.Enabled = state;
+                btnSystemset_43_BCU_Close13.Enabled = state;
+                btnSystemset_45_BCU_Lifted13.Enabled = state;
+
+                btnSystemset_44_BCU_Open14.Enabled = state;
+                btnSystemset_43_BCU_Close15.Enabled = state;
+                btnSystemset_45_BCU_Lifted15.Enabled = state;
+
+                btnSystemset_44_BCU_Open16.Enabled = state;
+                btnSystemset_43_BCU_Close16.Enabled = state;
+                btnSystemset_45_BCU_Lifted16.Enabled = state;
+
+                btnSystemset_44_BCU_Open17.Enabled = state;
+                btnSystemset_43_BCU_Close17.Enabled = state;
+                btnSystemset_45_BCU_Lifted17.Enabled = state;
+
+                btnSystemset_44_BCU_Open18.Enabled = state;
+                btnSystemset_43_BCU_Close18.Enabled = state;
+                btnSystemset_45_BCU_Lifted18.Enabled = state;
+
+                btnSystemset_44_BCU_Open19.Enabled = state;
+                btnSystemset_43_BCU_Close19.Enabled = state;
+                btnSystemset_45_BCU_Lifted19.Enabled = state;
+
+                btnSystemset_44_BCU_Open20.Enabled = state;
+                btnSystemset_43_BCU_Close20.Enabled = state;
+                btnSystemset_45_BCU_Lifted20.Enabled = state;
+
+                btnSystemset_44_BCU_Open21.Enabled = state;
+                btnSystemset_43_BCU_Close21.Enabled = state;
+                btnSystemset_45_BCU_Lifted21.Enabled = state;
+                
             }));
         }
 
@@ -1725,6 +2362,48 @@ namespace SofarBMS.UI
             }
         }
 
+        private void btnSet0F0_Click(object sender, EventArgs e)
+        {
+            byte[] can_id = new byte[4] { 0xE0, FrmMain.BCU_ID, 0xF0, 0x10 };
+
+            byte[] data = new byte[8];
+            foreach (Control item in this.gbControl0F0.Controls)
+            {
+                if (item is ComboBox)
+                {
+                    ComboBox cbb = item as ComboBox;
+                    int index = 0;
+                    int.TryParse(cbb.Name.Replace("cbbRequestF0_", ""), out index);
+                    int value = 0;
+                    switch (cbb.SelectedIndex)
+                    {
+                        case 0: value = 0x00; break;
+                        case 1: value = 0xAA; break;
+                        case 2: value = 0x55; break;
+                        default:
+                            break;
+                    }
+                    data[index] = (byte)(value & 0xff);
+                }
+            }
+            data[6] = Convert.ToByte(txtSlaveAddr_BCU.Text.Trim());
+            byte crc8 = (byte)(0x10 + 0xF0 + data[6] + 0xE0);
+            for (int i = 0; i < data.Length - 1; i++)
+            {
+                crc8 += data[i];
+            }
+
+            data[7] = crc8;
+            if (EcanHelper.Send(data, can_id))
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
+            }
+            else
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteFail"));
+            }
+        }
+
         private void btnSetStateParam_Click(object sender, EventArgs e)
         {
             //List<byte> bytes = new List<byte>();
@@ -1793,5 +2472,7 @@ namespace SofarBMS.UI
         {
             TestMode(0xAA);
         }
+
+       
     }
 }

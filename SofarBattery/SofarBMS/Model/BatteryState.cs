@@ -40,4 +40,14 @@ namespace SofarBMS.Model
         升级 = 3,
         关机 = 4
     }
+
+    public enum WakeSource
+    {
+        Unknown = 0,
+        按键唤醒 = 1,
+        充电唤醒 = 2,
+        can唤醒 = 3,
+        电池包IN唤醒 = 4,
+        充电激活换唤醒 = 5,
+    }
 }

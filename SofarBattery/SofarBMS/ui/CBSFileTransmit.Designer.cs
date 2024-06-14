@@ -110,6 +110,7 @@
             this.cbbModeName.Name = "cbbModeName";
             this.cbbModeName.Size = new System.Drawing.Size(121, 20);
             this.cbbModeName.TabIndex = 5;
+            this.cbbModeName.SelectedIndexChanged += new System.EventHandler(this.cbbModeName_SelectedIndexChanged);
             // 
             // btnFileTransmit
             // 
