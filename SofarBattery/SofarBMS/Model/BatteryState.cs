@@ -43,7 +43,7 @@ namespace SofarBMS.Model
 
     public enum WakeSource
     {
-        Unknown = 0,
+        无唤醒源 = 0,
         按键唤醒 = 1,
         充电唤醒 = 2,
         can唤醒 = 3,

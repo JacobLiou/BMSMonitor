@@ -411,22 +411,22 @@ namespace SofarBMS.UI
                     //0x0C1:模拟量与测试结果1(一般用于ate测试)
                     case 0x10C1E0FF:
                         initCount++;
-                        strs = new string[4] { "0.1", "0.1", "1", "0.1" };
+                        strs = new string[4] { "1", "1", "1", "1" };
                         for (int i = 0; i < strs.Length; i++)
                         {
                             strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
                         }
 
-                        controls = new string[4] { "txtMax_Ring_Charge_Zero_Volt", "txtIn_Ring_Charge_Zero_Volt", "txtAx_Ring_Discharge_Zero_Volt", "txtIn_Ring_Discharge_Zero_Volt" };
+                        controls = new string[4] { "txtMax_Ring_Charge_Zero_Volt", "txtMin_Ring_Charge_Zero_Volt", "txtMax_Ring_Discharge_Zero_Volt", "txtMin_Ring_Discharge_Zero_Volt" };
                         for (int i = 0; i < strs.Length; i++)
                         {
                             (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
                         }
 
                         model.Max_Ring_Charge_Zero_Volt = Convert.ToDouble(strs[0]);
-                        model.In_Ring_Charge_Zero_Volt = Convert.ToDouble(strs[1]);
-                        model.Ax_Ring_Discharge_Zero_Volt = Convert.ToDouble(strs[2]);
-                        model.In_Ring_Discharge_Zero_Volt = Convert.ToDouble(strs[3]);
+                        model.Min_Ring_Charge_Zero_Volt = Convert.ToDouble(strs[1]);
+                        model.Max_Ring_Discharge_Zero_Volt = Convert.ToDouble(strs[2]);
+                        model.Min_Ring_Discharge_Zero_Volt = Convert.ToDouble(strs[3]);
                         break;
 
                     //0x0C2:模拟量与测试结果2(一般用于ate测试)
@@ -471,7 +471,7 @@ namespace SofarBMS.UI
                     case 0x10C3E0FF:
                         initCount++;                 
                         richTextBox4.Clear(); richTextBox5.Clear(); richTextBox6.Clear();
-                        analysisLog(data, 1);
+                        analysisLog(data, 2);
                         break;
                     case 0x10C4E0FF:
                     case 0x10C5E0FF:
@@ -480,7 +480,7 @@ namespace SofarBMS.UI
                         break;
                     case 0x10C6E0FF:
                         richTextBox1.Clear(); richTextBox2.Clear(); richTextBox3.Clear();
-                        analysisLog(data, 0);
+                        analysisLog(data, 1);
                         break;
 
                     //序列号
@@ -489,6 +489,26 @@ namespace SofarBMS.UI
 
                         if (!string.IsNullOrEmpty(strSn))
                             txtSN.Text = strSn;
+                        break;
+                    case 0x10F9E0FF:
+                        initCount++;
+                        //BCU软件版本
+                        string[] bcu_soft = new string[3];
+                        for (int i = 0; i < 3; i++)
+                        {
+                            bcu_soft[i] = data[i + 2].ToString().PadLeft(2, '0');
+                        }
+                        txtSoftware_Version_BCU.Text = Encoding.ASCII.GetString(new byte[] { data[1] }) + string.Join("", bcu_soft);
+                        //BCU硬件版本
+                        string[] bsm_HW = new string[2];
+                        for (int i = 0; i < 2; i++)
+                        {
+                            bsm_HW[i] = data[i + 5].ToString().PadLeft(2, '0');
+                        }
+                        txtHardware_Version_BCU.Text = string.Join("", bsm_HW);
+
+                        model.BCUSaftwareVersion = txtSoftware_Version_BCU.Text;
+                        model.BCUHardwareVersion = txtHardware_Version_BCU.Text;                      
                         break;
 
                 }
@@ -717,7 +737,7 @@ namespace SofarBMS.UI
                     if (GetBit(data[i], j) == 1)
                     {
                         getLog(out msg, i, j, faultNum);
-                        if (faultNum == 1)
+                        if (faultNum == 2)
                         {
                             switch (msg[1])
                             {
@@ -786,38 +806,24 @@ namespace SofarBMS.UI
 
             return (b & _byte) == _byte ? 1 : 0;
         }
-
-        //public static string[] getLog(out string[] msg, int row, int column)
-        //{
-        //    msg = new string[2];
-        //    List<FaultInfo> faultInfos = FrmMain.FaultInfos3;
-        //    if (faultNum != 0)
-        //    {
-        //        faultInfos = FrmMain.FaultInfos3;
-        //    }
-
-        //    for (int i = 0; i < faultInfos.Count; i++)
-        //    {
-        //        if (faultInfos[i].Byte == row && faultInfos[i].Bit == column)
-        //        {
-        //            int index = LanguageHelper.LanaguageIndex;
-        //            msg[0] = faultInfos[i].Content.Split(',')[index - 1];
-        //            msg[1] = faultInfos[i].Type.ToString();
-        //            break;
-        //        }
-        //    }
-        //    return msg;
-        //}
-
+     
         public static string[] getLog(out string[] msg, int row, int column, int faultNum = 0)
         {
             msg = new string[2];
-            List<FaultInfo> faultInfos = FrmMain.FaultInfos2;
-            if (faultNum != 0)
+            List<FaultInfo> faultInfos = FrmMain.FaultInfos;
+            switch(faultNum)
             {
-                faultInfos = FrmMain.FaultInfos3;
+                case 0: 
+                faultInfos = FrmMain.FaultInfos;// 0x08:BMS发送内部电池故障信息1
+                    break;
+                case 1:
+                faultInfos = FrmMain.FaultInfos2;//0x45:BMS发送内部电池故障信息2
+                    break;
+                case 2:
+                faultInfos = FrmMain.FaultInfos3;//0x0C3:BCU故障上报1
+                    break;
             }
-
+          
             for (int i = 0; i < faultInfos.Count; i++)
             {
                 if (faultInfos[i].Byte == row && faultInfos[i].Bit == column)

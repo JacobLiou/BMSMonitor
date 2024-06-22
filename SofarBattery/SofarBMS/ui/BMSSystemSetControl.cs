@@ -1,4 +1,5 @@
 ﻿using NPOI.SS.Formula.Functions;
+using NPOI.XSSF.Streaming.Values;
 using SofarBMS.Helper;
 using SofarBMS.Model;
 using System;
@@ -29,10 +30,12 @@ namespace SofarBMS.UI
 
         string[] bmsCode = new string[3];
 
+        string[] bcuCode = new string[3];
+
         string[] pcuCode = new string[3];
 
         short[] bitResult { get; set; }
-
+        short[] bitResult1 { get; set; }      
         string strResult { get; set; }
 
         byte[] canid = new byte[] { 0xE0, FrmMain.BMS_ID, 0x00, 0x10 };
@@ -98,12 +101,11 @@ namespace SofarBMS.UI
                             byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
                             EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
 
-                            byte[] bytes2 = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                        
                             EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2C, 0x10 });
 
-                            //BCU
-                            byte[] byte3 = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-                            EcanHelper.Send(byte3, new byte[] { 0xE0, FrmMain.BCU_ID, 0xF9, 0x10 });
+                            //BCU                          
+                            EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BCU_ID, 0xF9, 0x10 });
 
                             flag = false;
                             await Task.Delay(1000);
@@ -199,36 +201,7 @@ namespace SofarBMS.UI
                             cbb.SelectedIndex = value;
                         }
                     }
-                    break;
-                case 0x10F0E081:
-                   
-                    foreach (Control item in this.gbControl0F0.Controls)
-                    {
-                        if (item is ComboBox)
-                        {
-                            ComboBox cbb = item as ComboBox;
-                            int index = 0;
-                            int.TryParse(cbb.Name.Replace("cbbRequestF0_", ""), out index);
-
-                            int value = -1;
-                            switch (data[index])
-                            {
-                                case 0x00:
-                                    value = 0;
-                                    break;
-                                case 0xAA:
-                                    value = 1;
-                                    break;
-                                case 0x55:
-                                    value = 2;
-                                    break;
-                                default:
-                                    break;
-                            }
-                            cbb.SelectedIndex = value;
-                        }
-                    }
-                    break;
+                    break;              
                 case 0x0B70E0FF:
                     pcuCode[0] = Encoding.Default.GetString(data).Substring(1);
                     break;
@@ -458,18 +431,152 @@ namespace SofarBMS.UI
                         btn.Enabled = false;
                     }
                     break;
+              
+
+                //BCU Flash数据
+                case 0xEF:
+                    if (data[0]==0x00)
+                    {
+                        txtFlashData.Text = Encoding.Default.GetString(data).Substring(1);
+                    }
+                    else
+                    {
+                        txtFlashData.Text = "";
+                    }
+                    break;
+
+                //BCU时间
+                case 0xF2:
+                    StringBuilder date1 = new StringBuilder();
+                    date1.Append(numbers_bit[0] + 2000);
+                    date1.Append("-");
+                    date1.Append(numbers_bit[1]);
+                    date1.Append("-");
+                    date1.Append(numbers_bit[2]);
+                    date1.Append(" ");
+                    date1.Append(numbers_bit[3]);
+                    date1.Append(":");
+                    date1.Append(numbers_bit[4]);
+                    date1.Append(":");
+                    date1.Append(numbers_bit[5]);
+                    dateTimePicker2.Text = date1.ToString();
+                    break;
+
+                // BCU PACK_SN
+                case 0xF3:
+                    switch (data[0])
+                    {
+                        case 0:
+                            bcuCode[0] = Encoding.Default.GetString(data).Substring(1);
+                            break;
+                        case 1:
+                            bcuCode[1] = Encoding.Default.GetString(data).Substring(1);
+                            break;
+                        case 2:
+                            bcuCode[2] = Encoding.Default.GetString(data).Substring(1);
+                            txtbcuCode.Text = String.Join("", bcuCode).Trim();
+                            bcuCode = new string[3];
+                            break;
+                        default:
+                            File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/data.log", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss.fff") + data[0].ToString() + Environment.NewLine);
+                            break;
+                    }
+                    break;
+
+                //BCU Board_SN
+                case 0xF4:
+                    switch (data[0])
+                    {
+                        case 0:
+                            boardCode[0] = Encoding.Default.GetString(data).Substring(1);
+                            break;
+                        case 1:
+                            boardCode[1] = Encoding.Default.GetString(data).Substring(1);
+                            break;
+                        case 2:
+                            boardCode[2] = Encoding.Default.GetString(data).Substring(1);
+                            txtBCUBoardSN.Text = String.Join("", boardCode).Trim();
+                            boardCode = new string[3];
+                            break;
+                        default:
+                            File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/data.log", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss.fff") + data[0].ToString() + Environment.NewLine);
+                            break;
+                    }
+                    break;
+                //case 0xF5:
+                //    switch (data[0])
+                //    {
+                //        case 0x01:                                                                                          
+                //            txtBCU_Calibration01.Text = Convert.ToUInt16(BytesToIntger(data[1], data[2],0.01)).ToString();                                               
+                //            break;
+                //        case 0x02:
+                //            txtBCU_Calibration02.Text = Convert.ToUInt16(BytesToIntger(data[1], data[2], 0.01)).ToString();
+                //            break;
+                //        case 0x03:
+                //            txtBCU_Calibration03.Text = Convert.ToUInt16(BytesToIntger(data[1], data[2], 0.01)).ToString();
+                //            break;
+                //        case 0x04:
+                //            txtBCU_Calibration04.Text = Convert.ToUInt16(BytesToIntger(data[1], data[2], 0.01)).ToString();
+                //            break;
+                //        case 0x05:
+                //            txtBCU_Calibration05.Text = Convert.ToUInt16(BytesToIntger(data[1], data[2], 0.01)).ToString();
+                //            break;
+                //        case 0x06:
+                //            txtBCU_Calibration06.Text = Convert.ToUInt16(BytesToIntger(data[1], data[2], 0.01)).ToString();
+                //            break;
+                //        case 0x07:
+                //            txtBCU_Calibration07.Text = Convert.ToUInt16(BytesToIntger(data[1], data[2], 0.01)).ToString();
+                //            break;
+                //        case 0x08:
+                //            txtBCU_Calibration08.Text = Convert.ToUInt16(BytesToIntger(data[1], data[2], 0.01)).ToString();
+                //            break;
+                //    }
+                //    break;
+                case 0xF6:
+                    Dictionary<short, Button[]> buttons_bcu1 = new Dictionary<short, Button[]>();
+                    buttons_bcu1.Add(0, new Button[] { btnSystemset_45_BCU1_Lifted1, btnSystemset_43_BCU1_Close1, btnSystemset_44_BCU1_Open1 });
+                    buttons_bcu1.Add(1, new Button[] { btnSystemset_45_BCU1_Lifted2, btnSystemset_43_BCU1_Close2, btnSystemset_44_BCU1_Open2 });
+                    buttons_bcu1.Add(2, new Button[] { btnSystemset_45_BCU1_Lifted3, btnSystemset_43_BCU1_Close3, btnSystemset_44_BCU1_Open3 });
+                    buttons_bcu1.Add(3, new Button[] { btnSystemset_45_BCU1_Lifted4, btnSystemset_43_BCU1_Close4, btnSystemset_44_BCU1_Open4 });
+
+                    //byte[]转为二进制字符串
+                    strResult = string.Empty;
+                    for (int i = 0; i <= 2; i++)
+                    {
+                        string strTemp = Convert.ToString(data[i], 2);
+                        strTemp = strTemp.Insert(0, new string('0', 8 - strTemp.Length));
+                        strResult = strTemp + strResult;
+                    }
+
+                    //二进制字符串转化为short[]
+                    bitResult1 = new short[strResult.Length / 2];
+                    int index4 = bitResult1.Length - 1;
+                    for (int i = 0; i < bitResult1.Length; i++)
+                    {
+                        bitResult1[index4--] = (short)Convert.ToByte(Convert.ToInt32(strResult.Substring(i * 2, 2)) & 0x03);
+                    }
+
+                    //根据short得值来找到对应得button
+                    foreach (var item in buttons_bcu1.Keys)
+                    {
+                        Button btn = buttons_bcu1[item][bitResult1[item]];
+                        string name = btn.Name;
+                        btn.Enabled = false;                       
+                    }
+                    break;
+
                 case 0xFA:
                     Dictionary<short, Button[]> buttons_bcu = new Dictionary<short, Button[]>();
-                    buttons_bcu.Add(0, new Button[] { btnSystemset_45_BCU_Lifted1, btnSystemset_43_BCU_Close1, btnSystemset_44_BCU_Open1 });
-                    buttons_bcu.Add(1, new Button[] { btnSystemset_45_BCU_Lifted2, btnSystemset_43_BCU_Close2, btnSystemset_44_BCU_Open2 });
-                    buttons_bcu.Add(2, new Button[] { btnSystemset_45_BCU_Lifted3, btnSystemset_43_BCU_Close3, btnSystemset_44_BCU_Open3 });
-                    buttons_bcu.Add(3, new Button[] { btnSystemset_45_BCU_Lifted4, btnSystemset_43_BCU_Close4, btnSystemset_44_BCU_Open4 });
-                    buttons_bcu.Add(4, new Button[] { btnSystemset_45_BCU_Lifted5, btnSystemset_43_BCU_Close5, btnSystemset_44_BCU_Open5 });
-                    buttons_bcu.Add(5, new Button[] { btnSystemset_45_BCU_Lifted6, btnSystemset_43_BCU_Close6, btnSystemset_44_BCU_Open6 });
-                    buttons_bcu.Add(6, new Button[] { btnSystemset_45_BCU_Lifted7, btnSystemset_43_BCU_Close7, btnSystemset_44_BCU_Open7 });
-                    buttons_bcu.Add(7, new Button[] { btnSystemset_45_BCU_Lifted8, btnSystemset_43_BCU_Close8, btnSystemset_44_BCU_Open8 });
-                    buttons_bcu.Add(8, new Button[] { btnSystemset_45_BCU_Lifted9, btnSystemset_43_BCU_Close9, btnSystemset_44_BCU_Open9 });
-                    buttons_bcu.Add(9, new Button[] { btnSystemset_45_BCU_Lifted10, btnSystemset_43_BCU_Close10, btnSystemset_44_BCU_Open10 });
+                    buttons_bcu.Add(0,  new Button[] { btnSystemset_45_BCU_Lifted1,  btnSystemset_43_BCU_Close1,  btnSystemset_44_BCU_Open1 });
+                    buttons_bcu.Add(1,  new Button[] { btnSystemset_45_BCU_Lifted2,  btnSystemset_43_BCU_Close2,  btnSystemset_44_BCU_Open2 });
+                    buttons_bcu.Add(2,  new Button[] { btnSystemset_45_BCU_Lifted3,  btnSystemset_43_BCU_Close3,  btnSystemset_44_BCU_Open3 });
+                    buttons_bcu.Add(3,  new Button[] { btnSystemset_45_BCU_Lifted4,  btnSystemset_43_BCU_Close4,  btnSystemset_44_BCU_Open4 });
+                    buttons_bcu.Add(4,  new Button[] { btnSystemset_45_BCU_Lifted5,  btnSystemset_43_BCU_Close5,  btnSystemset_44_BCU_Open5 });
+                    buttons_bcu.Add(5,  new Button[] { btnSystemset_45_BCU_Lifted6,  btnSystemset_43_BCU_Close6,  btnSystemset_44_BCU_Open6 });
+                    buttons_bcu.Add(6,  new Button[] { btnSystemset_45_BCU_Lifted7,  btnSystemset_43_BCU_Close7,  btnSystemset_44_BCU_Open7 });
+                    buttons_bcu.Add(7,  new Button[] { btnSystemset_45_BCU_Lifted8,  btnSystemset_43_BCU_Close8,  btnSystemset_44_BCU_Open8 });
+                    buttons_bcu.Add(8,  new Button[] { btnSystemset_45_BCU_Lifted9,  btnSystemset_43_BCU_Close9,  btnSystemset_44_BCU_Open9 });
+                    buttons_bcu.Add(9,  new Button[] { btnSystemset_45_BCU_Lifted10, btnSystemset_43_BCU_Close10, btnSystemset_44_BCU_Open10 });
                     buttons_bcu.Add(10, new Button[] { btnSystemset_45_BCU_Lifted11, btnSystemset_43_BCU_Close11, btnSystemset_44_BCU_Open11 });
                     buttons_bcu.Add(11, new Button[] { btnSystemset_45_BCU_Lifted12, btnSystemset_43_BCU_Close12, btnSystemset_44_BCU_Open12 });
                     buttons_bcu.Add(12, new Button[] { btnSystemset_45_BCU_Lifted13, btnSystemset_43_BCU_Close13, btnSystemset_44_BCU_Open13 });
@@ -481,29 +588,34 @@ namespace SofarBMS.UI
                     buttons_bcu.Add(18, new Button[] { btnSystemset_45_BCU_Lifted19, btnSystemset_43_BCU_Close19, btnSystemset_44_BCU_Open19 });
                     buttons_bcu.Add(19, new Button[] { btnSystemset_45_BCU_Lifted20, btnSystemset_43_BCU_Close20, btnSystemset_44_BCU_Open20 });
                     buttons_bcu.Add(20, new Button[] { btnSystemset_45_BCU_Lifted21, btnSystemset_43_BCU_Close21, btnSystemset_44_BCU_Open21 });
-
-                    //byte[] 转为二进制字符串
+                  
+                    //byte[]转为二进制字符串
                     strResult = string.Empty;
-                    foreach (byte b in data)
+                    //选取byte0-5数据
+                    for (int i = 0; i <= 5; i++)
                     {
-                        strResult += Convert.ToString(b, 2).PadLeft(8, '0');
+                        string strTemp = Convert.ToString(data[i], 2);
+                        strTemp = strTemp.Insert(0, new string('0', 8 - strTemp.Length));
+                        strResult = strTemp + strResult;
                     }
+
                     //二进制字符串转化为short[]
-                    short[] bitResult1 = new short[strResult.Length / 3];
-                    int index3 = bitResult1.Length - 1;
-                    for (int i = 0; i < bitResult1.Length; i++)
+                    bitResult = new short[strResult.Length / 2];
+                    int index5 = bitResult.Length - 1;
+                    for (int i = 0; i < bitResult.Length; i++)
                     {
-                        bitResult1[index3--] = (short)Convert.ToByte(Convert.ToInt32(strResult.Substring(i * 2, 2)) & 0x03);
+                        bitResult[index5--] = (short)Convert.ToByte(Convert.ToInt32(strResult.Substring(i * 2, 2)) & 0x03);
                     }
 
                     //根据short得值来找到对应得button
                     foreach (var item in buttons_bcu.Keys)
                     {
-                        Button btn = buttons_bcu[item][bitResult1[item]];
+                        Button btn = buttons_bcu[item][bitResult[item]];
                         string name = btn.Name;
-                        btn.Enabled = false;
+                        btn.Enabled = false;                      
                     }
                     break;
+                   
             }
         }
 
@@ -528,30 +640,19 @@ namespace SofarBMS.UI
             {
                 MessageBox.Show(FrmMain.GetString("keyReadFail"));
             }
+
+            //byte[] bytes1 = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+            //if (EcanHelper.Send(bytes1, new byte[] { 0xE0, FrmMain.BCU_ID, 0xF9, 0x10 }))
+            //{
+            //    MessageBox.Show(FrmMain.GetString("keyReadSuccess"));
+            //}
+            //else
+            //{
+            //    MessageBox.Show(FrmMain.GetString("keyReadFail"));
+            //}
+
         }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            List<uint> DataLists = new List<uint>() { 0xAA11, 0xAA22, 0xAA33, 0xAA44, 0xAA55, 0xAA66, 0xAA77, 0xAA88 };//
-
-            for (int i = 0; i < DataLists.Count; i++)
-            {
-                DataSelected(DataLists[i]);
-
-                Thread.Sleep(100);
-            }
-
-            byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-            if (EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BCU_ID, 0xF9, 0x10 }))
-            {
-                MessageBox.Show(FrmMain.GetString("keyReadSuccess"));
-            }
-            else
-            {
-                MessageBox.Show(FrmMain.GetString("keyReadFail"));
-            }
-        }
-
+     
         private void DataSelected(uint type)
         {
             byte[] id = new byte[4] { 0xE0, FrmMain.PCU_ID, 0x77, 0x0B };
@@ -591,7 +692,7 @@ namespace SofarBMS.UI
                             c.Enabled = false;
                         }
                     }
-
+                    btnSystemset_47.Enabled = true;
                     btnSystemset_47.Text = LanguageHelper.GetLanguage("BmsDebug_Start");
                 }
             }
@@ -628,10 +729,12 @@ namespace SofarBMS.UI
 
         private void btnDebugStart_BCU_Click(object sender, System.EventArgs e)
         {
+            
             if (btnSystemset_debug.Text == "结束调试" || btnSystemset_debug.Text == "End debugging")
             {
                 DialogResult result = MessageBox.Show(LanguageHelper.GetLanguage("BmsDebug_Exit"), LanguageHelper.GetLanguage("BmsDebug_Tip"), MessageBoxButtons.OKCancel);
 
+               
                 if (result == DialogResult.OK)
                 {
                     byte[] can_id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xFA, 0x10 };
@@ -651,14 +754,14 @@ namespace SofarBMS.UI
                             c.Enabled = false;
                         }
                     }
-
+                    btnSystemset_debug.Enabled = true;
                     btnSystemset_debug.Text = LanguageHelper.GetLanguage("BmsDebug_Start");
                 }
             }
             else
             {
                 DialogResult result = MessageBox.Show(LanguageHelper.GetLanguage("BmsDebug_Enter"), LanguageHelper.GetLanguage("BmsDebug_Tip"), MessageBoxButtons.OKCancel);
-
+               
                 if (result == DialogResult.OK)
                 {
                     ReadCurrentState_BCU();
@@ -682,6 +785,66 @@ namespace SofarBMS.UI
                     }
 
                     btnSystemset_debug.Text = LanguageHelper.GetLanguage("BmsDebug_End");
+                }
+            }
+        }
+        private void btnDebugStart_BCU1_Click(object sender, System.EventArgs e)
+        {
+            if (btnSystemset_debug1.Text == "结束调试" || btnSystemset_debug1.Text == "End debugging")
+            {
+                DialogResult result = MessageBox.Show(LanguageHelper.GetLanguage("BmsDebug_Exit"), LanguageHelper.GetLanguage("BmsDebug_Tip"), MessageBoxButtons.OKCancel);
+
+               
+                if (result == DialogResult.OK)
+                {
+                    byte[] can_id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xF6, 0x10 };
+
+                    int num = 0x10 + 0x20 + FrmMain.BCU_ID + 0xF6 + 0x00 + 0x00 + 0x55 + 0x00 + 0x00 + 0x00 + 0x00;
+
+                    byte crc8 = (byte)(num & 0xff);
+
+                    byte[] data = new byte[8] { 0x00, 0x00, 0x55, 0x00, 0x00, 0x00, 0x00, crc8 };
+
+                    EcanHelper.Send(data, can_id);
+
+                    foreach (Control c in gbControl0F6.Controls)
+                    {
+                        if (c is Button)
+                        {
+                            c.Enabled = false;
+                        }
+                    }
+                    btnSystemset_debug1.Enabled = true;
+                    btnSystemset_debug1.Text = LanguageHelper.GetLanguage("BmsDebug_Start");
+                }
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show(LanguageHelper.GetLanguage("BmsDebug_Enter"), LanguageHelper.GetLanguage("BmsDebug_Tip"), MessageBoxButtons.OKCancel);
+               
+                if (result == DialogResult.OK)
+                {
+                    ReadCurrentState_BCU1();
+
+                    byte[] can_id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xF6, 0x10 };
+
+                    int num = 0x10 + 0x20 + FrmMain.BCU_ID + 0xF6 + 0x00 + 0x00 + 0xAA + 0x00 + 0x00 + 0x00 + 0x00;
+
+                    byte crc8 = (byte)(num & 0xff);
+
+                    byte[] data = new byte[8] { 0x00, 0x00, 0xAA, 0x00, 0x00, 0x00, 0x00, crc8 };
+
+                    EcanHelper.Send(data, can_id);
+
+                    foreach (Control c in gbControl0F6.Controls)
+                    {
+                        if (c is Button)
+                        {
+                            c.Enabled = true;
+                        }
+                    }
+                  
+                    btnSystemset_debug1.Text = LanguageHelper.GetLanguage("BmsDebug_End");
                 }
             }
         }
@@ -719,11 +882,23 @@ namespace SofarBMS.UI
 
         public static void ReadCurrentState_BCU()
         {
-            byte[] id = new byte[] { 0xE0, FrmMain.BMS_ID, 0xFA, 0x10 };
+            byte[] id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xFA, 0x10 };
 
             byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
-            byte[] crcData = new byte[11] { 0xE0, FrmMain.BMS_ID, 0xFA, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+            byte[] crcData = new byte[11] { 0xE0, FrmMain.BCU_ID, 0xFA, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+            data[7] = (byte)(Crc8_8210_nBytesCalculate(crcData, 11, 0) & 0xff);
+
+            EcanHelper.Send(data, id);
+        }
+        public static void ReadCurrentState_BCU1()
+        {
+            byte[] id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xF6, 0x10 };
+
+            byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+            byte[] crcData = new byte[11] { 0xE0, FrmMain.BCU_ID, 0xF6, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
             data[7] = (byte)(Crc8_8210_nBytesCalculate(crcData, 11, 0) & 0xff);
 
@@ -771,11 +946,39 @@ namespace SofarBMS.UI
             EcanHelper.Send(data, id);
         }
 
+        public static void TestAte_BCU1()
+        {
+            byte[] id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xF6, 0x10 };
+
+            byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+            byte[] crcData = new byte[11] { 0xE0, FrmMain.BCU_ID, 0xF6, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+            data[7] = (byte)(Crc8_8210_nBytesCalculate(crcData, 11, 0) & 0xff);
+
+            EcanHelper.Send(data, id);
+        }
+
         public static void TestAte_BCU(byte[] data)
         {
             byte[] id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xFA, 0x10 };
 
             byte[] crcData = new byte[11] { 0xE0, FrmMain.BCU_ID, 0xFA, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+            Array.Copy(data, 0, crcData, 4, data.Length);
+
+            byte[] dataNew = new byte[8];
+            Array.Copy(data, 0, dataNew, 0, data.Length);
+            dataNew[7] = (byte)(Crc8_8210_nBytesCalculate(crcData, 11, 0) & 0xff);
+
+            EcanHelper.Send(dataNew, id);
+        }
+
+        public static void TestAte_BCU1(byte[] data)
+        {
+            byte[] id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xF6, 0x10 };
+
+            byte[] crcData = new byte[11] { 0xE0, FrmMain.BCU_ID, 0xF6, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
             Array.Copy(data, 0, crcData, 4, data.Length);
 
@@ -1037,87 +1240,98 @@ namespace SofarBMS.UI
             }
         }
 
-        private void btnDebugCommandBCU_Click(object sender, EventArgs e)
+       
+        private void btnDebugCommandBCU1_Click(object sender, EventArgs e)
         {
-
-            //Dictionary<string, (int index, short value)> buttonMappings = new Dictionary<string, (int index, short value)>()
-            //               {
-            //                   {"btnSystemset_45_BCU_Lifted1", (0,  0)},
-            //                   {"btnSystemset_43_BCU_Close1",  (0,  1)},
-            //                   {"btnSystemset_44_BCU_Open1",   (0,  2)},
-            //                   {"btnSystemset_45_BCU_Lifted2", (1,  0)},
-            //                   {"btnSystemset_43_BCU_Close2",  (1,  1)},
-            //                   {"btnSystemset_44_BCU_Open2",   (1,  2)},
-            //                   {"btnSystemset_45_BCU_Lifted3", (2,  0)},
-            //                   {"btnSystemset_43_BCU_Close3",  (2,  1)},
-            //                   {"btnSystemset_44_BCU_Open3",   (2,  2)},
-            //                   {"btnSystemset_45_BCU_Lifted4", (3,  0)},
-            //                   {"btnSystemset_43_BCU_Close4",  (3,  1)},
-            //                   {"btnSystemset_44_BCU_Open4",   (3,  2)},
-            //                   {"btnSystemset_45_BCU_Lifted5", (4,  0)},
-            //                   {"btnSystemset_43_BCU_Close5",  (4,  1)},
-            //                   {"btnSystemset_44_BCU_Open5",   (4,  2)},
-            //                   {"btnSystemset_45_BCU_Lifted6", (5,  0)},
-            //                   {"btnSystemset_43_BCU_Close6",  (5,  1)},
-            //                   {"btnSystemset_44_BCU_Open6",   (5,  2)},
-            //                   {"btnSystemset_45_BCU_Lifted7", (6,  0)},
-            //                   {"btnSystemset_43_BCU_Close7",  (6,  1)},
-            //                   {"btnSystemset_44_BCU_Open7",   (6,  2)},
-            //                   {"btnSystemset_45_BCU_Lifted8", (7,  0)},
-            //                   {"btnSystemset_43_BCU_Close8",  (7,  1)},
-            //                   {"btnSystemset_44_BCU_Open8",   (7,  2)},
-            //                   {"btnSystemset_45_BCU_Lifted9", (8,  0)},
-            //                   {"btnSystemset_43_BCU_Close9",  (8,  1)},
-            //                   {"btnSystemset_44_BCU_Open9",   (8,  2)},
-            //                   {"btnSystemset_45_BCU_Lifted10",(9,  0)},
-            //                   {"btnSystemset_43_BCU_Close10", (9,  1)},
-            //                   {"btnSystemset_44_BCU_Open10",  (9,  2)},
-            //                   {"btnSystemset_45_BCU_Lifted11",(10, 0)},
-            //                   {"btnSystemset_43_BCU_Close11", (10, 1)},
-            //                   {"btnSystemset_44_BCU_Open11",  (10, 2)},
-            //                   {"btnSystemset_45_BCU_Lifted12",(11, 0)},
-            //                   {"btnSystemset_43_BCU_Close12", (11, 1)},
-            //                   {"btnSystemset_44_BCU_Open12",  (11, 2)},
-            //                   {"btnSystemset_45_BCU_Lifted13",(12, 0)},
-            //                   {"btnSystemset_43_BCU_Close13", (12, 1)},
-            //                   {"btnSystemset_44_BCU_Open13",  (12, 2)},
-            //                   {"btnSystemset_45_BCU_Lifted14",(13, 0)},
-            //                   {"btnSystemset_43_BCU_Close14", (13, 1)},
-            //                   {"btnSystemset_44_BCU_Open14",  (13, 2)},
-            //                   {"btnSystemset_45_BCU_Lifted15",(14, 0)},
-            //                   {"btnSystemset_43_BCU_Close15", (14, 1)},
-            //                   {"btnSystemset_44_BCU_Open15",  (14, 2)},
-            //                   {"btnSystemset_45_BCU_Lifted16",(15, 0)},
-            //                   {"btnSystemset_43_BCU_Close16", (15, 1)},
-            //                   {"btnSystemset_44_BCU_Open16",  (15, 2)},
-            //                   {"btnSystemset_45_BCU_Lifted17",(16, 0)},
-            //                   {"btnSystemset_43_BCU_Close17", (16, 1)},
-            //                   {"btnSystemset_44_BCU_Open17",  (16, 2)},
-            //                   {"btnSystemset_45_BCU_Lifted18",(17, 0)},
-            //                   {"btnSystemset_43_BCU_Close18", (17, 1)},
-            //                   {"btnSystemset_44_BCU_Open18",  (17, 2)},
-            //                   {"btnSystemset_45_BCU_Lifted19",(18, 0)},
-            //                   {"btnSystemset_43_BCU_Close19", (18, 1)},
-            //                   {"btnSystemset_44_BCU_Open19",  (18, 2)},
-            //                   {"btnSystemset_45_BCU_Lifted20",(19, 0)},
-            //                   {"btnSystemset_43_BCU_Close20", (19, 1)},
-            //                   {"btnSystemset_44_BCU_Open20",  (19, 2)},
-            //                   {"btnSystemset_45_BCU_Lifted21",(20, 0)},
-            //                   {"btnSystemset_43_BCU_Close21", (20, 1)},
-            //                   {"btnSystemset_44_BCU_Open21",  (20, 2)},
-            //               };
-
-            //if (sender is Button btn && buttonMappings.ContainsKey(btn.Name))
-            //{
-            //    var (index, value) = buttonMappings[btn.Name];
-            //    bitResult[index] = value;
-
             if (sender is Button btn)
-            {
-                short[] bitResult = new short[21];
+            {              
                 switch (btn.Name)
                 {
 
+                    case "btnSystemset_45_BCU1_Lifted1":
+                        bitResult1[0] = 0;
+                        break;
+                    case "btnSystemset_43_BCU1_Close1":
+                        bitResult1[0] = 1;
+                        break;
+                    case "btnSystemset_44_BCU1_Open1":
+                        bitResult1[0] = 2;
+                        break;
+                    case "btnSystemset_45_BCU1_Lifted2":
+                        bitResult1[1] = 0;
+                        break;
+                    case "btnSystemset_43_BCU1_Close2":
+                        bitResult1[1] = 1;
+                        break;
+                    case "btnSystemset_44_BCU1_Open2":
+                        bitResult1[1] = 2;
+                        break;
+                    case "btnSystemset_45_BCU1_Lifted3":
+                        bitResult1[2] = 0;
+                        break;
+                    case "btnSystemset_43_BCU1_Close3":
+                        bitResult1[2] = 1;
+                        break;
+                    case "btnSystemset_44_BCU1_Open3":
+                        bitResult1[2] = 2;
+                        break;
+                    case "btnSystemset_45_BCU1_Lifted4":
+                        bitResult1[3] = 0;
+                        break;
+                    case "btnSystemset_43_BCU1_Close4":
+                        bitResult1[3] = 1;
+                        break;
+                    case "btnSystemset_44_BCU1_Open4":
+                        bitResult1[3] = 2;
+                        break;                 
+                }
+                //short[]转为二级制数组
+                strResult = string.Empty;
+                for (int i = 0; i < bitResult1.Length; i++)
+                {
+                    string strTemp = Convert.ToString(bitResult1[i], 2);
+                    strTemp = strTemp.Insert(0, new string('0', 2 - strTemp.Length));
+                    strResult = strTemp + strResult;
+                }
+
+
+                //数组转byte[]:0x.... 0xAA CRC8
+                byte[] data2 = new byte[strResult.Length / 8];
+                for (int i = 0; i < data2.Length; i++)
+                {
+                    data2[i] = (byte)Convert.ToInt32(strResult.Substring(i * 8, 8), 2);
+                }
+
+                //byte数组组装
+                int num = 0;
+                byte[] data = new byte[7];
+                data[num++] = data2[2];
+                data[num++] = data2[1];
+                data[num++] = data2[0];
+                data[num++] = 0x00;
+                data[num++] = 0x00;
+                data[num++] = 0x00;
+                data[num++] = 0xAA;
+                //ReadCurrentState_BCU1(data);
+                TestAte_BCU1(data);
+
+                Task.Run(new Action(() =>
+                {
+                    setUI_BCU1(true);
+
+                    Thread.Sleep(500);
+                    //ReadCurrentState_BCU1();
+                    TestAte_BCU1();
+                }));
+            }
+        }
+
+        private void btnDebugCommandBCU_Click(object sender, EventArgs e)
+        {
+            if (sender is Button btn)
+            {              
+                switch (btn.Name)
+                {
                     case "btnSystemset_45_BCU_Lifted1":
                         bitResult[0] = 0;
                         break;
@@ -1166,7 +1380,7 @@ namespace SofarBMS.UI
                     case "btnSystemset_45_BCU_Lifted6":
                         bitResult[5] = 0;
                         break;
-                    case "btnSystemset_43_BCU_Close36":
+                    case "btnSystemset_43_BCU_Close6":
                         bitResult[5] = 1;
                         break;
                     case "btnSystemset_44_BCU_Open6":
@@ -1308,7 +1522,7 @@ namespace SofarBMS.UI
                         bitResult[20] = 2;
                         break;
                 }
-                //short[]转为二级制数组
+                //short[] 转为二级制数组
                 strResult = string.Empty;
                 for (int i = 0; i < bitResult.Length; i++)
                 {
@@ -1316,8 +1530,7 @@ namespace SofarBMS.UI
                     strTemp = strTemp.Insert(0, new string('0', 2 - strTemp.Length));
                     strResult = strTemp + strResult;
                 }
-
-
+                
                 //数组转byte[]:0x.... 0xAA CRC8
                 byte[] data2 = new byte[strResult.Length / 8];
                 for (int i = 0; i < data2.Length; i++)
@@ -1328,25 +1541,27 @@ namespace SofarBMS.UI
                 //byte数组组装
                 int num = 0;
                 byte[] data = new byte[7];
+                data[num++] = data2[5];
+                data[num++] = data2[4];
+                data[num++] = data2[3];
                 data[num++] = data2[2];
                 data[num++] = data2[1];
                 data[num++] = data2[0];
-                data[num++] = 0x00;
-                data[num++] = 0x00;
-                data[num++] = 0x00;
                 data[num++] = 0xAA;
-                //ReadCurrentState_BCU(data);
+               
+                //0xAA：强制控制
                 TestAte_BCU(data);
 
                 Task.Run(new Action(() =>
                 {
-                    setUI(true);
+                    setUI_BCU(true);
 
                     Thread.Sleep(500);
-                    //ReadCurrentState_BCU();
+                    
+                    //0x00：查询控制状态
                     TestAte_BCU();
                 }));
-            } 
+            }
         }
 
         #endregion
@@ -1407,7 +1622,14 @@ namespace SofarBMS.UI
                 btnSystemset_44_Unique_Open3.Enabled = state;
                 btnSystemset_43_Unique_Close3.Enabled = state;
                 btnSystemset_45_Unique_Lifted3.Enabled = state;
+             
+            }));
+        }
 
+        private void setUI_BCU(bool state)
+        {
+            this.Invoke(new Action(() =>
+            {              
                 btnSystemset_44_BCU_Open1.Enabled = state;
                 btnSystemset_43_BCU_Close1.Enabled = state;
                 btnSystemset_45_BCU_Lifted1.Enabled = state;
@@ -1487,10 +1709,32 @@ namespace SofarBMS.UI
                 btnSystemset_44_BCU_Open21.Enabled = state;
                 btnSystemset_43_BCU_Close21.Enabled = state;
                 btnSystemset_45_BCU_Lifted21.Enabled = state;
-                
+            
             }));
         }
 
+        private void setUI_BCU1(bool state)
+        {
+            this.Invoke(new Action(() =>
+            {
+                btnSystemset_44_BCU1_Open1.Enabled = state;
+                btnSystemset_43_BCU1_Close1.Enabled = state;
+                btnSystemset_45_BCU1_Lifted1.Enabled = state;
+
+                btnSystemset_44_BCU1_Open2.Enabled = state;
+                btnSystemset_43_BCU1_Close2.Enabled = state;
+                btnSystemset_45_BCU1_Lifted2.Enabled = state;
+
+                btnSystemset_44_BCU1_Open3.Enabled = state;
+                btnSystemset_43_BCU1_Close3.Enabled = state;
+                btnSystemset_45_BCU1_Lifted3.Enabled = state;
+
+                btnSystemset_44_BCU1_Open4.Enabled = state;
+                btnSystemset_43_BCU1_Close4.Enabled = state;
+                btnSystemset_45_BCU1_Lifted4.Enabled = state;
+
+            }));
+        }
         #endregion
 
         #region 时间校准
@@ -1576,6 +1820,102 @@ namespace SofarBMS.UI
                 }
             }
             if (flag_WriteSuccess)
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
+            }
+            else
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteFail"));
+            }
+        }
+
+        #endregion
+
+        #region BCU序列号
+
+        //写入 BCU PACK_SN
+        private void btnbcuCode_Click(object sender, EventArgs e)
+        {
+            SetBCU_SN(txtbcuCode.Text.Trim());
+        }
+
+        //写入 BCU BOARD_SN
+        private void btnBCUBoardSN_Click(object sender, EventArgs e)
+        {
+            SetBCU_SN(txtBCUBoardSN.Text.Trim(),true);
+        }
+
+        /// <summary>
+        /// 设置BCU SN序列号
+        /// </summary>
+        /// <param name="bmsId"></param>
+        /// <param name="packSn"></param>
+        /// <param name="identity">false=SN号设置，true=单板SN设置</param>
+        public void SetBCU_SN(string packSn, bool identity = false)
+        {
+            bool flag_WriteSuccess = false;
+            if (packSn.Length != 20)
+            {
+                MessageBox.Show("SN序列号长度不等于20！输入的序列号长度为" + packSn.Length.ToString() + "位");
+                return;
+            }
+
+            byte[] can_id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xF3, 0x10 };
+            if (identity)
+            {
+                can_id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xF4, 0x10 };
+            }
+
+            string[] strs = new string[packSn.Length];
+            for (int j = 0; j < packSn.Length; j++)
+            {
+                strs[j] = ((int)packSn[j]).ToString("X2");
+            }
+
+            for (int j = 0; j < strs.Length; j++)
+            {
+                int i = 0;
+                byte[] data = new byte[8];
+
+                data[i++] = Convert.ToByte((j / 7).ToString(), 16);
+                data[i++] = Convert.ToByte(strs[j++], 16);
+                data[i++] = Convert.ToByte(strs[j++], 16);
+                data[i++] = Convert.ToByte(strs[j++], 16);
+                data[i++] = Convert.ToByte(strs[j++], 16);
+                data[i++] = Convert.ToByte(strs[j++], 16);
+                data[i++] = Convert.ToByte(strs[j++], 16);
+                data[i++] = j == strs.Length ? (byte)0x00 : Convert.ToByte(strs[j], 16);
+                if (EcanHelper.Send(data, can_id))
+                {
+                    flag_WriteSuccess = true;
+                }
+            }
+            if (flag_WriteSuccess)
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
+            }
+            else
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteFail"));
+            }
+        }
+        #endregion
+
+        #region BCU时间校准
+        private void btnBCU_Time_Click(object sender, EventArgs e)
+        {
+            canid[2] = 0xF2;
+            string[] date = dateTimePicker2.Text.Split(new char[] { ' ', '-', ':' });
+            bytes = new byte[] {
+                                    Convert.ToByte(Convert.ToInt32(date[0]) - 2000),
+                                    Convert.ToByte(Convert.ToInt32(date[1])),
+                                    Convert.ToByte(Convert.ToInt32(date[2])),
+                                    Convert.ToByte(Convert.ToInt32(date[3])),
+                                    Convert.ToByte(Convert.ToInt32(date[4])),
+                                    Convert.ToByte(Convert.ToInt32(date[5])),
+                                    0x00, 0x00 };
+            //发送指令
+            if (EcanHelper.Send(bytes, canid))
             {
                 MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
             }
@@ -1815,6 +2155,77 @@ namespace SofarBMS.UI
 
         #endregion
 
+        #region BCU校准系数
+        private void btn_CalibrationBCU_Click(object sender, EventArgs e)
+        {
+            int val;
+
+            if (sender is Button btn)
+            {
+                switch (btn.Name)
+                {
+                    case "btnSetCalibration_BCU_01":
+                        val = Convert.ToInt32(Convert.ToDouble(txtBCU_Calibration01.Text.Trim()) / 0.1);
+
+                        CalibrationBCU(0x01, val);
+                        break;
+                    case "btnSetCalibration_BCU_02":
+                        val = Convert.ToInt32(Convert.ToDouble(txtBCU_Calibration02.Text.Trim()) / 0.1);
+
+                        CalibrationBCU(0x02, val);
+                        break;
+                    case "btnSetCalibration_BCU_03":
+                        val = Convert.ToInt32(Convert.ToDouble(txtBCU_Calibration03.Text.Trim()) / 0.01);
+
+                        CalibrationBCU(0x03, val);
+                        break;
+                    case "btnSetCalibration_BCU_04":
+                        val = Convert.ToInt32(Convert.ToDouble(txtBCU_Calibration04.Text.Trim()) / 0.01);
+
+                        CalibrationBCU(0x04, val);
+                        break;
+                    case "btnSetCalibration_BCU_05":
+                        val = Convert.ToInt32(Convert.ToDouble(txtBCU_Calibration05.Text.Trim()) / 0.01);
+
+                        CalibrationBCU(0x05, val);
+                        break;
+                    case "btnSetCalibration_BCU_06":
+                        val = Convert.ToInt32(Convert.ToDouble(txtBCU_Calibration06.Text.Trim()) / 0.01);
+
+                        CalibrationBCU(0x06, val);
+                        break;
+                    case "btnSetCalibration_BCU_07":
+                        val = Convert.ToInt32(Convert.ToDouble(txtBCU_Calibration07.Text.Trim()) / 0.1);
+
+                        CalibrationBCU(0x07, val);
+                        break;
+                    case "btnSetCalibration_BCU_08":
+                        val = Convert.ToInt32(Convert.ToDouble(txtBCU_Calibration08.Text.Trim()) / 0.1);
+
+                        CalibrationBCU(0x08, val);
+                        break;
+                }
+            }
+        }
+
+        private void CalibrationBCU(byte firstData, int CalibrationVal)
+        {
+            byte[] can_id = new byte[] { 0xE0, FrmMain.BCU_ID, 0xF5, 0x10 };
+
+            byte[] data = new byte[8] { firstData, Convert.ToByte(CalibrationVal & 0xff), Convert.ToByte(CalibrationVal >> 8), 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+            if (EcanHelper.Send(data, can_id))
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
+            }
+            else
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteFail"));
+            }
+        }
+
+        #endregion
+
         #region 翻译函数
         private void GetControls(Control c)
         {
@@ -2017,7 +2428,7 @@ namespace SofarBMS.UI
             }
         }
         #endregion
-
+     
         #region PCU控制指令
         private void btnSetComm_Click(object sender, EventArgs e)
         {
@@ -2362,7 +2773,7 @@ namespace SofarBMS.UI
 
         private void btnSet0F0_Click(object sender, EventArgs e)
         {
-            byte[] can_id = new byte[4] { 0xE0, FrmMain.BCU_ID, 0xF0, 0x10 };
+            byte[] can_id = new byte[4] { 0xE0, 0x9F, 0xF0, 0x10 };
 
             byte[] data = new byte[8];
             foreach (Control item in this.gbControl0F0.Controls)
@@ -2385,13 +2796,13 @@ namespace SofarBMS.UI
                 }
             }
             data[6] = Convert.ToByte(txtSlaveAddr_BCU.Text.Trim());
-            byte crc8 = (byte)(0x10 + 0xF0 + data[6] + 0xE0);
+            byte crc8 = (byte)((0xE0 + 0x9F + 0xF0 + 0x10) & 0xFF);
             for (int i = 0; i < data.Length - 1; i++)
             {
                 crc8 += data[i];
             }
-
-            data[7] = crc8;
+        
+            data[7] = (byte)(crc8 & 0xFF);
             if (EcanHelper.Send(data, can_id))
             {
                 MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
@@ -2471,6 +2882,47 @@ namespace SofarBMS.UI
             TestMode(0xAA);
         }
 
-       
+        private void btnFlashData_Click(object sender, EventArgs e)
+        {
+            byte[] can_id = new byte[4] { 0xE0, FrmMain.BCU_ID, 0xEF, 0x10 };
+            byte[] data = new byte[8];     
+            
+            data[0] = 0x01; 
+            byte[] data1 = Encoding.Default.GetBytes(txtFlashData.Text);      
+            int lengthToCopy = Math.Min(data1.Length, data.Length - 1);           
+            Array.Copy(data1, 0, data, 1, lengthToCopy);
+
+            if (EcanHelper.Send(data, can_id))
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
+            }
+            else
+            {
+                MessageBox.Show(FrmMain.GetString("keyWriteFail"));
+            }
+        }
+
+
+        private void btnRead_Click(object sender, EventArgs e)
+        {
+            List<uint> DataLists = new List<uint>() { 0xAA11, 0xAA22, 0xAA33, 0xAA44, 0xAA55, 0xAA66, 0xAA77, 0xAA88 };//
+
+            for (int i = 0; i < DataLists.Count; i++)
+            {
+                DataSelected(DataLists[i]);
+
+                Thread.Sleep(100);
+            }
+
+            byte[] bytes1 = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+            if (EcanHelper.Send(bytes1, new byte[] { 0xE0, FrmMain.BCU_ID, 0xF9, 0x10 }))
+            {
+                MessageBox.Show(FrmMain.GetString("keyReadSuccess"));
+            }
+            else
+            {
+                MessageBox.Show(FrmMain.GetString("keyReadFail"));
+            }
+        }
     }
 }

@@ -174,7 +174,7 @@ namespace SofarBMS.UI
                                 break;
                             case "ckb_6":
                                 canid[2] = 0xE5;
-                                bytes = Uint16ToBytes(txt_21, txt_22,txt_21, txt_22, 0.001, 0.001, 0.001, 0.001);
+                                bytes = Uint16ToBytes(txt_21, txt_22, txt_21, txt_22, 1, 1, 1, 1);
                                 break;
                             case "ckb_7":
                                 canid[2] = 0xF1;
@@ -477,8 +477,8 @@ namespace SofarBMS.UI
                     txt_20.Text = (numbers[3] * 0.01).ToString();
                     break;
                 case 0xE5://低电量
-                    txt_21.Text = (numbers[2] * 0.001).ToString();
-                    txt_22.Text = (numbers[3] * 0.001).ToString();                 
+                    txt_21.Text = (numbers[2] * 1).ToString();
+                    txt_22.Text = (numbers[3] * 1).ToString();                 
                     break;
                 case 0xF1://风扇、满充、Pack
                     txt_23.Text = (numbers[0] * 0.1).ToString();

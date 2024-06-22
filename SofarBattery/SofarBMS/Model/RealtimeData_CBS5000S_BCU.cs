@@ -29,10 +29,10 @@ namespace SofarBMS.Model
         public Double Other_Dev_Staus { get; set; }              //器件的状态
 
         //0x0B7:BCU遥信数据上报2
-        public Double Power_Terminal_Temperature1 { get; set; }//功率端子温度1
-        public Double Power_Terminal_Temperature2 { get; set; }//功率端子温度1
-        public Double Power_Terminal_Temperature3 { get; set; }//功率端子温度1
-        public Double Power_Terminal_Temperature4 { get; set; }//功率端子温度1
+        public Double Power_Terminal_Temperature1 { get; set; }//母线正极温度
+        public Double Power_Terminal_Temperature2 { get; set; }//负载正极温度
+        public Double Power_Terminal_Temperature3 { get; set; }//负载负极温度
+        public Double Power_Terminal_Temperature4 { get; set; }//母线负极温度
 
         //0x0B8:BCU遥信数据上报3
         public Double Insulation_Resistance { get; set; }//高压绝缘阻抗
@@ -50,7 +50,7 @@ namespace SofarBMS.Model
         public UInt16 Bat_Min_Cell_Volt { get; set; } //簇最低单体电压
         public ushort Bat_Min_Cell_Volt_Pack { get; set; }//簇最低单体电压所在pack
         public ushort Bat_Min_Cell_Volt_Num { get; set; }//簇最低单体电压所在pack的第几个位置     
-
+ 
         //0x0BB:BCU遥信数据上报6
         public ushort Bat_Max_Cell_Temp { get; set; }//簇最高单体温度
         public ushort Bat_Max_Cell_Temp_Pack { get; set; }//簇最高单体温度所在pack
@@ -94,9 +94,9 @@ namespace SofarBMS.Model
 
         //0x0C1:模拟量与测试结果1(一般用于ate测试)
         public Double Max_Ring_Charge_Zero_Volt { get; set; }//充电大电流偏压
-        public Double In_Ring_Charge_Zero_Volt { get; set; }//充电小电流偏压
-        public Double Ax_Ring_Discharge_Zero_Volt { get; set; }//放电大电流偏压
-        public Double In_Ring_Discharge_Zero_Volt { get; set; }//放电小电流偏压
+        public Double Min_Ring_Charge_Zero_Volt { get; set; }//充电小电流偏压
+        public Double Max_Ring_Discharge_Zero_Volt { get; set; }//放电大电流偏压
+        public Double Min_Ring_Discharge_Zero_Volt { get; set; }//放电小电流偏压
 
         //0x0C2:模拟量与测试结果2(一般用于ate测试)
         public Double RT1_Tempture { get; set; }//RT1环境温度
@@ -108,114 +108,16 @@ namespace SofarBMS.Model
         public string Reset_Mode { get; set; }//复位方式
         public Double Dry2_In_Status { get; set; }//干接点2输入
         public string Wake_Source { get; set; }//唤醒原因
-
-        //public Double BatteryVolt { get; set; }                     //电池电压
-        //public Double LoadVolt { get; set; }                        //负载电压
-        //public Double BatteryCurrent { get; set; }                  //电池电流
-        //public Double SOC { get; set; }                             //电池剩余容量
-        //public Double SOH { get; set; }                             //电池健康程度
-        //public String RemainingCapacity { get; set; }               //剩余容量
-        //public String FullCapacity { get; set; }                    //满充容量
-        //public String BatteryStatus { get; set; }                   //电池状态
-        //public String BmsStatus { get; set; }                       //+BMS状态
-        //public String SyncFallSoc { get; set; }                     //主动均衡SOC+
-        //public String ActiveBalanceStatus { get; set; }              //主动均衡状态+
-        //public Double ChargeCurrentLimitation { get; set; }         //充电电流上限
-        //public Double DischargeCurrentLimitation { get; set; }      //放电电流上限
-        //public String CumulativeDischargeCapacity { get; set; }     //累计放电量
-        //public String CumulativeChargeCapacity { get; set; }        //累计充电量+
-        //public Double TotalChgCap { get; set; }                     //累计充电容量
-        //public Double TotalDsgCap { get; set; }                     //累计放电容量
-
-        //public UInt16 LOAD_VOLT_N { get; set; }                       //P-对B-电压
-
-        ////电池数据
-        //public UInt16 CycleTIme { get; set; }                       //循环次数
-        //public UInt16 BatMaxCellVolt { get; set; }                  //最高单体电压
-        //public ushort BatMaxCellVoltNum { get; set; }               //最高单体电压编号
-        //public UInt16 BatMinCellVolt { get; set; }                  //最低单体电压
-        //public ushort BatMinCellVoltNum { get; set; }               //最低单体电压编号
-        //public UInt16 BatDiffCellVolt { get; set; }                 //单体电压压差
-        //public UInt32 CellVoltage1 { get; set; }                    //电压1
-        //public UInt32 CellVoltage2 { get; set; }                    //电压2
-        //public UInt32 CellVoltage3 { get; set; }                    //电压3
-        //public UInt32 CellVoltage4 { get; set; }                    //电压4
-        //public UInt32 CellVoltage5 { get; set; }                    //电压5
-        //public UInt32 CellVoltage6 { get; set; }                    //电压6
-        //public UInt32 CellVoltage7 { get; set; }                    //电压7
-        //public UInt32 CellVoltage8 { get; set; }                    //电压8
-        //public UInt32 CellVoltage9 { get; set; }                    //电压9
-        //public UInt32 CellVoltage10 { get; set; }                   //电压10
-        //public UInt32 CellVoltage11 { get; set; }                   //电压11
-        //public UInt32 CellVoltage12 { get; set; }                   //电压12
-        //public UInt32 CellVoltage13 { get; set; }                   //电压13
-        //public UInt32 CellVoltage14 { get; set; }                   //电压14
-        //public UInt32 CellVoltage15 { get; set; }                   //电压15
-        //public UInt32 CellVoltage16 { get; set; }                   //电压16
-        //public Double EnvTemperature { get; set; }                  //环境温度
-        //public Double MosTemperature { get; set; }                  //Mos温度
-        //public String BalanceTemperature1 { get; set; }             //均衡温度1
-        //public String BalanceTemperature2 { get; set; }             //均衡温度2
-        //public String DcdcTemperature1 { get; set; }                //主动均衡温度1+
-        //public String DcdcTemperature2 { get; set; }                //主动均衡温度2+
-        //public Double BatMaxCellTemp { get; set; }                  //最高单体温度
-        //public ushort BatMaxCellTempNum { get; set; }               //最高单体温度编号
-        //public Double BatMinCellTemp { get; set; }                  //最低单体温度
-        //public ushort BatMinCellTempNum { get; set; }               //最低单体温度编号
-        //public Double CellTemperature1 { get; set; }                //温度1
-        //public Double CellTemperature2 { get; set; }                //温度2
-        //public Double CellTemperature3 { get; set; }                //温度3
-        //public Double CellTemperature4 { get; set; }                //温度4
-        //public Double CellTemperature5 { get; set; }                //温度5
-        //public Double CellTemperature6 { get; set; }                //温度6
-        //public Double CellTemperature7 { get; set; }                //温度7
-        //public Double CellTemperature8 { get; set; }                //温度8
-        //public Double PowerTemperture1 { get; set; }                //功率温度1
-        //public Double PowerTemperture2 { get; set; }                //功率温度2
+       
         public String Fault { get; set; }                           //故障状态
         public String Warning { get; set; }                         //告警状态
         public String Protection { get; set; }                      //保护状态
         public String Fault2 { get; set; }                           //故障状态
         public String Warning2 { get; set; }                         //告警状态
         public String Protection2 { get; set; }                      //保护状态
+        public String BCUSaftwareVersion { get; set; }              //BMU软件版本
+        public String BCUHardwareVersion { get; set; }              //BCU硬件版本
 
-        ////public ushort ChargeMosEnable { get; set; }                 //充电MOS
-        ////public ushort DischargeMosEnable { get; set; }              //放电MOS
-        ////public ushort PrechgMosEnable { get; set; }                 //预充MOS
-        ////public ushort StopChgEnable { get; set; }                   //充电急停
-        ////public ushort HeatEnable { get; set; }                      //加热MOS
-        //public String EquaState { get; set; }                       //均衡状态
-        //public String HeatRequest { get; set; }                     //加热请求
-        //public ushort ChargeEnable { get; set; }                    //允许充电
-        //public ushort DischargeEnable { get; set; }                 //允许放电
-        //public ushort BmuCutOffRequest { get; set; }                //切断继电器
-        //public ushort BmuPowOffRequest { get; set; }                //BMU关机
-        //public ushort ForceChrgRequest { get; set; }                //请求强充
-        //public ushort ChagreStatus { get; set; }                    //充满
-        //public ushort DischargeStatus { get; set; }                 //放空
-        //public ushort DiIO { get; set; }                            //编址输入电平
-        //public ushort ChargeIO { get; set; }                        //补电输入电平
-
-        ////新增帧信息
-        //public Double BalanceBusVoltage { get; set; }               //均衡母线电压
-        //public Double BalanceCurrent { get; set; }                  //均衡电流
-        //public Double ActiveBalanceMaxCellVolt { get; set; }        //主动均衡最大单体电压
-        //public Double BatAverageTemp { get; set; }                  //电芯平均温度
-        //public Double ActiveBalanceCellSoc { get; set; }            //主动均衡SOC
-        //public String ActiveBalanceAccCap { get; set; }             //主动均衡累计容量
-        //public String ActiveBalanceRemainCap { get; set; }          //主动均衡剩余容量
-        //public String BMUSaftwareVersion { get; set; }              //BMU软件版本
-        //public String BMUCanVersion { get; set; }                   //BMU-CAN版本
-        //public String BatNominalCapacity { get; set; }              //标定容量
-        //public String RegisterName { get; set; }                    //供应商厂家名称
-        //public String BatType { get; set; }                         //锂电池类型
-        //public String ManufacturerName { get; set; }                //厂家名称
-        //public String ResetMode { get; set; }                       //复位方式
-        //public String AuxVolt { get; set; }                         //辅源电压
-        //public String ChgCurOffsetVolt { get; set; }                //充电电流偏压
-        //public String DsgCurOffsetVolt { get; set; }                //放电电流偏压
-        //public String BMSSoftwareVersion { get; set; }              //BMS软件版本
-        //public String BMSHardwareVersion { get; set; }              //BMS硬件版本
 
         public String GetHeader()
         {
