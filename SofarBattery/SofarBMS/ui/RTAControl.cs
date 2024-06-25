@@ -183,7 +183,8 @@ Can通信故障,Can1CommFault
         {
             if (!(((canID & 0xff) == FrmMain.BMS_ID)
                 || ((canID & 0xff) == FrmMain.PCU_ID)
-                || ((canID & 0xff) == FrmMain.BDU_ID)))
+                || ((canID & 0xff) == FrmMain.BDU_ID)
+                || ((canID & 0xff) == FrmMain.BCU_ID)))
                 return;
 
             if (model == null)
