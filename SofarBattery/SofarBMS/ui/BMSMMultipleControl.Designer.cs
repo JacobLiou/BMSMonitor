@@ -1046,7 +1046,7 @@
             this.gbCellvoltage7.Controls.Add(this.lblPrechgMosEnable_7);
             this.gbCellvoltage7.Controls.Add(this.lblFaultEnable_7);
             this.gbCellvoltage7.Controls.Add(this.lblProtectionEnable_7);
-            this.gbCellvoltage7.Location = new System.Drawing.Point(587, 403);
+            this.gbCellvoltage7.Location = new System.Drawing.Point(587, 397);
             this.gbCellvoltage7.Name = "gbCellvoltage7";
             this.gbCellvoltage7.Size = new System.Drawing.Size(530, 185);
             this.gbCellvoltage7.TabIndex = 89;
@@ -1376,7 +1376,7 @@
             this.gbCellvoltage6.Controls.Add(this.lblPrechgMosEnable_6);
             this.gbCellvoltage6.Controls.Add(this.lblFaultEnable_6);
             this.gbCellvoltage6.Controls.Add(this.lblProtectionEnable_6);
-            this.gbCellvoltage6.Location = new System.Drawing.Point(587, 203);
+            this.gbCellvoltage6.Location = new System.Drawing.Point(3, 603);
             this.gbCellvoltage6.Name = "gbCellvoltage6";
             this.gbCellvoltage6.Size = new System.Drawing.Size(530, 185);
             this.gbCellvoltage6.TabIndex = 88;
@@ -1707,7 +1707,7 @@
             this.gbCellvoltage5.Controls.Add(this.lblPrechgMosEnable_5);
             this.gbCellvoltage5.Controls.Add(this.lblFaultEnable_5);
             this.gbCellvoltage5.Controls.Add(this.lblProtectionEnable_5);
-            this.gbCellvoltage5.Location = new System.Drawing.Point(587, 3);
+            this.gbCellvoltage5.Location = new System.Drawing.Point(3, 397);
             this.gbCellvoltage5.Name = "gbCellvoltage5";
             this.gbCellvoltage5.Size = new System.Drawing.Size(530, 185);
             this.gbCellvoltage5.TabIndex = 87;
@@ -2037,7 +2037,7 @@
             this.gbCellvoltage4.Controls.Add(this.lblPrechgMosEnable_4);
             this.gbCellvoltage4.Controls.Add(this.lblFaultEnable_4);
             this.gbCellvoltage4.Controls.Add(this.lblProtectionEnable_4);
-            this.gbCellvoltage4.Location = new System.Drawing.Point(3, 603);
+            this.gbCellvoltage4.Location = new System.Drawing.Point(587, 194);
             this.gbCellvoltage4.Name = "gbCellvoltage4";
             this.gbCellvoltage4.Size = new System.Drawing.Size(530, 185);
             this.gbCellvoltage4.TabIndex = 86;
@@ -2367,7 +2367,7 @@
             this.gbCellvoltage3.Controls.Add(this.lblPrechgMosEnable_3);
             this.gbCellvoltage3.Controls.Add(this.lblFaultEnable_3);
             this.gbCellvoltage3.Controls.Add(this.lblProtectionEnable_3);
-            this.gbCellvoltage3.Location = new System.Drawing.Point(3, 403);
+            this.gbCellvoltage3.Location = new System.Drawing.Point(3, 194);
             this.gbCellvoltage3.Name = "gbCellvoltage3";
             this.gbCellvoltage3.Size = new System.Drawing.Size(530, 185);
             this.gbCellvoltage3.TabIndex = 85;
@@ -2697,7 +2697,7 @@
             this.gbCellvoltage2.Controls.Add(this.lblPrechgMosEnable_2);
             this.gbCellvoltage2.Controls.Add(this.lblFaultEnable_2);
             this.gbCellvoltage2.Controls.Add(this.lblProtectionEnable_2);
-            this.gbCellvoltage2.Location = new System.Drawing.Point(3, 203);
+            this.gbCellvoltage2.Location = new System.Drawing.Point(587, 3);
             this.gbCellvoltage2.Name = "gbCellvoltage2";
             this.gbCellvoltage2.Size = new System.Drawing.Size(530, 185);
             this.gbCellvoltage2.TabIndex = 84;

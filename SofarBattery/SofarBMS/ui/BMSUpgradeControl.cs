@@ -17,6 +17,7 @@ namespace SofarBMS.UI
 {
     public partial class BMSUpgradeControl : UserControl
     {
+        EcanHelper ecanHelper = EcanHelper.Instance;
         public static CancellationTokenSource cts;
         private static Crc16 _crc = new Crc16(Crc16Model.CcittKermit);
         private CancellationTokenSource _cts = new CancellationTokenSource(); //取消任务信号源对象-固件升级
@@ -85,18 +86,12 @@ namespace SofarBMS.UI
 
             Task.Run(delegate
             {
-                while (!cts.IsCancellationRequested)
+                while (EcanHelper._task.Count > 0
+                && !cts.IsCancellationRequested)
                 {
-                    lock (EcanHelper._locker)
-                    {
-                        while (EcanHelper._task.Count > 0
-                        && !cts.IsCancellationRequested)
-                        {
-                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                    CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
-                            this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
-                        }
-                    }
+                    this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
                 }
             }, cts.Token);
 
@@ -216,7 +211,7 @@ namespace SofarBMS.UI
             try
             {
                 //0.检查CAN连接
-                if (!EcanHelper.IsConnection)
+                if (!ecanHelper.IsConnection)
                 {
                     MessageBox.Show("串口未打开，请先连接设备...");
                     return;
@@ -1021,7 +1016,7 @@ namespace SofarBMS.UI
                 byte[] canid = new byte[] { 0xE0, 0x1F, mark, 0x07 };
 
                 //增加判断，确认是否发送成功；
-                bool result = EcanHelper.Send(data, canid);
+                bool result = ecanHelper.Send(data, canid);
                 if (!result)
                 {
                     sendErrorCount++;

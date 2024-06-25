@@ -16,6 +16,7 @@ namespace SofarBMS.UI
 {
     public partial class CBSUpgradeControl : UserControl
     {
+        EcanHelper ecanHelper = EcanHelper.Instance;
         //定义校验CRC帮助类对象
         private static Crc16 _crc = new Crc16(Crc16Model.CcittKermit);
         //定义固件升级任务信号源对象
@@ -89,20 +90,14 @@ namespace SofarBMS.UI
             cbbChipcode.SelectedIndex = 1;
             Task.Run(() =>
             {
-                while (!cts.IsCancellationRequested)
+                while (EcanHelper._task.Count > 0
+                    && !_token.IsCancellationRequested)
                 {
-                    lock (EcanHelper._locker)
-                    {
-                        while (EcanHelper._task.Count > 0
-                            && !_token.IsCancellationRequested)
-                        {
-                            //出队
-                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                    //出队
+                    CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
-                            //解析
-                            this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
-                        }
-                    }
+                    //解析
+                    this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
                 }
             }, cts.Token);
         }
@@ -165,7 +160,7 @@ namespace SofarBMS.UI
             try
             {
                 //0.检查CAN连接
-                if (!EcanHelper.IsConnection)
+                if (!ecanHelper.IsConnection)
                 {
                     MessageBox.Show("串口未打开，请先连接设备...");
                     return;
@@ -698,7 +693,7 @@ namespace SofarBMS.UI
                 byte[] canid = new byte[] { 0xE0, Convert.ToByte(slaveAddress, 16), mark, 0x07 };
 
                 //增加判断，确认是否发送成功；
-                bool result = EcanHelper.Send(data, canid);
+                bool result = ecanHelper.Send(data, canid);
                 if (!result)
                 {
                     sendErrorCount++;

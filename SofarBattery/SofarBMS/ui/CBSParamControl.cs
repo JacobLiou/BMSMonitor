@@ -20,6 +20,7 @@ namespace SofarBMS.UI
     public partial class CBSParamControl : UserControl
     {
         public static CancellationTokenSource cts = null;
+        EcanHelper ecanHelper = EcanHelper.Instance;
         XmlDocument mDocument;
 
         public bool flag = true;
@@ -116,27 +117,24 @@ namespace SofarBMS.UI
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    if (EcanHelper.IsConnection)
+                    if (ecanHelper.IsConnection)
                     {
                         if (flag)
                         {
                             byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-                            EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
+                            ecanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
 
                             flag = false;
                             await Task.Delay(1000);
                         }
                     }
 
-                    lock (EcanHelper._locker)
+                    while (EcanHelper._task.Count > 0
+                        && !cts.IsCancellationRequested)
                     {
-                        while (EcanHelper._task.Count > 0 
-                            && !cts.IsCancellationRequested)
-                        {
-                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                        CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
-                            this.Invoke(new Action(() => { analysisData(ch.ID, ch.Data); }));
-                        }
+                        this.Invoke(new Action(() => { analysisData(ch.ID, ch.Data); }));
                     }
                 }
             }, cts.Token);
@@ -144,7 +142,7 @@ namespace SofarBMS.UI
 
         private void btnRead_Click(object sender, EventArgs e)
         {
-            if (!EcanHelper.IsConnection)
+            if (!ecanHelper.IsConnection)
             {
                 MessageBox.Show(FrmMain.GetString("keyOpenPrompt"));
                 return;
@@ -152,7 +150,7 @@ namespace SofarBMS.UI
 
             flag = true;
             byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-            if (EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 }))
+            if (ecanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 }))
             {
                 MessageBox.Show(FrmMain.GetString("keyReadSuccess"));
             }
@@ -164,7 +162,7 @@ namespace SofarBMS.UI
 
         private void btnWrite_Click(object sender, EventArgs e)
         {
-            if (!EcanHelper.IsConnection)
+            if (!ecanHelper.IsConnection)
             {
                 MessageBox.Show(FrmMain.GetString("keyOpenPrompt"));
                 return;
@@ -277,7 +275,7 @@ namespace SofarBMS.UI
                         }
 
                         //发送指令
-                        bool result = EcanHelper.Send(bytes, canid);
+                        bool result = ecanHelper.Send(bytes, canid);
 
                         //记录信息
                         sendResult.Add(c.Name, result);
@@ -321,17 +319,17 @@ namespace SofarBMS.UI
 
         private void btnInit_Click(object sender, EventArgs e)
         {
-            if (!EcanHelper.IsConnection)
+            if (!ecanHelper.IsConnection)
             {
                 MessageBox.Show(FrmMain.GetString("keyOpenPrompt"));
                 return;
             }
 
             byte[] bytes = new byte[8] { 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-            EcanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
+            ecanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
 
             Thread.Sleep(1000);
-            EcanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
+            ecanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
         }
 
         #region 翻译所用得函数
@@ -533,7 +531,7 @@ namespace SofarBMS.UI
         public void analysisData(uint canID, byte[] data)
         {
             byte[] canid = BitConverter.GetBytes(canID);
-            if (canid[0] != FrmMain.BMS_ID || !(canid[0] == FrmMain.BMS_ID && (canid[1] == 0xE0|| canid[1] == 0xFF) && canid[3] == 0x10)) return;
+            if (canid[0] != FrmMain.BMS_ID || !(canid[0] == FrmMain.BMS_ID && (canid[1] == 0xE0 || canid[1] == 0xFF) && canid[3] == 0x10)) return;
 
             int[] numbers = BytesToUint16(data);
             int[] numbers_bit = BytesToBit(data);

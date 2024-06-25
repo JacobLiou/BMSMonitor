@@ -24,6 +24,7 @@ namespace SofarBMS.UI
 
         int initCount = 0;
         RealtimeData_GTX5000S model = null;
+        EcanHelper ecanHelper = EcanHelper.Instance;
 
         public static CancellationTokenSource cts = null;
 
@@ -34,36 +35,37 @@ namespace SofarBMS.UI
                 GetControls(item);
             }
 
+            //return;
             Task.Run(async delegate
              {
-                 while (!cts.IsCancellationRequested)
+                 try
                  {
-                     if (EcanHelper.IsConnection)
+                     while (!cts.IsCancellationRequested)
                      {
-                         if (model != null && initCount >= 13)
+                         if (ecanHelper.IsConnection)
                          {
-                             var filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//GTX5000S_{DateTime.Now.ToString("yyyy-MM-dd")}.csv";
-
-                             //用于确定指定文件是否存在
-                             if (!File.Exists(filePath))
+                             if (model != null && initCount >= 13)
                              {
-                                 File.AppendAllText(filePath, model.GetHeader() + "\r\n");
+                                 var filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//GTX5000S_{DateTime.Now.ToString("yyyy-MM-dd")}.csv";
+
+                                 //用于确定指定文件是否存在
+                                 if (!File.Exists(filePath))
+                                 {
+                                     File.AppendAllText(filePath, model.GetHeader() + "\r\n");
+                                 }
+                                 File.AppendAllText(filePath, model.GetValue() + "\r\n");
+                                 initCount = 0;
+                                 model = null;
                              }
-                             File.AppendAllText(filePath, model.GetValue() + "\r\n");
-                             initCount = 0;
-                             model = null;
+
+                             //读取BMS序列号
+                             ecanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                                            , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
+
+                             //定时一秒存储一次数据
+                             await Task.Delay(1000);
                          }
 
-                         //读取BMS序列号
-                         EcanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
-                                        , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
-
-                         //定时一秒存储一次数据
-                         await Task.Delay(1000);
-                     }
-
-                     lock (EcanHelper._locker)
-                     {
                          while (EcanHelper._task.Count > 0
                             && !cts.IsCancellationRequested)
                          {
@@ -75,6 +77,10 @@ namespace SofarBMS.UI
                              }));
                          }
                      }
+                 }
+                 catch (Exception ex)
+                 {
+                     throw new Exception(ex.Message);
                  }
              }, cts.Token);
         }
@@ -761,5 +767,45 @@ namespace SofarBMS.UI
             return msg;
         }
         #endregion
+
+        private void lblRealtimeData_45_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCelltemperature1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblRealtimeData_48_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblRealtimeData_47_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblRealtimeData_46_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCelltemperature3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCelltemperature4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCelltemperature2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

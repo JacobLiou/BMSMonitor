@@ -26,6 +26,7 @@ namespace SofarBMS.UI
         }
 
         #region 字段
+        EcanHelper ecanHelper = EcanHelper.Instance;
         public static CancellationTokenSource cts;
         private const int TX_INTERVAL_TIME = 200;
         private const int TX_INTERVAL_TIME_Data = 5;
@@ -79,21 +80,15 @@ namespace SofarBMS.UI
 
             Task.Run(() =>
             {
-                while (!cts.IsCancellationRequested)
+                while (EcanHelper._task.Count > 0
+                && !cts.IsCancellationRequested)
                 {
-                    lock (EcanHelper._locker)
-                    {
-                        while (EcanHelper._task.Count > 0
-                        && !cts.IsCancellationRequested)
-                        {
-                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                    CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
-                            this.Invoke(new Action(() =>
-                            {
-                                AnalysisData(ch.ID, ch.Data);
-                            }));
-                        }
-                    }
+                    this.Invoke(new Action(() =>
+                    {
+                        AnalysisData(ch.ID, ch.Data);
+                    }));
                 }
             }, cts.Token);
         }
@@ -218,6 +213,8 @@ namespace SofarBMS.UI
                 return;
             }
 
+            StringBuilder s = new StringBuilder();
+
             using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
                 file_size = (Convert.ToInt32(fs.Length / 1024) + Convert.ToInt32((file_size % 1024) != 0 ? 1 : 0) - 1);
@@ -229,6 +226,17 @@ namespace SofarBMS.UI
                 r.Close();
             }
 
+
+            for (int i = 0; i < fileData.Length; i++)
+            {
+                if (i % 10 == 0)
+                {
+                    s.Append("\r\n");
+                }
+                s.Append(fileData[i].ToString("X2") + " ");
+            }
+
+            Debug.WriteLine(s.ToString());
             if (State == false)
             {
                 progressBar1.Maximum = file_size - 1 <= 0 ? 0 : file_size - 1;
@@ -639,7 +647,7 @@ namespace SofarBMS.UI
                     canid = new byte[] { 0x41, 0xBF, mark, 0x07 };
                 }
 
-                EcanHelper.Send(data, canid);
+                ecanHelper.Send(data, canid);
                 AddLog(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), BitConverter.ToUInt32(canid, 0).ToString("X"), $"PACK_ID:{groupIndex},Data:{BitConverter.ToString(data)}");
                 //LogHelper.AddLog($"[send]-{DateTime.Now.ToString("HH:mm:ss.fff"),-15}\t0x{BitConverter.ToUInt32(canid, 0).ToString("X")}    {groupIndex} {BitConverter.ToString(data)}\r\n");
             }

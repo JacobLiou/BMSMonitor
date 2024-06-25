@@ -16,6 +16,7 @@ namespace SofarBMS.UI
 {
     public partial class BMSMMultipleControl : UserControl
     {
+        EcanHelper ecanHelper = EcanHelper.Instance;
         public static CancellationTokenSource cts = null;
         List<FaultInfo> faultInfos = new List<FaultInfo>() {
                     new FaultInfo("单体过压保护",0,0,0,0,2),
@@ -125,29 +126,26 @@ namespace SofarBMS.UI
                         }
                     }
 
-                    if (EcanHelper.IsConnection)
+                    if (ecanHelper.IsConnection)
                     {
                         //获取实时数据指令
-                        EcanHelper.Send(new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                        ecanHelper.Send(new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
                                        , new byte[] { 0xE0, 0xFF, 0x2C, 0x10 });
 
+                        await Task.Delay(100);
+
                         //发送条形码读取
-                        EcanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                        ecanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
                                         , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
                     }
 
-                    lock (EcanHelper._locker)
+
+                    //增加信号量状态的检查
+                    while (!cts.IsCancellationRequested && EcanHelper._task.Count > 0)
                     {
-                        //增加信号量状态的检查
-                        while (EcanHelper._task.Count > 0 
-                            && !cts.IsCancellationRequested)
-                        {
-                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-
-                            analysisData(ch.ID, ch.Data);
-                        }
+                        CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                        analysisData(ch.ID, ch.Data);
                     }
-
                     await Task.Delay(1000);
                 }
             }, cts.Token);

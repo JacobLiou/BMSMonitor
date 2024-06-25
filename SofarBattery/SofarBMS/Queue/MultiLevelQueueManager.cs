@@ -39,6 +39,11 @@ namespace SofarBMS.Queue
             return null;
         }
 
-        public void Dequeue() { }
+        public void Dequeue()
+        {
+            _queues.Clear();
+
+            _queues = new ConcurrentDictionary<int, BlockingCollection<QueueItem>>();
+        }
     }
 }

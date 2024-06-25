@@ -1,21 +1,21 @@
-﻿using System;
-using System.Drawing;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Threading;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Data;
+﻿using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
-using NPOI.HSSF.UserModel;
-using System.IO;
-using System.Configuration;
-using System.Runtime.InteropServices;
 using SofarBMS.Helper;
 using SofarBMS.Model;
 using SofarBMS.UI;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
-using NPOI.SS.Formula.Functions;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SofarBMS
 {
@@ -145,7 +145,19 @@ namespace SofarBMS
 keyWriteFail,写入失败,WriteFail
 keyReadSuccess,读取成功,ReadSuccess
 keyReadFail,读取失败,ReadFail
-keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
+keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!
+StartListen,启动总线监听,Start bus listen";
+        EcanHelper ecanHelper = EcanHelper.Instance;
+        StringBuilder faultState = new StringBuilder();
+        StringBuilder warningState = new StringBuilder();
+        StringBuilder protectionState = new StringBuilder();
+
+        private RealtimeData_GTX5000S model = new RealtimeData_GTX5000S();
+
+        private CancellationTokenSource cts = null;
+        public static List<int> Main_ids { get; set; } = new List<int>();
+        public Dictionary<int, RealtimeData_GTX5000S> allQueue = new Dictionary<int, RealtimeData_GTX5000S>();
+        public static bool flag { get; set; }
 
         public FrmMain()
         {
@@ -168,15 +180,15 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
             {
                 while (true)
                 {
-                    string error = EcanHelper.ReadError().Replace("当前错误码：", "");
+                    string error = ecanHelper.ReadError().Replace("当前错误码：", "");
                     if (error != "00")
                     {
                         btnResetCAN_Click(sender, e);
-                        error = EcanHelper.ReadError();
+                        error = ecanHelper.ReadError();
                     }
                     else
                     {
-                        error = EcanHelper.ReadError().Replace("当前错误码：", "当前状态码：");
+                        error = ecanHelper.ReadError().Replace("当前错误码：", "当前状态码：");
                     }
 
                     this.BeginInvoke(new Action(() => { toolStripStatusLabel1.Text = error; }));
@@ -186,7 +198,38 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
             });
 
             //使用多线程实时获取接收数据
-            EcanHelper.Receive();
+            ecanHelper.Receive();
+
+            Task.Run(async delegate
+            {
+                while (true)
+                {
+                    await Task.Delay(500);
+
+                    if (!ecanHelper.IsConnection
+                        || cts == null
+                        || cts.IsCancellationRequested)
+                        continue;
+
+                    //Debug.WriteLine($"{System.DateTime.Now.ToString("hh:mm:ss:fff")} 消费数据");
+                    Consumer();
+                }
+            });
+            Task.Run(async delegate
+            {
+                while (true)
+                {
+                    await Task.Delay(1000);
+
+                    if (!ecanHelper.IsConnection
+                       || cts == null
+                       || cts.IsCancellationRequested)
+                        continue;
+
+                    //Debug.WriteLine($"{System.DateTime.Now.ToString("hh:mm:ss:fff")} 保存数据");
+                    SaveRealtimeData();
+                }
+            });
 
             //加载菜单栏和初始化界面
             InitMenuStrip();
@@ -203,6 +246,371 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
 
             //this.Text = LanguageHelper.GetLanguage("Title");
         }
+
+        #region 
+        private void Consumer()
+        {
+            try
+            {
+                foreach (var dev in ecanHelper.Devices)
+                {
+                    if (cts.IsCancellationRequested
+                        || !ecanHelper.IsConnection)
+                        return;
+
+                    analysisData((uint)dev.Key, dev.Value);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Consumer-error:" + ex.Message);
+            }
+        }
+
+        private void SaveRealtimeData()
+        {
+            foreach (var _queue in allQueue)
+            {
+                int id = _queue.Key;
+                RealtimeData_GTX5000S item = _queue.Value;
+                if (string.IsNullOrEmpty(item.BatteryStatus))
+                    continue;
+
+                var filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//并机电池_{id}_{DateTime.Now.ToString("yyyy-MM-dd")}.csv";
+                if (!File.Exists(filePath))
+                {
+                    File.AppendAllText(filePath, model.GetHeader() + "\r\n");
+                }
+                File.AppendAllText(filePath, item.GetValue() + "\r\n");
+            }
+        }
+
+        public void analysisData(uint canID, byte[] data)
+        {
+            int devID = (int)ecanHelper.AnalysisID(canID);
+
+            if (model == null)
+                model = new RealtimeData_GTX5000S();
+
+            string[] strs;
+            string[] strs_1;
+
+            model.PackID = devID.ToString();
+
+            switch (canID | 0xff)
+            {
+                case 0x1003FFFF:
+                    string batteryStatus = "";
+                    switch (Convert.ToInt32(data[0].ToString("X2"), 16) & 0x0f)//低四位
+                    {
+                        case 0: batteryStatus = LanguageHelper.GetLanguage("State_Standby"); break;
+                        case 1: batteryStatus = LanguageHelper.GetLanguage("State_Charging"); break;
+                        case 2: batteryStatus = LanguageHelper.GetLanguage("State_Discharge"); break;
+                        case 3: batteryStatus = LanguageHelper.GetLanguage("State_Hibernate"); break;
+                        default: batteryStatus = ""; break;
+                    }
+                    model.BatteryStatus = allQueue[devID].BatteryStatus = batteryStatus;
+
+                    string bmsStatus = "";
+                    switch (((Convert.ToInt32(data[0].ToString("X2"), 16) & 0xf0) >> 4))//高四位
+                    {
+                        case 0: bmsStatus = LanguageHelper.GetLanguage("BmsStatus_Post"); break;
+                        case 1: bmsStatus = LanguageHelper.GetLanguage("BmsStatus_Run"); break;
+                        case 2: bmsStatus = LanguageHelper.GetLanguage("BmsStatus_Fault"); break;
+                        case 3: bmsStatus = LanguageHelper.GetLanguage("BmsStatus_Upgrade"); break;
+                        case 4: bmsStatus = LanguageHelper.GetLanguage("BmsStatus_Shutdown"); break;
+                    }
+                    model.BmsStatus = allQueue[devID].BmsStatus = bmsStatus;
+
+                    strs = new string[2] { "0.1", "0.1" };
+                    for (int i = 0; i < strs.Length; i++)
+                    {
+                        strs[i] = BytesToIntger(data[i * 2 + 2], data[i * 2 + 1], Convert.ToDouble(strs[i]));
+                    }
+
+                    //BMS测量的P-对B-电压
+                    strs_1 = new string[1] { "1" };
+                    strs_1[0] = Convert.ToUInt16(data[7].ToString("X2") + data[6].ToString("X2"), 16).ToString();
+
+                    Dictionary<int, string> setContorls = new Dictionary<int, string>() {
+                            {0,"pbChargeMosEnable" },
+                            {1,"pbDischargeMosEnable" },
+                            {2,"pbPrechgMosEnable" },
+                            {3,"pbStopChgEnable" },
+                            {4,"pbHeatEnable" }
+                        };
+                    model.ChargeCurrentLimitation = allQueue[devID].ChargeCurrentLimitation = Convert.ToDouble(strs[0]);
+                    model.DischargeCurrentLimitation = allQueue[devID].DischargeCurrentLimitation = Convert.ToDouble(strs[1]);
+                    model.LOAD_VOLT_N = allQueue[devID].LOAD_VOLT_N = Convert.ToUInt16(strs_1[0]);
+                    model.ChargeMosEnable = allQueue[devID].ChargeMosEnable = (ushort)GetBit(data[5], 0);
+                    model.DischargeMosEnable = allQueue[devID].DischargeMosEnable = (ushort)GetBit(data[5], 1);
+                    model.PrechgMosEnable = allQueue[devID].PrechgMosEnable = (ushort)GetBit(data[5], 2);
+                    model.StopChgEnable = allQueue[devID].StopChgEnable = (ushort)GetBit(data[5], 3);
+                    model.HeatEnable = allQueue[devID].HeatEnable = (ushort)GetBit(data[5], 4);
+                    break;
+                case 0x1004FFFF:
+                    strs = new string[4] { "0.1", "0.1", "0.01", "0.1" };
+                    for (int i = 0; i < strs.Length; i++)
+                    {
+                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
+                    }
+
+                    model.BatteryVolt = allQueue[devID].BatteryVolt = Convert.ToDouble(strs[0]);
+                    model.LoadVolt = allQueue[devID].LoadVolt = Convert.ToDouble(strs[1]);
+                    model.BatteryCurrent = allQueue[devID].BatteryCurrent = Convert.ToDouble(strs[2]);
+                    model.SOC = allQueue[devID].SOC = Convert.ToDouble(strs[3]);
+                    break;
+                case 0x1005FFFF:
+                    strs = new string[5];
+                    strs[0] = BytesToIntger(data[1], data[0]);
+                    strs[1] = BytesToIntger(0x00, data[2]);
+                    strs[2] = BytesToIntger(data[4], data[3]);
+                    strs[3] = BytesToIntger(0x00, data[5]);
+                    strs[4] = (Convert.ToInt32(strs[0]) - Convert.ToInt32(strs[2])).ToString();
+
+                    model.BatMaxCellVolt = allQueue[devID].BatMaxCellVolt = Convert.ToUInt16(strs[0]);
+                    model.BatMaxCellVoltNum = allQueue[devID].BatMaxCellVoltNum = Convert.ToUInt16(strs[1]);
+                    model.BatMinCellVolt = allQueue[devID].BatMinCellVolt = Convert.ToUInt16(strs[2]);
+                    model.BatMinCellVoltNum = allQueue[devID].BatMinCellVoltNum = Convert.ToUInt16(strs[3]);
+                    model.BatDiffCellVolt = allQueue[devID].BatDiffCellVolt = Convert.ToUInt16(strs[4]);
+                    break;
+                case 0x1006FFFF:
+                    strs = new string[4] { "0.1", "1", "0.1", "1" };
+                    strs[0] = BytesToIntger(data[1], data[0], 0.1);
+                    strs[1] = BytesToIntger(0x00, data[2]);
+                    strs[2] = BytesToIntger(data[4], data[3], 0.1);
+                    strs[3] = BytesToIntger(0x00, data[5]);
+
+                    model.BatMaxCellTemp = allQueue[devID].BatMaxCellTemp = Convert.ToDouble(strs[0]);
+                    model.BatMaxCellTempNum = allQueue[devID].BatMaxCellTempNum = Convert.ToUInt16(strs[1]);
+                    model.BatMinCellTemp = allQueue[devID].BatMinCellTemp = Convert.ToDouble(strs[2]);
+                    model.BatMinCellTempNum = allQueue[devID].BatMinCellTempNum = Convert.ToUInt16(strs[3]);
+                    break;
+                case 0x1007FFFF:
+                    model.TotalChgCap = allQueue[devID].TotalChgCap = Convert.ToDouble(((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] & 0xff)) * 0.001);
+                    model.TotalDsgCap = allQueue[devID].TotalDsgCap = Convert.ToDouble(((data[7] << 24) + (data[6] << 16) + (data[5] << 8) + (data[4] & 0xff)) * 0.001);
+                    break;
+                case 0x1008FFFF:
+                    protectionState.Clear();
+                    warningState.Clear();
+                    faultState.Clear();
+                    analysisLog(data);
+                    break;
+                case 0x1009FFFF:
+                    strs = new string[4];
+                    for (int i = 0; i < strs.Length; i++)
+                    {
+                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
+                    }
+
+                    model.CellVoltage1 = allQueue[devID].CellVoltage1 = Convert.ToUInt32(strs[0]);
+                    model.CellVoltage2 = allQueue[devID].CellVoltage2 = Convert.ToUInt32(strs[1]);
+                    model.CellVoltage3 = allQueue[devID].CellVoltage3 = Convert.ToUInt32(strs[2]);
+                    model.CellVoltage4 = allQueue[devID].CellVoltage4 = Convert.ToUInt32(strs[3]);
+                    break;
+                case 0x100AFFFF:
+                    strs = new string[4];
+                    for (int i = 0; i < strs.Length; i++)
+                    {
+                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
+                    }
+
+                    model.CellVoltage5 = allQueue[devID].CellVoltage5 = Convert.ToUInt32(strs[0]);
+                    model.CellVoltage6 = allQueue[devID].CellVoltage6 = Convert.ToUInt32(strs[1]);
+                    model.CellVoltage7 = allQueue[devID].CellVoltage7 = Convert.ToUInt32(strs[2]);
+                    model.CellVoltage8 = allQueue[devID].CellVoltage8 = Convert.ToUInt32(strs[3]);
+                    break;
+                case 0x100BFFFF:
+                    strs = new string[4];
+                    for (int i = 0; i < strs.Length; i++)
+                    {
+                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
+                    }
+
+                    model.CellVoltage9 = allQueue[devID].CellVoltage9 = Convert.ToUInt32(strs[0]);
+                    model.CellVoltage10 = allQueue[devID].CellVoltage10 = Convert.ToUInt32(strs[1]);
+                    model.CellVoltage11 = allQueue[devID].CellVoltage11 = Convert.ToUInt32(strs[2]);
+                    model.CellVoltage12 = allQueue[devID].CellVoltage12 = Convert.ToUInt32(strs[3]);
+                    break;
+                case 0x100CFFFF:
+                    strs = new string[4];
+                    for (int i = 0; i < strs.Length; i++)
+                    {
+                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
+                    }
+
+                    model.CellVoltage13 = allQueue[devID].CellVoltage13 = Convert.ToUInt32(strs[0]);
+                    model.CellVoltage14 = allQueue[devID].CellVoltage14 = Convert.ToUInt32(strs[1]);
+                    model.CellVoltage15 = allQueue[devID].CellVoltage15 = Convert.ToUInt32(strs[2]);
+                    model.CellVoltage16 = allQueue[devID].CellVoltage16 = Convert.ToUInt32(strs[3]);
+                    break;
+                case 0x100DFFFF:
+                    strs = new string[4] { "0.1", "0.1", "0.1", "0.1" };
+                    for (int i = 0; i < strs.Length; i++)
+                    {
+                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
+                    }
+
+                    model.CellTemperature1 = allQueue[devID].CellTemperature1 = Convert.ToDouble(strs[0]);
+                    model.CellTemperature2 = allQueue[devID].CellTemperature2 = Convert.ToDouble(strs[1]);
+                    model.CellTemperature3 = allQueue[devID].CellTemperature3 = Convert.ToDouble(strs[2]);
+                    model.CellTemperature4 = allQueue[devID].CellTemperature4 = Convert.ToDouble(strs[3]);
+                    break;
+                case 0x100EFFFF:
+                    strs = new string[3] { "0.1", "0.1", "0.1" };
+                    for (int i = 0; i < strs.Length; i++)
+                    {
+                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
+                    }
+
+                    string strAdd = "[1~16]:";
+                    for (int i = 6; i < 8; i++)
+                    {
+                        for (short j = 0; j < 8; j++)
+                        {
+                            if (GetBit(data[i], j) == 1)
+                            {
+                                strAdd += "1";
+                            }
+                            else
+                            {
+                                strAdd = strAdd + "0";
+                            }
+                            if (j != 0)
+                            {
+                                if (j + 1 % 8 == 0)
+                                    strAdd += ",";
+                                else if (j + 1 % 4 == 0)
+                                    strAdd += " ";
+                            }
+                        }
+                    }
+
+                    model.MosTemperature = allQueue[devID].MosTemperature = Convert.ToDouble(strs[0]);
+                    model.EnvTemperature = allQueue[devID].EnvTemperature = Convert.ToDouble(strs[1]);
+                    model.SOH = allQueue[devID].SOH = Convert.ToDouble(strs[2]);
+                    model.EquaState = allQueue[devID].EquaState = strAdd;
+                    break;
+                case 0x100FFFFF:
+                    model.RemainingCapacity = allQueue[devID].RemainingCapacity = BytesToIntger(data[1], data[0], 0.1);
+                    model.FullCapacity = allQueue[devID].FullCapacity = BytesToIntger(data[3], data[2], 0.1);
+                    model.CycleTIme = allQueue[devID].CycleTIme = Convert.ToUInt16(BytesToIntger(data[5], data[4]));
+                    break;
+                case 0x1040FFFF:
+                    model.CumulativeDischargeCapacity = allQueue[devID].CumulativeDischargeCapacity = (((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] & 0xff))).ToString();
+                    break;
+                case 0x1041FFFF:
+                    model.BalanceTemperature1 = allQueue[devID].BalanceTemperature1 = BytesToIntger(data[1], data[0], 0.1);
+                    model.BalanceTemperature2 = allQueue[devID].BalanceTemperature2 = BytesToIntger(data[3], data[2], 0.1);
+                    break;
+                case 0x1042FFFF:
+                    strs = new string[4] { "0.1", "0.1", "0.1", "0.1" };
+                    for (int i = 0; i < strs.Length; i++)
+                    {
+                        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
+                    }
+
+                    model.CellTemperature5 = allQueue[devID].CellTemperature5 = Convert.ToDouble(strs[0]);
+                    model.CellTemperature6 = allQueue[devID].CellTemperature6 = Convert.ToDouble(strs[1]);
+                    model.CellTemperature7 = allQueue[devID].CellTemperature7 = Convert.ToDouble(strs[2]);
+                    model.CellTemperature8 = allQueue[devID].CellTemperature8 = Convert.ToDouble(strs[3]);
+                    break;
+            }
+        }
+        private string BytesToIntger(byte high, byte low = 0x00, double unit = 1)
+        {
+            string value = Convert.ToInt16(high.ToString("X2") + low.ToString("X2"), 16).ToString();
+            if (unit == 10)
+            {
+                value = (long.Parse(value) * 10).ToString();
+            }
+            else if (unit == 0.1)
+            {
+                value = (long.Parse(value) / 10.0f).ToString();
+            }
+            else if (unit == 0.01)
+            {
+                value = (long.Parse(value) / 100.0f).ToString();
+            }
+            else if (unit == 0.001)
+            {
+                value = (long.Parse(value) / 1000.0f).ToString();
+            }
+            else if (unit == 0.0001)
+            {
+                value = (long.Parse(value) / 10000).ToString();
+            }
+
+            return value;
+        }
+        public int GetBit(byte b, short index)
+        {
+            byte _byte = 0x01;
+            switch (index)
+            {
+                case 0: { _byte = 0x01; } break;
+                case 1: { _byte = 0x02; } break;
+                case 2: { _byte = 0x04; } break;
+                case 3: { _byte = 0x08; } break;
+                case 4: { _byte = 0x10; } break;
+                case 5: { _byte = 0x20; } break;
+                case 6: { _byte = 0x40; } break;
+                case 7: { _byte = 0x80; } break;
+                default: { return 0; }
+            }
+            int x = (b & _byte) == _byte ? 1 : 0;
+
+            return (b & _byte) == _byte ? 1 : 0;
+        }
+
+        private void analysisLog(byte[] data)
+        {
+            string[] msg = new string[2];
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (short j = 0; j < 8; j++)
+                {
+                    if (GetBit(data[i], j) == 1)
+                    {
+                        getLog(out msg, i, j);
+                        switch (msg[1])
+                        {
+                            case "1":
+                                warningState.Append(msg[0] + "\r");
+                                model.Warning = warningState.ToString().Replace("\r", "，");
+                                break;
+                            case "2":
+                                protectionState.Append(msg[0] + "\r");
+                                model.Protection = protectionState.ToString().Replace("\r", "，");
+                                break;
+                            case "3":
+                                faultState.Append(msg[0] + "\r");
+                                model.Fault = faultState.ToString().Replace("\r", "，");
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+        public string[] getLog(out string[] msg, int row, int column)
+        {
+            msg = new string[2];
+            List<FaultInfo> faultInfos = FrmMain.FaultInfos;
+
+            for (int i = 0; i < faultInfos.Count; i++)
+            {
+                if (faultInfos[i].Byte == row && faultInfos[i].Bit == column)
+                {
+                    int index = LanguageHelper.LanaguageIndex;
+                    msg[0] = faultInfos[i].Content.Split(',')[index - 1];
+                    msg[1] = faultInfos[i].Type.ToString();
+                    break;
+                }
+            }
+            return msg;
+        }
+        #endregion
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -301,7 +709,7 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
                     }
                 }
             }
-            else if (parentTitle == "BMS低压储能电池" || parentTitle == "BMS")
+            else if (parentTitle == "BMS低压储能电池" || parentTitle == "GTX5000")
             {
                 foreach (var item in MenuAndControl2)
                 {
@@ -449,7 +857,7 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
         #region 连接/断开/复位CAN
         private void btnConnectionCAN_Click(object sender, EventArgs e)
         {
-            if (!EcanHelper.IsConnection)
+            if (!ecanHelper.IsConnection)
             {
                 if (ECANHelper.OpenDevice(1, 0, 0) != ECANStatus.STATUS_OK)
                 {
@@ -499,13 +907,13 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
                 }
 
                 btnConnectionCAN.Text = LanguageHelper.GetLanguage("CanState_DisConn");
-                EcanHelper.IsConnection = true;
+                ecanHelper.IsConnection = true;
             }
             else
             {
                 ECANHelper.CloseDevice(0, 0);
                 btnConnectionCAN.Text = LanguageHelper.GetLanguage("CanState_Conn");
-                EcanHelper.IsConnection = false;
+                ecanHelper.IsConnection = false;
 
                 //ExportData(System.AppDomain.CurrentDomain.BaseDirectory + "\\Log\\" + System.DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ff") + ".xlsx");
                 //SQLiteHelper.Update("delete from RealtimeData");
@@ -514,7 +922,7 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
 
         private void btnResetCAN_Click(object sender, EventArgs e)
         {
-            if (!EcanHelper.IsConnection)
+            if (!ecanHelper.IsConnection)
             {
                 //MessageBox.Show(LanguageHelper.GetLanguage("Message_NotConn"));
                 return;
@@ -717,9 +1125,9 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
             {
                 bool result = true;
                 //1.清空存储信息 2.清除充/放电容量
-                result &= EcanHelper.Send(new byte[] { 0xAA, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                result &= ecanHelper.Send(new byte[] { 0xAA, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
                                        , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2D, 0x10 });
-                result &= EcanHelper.Send(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                result &= ecanHelper.Send(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
                                        , new byte[] { 0xE0, FrmMain.BMS_ID, 0x24, 0x10 });
                 if (result)
                 {
@@ -770,6 +1178,32 @@ keyOpenPrompt,请先打开CAN口!,Please open the CAN port first!";
             }
 
             return key;
+        }
+
+        private void btnStratListen_Click(object sender, EventArgs e)
+        {
+            FrmConfig frm = new FrmConfig(Main_ids, flag);
+            frm.ShowDialog();
+
+            if (flag)
+            {
+                btnStratListen.BackColor = Color.Red;
+
+                cts = new CancellationTokenSource();
+
+                allQueue = new Dictionary<int, RealtimeData_GTX5000S>();
+                foreach (int item in Main_ids)
+                {
+                    allQueue.Add(item, new RealtimeData_GTX5000S());
+                }
+            }
+            else
+            {
+                btnStratListen.BackColor = Color.Green;
+                cts?.Cancel();
+            }
+
+            ecanHelper.StartListen = flag;
         }
     }
 }

@@ -26,6 +26,7 @@ namespace SofarBMS.UI
 
         int initCount = 0;
         RealtimeData_BTS5K model = null;
+        EcanHelper ecanHelper = EcanHelper.Instance;
 
         string[] eventList
         {
@@ -117,7 +118,7 @@ Can通信故障,Can1CommFault
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    if (EcanHelper.IsConnection)
+                    if (ecanHelper.IsConnection)
                     {
                         if (model != null && initCount >= 13)
                         {
@@ -134,18 +135,18 @@ Can通信故障,Can1CommFault
                         }
 
                         //获取实时数据指令
-                        EcanHelper.Send(new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                        ecanHelper.Send(new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
                                        , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2C, 0x10 });
 
                         //读取BMS序列号
-                        EcanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                        ecanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
                                        , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
 
                         //获取高压放电电流、充电电流；获取低压放电电流、充电电流
-                        EcanHelper.Send(new byte[] { 0x77, 0xAA, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                        ecanHelper.Send(new byte[] { 0x77, 0xAA, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
                                    , new byte[4] { 0xE0, Convert.ToByte(FrmMain.BMS_ID + 0x20), 0x77, 0x0B });
 
-                        EcanHelper.Send(new byte[] { 0x66, 0xAA, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                        ecanHelper.Send(new byte[] { 0x66, 0xAA, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
                                    , new byte[4] { 0xE0, Convert.ToByte(FrmMain.BMS_ID + 0x20), 0x77, 0x0B });
 
                         //读取BDU序列号
@@ -153,18 +154,15 @@ Can通信故障,Can1CommFault
                         await Task.Delay(1000);
                     }
 
-                    lock (EcanHelper._locker)
+                    while (EcanHelper._task.Count > 0
+                        && !cts.IsCancellationRequested)
                     {
-                        while (EcanHelper._task.Count > 0
-                            && !cts.IsCancellationRequested)
-                        {
-                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                        CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
-                            this.Invoke(new Action(() =>
-                            {
-                                analysisData(ch.ID, ch.Data);
-                            }));
-                        }
+                        this.Invoke(new Action(() =>
+                        {
+                            analysisData(ch.ID, ch.Data);
+                        }));
                     }
                 }
             }, cts.Token);
@@ -177,7 +175,7 @@ Can通信故障,Can1CommFault
             {
                 byte[] data = new byte[8];
                 data[0] = (byte)i;
-                EcanHelper.Send(data, new byte[] { 0xE0, FrmMain.BDU_ID, 0x00, 0x14 });
+                ecanHelper.Send(data, new byte[] { 0xE0, FrmMain.BDU_ID, 0x00, 0x14 });
             }
         }
 
@@ -695,6 +693,7 @@ Can通信故障,Can1CommFault
                             txtSN_BDU.Text = strSn_BDU;
                         break;
                     case 0x1045E0FF:
+                    case 0x1045FFFF:
                         initCount++;
                         richTextBox1_45.Clear(); richTextBox2_45.Clear(); richTextBox3_45.Clear();
                         analysisLog(data, 1);
@@ -1003,32 +1002,35 @@ Can通信故障,Can1CommFault
                             {
                                 case "1":
                                     richTextBox3_45.AppendText(msg[0] + "\r");
-                                    model.Warning2 = richTextBox3.Text.Replace("\n", "，").Replace("\r", "，");
+                                    model.Warning2 = richTextBox3_45.Text.Replace("\n", "，").Replace("\r", "，");
                                     break;
                                 case "2":
                                     richTextBox2_45.AppendText(msg[0] + "\r");
-                                    model.Protection2 = richTextBox2.Text.Replace("\n", "，").Replace("\r", "，");
+                                    model.Protection2 = richTextBox2_45.Text.Replace("\n", "，").Replace("\r", "，");
                                     break;
                                 case "3":
                                     richTextBox1_45.AppendText(msg[0] + "\r");
-                                    model.Fault2 = richTextBox1.Text.Replace("\n", "，").Replace("\r", "，");
+                                    model.Fault2 = richTextBox1_45.Text.Replace("\n", "，").Replace("\r", "，");
                                     break;
                             }
                         }
-                        switch (msg[1])
+                        else
                         {
-                            case "1":
-                                richTextBox3.AppendText(msg[0] + "\r\n");
-                                model.Warning = richTextBox3.Text.Replace("\n", "，").Replace("\r", "，");
-                                break;
-                            case "2":
-                                richTextBox2.AppendText(msg[0] + "\r\n");
-                                model.Protection = richTextBox2.Text.Replace("\n", "，").Replace("\r", "，");
-                                break;
-                            case "3":
-                                richTextBox1.AppendText(msg[0] + "\r\n");
-                                model.Fault = richTextBox1.Text.Replace("\n", "，").Replace("\r", "，");
-                                break;
+                            switch (msg[1])
+                            {
+                                case "1":
+                                    richTextBox3.AppendText(msg[0] + "\r\n");
+                                    model.Warning = richTextBox3.Text.Replace("\n", "，").Replace("\r", "，");
+                                    break;
+                                case "2":
+                                    richTextBox2.AppendText(msg[0] + "\r\n");
+                                    model.Protection = richTextBox2.Text.Replace("\n", "，").Replace("\r", "，");
+                                    break;
+                                case "3":
+                                    richTextBox1.AppendText(msg[0] + "\r\n");
+                                    model.Fault = richTextBox1.Text.Replace("\n", "，").Replace("\r", "，");
+                                    break;
+                            }
                         }
                     }
                 }

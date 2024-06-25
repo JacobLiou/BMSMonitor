@@ -56,7 +56,7 @@
             this.dgvStorageInfo.ReadOnly = true;
             this.dgvStorageInfo.RowHeadersWidth = 51;
             this.dgvStorageInfo.RowTemplate.Height = 23;
-            this.dgvStorageInfo.Size = new System.Drawing.Size(1232, 694);
+            this.dgvStorageInfo.Size = new System.Drawing.Size(1370, 578);
             this.dgvStorageInfo.TabIndex = 0;
             this.dgvStorageInfo.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView1_RowStateChanged);
             // 
@@ -72,17 +72,18 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.splitContainer1.Panel1.Controls.Add(this.dgvStorageInfo);
+            this.splitContainer1.Panel1.Controls.Add(this.btnExport);
+            this.splitContainer1.Panel1.Controls.Add(this.btn_01);
+            this.splitContainer1.Panel1.Controls.Add(this.btn_03);
+            this.splitContainer1.Panel1.Controls.Add(this.btn_02);
+            this.splitContainer1.Panel1.Controls.Add(this.btn_04);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.btnExport);
-            this.splitContainer1.Panel2.Controls.Add(this.btn_01);
-            this.splitContainer1.Panel2.Controls.Add(this.btn_03);
-            this.splitContainer1.Panel2.Controls.Add(this.btn_04);
-            this.splitContainer1.Panel2.Controls.Add(this.btn_02);
-            this.splitContainer1.Size = new System.Drawing.Size(1232, 757);
-            this.splitContainer1.SplitterDistance = 694;
+            this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.splitContainer1.Panel2.Controls.Add(this.dgvStorageInfo);
+            this.splitContainer1.Size = new System.Drawing.Size(1370, 630);
+            this.splitContainer1.SplitterDistance = 49;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 2;
             // 
@@ -93,9 +94,9 @@
             this.btnExport.ForeColor = System.Drawing.Color.Black;
             this.btnExport.Image = global::SofarBMS.Properties.Resources.daochu;
             this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExport.Location = new System.Drawing.Point(906, 8);
+            this.btnExport.Location = new System.Drawing.Point(948, 8);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(133, 32);
+            this.btnExport.Size = new System.Drawing.Size(130, 32);
             this.btnExport.TabIndex = 12;
             this.btnExport.Text = "导出";
             this.btnExport.UseVisualStyleBackColor = true;
@@ -108,9 +109,9 @@
             this.btn_01.ForeColor = System.Drawing.Color.Black;
             this.btn_01.Image = global::SofarBMS.Properties.Resources.zhongzhi;
             this.btn_01.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_01.Location = new System.Drawing.Point(21, 8);
+            this.btn_01.Location = new System.Drawing.Point(63, 8);
             this.btn_01.Name = "btn_01";
-            this.btn_01.Size = new System.Drawing.Size(133, 32);
+            this.btn_01.Size = new System.Drawing.Size(130, 32);
             this.btn_01.TabIndex = 8;
             this.btn_01.Text = "重置";
             this.btn_01.UseVisualStyleBackColor = true;
@@ -123,9 +124,9 @@
             this.btn_03.ForeColor = System.Drawing.Color.Black;
             this.btn_03.Image = global::SofarBMS.Properties.Resources.zanting;
             this.btn_03.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_03.Location = new System.Drawing.Point(458, 8);
+            this.btn_03.Location = new System.Drawing.Point(500, 8);
             this.btn_03.Name = "btn_03";
-            this.btn_03.Size = new System.Drawing.Size(133, 32);
+            this.btn_03.Size = new System.Drawing.Size(130, 32);
             this.btn_03.TabIndex = 11;
             this.btn_03.Text = "停止";
             this.btn_03.UseVisualStyleBackColor = true;
@@ -138,9 +139,9 @@
             this.btn_04.ForeColor = System.Drawing.Color.Black;
             this.btn_04.Image = global::SofarBMS.Properties.Resources.qingkong;
             this.btn_04.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_04.Location = new System.Drawing.Point(682, 8);
+            this.btn_04.Location = new System.Drawing.Point(724, 8);
             this.btn_04.Name = "btn_04";
-            this.btn_04.Size = new System.Drawing.Size(133, 32);
+            this.btn_04.Size = new System.Drawing.Size(130, 32);
             this.btn_04.TabIndex = 10;
             this.btn_04.Text = "清空";
             this.btn_04.UseVisualStyleBackColor = true;
@@ -153,9 +154,9 @@
             this.btn_02.ForeColor = System.Drawing.Color.Black;
             this.btn_02.Image = global::SofarBMS.Properties.Resources.duqushujuku;
             this.btn_02.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_02.Location = new System.Drawing.Point(234, 8);
+            this.btn_02.Location = new System.Drawing.Point(276, 8);
             this.btn_02.Name = "btn_02";
-            this.btn_02.Size = new System.Drawing.Size(133, 32);
+            this.btn_02.Size = new System.Drawing.Size(130, 32);
             this.btn_02.TabIndex = 9;
             this.btn_02.Text = "读取";
             this.btn_02.UseVisualStyleBackColor = true;
@@ -167,7 +168,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
             this.Name = "StorageInfoControl";
-            this.Size = new System.Drawing.Size(1232, 757);
+            this.Size = new System.Drawing.Size(1370, 630);
             this.Load += new System.EventHandler(this.StorageInfoControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStorageInfo)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);

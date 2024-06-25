@@ -1,6 +1,7 @@
 ﻿using SofarBMS.Helper;
 using SofarBMS.Queue;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
@@ -10,22 +11,44 @@ namespace SofarBMS.Model
 {
     public class EcanHelper
     {
+        private static EcanHelper instance = null;
+        private static readonly object obj = new object();
+
+        private EcanHelper() { }
+        public static EcanHelper Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (obj)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new EcanHelper();
+                        }
+                    }
+                }
+                return instance;
+            }
+        }
+
         public const int REC_MSG_BUF_MAX = 0x2710;
 
-        public static CAN_OBJ[] gRecMsgBuf = new CAN_OBJ[REC_MSG_BUF_MAX];
-        public static uint gRecMsgBufHead = 0;
-        public static uint gRecMsgBufTail = 0;
+        public CAN_OBJ[] gRecMsgBuf = new CAN_OBJ[REC_MSG_BUF_MAX];
+        public uint gRecMsgBufHead = 0;
+        public uint gRecMsgBufTail = 0;
 
         public const int SEND_MSG_BUF_MAX = 0x2710;
 
-        public static CAN_OBJ[] gSendMsgBuf;
-        public static uint gSendMsgBufHead;
-        public static uint gSendMsgBufTail;
+        public CAN_OBJ[] gSendMsgBuf;
+        public uint gSendMsgBufHead;
+        public uint gSendMsgBufTail;
 
         /*创建一个更新收发数据显示的线程*/
         public readonly static object _locker = new object();
         public static Queue<CAN_OBJ> _task = new Queue<CAN_OBJ>();
-        public static MultiLevelQueueManager _queueManager = new MultiLevelQueueManager();
+        public ConcurrentDictionary<int, Byte[]> Devices = new ConcurrentDictionary<int, Byte[]>();
 
         public static EventWaitHandle _wh = new AutoResetEvent(false);
         public static List<Protocols> protocols = new List<Protocols>() {
@@ -56,11 +79,14 @@ namespace SofarBMS.Model
             ,new Protocols(3,0x1403FFFF),new Protocols(3,0x1400E0FF)
             ,new Protocols(3,0x1060FFFF),new Protocols(3,0x1060FF1F),new Protocols(3, 0x1061FFFF),new Protocols(3,0x1061FF1F)
         };
-        public static bool IsConnection { get; set; }
-        private static int Can_error_count = 0;
+        public bool IsConnection { get; set; }
+        private int Can_error_count = 0;
 
+        public delegate void ReceiveInfo(CAN_OBJ _obj);
+        public event ReceiveInfo ReceivecEventHandler;
+        public bool StartListen { get; set; }
 
-        public static bool Send(Byte[] data, byte[] canid)
+        public bool Send(Byte[] data, byte[] canid)
         {
             gSendMsgBuf = new CAN_OBJ[SEND_MSG_BUF_MAX];
             gSendMsgBufHead = 0;
@@ -102,7 +128,7 @@ namespace SofarBMS.Model
                     var v = ECANHelper.ReadErrInfo(1, 0, 0, out err_info) == ECANStatus.STATUS_OK;
                     if (err_info.ErrCode == 0x00)//成功
                     {
-                        Debug.WriteLine($"{System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")}发送数据   帧ID:{co.ID.ToString("X8")}");
+                        Debug.WriteLine($"{System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")} 发送数据   帧ID:{co.ID.ToString("X8")}");
                         return true;
                     }
                     else if (err_info.ErrCode == 0x400)
@@ -115,8 +141,11 @@ namespace SofarBMS.Model
             return false;
         }
 
-        public static void Receive()
+        public void Receive()
         {
+            ReceivecEventHandler += EnqueueTask;
+            ReceivecEventHandler += EnqueueTask_MLQ;
+
             Task.Run(() =>
             {
                 while (true)
@@ -142,43 +171,22 @@ namespace SofarBMS.Model
                         //进入队列前，先进行筛选（集合内的ID可加入至队列，否则过滤掉）
                         foreach (Protocols item in protocols)
                         {
-                            //uint index = 0x00;
-                            //switch (item.Index)
-                            //{
-                            //    case 0: index = 0xff000000; break;
-                            //    case 1: index = 0xff0000; break;
-                            //    case 2: index = 0xff00; break;
-                            //    case 3: index = 0xff; break;
-                            //}
+                            uint index = 0x00;
+                            switch (item.Index)
+                            {
+                                case 0: index = 0xff000000; break;
+                                case 1: index = 0xff0000; break;
+                                case 2: index = 0xff00; break;
+                                case 3: index = 0xff; break;
+                            }
 
                             uint revId = coMsg.ID | 0xff;
                             uint devId = AnalysisID(coMsg.ID);
                             if (revId == item.Id)
                             {
-                                /*string ss = "";
-                                for (int i = 0; i < coMsg.Data.Length; i++)
-                                {
-                                    ss += " " + coMsg.Data[i].ToString("X2");
-                                }
 
-                                //判断指定的文件夹是否存在
-                                if (!Directory.Exists("Log"))
-                                {
-                                    Directory.CreateDirectory("Log");
-                                }
-                                var filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//BTS5K_{devId}_{DateTime.Now.ToString("yyyy-MM-dd")}.csv";
-
-                                //用于确定指定文件是否存在
-                                if (!File.Exists(filePath))
-                                {
-                                    File.AppendAllText(filePath, new RealtimeData2().GetHeader() + "\r\n");
-                                }
-                                Console.WriteLine($"Priority:{devId} CAN_ID:{coMsg.ID.ToString("X8")},Data：{ss.ToString()}");
-                                _queueManager.Enqueue(new QueueItem((int)devId, coMsg));
-
-                                 */
-
-                                EnqueueTask(coMsg);
+                                //EnqueueTask(coMsg);
+                                ReceivecEventHandler(coMsg);
                                 break;
                             }
                         }
@@ -187,7 +195,7 @@ namespace SofarBMS.Model
             });
         }
 
-        public static uint AnalysisID(uint id)
+        public uint AnalysisID(uint id)
         {
             // SA源地址（bit0~bit7）
             uint sa = (id & 0xFF);
@@ -209,7 +217,7 @@ namespace SofarBMS.Model
             return sa;
         }
 
-        public static string ReadError()
+        public string ReadError()
         {
             string error = string.Empty;
 
@@ -245,16 +253,38 @@ namespace SofarBMS.Model
             return error;
         }
 
-        private static void EnqueueTask(CAN_OBJ CANOBJ)
+        private void EnqueueTask(CAN_OBJ CANOBJ)
         {
             lock (_locker)
             {
                 //测试打印接收报文
-                Debug.WriteLine($"入队数据   帧ID:{CANOBJ.ID.ToString("X8")}");
+                //Debug.WriteLine($"{System.DateTime.Now.ToString("hh:mm:ss:fff")} 入队数据   帧ID:{CANOBJ.ID.ToString("X8")}");
 
                 _task.Enqueue(CANOBJ);
                 _wh.Set();
             }
+        }
+
+        private void EnqueueTask_MLQ(CAN_OBJ coMsg)
+        {
+            //未启动监听，终止入队操作
+            if (!StartListen)
+                return;
+
+            int devId = (int)coMsg.ID;
+            if (!Devices.TryAdd(devId, coMsg.Data))
+            {
+                Devices[devId] = coMsg.Data;
+            }
+
+            string ss = "";
+            for (int i = 0; i < coMsg.Data.Length; i++)
+            {
+                ss += " " + coMsg.Data[i].ToString("X2");
+            }
+            
+            //Debug.WriteLine($"{System.DateTime.Now.ToString("hh:mm:ss:fff")} Dev:{devId} CAN_ID:{coMsg.ID.ToString("X8")},Data：{ss.ToString()}");
+
         }
     }
 }
