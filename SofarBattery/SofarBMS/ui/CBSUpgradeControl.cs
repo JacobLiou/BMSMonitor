@@ -90,14 +90,20 @@ namespace SofarBMS.UI
             cbbChipcode.SelectedIndex = 1;
             Task.Run(() =>
             {
-                while (EcanHelper._task.Count > 0
-                    && !_token.IsCancellationRequested)
+                while (!cts.IsCancellationRequested)
                 {
-                    //出队
-                    CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                    lock (EcanHelper._locker)
+                    {
+                        while (EcanHelper._task.Count > 0
+                            && !_token.IsCancellationRequested)
+                        {
+                            //出队
+                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
-                    //解析
-                    this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
+                            //解析
+                            this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
+                        }
+                    }
                 }
             }, cts.Token);
         }

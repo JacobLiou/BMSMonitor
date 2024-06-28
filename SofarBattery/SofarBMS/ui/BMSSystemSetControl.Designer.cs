@@ -127,12 +127,22 @@
             this.lblSystemset_34 = new System.Windows.Forms.Label();
             this.lblSystemset_28 = new System.Windows.Forms.Label();
             this.gbSystemset_14 = new System.Windows.Forms.GroupBox();
+            this.cbb_106 = new System.Windows.Forms.ComboBox();
             this.lblSystemset_83 = new System.Windows.Forms.Label();
+            this.txtFlag = new System.Windows.Forms.TextBox();
             this.lblSystemset_82 = new System.Windows.Forms.Label();
+            this.cbb_105 = new System.Windows.Forms.ComboBox();
             this.txt_102 = new System.Windows.Forms.TextBox();
+            this.cbb_103 = new System.Windows.Forms.ComboBox();
             this.txt_100 = new System.Windows.Forms.TextBox();
+            this.txt_104 = new System.Windows.Forms.TextBox();
             this.txt_101 = new System.Windows.Forms.TextBox();
+            this.lblSystemset_106 = new System.Windows.Forms.Label();
             this.lblSystemset_101 = new System.Windows.Forms.Label();
+            this.lblSystemset_105 = new System.Windows.Forms.Label();
+            this.btnSetBatteryinfo = new System.Windows.Forms.Button();
+            this.lblSystemset_103 = new System.Windows.Forms.Label();
+            this.lblSystemset_104 = new System.Windows.Forms.Label();
             this.lblSystemset_50 = new System.Windows.Forms.Label();
             this.txtCalibration07 = new System.Windows.Forms.TextBox();
             this.btnSetCalibration_07 = new System.Windows.Forms.Button();
@@ -158,16 +168,6 @@
             this.btnSetCalibration_04 = new System.Windows.Forms.Button();
             this.txtCalibration03 = new System.Windows.Forms.TextBox();
             this.btnSystemset_46 = new System.Windows.Forms.Button();
-            this.cbb_106 = new System.Windows.Forms.ComboBox();
-            this.txtFlag = new System.Windows.Forms.TextBox();
-            this.cbb_105 = new System.Windows.Forms.ComboBox();
-            this.cbb_103 = new System.Windows.Forms.ComboBox();
-            this.txt_104 = new System.Windows.Forms.TextBox();
-            this.lblSystemset_106 = new System.Windows.Forms.Label();
-            this.lblSystemset_105 = new System.Windows.Forms.Label();
-            this.btnSetBatteryinfo = new System.Windows.Forms.Button();
-            this.lblSystemset_103 = new System.Windows.Forms.Label();
-            this.lblSystemset_104 = new System.Windows.Forms.Label();
             this.gbSystemset_54 = new System.Windows.Forms.GroupBox();
             this.btnSetBDUSN = new System.Windows.Forms.Button();
             this.txtBDUSN = new System.Windows.Forms.TextBox();
@@ -177,6 +177,24 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.gbSystemset_0 = new System.Windows.Forms.GroupBox();
+            this.btnSetControlInfo = new System.Windows.Forms.Button();
+            this.btnSetStateParam = new System.Windows.Forms.Button();
+            this.txtPackActiveBalanceCap = new System.Windows.Forms.TextBox();
+            this.txtSyncFallSoc = new System.Windows.Forms.TextBox();
+            this.txtPackActiveBalanceCur = new System.Windows.Forms.TextBox();
+            this.cbbState = new System.Windows.Forms.ComboBox();
+            this.cbbActiveBalanceCtrl = new System.Windows.Forms.ComboBox();
+            this.txtPackCurrent = new System.Windows.Forms.TextBox();
+            this.lblSystemset_74 = new System.Windows.Forms.Label();
+            this.ckSystemset_69 = new System.Windows.Forms.CheckBox();
+            this.lblSystemset_73 = new System.Windows.Forms.Label();
+            this.ckSystemset_68 = new System.Windows.Forms.CheckBox();
+            this.lblSystemset_72 = new System.Windows.Forms.Label();
+            this.ckSystemset_67 = new System.Windows.Forms.CheckBox();
+            this.lblSystemset_70 = new System.Windows.Forms.Label();
+            this.lblSystemset_66 = new System.Windows.Forms.Label();
+            this.lblSystemset_65 = new System.Windows.Forms.Label();
             this.gbControl020 = new System.Windows.Forms.GroupBox();
             this.cbbRequest3 = new System.Windows.Forms.ComboBox();
             this.cbbRequest2 = new System.Windows.Forms.ComboBox();
@@ -193,24 +211,6 @@
             this.cbbRequest4 = new System.Windows.Forms.ComboBox();
             this.lblSystemset_77 = new System.Windows.Forms.Label();
             this.lblSystemset_76 = new System.Windows.Forms.Label();
-            this.btnSetControlInfo = new System.Windows.Forms.Button();
-            this.txtPackActiveBalanceCap = new System.Windows.Forms.TextBox();
-            this.txtPackActiveBalanceCur = new System.Windows.Forms.TextBox();
-            this.cbbActiveBalanceCtrl = new System.Windows.Forms.ComboBox();
-            this.lblSystemset_74 = new System.Windows.Forms.Label();
-            this.lblSystemset_73 = new System.Windows.Forms.Label();
-            this.lblSystemset_72 = new System.Windows.Forms.Label();
-            this.gbSystemset_0 = new System.Windows.Forms.GroupBox();
-            this.btnSetStateParam = new System.Windows.Forms.Button();
-            this.txtSyncFallSoc = new System.Windows.Forms.TextBox();
-            this.cbbState = new System.Windows.Forms.ComboBox();
-            this.txtPackCurrent = new System.Windows.Forms.TextBox();
-            this.ckSystemset_69 = new System.Windows.Forms.CheckBox();
-            this.ckSystemset_68 = new System.Windows.Forms.CheckBox();
-            this.ckSystemset_67 = new System.Windows.Forms.CheckBox();
-            this.lblSystemset_70 = new System.Windows.Forms.Label();
-            this.lblSystemset_66 = new System.Windows.Forms.Label();
-            this.lblSystemset_65 = new System.Windows.Forms.Label();
             this.gbSystemset_60 = new System.Windows.Forms.GroupBox();
             this.btnSystemset_45_Unique_Lifted3 = new System.Windows.Forms.Button();
             this.btnSystemset_43_Unique_Close3 = new System.Windows.Forms.Button();
@@ -225,6 +225,7 @@
             this.lblSystemset_62 = new System.Windows.Forms.Label();
             this.lblSystemset_61 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btnRead = new System.Windows.Forms.Button();
             this.gbBCU_SystemSet = new System.Windows.Forms.GroupBox();
             this.btnFlashData = new System.Windows.Forms.Button();
             this.txtFlashData = new System.Windows.Forms.TextBox();
@@ -384,7 +385,6 @@
             this.lblSystemset_BCU_5 = new System.Windows.Forms.Label();
             this.lblSystemset_BCU_1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnRead = new System.Windows.Forms.Button();
             this.gbSystemset_04.SuspendLayout();
             this.gbSystemset_27.SuspendLayout();
             this.gbSystemset_14.SuspendLayout();
@@ -394,8 +394,8 @@
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.gbControl020.SuspendLayout();
             this.gbSystemset_0.SuspendLayout();
+            this.gbControl020.SuspendLayout();
             this.gbSystemset_60.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.gbBCU_SystemSet.SuspendLayout();
@@ -450,11 +450,11 @@
             this.gbSystemset_04.Controls.Add(this.lblSystemset_09);
             this.gbSystemset_04.Controls.Add(this.lblSystemset_05);
             this.gbSystemset_04.Dock = System.Windows.Forms.DockStyle.Left;
-            this.gbSystemset_04.Location = new System.Drawing.Point(3, 3);
-            this.gbSystemset_04.Margin = new System.Windows.Forms.Padding(10);
+            this.gbSystemset_04.Location = new System.Drawing.Point(4, 4);
+            this.gbSystemset_04.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.gbSystemset_04.Name = "gbSystemset_04";
-            this.gbSystemset_04.Padding = new System.Windows.Forms.Padding(5);
-            this.gbSystemset_04.Size = new System.Drawing.Size(333, 644);
+            this.gbSystemset_04.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.gbSystemset_04.Size = new System.Drawing.Size(444, 830);
             this.gbSystemset_04.TabIndex = 37;
             this.gbSystemset_04.TabStop = false;
             this.gbSystemset_04.Text = "开关控制";
@@ -463,11 +463,11 @@
             // 
             this.btnSystemset_45_Lifted10.AutoSize = true;
             this.btnSystemset_45_Lifted10.Enabled = false;
-            this.btnSystemset_45_Lifted10.Location = new System.Drawing.Point(253, 349);
-            this.btnSystemset_45_Lifted10.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_Lifted10.Location = new System.Drawing.Point(337, 436);
+            this.btnSystemset_45_Lifted10.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_Lifted10.Name = "btnSystemset_45_Lifted10";
             this.btnSystemset_45_Lifted10.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_Lifted10.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_Lifted10.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_Lifted10.TabIndex = 46;
             this.btnSystemset_45_Lifted10.Text = "解除";
             this.btnSystemset_45_Lifted10.UseVisualStyleBackColor = true;
@@ -476,11 +476,11 @@
             // 
             this.btnSystemset_43_Close10.AutoSize = true;
             this.btnSystemset_43_Close10.Enabled = false;
-            this.btnSystemset_43_Close10.Location = new System.Drawing.Point(178, 350);
-            this.btnSystemset_43_Close10.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_Close10.Location = new System.Drawing.Point(237, 438);
+            this.btnSystemset_43_Close10.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_Close10.Name = "btnSystemset_43_Close10";
             this.btnSystemset_43_Close10.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_Close10.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_Close10.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_Close10.TabIndex = 45;
             this.btnSystemset_43_Close10.Text = "关闭";
             this.btnSystemset_43_Close10.UseVisualStyleBackColor = true;
@@ -489,11 +489,11 @@
             // 
             this.btnSystemset_44_Open10.AutoSize = true;
             this.btnSystemset_44_Open10.Enabled = false;
-            this.btnSystemset_44_Open10.Location = new System.Drawing.Point(104, 350);
-            this.btnSystemset_44_Open10.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_Open10.Location = new System.Drawing.Point(139, 438);
+            this.btnSystemset_44_Open10.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_Open10.Name = "btnSystemset_44_Open10";
             this.btnSystemset_44_Open10.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_Open10.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_Open10.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_Open10.TabIndex = 44;
             this.btnSystemset_44_Open10.Text = "打开";
             this.btnSystemset_44_Open10.UseVisualStyleBackColor = true;
@@ -501,9 +501,10 @@
             // lblSystemset_52
             // 
             this.lblSystemset_52.AutoSize = true;
-            this.lblSystemset_52.Location = new System.Drawing.Point(8, 355);
+            this.lblSystemset_52.Location = new System.Drawing.Point(11, 444);
+            this.lblSystemset_52.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_52.Name = "lblSystemset_52";
-            this.lblSystemset_52.Size = new System.Drawing.Size(131, 12);
+            this.lblSystemset_52.Size = new System.Drawing.Size(166, 15);
             this.lblSystemset_52.TabIndex = 43;
             this.lblSystemset_52.Text = "加热继电器驱动MOS控制";
             // 
@@ -511,11 +512,11 @@
             // 
             this.btnSystemset_45_Lifted3.AutoSize = true;
             this.btnSystemset_45_Lifted3.Enabled = false;
-            this.btnSystemset_45_Lifted3.Location = new System.Drawing.Point(253, 149);
-            this.btnSystemset_45_Lifted3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_Lifted3.Location = new System.Drawing.Point(337, 186);
+            this.btnSystemset_45_Lifted3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_Lifted3.Name = "btnSystemset_45_Lifted3";
             this.btnSystemset_45_Lifted3.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_Lifted3.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_Lifted3.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_Lifted3.TabIndex = 42;
             this.btnSystemset_45_Lifted3.Text = "解除";
             this.btnSystemset_45_Lifted3.UseVisualStyleBackColor = true;
@@ -525,11 +526,11 @@
             // 
             this.btnSystemset_43_Close3.AutoSize = true;
             this.btnSystemset_43_Close3.Enabled = false;
-            this.btnSystemset_43_Close3.Location = new System.Drawing.Point(178, 150);
-            this.btnSystemset_43_Close3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_Close3.Location = new System.Drawing.Point(237, 188);
+            this.btnSystemset_43_Close3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_Close3.Name = "btnSystemset_43_Close3";
             this.btnSystemset_43_Close3.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_Close3.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_Close3.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_Close3.TabIndex = 41;
             this.btnSystemset_43_Close3.Text = "关闭";
             this.btnSystemset_43_Close3.UseVisualStyleBackColor = true;
@@ -539,11 +540,11 @@
             // 
             this.btnSystemset_44_Open3.AutoSize = true;
             this.btnSystemset_44_Open3.Enabled = false;
-            this.btnSystemset_44_Open3.Location = new System.Drawing.Point(104, 150);
-            this.btnSystemset_44_Open3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_Open3.Location = new System.Drawing.Point(139, 188);
+            this.btnSystemset_44_Open3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_Open3.Name = "btnSystemset_44_Open3";
             this.btnSystemset_44_Open3.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_Open3.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_Open3.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_Open3.TabIndex = 40;
             this.btnSystemset_44_Open3.Text = "打开";
             this.btnSystemset_44_Open3.UseVisualStyleBackColor = true;
@@ -552,10 +553,9 @@
             // lblSystemset_07
             // 
             this.lblSystemset_07.AutoSize = true;
-            this.lblSystemset_07.Location = new System.Drawing.Point(9, 155);
-            this.lblSystemset_07.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_07.Location = new System.Drawing.Point(12, 194);
             this.lblSystemset_07.Name = "lblSystemset_07";
-            this.lblSystemset_07.Size = new System.Drawing.Size(65, 12);
+            this.lblSystemset_07.Size = new System.Drawing.Size(85, 15);
             this.lblSystemset_07.TabIndex = 39;
             this.lblSystemset_07.Text = "预充MOSFET";
             // 
@@ -567,9 +567,10 @@
             this.btnSystemset_47.ForeColor = System.Drawing.Color.White;
             this.btnSystemset_47.Image = global::SofarBMS.Properties.Resources.debugtool;
             this.btnSystemset_47.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSystemset_47.Location = new System.Drawing.Point(11, 22);
+            this.btnSystemset_47.Location = new System.Drawing.Point(15, 28);
+            this.btnSystemset_47.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSystemset_47.Name = "btnSystemset_47";
-            this.btnSystemset_47.Size = new System.Drawing.Size(312, 30);
+            this.btnSystemset_47.Size = new System.Drawing.Size(416, 38);
             this.btnSystemset_47.TabIndex = 38;
             this.btnSystemset_47.Text = "开始调试";
             this.btnSystemset_47.UseVisualStyleBackColor = false;
@@ -579,11 +580,11 @@
             // 
             this.btnSystemset_45_Lifted9.AutoSize = true;
             this.btnSystemset_45_Lifted9.Enabled = false;
-            this.btnSystemset_45_Lifted9.Location = new System.Drawing.Point(253, 429);
-            this.btnSystemset_45_Lifted9.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_Lifted9.Location = new System.Drawing.Point(337, 536);
+            this.btnSystemset_45_Lifted9.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_Lifted9.Name = "btnSystemset_45_Lifted9";
             this.btnSystemset_45_Lifted9.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_Lifted9.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_Lifted9.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_Lifted9.TabIndex = 38;
             this.btnSystemset_45_Lifted9.Text = "解除";
             this.btnSystemset_45_Lifted9.UseVisualStyleBackColor = true;
@@ -593,11 +594,11 @@
             // 
             this.btnSystemset_45_Lifted8.AutoSize = true;
             this.btnSystemset_45_Lifted8.Enabled = false;
-            this.btnSystemset_45_Lifted8.Location = new System.Drawing.Point(253, 389);
-            this.btnSystemset_45_Lifted8.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_Lifted8.Location = new System.Drawing.Point(337, 486);
+            this.btnSystemset_45_Lifted8.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_Lifted8.Name = "btnSystemset_45_Lifted8";
             this.btnSystemset_45_Lifted8.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_Lifted8.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_Lifted8.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_Lifted8.TabIndex = 37;
             this.btnSystemset_45_Lifted8.Text = "解除";
             this.btnSystemset_45_Lifted8.UseVisualStyleBackColor = true;
@@ -607,11 +608,11 @@
             // 
             this.btnSystemset_45_Lifted7.AutoSize = true;
             this.btnSystemset_45_Lifted7.Enabled = false;
-            this.btnSystemset_45_Lifted7.Location = new System.Drawing.Point(253, 309);
-            this.btnSystemset_45_Lifted7.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_Lifted7.Location = new System.Drawing.Point(337, 386);
+            this.btnSystemset_45_Lifted7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_Lifted7.Name = "btnSystemset_45_Lifted7";
             this.btnSystemset_45_Lifted7.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_Lifted7.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_Lifted7.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_Lifted7.TabIndex = 36;
             this.btnSystemset_45_Lifted7.Text = "解除";
             this.btnSystemset_45_Lifted7.UseVisualStyleBackColor = true;
@@ -621,11 +622,11 @@
             // 
             this.btnSystemset_43_Close9.AutoSize = true;
             this.btnSystemset_43_Close9.Enabled = false;
-            this.btnSystemset_43_Close9.Location = new System.Drawing.Point(178, 430);
-            this.btnSystemset_43_Close9.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_Close9.Location = new System.Drawing.Point(237, 538);
+            this.btnSystemset_43_Close9.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_Close9.Name = "btnSystemset_43_Close9";
             this.btnSystemset_43_Close9.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_Close9.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_Close9.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_Close9.TabIndex = 35;
             this.btnSystemset_43_Close9.Text = "关闭";
             this.btnSystemset_43_Close9.UseVisualStyleBackColor = true;
@@ -635,11 +636,11 @@
             // 
             this.btnSystemset_44_Open9.AutoSize = true;
             this.btnSystemset_44_Open9.Enabled = false;
-            this.btnSystemset_44_Open9.Location = new System.Drawing.Point(104, 430);
-            this.btnSystemset_44_Open9.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_Open9.Location = new System.Drawing.Point(139, 538);
+            this.btnSystemset_44_Open9.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_Open9.Name = "btnSystemset_44_Open9";
             this.btnSystemset_44_Open9.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_Open9.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_Open9.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_Open9.TabIndex = 34;
             this.btnSystemset_44_Open9.Text = "打开";
             this.btnSystemset_44_Open9.UseVisualStyleBackColor = true;
@@ -649,11 +650,11 @@
             // 
             this.btnSystemset_43_Close8.AutoSize = true;
             this.btnSystemset_43_Close8.Enabled = false;
-            this.btnSystemset_43_Close8.Location = new System.Drawing.Point(178, 390);
-            this.btnSystemset_43_Close8.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_Close8.Location = new System.Drawing.Point(237, 488);
+            this.btnSystemset_43_Close8.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_Close8.Name = "btnSystemset_43_Close8";
             this.btnSystemset_43_Close8.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_Close8.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_Close8.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_Close8.TabIndex = 33;
             this.btnSystemset_43_Close8.Text = "关闭";
             this.btnSystemset_43_Close8.UseVisualStyleBackColor = true;
@@ -662,9 +663,10 @@
             // lblSystemset_13
             // 
             this.lblSystemset_13.AutoSize = true;
-            this.lblSystemset_13.Location = new System.Drawing.Point(9, 435);
+            this.lblSystemset_13.Location = new System.Drawing.Point(12, 544);
+            this.lblSystemset_13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_13.Name = "lblSystemset_13";
-            this.lblSystemset_13.Size = new System.Drawing.Size(41, 12);
+            this.lblSystemset_13.Size = new System.Drawing.Size(55, 15);
             this.lblSystemset_13.TabIndex = 28;
             this.lblSystemset_13.Text = "IDM_OP";
             // 
@@ -672,11 +674,11 @@
             // 
             this.btnSystemset_43_Close7.AutoSize = true;
             this.btnSystemset_43_Close7.Enabled = false;
-            this.btnSystemset_43_Close7.Location = new System.Drawing.Point(178, 310);
-            this.btnSystemset_43_Close7.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_Close7.Location = new System.Drawing.Point(237, 388);
+            this.btnSystemset_43_Close7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_Close7.Name = "btnSystemset_43_Close7";
             this.btnSystemset_43_Close7.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_Close7.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_Close7.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_Close7.TabIndex = 31;
             this.btnSystemset_43_Close7.Text = "关闭";
             this.btnSystemset_43_Close7.UseVisualStyleBackColor = true;
@@ -686,11 +688,11 @@
             // 
             this.btnSystemset_44_Open8.AutoSize = true;
             this.btnSystemset_44_Open8.Enabled = false;
-            this.btnSystemset_44_Open8.Location = new System.Drawing.Point(104, 390);
-            this.btnSystemset_44_Open8.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_Open8.Location = new System.Drawing.Point(139, 488);
+            this.btnSystemset_44_Open8.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_Open8.Name = "btnSystemset_44_Open8";
             this.btnSystemset_44_Open8.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_Open8.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_Open8.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_Open8.TabIndex = 32;
             this.btnSystemset_44_Open8.Text = "打开";
             this.btnSystemset_44_Open8.UseVisualStyleBackColor = true;
@@ -700,11 +702,11 @@
             // 
             this.btnSystemset_44_Open7.AutoSize = true;
             this.btnSystemset_44_Open7.Enabled = false;
-            this.btnSystemset_44_Open7.Location = new System.Drawing.Point(104, 310);
-            this.btnSystemset_44_Open7.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_Open7.Location = new System.Drawing.Point(139, 388);
+            this.btnSystemset_44_Open7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_Open7.Name = "btnSystemset_44_Open7";
             this.btnSystemset_44_Open7.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_Open7.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_Open7.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_Open7.TabIndex = 30;
             this.btnSystemset_44_Open7.Text = "打开";
             this.btnSystemset_44_Open7.UseVisualStyleBackColor = true;
@@ -713,20 +715,18 @@
             // lblSystemset_11
             // 
             this.lblSystemset_11.AutoSize = true;
-            this.lblSystemset_11.Location = new System.Drawing.Point(9, 315);
-            this.lblSystemset_11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_11.Location = new System.Drawing.Point(12, 394);
             this.lblSystemset_11.Name = "lblSystemset_11";
-            this.lblSystemset_11.Size = new System.Drawing.Size(53, 12);
+            this.lblSystemset_11.Size = new System.Drawing.Size(67, 15);
             this.lblSystemset_11.TabIndex = 27;
             this.lblSystemset_11.Text = "充电急停";
             // 
             // lblSystemset_12
             // 
             this.lblSystemset_12.AutoSize = true;
-            this.lblSystemset_12.Location = new System.Drawing.Point(9, 395);
-            this.lblSystemset_12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_12.Location = new System.Drawing.Point(12, 494);
             this.lblSystemset_12.Name = "lblSystemset_12";
-            this.lblSystemset_12.Size = new System.Drawing.Size(35, 12);
+            this.lblSystemset_12.Size = new System.Drawing.Size(47, 15);
             this.lblSystemset_12.TabIndex = 29;
             this.lblSystemset_12.Text = "ID_OP";
             // 
@@ -734,11 +734,11 @@
             // 
             this.btnSystemset_45_Lifted4.AutoSize = true;
             this.btnSystemset_45_Lifted4.Enabled = false;
-            this.btnSystemset_45_Lifted4.Location = new System.Drawing.Point(253, 189);
-            this.btnSystemset_45_Lifted4.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_Lifted4.Location = new System.Drawing.Point(337, 236);
+            this.btnSystemset_45_Lifted4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_Lifted4.Name = "btnSystemset_45_Lifted4";
             this.btnSystemset_45_Lifted4.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_Lifted4.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_Lifted4.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_Lifted4.TabIndex = 26;
             this.btnSystemset_45_Lifted4.Text = "解除";
             this.btnSystemset_45_Lifted4.UseVisualStyleBackColor = true;
@@ -748,11 +748,11 @@
             // 
             this.btnSystemset_45_Lifted5.AutoSize = true;
             this.btnSystemset_45_Lifted5.Enabled = false;
-            this.btnSystemset_45_Lifted5.Location = new System.Drawing.Point(253, 229);
-            this.btnSystemset_45_Lifted5.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_Lifted5.Location = new System.Drawing.Point(337, 286);
+            this.btnSystemset_45_Lifted5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_Lifted5.Name = "btnSystemset_45_Lifted5";
             this.btnSystemset_45_Lifted5.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_Lifted5.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_Lifted5.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_Lifted5.TabIndex = 25;
             this.btnSystemset_45_Lifted5.Text = "解除";
             this.btnSystemset_45_Lifted5.UseVisualStyleBackColor = true;
@@ -762,11 +762,11 @@
             // 
             this.btnSystemset_45_Lifted6.AutoSize = true;
             this.btnSystemset_45_Lifted6.Enabled = false;
-            this.btnSystemset_45_Lifted6.Location = new System.Drawing.Point(253, 269);
-            this.btnSystemset_45_Lifted6.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_Lifted6.Location = new System.Drawing.Point(337, 336);
+            this.btnSystemset_45_Lifted6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_Lifted6.Name = "btnSystemset_45_Lifted6";
             this.btnSystemset_45_Lifted6.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_Lifted6.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_Lifted6.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_Lifted6.TabIndex = 24;
             this.btnSystemset_45_Lifted6.Text = "解除";
             this.btnSystemset_45_Lifted6.UseVisualStyleBackColor = true;
@@ -776,11 +776,11 @@
             // 
             this.btnSystemset_45_Lifted2.AutoSize = true;
             this.btnSystemset_45_Lifted2.Enabled = false;
-            this.btnSystemset_45_Lifted2.Location = new System.Drawing.Point(253, 109);
-            this.btnSystemset_45_Lifted2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_Lifted2.Location = new System.Drawing.Point(337, 136);
+            this.btnSystemset_45_Lifted2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_Lifted2.Name = "btnSystemset_45_Lifted2";
             this.btnSystemset_45_Lifted2.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_Lifted2.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_Lifted2.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_Lifted2.TabIndex = 22;
             this.btnSystemset_45_Lifted2.Text = "解除";
             this.btnSystemset_45_Lifted2.UseVisualStyleBackColor = true;
@@ -789,10 +789,11 @@
             // 
             this.btnSystemset_45_Lifted1.AutoSize = true;
             this.btnSystemset_45_Lifted1.Enabled = false;
-            this.btnSystemset_45_Lifted1.Location = new System.Drawing.Point(253, 69);
+            this.btnSystemset_45_Lifted1.Location = new System.Drawing.Point(337, 86);
+            this.btnSystemset_45_Lifted1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSystemset_45_Lifted1.Name = "btnSystemset_45_Lifted1";
             this.btnSystemset_45_Lifted1.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_Lifted1.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_Lifted1.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_Lifted1.TabIndex = 21;
             this.btnSystemset_45_Lifted1.Text = "解除";
             this.btnSystemset_45_Lifted1.UseVisualStyleBackColor = true;
@@ -801,11 +802,11 @@
             // 
             this.btnSystemset_43_Close4.AutoSize = true;
             this.btnSystemset_43_Close4.Enabled = false;
-            this.btnSystemset_43_Close4.Location = new System.Drawing.Point(178, 190);
-            this.btnSystemset_43_Close4.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_Close4.Location = new System.Drawing.Point(237, 238);
+            this.btnSystemset_43_Close4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_Close4.Name = "btnSystemset_43_Close4";
             this.btnSystemset_43_Close4.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_Close4.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_Close4.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_Close4.TabIndex = 20;
             this.btnSystemset_43_Close4.Text = "关闭";
             this.btnSystemset_43_Close4.UseVisualStyleBackColor = true;
@@ -815,11 +816,11 @@
             // 
             this.btnSystemset_44_Open4.AutoSize = true;
             this.btnSystemset_44_Open4.Enabled = false;
-            this.btnSystemset_44_Open4.Location = new System.Drawing.Point(104, 190);
-            this.btnSystemset_44_Open4.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_Open4.Location = new System.Drawing.Point(139, 238);
+            this.btnSystemset_44_Open4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_Open4.Name = "btnSystemset_44_Open4";
             this.btnSystemset_44_Open4.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_Open4.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_Open4.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_Open4.TabIndex = 19;
             this.btnSystemset_44_Open4.Text = "打开";
             this.btnSystemset_44_Open4.UseVisualStyleBackColor = true;
@@ -829,11 +830,11 @@
             // 
             this.btnSystemset_43_Close5.AutoSize = true;
             this.btnSystemset_43_Close5.Enabled = false;
-            this.btnSystemset_43_Close5.Location = new System.Drawing.Point(178, 230);
-            this.btnSystemset_43_Close5.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_Close5.Location = new System.Drawing.Point(237, 288);
+            this.btnSystemset_43_Close5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_Close5.Name = "btnSystemset_43_Close5";
             this.btnSystemset_43_Close5.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_Close5.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_Close5.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_Close5.TabIndex = 18;
             this.btnSystemset_43_Close5.Text = "关闭";
             this.btnSystemset_43_Close5.UseVisualStyleBackColor = true;
@@ -842,9 +843,10 @@
             // lblSystemset_08
             // 
             this.lblSystemset_08.AutoSize = true;
-            this.lblSystemset_08.Location = new System.Drawing.Point(9, 195);
+            this.lblSystemset_08.Location = new System.Drawing.Point(12, 244);
+            this.lblSystemset_08.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_08.Name = "lblSystemset_08";
-            this.lblSystemset_08.Size = new System.Drawing.Size(65, 12);
+            this.lblSystemset_08.Size = new System.Drawing.Size(82, 15);
             this.lblSystemset_08.TabIndex = 4;
             this.lblSystemset_08.Text = "加热膜控制";
             // 
@@ -852,11 +854,11 @@
             // 
             this.btnSystemset_43_Close6.AutoSize = true;
             this.btnSystemset_43_Close6.Enabled = false;
-            this.btnSystemset_43_Close6.Location = new System.Drawing.Point(178, 270);
-            this.btnSystemset_43_Close6.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_Close6.Location = new System.Drawing.Point(237, 338);
+            this.btnSystemset_43_Close6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_Close6.Name = "btnSystemset_43_Close6";
             this.btnSystemset_43_Close6.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_Close6.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_Close6.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_Close6.TabIndex = 15;
             this.btnSystemset_43_Close6.Text = "关闭";
             this.btnSystemset_43_Close6.UseVisualStyleBackColor = true;
@@ -866,11 +868,11 @@
             // 
             this.btnSystemset_44_Open5.AutoSize = true;
             this.btnSystemset_44_Open5.Enabled = false;
-            this.btnSystemset_44_Open5.Location = new System.Drawing.Point(104, 230);
-            this.btnSystemset_44_Open5.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_Open5.Location = new System.Drawing.Point(139, 288);
+            this.btnSystemset_44_Open5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_Open5.Name = "btnSystemset_44_Open5";
             this.btnSystemset_44_Open5.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_Open5.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_Open5.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_Open5.TabIndex = 16;
             this.btnSystemset_44_Open5.Text = "打开";
             this.btnSystemset_44_Open5.UseVisualStyleBackColor = true;
@@ -880,11 +882,11 @@
             // 
             this.btnSystemset_44_Open6.AutoSize = true;
             this.btnSystemset_44_Open6.Enabled = false;
-            this.btnSystemset_44_Open6.Location = new System.Drawing.Point(104, 270);
-            this.btnSystemset_44_Open6.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_Open6.Location = new System.Drawing.Point(139, 338);
+            this.btnSystemset_44_Open6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_Open6.Name = "btnSystemset_44_Open6";
             this.btnSystemset_44_Open6.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_Open6.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_Open6.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_Open6.TabIndex = 14;
             this.btnSystemset_44_Open6.Text = "打开";
             this.btnSystemset_44_Open6.UseVisualStyleBackColor = true;
@@ -894,11 +896,11 @@
             // 
             this.btnSystemset_43_Close2.AutoSize = true;
             this.btnSystemset_43_Close2.Enabled = false;
-            this.btnSystemset_43_Close2.Location = new System.Drawing.Point(178, 110);
-            this.btnSystemset_43_Close2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_Close2.Location = new System.Drawing.Point(237, 138);
+            this.btnSystemset_43_Close2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_Close2.Name = "btnSystemset_43_Close2";
             this.btnSystemset_43_Close2.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_Close2.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_Close2.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_Close2.TabIndex = 11;
             this.btnSystemset_43_Close2.Text = "关闭";
             this.btnSystemset_43_Close2.UseVisualStyleBackColor = true;
@@ -908,11 +910,11 @@
             // 
             this.btnSystemset_44_Open2.AutoSize = true;
             this.btnSystemset_44_Open2.Enabled = false;
-            this.btnSystemset_44_Open2.Location = new System.Drawing.Point(104, 110);
-            this.btnSystemset_44_Open2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_Open2.Location = new System.Drawing.Point(139, 138);
+            this.btnSystemset_44_Open2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_Open2.Name = "btnSystemset_44_Open2";
             this.btnSystemset_44_Open2.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_Open2.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_Open2.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_Open2.TabIndex = 10;
             this.btnSystemset_44_Open2.Text = "打开";
             this.btnSystemset_44_Open2.UseVisualStyleBackColor = true;
@@ -922,11 +924,11 @@
             // 
             this.btnSystemset_43_Close1.AutoSize = true;
             this.btnSystemset_43_Close1.Enabled = false;
-            this.btnSystemset_43_Close1.Location = new System.Drawing.Point(178, 70);
-            this.btnSystemset_43_Close1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_Close1.Location = new System.Drawing.Point(237, 88);
+            this.btnSystemset_43_Close1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_Close1.Name = "btnSystemset_43_Close1";
             this.btnSystemset_43_Close1.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_Close1.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_Close1.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_Close1.TabIndex = 9;
             this.btnSystemset_43_Close1.Text = "关闭";
             this.btnSystemset_43_Close1.UseVisualStyleBackColor = true;
@@ -936,11 +938,11 @@
             // 
             this.btnSystemset_44_Open1.AutoSize = true;
             this.btnSystemset_44_Open1.Enabled = false;
-            this.btnSystemset_44_Open1.Location = new System.Drawing.Point(104, 70);
-            this.btnSystemset_44_Open1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_Open1.Location = new System.Drawing.Point(139, 88);
+            this.btnSystemset_44_Open1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_Open1.Name = "btnSystemset_44_Open1";
             this.btnSystemset_44_Open1.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_Open1.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_Open1.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_Open1.TabIndex = 8;
             this.btnSystemset_44_Open1.Text = "打开";
             this.btnSystemset_44_Open1.UseVisualStyleBackColor = true;
@@ -949,51 +951,47 @@
             // lblSystemset_10
             // 
             this.lblSystemset_10.AutoSize = true;
-            this.lblSystemset_10.Location = new System.Drawing.Point(9, 275);
-            this.lblSystemset_10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_10.Location = new System.Drawing.Point(12, 344);
             this.lblSystemset_10.Name = "lblSystemset_10";
-            this.lblSystemset_10.Size = new System.Drawing.Size(65, 12);
+            this.lblSystemset_10.Size = new System.Drawing.Size(82, 15);
             this.lblSystemset_10.TabIndex = 3;
             this.lblSystemset_10.Text = "屏蔽蜂鸣器";
             // 
             // lblSystemset_06
             // 
             this.lblSystemset_06.AutoSize = true;
-            this.lblSystemset_06.Location = new System.Drawing.Point(9, 115);
-            this.lblSystemset_06.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_06.Location = new System.Drawing.Point(12, 144);
             this.lblSystemset_06.Name = "lblSystemset_06";
-            this.lblSystemset_06.Size = new System.Drawing.Size(65, 12);
+            this.lblSystemset_06.Size = new System.Drawing.Size(85, 15);
             this.lblSystemset_06.TabIndex = 1;
             this.lblSystemset_06.Text = "放电MOSFET";
             // 
             // lblSystemset_09
             // 
             this.lblSystemset_09.AutoSize = true;
-            this.lblSystemset_09.Location = new System.Drawing.Point(9, 235);
-            this.lblSystemset_09.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_09.Location = new System.Drawing.Point(12, 294);
             this.lblSystemset_09.Name = "lblSystemset_09";
-            this.lblSystemset_09.Size = new System.Drawing.Size(53, 12);
+            this.lblSystemset_09.Size = new System.Drawing.Size(67, 15);
             this.lblSystemset_09.TabIndex = 5;
             this.lblSystemset_09.Text = "强度休眠";
             // 
             // lblSystemset_05
             // 
             this.lblSystemset_05.AutoSize = true;
-            this.lblSystemset_05.Location = new System.Drawing.Point(9, 75);
-            this.lblSystemset_05.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_05.Location = new System.Drawing.Point(12, 94);
             this.lblSystemset_05.Name = "lblSystemset_05";
-            this.lblSystemset_05.Size = new System.Drawing.Size(65, 12);
+            this.lblSystemset_05.Size = new System.Drawing.Size(85, 15);
             this.lblSystemset_05.TabIndex = 0;
             this.lblSystemset_05.Text = "充电MOSFET";
             // 
             // btnSetPackSN
             // 
             this.btnSetPackSN.AutoSize = true;
-            this.btnSetPackSN.Location = new System.Drawing.Point(210, 24);
-            this.btnSetPackSN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSetPackSN.Location = new System.Drawing.Point(280, 30);
+            this.btnSetPackSN.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSetPackSN.Name = "btnSetPackSN";
             this.btnSetPackSN.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetPackSN.Size = new System.Drawing.Size(75, 27);
+            this.btnSetPackSN.Size = new System.Drawing.Size(100, 34);
             this.btnSetPackSN.TabIndex = 11;
             this.btnSetPackSN.Text = "设置";
             this.btnSetPackSN.UseVisualStyleBackColor = true;
@@ -1002,11 +1000,11 @@
             // btnSetTime
             // 
             this.btnSetTime.AutoSize = true;
-            this.btnSetTime.Location = new System.Drawing.Point(802, 24);
-            this.btnSetTime.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSetTime.Location = new System.Drawing.Point(1069, 30);
+            this.btnSetTime.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSetTime.Name = "btnSetTime";
             this.btnSetTime.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetTime.Size = new System.Drawing.Size(72, 27);
+            this.btnSetTime.Size = new System.Drawing.Size(96, 34);
             this.btnSetTime.TabIndex = 10;
             this.btnSetTime.Text = "设置";
             this.btnSetTime.UseVisualStyleBackColor = true;
@@ -1014,41 +1012,46 @@
             // 
             // txt_67
             // 
-            this.txt_67.Location = new System.Drawing.Point(55, 27);
+            this.txt_67.Location = new System.Drawing.Point(73, 34);
+            this.txt_67.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_67.Name = "txt_67";
-            this.txt_67.Size = new System.Drawing.Size(152, 21);
+            this.txt_67.Size = new System.Drawing.Size(201, 25);
             this.txt_67.TabIndex = 3;
             // 
             // lblSystemset_01
             // 
             this.lblSystemset_01.AutoSize = true;
-            this.lblSystemset_01.Location = new System.Drawing.Point(13, 31);
+            this.lblSystemset_01.Location = new System.Drawing.Point(17, 39);
+            this.lblSystemset_01.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_01.Name = "lblSystemset_01";
-            this.lblSystemset_01.Size = new System.Drawing.Size(41, 12);
+            this.lblSystemset_01.Size = new System.Drawing.Size(52, 15);
             this.lblSystemset_01.TabIndex = 2;
             this.lblSystemset_01.Text = "序列号";
             // 
             // lblSystemset_03
             // 
             this.lblSystemset_03.AutoSize = true;
-            this.lblSystemset_03.Location = new System.Drawing.Point(603, 31);
+            this.lblSystemset_03.Location = new System.Drawing.Point(804, 39);
+            this.lblSystemset_03.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_03.Name = "lblSystemset_03";
-            this.lblSystemset_03.Size = new System.Drawing.Size(29, 12);
+            this.lblSystemset_03.Size = new System.Drawing.Size(37, 15);
             this.lblSystemset_03.TabIndex = 0;
             this.lblSystemset_03.Text = "时间";
             // 
             // txtCalibration01
             // 
-            this.txtCalibration01.Location = new System.Drawing.Point(201, 73);
+            this.txtCalibration01.Location = new System.Drawing.Point(268, 91);
+            this.txtCalibration01.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCalibration01.Name = "txtCalibration01";
-            this.txtCalibration01.Size = new System.Drawing.Size(75, 21);
+            this.txtCalibration01.Size = new System.Drawing.Size(99, 25);
             this.txtCalibration01.TabIndex = 6;
             // 
             // txt_0
             // 
-            this.txt_0.Location = new System.Drawing.Point(201, 357);
+            this.txt_0.Location = new System.Drawing.Point(268, 446);
+            this.txt_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_0.Name = "txt_0";
-            this.txt_0.Size = new System.Drawing.Size(75, 21);
+            this.txt_0.Size = new System.Drawing.Size(99, 25);
             this.txt_0.TabIndex = 10;
             this.txt_0.Text = "0";
             this.txt_0.Visible = false;
@@ -1056,11 +1059,11 @@
             // btnSetVoltage
             // 
             this.btnSetVoltage.AutoSize = true;
-            this.btnSetVoltage.Location = new System.Drawing.Point(584, 70);
-            this.btnSetVoltage.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSetVoltage.Location = new System.Drawing.Point(779, 88);
+            this.btnSetVoltage.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSetVoltage.Name = "btnSetVoltage";
             this.btnSetVoltage.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetVoltage.Size = new System.Drawing.Size(72, 27);
+            this.btnSetVoltage.Size = new System.Drawing.Size(96, 34);
             this.btnSetVoltage.TabIndex = 15;
             this.btnSetVoltage.Text = "设置";
             this.btnSetVoltage.UseVisualStyleBackColor = true;
@@ -1068,66 +1071,63 @@
             // 
             // txt_62
             // 
-            this.txt_62.Location = new System.Drawing.Point(509, 153);
-            this.txt_62.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_62.Location = new System.Drawing.Point(679, 191);
+            this.txt_62.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_62.Name = "txt_62";
-            this.txt_62.Size = new System.Drawing.Size(70, 21);
+            this.txt_62.Size = new System.Drawing.Size(92, 25);
             this.txt_62.TabIndex = 13;
             // 
             // lblSystemset_23
             // 
             this.lblSystemset_23.AutoSize = true;
-            this.lblSystemset_23.Location = new System.Drawing.Point(370, 157);
-            this.lblSystemset_23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_23.Location = new System.Drawing.Point(493, 196);
             this.lblSystemset_23.Name = "lblSystemset_23";
-            this.lblSystemset_23.Size = new System.Drawing.Size(107, 12);
+            this.lblSystemset_23.Size = new System.Drawing.Size(137, 15);
             this.lblSystemset_23.TabIndex = 12;
             this.lblSystemset_23.Text = "单体温度个数(1-8)";
             // 
             // txt_61
             // 
-            this.txt_61.Location = new System.Drawing.Point(509, 113);
-            this.txt_61.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_61.Location = new System.Drawing.Point(679, 141);
+            this.txt_61.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_61.Name = "txt_61";
-            this.txt_61.Size = new System.Drawing.Size(70, 21);
+            this.txt_61.Size = new System.Drawing.Size(92, 25);
             this.txt_61.TabIndex = 11;
             // 
             // txt_60
             // 
-            this.txt_60.Location = new System.Drawing.Point(509, 73);
-            this.txt_60.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_60.Location = new System.Drawing.Point(679, 91);
+            this.txt_60.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_60.Name = "txt_60";
-            this.txt_60.Size = new System.Drawing.Size(70, 21);
+            this.txt_60.Size = new System.Drawing.Size(92, 25);
             this.txt_60.TabIndex = 10;
             // 
             // lblSystemset_22
             // 
             this.lblSystemset_22.AutoSize = true;
-            this.lblSystemset_22.Location = new System.Drawing.Point(370, 117);
-            this.lblSystemset_22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_22.Location = new System.Drawing.Point(493, 146);
             this.lblSystemset_22.Name = "lblSystemset_22";
-            this.lblSystemset_22.Size = new System.Drawing.Size(113, 12);
+            this.lblSystemset_22.Size = new System.Drawing.Size(145, 15);
             this.lblSystemset_22.TabIndex = 1;
             this.lblSystemset_22.Text = "单体电压个数(1-20)";
             // 
             // lblSystemset_21
             // 
             this.lblSystemset_21.AutoSize = true;
-            this.lblSystemset_21.Location = new System.Drawing.Point(370, 77);
-            this.lblSystemset_21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_21.Location = new System.Drawing.Point(493, 96);
             this.lblSystemset_21.Name = "lblSystemset_21";
-            this.lblSystemset_21.Size = new System.Drawing.Size(77, 12);
+            this.lblSystemset_21.Size = new System.Drawing.Size(99, 15);
             this.lblSystemset_21.TabIndex = 0;
             this.lblSystemset_21.Text = "额定容量(AH)";
             // 
             // btnSetSOC
             // 
             this.btnSetSOC.AutoSize = true;
-            this.btnSetSOC.Location = new System.Drawing.Point(584, 269);
-            this.btnSetSOC.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSetSOC.Location = new System.Drawing.Point(779, 336);
+            this.btnSetSOC.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSetSOC.Name = "btnSetSOC";
             this.btnSetSOC.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetSOC.Size = new System.Drawing.Size(72, 27);
+            this.btnSetSOC.Size = new System.Drawing.Size(96, 34);
             this.btnSetSOC.TabIndex = 16;
             this.btnSetSOC.Text = "设置";
             this.btnSetSOC.UseVisualStyleBackColor = true;
@@ -1135,30 +1135,29 @@
             // 
             // txt_65
             // 
-            this.txt_65.Location = new System.Drawing.Point(509, 273);
-            this.txt_65.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_65.Location = new System.Drawing.Point(679, 341);
+            this.txt_65.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_65.Name = "txt_65";
-            this.txt_65.Size = new System.Drawing.Size(70, 21);
+            this.txt_65.Size = new System.Drawing.Size(92, 25);
             this.txt_65.TabIndex = 10;
             // 
             // lblSystemset_26
             // 
             this.lblSystemset_26.AutoSize = true;
-            this.lblSystemset_26.Location = new System.Drawing.Point(370, 277);
-            this.lblSystemset_26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_26.Location = new System.Drawing.Point(493, 346);
             this.lblSystemset_26.Name = "lblSystemset_26";
-            this.lblSystemset_26.Size = new System.Drawing.Size(71, 12);
+            this.lblSystemset_26.Size = new System.Drawing.Size(95, 15);
             this.lblSystemset_26.TabIndex = 0;
             this.lblSystemset_26.Text = "SOC(0~100%)";
             // 
             // btnSetCapacity
             // 
             this.btnSetCapacity.AutoSize = true;
-            this.btnSetCapacity.Location = new System.Drawing.Point(584, 191);
-            this.btnSetCapacity.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSetCapacity.Location = new System.Drawing.Point(779, 239);
+            this.btnSetCapacity.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSetCapacity.Name = "btnSetCapacity";
             this.btnSetCapacity.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCapacity.Size = new System.Drawing.Size(72, 27);
+            this.btnSetCapacity.Size = new System.Drawing.Size(96, 34);
             this.btnSetCapacity.TabIndex = 16;
             this.btnSetCapacity.Text = "设置";
             this.btnSetCapacity.UseVisualStyleBackColor = true;
@@ -1166,37 +1165,35 @@
             // 
             // txt_64
             // 
-            this.txt_64.Location = new System.Drawing.Point(509, 233);
-            this.txt_64.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_64.Location = new System.Drawing.Point(679, 291);
+            this.txt_64.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_64.Name = "txt_64";
-            this.txt_64.Size = new System.Drawing.Size(70, 21);
+            this.txt_64.Size = new System.Drawing.Size(92, 25);
             this.txt_64.TabIndex = 11;
             // 
             // txt_63
             // 
-            this.txt_63.Location = new System.Drawing.Point(509, 193);
-            this.txt_63.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_63.Location = new System.Drawing.Point(679, 241);
+            this.txt_63.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_63.Name = "txt_63";
-            this.txt_63.Size = new System.Drawing.Size(70, 21);
+            this.txt_63.Size = new System.Drawing.Size(92, 25);
             this.txt_63.TabIndex = 10;
             // 
             // lblSystemset_25
             // 
             this.lblSystemset_25.AutoSize = true;
-            this.lblSystemset_25.Location = new System.Drawing.Point(370, 237);
-            this.lblSystemset_25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_25.Location = new System.Drawing.Point(493, 296);
             this.lblSystemset_25.Name = "lblSystemset_25";
-            this.lblSystemset_25.Size = new System.Drawing.Size(107, 12);
+            this.lblSystemset_25.Size = new System.Drawing.Size(137, 15);
             this.lblSystemset_25.TabIndex = 1;
             this.lblSystemset_25.Text = "累计放电容量(mAH)";
             // 
             // lblSystemset_24
             // 
             this.lblSystemset_24.AutoSize = true;
-            this.lblSystemset_24.Location = new System.Drawing.Point(370, 197);
-            this.lblSystemset_24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_24.Location = new System.Drawing.Point(493, 246);
             this.lblSystemset_24.Name = "lblSystemset_24";
-            this.lblSystemset_24.Size = new System.Drawing.Size(107, 12);
+            this.lblSystemset_24.Size = new System.Drawing.Size(137, 15);
             this.lblSystemset_24.TabIndex = 0;
             this.lblSystemset_24.Text = "累计充电容量(mAH)";
             // 
@@ -1236,9 +1233,11 @@
             this.gbSystemset_27.Controls.Add(this.lblSystemset_34);
             this.gbSystemset_27.Controls.Add(this.lblSystemset_28);
             this.gbSystemset_27.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbSystemset_27.Location = new System.Drawing.Point(3, 3);
+            this.gbSystemset_27.Location = new System.Drawing.Point(4, 4);
+            this.gbSystemset_27.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbSystemset_27.Name = "gbSystemset_27";
-            this.gbSystemset_27.Size = new System.Drawing.Size(1356, 644);
+            this.gbSystemset_27.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbSystemset_27.Size = new System.Drawing.Size(1811, 830);
             this.gbSystemset_27.TabIndex = 44;
             this.gbSystemset_27.TabStop = false;
             this.gbSystemset_27.Text = "PCU参数设置";
@@ -1246,10 +1245,11 @@
             // btnSetCalibration_17
             // 
             this.btnSetCalibration_17.AutoSize = true;
-            this.btnSetCalibration_17.Location = new System.Drawing.Point(299, 275);
+            this.btnSetCalibration_17.Location = new System.Drawing.Point(399, 344);
+            this.btnSetCalibration_17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetCalibration_17.Name = "btnSetCalibration_17";
             this.btnSetCalibration_17.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_17.Size = new System.Drawing.Size(75, 27);
+            this.btnSetCalibration_17.Size = new System.Drawing.Size(100, 34);
             this.btnSetCalibration_17.TabIndex = 32;
             this.btnSetCalibration_17.Text = "写入";
             this.btnSetCalibration_17.UseVisualStyleBackColor = true;
@@ -1258,10 +1258,11 @@
             // btnSetCalibration_16
             // 
             this.btnSetCalibration_16.AutoSize = true;
-            this.btnSetCalibration_16.Location = new System.Drawing.Point(299, 236);
+            this.btnSetCalibration_16.Location = new System.Drawing.Point(399, 295);
+            this.btnSetCalibration_16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetCalibration_16.Name = "btnSetCalibration_16";
             this.btnSetCalibration_16.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_16.Size = new System.Drawing.Size(75, 27);
+            this.btnSetCalibration_16.Size = new System.Drawing.Size(100, 34);
             this.btnSetCalibration_16.TabIndex = 31;
             this.btnSetCalibration_16.Text = "写入";
             this.btnSetCalibration_16.UseVisualStyleBackColor = true;
@@ -1270,10 +1271,11 @@
             // btnSetCalibration_15
             // 
             this.btnSetCalibration_15.AutoSize = true;
-            this.btnSetCalibration_15.Location = new System.Drawing.Point(299, 202);
+            this.btnSetCalibration_15.Location = new System.Drawing.Point(399, 252);
+            this.btnSetCalibration_15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetCalibration_15.Name = "btnSetCalibration_15";
             this.btnSetCalibration_15.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_15.Size = new System.Drawing.Size(75, 27);
+            this.btnSetCalibration_15.Size = new System.Drawing.Size(100, 34);
             this.btnSetCalibration_15.TabIndex = 30;
             this.btnSetCalibration_15.Text = "写入";
             this.btnSetCalibration_15.UseVisualStyleBackColor = true;
@@ -1282,10 +1284,11 @@
             // btnSetCalibration_14
             // 
             this.btnSetCalibration_14.AutoSize = true;
-            this.btnSetCalibration_14.Location = new System.Drawing.Point(299, 168);
+            this.btnSetCalibration_14.Location = new System.Drawing.Point(399, 210);
+            this.btnSetCalibration_14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetCalibration_14.Name = "btnSetCalibration_14";
             this.btnSetCalibration_14.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_14.Size = new System.Drawing.Size(75, 27);
+            this.btnSetCalibration_14.Size = new System.Drawing.Size(100, 34);
             this.btnSetCalibration_14.TabIndex = 29;
             this.btnSetCalibration_14.Text = "写入";
             this.btnSetCalibration_14.UseVisualStyleBackColor = true;
@@ -1294,10 +1297,11 @@
             // btnSetCalibration_13
             // 
             this.btnSetCalibration_13.AutoSize = true;
-            this.btnSetCalibration_13.Location = new System.Drawing.Point(299, 135);
+            this.btnSetCalibration_13.Location = new System.Drawing.Point(399, 169);
+            this.btnSetCalibration_13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetCalibration_13.Name = "btnSetCalibration_13";
             this.btnSetCalibration_13.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_13.Size = new System.Drawing.Size(75, 27);
+            this.btnSetCalibration_13.Size = new System.Drawing.Size(100, 34);
             this.btnSetCalibration_13.TabIndex = 28;
             this.btnSetCalibration_13.Text = "写入";
             this.btnSetCalibration_13.UseVisualStyleBackColor = true;
@@ -1306,10 +1310,11 @@
             // btnSetCalibration_12
             // 
             this.btnSetCalibration_12.AutoSize = true;
-            this.btnSetCalibration_12.Location = new System.Drawing.Point(299, 101);
+            this.btnSetCalibration_12.Location = new System.Drawing.Point(399, 126);
+            this.btnSetCalibration_12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetCalibration_12.Name = "btnSetCalibration_12";
             this.btnSetCalibration_12.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_12.Size = new System.Drawing.Size(75, 27);
+            this.btnSetCalibration_12.Size = new System.Drawing.Size(100, 34);
             this.btnSetCalibration_12.TabIndex = 27;
             this.btnSetCalibration_12.Text = "写入";
             this.btnSetCalibration_12.UseVisualStyleBackColor = true;
@@ -1318,10 +1323,11 @@
             // btnSetCalibration_11
             // 
             this.btnSetCalibration_11.AutoSize = true;
-            this.btnSetCalibration_11.Location = new System.Drawing.Point(299, 68);
+            this.btnSetCalibration_11.Location = new System.Drawing.Point(399, 85);
+            this.btnSetCalibration_11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetCalibration_11.Name = "btnSetCalibration_11";
             this.btnSetCalibration_11.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_11.Size = new System.Drawing.Size(75, 27);
+            this.btnSetCalibration_11.Size = new System.Drawing.Size(100, 34);
             this.btnSetCalibration_11.TabIndex = 26;
             this.btnSetCalibration_11.Text = "写入";
             this.btnSetCalibration_11.UseVisualStyleBackColor = true;
@@ -1330,10 +1336,11 @@
             // btnSetTestFlag
             // 
             this.btnSetTestFlag.AutoSize = true;
-            this.btnSetTestFlag.Location = new System.Drawing.Point(777, 68);
+            this.btnSetTestFlag.Location = new System.Drawing.Point(1036, 85);
+            this.btnSetTestFlag.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetTestFlag.Name = "btnSetTestFlag";
             this.btnSetTestFlag.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetTestFlag.Size = new System.Drawing.Size(75, 27);
+            this.btnSetTestFlag.Size = new System.Drawing.Size(100, 34);
             this.btnSetTestFlag.TabIndex = 25;
             this.btnSetTestFlag.Text = "写入";
             this.btnSetTestFlag.UseVisualStyleBackColor = true;
@@ -1342,10 +1349,11 @@
             // btnSetComm
             // 
             this.btnSetComm.AutoSize = true;
-            this.btnSetComm.Location = new System.Drawing.Point(300, 32);
+            this.btnSetComm.Location = new System.Drawing.Point(400, 40);
+            this.btnSetComm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetComm.Name = "btnSetComm";
             this.btnSetComm.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetComm.Size = new System.Drawing.Size(75, 27);
+            this.btnSetComm.Size = new System.Drawing.Size(100, 34);
             this.btnSetComm.TabIndex = 24;
             this.btnSetComm.Text = "写入";
             this.btnSetComm.UseVisualStyleBackColor = true;
@@ -1354,10 +1362,11 @@
             // btnSetSN
             // 
             this.btnSetSN.AutoSize = true;
-            this.btnSetSN.Location = new System.Drawing.Point(777, 32);
+            this.btnSetSN.Location = new System.Drawing.Point(1036, 40);
+            this.btnSetSN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetSN.Name = "btnSetSN";
             this.btnSetSN.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetSN.Size = new System.Drawing.Size(75, 27);
+            this.btnSetSN.Size = new System.Drawing.Size(100, 34);
             this.btnSetSN.TabIndex = 23;
             this.btnSetSN.Text = "写入";
             this.btnSetSN.UseVisualStyleBackColor = true;
@@ -1365,122 +1374,137 @@
             // 
             // txtHV_Discharge_Current_Calibration_Coefficient
             // 
-            this.txtHV_Discharge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(220, 278);
+            this.txtHV_Discharge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(293, 348);
+            this.txtHV_Discharge_Current_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtHV_Discharge_Current_Calibration_Coefficient.Name = "txtHV_Discharge_Current_Calibration_Coefficient";
-            this.txtHV_Discharge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(70, 21);
+            this.txtHV_Discharge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(92, 25);
             this.txtHV_Discharge_Current_Calibration_Coefficient.TabIndex = 22;
             // 
             // txtHV_Charge_Current_Calibration_Coefficient
             // 
-            this.txtHV_Charge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(220, 239);
+            this.txtHV_Charge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(293, 299);
+            this.txtHV_Charge_Current_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtHV_Charge_Current_Calibration_Coefficient.Name = "txtHV_Charge_Current_Calibration_Coefficient";
-            this.txtHV_Charge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(70, 21);
+            this.txtHV_Charge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(92, 25);
             this.txtHV_Charge_Current_Calibration_Coefficient.TabIndex = 21;
             // 
             // txtVpbus_Calibration_Coefficient
             // 
-            this.txtVpbus_Calibration_Coefficient.Location = new System.Drawing.Point(220, 205);
+            this.txtVpbus_Calibration_Coefficient.Location = new System.Drawing.Point(293, 256);
+            this.txtVpbus_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtVpbus_Calibration_Coefficient.Name = "txtVpbus_Calibration_Coefficient";
-            this.txtVpbus_Calibration_Coefficient.Size = new System.Drawing.Size(70, 21);
+            this.txtVpbus_Calibration_Coefficient.Size = new System.Drawing.Size(92, 25);
             this.txtVpbus_Calibration_Coefficient.TabIndex = 20;
             // 
             // txtVhvbus_Calibration_Coefficient
             // 
-            this.txtVhvbus_Calibration_Coefficient.Location = new System.Drawing.Point(220, 171);
+            this.txtVhvbus_Calibration_Coefficient.Location = new System.Drawing.Point(293, 214);
+            this.txtVhvbus_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtVhvbus_Calibration_Coefficient.Name = "txtVhvbus_Calibration_Coefficient";
-            this.txtVhvbus_Calibration_Coefficient.Size = new System.Drawing.Size(70, 21);
+            this.txtVhvbus_Calibration_Coefficient.Size = new System.Drawing.Size(92, 25);
             this.txtVhvbus_Calibration_Coefficient.TabIndex = 19;
             // 
             // txtLV_Discharge_Current_Calibration_Coefficient
             // 
-            this.txtLV_Discharge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(220, 138);
+            this.txtLV_Discharge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(293, 172);
+            this.txtLV_Discharge_Current_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtLV_Discharge_Current_Calibration_Coefficient.Name = "txtLV_Discharge_Current_Calibration_Coefficient";
-            this.txtLV_Discharge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(70, 21);
+            this.txtLV_Discharge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(92, 25);
             this.txtLV_Discharge_Current_Calibration_Coefficient.TabIndex = 18;
             // 
             // txtLV_Charge_Current_Calibration_Coefficient
             // 
-            this.txtLV_Charge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(220, 104);
+            this.txtLV_Charge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(293, 130);
+            this.txtLV_Charge_Current_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtLV_Charge_Current_Calibration_Coefficient.Name = "txtLV_Charge_Current_Calibration_Coefficient";
-            this.txtLV_Charge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(70, 21);
+            this.txtLV_Charge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(92, 25);
             this.txtLV_Charge_Current_Calibration_Coefficient.TabIndex = 17;
             // 
             // txtLV_Calibration_Coefficient
             // 
-            this.txtLV_Calibration_Coefficient.Location = new System.Drawing.Point(220, 71);
+            this.txtLV_Calibration_Coefficient.Location = new System.Drawing.Point(293, 89);
+            this.txtLV_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtLV_Calibration_Coefficient.Name = "txtLV_Calibration_Coefficient";
-            this.txtLV_Calibration_Coefficient.Size = new System.Drawing.Size(70, 21);
+            this.txtLV_Calibration_Coefficient.Size = new System.Drawing.Size(92, 25);
             this.txtLV_Calibration_Coefficient.TabIndex = 16;
             // 
             // lblSystemset_41
             // 
             this.lblSystemset_41.AutoSize = true;
-            this.lblSystemset_41.Location = new System.Drawing.Point(24, 283);
+            this.lblSystemset_41.Location = new System.Drawing.Point(32, 354);
+            this.lblSystemset_41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_41.Name = "lblSystemset_41";
-            this.lblSystemset_41.Size = new System.Drawing.Size(137, 12);
+            this.lblSystemset_41.Size = new System.Drawing.Size(172, 15);
             this.lblSystemset_41.TabIndex = 15;
             this.lblSystemset_41.Text = "高压侧放电电流校准系数";
             // 
             // lblSystemset_40
             // 
             this.lblSystemset_40.AutoSize = true;
-            this.lblSystemset_40.Location = new System.Drawing.Point(24, 244);
+            this.lblSystemset_40.Location = new System.Drawing.Point(32, 305);
+            this.lblSystemset_40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_40.Name = "lblSystemset_40";
-            this.lblSystemset_40.Size = new System.Drawing.Size(137, 12);
+            this.lblSystemset_40.Size = new System.Drawing.Size(172, 15);
             this.lblSystemset_40.TabIndex = 14;
             this.lblSystemset_40.Text = "高压侧充电电流校准系数";
             // 
             // lblSystemset_39
             // 
             this.lblSystemset_39.AutoSize = true;
-            this.lblSystemset_39.Location = new System.Drawing.Point(24, 209);
+            this.lblSystemset_39.Location = new System.Drawing.Point(32, 261);
+            this.lblSystemset_39.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_39.Name = "lblSystemset_39";
-            this.lblSystemset_39.Size = new System.Drawing.Size(143, 12);
+            this.lblSystemset_39.Size = new System.Drawing.Size(182, 15);
             this.lblSystemset_39.TabIndex = 13;
             this.lblSystemset_39.Text = "高压侧电压Vpbus校准系数";
             // 
             // lblSystemset_38
             // 
             this.lblSystemset_38.AutoSize = true;
-            this.lblSystemset_38.Location = new System.Drawing.Point(24, 175);
+            this.lblSystemset_38.Location = new System.Drawing.Point(32, 219);
+            this.lblSystemset_38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_38.Name = "lblSystemset_38";
-            this.lblSystemset_38.Size = new System.Drawing.Size(149, 12);
+            this.lblSystemset_38.Size = new System.Drawing.Size(190, 15);
             this.lblSystemset_38.TabIndex = 12;
             this.lblSystemset_38.Text = "高压侧电压Vhvbus校准系数";
             // 
             // lblSystemset_37
             // 
             this.lblSystemset_37.AutoSize = true;
-            this.lblSystemset_37.Location = new System.Drawing.Point(24, 142);
+            this.lblSystemset_37.Location = new System.Drawing.Point(32, 178);
+            this.lblSystemset_37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_37.Name = "lblSystemset_37";
-            this.lblSystemset_37.Size = new System.Drawing.Size(137, 12);
+            this.lblSystemset_37.Size = new System.Drawing.Size(172, 15);
             this.lblSystemset_37.TabIndex = 11;
             this.lblSystemset_37.Text = "低压端放电电流校准系数";
             // 
             // lblSystemset_36
             // 
             this.lblSystemset_36.AutoSize = true;
-            this.lblSystemset_36.Location = new System.Drawing.Point(24, 108);
+            this.lblSystemset_36.Location = new System.Drawing.Point(32, 135);
+            this.lblSystemset_36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_36.Name = "lblSystemset_36";
-            this.lblSystemset_36.Size = new System.Drawing.Size(137, 12);
+            this.lblSystemset_36.Size = new System.Drawing.Size(172, 15);
             this.lblSystemset_36.TabIndex = 10;
             this.lblSystemset_36.Text = "低压端充电电流校准系数";
             // 
             // lblSystemset_35
             // 
             this.lblSystemset_35.AutoSize = true;
-            this.lblSystemset_35.Location = new System.Drawing.Point(24, 75);
+            this.lblSystemset_35.Location = new System.Drawing.Point(32, 94);
+            this.lblSystemset_35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_35.Name = "lblSystemset_35";
-            this.lblSystemset_35.Size = new System.Drawing.Size(113, 12);
+            this.lblSystemset_35.Size = new System.Drawing.Size(142, 15);
             this.lblSystemset_35.TabIndex = 9;
             this.lblSystemset_35.Text = "低压端电压校准系数";
             // 
             // ckSystemset_33
             // 
             this.ckSystemset_33.AutoSize = true;
-            this.ckSystemset_33.Location = new System.Drawing.Point(548, 173);
+            this.ckSystemset_33.Location = new System.Drawing.Point(731, 216);
+            this.ckSystemset_33.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ckSystemset_33.Name = "ckSystemset_33";
-            this.ckSystemset_33.Size = new System.Drawing.Size(60, 16);
+            this.ckSystemset_33.Size = new System.Drawing.Size(75, 19);
             this.ckSystemset_33.TabIndex = 8;
             this.ckSystemset_33.Text = "T2测试";
             this.ckSystemset_33.UseVisualStyleBackColor = true;
@@ -1488,9 +1512,10 @@
             // ckSystemset_32
             // 
             this.ckSystemset_32.AutoSize = true;
-            this.ckSystemset_32.Location = new System.Drawing.Point(548, 140);
+            this.ckSystemset_32.Location = new System.Drawing.Point(731, 175);
+            this.ckSystemset_32.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ckSystemset_32.Name = "ckSystemset_32";
-            this.ckSystemset_32.Size = new System.Drawing.Size(72, 16);
+            this.ckSystemset_32.Size = new System.Drawing.Size(89, 19);
             this.ckSystemset_32.TabIndex = 7;
             this.ckSystemset_32.Text = "老化测试";
             this.ckSystemset_32.UseVisualStyleBackColor = true;
@@ -1498,9 +1523,10 @@
             // ckSystemset_31
             // 
             this.ckSystemset_31.AutoSize = true;
-            this.ckSystemset_31.Location = new System.Drawing.Point(548, 106);
+            this.ckSystemset_31.Location = new System.Drawing.Point(731, 132);
+            this.ckSystemset_31.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ckSystemset_31.Name = "ckSystemset_31";
-            this.ckSystemset_31.Size = new System.Drawing.Size(60, 16);
+            this.ckSystemset_31.Size = new System.Drawing.Size(75, 19);
             this.ckSystemset_31.TabIndex = 6;
             this.ckSystemset_31.Text = "T1测试";
             this.ckSystemset_31.UseVisualStyleBackColor = true;
@@ -1508,9 +1534,10 @@
             // ckSystemset_30
             // 
             this.ckSystemset_30.AutoSize = true;
-            this.ckSystemset_30.Location = new System.Drawing.Point(548, 73);
+            this.ckSystemset_30.Location = new System.Drawing.Point(731, 91);
+            this.ckSystemset_30.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ckSystemset_30.Name = "ckSystemset_30";
-            this.ckSystemset_30.Size = new System.Drawing.Size(72, 16);
+            this.ckSystemset_30.Size = new System.Drawing.Size(89, 19);
             this.ckSystemset_30.TabIndex = 5;
             this.ckSystemset_30.Text = "工厂模式";
             this.ckSystemset_30.UseVisualStyleBackColor = true;
@@ -1521,42 +1548,47 @@
             this.cbbSetComm.Items.AddRange(new object[] {
             "停机",
             "正常"});
-            this.cbbSetComm.Location = new System.Drawing.Point(220, 35);
+            this.cbbSetComm.Location = new System.Drawing.Point(293, 44);
+            this.cbbSetComm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbbSetComm.Name = "cbbSetComm";
-            this.cbbSetComm.Size = new System.Drawing.Size(70, 20);
+            this.cbbSetComm.Size = new System.Drawing.Size(92, 23);
             this.cbbSetComm.TabIndex = 4;
             // 
             // txtPCUSN
             // 
-            this.txtPCUSN.Location = new System.Drawing.Point(547, 35);
+            this.txtPCUSN.Location = new System.Drawing.Point(729, 44);
+            this.txtPCUSN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPCUSN.Name = "txtPCUSN";
-            this.txtPCUSN.Size = new System.Drawing.Size(213, 21);
+            this.txtPCUSN.Size = new System.Drawing.Size(283, 25);
             this.txtPCUSN.TabIndex = 3;
             // 
             // lblSystemset_29
             // 
             this.lblSystemset_29.AutoSize = true;
-            this.lblSystemset_29.Location = new System.Drawing.Point(464, 75);
+            this.lblSystemset_29.Location = new System.Drawing.Point(619, 94);
+            this.lblSystemset_29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_29.Name = "lblSystemset_29";
-            this.lblSystemset_29.Size = new System.Drawing.Size(53, 12);
+            this.lblSystemset_29.Size = new System.Drawing.Size(67, 15);
             this.lblSystemset_29.TabIndex = 2;
             this.lblSystemset_29.Text = "测试标识";
             // 
             // lblSystemset_34
             // 
             this.lblSystemset_34.AutoSize = true;
-            this.lblSystemset_34.Location = new System.Drawing.Point(24, 39);
+            this.lblSystemset_34.Location = new System.Drawing.Point(32, 49);
+            this.lblSystemset_34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_34.Name = "lblSystemset_34";
-            this.lblSystemset_34.Size = new System.Drawing.Size(53, 12);
+            this.lblSystemset_34.Size = new System.Drawing.Size(67, 15);
             this.lblSystemset_34.TabIndex = 1;
             this.lblSystemset_34.Text = "控制指令";
             // 
             // lblSystemset_28
             // 
             this.lblSystemset_28.AutoSize = true;
-            this.lblSystemset_28.Location = new System.Drawing.Point(464, 39);
+            this.lblSystemset_28.Location = new System.Drawing.Point(619, 49);
+            this.lblSystemset_28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_28.Name = "lblSystemset_28";
-            this.lblSystemset_28.Size = new System.Drawing.Size(59, 12);
+            this.lblSystemset_28.Size = new System.Drawing.Size(76, 15);
             this.lblSystemset_28.TabIndex = 0;
             this.lblSystemset_28.Text = "PCU序列号";
             // 
@@ -1625,91 +1657,196 @@
             this.gbSystemset_14.Controls.Add(this.lblSystemset_24);
             this.gbSystemset_14.Controls.Add(this.lblSystemset_23);
             this.gbSystemset_14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbSystemset_14.Location = new System.Drawing.Point(336, 3);
+            this.gbSystemset_14.Location = new System.Drawing.Point(448, 4);
+            this.gbSystemset_14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbSystemset_14.Name = "gbSystemset_14";
-            this.gbSystemset_14.Size = new System.Drawing.Size(1023, 644);
+            this.gbSystemset_14.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbSystemset_14.Size = new System.Drawing.Size(1367, 830);
             this.gbSystemset_14.TabIndex = 43;
             this.gbSystemset_14.TabStop = false;
             this.gbSystemset_14.Text = "BMS参数设置";
             // 
+            // cbb_106
+            // 
+            this.cbb_106.FormattingEnabled = true;
+            this.cbb_106.Items.AddRange(new object[] {
+            "0：无",
+            "1：查询重置真实容量标志"});
+            this.cbb_106.Location = new System.Drawing.Point(1081, 242);
+            this.cbb_106.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbb_106.Name = "cbb_106";
+            this.cbb_106.Size = new System.Drawing.Size(159, 23);
+            this.cbb_106.TabIndex = 61;
+            // 
             // lblSystemset_83
             // 
             this.lblSystemset_83.AutoSize = true;
-            this.lblSystemset_83.Location = new System.Drawing.Point(370, 397);
-            this.lblSystemset_83.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_83.Location = new System.Drawing.Point(493, 496);
             this.lblSystemset_83.Name = "lblSystemset_83";
-            this.lblSystemset_83.Size = new System.Drawing.Size(23, 12);
+            this.lblSystemset_83.Size = new System.Drawing.Size(31, 15);
             this.lblSystemset_83.TabIndex = 61;
             this.lblSystemset_83.Text = "SOH";
+            // 
+            // txtFlag
+            // 
+            this.txtFlag.Location = new System.Drawing.Point(1248, 242);
+            this.txtFlag.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFlag.Name = "txtFlag";
+            this.txtFlag.Size = new System.Drawing.Size(53, 25);
+            this.txtFlag.TabIndex = 60;
             // 
             // lblSystemset_82
             // 
             this.lblSystemset_82.AutoSize = true;
-            this.lblSystemset_82.Location = new System.Drawing.Point(370, 357);
-            this.lblSystemset_82.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_82.Location = new System.Drawing.Point(493, 446);
             this.lblSystemset_82.Name = "lblSystemset_82";
-            this.lblSystemset_82.Size = new System.Drawing.Size(101, 12);
+            this.lblSystemset_82.Size = new System.Drawing.Size(131, 15);
             this.lblSystemset_82.TabIndex = 60;
             this.lblSystemset_82.Text = "满充容量(0~110%)";
             // 
+            // cbb_105
+            // 
+            this.cbb_105.FormattingEnabled = true;
+            this.cbb_105.Items.AddRange(new object[] {
+            "0：无",
+            "1：清除重置真实容量标志"});
+            this.cbb_105.Location = new System.Drawing.Point(1081, 192);
+            this.cbb_105.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbb_105.Name = "cbb_105";
+            this.cbb_105.Size = new System.Drawing.Size(159, 23);
+            this.cbb_105.TabIndex = 59;
+            // 
             // txt_102
             // 
-            this.txt_102.Location = new System.Drawing.Point(509, 393);
+            this.txt_102.Location = new System.Drawing.Point(679, 491);
+            this.txt_102.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_102.Name = "txt_102";
-            this.txt_102.Size = new System.Drawing.Size(70, 21);
+            this.txt_102.Size = new System.Drawing.Size(92, 25);
             this.txt_102.TabIndex = 59;
             this.txt_102.Text = "0";
             // 
+            // cbb_103
+            // 
+            this.cbb_103.FormattingEnabled = true;
+            this.cbb_103.Items.AddRange(new object[] {
+            "1：宁德时代",
+            "2：亿纬锂能",
+            "3：其他"});
+            this.cbb_103.Location = new System.Drawing.Point(1081, 91);
+            this.cbb_103.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbb_103.Name = "cbb_103";
+            this.cbb_103.Size = new System.Drawing.Size(159, 23);
+            this.cbb_103.TabIndex = 58;
+            // 
             // txt_100
             // 
-            this.txt_100.Location = new System.Drawing.Point(509, 353);
+            this.txt_100.Location = new System.Drawing.Point(679, 441);
+            this.txt_100.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_100.Name = "txt_100";
-            this.txt_100.Size = new System.Drawing.Size(70, 21);
+            this.txt_100.Size = new System.Drawing.Size(92, 25);
             this.txt_100.TabIndex = 55;
             this.txt_100.Text = "0";
             // 
+            // txt_104
+            // 
+            this.txt_104.Location = new System.Drawing.Point(1081, 141);
+            this.txt_104.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txt_104.Name = "txt_104";
+            this.txt_104.Size = new System.Drawing.Size(159, 25);
+            this.txt_104.TabIndex = 55;
+            // 
             // txt_101
             // 
-            this.txt_101.Location = new System.Drawing.Point(509, 313);
-            this.txt_101.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_101.Location = new System.Drawing.Point(679, 391);
+            this.txt_101.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_101.Name = "txt_101";
-            this.txt_101.Size = new System.Drawing.Size(70, 21);
+            this.txt_101.Size = new System.Drawing.Size(92, 25);
             this.txt_101.TabIndex = 54;
+            // 
+            // lblSystemset_106
+            // 
+            this.lblSystemset_106.AutoSize = true;
+            this.lblSystemset_106.Location = new System.Drawing.Point(893, 248);
+            this.lblSystemset_106.Name = "lblSystemset_106";
+            this.lblSystemset_106.Size = new System.Drawing.Size(107, 15);
+            this.lblSystemset_106.TabIndex = 53;
+            this.lblSystemset_106.Text = "查询FLASH标志";
             // 
             // lblSystemset_101
             // 
             this.lblSystemset_101.AutoSize = true;
-            this.lblSystemset_101.Location = new System.Drawing.Point(370, 317);
-            this.lblSystemset_101.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_101.Location = new System.Drawing.Point(493, 396);
             this.lblSystemset_101.Name = "lblSystemset_101";
-            this.lblSystemset_101.Size = new System.Drawing.Size(101, 12);
+            this.lblSystemset_101.Size = new System.Drawing.Size(131, 15);
             this.lblSystemset_101.TabIndex = 53;
             this.lblSystemset_101.Text = "剩余容量(0~110%)";
+            // 
+            // lblSystemset_105
+            // 
+            this.lblSystemset_105.AutoSize = true;
+            this.lblSystemset_105.Location = new System.Drawing.Point(893, 196);
+            this.lblSystemset_105.Name = "lblSystemset_105";
+            this.lblSystemset_105.Size = new System.Drawing.Size(107, 15);
+            this.lblSystemset_105.TabIndex = 51;
+            this.lblSystemset_105.Text = "清除FLASH标志";
+            // 
+            // btnSetBatteryinfo
+            // 
+            this.btnSetBatteryinfo.AutoSize = true;
+            this.btnSetBatteryinfo.Location = new System.Drawing.Point(1248, 86);
+            this.btnSetBatteryinfo.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSetBatteryinfo.Name = "btnSetBatteryinfo";
+            this.btnSetBatteryinfo.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSetBatteryinfo.Size = new System.Drawing.Size(96, 34);
+            this.btnSetBatteryinfo.TabIndex = 16;
+            this.btnSetBatteryinfo.Text = "设置";
+            this.btnSetBatteryinfo.UseVisualStyleBackColor = true;
+            this.btnSetBatteryinfo.Click += new System.EventHandler(this.btnSetBatteryinfo_Click);
+            // 
+            // lblSystemset_103
+            // 
+            this.lblSystemset_103.AutoSize = true;
+            this.lblSystemset_103.Location = new System.Drawing.Point(893, 96);
+            this.lblSystemset_103.Name = "lblSystemset_103";
+            this.lblSystemset_103.Size = new System.Drawing.Size(67, 15);
+            this.lblSystemset_103.TabIndex = 12;
+            this.lblSystemset_103.Text = "电芯品牌";
+            // 
+            // lblSystemset_104
+            // 
+            this.lblSystemset_104.AutoSize = true;
+            this.lblSystemset_104.Location = new System.Drawing.Point(893, 145);
+            this.lblSystemset_104.Name = "lblSystemset_104";
+            this.lblSystemset_104.Size = new System.Drawing.Size(97, 15);
+            this.lblSystemset_104.TabIndex = 13;
+            this.lblSystemset_104.Text = "电芯型号编号";
             // 
             // lblSystemset_50
             // 
             this.lblSystemset_50.AutoSize = true;
-            this.lblSystemset_50.Location = new System.Drawing.Point(15, 317);
+            this.lblSystemset_50.Location = new System.Drawing.Point(20, 396);
+            this.lblSystemset_50.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_50.Name = "lblSystemset_50";
-            this.lblSystemset_50.Size = new System.Drawing.Size(119, 12);
+            this.lblSystemset_50.Size = new System.Drawing.Size(155, 15);
             this.lblSystemset_50.TabIndex = 47;
             this.lblSystemset_50.Text = "校准P-电压(0-1000V)";
             // 
             // txtCalibration07
             // 
-            this.txtCalibration07.Location = new System.Drawing.Point(201, 313);
+            this.txtCalibration07.Location = new System.Drawing.Point(268, 391);
+            this.txtCalibration07.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCalibration07.Name = "txtCalibration07";
-            this.txtCalibration07.Size = new System.Drawing.Size(75, 21);
+            this.txtCalibration07.Size = new System.Drawing.Size(99, 25);
             this.txtCalibration07.TabIndex = 48;
             // 
             // btnSetCalibration_07
             // 
             this.btnSetCalibration_07.AutoSize = true;
-            this.btnSetCalibration_07.Location = new System.Drawing.Point(281, 310);
-            this.btnSetCalibration_07.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSetCalibration_07.Location = new System.Drawing.Point(375, 388);
+            this.btnSetCalibration_07.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSetCalibration_07.Name = "btnSetCalibration_07";
             this.btnSetCalibration_07.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_07.Size = new System.Drawing.Size(75, 27);
+            this.btnSetCalibration_07.Size = new System.Drawing.Size(100, 34);
             this.btnSetCalibration_07.TabIndex = 46;
             this.btnSetCalibration_07.Text = "设置";
             this.btnSetCalibration_07.UseVisualStyleBackColor = true;
@@ -1719,19 +1856,20 @@
             // 
             this.dateTimePicker1.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(638, 27);
+            this.dateTimePicker1.Location = new System.Drawing.Point(851, 34);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(159, 21);
+            this.dateTimePicker1.Size = new System.Drawing.Size(211, 25);
             this.dateTimePicker1.TabIndex = 45;
             // 
             // btnSetBoardSN
             // 
             this.btnSetBoardSN.AutoSize = true;
-            this.btnSetBoardSN.Location = new System.Drawing.Point(526, 24);
-            this.btnSetBoardSN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSetBoardSN.Location = new System.Drawing.Point(701, 30);
+            this.btnSetBoardSN.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSetBoardSN.Name = "btnSetBoardSN";
             this.btnSetBoardSN.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetBoardSN.Size = new System.Drawing.Size(72, 27);
+            this.btnSetBoardSN.Size = new System.Drawing.Size(96, 34);
             this.btnSetBoardSN.TabIndex = 44;
             this.btnSetBoardSN.Text = "设置";
             this.btnSetBoardSN.UseVisualStyleBackColor = true;
@@ -1739,110 +1877,122 @@
             // 
             // txtBoardSN
             // 
-            this.txtBoardSN.Location = new System.Drawing.Point(365, 27);
+            this.txtBoardSN.Location = new System.Drawing.Point(487, 34);
+            this.txtBoardSN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoardSN.Name = "txtBoardSN";
-            this.txtBoardSN.Size = new System.Drawing.Size(152, 21);
+            this.txtBoardSN.Size = new System.Drawing.Size(201, 25);
             this.txtBoardSN.TabIndex = 43;
             // 
             // lblSystemset_02
             // 
             this.lblSystemset_02.AutoSize = true;
-            this.lblSystemset_02.Location = new System.Drawing.Point(294, 31);
+            this.lblSystemset_02.Location = new System.Drawing.Point(392, 39);
+            this.lblSystemset_02.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_02.Name = "lblSystemset_02";
-            this.lblSystemset_02.Size = new System.Drawing.Size(65, 12);
+            this.lblSystemset_02.Size = new System.Drawing.Size(82, 15);
             this.lblSystemset_02.TabIndex = 42;
             this.lblSystemset_02.Text = "单板序列号";
             // 
             // lblSystemset_20
             // 
             this.lblSystemset_20.AutoSize = true;
-            this.lblSystemset_20.Location = new System.Drawing.Point(14, 277);
+            this.lblSystemset_20.Location = new System.Drawing.Point(19, 346);
+            this.lblSystemset_20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_20.Name = "lblSystemset_20";
-            this.lblSystemset_20.Size = new System.Drawing.Size(125, 12);
+            this.lblSystemset_20.Size = new System.Drawing.Size(160, 15);
             this.lblSystemset_20.TabIndex = 30;
             this.lblSystemset_20.Text = "校准放电小电流(0~5A)";
             // 
             // txtCalibration06
             // 
-            this.txtCalibration06.Location = new System.Drawing.Point(201, 273);
+            this.txtCalibration06.Location = new System.Drawing.Point(268, 341);
+            this.txtCalibration06.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCalibration06.Name = "txtCalibration06";
-            this.txtCalibration06.Size = new System.Drawing.Size(75, 21);
+            this.txtCalibration06.Size = new System.Drawing.Size(99, 25);
             this.txtCalibration06.TabIndex = 31;
             // 
             // lblSystemset_19
             // 
             this.lblSystemset_19.AutoSize = true;
-            this.lblSystemset_19.Location = new System.Drawing.Point(15, 237);
+            this.lblSystemset_19.Location = new System.Drawing.Point(20, 296);
+            this.lblSystemset_19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_19.Name = "lblSystemset_19";
-            this.lblSystemset_19.Size = new System.Drawing.Size(119, 12);
+            this.lblSystemset_19.Size = new System.Drawing.Size(153, 15);
             this.lblSystemset_19.TabIndex = 28;
             this.lblSystemset_19.Text = "校准放电电流(0~50A)";
             // 
             // txtCalibration05
             // 
-            this.txtCalibration05.Location = new System.Drawing.Point(201, 233);
+            this.txtCalibration05.Location = new System.Drawing.Point(268, 291);
+            this.txtCalibration05.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCalibration05.Name = "txtCalibration05";
-            this.txtCalibration05.Size = new System.Drawing.Size(75, 21);
+            this.txtCalibration05.Size = new System.Drawing.Size(99, 25);
             this.txtCalibration05.TabIndex = 29;
             // 
             // lblSystemset_18
             // 
             this.lblSystemset_18.AutoSize = true;
-            this.lblSystemset_18.Location = new System.Drawing.Point(14, 197);
+            this.lblSystemset_18.Location = new System.Drawing.Point(19, 246);
+            this.lblSystemset_18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_18.Name = "lblSystemset_18";
-            this.lblSystemset_18.Size = new System.Drawing.Size(125, 12);
+            this.lblSystemset_18.Size = new System.Drawing.Size(160, 15);
             this.lblSystemset_18.TabIndex = 26;
             this.lblSystemset_18.Text = "校准充电小电流(0~5A)";
             // 
             // txtCalibration04
             // 
-            this.txtCalibration04.Location = new System.Drawing.Point(201, 193);
+            this.txtCalibration04.Location = new System.Drawing.Point(268, 241);
+            this.txtCalibration04.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCalibration04.Name = "txtCalibration04";
-            this.txtCalibration04.Size = new System.Drawing.Size(75, 21);
+            this.txtCalibration04.Size = new System.Drawing.Size(99, 25);
             this.txtCalibration04.TabIndex = 27;
             // 
             // lblSystemset_16
             // 
             this.lblSystemset_16.AutoSize = true;
-            this.lblSystemset_16.Location = new System.Drawing.Point(14, 117);
+            this.lblSystemset_16.Location = new System.Drawing.Point(19, 146);
+            this.lblSystemset_16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_16.Name = "lblSystemset_16";
-            this.lblSystemset_16.Size = new System.Drawing.Size(131, 12);
+            this.lblSystemset_16.Size = new System.Drawing.Size(169, 15);
             this.lblSystemset_16.TabIndex = 24;
             this.lblSystemset_16.Text = "校准负载电压(0~1000V)";
             // 
             // lblSystemset_15
             // 
             this.lblSystemset_15.AutoSize = true;
-            this.lblSystemset_15.Location = new System.Drawing.Point(13, 77);
+            this.lblSystemset_15.Location = new System.Drawing.Point(17, 96);
+            this.lblSystemset_15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_15.Name = "lblSystemset_15";
-            this.lblSystemset_15.Size = new System.Drawing.Size(107, 12);
+            this.lblSystemset_15.Size = new System.Drawing.Size(139, 15);
             this.lblSystemset_15.TabIndex = 23;
             this.lblSystemset_15.Text = "校准总压(0~1000V)";
             // 
             // txtCalibration02
             // 
-            this.txtCalibration02.Location = new System.Drawing.Point(201, 113);
+            this.txtCalibration02.Location = new System.Drawing.Point(268, 141);
+            this.txtCalibration02.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCalibration02.Name = "txtCalibration02";
-            this.txtCalibration02.Size = new System.Drawing.Size(75, 21);
+            this.txtCalibration02.Size = new System.Drawing.Size(99, 25);
             this.txtCalibration02.TabIndex = 22;
             // 
             // lblSystemset_17
             // 
             this.lblSystemset_17.AutoSize = true;
-            this.lblSystemset_17.Location = new System.Drawing.Point(15, 157);
+            this.lblSystemset_17.Location = new System.Drawing.Point(20, 196);
+            this.lblSystemset_17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_17.Name = "lblSystemset_17";
-            this.lblSystemset_17.Size = new System.Drawing.Size(119, 12);
+            this.lblSystemset_17.Size = new System.Drawing.Size(153, 15);
             this.lblSystemset_17.TabIndex = 21;
             this.lblSystemset_17.Text = "校准充电电流(0~50A)";
             // 
             // btnSetCalibration_06
             // 
             this.btnSetCalibration_06.AutoSize = true;
-            this.btnSetCalibration_06.Location = new System.Drawing.Point(281, 270);
-            this.btnSetCalibration_06.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSetCalibration_06.Location = new System.Drawing.Point(375, 338);
+            this.btnSetCalibration_06.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSetCalibration_06.Name = "btnSetCalibration_06";
             this.btnSetCalibration_06.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_06.Size = new System.Drawing.Size(75, 27);
+            this.btnSetCalibration_06.Size = new System.Drawing.Size(100, 34);
             this.btnSetCalibration_06.TabIndex = 18;
             this.btnSetCalibration_06.Text = "设置";
             this.btnSetCalibration_06.UseVisualStyleBackColor = true;
@@ -1851,11 +2001,11 @@
             // btnSetCalibration_01
             // 
             this.btnSetCalibration_01.AutoSize = true;
-            this.btnSetCalibration_01.Location = new System.Drawing.Point(280, 70);
-            this.btnSetCalibration_01.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSetCalibration_01.Location = new System.Drawing.Point(373, 88);
+            this.btnSetCalibration_01.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSetCalibration_01.Name = "btnSetCalibration_01";
             this.btnSetCalibration_01.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_01.Size = new System.Drawing.Size(75, 27);
+            this.btnSetCalibration_01.Size = new System.Drawing.Size(100, 34);
             this.btnSetCalibration_01.TabIndex = 13;
             this.btnSetCalibration_01.Text = "设置";
             this.btnSetCalibration_01.UseVisualStyleBackColor = true;
@@ -1864,11 +2014,11 @@
             // btnSetCalibration_03
             // 
             this.btnSetCalibration_03.AutoSize = true;
-            this.btnSetCalibration_03.Location = new System.Drawing.Point(282, 150);
-            this.btnSetCalibration_03.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSetCalibration_03.Location = new System.Drawing.Point(376, 188);
+            this.btnSetCalibration_03.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSetCalibration_03.Name = "btnSetCalibration_03";
             this.btnSetCalibration_03.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_03.Size = new System.Drawing.Size(75, 27);
+            this.btnSetCalibration_03.Size = new System.Drawing.Size(100, 34);
             this.btnSetCalibration_03.TabIndex = 15;
             this.btnSetCalibration_03.Text = "设置";
             this.btnSetCalibration_03.UseVisualStyleBackColor = true;
@@ -1877,11 +2027,11 @@
             // btnSetCalibration_05
             // 
             this.btnSetCalibration_05.AutoSize = true;
-            this.btnSetCalibration_05.Location = new System.Drawing.Point(281, 230);
-            this.btnSetCalibration_05.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSetCalibration_05.Location = new System.Drawing.Point(375, 288);
+            this.btnSetCalibration_05.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSetCalibration_05.Name = "btnSetCalibration_05";
             this.btnSetCalibration_05.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_05.Size = new System.Drawing.Size(75, 27);
+            this.btnSetCalibration_05.Size = new System.Drawing.Size(100, 34);
             this.btnSetCalibration_05.TabIndex = 17;
             this.btnSetCalibration_05.Text = "设置";
             this.btnSetCalibration_05.UseVisualStyleBackColor = true;
@@ -1890,11 +2040,11 @@
             // btnSetCalibration_02
             // 
             this.btnSetCalibration_02.AutoSize = true;
-            this.btnSetCalibration_02.Location = new System.Drawing.Point(281, 110);
-            this.btnSetCalibration_02.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSetCalibration_02.Location = new System.Drawing.Point(375, 138);
+            this.btnSetCalibration_02.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSetCalibration_02.Name = "btnSetCalibration_02";
             this.btnSetCalibration_02.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_02.Size = new System.Drawing.Size(75, 27);
+            this.btnSetCalibration_02.Size = new System.Drawing.Size(100, 34);
             this.btnSetCalibration_02.TabIndex = 14;
             this.btnSetCalibration_02.Text = "设置";
             this.btnSetCalibration_02.UseVisualStyleBackColor = true;
@@ -1903,11 +2053,11 @@
             // btnSetCalibration_04
             // 
             this.btnSetCalibration_04.AutoSize = true;
-            this.btnSetCalibration_04.Location = new System.Drawing.Point(281, 190);
-            this.btnSetCalibration_04.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSetCalibration_04.Location = new System.Drawing.Point(375, 238);
+            this.btnSetCalibration_04.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSetCalibration_04.Name = "btnSetCalibration_04";
             this.btnSetCalibration_04.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_04.Size = new System.Drawing.Size(75, 27);
+            this.btnSetCalibration_04.Size = new System.Drawing.Size(100, 34);
             this.btnSetCalibration_04.TabIndex = 16;
             this.btnSetCalibration_04.Text = "设置";
             this.btnSetCalibration_04.UseVisualStyleBackColor = true;
@@ -1915,9 +2065,10 @@
             // 
             // txtCalibration03
             // 
-            this.txtCalibration03.Location = new System.Drawing.Point(201, 153);
+            this.txtCalibration03.Location = new System.Drawing.Point(268, 191);
+            this.txtCalibration03.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCalibration03.Name = "txtCalibration03";
-            this.txtCalibration03.Size = new System.Drawing.Size(75, 21);
+            this.txtCalibration03.Size = new System.Drawing.Size(99, 25);
             this.txtCalibration03.TabIndex = 25;
             // 
             // btnSystemset_46
@@ -1927,116 +2078,14 @@
             this.btnSystemset_46.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSystemset_46.ForeColor = System.Drawing.Color.White;
             this.btnSystemset_46.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSystemset_46.Location = new System.Drawing.Point(10, 6);
+            this.btnSystemset_46.Location = new System.Drawing.Point(13, 2);
+            this.btnSystemset_46.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSystemset_46.Name = "btnSystemset_46";
-            this.btnSystemset_46.Size = new System.Drawing.Size(132, 30);
+            this.btnSystemset_46.Size = new System.Drawing.Size(176, 38);
             this.btnSystemset_46.TabIndex = 45;
             this.btnSystemset_46.Text = "读取";
             this.btnSystemset_46.UseVisualStyleBackColor = false;
             this.btnSystemset_46.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // cbb_106
-            // 
-            this.cbb_106.FormattingEnabled = true;
-            this.cbb_106.Items.AddRange(new object[] {
-            "0：无",
-            "1：查询重置真实容量标志"});
-            this.cbb_106.Location = new System.Drawing.Point(811, 194);
-            this.cbb_106.Name = "cbb_106";
-            this.cbb_106.Size = new System.Drawing.Size(120, 20);
-            this.cbb_106.TabIndex = 61;
-            // 
-            // txtFlag
-            // 
-            this.txtFlag.Location = new System.Drawing.Point(936, 194);
-            this.txtFlag.Margin = new System.Windows.Forms.Padding(2);
-            this.txtFlag.Name = "txtFlag";
-            this.txtFlag.Size = new System.Drawing.Size(41, 21);
-            this.txtFlag.TabIndex = 60;
-            // 
-            // cbb_105
-            // 
-            this.cbb_105.FormattingEnabled = true;
-            this.cbb_105.Items.AddRange(new object[] {
-            "0：无",
-            "1：清除重置真实容量标志"});
-            this.cbb_105.Location = new System.Drawing.Point(811, 154);
-            this.cbb_105.Name = "cbb_105";
-            this.cbb_105.Size = new System.Drawing.Size(120, 20);
-            this.cbb_105.TabIndex = 59;
-            // 
-            // cbb_103
-            // 
-            this.cbb_103.FormattingEnabled = true;
-            this.cbb_103.Items.AddRange(new object[] {
-            "1：宁德时代",
-            "2：亿纬锂能",
-            "3：其他"});
-            this.cbb_103.Location = new System.Drawing.Point(811, 73);
-            this.cbb_103.Name = "cbb_103";
-            this.cbb_103.Size = new System.Drawing.Size(120, 20);
-            this.cbb_103.TabIndex = 58;
-            // 
-            // txt_104
-            // 
-            this.txt_104.Location = new System.Drawing.Point(811, 113);
-            this.txt_104.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_104.Name = "txt_104";
-            this.txt_104.Size = new System.Drawing.Size(120, 21);
-            this.txt_104.TabIndex = 55;
-            // 
-            // lblSystemset_106
-            // 
-            this.lblSystemset_106.AutoSize = true;
-            this.lblSystemset_106.Location = new System.Drawing.Point(670, 198);
-            this.lblSystemset_106.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSystemset_106.Name = "lblSystemset_106";
-            this.lblSystemset_106.Size = new System.Drawing.Size(83, 12);
-            this.lblSystemset_106.TabIndex = 53;
-            this.lblSystemset_106.Text = "查询FLASH标志";
-            // 
-            // lblSystemset_105
-            // 
-            this.lblSystemset_105.AutoSize = true;
-            this.lblSystemset_105.Location = new System.Drawing.Point(670, 157);
-            this.lblSystemset_105.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSystemset_105.Name = "lblSystemset_105";
-            this.lblSystemset_105.Size = new System.Drawing.Size(83, 12);
-            this.lblSystemset_105.TabIndex = 51;
-            this.lblSystemset_105.Text = "清除FLASH标志";
-            // 
-            // btnSetBatteryinfo
-            // 
-            this.btnSetBatteryinfo.AutoSize = true;
-            this.btnSetBatteryinfo.Location = new System.Drawing.Point(936, 69);
-            this.btnSetBatteryinfo.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.btnSetBatteryinfo.Name = "btnSetBatteryinfo";
-            this.btnSetBatteryinfo.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetBatteryinfo.Size = new System.Drawing.Size(72, 27);
-            this.btnSetBatteryinfo.TabIndex = 16;
-            this.btnSetBatteryinfo.Text = "设置";
-            this.btnSetBatteryinfo.UseVisualStyleBackColor = true;
-            this.btnSetBatteryinfo.Click += new System.EventHandler(this.btnSetBatteryinfo_Click);
-            // 
-            // lblSystemset_103
-            // 
-            this.lblSystemset_103.AutoSize = true;
-            this.lblSystemset_103.Location = new System.Drawing.Point(670, 77);
-            this.lblSystemset_103.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSystemset_103.Name = "lblSystemset_103";
-            this.lblSystemset_103.Size = new System.Drawing.Size(53, 12);
-            this.lblSystemset_103.TabIndex = 12;
-            this.lblSystemset_103.Text = "电芯品牌";
-            // 
-            // lblSystemset_104
-            // 
-            this.lblSystemset_104.AutoSize = true;
-            this.lblSystemset_104.Location = new System.Drawing.Point(670, 116);
-            this.lblSystemset_104.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSystemset_104.Name = "lblSystemset_104";
-            this.lblSystemset_104.Size = new System.Drawing.Size(77, 12);
-            this.lblSystemset_104.TabIndex = 13;
-            this.lblSystemset_104.Text = "电芯型号编号";
             // 
             // gbSystemset_54
             // 
@@ -2044,9 +2093,11 @@
             this.gbSystemset_54.Controls.Add(this.txtBDUSN);
             this.gbSystemset_54.Controls.Add(this.lblSystemset_53);
             this.gbSystemset_54.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbSystemset_54.Location = new System.Drawing.Point(3, 3);
+            this.gbSystemset_54.Location = new System.Drawing.Point(4, 4);
+            this.gbSystemset_54.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbSystemset_54.Name = "gbSystemset_54";
-            this.gbSystemset_54.Size = new System.Drawing.Size(1356, 644);
+            this.gbSystemset_54.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbSystemset_54.Size = new System.Drawing.Size(1811, 830);
             this.gbSystemset_54.TabIndex = 47;
             this.gbSystemset_54.TabStop = false;
             this.gbSystemset_54.Text = "BDU参数设置";
@@ -2054,10 +2105,11 @@
             // btnSetBDUSN
             // 
             this.btnSetBDUSN.AutoSize = true;
-            this.btnSetBDUSN.Location = new System.Drawing.Point(248, 20);
+            this.btnSetBDUSN.Location = new System.Drawing.Point(331, 25);
+            this.btnSetBDUSN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetBDUSN.Name = "btnSetBDUSN";
             this.btnSetBDUSN.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetBDUSN.Size = new System.Drawing.Size(72, 27);
+            this.btnSetBDUSN.Size = new System.Drawing.Size(96, 34);
             this.btnSetBDUSN.TabIndex = 26;
             this.btnSetBDUSN.Text = "写入";
             this.btnSetBDUSN.UseVisualStyleBackColor = true;
@@ -2065,17 +2117,19 @@
             // 
             // txtBDUSN
             // 
-            this.txtBDUSN.Location = new System.Drawing.Point(100, 24);
+            this.txtBDUSN.Location = new System.Drawing.Point(133, 30);
+            this.txtBDUSN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBDUSN.Name = "txtBDUSN";
-            this.txtBDUSN.Size = new System.Drawing.Size(145, 21);
+            this.txtBDUSN.Size = new System.Drawing.Size(192, 25);
             this.txtBDUSN.TabIndex = 25;
             // 
             // lblSystemset_53
             // 
             this.lblSystemset_53.AutoSize = true;
-            this.lblSystemset_53.Location = new System.Drawing.Point(6, 27);
+            this.lblSystemset_53.Location = new System.Drawing.Point(8, 34);
+            this.lblSystemset_53.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_53.Name = "lblSystemset_53";
-            this.lblSystemset_53.Size = new System.Drawing.Size(59, 12);
+            this.lblSystemset_53.Size = new System.Drawing.Size(76, 15);
             this.lblSystemset_53.TabIndex = 24;
             this.lblSystemset_53.Text = "BDU序列号";
             // 
@@ -2087,20 +2141,22 @@
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 42);
+            this.tabControl1.Location = new System.Drawing.Point(0, 45);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1370, 676);
+            this.tabControl1.Size = new System.Drawing.Size(1827, 867);
             this.tabControl1.TabIndex = 48;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.gbSystemset_14);
             this.tabPage1.Controls.Add(this.gbSystemset_04);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1362, 650);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Size = new System.Drawing.Size(1819, 838);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "BTS5K-bms";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -2108,10 +2164,11 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.gbSystemset_27);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1362, 650);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Size = new System.Drawing.Size(1819, 838);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "BTS5K-pcu";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -2119,10 +2176,11 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.gbSystemset_54);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1362, 650);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Size = new System.Drawing.Size(1819, 838);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "BTS5K-bdu";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -2132,261 +2190,14 @@
             this.tabPage4.Controls.Add(this.gbSystemset_0);
             this.tabPage4.Controls.Add(this.gbControl020);
             this.tabPage4.Controls.Add(this.gbSystemset_60);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1362, 650);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Size = new System.Drawing.Size(1819, 838);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "CBS5000";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // gbControl020
-            // 
-            this.gbControl020.Controls.Add(this.cbbRequest3);
-            this.gbControl020.Controls.Add(this.cbbRequest2);
-            this.gbControl020.Controls.Add(this.cbbRequest0);
-            this.gbControl020.Controls.Add(this.cbbRequest1);
-            this.gbControl020.Controls.Add(this.lblSystemset_51);
-            this.gbControl020.Controls.Add(this.txtSlaveAddr);
-            this.gbControl020.Controls.Add(this.btnSet020_1);
-            this.gbControl020.Controls.Add(this.lblSystemset_81);
-            this.gbControl020.Controls.Add(this.lblSystemset_78);
-            this.gbControl020.Controls.Add(this.lblSystemset_80);
-            this.gbControl020.Controls.Add(this.lblSystemset_79);
-            this.gbControl020.Controls.Add(this.cbbRequest5);
-            this.gbControl020.Controls.Add(this.cbbRequest4);
-            this.gbControl020.Controls.Add(this.lblSystemset_77);
-            this.gbControl020.Controls.Add(this.lblSystemset_76);
-            this.gbControl020.Dock = System.Windows.Forms.DockStyle.Left;
-            this.gbControl020.Location = new System.Drawing.Point(336, 3);
-            this.gbControl020.Name = "gbControl020";
-            this.gbControl020.Size = new System.Drawing.Size(287, 644);
-            this.gbControl020.TabIndex = 41;
-            this.gbControl020.TabStop = false;
-            this.gbControl020.Text = "0x020上位机控制";
-            // 
-            // cbbRequest3
-            // 
-            this.cbbRequest3.FormattingEnabled = true;
-            this.cbbRequest3.Items.AddRange(new object[] {
-            "0x00：查询",
-            "0xAA：开启",
-            "0x55：关闭"});
-            this.cbbRequest3.Location = new System.Drawing.Point(146, 132);
-            this.cbbRequest3.Name = "cbbRequest3";
-            this.cbbRequest3.Size = new System.Drawing.Size(120, 20);
-            this.cbbRequest3.TabIndex = 63;
-            // 
-            // cbbRequest2
-            // 
-            this.cbbRequest2.FormattingEnabled = true;
-            this.cbbRequest2.Items.AddRange(new object[] {
-            "0x00：查询",
-            "0xAA：开启",
-            "0x55：关闭"});
-            this.cbbRequest2.Location = new System.Drawing.Point(146, 99);
-            this.cbbRequest2.Name = "cbbRequest2";
-            this.cbbRequest2.Size = new System.Drawing.Size(120, 20);
-            this.cbbRequest2.TabIndex = 62;
-            // 
-            // cbbRequest0
-            // 
-            this.cbbRequest0.FormattingEnabled = true;
-            this.cbbRequest0.Items.AddRange(new object[] {
-            "0x00：查询",
-            "0xAA：开启",
-            "0x55：关闭"});
-            this.cbbRequest0.Location = new System.Drawing.Point(146, 33);
-            this.cbbRequest0.Name = "cbbRequest0";
-            this.cbbRequest0.Size = new System.Drawing.Size(120, 20);
-            this.cbbRequest0.TabIndex = 61;
-            // 
-            // cbbRequest1
-            // 
-            this.cbbRequest1.FormattingEnabled = true;
-            this.cbbRequest1.Items.AddRange(new object[] {
-            "0x00：查询",
-            "0xAA：开启",
-            "0x55：关闭"});
-            this.cbbRequest1.Location = new System.Drawing.Point(146, 66);
-            this.cbbRequest1.Name = "cbbRequest1";
-            this.cbbRequest1.Size = new System.Drawing.Size(120, 20);
-            this.cbbRequest1.TabIndex = 61;
-            // 
-            // lblSystemset_51
-            // 
-            this.lblSystemset_51.AutoSize = true;
-            this.lblSystemset_51.Location = new System.Drawing.Point(19, 135);
-            this.lblSystemset_51.Name = "lblSystemset_51";
-            this.lblSystemset_51.Size = new System.Drawing.Size(71, 12);
-            this.lblSystemset_51.TabIndex = 3;
-            this.lblSystemset_51.Text = "PCU老化模式";
-            // 
-            // txtSlaveAddr
-            // 
-            this.txtSlaveAddr.Location = new System.Drawing.Point(146, 231);
-            this.txtSlaveAddr.Name = "txtSlaveAddr";
-            this.txtSlaveAddr.Size = new System.Drawing.Size(120, 21);
-            this.txtSlaveAddr.TabIndex = 60;
-            // 
-            // btnSet020_1
-            // 
-            this.btnSet020_1.AutoSize = true;
-            this.btnSet020_1.Location = new System.Drawing.Point(191, 267);
-            this.btnSet020_1.Name = "btnSet020_1";
-            this.btnSet020_1.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSet020_1.Size = new System.Drawing.Size(75, 27);
-            this.btnSet020_1.TabIndex = 55;
-            this.btnSet020_1.Text = "写入";
-            this.btnSet020_1.UseVisualStyleBackColor = true;
-            this.btnSet020_1.Click += new System.EventHandler(this.btnSet020_1_Click);
-            // 
-            // lblSystemset_81
-            // 
-            this.lblSystemset_81.AutoSize = true;
-            this.lblSystemset_81.Location = new System.Drawing.Point(19, 101);
-            this.lblSystemset_81.Name = "lblSystemset_81";
-            this.lblSystemset_81.Size = new System.Drawing.Size(71, 12);
-            this.lblSystemset_81.TabIndex = 2;
-            this.lblSystemset_81.Text = "ATE测试模式";
-            // 
-            // lblSystemset_78
-            // 
-            this.lblSystemset_78.AutoSize = true;
-            this.lblSystemset_78.Location = new System.Drawing.Point(19, 237);
-            this.lblSystemset_78.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSystemset_78.Name = "lblSystemset_78";
-            this.lblSystemset_78.Size = new System.Drawing.Size(95, 12);
-            this.lblSystemset_78.TabIndex = 59;
-            this.lblSystemset_78.Text = "设置地址(1~255)";
-            // 
-            // lblSystemset_80
-            // 
-            this.lblSystemset_80.AutoSize = true;
-            this.lblSystemset_80.Location = new System.Drawing.Point(19, 67);
-            this.lblSystemset_80.Name = "lblSystemset_80";
-            this.lblSystemset_80.Size = new System.Drawing.Size(53, 12);
-            this.lblSystemset_80.TabIndex = 1;
-            this.lblSystemset_80.Text = "标定模式";
-            // 
-            // lblSystemset_79
-            // 
-            this.lblSystemset_79.AutoSize = true;
-            this.lblSystemset_79.Location = new System.Drawing.Point(19, 33);
-            this.lblSystemset_79.Name = "lblSystemset_79";
-            this.lblSystemset_79.Size = new System.Drawing.Size(53, 12);
-            this.lblSystemset_79.TabIndex = 0;
-            this.lblSystemset_79.Text = "老化模式";
-            // 
-            // cbbRequest5
-            // 
-            this.cbbRequest5.FormattingEnabled = true;
-            this.cbbRequest5.Items.AddRange(new object[] {
-            "0x00：无效操作",
-            "0xAA：恢复所有默认设置",
-            "0x55：其他"});
-            this.cbbRequest5.Location = new System.Drawing.Point(146, 198);
-            this.cbbRequest5.Name = "cbbRequest5";
-            this.cbbRequest5.Size = new System.Drawing.Size(120, 20);
-            this.cbbRequest5.TabIndex = 57;
-            // 
-            // cbbRequest4
-            // 
-            this.cbbRequest4.FormattingEnabled = true;
-            this.cbbRequest4.Items.AddRange(new object[] {
-            "0x00：无效操作",
-            "0xAA：开启",
-            "0x55：关闭"});
-            this.cbbRequest4.Location = new System.Drawing.Point(146, 165);
-            this.cbbRequest4.Name = "cbbRequest4";
-            this.cbbRequest4.Size = new System.Drawing.Size(120, 20);
-            this.cbbRequest4.TabIndex = 54;
-            // 
-            // lblSystemset_77
-            // 
-            this.lblSystemset_77.AutoSize = true;
-            this.lblSystemset_77.Location = new System.Drawing.Point(19, 203);
-            this.lblSystemset_77.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSystemset_77.Name = "lblSystemset_77";
-            this.lblSystemset_77.Size = new System.Drawing.Size(77, 12);
-            this.lblSystemset_77.TabIndex = 56;
-            this.lblSystemset_77.Text = "标定参数恢复";
-            // 
-            // lblSystemset_76
-            // 
-            this.lblSystemset_76.AutoSize = true;
-            this.lblSystemset_76.Location = new System.Drawing.Point(19, 169);
-            this.lblSystemset_76.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSystemset_76.Name = "lblSystemset_76";
-            this.lblSystemset_76.Size = new System.Drawing.Size(77, 12);
-            this.lblSystemset_76.TabIndex = 53;
-            this.lblSystemset_76.Text = "强制控制开关";
-            // 
-            // btnSetControlInfo
-            // 
-            this.btnSetControlInfo.AutoSize = true;
-            this.btnSetControlInfo.Location = new System.Drawing.Point(629, 26);
-            this.btnSetControlInfo.Name = "btnSetControlInfo";
-            this.btnSetControlInfo.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetControlInfo.Size = new System.Drawing.Size(75, 27);
-            this.btnSetControlInfo.TabIndex = 63;
-            this.btnSetControlInfo.Text = "写入";
-            this.btnSetControlInfo.UseVisualStyleBackColor = true;
-            this.btnSetControlInfo.Click += new System.EventHandler(this.btnSetControlInfo_Click);
-            // 
-            // txtPackActiveBalanceCap
-            // 
-            this.txtPackActiveBalanceCap.Location = new System.Drawing.Point(489, 106);
-            this.txtPackActiveBalanceCap.Name = "txtPackActiveBalanceCap";
-            this.txtPackActiveBalanceCap.Size = new System.Drawing.Size(120, 21);
-            this.txtPackActiveBalanceCap.TabIndex = 62;
-            // 
-            // txtPackActiveBalanceCur
-            // 
-            this.txtPackActiveBalanceCur.Location = new System.Drawing.Point(489, 68);
-            this.txtPackActiveBalanceCur.Name = "txtPackActiveBalanceCur";
-            this.txtPackActiveBalanceCur.Size = new System.Drawing.Size(120, 21);
-            this.txtPackActiveBalanceCur.TabIndex = 61;
-            // 
-            // cbbActiveBalanceCtrl
-            // 
-            this.cbbActiveBalanceCtrl.FormattingEnabled = true;
-            this.cbbActiveBalanceCtrl.Items.AddRange(new object[] {
-            "禁止",
-            "放电",
-            "充电",
-            "无效"});
-            this.cbbActiveBalanceCtrl.Location = new System.Drawing.Point(489, 30);
-            this.cbbActiveBalanceCtrl.Name = "cbbActiveBalanceCtrl";
-            this.cbbActiveBalanceCtrl.Size = new System.Drawing.Size(120, 20);
-            this.cbbActiveBalanceCtrl.TabIndex = 55;
-            // 
-            // lblSystemset_74
-            // 
-            this.lblSystemset_74.AutoSize = true;
-            this.lblSystemset_74.Location = new System.Drawing.Point(382, 109);
-            this.lblSystemset_74.Name = "lblSystemset_74";
-            this.lblSystemset_74.Size = new System.Drawing.Size(101, 12);
-            this.lblSystemset_74.TabIndex = 2;
-            this.lblSystemset_74.Text = "设置主动均衡容量";
-            // 
-            // lblSystemset_73
-            // 
-            this.lblSystemset_73.AutoSize = true;
-            this.lblSystemset_73.Location = new System.Drawing.Point(382, 71);
-            this.lblSystemset_73.Name = "lblSystemset_73";
-            this.lblSystemset_73.Size = new System.Drawing.Size(101, 12);
-            this.lblSystemset_73.TabIndex = 1;
-            this.lblSystemset_73.Text = "设置主动均衡电流";
-            // 
-            // lblSystemset_72
-            // 
-            this.lblSystemset_72.AutoSize = true;
-            this.lblSystemset_72.Location = new System.Drawing.Point(382, 33);
-            this.lblSystemset_72.Name = "lblSystemset_72";
-            this.lblSystemset_72.Size = new System.Drawing.Size(101, 12);
-            this.lblSystemset_72.TabIndex = 0;
-            this.lblSystemset_72.Text = "主动均衡充电使能";
             // 
             // gbSystemset_0
             // 
@@ -2408,30 +2219,63 @@
             this.gbSystemset_0.Controls.Add(this.lblSystemset_66);
             this.gbSystemset_0.Controls.Add(this.lblSystemset_65);
             this.gbSystemset_0.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbSystemset_0.Location = new System.Drawing.Point(623, 3);
+            this.gbSystemset_0.Location = new System.Drawing.Point(831, 4);
+            this.gbSystemset_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbSystemset_0.Name = "gbSystemset_0";
-            this.gbSystemset_0.Size = new System.Drawing.Size(736, 644);
+            this.gbSystemset_0.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbSystemset_0.Size = new System.Drawing.Size(984, 830);
             this.gbSystemset_0.TabIndex = 39;
             this.gbSystemset_0.TabStop = false;
+            // 
+            // btnSetControlInfo
+            // 
+            this.btnSetControlInfo.AutoSize = true;
+            this.btnSetControlInfo.Location = new System.Drawing.Point(839, 32);
+            this.btnSetControlInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSetControlInfo.Name = "btnSetControlInfo";
+            this.btnSetControlInfo.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSetControlInfo.Size = new System.Drawing.Size(100, 34);
+            this.btnSetControlInfo.TabIndex = 63;
+            this.btnSetControlInfo.Text = "写入";
+            this.btnSetControlInfo.UseVisualStyleBackColor = true;
+            this.btnSetControlInfo.Click += new System.EventHandler(this.btnSetControlInfo_Click);
             // 
             // btnSetStateParam
             // 
             this.btnSetStateParam.AutoSize = true;
-            this.btnSetStateParam.Location = new System.Drawing.Point(272, 29);
+            this.btnSetStateParam.Location = new System.Drawing.Point(363, 36);
+            this.btnSetStateParam.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetStateParam.Name = "btnSetStateParam";
             this.btnSetStateParam.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetStateParam.Size = new System.Drawing.Size(75, 27);
+            this.btnSetStateParam.Size = new System.Drawing.Size(100, 34);
             this.btnSetStateParam.TabIndex = 56;
             this.btnSetStateParam.Text = "写入";
             this.btnSetStateParam.UseVisualStyleBackColor = true;
             this.btnSetStateParam.Click += new System.EventHandler(this.btnSetStateParam_Click);
             // 
+            // txtPackActiveBalanceCap
+            // 
+            this.txtPackActiveBalanceCap.Location = new System.Drawing.Point(652, 132);
+            this.txtPackActiveBalanceCap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPackActiveBalanceCap.Name = "txtPackActiveBalanceCap";
+            this.txtPackActiveBalanceCap.Size = new System.Drawing.Size(159, 25);
+            this.txtPackActiveBalanceCap.TabIndex = 62;
+            // 
             // txtSyncFallSoc
             // 
-            this.txtSyncFallSoc.Location = new System.Drawing.Point(131, 191);
+            this.txtSyncFallSoc.Location = new System.Drawing.Point(175, 239);
+            this.txtSyncFallSoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSyncFallSoc.Name = "txtSyncFallSoc";
-            this.txtSyncFallSoc.Size = new System.Drawing.Size(121, 21);
+            this.txtSyncFallSoc.Size = new System.Drawing.Size(160, 25);
             this.txtSyncFallSoc.TabIndex = 11;
+            // 
+            // txtPackActiveBalanceCur
+            // 
+            this.txtPackActiveBalanceCur.Location = new System.Drawing.Point(652, 85);
+            this.txtPackActiveBalanceCur.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPackActiveBalanceCur.Name = "txtPackActiveBalanceCur";
+            this.txtPackActiveBalanceCur.Size = new System.Drawing.Size(159, 25);
+            this.txtPackActiveBalanceCur.TabIndex = 61;
             // 
             // cbbState
             // 
@@ -2440,44 +2284,93 @@
             "待机状态",
             "充电状态",
             "放电状态"});
-            this.cbbState.Location = new System.Drawing.Point(131, 69);
+            this.cbbState.Location = new System.Drawing.Point(175, 86);
+            this.cbbState.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbbState.Name = "cbbState";
-            this.cbbState.Size = new System.Drawing.Size(121, 20);
+            this.cbbState.Size = new System.Drawing.Size(160, 23);
             this.cbbState.TabIndex = 10;
+            // 
+            // cbbActiveBalanceCtrl
+            // 
+            this.cbbActiveBalanceCtrl.FormattingEnabled = true;
+            this.cbbActiveBalanceCtrl.Items.AddRange(new object[] {
+            "禁止",
+            "放电",
+            "充电",
+            "无效"});
+            this.cbbActiveBalanceCtrl.Location = new System.Drawing.Point(652, 38);
+            this.cbbActiveBalanceCtrl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbbActiveBalanceCtrl.Name = "cbbActiveBalanceCtrl";
+            this.cbbActiveBalanceCtrl.Size = new System.Drawing.Size(159, 23);
+            this.cbbActiveBalanceCtrl.TabIndex = 55;
             // 
             // txtPackCurrent
             // 
-            this.txtPackCurrent.Location = new System.Drawing.Point(131, 33);
+            this.txtPackCurrent.Location = new System.Drawing.Point(175, 41);
+            this.txtPackCurrent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPackCurrent.Name = "txtPackCurrent";
-            this.txtPackCurrent.Size = new System.Drawing.Size(121, 21);
+            this.txtPackCurrent.Size = new System.Drawing.Size(160, 25);
             this.txtPackCurrent.TabIndex = 9;
+            // 
+            // lblSystemset_74
+            // 
+            this.lblSystemset_74.AutoSize = true;
+            this.lblSystemset_74.Location = new System.Drawing.Point(509, 136);
+            this.lblSystemset_74.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_74.Name = "lblSystemset_74";
+            this.lblSystemset_74.Size = new System.Drawing.Size(127, 15);
+            this.lblSystemset_74.TabIndex = 2;
+            this.lblSystemset_74.Text = "设置主动均衡容量";
             // 
             // ckSystemset_69
             // 
             this.ckSystemset_69.AutoSize = true;
-            this.ckSystemset_69.Location = new System.Drawing.Point(131, 157);
+            this.ckSystemset_69.Location = new System.Drawing.Point(175, 196);
+            this.ckSystemset_69.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ckSystemset_69.Name = "ckSystemset_69";
-            this.ckSystemset_69.Size = new System.Drawing.Size(48, 16);
+            this.ckSystemset_69.Size = new System.Drawing.Size(59, 19);
             this.ckSystemset_69.TabIndex = 8;
             this.ckSystemset_69.Text = "关机";
             this.ckSystemset_69.UseVisualStyleBackColor = true;
             // 
+            // lblSystemset_73
+            // 
+            this.lblSystemset_73.AutoSize = true;
+            this.lblSystemset_73.Location = new System.Drawing.Point(509, 89);
+            this.lblSystemset_73.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_73.Name = "lblSystemset_73";
+            this.lblSystemset_73.Size = new System.Drawing.Size(127, 15);
+            this.lblSystemset_73.TabIndex = 1;
+            this.lblSystemset_73.Text = "设置主动均衡电流";
+            // 
             // ckSystemset_68
             // 
             this.ckSystemset_68.AutoSize = true;
-            this.ckSystemset_68.Location = new System.Drawing.Point(131, 130);
+            this.ckSystemset_68.Location = new System.Drawing.Point(175, 162);
+            this.ckSystemset_68.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ckSystemset_68.Name = "ckSystemset_68";
-            this.ckSystemset_68.Size = new System.Drawing.Size(48, 16);
+            this.ckSystemset_68.Size = new System.Drawing.Size(59, 19);
             this.ckSystemset_68.TabIndex = 7;
             this.ckSystemset_68.Text = "放空";
             this.ckSystemset_68.UseVisualStyleBackColor = true;
             // 
+            // lblSystemset_72
+            // 
+            this.lblSystemset_72.AutoSize = true;
+            this.lblSystemset_72.Location = new System.Drawing.Point(509, 41);
+            this.lblSystemset_72.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_72.Name = "lblSystemset_72";
+            this.lblSystemset_72.Size = new System.Drawing.Size(127, 15);
+            this.lblSystemset_72.TabIndex = 0;
+            this.lblSystemset_72.Text = "主动均衡充电使能";
+            // 
             // ckSystemset_67
             // 
             this.ckSystemset_67.AutoSize = true;
-            this.ckSystemset_67.Location = new System.Drawing.Point(131, 103);
+            this.ckSystemset_67.Location = new System.Drawing.Point(175, 129);
+            this.ckSystemset_67.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ckSystemset_67.Name = "ckSystemset_67";
-            this.ckSystemset_67.Size = new System.Drawing.Size(48, 16);
+            this.ckSystemset_67.Size = new System.Drawing.Size(59, 19);
             this.ckSystemset_67.TabIndex = 6;
             this.ckSystemset_67.Text = "充满";
             this.ckSystemset_67.UseVisualStyleBackColor = true;
@@ -2485,29 +2378,225 @@
             // lblSystemset_70
             // 
             this.lblSystemset_70.AutoSize = true;
-            this.lblSystemset_70.Location = new System.Drawing.Point(25, 193);
+            this.lblSystemset_70.Location = new System.Drawing.Point(33, 241);
+            this.lblSystemset_70.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_70.Name = "lblSystemset_70";
-            this.lblSystemset_70.Size = new System.Drawing.Size(71, 12);
+            this.lblSystemset_70.Size = new System.Drawing.Size(91, 15);
             this.lblSystemset_70.TabIndex = 5;
             this.lblSystemset_70.Text = "同步下降soc";
             // 
             // lblSystemset_66
             // 
             this.lblSystemset_66.AutoSize = true;
-            this.lblSystemset_66.Location = new System.Drawing.Point(25, 71);
+            this.lblSystemset_66.Location = new System.Drawing.Point(33, 89);
+            this.lblSystemset_66.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_66.Name = "lblSystemset_66";
-            this.lblSystemset_66.Size = new System.Drawing.Size(65, 12);
+            this.lblSystemset_66.Size = new System.Drawing.Size(82, 15);
             this.lblSystemset_66.TabIndex = 1;
             this.lblSystemset_66.Text = "充放电状态";
             // 
             // lblSystemset_65
             // 
             this.lblSystemset_65.AutoSize = true;
-            this.lblSystemset_65.Location = new System.Drawing.Point(25, 36);
+            this.lblSystemset_65.Location = new System.Drawing.Point(33, 45);
+            this.lblSystemset_65.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_65.Name = "lblSystemset_65";
-            this.lblSystemset_65.Size = new System.Drawing.Size(65, 12);
+            this.lblSystemset_65.Size = new System.Drawing.Size(82, 15);
             this.lblSystemset_65.TabIndex = 0;
             this.lblSystemset_65.Text = "电池包电流";
+            // 
+            // gbControl020
+            // 
+            this.gbControl020.Controls.Add(this.cbbRequest3);
+            this.gbControl020.Controls.Add(this.cbbRequest2);
+            this.gbControl020.Controls.Add(this.cbbRequest0);
+            this.gbControl020.Controls.Add(this.cbbRequest1);
+            this.gbControl020.Controls.Add(this.lblSystemset_51);
+            this.gbControl020.Controls.Add(this.txtSlaveAddr);
+            this.gbControl020.Controls.Add(this.btnSet020_1);
+            this.gbControl020.Controls.Add(this.lblSystemset_81);
+            this.gbControl020.Controls.Add(this.lblSystemset_78);
+            this.gbControl020.Controls.Add(this.lblSystemset_80);
+            this.gbControl020.Controls.Add(this.lblSystemset_79);
+            this.gbControl020.Controls.Add(this.cbbRequest5);
+            this.gbControl020.Controls.Add(this.cbbRequest4);
+            this.gbControl020.Controls.Add(this.lblSystemset_77);
+            this.gbControl020.Controls.Add(this.lblSystemset_76);
+            this.gbControl020.Dock = System.Windows.Forms.DockStyle.Left;
+            this.gbControl020.Location = new System.Drawing.Point(448, 4);
+            this.gbControl020.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbControl020.Name = "gbControl020";
+            this.gbControl020.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbControl020.Size = new System.Drawing.Size(383, 830);
+            this.gbControl020.TabIndex = 41;
+            this.gbControl020.TabStop = false;
+            this.gbControl020.Text = "0x020上位机控制";
+            // 
+            // cbbRequest3
+            // 
+            this.cbbRequest3.FormattingEnabled = true;
+            this.cbbRequest3.Items.AddRange(new object[] {
+            "0x00：查询",
+            "0xAA：开启",
+            "0x55：关闭"});
+            this.cbbRequest3.Location = new System.Drawing.Point(195, 165);
+            this.cbbRequest3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbbRequest3.Name = "cbbRequest3";
+            this.cbbRequest3.Size = new System.Drawing.Size(159, 23);
+            this.cbbRequest3.TabIndex = 63;
+            // 
+            // cbbRequest2
+            // 
+            this.cbbRequest2.FormattingEnabled = true;
+            this.cbbRequest2.Items.AddRange(new object[] {
+            "0x00：查询",
+            "0xAA：开启",
+            "0x55：关闭"});
+            this.cbbRequest2.Location = new System.Drawing.Point(195, 124);
+            this.cbbRequest2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbbRequest2.Name = "cbbRequest2";
+            this.cbbRequest2.Size = new System.Drawing.Size(159, 23);
+            this.cbbRequest2.TabIndex = 62;
+            // 
+            // cbbRequest0
+            // 
+            this.cbbRequest0.FormattingEnabled = true;
+            this.cbbRequest0.Items.AddRange(new object[] {
+            "0x00：查询",
+            "0xAA：开启",
+            "0x55：关闭"});
+            this.cbbRequest0.Location = new System.Drawing.Point(195, 41);
+            this.cbbRequest0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbbRequest0.Name = "cbbRequest0";
+            this.cbbRequest0.Size = new System.Drawing.Size(159, 23);
+            this.cbbRequest0.TabIndex = 61;
+            // 
+            // cbbRequest1
+            // 
+            this.cbbRequest1.FormattingEnabled = true;
+            this.cbbRequest1.Items.AddRange(new object[] {
+            "0x00：查询",
+            "0xAA：开启",
+            "0x55：关闭"});
+            this.cbbRequest1.Location = new System.Drawing.Point(195, 82);
+            this.cbbRequest1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbbRequest1.Name = "cbbRequest1";
+            this.cbbRequest1.Size = new System.Drawing.Size(159, 23);
+            this.cbbRequest1.TabIndex = 61;
+            // 
+            // lblSystemset_51
+            // 
+            this.lblSystemset_51.AutoSize = true;
+            this.lblSystemset_51.Location = new System.Drawing.Point(25, 169);
+            this.lblSystemset_51.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_51.Name = "lblSystemset_51";
+            this.lblSystemset_51.Size = new System.Drawing.Size(91, 15);
+            this.lblSystemset_51.TabIndex = 3;
+            this.lblSystemset_51.Text = "PCU老化模式";
+            // 
+            // txtSlaveAddr
+            // 
+            this.txtSlaveAddr.Location = new System.Drawing.Point(195, 289);
+            this.txtSlaveAddr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSlaveAddr.Name = "txtSlaveAddr";
+            this.txtSlaveAddr.Size = new System.Drawing.Size(159, 25);
+            this.txtSlaveAddr.TabIndex = 60;
+            // 
+            // btnSet020_1
+            // 
+            this.btnSet020_1.AutoSize = true;
+            this.btnSet020_1.Location = new System.Drawing.Point(255, 334);
+            this.btnSet020_1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSet020_1.Name = "btnSet020_1";
+            this.btnSet020_1.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSet020_1.Size = new System.Drawing.Size(100, 34);
+            this.btnSet020_1.TabIndex = 55;
+            this.btnSet020_1.Text = "写入";
+            this.btnSet020_1.UseVisualStyleBackColor = true;
+            this.btnSet020_1.Click += new System.EventHandler(this.btnSet020_1_Click);
+            // 
+            // lblSystemset_81
+            // 
+            this.lblSystemset_81.AutoSize = true;
+            this.lblSystemset_81.Location = new System.Drawing.Point(25, 126);
+            this.lblSystemset_81.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_81.Name = "lblSystemset_81";
+            this.lblSystemset_81.Size = new System.Drawing.Size(91, 15);
+            this.lblSystemset_81.TabIndex = 2;
+            this.lblSystemset_81.Text = "ATE测试模式";
+            // 
+            // lblSystemset_78
+            // 
+            this.lblSystemset_78.AutoSize = true;
+            this.lblSystemset_78.Location = new System.Drawing.Point(25, 296);
+            this.lblSystemset_78.Name = "lblSystemset_78";
+            this.lblSystemset_78.Size = new System.Drawing.Size(123, 15);
+            this.lblSystemset_78.TabIndex = 59;
+            this.lblSystemset_78.Text = "设置地址(1~255)";
+            // 
+            // lblSystemset_80
+            // 
+            this.lblSystemset_80.AutoSize = true;
+            this.lblSystemset_80.Location = new System.Drawing.Point(25, 84);
+            this.lblSystemset_80.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_80.Name = "lblSystemset_80";
+            this.lblSystemset_80.Size = new System.Drawing.Size(67, 15);
+            this.lblSystemset_80.TabIndex = 1;
+            this.lblSystemset_80.Text = "标定模式";
+            // 
+            // lblSystemset_79
+            // 
+            this.lblSystemset_79.AutoSize = true;
+            this.lblSystemset_79.Location = new System.Drawing.Point(25, 41);
+            this.lblSystemset_79.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_79.Name = "lblSystemset_79";
+            this.lblSystemset_79.Size = new System.Drawing.Size(67, 15);
+            this.lblSystemset_79.TabIndex = 0;
+            this.lblSystemset_79.Text = "老化模式";
+            // 
+            // cbbRequest5
+            // 
+            this.cbbRequest5.FormattingEnabled = true;
+            this.cbbRequest5.Items.AddRange(new object[] {
+            "0x00：无效操作",
+            "0xAA：恢复所有默认设置",
+            "0x55：其他"});
+            this.cbbRequest5.Location = new System.Drawing.Point(195, 248);
+            this.cbbRequest5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbbRequest5.Name = "cbbRequest5";
+            this.cbbRequest5.Size = new System.Drawing.Size(159, 23);
+            this.cbbRequest5.TabIndex = 57;
+            // 
+            // cbbRequest4
+            // 
+            this.cbbRequest4.FormattingEnabled = true;
+            this.cbbRequest4.Items.AddRange(new object[] {
+            "0x00：无效操作",
+            "0xAA：开启",
+            "0x55：关闭"});
+            this.cbbRequest4.Location = new System.Drawing.Point(195, 206);
+            this.cbbRequest4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbbRequest4.Name = "cbbRequest4";
+            this.cbbRequest4.Size = new System.Drawing.Size(159, 23);
+            this.cbbRequest4.TabIndex = 54;
+            // 
+            // lblSystemset_77
+            // 
+            this.lblSystemset_77.AutoSize = true;
+            this.lblSystemset_77.Location = new System.Drawing.Point(25, 254);
+            this.lblSystemset_77.Name = "lblSystemset_77";
+            this.lblSystemset_77.Size = new System.Drawing.Size(97, 15);
+            this.lblSystemset_77.TabIndex = 56;
+            this.lblSystemset_77.Text = "标定参数恢复";
+            // 
+            // lblSystemset_76
+            // 
+            this.lblSystemset_76.AutoSize = true;
+            this.lblSystemset_76.Location = new System.Drawing.Point(25, 211);
+            this.lblSystemset_76.Name = "lblSystemset_76";
+            this.lblSystemset_76.Size = new System.Drawing.Size(97, 15);
+            this.lblSystemset_76.TabIndex = 53;
+            this.lblSystemset_76.Text = "强制控制开关";
             // 
             // gbSystemset_60
             // 
@@ -2524,11 +2613,11 @@
             this.gbSystemset_60.Controls.Add(this.lblSystemset_62);
             this.gbSystemset_60.Controls.Add(this.lblSystemset_61);
             this.gbSystemset_60.Dock = System.Windows.Forms.DockStyle.Left;
-            this.gbSystemset_60.Location = new System.Drawing.Point(3, 3);
-            this.gbSystemset_60.Margin = new System.Windows.Forms.Padding(10);
+            this.gbSystemset_60.Location = new System.Drawing.Point(4, 4);
+            this.gbSystemset_60.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.gbSystemset_60.Name = "gbSystemset_60";
-            this.gbSystemset_60.Padding = new System.Windows.Forms.Padding(5);
-            this.gbSystemset_60.Size = new System.Drawing.Size(333, 740);
+            this.gbSystemset_60.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.gbSystemset_60.Size = new System.Drawing.Size(444, 830);
             this.gbSystemset_60.TabIndex = 38;
             this.gbSystemset_60.TabStop = false;
             this.gbSystemset_60.Text = "开关控制";
@@ -2536,11 +2625,11 @@
             // btnSystemset_45_Unique_Lifted3
             // 
             this.btnSystemset_45_Unique_Lifted3.AutoSize = true;
-            this.btnSystemset_45_Unique_Lifted3.Location = new System.Drawing.Point(258, 112);
-            this.btnSystemset_45_Unique_Lifted3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_Unique_Lifted3.Location = new System.Drawing.Point(344, 140);
+            this.btnSystemset_45_Unique_Lifted3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_Unique_Lifted3.Name = "btnSystemset_45_Unique_Lifted3";
             this.btnSystemset_45_Unique_Lifted3.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_Unique_Lifted3.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_Unique_Lifted3.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_Unique_Lifted3.TabIndex = 42;
             this.btnSystemset_45_Unique_Lifted3.Text = "解除";
             this.btnSystemset_45_Unique_Lifted3.UseVisualStyleBackColor = true;
@@ -2549,11 +2638,11 @@
             // btnSystemset_43_Unique_Close3
             // 
             this.btnSystemset_43_Unique_Close3.AutoSize = true;
-            this.btnSystemset_43_Unique_Close3.Location = new System.Drawing.Point(183, 113);
-            this.btnSystemset_43_Unique_Close3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_Unique_Close3.Location = new System.Drawing.Point(244, 141);
+            this.btnSystemset_43_Unique_Close3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_Unique_Close3.Name = "btnSystemset_43_Unique_Close3";
             this.btnSystemset_43_Unique_Close3.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_Unique_Close3.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_Unique_Close3.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_Unique_Close3.TabIndex = 41;
             this.btnSystemset_43_Unique_Close3.Text = "关闭";
             this.btnSystemset_43_Unique_Close3.UseVisualStyleBackColor = true;
@@ -2562,11 +2651,11 @@
             // btnSystemset_44_Unique_Open3
             // 
             this.btnSystemset_44_Unique_Open3.AutoSize = true;
-            this.btnSystemset_44_Unique_Open3.Location = new System.Drawing.Point(109, 113);
-            this.btnSystemset_44_Unique_Open3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_Unique_Open3.Location = new System.Drawing.Point(145, 141);
+            this.btnSystemset_44_Unique_Open3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_Unique_Open3.Name = "btnSystemset_44_Unique_Open3";
             this.btnSystemset_44_Unique_Open3.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_Unique_Open3.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_Unique_Open3.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_Unique_Open3.TabIndex = 40;
             this.btnSystemset_44_Unique_Open3.Text = "打开";
             this.btnSystemset_44_Unique_Open3.UseVisualStyleBackColor = true;
@@ -2575,21 +2664,20 @@
             // lblSystemset_63
             // 
             this.lblSystemset_63.AutoSize = true;
-            this.lblSystemset_63.Location = new System.Drawing.Point(17, 118);
-            this.lblSystemset_63.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_63.Location = new System.Drawing.Point(23, 148);
             this.lblSystemset_63.Name = "lblSystemset_63";
-            this.lblSystemset_63.Size = new System.Drawing.Size(59, 12);
+            this.lblSystemset_63.Size = new System.Drawing.Size(76, 15);
             this.lblSystemset_63.TabIndex = 39;
             this.lblSystemset_63.Text = "LED灯控制";
             // 
             // btnSystemset_45_Unique_Lifted2
             // 
             this.btnSystemset_45_Unique_Lifted2.AutoSize = true;
-            this.btnSystemset_45_Unique_Lifted2.Location = new System.Drawing.Point(258, 71);
-            this.btnSystemset_45_Unique_Lifted2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_Unique_Lifted2.Location = new System.Drawing.Point(344, 89);
+            this.btnSystemset_45_Unique_Lifted2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_Unique_Lifted2.Name = "btnSystemset_45_Unique_Lifted2";
             this.btnSystemset_45_Unique_Lifted2.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_Unique_Lifted2.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_Unique_Lifted2.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_Unique_Lifted2.TabIndex = 22;
             this.btnSystemset_45_Unique_Lifted2.Text = "解除";
             this.btnSystemset_45_Unique_Lifted2.UseVisualStyleBackColor = true;
@@ -2598,10 +2686,11 @@
             // btnSystemset_45_Unique_Lifted1
             // 
             this.btnSystemset_45_Unique_Lifted1.AutoSize = true;
-            this.btnSystemset_45_Unique_Lifted1.Location = new System.Drawing.Point(258, 30);
+            this.btnSystemset_45_Unique_Lifted1.Location = new System.Drawing.Point(344, 38);
+            this.btnSystemset_45_Unique_Lifted1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSystemset_45_Unique_Lifted1.Name = "btnSystemset_45_Unique_Lifted1";
             this.btnSystemset_45_Unique_Lifted1.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_Unique_Lifted1.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_Unique_Lifted1.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_Unique_Lifted1.TabIndex = 21;
             this.btnSystemset_45_Unique_Lifted1.Text = "解除";
             this.btnSystemset_45_Unique_Lifted1.UseVisualStyleBackColor = true;
@@ -2610,11 +2699,11 @@
             // btnSystemset_43_Unique_Close2
             // 
             this.btnSystemset_43_Unique_Close2.AutoSize = true;
-            this.btnSystemset_43_Unique_Close2.Location = new System.Drawing.Point(183, 72);
-            this.btnSystemset_43_Unique_Close2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_Unique_Close2.Location = new System.Drawing.Point(244, 90);
+            this.btnSystemset_43_Unique_Close2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_Unique_Close2.Name = "btnSystemset_43_Unique_Close2";
             this.btnSystemset_43_Unique_Close2.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_Unique_Close2.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_Unique_Close2.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_Unique_Close2.TabIndex = 11;
             this.btnSystemset_43_Unique_Close2.Text = "关闭";
             this.btnSystemset_43_Unique_Close2.UseVisualStyleBackColor = true;
@@ -2623,11 +2712,11 @@
             // btnSystemset_44_Unique_Open2
             // 
             this.btnSystemset_44_Unique_Open2.AutoSize = true;
-            this.btnSystemset_44_Unique_Open2.Location = new System.Drawing.Point(109, 72);
-            this.btnSystemset_44_Unique_Open2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_Unique_Open2.Location = new System.Drawing.Point(145, 90);
+            this.btnSystemset_44_Unique_Open2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_Unique_Open2.Name = "btnSystemset_44_Unique_Open2";
             this.btnSystemset_44_Unique_Open2.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_Unique_Open2.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_Unique_Open2.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_Unique_Open2.TabIndex = 10;
             this.btnSystemset_44_Unique_Open2.Text = "打开";
             this.btnSystemset_44_Unique_Open2.UseVisualStyleBackColor = true;
@@ -2636,11 +2725,11 @@
             // btnSystemset_43_Unique_Close1
             // 
             this.btnSystemset_43_Unique_Close1.AutoSize = true;
-            this.btnSystemset_43_Unique_Close1.Location = new System.Drawing.Point(183, 31);
-            this.btnSystemset_43_Unique_Close1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_Unique_Close1.Location = new System.Drawing.Point(244, 39);
+            this.btnSystemset_43_Unique_Close1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_Unique_Close1.Name = "btnSystemset_43_Unique_Close1";
             this.btnSystemset_43_Unique_Close1.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_Unique_Close1.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_Unique_Close1.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_Unique_Close1.TabIndex = 9;
             this.btnSystemset_43_Unique_Close1.Text = "关闭";
             this.btnSystemset_43_Unique_Close1.UseVisualStyleBackColor = true;
@@ -2649,11 +2738,11 @@
             // btnSystemset_44_Unique_Open1
             // 
             this.btnSystemset_44_Unique_Open1.AutoSize = true;
-            this.btnSystemset_44_Unique_Open1.Location = new System.Drawing.Point(109, 31);
-            this.btnSystemset_44_Unique_Open1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_Unique_Open1.Location = new System.Drawing.Point(145, 39);
+            this.btnSystemset_44_Unique_Open1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_Unique_Open1.Name = "btnSystemset_44_Unique_Open1";
             this.btnSystemset_44_Unique_Open1.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_Unique_Open1.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_Unique_Open1.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_Unique_Open1.TabIndex = 8;
             this.btnSystemset_44_Unique_Open1.Text = "打开";
             this.btnSystemset_44_Unique_Open1.UseVisualStyleBackColor = true;
@@ -2662,20 +2751,18 @@
             // lblSystemset_62
             // 
             this.lblSystemset_62.AutoSize = true;
-            this.lblSystemset_62.Location = new System.Drawing.Point(17, 77);
-            this.lblSystemset_62.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_62.Location = new System.Drawing.Point(23, 96);
             this.lblSystemset_62.Name = "lblSystemset_62";
-            this.lblSystemset_62.Size = new System.Drawing.Size(71, 12);
+            this.lblSystemset_62.Size = new System.Drawing.Size(91, 15);
             this.lblSystemset_62.TabIndex = 1;
             this.lblSystemset_62.Text = "llc强制充电";
             // 
             // lblSystemset_61
             // 
             this.lblSystemset_61.AutoSize = true;
-            this.lblSystemset_61.Location = new System.Drawing.Point(17, 36);
-            this.lblSystemset_61.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_61.Location = new System.Drawing.Point(23, 45);
             this.lblSystemset_61.Name = "lblSystemset_61";
-            this.lblSystemset_61.Size = new System.Drawing.Size(71, 12);
+            this.lblSystemset_61.Size = new System.Drawing.Size(91, 15);
             this.lblSystemset_61.TabIndex = 0;
             this.lblSystemset_61.Text = "llc强制放电";
             // 
@@ -2687,12 +2774,29 @@
             this.tabPage5.Controls.Add(this.gbBCU_Calibration);
             this.tabPage5.Controls.Add(this.gbControl0F0);
             this.tabPage5.Controls.Add(this.gb0FA);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Location = new System.Drawing.Point(4, 25);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1236, 746);
+            this.tabPage5.Size = new System.Drawing.Size(1819, 838);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "CBS5000_BCU";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // btnRead
+            // 
+            this.btnRead.AutoSize = true;
+            this.btnRead.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnRead.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRead.ForeColor = System.Drawing.Color.White;
+            this.btnRead.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRead.Location = new System.Drawing.Point(1547, 27);
+            this.btnRead.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRead.Name = "btnRead";
+            this.btnRead.Size = new System.Drawing.Size(101, 38);
+            this.btnRead.TabIndex = 46;
+            this.btnRead.Text = "读取";
+            this.btnRead.UseVisualStyleBackColor = false;
+            this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
             // 
             // gbBCU_SystemSet
             // 
@@ -2708,11 +2812,11 @@
             this.gbBCU_SystemSet.Controls.Add(this.txtbcuCode);
             this.gbBCU_SystemSet.Controls.Add(this.lblSystemset_BCU_33);
             this.gbBCU_SystemSet.Controls.Add(this.lblSystemset_BCU_35);
-            this.gbBCU_SystemSet.Location = new System.Drawing.Point(406, 440);
-            this.gbBCU_SystemSet.Margin = new System.Windows.Forms.Padding(2);
+            this.gbBCU_SystemSet.Location = new System.Drawing.Point(541, 550);
+            this.gbBCU_SystemSet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbBCU_SystemSet.Name = "gbBCU_SystemSet";
-            this.gbBCU_SystemSet.Padding = new System.Windows.Forms.Padding(2);
-            this.gbBCU_SystemSet.Size = new System.Drawing.Size(403, 223);
+            this.gbBCU_SystemSet.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbBCU_SystemSet.Size = new System.Drawing.Size(537, 225);
             this.gbBCU_SystemSet.TabIndex = 92;
             this.gbBCU_SystemSet.TabStop = false;
             this.gbBCU_SystemSet.Text = "BCU参数设置";
@@ -2720,11 +2824,11 @@
             // btnFlashData
             // 
             this.btnFlashData.AutoSize = true;
-            this.btnFlashData.Location = new System.Drawing.Point(301, 139);
-            this.btnFlashData.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnFlashData.Location = new System.Drawing.Point(401, 174);
+            this.btnFlashData.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnFlashData.Name = "btnFlashData";
             this.btnFlashData.Padding = new System.Windows.Forms.Padding(1);
-            this.btnFlashData.Size = new System.Drawing.Size(75, 24);
+            this.btnFlashData.Size = new System.Drawing.Size(100, 34);
             this.btnFlashData.TabIndex = 70;
             this.btnFlashData.Text = "写入";
             this.btnFlashData.UseVisualStyleBackColor = true;
@@ -2732,28 +2836,30 @@
             // 
             // txtFlashData
             // 
-            this.txtFlashData.Location = new System.Drawing.Point(109, 142);
+            this.txtFlashData.Location = new System.Drawing.Point(145, 178);
+            this.txtFlashData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtFlashData.Name = "txtFlashData";
-            this.txtFlashData.Size = new System.Drawing.Size(152, 21);
+            this.txtFlashData.Size = new System.Drawing.Size(201, 25);
             this.txtFlashData.TabIndex = 69;
             // 
             // lblSystemset_BCU_36
             // 
             this.lblSystemset_BCU_36.AutoSize = true;
-            this.lblSystemset_BCU_36.Location = new System.Drawing.Point(16, 145);
+            this.lblSystemset_BCU_36.Location = new System.Drawing.Point(21, 181);
+            this.lblSystemset_BCU_36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_36.Name = "lblSystemset_BCU_36";
-            this.lblSystemset_BCU_36.Size = new System.Drawing.Size(59, 12);
+            this.lblSystemset_BCU_36.Size = new System.Drawing.Size(77, 15);
             this.lblSystemset_BCU_36.TabIndex = 68;
             this.lblSystemset_BCU_36.Text = "Flash数据";
             // 
             // btnBCU_Time
             // 
             this.btnBCU_Time.AutoSize = true;
-            this.btnBCU_Time.Location = new System.Drawing.Point(304, 95);
-            this.btnBCU_Time.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnBCU_Time.Location = new System.Drawing.Point(405, 119);
+            this.btnBCU_Time.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnBCU_Time.Name = "btnBCU_Time";
             this.btnBCU_Time.Padding = new System.Windows.Forms.Padding(1);
-            this.btnBCU_Time.Size = new System.Drawing.Size(72, 25);
+            this.btnBCU_Time.Size = new System.Drawing.Size(96, 34);
             this.btnBCU_Time.TabIndex = 67;
             this.btnBCU_Time.Text = "写入";
             this.btnBCU_Time.UseVisualStyleBackColor = true;
@@ -2763,19 +2869,20 @@
             // 
             this.dateTimePicker2.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(109, 99);
+            this.dateTimePicker2.Location = new System.Drawing.Point(145, 124);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(152, 21);
+            this.dateTimePicker2.Size = new System.Drawing.Size(201, 25);
             this.dateTimePicker2.TabIndex = 66;
             // 
             // btnBCUBoardSN
             // 
             this.btnBCUBoardSN.AutoSize = true;
-            this.btnBCUBoardSN.Location = new System.Drawing.Point(304, 59);
-            this.btnBCUBoardSN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnBCUBoardSN.Location = new System.Drawing.Point(405, 74);
+            this.btnBCUBoardSN.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnBCUBoardSN.Name = "btnBCUBoardSN";
             this.btnBCUBoardSN.Padding = new System.Windows.Forms.Padding(1);
-            this.btnBCUBoardSN.Size = new System.Drawing.Size(72, 24);
+            this.btnBCUBoardSN.Size = new System.Drawing.Size(96, 34);
             this.btnBCUBoardSN.TabIndex = 65;
             this.btnBCUBoardSN.Text = "写入";
             this.btnBCUBoardSN.UseVisualStyleBackColor = true;
@@ -2783,28 +2890,30 @@
             // 
             // txtBCUBoardSN
             // 
-            this.txtBCUBoardSN.Location = new System.Drawing.Point(109, 62);
+            this.txtBCUBoardSN.Location = new System.Drawing.Point(145, 78);
+            this.txtBCUBoardSN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBCUBoardSN.Name = "txtBCUBoardSN";
-            this.txtBCUBoardSN.Size = new System.Drawing.Size(152, 21);
+            this.txtBCUBoardSN.Size = new System.Drawing.Size(201, 25);
             this.txtBCUBoardSN.TabIndex = 64;
             // 
             // lblSystemset_BCU_34
             // 
             this.lblSystemset_BCU_34.AutoSize = true;
-            this.lblSystemset_BCU_34.Location = new System.Drawing.Point(14, 67);
+            this.lblSystemset_BCU_34.Location = new System.Drawing.Point(19, 84);
+            this.lblSystemset_BCU_34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_34.Name = "lblSystemset_BCU_34";
-            this.lblSystemset_BCU_34.Size = new System.Drawing.Size(65, 12);
+            this.lblSystemset_BCU_34.Size = new System.Drawing.Size(82, 15);
             this.lblSystemset_BCU_34.TabIndex = 63;
             this.lblSystemset_BCU_34.Text = "单板序列号";
             // 
             // btnbcuCode
             // 
             this.btnbcuCode.AutoSize = true;
-            this.btnbcuCode.Location = new System.Drawing.Point(304, 18);
-            this.btnbcuCode.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnbcuCode.Location = new System.Drawing.Point(405, 22);
+            this.btnbcuCode.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnbcuCode.Name = "btnbcuCode";
             this.btnbcuCode.Padding = new System.Windows.Forms.Padding(1);
-            this.btnbcuCode.Size = new System.Drawing.Size(75, 24);
+            this.btnbcuCode.Size = new System.Drawing.Size(100, 34);
             this.btnbcuCode.TabIndex = 62;
             this.btnbcuCode.Text = "写入";
             this.btnbcuCode.UseVisualStyleBackColor = true;
@@ -2812,26 +2921,29 @@
             // 
             // txtbcuCode
             // 
-            this.txtbcuCode.Location = new System.Drawing.Point(109, 21);
+            this.txtbcuCode.Location = new System.Drawing.Point(145, 26);
+            this.txtbcuCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtbcuCode.Name = "txtbcuCode";
-            this.txtbcuCode.Size = new System.Drawing.Size(152, 21);
+            this.txtbcuCode.Size = new System.Drawing.Size(201, 25);
             this.txtbcuCode.TabIndex = 61;
             // 
             // lblSystemset_BCU_33
             // 
             this.lblSystemset_BCU_33.AutoSize = true;
-            this.lblSystemset_BCU_33.Location = new System.Drawing.Point(16, 27);
+            this.lblSystemset_BCU_33.Location = new System.Drawing.Point(21, 34);
+            this.lblSystemset_BCU_33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_33.Name = "lblSystemset_BCU_33";
-            this.lblSystemset_BCU_33.Size = new System.Drawing.Size(41, 12);
+            this.lblSystemset_BCU_33.Size = new System.Drawing.Size(52, 15);
             this.lblSystemset_BCU_33.TabIndex = 60;
             this.lblSystemset_BCU_33.Text = "序列号";
             // 
             // lblSystemset_BCU_35
             // 
             this.lblSystemset_BCU_35.AutoSize = true;
-            this.lblSystemset_BCU_35.Location = new System.Drawing.Point(14, 105);
+            this.lblSystemset_BCU_35.Location = new System.Drawing.Point(19, 131);
+            this.lblSystemset_BCU_35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_35.Name = "lblSystemset_BCU_35";
-            this.lblSystemset_BCU_35.Size = new System.Drawing.Size(29, 12);
+            this.lblSystemset_BCU_35.Size = new System.Drawing.Size(37, 15);
             this.lblSystemset_BCU_35.TabIndex = 59;
             this.lblSystemset_BCU_35.Text = "时间";
             // 
@@ -2854,11 +2966,11 @@
             this.gbControl0F6.Controls.Add(this.lblSystemset_BCU_29);
             this.gbControl0F6.Controls.Add(this.btnSystemset_43_BCU1_Close1);
             this.gbControl0F6.Controls.Add(this.btnSystemset_44_BCU1_Open1);
-            this.gbControl0F6.Location = new System.Drawing.Point(10, 438);
-            this.gbControl0F6.Margin = new System.Windows.Forms.Padding(2);
+            this.gbControl0F6.Location = new System.Drawing.Point(13, 548);
+            this.gbControl0F6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbControl0F6.Name = "gbControl0F6";
-            this.gbControl0F6.Padding = new System.Windows.Forms.Padding(2);
-            this.gbControl0F6.Size = new System.Drawing.Size(389, 225);
+            this.gbControl0F6.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbControl0F6.Size = new System.Drawing.Size(519, 227);
             this.gbControl0F6.TabIndex = 63;
             this.gbControl0F6.TabStop = false;
             this.gbControl0F6.Text = "0xF6控制";
@@ -2866,14 +2978,15 @@
             // btnSystemset_debug1
             // 
             this.btnSystemset_debug1.AutoSize = true;
-            this.btnSystemset_debug1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(152)))), ((int)(((byte)(142)))));
+            this.btnSystemset_debug1.BackColor = System.Drawing.Color.Green;
             this.btnSystemset_debug1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSystemset_debug1.ForeColor = System.Drawing.Color.White;
             this.btnSystemset_debug1.Image = global::SofarBMS.Properties.Resources.debugtool;
             this.btnSystemset_debug1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSystemset_debug1.Location = new System.Drawing.Point(11, 17);
+            this.btnSystemset_debug1.Location = new System.Drawing.Point(15, 21);
+            this.btnSystemset_debug1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSystemset_debug1.Name = "btnSystemset_debug1";
-            this.btnSystemset_debug1.Size = new System.Drawing.Size(362, 30);
+            this.btnSystemset_debug1.Size = new System.Drawing.Size(483, 38);
             this.btnSystemset_debug1.TabIndex = 91;
             this.btnSystemset_debug1.Text = "开始调试";
             this.btnSystemset_debug1.UseVisualStyleBackColor = false;
@@ -2883,11 +2996,11 @@
             // 
             this.btnSystemset_45_BCU1_Lifted4.AutoSize = true;
             this.btnSystemset_45_BCU1_Lifted4.Enabled = false;
-            this.btnSystemset_45_BCU1_Lifted4.Location = new System.Drawing.Point(303, 149);
-            this.btnSystemset_45_BCU1_Lifted4.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU1_Lifted4.Location = new System.Drawing.Point(404, 186);
+            this.btnSystemset_45_BCU1_Lifted4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU1_Lifted4.Name = "btnSystemset_45_BCU1_Lifted4";
             this.btnSystemset_45_BCU1_Lifted4.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU1_Lifted4.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU1_Lifted4.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU1_Lifted4.TabIndex = 74;
             this.btnSystemset_45_BCU1_Lifted4.Text = "解除";
             this.btnSystemset_45_BCU1_Lifted4.UseVisualStyleBackColor = true;
@@ -2897,11 +3010,11 @@
             // 
             this.btnSystemset_43_BCU1_Close4.AutoSize = true;
             this.btnSystemset_43_BCU1_Close4.Enabled = false;
-            this.btnSystemset_43_BCU1_Close4.Location = new System.Drawing.Point(228, 150);
-            this.btnSystemset_43_BCU1_Close4.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU1_Close4.Location = new System.Drawing.Point(304, 188);
+            this.btnSystemset_43_BCU1_Close4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU1_Close4.Name = "btnSystemset_43_BCU1_Close4";
             this.btnSystemset_43_BCU1_Close4.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU1_Close4.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU1_Close4.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU1_Close4.TabIndex = 73;
             this.btnSystemset_43_BCU1_Close4.Text = "关闭";
             this.btnSystemset_43_BCU1_Close4.UseVisualStyleBackColor = true;
@@ -2911,11 +3024,11 @@
             // 
             this.btnSystemset_44_BCU1_Open4.AutoSize = true;
             this.btnSystemset_44_BCU1_Open4.Enabled = false;
-            this.btnSystemset_44_BCU1_Open4.Location = new System.Drawing.Point(154, 150);
-            this.btnSystemset_44_BCU1_Open4.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU1_Open4.Location = new System.Drawing.Point(205, 188);
+            this.btnSystemset_44_BCU1_Open4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU1_Open4.Name = "btnSystemset_44_BCU1_Open4";
             this.btnSystemset_44_BCU1_Open4.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU1_Open4.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU1_Open4.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU1_Open4.TabIndex = 72;
             this.btnSystemset_44_BCU1_Open4.Text = "打开";
             this.btnSystemset_44_BCU1_Open4.UseVisualStyleBackColor = true;
@@ -2924,10 +3037,9 @@
             // lblSystemset_BCU_32
             // 
             this.lblSystemset_BCU_32.AutoSize = true;
-            this.lblSystemset_BCU_32.Location = new System.Drawing.Point(12, 157);
-            this.lblSystemset_BCU_32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_BCU_32.Location = new System.Drawing.Point(16, 196);
             this.lblSystemset_BCU_32.Name = "lblSystemset_BCU_32";
-            this.lblSystemset_BCU_32.Size = new System.Drawing.Size(29, 12);
+            this.lblSystemset_BCU_32.Size = new System.Drawing.Size(37, 15);
             this.lblSystemset_BCU_32.TabIndex = 71;
             this.lblSystemset_BCU_32.Text = "加热";
             // 
@@ -2935,11 +3047,11 @@
             // 
             this.btnSystemset_45_BCU1_Lifted3.AutoSize = true;
             this.btnSystemset_45_BCU1_Lifted3.Enabled = false;
-            this.btnSystemset_45_BCU1_Lifted3.Location = new System.Drawing.Point(303, 118);
-            this.btnSystemset_45_BCU1_Lifted3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU1_Lifted3.Location = new System.Drawing.Point(404, 148);
+            this.btnSystemset_45_BCU1_Lifted3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU1_Lifted3.Name = "btnSystemset_45_BCU1_Lifted3";
             this.btnSystemset_45_BCU1_Lifted3.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU1_Lifted3.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU1_Lifted3.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU1_Lifted3.TabIndex = 70;
             this.btnSystemset_45_BCU1_Lifted3.Text = "解除";
             this.btnSystemset_45_BCU1_Lifted3.UseVisualStyleBackColor = true;
@@ -2949,11 +3061,11 @@
             // 
             this.btnSystemset_43_BCU1_Close3.AutoSize = true;
             this.btnSystemset_43_BCU1_Close3.Enabled = false;
-            this.btnSystemset_43_BCU1_Close3.Location = new System.Drawing.Point(228, 120);
-            this.btnSystemset_43_BCU1_Close3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU1_Close3.Location = new System.Drawing.Point(304, 150);
+            this.btnSystemset_43_BCU1_Close3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU1_Close3.Name = "btnSystemset_43_BCU1_Close3";
             this.btnSystemset_43_BCU1_Close3.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU1_Close3.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU1_Close3.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU1_Close3.TabIndex = 69;
             this.btnSystemset_43_BCU1_Close3.Text = "关闭";
             this.btnSystemset_43_BCU1_Close3.UseVisualStyleBackColor = true;
@@ -2963,11 +3075,11 @@
             // 
             this.btnSystemset_44_BCU1_Open3.AutoSize = true;
             this.btnSystemset_44_BCU1_Open3.Enabled = false;
-            this.btnSystemset_44_BCU1_Open3.Location = new System.Drawing.Point(154, 120);
-            this.btnSystemset_44_BCU1_Open3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU1_Open3.Location = new System.Drawing.Point(205, 150);
+            this.btnSystemset_44_BCU1_Open3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU1_Open3.Name = "btnSystemset_44_BCU1_Open3";
             this.btnSystemset_44_BCU1_Open3.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU1_Open3.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU1_Open3.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU1_Open3.TabIndex = 68;
             this.btnSystemset_44_BCU1_Open3.Text = "打开";
             this.btnSystemset_44_BCU1_Open3.UseVisualStyleBackColor = true;
@@ -2976,10 +3088,9 @@
             // lblSystemset_BCU_31
             // 
             this.lblSystemset_BCU_31.AutoSize = true;
-            this.lblSystemset_BCU_31.Location = new System.Drawing.Point(12, 128);
-            this.lblSystemset_BCU_31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_BCU_31.Location = new System.Drawing.Point(16, 160);
             this.lblSystemset_BCU_31.Name = "lblSystemset_BCU_31";
-            this.lblSystemset_BCU_31.Size = new System.Drawing.Size(89, 12);
+            this.lblSystemset_BCU_31.Size = new System.Drawing.Size(112, 15);
             this.lblSystemset_BCU_31.TabIndex = 67;
             this.lblSystemset_BCU_31.Text = "告警保护指示灯";
             // 
@@ -2987,11 +3098,11 @@
             // 
             this.btnSystemset_45_BCU1_Lifted2.AutoSize = true;
             this.btnSystemset_45_BCU1_Lifted2.Enabled = false;
-            this.btnSystemset_45_BCU1_Lifted2.Location = new System.Drawing.Point(303, 84);
-            this.btnSystemset_45_BCU1_Lifted2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU1_Lifted2.Location = new System.Drawing.Point(404, 105);
+            this.btnSystemset_45_BCU1_Lifted2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU1_Lifted2.Name = "btnSystemset_45_BCU1_Lifted2";
             this.btnSystemset_45_BCU1_Lifted2.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU1_Lifted2.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU1_Lifted2.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU1_Lifted2.TabIndex = 66;
             this.btnSystemset_45_BCU1_Lifted2.Text = "解除";
             this.btnSystemset_45_BCU1_Lifted2.UseVisualStyleBackColor = true;
@@ -3001,11 +3112,11 @@
             // 
             this.btnSystemset_43_BCU1_Close2.AutoSize = true;
             this.btnSystemset_43_BCU1_Close2.Enabled = false;
-            this.btnSystemset_43_BCU1_Close2.Location = new System.Drawing.Point(228, 86);
-            this.btnSystemset_43_BCU1_Close2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU1_Close2.Location = new System.Drawing.Point(304, 108);
+            this.btnSystemset_43_BCU1_Close2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU1_Close2.Name = "btnSystemset_43_BCU1_Close2";
             this.btnSystemset_43_BCU1_Close2.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU1_Close2.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU1_Close2.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU1_Close2.TabIndex = 65;
             this.btnSystemset_43_BCU1_Close2.Text = "关闭";
             this.btnSystemset_43_BCU1_Close2.UseVisualStyleBackColor = true;
@@ -3015,11 +3126,11 @@
             // 
             this.btnSystemset_44_BCU1_Open2.AutoSize = true;
             this.btnSystemset_44_BCU1_Open2.Enabled = false;
-            this.btnSystemset_44_BCU1_Open2.Location = new System.Drawing.Point(154, 86);
-            this.btnSystemset_44_BCU1_Open2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU1_Open2.Location = new System.Drawing.Point(205, 108);
+            this.btnSystemset_44_BCU1_Open2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU1_Open2.Name = "btnSystemset_44_BCU1_Open2";
             this.btnSystemset_44_BCU1_Open2.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU1_Open2.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU1_Open2.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU1_Open2.TabIndex = 64;
             this.btnSystemset_44_BCU1_Open2.Text = "打开";
             this.btnSystemset_44_BCU1_Open2.UseVisualStyleBackColor = true;
@@ -3028,10 +3139,9 @@
             // lblSystemset_BCU_30
             // 
             this.lblSystemset_BCU_30.AutoSize = true;
-            this.lblSystemset_BCU_30.Location = new System.Drawing.Point(12, 92);
-            this.lblSystemset_BCU_30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_BCU_30.Location = new System.Drawing.Point(16, 115);
             this.lblSystemset_BCU_30.Name = "lblSystemset_BCU_30";
-            this.lblSystemset_BCU_30.Size = new System.Drawing.Size(89, 12);
+            this.lblSystemset_BCU_30.Size = new System.Drawing.Size(112, 15);
             this.lblSystemset_BCU_30.TabIndex = 63;
             this.lblSystemset_BCU_30.Text = "告警保护蜂鸣器";
             // 
@@ -3039,11 +3149,11 @@
             // 
             this.btnSystemset_45_BCU1_Lifted1.AutoSize = true;
             this.btnSystemset_45_BCU1_Lifted1.Enabled = false;
-            this.btnSystemset_45_BCU1_Lifted1.Location = new System.Drawing.Point(303, 50);
-            this.btnSystemset_45_BCU1_Lifted1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU1_Lifted1.Location = new System.Drawing.Point(404, 62);
+            this.btnSystemset_45_BCU1_Lifted1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU1_Lifted1.Name = "btnSystemset_45_BCU1_Lifted1";
             this.btnSystemset_45_BCU1_Lifted1.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU1_Lifted1.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU1_Lifted1.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU1_Lifted1.TabIndex = 62;
             this.btnSystemset_45_BCU1_Lifted1.Text = "解除";
             this.btnSystemset_45_BCU1_Lifted1.UseVisualStyleBackColor = true;
@@ -3052,22 +3162,21 @@
             // lblSystemset_BCU_29
             // 
             this.lblSystemset_BCU_29.AutoSize = true;
-            this.lblSystemset_BCU_29.Location = new System.Drawing.Point(12, 58);
-            this.lblSystemset_BCU_29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_BCU_29.Location = new System.Drawing.Point(16, 72);
             this.lblSystemset_BCU_29.Name = "lblSystemset_BCU_29";
-            this.lblSystemset_BCU_29.Size = new System.Drawing.Size(53, 12);
+            this.lblSystemset_BCU_29.Size = new System.Drawing.Size(67, 15);
             this.lblSystemset_BCU_29.TabIndex = 59;
-            this.lblSystemset_BCU_29.Text = "强度休眠";
+            this.lblSystemset_BCU_29.Text = "强制休眠";
             // 
             // btnSystemset_43_BCU1_Close1
             // 
             this.btnSystemset_43_BCU1_Close1.AutoSize = true;
             this.btnSystemset_43_BCU1_Close1.Enabled = false;
-            this.btnSystemset_43_BCU1_Close1.Location = new System.Drawing.Point(228, 51);
-            this.btnSystemset_43_BCU1_Close1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU1_Close1.Location = new System.Drawing.Point(304, 64);
+            this.btnSystemset_43_BCU1_Close1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU1_Close1.Name = "btnSystemset_43_BCU1_Close1";
             this.btnSystemset_43_BCU1_Close1.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU1_Close1.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU1_Close1.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU1_Close1.TabIndex = 61;
             this.btnSystemset_43_BCU1_Close1.Text = "关闭";
             this.btnSystemset_43_BCU1_Close1.UseVisualStyleBackColor = true;
@@ -3077,11 +3186,11 @@
             // 
             this.btnSystemset_44_BCU1_Open1.AutoSize = true;
             this.btnSystemset_44_BCU1_Open1.Enabled = false;
-            this.btnSystemset_44_BCU1_Open1.Location = new System.Drawing.Point(154, 51);
-            this.btnSystemset_44_BCU1_Open1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU1_Open1.Location = new System.Drawing.Point(205, 64);
+            this.btnSystemset_44_BCU1_Open1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU1_Open1.Name = "btnSystemset_44_BCU1_Open1";
             this.btnSystemset_44_BCU1_Open1.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU1_Open1.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU1_Open1.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU1_Open1.TabIndex = 60;
             this.btnSystemset_44_BCU1_Open1.Text = "打开";
             this.btnSystemset_44_BCU1_Open1.UseVisualStyleBackColor = true;
@@ -3113,9 +3222,11 @@
             this.gbBCU_Calibration.Controls.Add(this.lblSystemset_BCU_39);
             this.gbBCU_Calibration.Controls.Add(this.txtBCU_Calibration01);
             this.gbBCU_Calibration.Controls.Add(this.txtBCU_Calibration03);
-            this.gbBCU_Calibration.Location = new System.Drawing.Point(821, 361);
+            this.gbBCU_Calibration.Location = new System.Drawing.Point(1096, 382);
+            this.gbBCU_Calibration.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbBCU_Calibration.Name = "gbBCU_Calibration";
-            this.gbBCU_Calibration.Size = new System.Drawing.Size(333, 302);
+            this.gbBCU_Calibration.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbBCU_Calibration.Size = new System.Drawing.Size(444, 393);
             this.gbBCU_Calibration.TabIndex = 44;
             this.gbBCU_Calibration.TabStop = false;
             this.gbBCU_Calibration.Text = "校准";
@@ -3123,10 +3234,11 @@
             // btnSetCalibration_BCU_08
             // 
             this.btnSetCalibration_BCU_08.AutoSize = true;
-            this.btnSetCalibration_BCU_08.Location = new System.Drawing.Point(247, 271);
+            this.btnSetCalibration_BCU_08.Location = new System.Drawing.Point(329, 339);
+            this.btnSetCalibration_BCU_08.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetCalibration_BCU_08.Name = "btnSetCalibration_BCU_08";
             this.btnSetCalibration_BCU_08.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_BCU_08.Size = new System.Drawing.Size(73, 27);
+            this.btnSetCalibration_BCU_08.Size = new System.Drawing.Size(97, 34);
             this.btnSetCalibration_BCU_08.TabIndex = 70;
             this.btnSetCalibration_BCU_08.Text = "写入";
             this.btnSetCalibration_BCU_08.UseVisualStyleBackColor = true;
@@ -3135,10 +3247,11 @@
             // btnSetCalibration_BCU_07
             // 
             this.btnSetCalibration_BCU_07.AutoSize = true;
-            this.btnSetCalibration_BCU_07.Location = new System.Drawing.Point(247, 239);
+            this.btnSetCalibration_BCU_07.Location = new System.Drawing.Point(329, 299);
+            this.btnSetCalibration_BCU_07.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetCalibration_BCU_07.Name = "btnSetCalibration_BCU_07";
             this.btnSetCalibration_BCU_07.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_BCU_07.Size = new System.Drawing.Size(73, 27);
+            this.btnSetCalibration_BCU_07.Size = new System.Drawing.Size(97, 34);
             this.btnSetCalibration_BCU_07.TabIndex = 69;
             this.btnSetCalibration_BCU_07.Text = "写入";
             this.btnSetCalibration_BCU_07.UseVisualStyleBackColor = true;
@@ -3147,10 +3260,11 @@
             // btnSetCalibration_BCU_06
             // 
             this.btnSetCalibration_BCU_06.AutoSize = true;
-            this.btnSetCalibration_BCU_06.Location = new System.Drawing.Point(247, 204);
+            this.btnSetCalibration_BCU_06.Location = new System.Drawing.Point(329, 255);
+            this.btnSetCalibration_BCU_06.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetCalibration_BCU_06.Name = "btnSetCalibration_BCU_06";
             this.btnSetCalibration_BCU_06.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_BCU_06.Size = new System.Drawing.Size(73, 27);
+            this.btnSetCalibration_BCU_06.Size = new System.Drawing.Size(97, 34);
             this.btnSetCalibration_BCU_06.TabIndex = 68;
             this.btnSetCalibration_BCU_06.Text = "写入";
             this.btnSetCalibration_BCU_06.UseVisualStyleBackColor = true;
@@ -3159,10 +3273,11 @@
             // btnSetCalibration_BCU_05
             // 
             this.btnSetCalibration_BCU_05.AutoSize = true;
-            this.btnSetCalibration_BCU_05.Location = new System.Drawing.Point(247, 166);
+            this.btnSetCalibration_BCU_05.Location = new System.Drawing.Point(329, 208);
+            this.btnSetCalibration_BCU_05.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetCalibration_BCU_05.Name = "btnSetCalibration_BCU_05";
             this.btnSetCalibration_BCU_05.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_BCU_05.Size = new System.Drawing.Size(73, 27);
+            this.btnSetCalibration_BCU_05.Size = new System.Drawing.Size(97, 34);
             this.btnSetCalibration_BCU_05.TabIndex = 67;
             this.btnSetCalibration_BCU_05.Text = "写入";
             this.btnSetCalibration_BCU_05.UseVisualStyleBackColor = true;
@@ -3171,10 +3286,11 @@
             // btnSetCalibration_BCU_04
             // 
             this.btnSetCalibration_BCU_04.AutoSize = true;
-            this.btnSetCalibration_BCU_04.Location = new System.Drawing.Point(247, 127);
+            this.btnSetCalibration_BCU_04.Location = new System.Drawing.Point(329, 159);
+            this.btnSetCalibration_BCU_04.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetCalibration_BCU_04.Name = "btnSetCalibration_BCU_04";
             this.btnSetCalibration_BCU_04.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_BCU_04.Size = new System.Drawing.Size(73, 27);
+            this.btnSetCalibration_BCU_04.Size = new System.Drawing.Size(97, 34);
             this.btnSetCalibration_BCU_04.TabIndex = 66;
             this.btnSetCalibration_BCU_04.Text = "写入";
             this.btnSetCalibration_BCU_04.UseVisualStyleBackColor = true;
@@ -3183,10 +3299,11 @@
             // btnSetCalibration_BCU_03
             // 
             this.btnSetCalibration_BCU_03.AutoSize = true;
-            this.btnSetCalibration_BCU_03.Location = new System.Drawing.Point(247, 90);
+            this.btnSetCalibration_BCU_03.Location = new System.Drawing.Point(329, 112);
+            this.btnSetCalibration_BCU_03.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetCalibration_BCU_03.Name = "btnSetCalibration_BCU_03";
             this.btnSetCalibration_BCU_03.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_BCU_03.Size = new System.Drawing.Size(73, 27);
+            this.btnSetCalibration_BCU_03.Size = new System.Drawing.Size(97, 34);
             this.btnSetCalibration_BCU_03.TabIndex = 65;
             this.btnSetCalibration_BCU_03.Text = "写入";
             this.btnSetCalibration_BCU_03.UseVisualStyleBackColor = true;
@@ -3195,10 +3312,11 @@
             // btnSetCalibration_BCU_02
             // 
             this.btnSetCalibration_BCU_02.AutoSize = true;
-            this.btnSetCalibration_BCU_02.Location = new System.Drawing.Point(247, 52);
+            this.btnSetCalibration_BCU_02.Location = new System.Drawing.Point(329, 65);
+            this.btnSetCalibration_BCU_02.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetCalibration_BCU_02.Name = "btnSetCalibration_BCU_02";
             this.btnSetCalibration_BCU_02.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_BCU_02.Size = new System.Drawing.Size(73, 27);
+            this.btnSetCalibration_BCU_02.Size = new System.Drawing.Size(97, 34);
             this.btnSetCalibration_BCU_02.TabIndex = 64;
             this.btnSetCalibration_BCU_02.Text = "写入";
             this.btnSetCalibration_BCU_02.UseVisualStyleBackColor = true;
@@ -3207,26 +3325,29 @@
             // lblSystemset_BCU_44
             // 
             this.lblSystemset_BCU_44.AutoSize = true;
-            this.lblSystemset_BCU_44.Location = new System.Drawing.Point(9, 278);
+            this.lblSystemset_BCU_44.Location = new System.Drawing.Point(12, 348);
+            this.lblSystemset_BCU_44.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_44.Name = "lblSystemset_BCU_44";
-            this.lblSystemset_BCU_44.Size = new System.Drawing.Size(77, 12);
+            this.lblSystemset_BCU_44.Size = new System.Drawing.Size(97, 15);
             this.lblSystemset_BCU_44.TabIndex = 62;
             this.lblSystemset_BCU_44.Text = "绝缘阻抗电压";
             // 
             // txtBCU_Calibration08
             // 
-            this.txtBCU_Calibration08.Location = new System.Drawing.Point(148, 274);
+            this.txtBCU_Calibration08.Location = new System.Drawing.Point(197, 342);
+            this.txtBCU_Calibration08.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBCU_Calibration08.Name = "txtBCU_Calibration08";
-            this.txtBCU_Calibration08.Size = new System.Drawing.Size(81, 21);
+            this.txtBCU_Calibration08.Size = new System.Drawing.Size(107, 25);
             this.txtBCU_Calibration08.TabIndex = 63;
             // 
             // btnSetCalibration_BCU_01
             // 
             this.btnSetCalibration_BCU_01.AutoSize = true;
-            this.btnSetCalibration_BCU_01.Location = new System.Drawing.Point(247, 14);
+            this.btnSetCalibration_BCU_01.Location = new System.Drawing.Point(329, 18);
+            this.btnSetCalibration_BCU_01.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSetCalibration_BCU_01.Name = "btnSetCalibration_BCU_01";
             this.btnSetCalibration_BCU_01.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_BCU_01.Size = new System.Drawing.Size(73, 27);
+            this.btnSetCalibration_BCU_01.Size = new System.Drawing.Size(97, 34);
             this.btnSetCalibration_BCU_01.TabIndex = 51;
             this.btnSetCalibration_BCU_01.Text = "写入";
             this.btnSetCalibration_BCU_01.UseVisualStyleBackColor = true;
@@ -3235,113 +3356,127 @@
             // lblSystemset_BCU_43
             // 
             this.lblSystemset_BCU_43.AutoSize = true;
-            this.lblSystemset_BCU_43.Location = new System.Drawing.Point(7, 246);
+            this.lblSystemset_BCU_43.Location = new System.Drawing.Point(9, 308);
+            this.lblSystemset_BCU_43.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_43.Name = "lblSystemset_BCU_43";
-            this.lblSystemset_BCU_43.Size = new System.Drawing.Size(65, 12);
+            this.lblSystemset_BCU_43.Size = new System.Drawing.Size(84, 15);
             this.lblSystemset_BCU_43.TabIndex = 47;
             this.lblSystemset_BCU_43.Text = "fuse后电压";
             // 
             // txtBCU_Calibration07
             // 
-            this.txtBCU_Calibration07.Location = new System.Drawing.Point(148, 242);
+            this.txtBCU_Calibration07.Location = new System.Drawing.Point(197, 302);
+            this.txtBCU_Calibration07.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBCU_Calibration07.Name = "txtBCU_Calibration07";
-            this.txtBCU_Calibration07.Size = new System.Drawing.Size(81, 21);
+            this.txtBCU_Calibration07.Size = new System.Drawing.Size(107, 25);
             this.txtBCU_Calibration07.TabIndex = 48;
             // 
             // lblSystemset_BCU_42
             // 
             this.lblSystemset_BCU_42.AutoSize = true;
-            this.lblSystemset_BCU_42.Location = new System.Drawing.Point(6, 210);
+            this.lblSystemset_BCU_42.Location = new System.Drawing.Point(8, 262);
+            this.lblSystemset_BCU_42.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_42.Name = "lblSystemset_BCU_42";
-            this.lblSystemset_BCU_42.Size = new System.Drawing.Size(125, 12);
+            this.lblSystemset_BCU_42.Size = new System.Drawing.Size(160, 15);
             this.lblSystemset_BCU_42.TabIndex = 30;
             this.lblSystemset_BCU_42.Text = "校准放电小电流(0~5A)";
             // 
             // txtBCU_Calibration06
             // 
-            this.txtBCU_Calibration06.Location = new System.Drawing.Point(148, 208);
+            this.txtBCU_Calibration06.Location = new System.Drawing.Point(197, 260);
+            this.txtBCU_Calibration06.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBCU_Calibration06.Name = "txtBCU_Calibration06";
-            this.txtBCU_Calibration06.Size = new System.Drawing.Size(81, 21);
+            this.txtBCU_Calibration06.Size = new System.Drawing.Size(107, 25);
             this.txtBCU_Calibration06.TabIndex = 31;
             // 
             // lblSystemset_BCU_41
             // 
             this.lblSystemset_BCU_41.AutoSize = true;
-            this.lblSystemset_BCU_41.Location = new System.Drawing.Point(7, 173);
+            this.lblSystemset_BCU_41.Location = new System.Drawing.Point(9, 216);
+            this.lblSystemset_BCU_41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_41.Name = "lblSystemset_BCU_41";
-            this.lblSystemset_BCU_41.Size = new System.Drawing.Size(119, 12);
+            this.lblSystemset_BCU_41.Size = new System.Drawing.Size(153, 15);
             this.lblSystemset_BCU_41.TabIndex = 28;
             this.lblSystemset_BCU_41.Text = "校准放电电流(0~50A)";
             // 
             // txtBCU_Calibration05
             // 
-            this.txtBCU_Calibration05.Location = new System.Drawing.Point(148, 170);
+            this.txtBCU_Calibration05.Location = new System.Drawing.Point(197, 212);
+            this.txtBCU_Calibration05.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBCU_Calibration05.Name = "txtBCU_Calibration05";
-            this.txtBCU_Calibration05.Size = new System.Drawing.Size(81, 21);
+            this.txtBCU_Calibration05.Size = new System.Drawing.Size(107, 25);
             this.txtBCU_Calibration05.TabIndex = 29;
             // 
             // lblSystemset_BCU_40
             // 
             this.lblSystemset_BCU_40.AutoSize = true;
-            this.lblSystemset_BCU_40.Location = new System.Drawing.Point(6, 134);
+            this.lblSystemset_BCU_40.Location = new System.Drawing.Point(8, 168);
+            this.lblSystemset_BCU_40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_40.Name = "lblSystemset_BCU_40";
-            this.lblSystemset_BCU_40.Size = new System.Drawing.Size(125, 12);
+            this.lblSystemset_BCU_40.Size = new System.Drawing.Size(160, 15);
             this.lblSystemset_BCU_40.TabIndex = 26;
             this.lblSystemset_BCU_40.Text = "校准充电小电流(0~5A)";
             // 
             // txtBCU_Calibration04
             // 
-            this.txtBCU_Calibration04.Location = new System.Drawing.Point(148, 131);
+            this.txtBCU_Calibration04.Location = new System.Drawing.Point(197, 164);
+            this.txtBCU_Calibration04.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBCU_Calibration04.Name = "txtBCU_Calibration04";
-            this.txtBCU_Calibration04.Size = new System.Drawing.Size(81, 21);
+            this.txtBCU_Calibration04.Size = new System.Drawing.Size(107, 25);
             this.txtBCU_Calibration04.TabIndex = 27;
             // 
             // lblSystemset_BCU_38
             // 
             this.lblSystemset_BCU_38.AutoSize = true;
-            this.lblSystemset_BCU_38.Location = new System.Drawing.Point(6, 58);
+            this.lblSystemset_BCU_38.Location = new System.Drawing.Point(8, 72);
+            this.lblSystemset_BCU_38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_38.Name = "lblSystemset_BCU_38";
-            this.lblSystemset_BCU_38.Size = new System.Drawing.Size(131, 12);
+            this.lblSystemset_BCU_38.Size = new System.Drawing.Size(169, 15);
             this.lblSystemset_BCU_38.TabIndex = 24;
             this.lblSystemset_BCU_38.Text = "校准负载电压(0~1000V)";
             // 
             // lblSystemset_BCU_37
             // 
             this.lblSystemset_BCU_37.AutoSize = true;
-            this.lblSystemset_BCU_37.Location = new System.Drawing.Point(6, 21);
+            this.lblSystemset_BCU_37.Location = new System.Drawing.Point(8, 26);
+            this.lblSystemset_BCU_37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_37.Name = "lblSystemset_BCU_37";
-            this.lblSystemset_BCU_37.Size = new System.Drawing.Size(107, 12);
+            this.lblSystemset_BCU_37.Size = new System.Drawing.Size(139, 15);
             this.lblSystemset_BCU_37.TabIndex = 23;
             this.lblSystemset_BCU_37.Text = "校准总压(0~1000V)";
             // 
             // txtBCU_Calibration02
             // 
-            this.txtBCU_Calibration02.Location = new System.Drawing.Point(148, 56);
+            this.txtBCU_Calibration02.Location = new System.Drawing.Point(197, 70);
+            this.txtBCU_Calibration02.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBCU_Calibration02.Name = "txtBCU_Calibration02";
-            this.txtBCU_Calibration02.Size = new System.Drawing.Size(81, 21);
+            this.txtBCU_Calibration02.Size = new System.Drawing.Size(107, 25);
             this.txtBCU_Calibration02.TabIndex = 22;
             // 
             // lblSystemset_BCU_39
             // 
             this.lblSystemset_BCU_39.AutoSize = true;
-            this.lblSystemset_BCU_39.Location = new System.Drawing.Point(6, 97);
+            this.lblSystemset_BCU_39.Location = new System.Drawing.Point(8, 121);
+            this.lblSystemset_BCU_39.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_39.Name = "lblSystemset_BCU_39";
-            this.lblSystemset_BCU_39.Size = new System.Drawing.Size(119, 12);
+            this.lblSystemset_BCU_39.Size = new System.Drawing.Size(153, 15);
             this.lblSystemset_BCU_39.TabIndex = 21;
             this.lblSystemset_BCU_39.Text = "校准充电电流(0~50A)";
             // 
             // txtBCU_Calibration01
             // 
-            this.txtBCU_Calibration01.Location = new System.Drawing.Point(148, 18);
+            this.txtBCU_Calibration01.Location = new System.Drawing.Point(197, 22);
+            this.txtBCU_Calibration01.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBCU_Calibration01.Name = "txtBCU_Calibration01";
-            this.txtBCU_Calibration01.Size = new System.Drawing.Size(81, 21);
+            this.txtBCU_Calibration01.Size = new System.Drawing.Size(107, 25);
             this.txtBCU_Calibration01.TabIndex = 6;
             // 
             // txtBCU_Calibration03
             // 
-            this.txtBCU_Calibration03.Location = new System.Drawing.Point(148, 94);
+            this.txtBCU_Calibration03.Location = new System.Drawing.Point(197, 118);
+            this.txtBCU_Calibration03.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBCU_Calibration03.Name = "txtBCU_Calibration03";
-            this.txtBCU_Calibration03.Size = new System.Drawing.Size(81, 21);
+            this.txtBCU_Calibration03.Size = new System.Drawing.Size(107, 25);
             this.txtBCU_Calibration03.TabIndex = 25;
             // 
             // gbControl0F0
@@ -3361,9 +3496,11 @@
             this.gbControl0F0.Controls.Add(this.cbbRequestF0_4);
             this.gbControl0F0.Controls.Add(this.lblSystemset_BCU_27);
             this.gbControl0F0.Controls.Add(this.lblSystemset_BCU_26);
-            this.gbControl0F0.Location = new System.Drawing.Point(821, 63);
+            this.gbControl0F0.Location = new System.Drawing.Point(1096, 9);
+            this.gbControl0F0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbControl0F0.Name = "gbControl0F0";
-            this.gbControl0F0.Size = new System.Drawing.Size(332, 292);
+            this.gbControl0F0.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbControl0F0.Size = new System.Drawing.Size(443, 365);
             this.gbControl0F0.TabIndex = 42;
             this.gbControl0F0.TabStop = false;
             this.gbControl0F0.Text = "0x0F0上位机控制";
@@ -3375,9 +3512,10 @@
             "0x00：查询",
             "0xAA：使能",
             "0x55：失能"});
-            this.cbbRequestF0_3.Location = new System.Drawing.Point(146, 132);
+            this.cbbRequestF0_3.Location = new System.Drawing.Point(195, 165);
+            this.cbbRequestF0_3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbbRequestF0_3.Name = "cbbRequestF0_3";
-            this.cbbRequestF0_3.Size = new System.Drawing.Size(82, 20);
+            this.cbbRequestF0_3.Size = new System.Drawing.Size(108, 23);
             this.cbbRequestF0_3.TabIndex = 63;
             // 
             // cbbRequestF0_2
@@ -3387,9 +3525,10 @@
             "0x00：查询",
             "0xAA：开启",
             "0x55：关闭"});
-            this.cbbRequestF0_2.Location = new System.Drawing.Point(146, 99);
+            this.cbbRequestF0_2.Location = new System.Drawing.Point(195, 124);
+            this.cbbRequestF0_2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbbRequestF0_2.Name = "cbbRequestF0_2";
-            this.cbbRequestF0_2.Size = new System.Drawing.Size(82, 20);
+            this.cbbRequestF0_2.Size = new System.Drawing.Size(108, 23);
             this.cbbRequestF0_2.TabIndex = 62;
             // 
             // cbbRequestF0_0
@@ -3399,9 +3538,10 @@
             "0x00：查询",
             "0xAA：开启",
             "0x55：关闭"});
-            this.cbbRequestF0_0.Location = new System.Drawing.Point(146, 33);
+            this.cbbRequestF0_0.Location = new System.Drawing.Point(195, 41);
+            this.cbbRequestF0_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbbRequestF0_0.Name = "cbbRequestF0_0";
-            this.cbbRequestF0_0.Size = new System.Drawing.Size(82, 20);
+            this.cbbRequestF0_0.Size = new System.Drawing.Size(108, 23);
             this.cbbRequestF0_0.TabIndex = 61;
             // 
             // cbbRequestF0_1
@@ -3411,34 +3551,38 @@
             "0x00：查询",
             "0xAA：开启",
             "0x55：关闭"});
-            this.cbbRequestF0_1.Location = new System.Drawing.Point(146, 66);
+            this.cbbRequestF0_1.Location = new System.Drawing.Point(195, 82);
+            this.cbbRequestF0_1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbbRequestF0_1.Name = "cbbRequestF0_1";
-            this.cbbRequestF0_1.Size = new System.Drawing.Size(82, 20);
+            this.cbbRequestF0_1.Size = new System.Drawing.Size(108, 23);
             this.cbbRequestF0_1.TabIndex = 61;
             // 
             // lblSystemset_BCU_25
             // 
             this.lblSystemset_BCU_25.AutoSize = true;
-            this.lblSystemset_BCU_25.Location = new System.Drawing.Point(19, 135);
+            this.lblSystemset_BCU_25.Location = new System.Drawing.Point(25, 169);
+            this.lblSystemset_BCU_25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_25.Name = "lblSystemset_BCU_25";
-            this.lblSystemset_BCU_25.Size = new System.Drawing.Size(71, 12);
+            this.lblSystemset_BCU_25.Size = new System.Drawing.Size(91, 15);
             this.lblSystemset_BCU_25.TabIndex = 3;
             this.lblSystemset_BCU_25.Text = "使能can发送";
             // 
             // txtSlaveAddr_BCU
             // 
-            this.txtSlaveAddr_BCU.Location = new System.Drawing.Point(146, 231);
+            this.txtSlaveAddr_BCU.Location = new System.Drawing.Point(195, 289);
+            this.txtSlaveAddr_BCU.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSlaveAddr_BCU.Name = "txtSlaveAddr_BCU";
-            this.txtSlaveAddr_BCU.Size = new System.Drawing.Size(82, 21);
+            this.txtSlaveAddr_BCU.Size = new System.Drawing.Size(108, 25);
             this.txtSlaveAddr_BCU.TabIndex = 60;
             // 
             // btnSet0F0
             // 
             this.btnSet0F0.AutoSize = true;
-            this.btnSet0F0.Location = new System.Drawing.Point(246, 259);
+            this.btnSet0F0.Location = new System.Drawing.Point(328, 324);
+            this.btnSet0F0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSet0F0.Name = "btnSet0F0";
             this.btnSet0F0.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSet0F0.Size = new System.Drawing.Size(73, 27);
+            this.btnSet0F0.Size = new System.Drawing.Size(97, 34);
             this.btnSet0F0.TabIndex = 55;
             this.btnSet0F0.Text = "写入";
             this.btnSet0F0.UseVisualStyleBackColor = true;
@@ -3447,37 +3591,39 @@
             // lblSystemset_BCU_24
             // 
             this.lblSystemset_BCU_24.AutoSize = true;
-            this.lblSystemset_BCU_24.Location = new System.Drawing.Point(19, 101);
+            this.lblSystemset_BCU_24.Location = new System.Drawing.Point(25, 126);
+            this.lblSystemset_BCU_24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_24.Name = "lblSystemset_BCU_24";
-            this.lblSystemset_BCU_24.Size = new System.Drawing.Size(71, 12);
+            this.lblSystemset_BCU_24.Size = new System.Drawing.Size(91, 15);
             this.lblSystemset_BCU_24.TabIndex = 2;
             this.lblSystemset_BCU_24.Text = "ATE测试模式";
             // 
             // lblSystemset_BCU_28
             // 
             this.lblSystemset_BCU_28.AutoSize = true;
-            this.lblSystemset_BCU_28.Location = new System.Drawing.Point(19, 237);
-            this.lblSystemset_BCU_28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_BCU_28.Location = new System.Drawing.Point(25, 296);
             this.lblSystemset_BCU_28.Name = "lblSystemset_BCU_28";
-            this.lblSystemset_BCU_28.Size = new System.Drawing.Size(95, 12);
+            this.lblSystemset_BCU_28.Size = new System.Drawing.Size(123, 15);
             this.lblSystemset_BCU_28.TabIndex = 59;
             this.lblSystemset_BCU_28.Text = "设置地址(1~255)";
             // 
             // lblSystemset_BCU_23
             // 
             this.lblSystemset_BCU_23.AutoSize = true;
-            this.lblSystemset_BCU_23.Location = new System.Drawing.Point(19, 67);
+            this.lblSystemset_BCU_23.Location = new System.Drawing.Point(25, 84);
+            this.lblSystemset_BCU_23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_23.Name = "lblSystemset_BCU_23";
-            this.lblSystemset_BCU_23.Size = new System.Drawing.Size(53, 12);
+            this.lblSystemset_BCU_23.Size = new System.Drawing.Size(67, 15);
             this.lblSystemset_BCU_23.TabIndex = 1;
             this.lblSystemset_BCU_23.Text = "标定模式";
             // 
             // lblSystemset_BCU_22
             // 
             this.lblSystemset_BCU_22.AutoSize = true;
-            this.lblSystemset_BCU_22.Location = new System.Drawing.Point(19, 33);
+            this.lblSystemset_BCU_22.Location = new System.Drawing.Point(25, 41);
+            this.lblSystemset_BCU_22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_22.Name = "lblSystemset_BCU_22";
-            this.lblSystemset_BCU_22.Size = new System.Drawing.Size(53, 12);
+            this.lblSystemset_BCU_22.Size = new System.Drawing.Size(67, 15);
             this.lblSystemset_BCU_22.TabIndex = 0;
             this.lblSystemset_BCU_22.Text = "老化模式";
             // 
@@ -3488,9 +3634,10 @@
             "0x00：无效操作",
             "0xAA：恢复所有默认设置",
             "0x55：其他"});
-            this.cbbRequestF0_5.Location = new System.Drawing.Point(146, 198);
+            this.cbbRequestF0_5.Location = new System.Drawing.Point(195, 248);
+            this.cbbRequestF0_5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbbRequestF0_5.Name = "cbbRequestF0_5";
-            this.cbbRequestF0_5.Size = new System.Drawing.Size(82, 20);
+            this.cbbRequestF0_5.Size = new System.Drawing.Size(108, 23);
             this.cbbRequestF0_5.TabIndex = 57;
             // 
             // cbbRequestF0_4
@@ -3500,28 +3647,27 @@
             "0x00：无效操作",
             "0xAA：开启",
             "0x55：关闭"});
-            this.cbbRequestF0_4.Location = new System.Drawing.Point(146, 165);
+            this.cbbRequestF0_4.Location = new System.Drawing.Point(195, 206);
+            this.cbbRequestF0_4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbbRequestF0_4.Name = "cbbRequestF0_4";
-            this.cbbRequestF0_4.Size = new System.Drawing.Size(82, 20);
+            this.cbbRequestF0_4.Size = new System.Drawing.Size(108, 23);
             this.cbbRequestF0_4.TabIndex = 54;
             // 
             // lblSystemset_BCU_27
             // 
             this.lblSystemset_BCU_27.AutoSize = true;
-            this.lblSystemset_BCU_27.Location = new System.Drawing.Point(19, 203);
-            this.lblSystemset_BCU_27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_BCU_27.Location = new System.Drawing.Point(25, 254);
             this.lblSystemset_BCU_27.Name = "lblSystemset_BCU_27";
-            this.lblSystemset_BCU_27.Size = new System.Drawing.Size(77, 12);
+            this.lblSystemset_BCU_27.Size = new System.Drawing.Size(97, 15);
             this.lblSystemset_BCU_27.TabIndex = 56;
             this.lblSystemset_BCU_27.Text = "标定参数恢复";
             // 
             // lblSystemset_BCU_26
             // 
             this.lblSystemset_BCU_26.AutoSize = true;
-            this.lblSystemset_BCU_26.Location = new System.Drawing.Point(19, 169);
-            this.lblSystemset_BCU_26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_BCU_26.Location = new System.Drawing.Point(25, 211);
             this.lblSystemset_BCU_26.Name = "lblSystemset_BCU_26";
-            this.lblSystemset_BCU_26.Size = new System.Drawing.Size(77, 12);
+            this.lblSystemset_BCU_26.Size = new System.Drawing.Size(97, 15);
             this.lblSystemset_BCU_26.TabIndex = 53;
             this.lblSystemset_BCU_26.Text = "强制控制开关";
             // 
@@ -3612,11 +3758,11 @@
             this.gb0FA.Controls.Add(this.lblSystemset_BCU_2);
             this.gb0FA.Controls.Add(this.lblSystemset_BCU_5);
             this.gb0FA.Controls.Add(this.lblSystemset_BCU_1);
-            this.gb0FA.Location = new System.Drawing.Point(10, 7);
-            this.gb0FA.Margin = new System.Windows.Forms.Padding(10);
+            this.gb0FA.Location = new System.Drawing.Point(13, 9);
+            this.gb0FA.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.gb0FA.Name = "gb0FA";
-            this.gb0FA.Padding = new System.Windows.Forms.Padding(5);
-            this.gb0FA.Size = new System.Drawing.Size(799, 429);
+            this.gb0FA.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.gb0FA.Size = new System.Drawing.Size(1065, 536);
             this.gb0FA.TabIndex = 38;
             this.gb0FA.TabStop = false;
             this.gb0FA.Text = "0xFA控制";
@@ -3625,11 +3771,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted21.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted21.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted21.Location = new System.Drawing.Point(711, 354);
-            this.btnSystemset_45_BCU_Lifted21.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted21.Location = new System.Drawing.Point(948, 442);
+            this.btnSystemset_45_BCU_Lifted21.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted21.Name = "btnSystemset_45_BCU_Lifted21";
             this.btnSystemset_45_BCU_Lifted21.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted21.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted21.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted21.TabIndex = 90;
             this.btnSystemset_45_BCU_Lifted21.Text = "解除";
             this.btnSystemset_45_BCU_Lifted21.UseVisualStyleBackColor = false;
@@ -3639,11 +3785,11 @@
             // 
             this.btnSystemset_43_BCU_Close21.AutoSize = true;
             this.btnSystemset_43_BCU_Close21.Enabled = false;
-            this.btnSystemset_43_BCU_Close21.Location = new System.Drawing.Point(636, 354);
-            this.btnSystemset_43_BCU_Close21.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close21.Location = new System.Drawing.Point(848, 442);
+            this.btnSystemset_43_BCU_Close21.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close21.Name = "btnSystemset_43_BCU_Close21";
             this.btnSystemset_43_BCU_Close21.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close21.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close21.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close21.TabIndex = 89;
             this.btnSystemset_43_BCU_Close21.Text = "关闭";
             this.btnSystemset_43_BCU_Close21.UseVisualStyleBackColor = false;
@@ -3653,11 +3799,11 @@
             // 
             this.btnSystemset_44_BCU_Open21.AutoSize = true;
             this.btnSystemset_44_BCU_Open21.Enabled = false;
-            this.btnSystemset_44_BCU_Open21.Location = new System.Drawing.Point(562, 354);
-            this.btnSystemset_44_BCU_Open21.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open21.Location = new System.Drawing.Point(749, 442);
+            this.btnSystemset_44_BCU_Open21.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open21.Name = "btnSystemset_44_BCU_Open21";
             this.btnSystemset_44_BCU_Open21.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open21.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open21.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open21.TabIndex = 88;
             this.btnSystemset_44_BCU_Open21.Text = "打开";
             this.btnSystemset_44_BCU_Open21.UseVisualStyleBackColor = false;
@@ -3666,9 +3812,10 @@
             // lblSystemset_BCU_21
             // 
             this.lblSystemset_BCU_21.AutoSize = true;
-            this.lblSystemset_BCU_21.Location = new System.Drawing.Point(410, 358);
+            this.lblSystemset_BCU_21.Location = new System.Drawing.Point(547, 448);
+            this.lblSystemset_BCU_21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_21.Name = "lblSystemset_BCU_21";
-            this.lblSystemset_BCU_21.Size = new System.Drawing.Size(83, 12);
+            this.lblSystemset_BCU_21.Size = new System.Drawing.Size(106, 15);
             this.lblSystemset_BCU_21.TabIndex = 87;
             this.lblSystemset_BCU_21.Text = "加热膜mos控制";
             // 
@@ -3676,11 +3823,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted20.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted20.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted20.Location = new System.Drawing.Point(711, 318);
-            this.btnSystemset_45_BCU_Lifted20.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted20.Location = new System.Drawing.Point(948, 398);
+            this.btnSystemset_45_BCU_Lifted20.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted20.Name = "btnSystemset_45_BCU_Lifted20";
             this.btnSystemset_45_BCU_Lifted20.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted20.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted20.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted20.TabIndex = 86;
             this.btnSystemset_45_BCU_Lifted20.Text = "解除";
             this.btnSystemset_45_BCU_Lifted20.UseVisualStyleBackColor = false;
@@ -3690,11 +3837,11 @@
             // 
             this.btnSystemset_43_BCU_Close20.AutoSize = true;
             this.btnSystemset_43_BCU_Close20.Enabled = false;
-            this.btnSystemset_43_BCU_Close20.Location = new System.Drawing.Point(636, 318);
-            this.btnSystemset_43_BCU_Close20.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close20.Location = new System.Drawing.Point(848, 398);
+            this.btnSystemset_43_BCU_Close20.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close20.Name = "btnSystemset_43_BCU_Close20";
             this.btnSystemset_43_BCU_Close20.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close20.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close20.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close20.TabIndex = 85;
             this.btnSystemset_43_BCU_Close20.Text = "关闭";
             this.btnSystemset_43_BCU_Close20.UseVisualStyleBackColor = false;
@@ -3704,11 +3851,11 @@
             // 
             this.btnSystemset_44_BCU_Open20.AutoSize = true;
             this.btnSystemset_44_BCU_Open20.Enabled = false;
-            this.btnSystemset_44_BCU_Open20.Location = new System.Drawing.Point(562, 318);
-            this.btnSystemset_44_BCU_Open20.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open20.Location = new System.Drawing.Point(749, 398);
+            this.btnSystemset_44_BCU_Open20.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open20.Name = "btnSystemset_44_BCU_Open20";
             this.btnSystemset_44_BCU_Open20.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open20.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open20.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open20.TabIndex = 84;
             this.btnSystemset_44_BCU_Open20.Text = "打开";
             this.btnSystemset_44_BCU_Open20.UseVisualStyleBackColor = false;
@@ -3717,9 +3864,10 @@
             // lblSystemset_BCU_20
             // 
             this.lblSystemset_BCU_20.AutoSize = true;
-            this.lblSystemset_BCU_20.Location = new System.Drawing.Point(410, 323);
+            this.lblSystemset_BCU_20.Location = new System.Drawing.Point(547, 404);
+            this.lblSystemset_BCU_20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_20.Name = "lblSystemset_BCU_20";
-            this.lblSystemset_BCU_20.Size = new System.Drawing.Size(101, 12);
+            this.lblSystemset_BCU_20.Size = new System.Drawing.Size(127, 15);
             this.lblSystemset_BCU_20.TabIndex = 83;
             this.lblSystemset_BCU_20.Text = "加热膜继电器控制";
             // 
@@ -3727,11 +3875,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted19.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted19.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted19.Location = new System.Drawing.Point(711, 285);
-            this.btnSystemset_45_BCU_Lifted19.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted19.Location = new System.Drawing.Point(948, 356);
+            this.btnSystemset_45_BCU_Lifted19.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted19.Name = "btnSystemset_45_BCU_Lifted19";
             this.btnSystemset_45_BCU_Lifted19.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted19.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted19.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted19.TabIndex = 82;
             this.btnSystemset_45_BCU_Lifted19.Text = "解除";
             this.btnSystemset_45_BCU_Lifted19.UseVisualStyleBackColor = false;
@@ -3741,11 +3889,11 @@
             // 
             this.btnSystemset_43_BCU_Close19.AutoSize = true;
             this.btnSystemset_43_BCU_Close19.Enabled = false;
-            this.btnSystemset_43_BCU_Close19.Location = new System.Drawing.Point(636, 285);
-            this.btnSystemset_43_BCU_Close19.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close19.Location = new System.Drawing.Point(848, 356);
+            this.btnSystemset_43_BCU_Close19.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close19.Name = "btnSystemset_43_BCU_Close19";
             this.btnSystemset_43_BCU_Close19.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close19.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close19.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close19.TabIndex = 81;
             this.btnSystemset_43_BCU_Close19.Text = "关闭";
             this.btnSystemset_43_BCU_Close19.UseVisualStyleBackColor = false;
@@ -3755,11 +3903,11 @@
             // 
             this.btnSystemset_44_BCU_Open19.AutoSize = true;
             this.btnSystemset_44_BCU_Open19.Enabled = false;
-            this.btnSystemset_44_BCU_Open19.Location = new System.Drawing.Point(562, 285);
-            this.btnSystemset_44_BCU_Open19.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open19.Location = new System.Drawing.Point(749, 356);
+            this.btnSystemset_44_BCU_Open19.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open19.Name = "btnSystemset_44_BCU_Open19";
             this.btnSystemset_44_BCU_Open19.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open19.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open19.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open19.TabIndex = 80;
             this.btnSystemset_44_BCU_Open19.Text = "打开";
             this.btnSystemset_44_BCU_Open19.UseVisualStyleBackColor = false;
@@ -3768,9 +3916,10 @@
             // lblSystemset_BCU_19
             // 
             this.lblSystemset_BCU_19.AutoSize = true;
-            this.lblSystemset_BCU_19.Location = new System.Drawing.Point(410, 290);
+            this.lblSystemset_BCU_19.Location = new System.Drawing.Point(547, 362);
+            this.lblSystemset_BCU_19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_19.Name = "lblSystemset_BCU_19";
-            this.lblSystemset_BCU_19.Size = new System.Drawing.Size(59, 12);
+            this.lblSystemset_BCU_19.Size = new System.Drawing.Size(76, 15);
             this.lblSystemset_BCU_19.TabIndex = 79;
             this.lblSystemset_BCU_19.Text = "LED灯控制";
             // 
@@ -3778,11 +3927,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted18.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted18.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted18.Location = new System.Drawing.Point(711, 251);
-            this.btnSystemset_45_BCU_Lifted18.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted18.Location = new System.Drawing.Point(948, 314);
+            this.btnSystemset_45_BCU_Lifted18.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted18.Name = "btnSystemset_45_BCU_Lifted18";
             this.btnSystemset_45_BCU_Lifted18.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted18.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted18.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted18.TabIndex = 78;
             this.btnSystemset_45_BCU_Lifted18.Text = "解除";
             this.btnSystemset_45_BCU_Lifted18.UseVisualStyleBackColor = false;
@@ -3792,11 +3941,11 @@
             // 
             this.btnSystemset_43_BCU_Close18.AutoSize = true;
             this.btnSystemset_43_BCU_Close18.Enabled = false;
-            this.btnSystemset_43_BCU_Close18.Location = new System.Drawing.Point(636, 251);
-            this.btnSystemset_43_BCU_Close18.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close18.Location = new System.Drawing.Point(848, 314);
+            this.btnSystemset_43_BCU_Close18.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close18.Name = "btnSystemset_43_BCU_Close18";
             this.btnSystemset_43_BCU_Close18.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close18.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close18.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close18.TabIndex = 77;
             this.btnSystemset_43_BCU_Close18.Text = "关闭";
             this.btnSystemset_43_BCU_Close18.UseVisualStyleBackColor = false;
@@ -3806,11 +3955,11 @@
             // 
             this.btnSystemset_44_BCU_Open18.AutoSize = true;
             this.btnSystemset_44_BCU_Open18.Enabled = false;
-            this.btnSystemset_44_BCU_Open18.Location = new System.Drawing.Point(562, 251);
-            this.btnSystemset_44_BCU_Open18.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open18.Location = new System.Drawing.Point(749, 314);
+            this.btnSystemset_44_BCU_Open18.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open18.Name = "btnSystemset_44_BCU_Open18";
             this.btnSystemset_44_BCU_Open18.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open18.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open18.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open18.TabIndex = 76;
             this.btnSystemset_44_BCU_Open18.Text = "打开";
             this.btnSystemset_44_BCU_Open18.UseVisualStyleBackColor = false;
@@ -3819,9 +3968,10 @@
             // lblSystemset_BCU_18
             // 
             this.lblSystemset_BCU_18.AutoSize = true;
-            this.lblSystemset_BCU_18.Location = new System.Drawing.Point(410, 256);
+            this.lblSystemset_BCU_18.Location = new System.Drawing.Point(547, 320);
+            this.lblSystemset_BCU_18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_18.Name = "lblSystemset_BCU_18";
-            this.lblSystemset_BCU_18.Size = new System.Drawing.Size(65, 12);
+            this.lblSystemset_BCU_18.Size = new System.Drawing.Size(82, 15);
             this.lblSystemset_BCU_18.TabIndex = 75;
             this.lblSystemset_BCU_18.Text = "清除系统锁";
             // 
@@ -3829,11 +3979,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted17.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted17.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted17.Location = new System.Drawing.Point(711, 218);
-            this.btnSystemset_45_BCU_Lifted17.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted17.Location = new System.Drawing.Point(948, 272);
+            this.btnSystemset_45_BCU_Lifted17.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted17.Name = "btnSystemset_45_BCU_Lifted17";
             this.btnSystemset_45_BCU_Lifted17.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted17.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted17.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted17.TabIndex = 74;
             this.btnSystemset_45_BCU_Lifted17.Text = "解除";
             this.btnSystemset_45_BCU_Lifted17.UseVisualStyleBackColor = false;
@@ -3843,11 +3993,11 @@
             // 
             this.btnSystemset_43_BCU_Close17.AutoSize = true;
             this.btnSystemset_43_BCU_Close17.Enabled = false;
-            this.btnSystemset_43_BCU_Close17.Location = new System.Drawing.Point(636, 218);
-            this.btnSystemset_43_BCU_Close17.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close17.Location = new System.Drawing.Point(848, 272);
+            this.btnSystemset_43_BCU_Close17.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close17.Name = "btnSystemset_43_BCU_Close17";
             this.btnSystemset_43_BCU_Close17.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close17.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close17.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close17.TabIndex = 73;
             this.btnSystemset_43_BCU_Close17.Text = "关闭";
             this.btnSystemset_43_BCU_Close17.UseVisualStyleBackColor = false;
@@ -3857,11 +4007,11 @@
             // 
             this.btnSystemset_44_BCU_Open17.AutoSize = true;
             this.btnSystemset_44_BCU_Open17.Enabled = false;
-            this.btnSystemset_44_BCU_Open17.Location = new System.Drawing.Point(562, 218);
-            this.btnSystemset_44_BCU_Open17.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open17.Location = new System.Drawing.Point(749, 272);
+            this.btnSystemset_44_BCU_Open17.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open17.Name = "btnSystemset_44_BCU_Open17";
             this.btnSystemset_44_BCU_Open17.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open17.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open17.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open17.TabIndex = 72;
             this.btnSystemset_44_BCU_Open17.Text = "打开";
             this.btnSystemset_44_BCU_Open17.UseVisualStyleBackColor = false;
@@ -3870,9 +4020,10 @@
             // lblSystemset_BCU_17
             // 
             this.lblSystemset_BCU_17.AutoSize = true;
-            this.lblSystemset_BCU_17.Location = new System.Drawing.Point(410, 222);
+            this.lblSystemset_BCU_17.Location = new System.Drawing.Point(547, 278);
+            this.lblSystemset_BCU_17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_17.Name = "lblSystemset_BCU_17";
-            this.lblSystemset_BCU_17.Size = new System.Drawing.Size(65, 12);
+            this.lblSystemset_BCU_17.Size = new System.Drawing.Size(82, 15);
             this.lblSystemset_BCU_17.TabIndex = 71;
             this.lblSystemset_BCU_17.Text = "低功耗模式";
             // 
@@ -3880,11 +4031,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted16.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted16.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted16.Location = new System.Drawing.Point(711, 185);
-            this.btnSystemset_45_BCU_Lifted16.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted16.Location = new System.Drawing.Point(948, 231);
+            this.btnSystemset_45_BCU_Lifted16.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted16.Name = "btnSystemset_45_BCU_Lifted16";
             this.btnSystemset_45_BCU_Lifted16.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted16.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted16.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted16.TabIndex = 70;
             this.btnSystemset_45_BCU_Lifted16.Text = "解除";
             this.btnSystemset_45_BCU_Lifted16.UseVisualStyleBackColor = false;
@@ -3894,11 +4045,11 @@
             // 
             this.btnSystemset_43_BCU_Close16.AutoSize = true;
             this.btnSystemset_43_BCU_Close16.Enabled = false;
-            this.btnSystemset_43_BCU_Close16.Location = new System.Drawing.Point(636, 184);
-            this.btnSystemset_43_BCU_Close16.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close16.Location = new System.Drawing.Point(848, 230);
+            this.btnSystemset_43_BCU_Close16.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close16.Name = "btnSystemset_43_BCU_Close16";
             this.btnSystemset_43_BCU_Close16.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close16.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close16.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close16.TabIndex = 69;
             this.btnSystemset_43_BCU_Close16.Text = "关闭";
             this.btnSystemset_43_BCU_Close16.UseVisualStyleBackColor = false;
@@ -3908,11 +4059,11 @@
             // 
             this.btnSystemset_44_BCU_Open16.AutoSize = true;
             this.btnSystemset_44_BCU_Open16.Enabled = false;
-            this.btnSystemset_44_BCU_Open16.Location = new System.Drawing.Point(562, 184);
-            this.btnSystemset_44_BCU_Open16.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open16.Location = new System.Drawing.Point(749, 230);
+            this.btnSystemset_44_BCU_Open16.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open16.Name = "btnSystemset_44_BCU_Open16";
             this.btnSystemset_44_BCU_Open16.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open16.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open16.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open16.TabIndex = 68;
             this.btnSystemset_44_BCU_Open16.Text = "打开";
             this.btnSystemset_44_BCU_Open16.UseVisualStyleBackColor = false;
@@ -3921,9 +4072,10 @@
             // lblSystemset_BCU_16
             // 
             this.lblSystemset_BCU_16.AutoSize = true;
-            this.lblSystemset_BCU_16.Location = new System.Drawing.Point(410, 189);
+            this.lblSystemset_BCU_16.Location = new System.Drawing.Point(547, 236);
+            this.lblSystemset_BCU_16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_16.Name = "lblSystemset_BCU_16";
-            this.lblSystemset_BCU_16.Size = new System.Drawing.Size(89, 12);
+            this.lblSystemset_BCU_16.Size = new System.Drawing.Size(112, 15);
             this.lblSystemset_BCU_16.TabIndex = 67;
             this.lblSystemset_BCU_16.Text = "外部看门狗控制";
             // 
@@ -3931,11 +4083,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted15.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted15.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted15.Location = new System.Drawing.Point(711, 150);
-            this.btnSystemset_45_BCU_Lifted15.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted15.Location = new System.Drawing.Point(948, 188);
+            this.btnSystemset_45_BCU_Lifted15.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted15.Name = "btnSystemset_45_BCU_Lifted15";
             this.btnSystemset_45_BCU_Lifted15.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted15.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted15.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted15.TabIndex = 66;
             this.btnSystemset_45_BCU_Lifted15.Text = "解除";
             this.btnSystemset_45_BCU_Lifted15.UseVisualStyleBackColor = false;
@@ -3945,11 +4097,11 @@
             // 
             this.btnSystemset_43_BCU_Close15.AutoSize = true;
             this.btnSystemset_43_BCU_Close15.Enabled = false;
-            this.btnSystemset_43_BCU_Close15.Location = new System.Drawing.Point(636, 150);
-            this.btnSystemset_43_BCU_Close15.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close15.Location = new System.Drawing.Point(848, 188);
+            this.btnSystemset_43_BCU_Close15.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close15.Name = "btnSystemset_43_BCU_Close15";
             this.btnSystemset_43_BCU_Close15.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close15.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close15.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close15.TabIndex = 65;
             this.btnSystemset_43_BCU_Close15.Text = "关闭";
             this.btnSystemset_43_BCU_Close15.UseVisualStyleBackColor = false;
@@ -3959,11 +4111,11 @@
             // 
             this.btnSystemset_44_BCU_Open15.AutoSize = true;
             this.btnSystemset_44_BCU_Open15.Enabled = false;
-            this.btnSystemset_44_BCU_Open15.Location = new System.Drawing.Point(562, 150);
-            this.btnSystemset_44_BCU_Open15.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open15.Location = new System.Drawing.Point(749, 188);
+            this.btnSystemset_44_BCU_Open15.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open15.Name = "btnSystemset_44_BCU_Open15";
             this.btnSystemset_44_BCU_Open15.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open15.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open15.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open15.TabIndex = 64;
             this.btnSystemset_44_BCU_Open15.Text = "打开";
             this.btnSystemset_44_BCU_Open15.UseVisualStyleBackColor = false;
@@ -3972,9 +4124,10 @@
             // lblSystemset_BCU_15
             // 
             this.lblSystemset_BCU_15.AutoSize = true;
-            this.lblSystemset_BCU_15.Location = new System.Drawing.Point(410, 155);
+            this.lblSystemset_BCU_15.Location = new System.Drawing.Point(547, 194);
+            this.lblSystemset_BCU_15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_15.Name = "lblSystemset_BCU_15";
-            this.lblSystemset_BCU_15.Size = new System.Drawing.Size(47, 12);
+            this.lblSystemset_BCU_15.Size = new System.Drawing.Size(61, 15);
             this.lblSystemset_BCU_15.TabIndex = 63;
             this.lblSystemset_BCU_15.Text = "PWR控制";
             // 
@@ -3982,11 +4135,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted14.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted14.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted14.Location = new System.Drawing.Point(711, 117);
-            this.btnSystemset_45_BCU_Lifted14.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted14.Location = new System.Drawing.Point(948, 146);
+            this.btnSystemset_45_BCU_Lifted14.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted14.Name = "btnSystemset_45_BCU_Lifted14";
             this.btnSystemset_45_BCU_Lifted14.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted14.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted14.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted14.TabIndex = 62;
             this.btnSystemset_45_BCU_Lifted14.Text = "解除";
             this.btnSystemset_45_BCU_Lifted14.UseVisualStyleBackColor = false;
@@ -3996,11 +4149,11 @@
             // 
             this.btnSystemset_43_BCU_Close14.AutoSize = true;
             this.btnSystemset_43_BCU_Close14.Enabled = false;
-            this.btnSystemset_43_BCU_Close14.Location = new System.Drawing.Point(636, 117);
-            this.btnSystemset_43_BCU_Close14.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close14.Location = new System.Drawing.Point(848, 146);
+            this.btnSystemset_43_BCU_Close14.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close14.Name = "btnSystemset_43_BCU_Close14";
             this.btnSystemset_43_BCU_Close14.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close14.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close14.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close14.TabIndex = 61;
             this.btnSystemset_43_BCU_Close14.Text = "关闭";
             this.btnSystemset_43_BCU_Close14.UseVisualStyleBackColor = false;
@@ -4010,11 +4163,11 @@
             // 
             this.btnSystemset_44_BCU_Open14.AutoSize = true;
             this.btnSystemset_44_BCU_Open14.Enabled = false;
-            this.btnSystemset_44_BCU_Open14.Location = new System.Drawing.Point(562, 117);
-            this.btnSystemset_44_BCU_Open14.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open14.Location = new System.Drawing.Point(749, 146);
+            this.btnSystemset_44_BCU_Open14.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open14.Name = "btnSystemset_44_BCU_Open14";
             this.btnSystemset_44_BCU_Open14.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open14.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open14.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open14.TabIndex = 60;
             this.btnSystemset_44_BCU_Open14.Text = "打开";
             this.btnSystemset_44_BCU_Open14.UseVisualStyleBackColor = false;
@@ -4023,9 +4176,10 @@
             // lblSystemset_BCU_14
             // 
             this.lblSystemset_BCU_14.AutoSize = true;
-            this.lblSystemset_BCU_14.Location = new System.Drawing.Point(410, 122);
+            this.lblSystemset_BCU_14.Location = new System.Drawing.Point(547, 152);
+            this.lblSystemset_BCU_14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_14.Name = "lblSystemset_BCU_14";
-            this.lblSystemset_BCU_14.Size = new System.Drawing.Size(65, 12);
+            this.lblSystemset_BCU_14.Size = new System.Drawing.Size(85, 15);
             this.lblSystemset_BCU_14.TabIndex = 59;
             this.lblSystemset_BCU_14.Text = "IDM_OP控制";
             // 
@@ -4033,11 +4187,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted13.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted13.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted13.Location = new System.Drawing.Point(711, 86);
-            this.btnSystemset_45_BCU_Lifted13.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted13.Location = new System.Drawing.Point(948, 108);
+            this.btnSystemset_45_BCU_Lifted13.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted13.Name = "btnSystemset_45_BCU_Lifted13";
             this.btnSystemset_45_BCU_Lifted13.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted13.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted13.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted13.TabIndex = 58;
             this.btnSystemset_45_BCU_Lifted13.Text = "解除";
             this.btnSystemset_45_BCU_Lifted13.UseVisualStyleBackColor = false;
@@ -4047,11 +4201,11 @@
             // 
             this.btnSystemset_43_BCU_Close13.AutoSize = true;
             this.btnSystemset_43_BCU_Close13.Enabled = false;
-            this.btnSystemset_43_BCU_Close13.Location = new System.Drawing.Point(636, 86);
-            this.btnSystemset_43_BCU_Close13.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close13.Location = new System.Drawing.Point(848, 108);
+            this.btnSystemset_43_BCU_Close13.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close13.Name = "btnSystemset_43_BCU_Close13";
             this.btnSystemset_43_BCU_Close13.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close13.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close13.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close13.TabIndex = 57;
             this.btnSystemset_43_BCU_Close13.Text = "关闭";
             this.btnSystemset_43_BCU_Close13.UseVisualStyleBackColor = false;
@@ -4061,11 +4215,11 @@
             // 
             this.btnSystemset_44_BCU_Open13.AutoSize = true;
             this.btnSystemset_44_BCU_Open13.Enabled = false;
-            this.btnSystemset_44_BCU_Open13.Location = new System.Drawing.Point(562, 86);
-            this.btnSystemset_44_BCU_Open13.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open13.Location = new System.Drawing.Point(749, 108);
+            this.btnSystemset_44_BCU_Open13.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open13.Name = "btnSystemset_44_BCU_Open13";
             this.btnSystemset_44_BCU_Open13.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open13.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open13.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open13.TabIndex = 56;
             this.btnSystemset_44_BCU_Open13.Text = "打开";
             this.btnSystemset_44_BCU_Open13.UseVisualStyleBackColor = false;
@@ -4074,9 +4228,10 @@
             // lblSystemset_BCU_13
             // 
             this.lblSystemset_BCU_13.AutoSize = true;
-            this.lblSystemset_BCU_13.Location = new System.Drawing.Point(410, 90);
+            this.lblSystemset_BCU_13.Location = new System.Drawing.Point(547, 112);
+            this.lblSystemset_BCU_13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_13.Name = "lblSystemset_BCU_13";
-            this.lblSystemset_BCU_13.Size = new System.Drawing.Size(113, 12);
+            this.lblSystemset_BCU_13.Size = new System.Drawing.Size(142, 15);
             this.lblSystemset_BCU_13.TabIndex = 55;
             this.lblSystemset_BCU_13.Text = "预充继电器控制状态";
             // 
@@ -4084,11 +4239,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted12.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted12.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted12.Location = new System.Drawing.Point(711, 54);
-            this.btnSystemset_45_BCU_Lifted12.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted12.Location = new System.Drawing.Point(948, 68);
+            this.btnSystemset_45_BCU_Lifted12.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted12.Name = "btnSystemset_45_BCU_Lifted12";
             this.btnSystemset_45_BCU_Lifted12.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted12.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted12.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted12.TabIndex = 54;
             this.btnSystemset_45_BCU_Lifted12.Text = "解除";
             this.btnSystemset_45_BCU_Lifted12.UseVisualStyleBackColor = false;
@@ -4098,11 +4253,11 @@
             // 
             this.btnSystemset_43_BCU_Close12.AutoSize = true;
             this.btnSystemset_43_BCU_Close12.Enabled = false;
-            this.btnSystemset_43_BCU_Close12.Location = new System.Drawing.Point(636, 54);
-            this.btnSystemset_43_BCU_Close12.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close12.Location = new System.Drawing.Point(848, 68);
+            this.btnSystemset_43_BCU_Close12.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close12.Name = "btnSystemset_43_BCU_Close12";
             this.btnSystemset_43_BCU_Close12.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close12.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close12.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close12.TabIndex = 53;
             this.btnSystemset_43_BCU_Close12.Text = "关闭";
             this.btnSystemset_43_BCU_Close12.UseVisualStyleBackColor = false;
@@ -4112,11 +4267,11 @@
             // 
             this.btnSystemset_44_BCU_Open12.AutoSize = true;
             this.btnSystemset_44_BCU_Open12.Enabled = false;
-            this.btnSystemset_44_BCU_Open12.Location = new System.Drawing.Point(562, 54);
-            this.btnSystemset_44_BCU_Open12.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open12.Location = new System.Drawing.Point(749, 68);
+            this.btnSystemset_44_BCU_Open12.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open12.Name = "btnSystemset_44_BCU_Open12";
             this.btnSystemset_44_BCU_Open12.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open12.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open12.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open12.TabIndex = 52;
             this.btnSystemset_44_BCU_Open12.Text = "打开";
             this.btnSystemset_44_BCU_Open12.UseVisualStyleBackColor = false;
@@ -4125,9 +4280,10 @@
             // lblSystemset_BCU_12
             // 
             this.lblSystemset_BCU_12.AutoSize = true;
-            this.lblSystemset_BCU_12.Location = new System.Drawing.Point(410, 59);
+            this.lblSystemset_BCU_12.Location = new System.Drawing.Point(547, 74);
+            this.lblSystemset_BCU_12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_12.Name = "lblSystemset_BCU_12";
-            this.lblSystemset_BCU_12.Size = new System.Drawing.Size(143, 12);
+            this.lblSystemset_BCU_12.Size = new System.Drawing.Size(180, 15);
             this.lblSystemset_BCU_12.TabIndex = 51;
             this.lblSystemset_BCU_12.Text = "绝缘检测继电器1控制状态";
             // 
@@ -4135,11 +4291,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted11.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted11.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted11.Location = new System.Drawing.Point(303, 393);
-            this.btnSystemset_45_BCU_Lifted11.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted11.Location = new System.Drawing.Point(404, 491);
+            this.btnSystemset_45_BCU_Lifted11.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted11.Name = "btnSystemset_45_BCU_Lifted11";
             this.btnSystemset_45_BCU_Lifted11.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted11.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted11.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted11.TabIndex = 50;
             this.btnSystemset_45_BCU_Lifted11.Text = "解除";
             this.btnSystemset_45_BCU_Lifted11.UseVisualStyleBackColor = true;
@@ -4149,11 +4305,11 @@
             // 
             this.btnSystemset_43_BCU_Close11.AutoSize = true;
             this.btnSystemset_43_BCU_Close11.Enabled = false;
-            this.btnSystemset_43_BCU_Close11.Location = new System.Drawing.Point(228, 393);
-            this.btnSystemset_43_BCU_Close11.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close11.Location = new System.Drawing.Point(304, 491);
+            this.btnSystemset_43_BCU_Close11.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close11.Name = "btnSystemset_43_BCU_Close11";
             this.btnSystemset_43_BCU_Close11.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close11.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close11.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close11.TabIndex = 49;
             this.btnSystemset_43_BCU_Close11.Text = "关闭";
             this.btnSystemset_43_BCU_Close11.UseVisualStyleBackColor = true;
@@ -4163,11 +4319,11 @@
             // 
             this.btnSystemset_44_BCU_Open11.AutoSize = true;
             this.btnSystemset_44_BCU_Open11.Enabled = false;
-            this.btnSystemset_44_BCU_Open11.Location = new System.Drawing.Point(154, 393);
-            this.btnSystemset_44_BCU_Open11.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open11.Location = new System.Drawing.Point(205, 491);
+            this.btnSystemset_44_BCU_Open11.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open11.Name = "btnSystemset_44_BCU_Open11";
             this.btnSystemset_44_BCU_Open11.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open11.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open11.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open11.TabIndex = 48;
             this.btnSystemset_44_BCU_Open11.Text = "打开";
             this.btnSystemset_44_BCU_Open11.UseVisualStyleBackColor = true;
@@ -4176,9 +4332,10 @@
             // lblSystemset_BCU_11
             // 
             this.lblSystemset_BCU_11.AutoSize = true;
-            this.lblSystemset_BCU_11.Location = new System.Drawing.Point(9, 398);
+            this.lblSystemset_BCU_11.Location = new System.Drawing.Point(12, 498);
+            this.lblSystemset_BCU_11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_11.Name = "lblSystemset_BCU_11";
-            this.lblSystemset_BCU_11.Size = new System.Drawing.Size(143, 12);
+            this.lblSystemset_BCU_11.Size = new System.Drawing.Size(180, 15);
             this.lblSystemset_BCU_11.TabIndex = 47;
             this.lblSystemset_BCU_11.Text = "绝缘检测继电器2控制状态";
             // 
@@ -4186,11 +4343,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted8.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted8.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted8.Location = new System.Drawing.Point(303, 287);
-            this.btnSystemset_45_BCU_Lifted8.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted8.Location = new System.Drawing.Point(404, 359);
+            this.btnSystemset_45_BCU_Lifted8.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted8.Name = "btnSystemset_45_BCU_Lifted8";
             this.btnSystemset_45_BCU_Lifted8.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted8.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted8.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted8.TabIndex = 46;
             this.btnSystemset_45_BCU_Lifted8.Text = "解除";
             this.btnSystemset_45_BCU_Lifted8.UseVisualStyleBackColor = true;
@@ -4200,11 +4357,11 @@
             // 
             this.btnSystemset_43_BCU_Close8.AutoSize = true;
             this.btnSystemset_43_BCU_Close8.Enabled = false;
-            this.btnSystemset_43_BCU_Close8.Location = new System.Drawing.Point(228, 287);
-            this.btnSystemset_43_BCU_Close8.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close8.Location = new System.Drawing.Point(304, 359);
+            this.btnSystemset_43_BCU_Close8.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close8.Name = "btnSystemset_43_BCU_Close8";
             this.btnSystemset_43_BCU_Close8.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close8.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close8.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close8.TabIndex = 45;
             this.btnSystemset_43_BCU_Close8.Text = "关闭";
             this.btnSystemset_43_BCU_Close8.UseVisualStyleBackColor = true;
@@ -4214,11 +4371,11 @@
             // 
             this.btnSystemset_44_BCU_Open8.AutoSize = true;
             this.btnSystemset_44_BCU_Open8.Enabled = false;
-            this.btnSystemset_44_BCU_Open8.Location = new System.Drawing.Point(154, 287);
-            this.btnSystemset_44_BCU_Open8.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open8.Location = new System.Drawing.Point(205, 359);
+            this.btnSystemset_44_BCU_Open8.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open8.Name = "btnSystemset_44_BCU_Open8";
             this.btnSystemset_44_BCU_Open8.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open8.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open8.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open8.TabIndex = 44;
             this.btnSystemset_44_BCU_Open8.Text = "打开";
             this.btnSystemset_44_BCU_Open8.UseVisualStyleBackColor = true;
@@ -4227,9 +4384,10 @@
             // lblSystemset_BCU_8
             // 
             this.lblSystemset_BCU_8.AutoSize = true;
-            this.lblSystemset_BCU_8.Location = new System.Drawing.Point(8, 295);
+            this.lblSystemset_BCU_8.Location = new System.Drawing.Point(11, 369);
+            this.lblSystemset_BCU_8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_8.Name = "lblSystemset_BCU_8";
-            this.lblSystemset_BCU_8.Size = new System.Drawing.Size(125, 12);
+            this.lblSystemset_BCU_8.Size = new System.Drawing.Size(157, 15);
             this.lblSystemset_BCU_8.TabIndex = 43;
             this.lblSystemset_BCU_8.Text = "正继电器控制正端状态";
             // 
@@ -4237,11 +4395,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted3.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted3.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted3.Location = new System.Drawing.Point(303, 118);
-            this.btnSystemset_45_BCU_Lifted3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted3.Location = new System.Drawing.Point(404, 148);
+            this.btnSystemset_45_BCU_Lifted3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted3.Name = "btnSystemset_45_BCU_Lifted3";
             this.btnSystemset_45_BCU_Lifted3.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted3.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted3.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted3.TabIndex = 42;
             this.btnSystemset_45_BCU_Lifted3.Text = "解除";
             this.btnSystemset_45_BCU_Lifted3.UseVisualStyleBackColor = true;
@@ -4251,11 +4409,11 @@
             // 
             this.btnSystemset_43_BCU_Close3.AutoSize = true;
             this.btnSystemset_43_BCU_Close3.Enabled = false;
-            this.btnSystemset_43_BCU_Close3.Location = new System.Drawing.Point(228, 118);
-            this.btnSystemset_43_BCU_Close3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close3.Location = new System.Drawing.Point(304, 148);
+            this.btnSystemset_43_BCU_Close3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close3.Name = "btnSystemset_43_BCU_Close3";
             this.btnSystemset_43_BCU_Close3.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close3.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close3.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close3.TabIndex = 41;
             this.btnSystemset_43_BCU_Close3.Text = "关闭";
             this.btnSystemset_43_BCU_Close3.UseVisualStyleBackColor = true;
@@ -4265,11 +4423,11 @@
             // 
             this.btnSystemset_44_BCU_Open3.AutoSize = true;
             this.btnSystemset_44_BCU_Open3.Enabled = false;
-            this.btnSystemset_44_BCU_Open3.Location = new System.Drawing.Point(154, 118);
-            this.btnSystemset_44_BCU_Open3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open3.Location = new System.Drawing.Point(205, 148);
+            this.btnSystemset_44_BCU_Open3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open3.Name = "btnSystemset_44_BCU_Open3";
             this.btnSystemset_44_BCU_Open3.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open3.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open3.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open3.TabIndex = 40;
             this.btnSystemset_44_BCU_Open3.Text = "打开";
             this.btnSystemset_44_BCU_Open3.UseVisualStyleBackColor = true;
@@ -4278,24 +4436,24 @@
             // lblSystemset_BCU_3
             // 
             this.lblSystemset_BCU_3.AutoSize = true;
-            this.lblSystemset_BCU_3.Location = new System.Drawing.Point(9, 122);
-            this.lblSystemset_BCU_3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_BCU_3.Location = new System.Drawing.Point(12, 152);
             this.lblSystemset_BCU_3.Name = "lblSystemset_BCU_3";
-            this.lblSystemset_BCU_3.Size = new System.Drawing.Size(59, 12);
+            this.lblSystemset_BCU_3.Size = new System.Drawing.Size(77, 15);
             this.lblSystemset_BCU_3.TabIndex = 39;
             this.lblSystemset_BCU_3.Text = "ID_OP控制";
             // 
             // btnSystemset_debug
             // 
             this.btnSystemset_debug.AutoSize = true;
-            this.btnSystemset_debug.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(152)))), ((int)(((byte)(142)))));
+            this.btnSystemset_debug.BackColor = System.Drawing.Color.Green;
             this.btnSystemset_debug.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSystemset_debug.ForeColor = System.Drawing.Color.White;
             this.btnSystemset_debug.Image = global::SofarBMS.Properties.Resources.debugtool;
             this.btnSystemset_debug.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSystemset_debug.Location = new System.Drawing.Point(11, 17);
+            this.btnSystemset_debug.Location = new System.Drawing.Point(15, 21);
+            this.btnSystemset_debug.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSystemset_debug.Name = "btnSystemset_debug";
-            this.btnSystemset_debug.Size = new System.Drawing.Size(770, 30);
+            this.btnSystemset_debug.Size = new System.Drawing.Size(1027, 38);
             this.btnSystemset_debug.TabIndex = 38;
             this.btnSystemset_debug.Text = "开始调试";
             this.btnSystemset_debug.UseVisualStyleBackColor = false;
@@ -4305,11 +4463,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted10.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted10.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted10.Location = new System.Drawing.Point(303, 360);
-            this.btnSystemset_45_BCU_Lifted10.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted10.Location = new System.Drawing.Point(404, 450);
+            this.btnSystemset_45_BCU_Lifted10.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted10.Name = "btnSystemset_45_BCU_Lifted10";
             this.btnSystemset_45_BCU_Lifted10.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted10.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted10.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted10.TabIndex = 38;
             this.btnSystemset_45_BCU_Lifted10.Text = "解除";
             this.btnSystemset_45_BCU_Lifted10.UseVisualStyleBackColor = true;
@@ -4319,11 +4477,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted9.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted9.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted9.Location = new System.Drawing.Point(302, 326);
-            this.btnSystemset_45_BCU_Lifted9.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted9.Location = new System.Drawing.Point(403, 408);
+            this.btnSystemset_45_BCU_Lifted9.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted9.Name = "btnSystemset_45_BCU_Lifted9";
             this.btnSystemset_45_BCU_Lifted9.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted9.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted9.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted9.TabIndex = 37;
             this.btnSystemset_45_BCU_Lifted9.Text = "解除";
             this.btnSystemset_45_BCU_Lifted9.UseVisualStyleBackColor = true;
@@ -4333,11 +4491,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted7.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted7.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted7.Location = new System.Drawing.Point(303, 251);
-            this.btnSystemset_45_BCU_Lifted7.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted7.Location = new System.Drawing.Point(404, 314);
+            this.btnSystemset_45_BCU_Lifted7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted7.Name = "btnSystemset_45_BCU_Lifted7";
             this.btnSystemset_45_BCU_Lifted7.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted7.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted7.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted7.TabIndex = 36;
             this.btnSystemset_45_BCU_Lifted7.Text = "解除";
             this.btnSystemset_45_BCU_Lifted7.UseVisualStyleBackColor = true;
@@ -4347,11 +4505,11 @@
             // 
             this.btnSystemset_43_BCU_Close10.AutoSize = true;
             this.btnSystemset_43_BCU_Close10.Enabled = false;
-            this.btnSystemset_43_BCU_Close10.Location = new System.Drawing.Point(228, 360);
-            this.btnSystemset_43_BCU_Close10.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close10.Location = new System.Drawing.Point(304, 450);
+            this.btnSystemset_43_BCU_Close10.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close10.Name = "btnSystemset_43_BCU_Close10";
             this.btnSystemset_43_BCU_Close10.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close10.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close10.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close10.TabIndex = 35;
             this.btnSystemset_43_BCU_Close10.Text = "关闭";
             this.btnSystemset_43_BCU_Close10.UseVisualStyleBackColor = true;
@@ -4361,11 +4519,11 @@
             // 
             this.btnSystemset_44_BCU_Open10.AutoSize = true;
             this.btnSystemset_44_BCU_Open10.Enabled = false;
-            this.btnSystemset_44_BCU_Open10.Location = new System.Drawing.Point(154, 360);
-            this.btnSystemset_44_BCU_Open10.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open10.Location = new System.Drawing.Point(205, 450);
+            this.btnSystemset_44_BCU_Open10.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open10.Name = "btnSystemset_44_BCU_Open10";
             this.btnSystemset_44_BCU_Open10.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open10.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open10.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open10.TabIndex = 34;
             this.btnSystemset_44_BCU_Open10.Text = "打开";
             this.btnSystemset_44_BCU_Open10.UseVisualStyleBackColor = true;
@@ -4375,11 +4533,11 @@
             // 
             this.btnSystemset_43_BCU_Close9.AutoSize = true;
             this.btnSystemset_43_BCU_Close9.Enabled = false;
-            this.btnSystemset_43_BCU_Close9.Location = new System.Drawing.Point(228, 326);
-            this.btnSystemset_43_BCU_Close9.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close9.Location = new System.Drawing.Point(304, 408);
+            this.btnSystemset_43_BCU_Close9.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close9.Name = "btnSystemset_43_BCU_Close9";
             this.btnSystemset_43_BCU_Close9.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close9.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close9.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close9.TabIndex = 33;
             this.btnSystemset_43_BCU_Close9.Text = "关闭";
             this.btnSystemset_43_BCU_Close9.UseVisualStyleBackColor = true;
@@ -4388,9 +4546,10 @@
             // lblSystemset_BCU_10
             // 
             this.lblSystemset_BCU_10.AutoSize = true;
-            this.lblSystemset_BCU_10.Location = new System.Drawing.Point(9, 365);
+            this.lblSystemset_BCU_10.Location = new System.Drawing.Point(12, 456);
+            this.lblSystemset_BCU_10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_10.Name = "lblSystemset_BCU_10";
-            this.lblSystemset_BCU_10.Size = new System.Drawing.Size(119, 12);
+            this.lblSystemset_BCU_10.Size = new System.Drawing.Size(150, 15);
             this.lblSystemset_BCU_10.TabIndex = 28;
             this.lblSystemset_BCU_10.Text = "干接点1输出控制状态";
             // 
@@ -4398,11 +4557,11 @@
             // 
             this.btnSystemset_43_BCU_Close7.AutoSize = true;
             this.btnSystemset_43_BCU_Close7.Enabled = false;
-            this.btnSystemset_43_BCU_Close7.Location = new System.Drawing.Point(228, 251);
-            this.btnSystemset_43_BCU_Close7.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close7.Location = new System.Drawing.Point(304, 314);
+            this.btnSystemset_43_BCU_Close7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close7.Name = "btnSystemset_43_BCU_Close7";
             this.btnSystemset_43_BCU_Close7.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close7.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close7.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close7.TabIndex = 31;
             this.btnSystemset_43_BCU_Close7.Text = "关闭";
             this.btnSystemset_43_BCU_Close7.UseVisualStyleBackColor = true;
@@ -4412,11 +4571,11 @@
             // 
             this.btnSystemset_44_BCU_Open9.AutoSize = true;
             this.btnSystemset_44_BCU_Open9.Enabled = false;
-            this.btnSystemset_44_BCU_Open9.Location = new System.Drawing.Point(154, 326);
-            this.btnSystemset_44_BCU_Open9.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open9.Location = new System.Drawing.Point(205, 408);
+            this.btnSystemset_44_BCU_Open9.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open9.Name = "btnSystemset_44_BCU_Open9";
             this.btnSystemset_44_BCU_Open9.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open9.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open9.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open9.TabIndex = 32;
             this.btnSystemset_44_BCU_Open9.Text = "打开";
             this.btnSystemset_44_BCU_Open9.UseVisualStyleBackColor = true;
@@ -4426,11 +4585,11 @@
             // 
             this.btnSystemset_44_BCU_Open7.AutoSize = true;
             this.btnSystemset_44_BCU_Open7.Enabled = false;
-            this.btnSystemset_44_BCU_Open7.Location = new System.Drawing.Point(154, 251);
-            this.btnSystemset_44_BCU_Open7.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open7.Location = new System.Drawing.Point(205, 314);
+            this.btnSystemset_44_BCU_Open7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open7.Name = "btnSystemset_44_BCU_Open7";
             this.btnSystemset_44_BCU_Open7.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open7.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open7.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open7.TabIndex = 30;
             this.btnSystemset_44_BCU_Open7.Text = "打开";
             this.btnSystemset_44_BCU_Open7.UseVisualStyleBackColor = true;
@@ -4439,20 +4598,18 @@
             // lblSystemset_BCU_7
             // 
             this.lblSystemset_BCU_7.AutoSize = true;
-            this.lblSystemset_BCU_7.Location = new System.Drawing.Point(9, 256);
-            this.lblSystemset_BCU_7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_BCU_7.Location = new System.Drawing.Point(12, 320);
             this.lblSystemset_BCU_7.Name = "lblSystemset_BCU_7";
-            this.lblSystemset_BCU_7.Size = new System.Drawing.Size(125, 12);
+            this.lblSystemset_BCU_7.Size = new System.Drawing.Size(157, 15);
             this.lblSystemset_BCU_7.TabIndex = 27;
             this.lblSystemset_BCU_7.Text = "正继电器控制负端状态";
             // 
             // lblSystemset_BCU_9
             // 
             this.lblSystemset_BCU_9.AutoSize = true;
-            this.lblSystemset_BCU_9.Location = new System.Drawing.Point(9, 332);
-            this.lblSystemset_BCU_9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_BCU_9.Location = new System.Drawing.Point(12, 415);
             this.lblSystemset_BCU_9.Name = "lblSystemset_BCU_9";
-            this.lblSystemset_BCU_9.Size = new System.Drawing.Size(77, 12);
+            this.lblSystemset_BCU_9.Size = new System.Drawing.Size(97, 15);
             this.lblSystemset_BCU_9.TabIndex = 29;
             this.lblSystemset_BCU_9.Text = "空开控制状态";
             // 
@@ -4460,11 +4617,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted4.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted4.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted4.Location = new System.Drawing.Point(303, 150);
-            this.btnSystemset_45_BCU_Lifted4.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted4.Location = new System.Drawing.Point(404, 188);
+            this.btnSystemset_45_BCU_Lifted4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted4.Name = "btnSystemset_45_BCU_Lifted4";
             this.btnSystemset_45_BCU_Lifted4.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted4.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted4.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted4.TabIndex = 26;
             this.btnSystemset_45_BCU_Lifted4.Text = "解除";
             this.btnSystemset_45_BCU_Lifted4.UseVisualStyleBackColor = true;
@@ -4474,11 +4631,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted5.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted5.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted5.Location = new System.Drawing.Point(303, 185);
-            this.btnSystemset_45_BCU_Lifted5.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted5.Location = new System.Drawing.Point(404, 231);
+            this.btnSystemset_45_BCU_Lifted5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted5.Name = "btnSystemset_45_BCU_Lifted5";
             this.btnSystemset_45_BCU_Lifted5.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted5.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted5.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted5.TabIndex = 25;
             this.btnSystemset_45_BCU_Lifted5.Text = "解除";
             this.btnSystemset_45_BCU_Lifted5.UseVisualStyleBackColor = true;
@@ -4488,11 +4645,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted6.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted6.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted6.Location = new System.Drawing.Point(303, 218);
-            this.btnSystemset_45_BCU_Lifted6.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted6.Location = new System.Drawing.Point(404, 272);
+            this.btnSystemset_45_BCU_Lifted6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted6.Name = "btnSystemset_45_BCU_Lifted6";
             this.btnSystemset_45_BCU_Lifted6.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted6.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted6.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted6.TabIndex = 24;
             this.btnSystemset_45_BCU_Lifted6.Text = "解除";
             this.btnSystemset_45_BCU_Lifted6.UseVisualStyleBackColor = true;
@@ -4502,11 +4659,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted2.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted2.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted2.Location = new System.Drawing.Point(303, 85);
-            this.btnSystemset_45_BCU_Lifted2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_45_BCU_Lifted2.Location = new System.Drawing.Point(404, 106);
+            this.btnSystemset_45_BCU_Lifted2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BCU_Lifted2.Name = "btnSystemset_45_BCU_Lifted2";
             this.btnSystemset_45_BCU_Lifted2.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted2.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted2.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted2.TabIndex = 22;
             this.btnSystemset_45_BCU_Lifted2.Text = "解除";
             this.btnSystemset_45_BCU_Lifted2.UseVisualStyleBackColor = true;
@@ -4516,10 +4673,11 @@
             // 
             this.btnSystemset_45_BCU_Lifted1.AutoSize = true;
             this.btnSystemset_45_BCU_Lifted1.Enabled = false;
-            this.btnSystemset_45_BCU_Lifted1.Location = new System.Drawing.Point(303, 52);
+            this.btnSystemset_45_BCU_Lifted1.Location = new System.Drawing.Point(404, 65);
+            this.btnSystemset_45_BCU_Lifted1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSystemset_45_BCU_Lifted1.Name = "btnSystemset_45_BCU_Lifted1";
             this.btnSystemset_45_BCU_Lifted1.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BCU_Lifted1.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_45_BCU_Lifted1.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_45_BCU_Lifted1.TabIndex = 21;
             this.btnSystemset_45_BCU_Lifted1.Text = "解除";
             this.btnSystemset_45_BCU_Lifted1.UseVisualStyleBackColor = true;
@@ -4529,11 +4687,11 @@
             // 
             this.btnSystemset_43_BCU_Close4.AutoSize = true;
             this.btnSystemset_43_BCU_Close4.Enabled = false;
-            this.btnSystemset_43_BCU_Close4.Location = new System.Drawing.Point(228, 150);
-            this.btnSystemset_43_BCU_Close4.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close4.Location = new System.Drawing.Point(304, 188);
+            this.btnSystemset_43_BCU_Close4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close4.Name = "btnSystemset_43_BCU_Close4";
             this.btnSystemset_43_BCU_Close4.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close4.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close4.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close4.TabIndex = 20;
             this.btnSystemset_43_BCU_Close4.Text = "关闭";
             this.btnSystemset_43_BCU_Close4.UseVisualStyleBackColor = true;
@@ -4543,11 +4701,11 @@
             // 
             this.btnSystemset_44_BCU_Open4.AutoSize = true;
             this.btnSystemset_44_BCU_Open4.Enabled = false;
-            this.btnSystemset_44_BCU_Open4.Location = new System.Drawing.Point(154, 150);
-            this.btnSystemset_44_BCU_Open4.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open4.Location = new System.Drawing.Point(205, 188);
+            this.btnSystemset_44_BCU_Open4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open4.Name = "btnSystemset_44_BCU_Open4";
             this.btnSystemset_44_BCU_Open4.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open4.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open4.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open4.TabIndex = 19;
             this.btnSystemset_44_BCU_Open4.Text = "打开";
             this.btnSystemset_44_BCU_Open4.UseVisualStyleBackColor = true;
@@ -4557,11 +4715,11 @@
             // 
             this.btnSystemset_43_BCU_Close5.AutoSize = true;
             this.btnSystemset_43_BCU_Close5.Enabled = false;
-            this.btnSystemset_43_BCU_Close5.Location = new System.Drawing.Point(228, 185);
-            this.btnSystemset_43_BCU_Close5.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close5.Location = new System.Drawing.Point(304, 231);
+            this.btnSystemset_43_BCU_Close5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close5.Name = "btnSystemset_43_BCU_Close5";
             this.btnSystemset_43_BCU_Close5.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close5.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close5.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close5.TabIndex = 18;
             this.btnSystemset_43_BCU_Close5.Text = "关闭";
             this.btnSystemset_43_BCU_Close5.UseVisualStyleBackColor = true;
@@ -4570,9 +4728,10 @@
             // lblSystemset_BCU_4
             // 
             this.lblSystemset_BCU_4.AutoSize = true;
-            this.lblSystemset_BCU_4.Location = new System.Drawing.Point(9, 155);
+            this.lblSystemset_BCU_4.Location = new System.Drawing.Point(12, 194);
+            this.lblSystemset_BCU_4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_4.Name = "lblSystemset_BCU_4";
-            this.lblSystemset_BCU_4.Size = new System.Drawing.Size(95, 12);
+            this.lblSystemset_BCU_4.Size = new System.Drawing.Size(121, 15);
             this.lblSystemset_BCU_4.TabIndex = 4;
             this.lblSystemset_BCU_4.Text = "BMU供电控制状态";
             // 
@@ -4580,11 +4739,11 @@
             // 
             this.btnSystemset_43_BCU_Close6.AutoSize = true;
             this.btnSystemset_43_BCU_Close6.Enabled = false;
-            this.btnSystemset_43_BCU_Close6.Location = new System.Drawing.Point(228, 218);
-            this.btnSystemset_43_BCU_Close6.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close6.Location = new System.Drawing.Point(304, 272);
+            this.btnSystemset_43_BCU_Close6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close6.Name = "btnSystemset_43_BCU_Close6";
             this.btnSystemset_43_BCU_Close6.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close6.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close6.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close6.TabIndex = 15;
             this.btnSystemset_43_BCU_Close6.Text = "关闭";
             this.btnSystemset_43_BCU_Close6.UseVisualStyleBackColor = true;
@@ -4594,11 +4753,11 @@
             // 
             this.btnSystemset_44_BCU_Open5.AutoSize = true;
             this.btnSystemset_44_BCU_Open5.Enabled = false;
-            this.btnSystemset_44_BCU_Open5.Location = new System.Drawing.Point(154, 185);
-            this.btnSystemset_44_BCU_Open5.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open5.Location = new System.Drawing.Point(205, 231);
+            this.btnSystemset_44_BCU_Open5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open5.Name = "btnSystemset_44_BCU_Open5";
             this.btnSystemset_44_BCU_Open5.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open5.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open5.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open5.TabIndex = 16;
             this.btnSystemset_44_BCU_Open5.Text = "打开";
             this.btnSystemset_44_BCU_Open5.UseVisualStyleBackColor = true;
@@ -4608,11 +4767,11 @@
             // 
             this.btnSystemset_44_BCU_Open6.AutoSize = true;
             this.btnSystemset_44_BCU_Open6.Enabled = false;
-            this.btnSystemset_44_BCU_Open6.Location = new System.Drawing.Point(154, 218);
-            this.btnSystemset_44_BCU_Open6.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open6.Location = new System.Drawing.Point(205, 272);
+            this.btnSystemset_44_BCU_Open6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open6.Name = "btnSystemset_44_BCU_Open6";
             this.btnSystemset_44_BCU_Open6.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open6.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open6.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open6.TabIndex = 14;
             this.btnSystemset_44_BCU_Open6.Text = "打开";
             this.btnSystemset_44_BCU_Open6.UseVisualStyleBackColor = true;
@@ -4622,11 +4781,11 @@
             // 
             this.btnSystemset_43_BCU_Close2.AutoSize = true;
             this.btnSystemset_43_BCU_Close2.Enabled = false;
-            this.btnSystemset_43_BCU_Close2.Location = new System.Drawing.Point(228, 86);
-            this.btnSystemset_43_BCU_Close2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close2.Location = new System.Drawing.Point(304, 108);
+            this.btnSystemset_43_BCU_Close2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close2.Name = "btnSystemset_43_BCU_Close2";
             this.btnSystemset_43_BCU_Close2.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close2.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close2.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close2.TabIndex = 11;
             this.btnSystemset_43_BCU_Close2.Text = "关闭";
             this.btnSystemset_43_BCU_Close2.UseVisualStyleBackColor = true;
@@ -4636,11 +4795,11 @@
             // 
             this.btnSystemset_44_BCU_Open2.AutoSize = true;
             this.btnSystemset_44_BCU_Open2.Enabled = false;
-            this.btnSystemset_44_BCU_Open2.Location = new System.Drawing.Point(154, 86);
-            this.btnSystemset_44_BCU_Open2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open2.Location = new System.Drawing.Point(205, 108);
+            this.btnSystemset_44_BCU_Open2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open2.Name = "btnSystemset_44_BCU_Open2";
             this.btnSystemset_44_BCU_Open2.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open2.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open2.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open2.TabIndex = 10;
             this.btnSystemset_44_BCU_Open2.Text = "打开";
             this.btnSystemset_44_BCU_Open2.UseVisualStyleBackColor = true;
@@ -4650,11 +4809,11 @@
             // 
             this.btnSystemset_43_BCU_Close1.AutoSize = true;
             this.btnSystemset_43_BCU_Close1.Enabled = false;
-            this.btnSystemset_43_BCU_Close1.Location = new System.Drawing.Point(228, 54);
-            this.btnSystemset_43_BCU_Close1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_43_BCU_Close1.Location = new System.Drawing.Point(304, 68);
+            this.btnSystemset_43_BCU_Close1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BCU_Close1.Name = "btnSystemset_43_BCU_Close1";
             this.btnSystemset_43_BCU_Close1.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BCU_Close1.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_43_BCU_Close1.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_43_BCU_Close1.TabIndex = 9;
             this.btnSystemset_43_BCU_Close1.Text = "关闭";
             this.btnSystemset_43_BCU_Close1.UseVisualStyleBackColor = true;
@@ -4664,11 +4823,11 @@
             // 
             this.btnSystemset_44_BCU_Open1.AutoSize = true;
             this.btnSystemset_44_BCU_Open1.Enabled = false;
-            this.btnSystemset_44_BCU_Open1.Location = new System.Drawing.Point(154, 54);
-            this.btnSystemset_44_BCU_Open1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSystemset_44_BCU_Open1.Location = new System.Drawing.Point(205, 68);
+            this.btnSystemset_44_BCU_Open1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BCU_Open1.Name = "btnSystemset_44_BCU_Open1";
             this.btnSystemset_44_BCU_Open1.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BCU_Open1.Size = new System.Drawing.Size(70, 27);
+            this.btnSystemset_44_BCU_Open1.Size = new System.Drawing.Size(93, 34);
             this.btnSystemset_44_BCU_Open1.TabIndex = 8;
             this.btnSystemset_44_BCU_Open1.Text = "打开";
             this.btnSystemset_44_BCU_Open1.UseVisualStyleBackColor = true;
@@ -4677,40 +4836,36 @@
             // lblSystemset_BCU_6
             // 
             this.lblSystemset_BCU_6.AutoSize = true;
-            this.lblSystemset_BCU_6.Location = new System.Drawing.Point(9, 223);
-            this.lblSystemset_BCU_6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_BCU_6.Location = new System.Drawing.Point(12, 279);
             this.lblSystemset_BCU_6.Name = "lblSystemset_BCU_6";
-            this.lblSystemset_BCU_6.Size = new System.Drawing.Size(125, 12);
+            this.lblSystemset_BCU_6.Size = new System.Drawing.Size(157, 15);
             this.lblSystemset_BCU_6.TabIndex = 3;
             this.lblSystemset_BCU_6.Text = "负继电器控制正端状态";
             // 
             // lblSystemset_BCU_2
             // 
             this.lblSystemset_BCU_2.AutoSize = true;
-            this.lblSystemset_BCU_2.Location = new System.Drawing.Point(9, 90);
-            this.lblSystemset_BCU_2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_BCU_2.Location = new System.Drawing.Point(12, 112);
             this.lblSystemset_BCU_2.Name = "lblSystemset_BCU_2";
-            this.lblSystemset_BCU_2.Size = new System.Drawing.Size(71, 12);
+            this.lblSystemset_BCU_2.Size = new System.Drawing.Size(91, 15);
             this.lblSystemset_BCU_2.TabIndex = 1;
             this.lblSystemset_BCU_2.Text = "3V3电源控制";
             // 
             // lblSystemset_BCU_5
             // 
             this.lblSystemset_BCU_5.AutoSize = true;
-            this.lblSystemset_BCU_5.Location = new System.Drawing.Point(9, 190);
-            this.lblSystemset_BCU_5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_BCU_5.Location = new System.Drawing.Point(12, 238);
             this.lblSystemset_BCU_5.Name = "lblSystemset_BCU_5";
-            this.lblSystemset_BCU_5.Size = new System.Drawing.Size(125, 12);
+            this.lblSystemset_BCU_5.Size = new System.Drawing.Size(157, 15);
             this.lblSystemset_BCU_5.TabIndex = 5;
             this.lblSystemset_BCU_5.Text = "负继电器控制负端状态";
             // 
             // lblSystemset_BCU_1
             // 
             this.lblSystemset_BCU_1.AutoSize = true;
-            this.lblSystemset_BCU_1.Location = new System.Drawing.Point(9, 58);
-            this.lblSystemset_BCU_1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_BCU_1.Location = new System.Drawing.Point(12, 72);
             this.lblSystemset_BCU_1.Name = "lblSystemset_BCU_1";
-            this.lblSystemset_BCU_1.Size = new System.Drawing.Size(53, 12);
+            this.lblSystemset_BCU_1.Size = new System.Drawing.Size(67, 15);
             this.lblSystemset_BCU_1.TabIndex = 0;
             this.lblSystemset_BCU_1.Text = "风扇控制";
             // 
@@ -4719,34 +4874,21 @@
             this.panel1.Controls.Add(this.btnSystemset_46);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1370, 54);
+            this.panel1.Size = new System.Drawing.Size(1827, 45);
             this.panel1.TabIndex = 49;
-            // 
-            // btnRead
-            // 
-            this.btnRead.AutoSize = true;
-            this.btnRead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(152)))), ((int)(((byte)(142)))));
-            this.btnRead.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRead.ForeColor = System.Drawing.Color.White;
-            this.btnRead.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRead.Location = new System.Drawing.Point(821, 24);
-            this.btnRead.Name = "btnRead";
-            this.btnRead.Size = new System.Drawing.Size(332, 30);
-            this.btnRead.TabIndex = 46;
-            this.btnRead.Text = "读取";
-            this.btnRead.UseVisualStyleBackColor = false;
-            this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
             // 
             // BMSSystemSetControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "BMSSystemSetControl";
-            this.Size = new System.Drawing.Size(1370, 730);
+            this.Size = new System.Drawing.Size(1827, 912);
             this.Load += new System.EventHandler(this.SystemSetControl_Load);
             this.gbSystemset_04.ResumeLayout(false);
             this.gbSystemset_04.PerformLayout();
@@ -4761,10 +4903,10 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
-            this.gbControl020.ResumeLayout(false);
-            this.gbControl020.PerformLayout();
             this.gbSystemset_0.ResumeLayout(false);
             this.gbSystemset_0.PerformLayout();
+            this.gbControl020.ResumeLayout(false);
+            this.gbControl020.PerformLayout();
             this.gbSystemset_60.ResumeLayout(false);
             this.gbSystemset_60.PerformLayout();
             this.tabPage5.ResumeLayout(false);

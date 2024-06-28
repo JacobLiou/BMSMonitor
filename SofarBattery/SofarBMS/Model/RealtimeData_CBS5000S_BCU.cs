@@ -9,17 +9,19 @@ using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI;
 using System.Windows.Forms;
 using static NPOI.POIFS.Crypt.CryptoFunctions;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace SofarBMS.Model
 {
     internal class RealtimeData_CBS5000S_BCU
     {
         public String PackID { get; set; }
-        public String CreateDate { get { return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"); } }
+        public String CreateDate { get { return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); } }
 
         //0x0B6:BCU遥信数据上报1
         public Double Di_Status_Get { get; set; }                //BCU的di状态
@@ -115,32 +117,29 @@ namespace SofarBMS.Model
         public String Fault2 { get; set; }                           //故障状态
         public String Warning2 { get; set; }                         //告警状态
         public String Protection2 { get; set; }                      //保护状态
-        public String BCUSaftwareVersion { get; set; }              //BMU软件版本
+        public String BCUSaftwareVersion { get; set; }              //BCU软件版本
         public String BCUHardwareVersion { get; set; }              //BCU硬件版本
 
 
         public String GetHeader()
         {
-            return @"记录时间,电池ID,故障信息1,告警信息1,保护信息1,故障信息2,告警信息2,保护信息2,电池状态,BMS状态,允许充电,允许放电,切断继电器,BMU关机,请求强充,充满,放空,编址输入电平,补电输入电平,加热请求,电池电压,负载电压,电池电流,电池剩余容量(SOC),电池健康程度(SOH),剩余容量,满充容量,充电电流上限,放电电流上限,累计放电量,累计充电容量,累计放电容量,累计充电容量,最高单体电压编号,最高单体电压,最低单体电压编号,最低单体电压,单体电压差,电压1,电压2,电压3,电压4,电压5,电压6,电压7,电压8,电压9,电压10,电压11,电压12,电压13,电压14,电压15,电压16,环境温度,Mos温度,被动均衡温度1,被动均衡温度2,主动均衡温度1,主动均衡温度2,最高单体温度编号,最高单体温度,最低单体温度编号,最低单体温度,温度1,温度2,温度3,温度4,温度5,温度6,温度7,温度8,均衡状态,均衡母线电压,均衡电流,主动均衡最大单体电压,电芯平均温度,主动均衡查表SOC,主动均衡累计容量,主动均衡剩余容量,辅源电压,充电电流偏压,放电电流偏压,复位方式,放空同步下降SOC,主动均衡状态,标定容量,供应商名称,锂电池类型";
+            return @"记录时间,电池ID,故障信息1,告警信息1,保护信息1,故障信息2,告警信息2,保护信息2,BCU的di状态,电池包充均衡状态,继电器状态,器件的状态,母线正极温度,负载正极温度,负载负极温度,母线负极温度,高压绝缘阻抗,辅助电源电压,保险丝后电压,Power_voltage,负载侧电压,簇最高单体电压,簇最高单体电压所在pack,簇最高单体电压所在pack的第几个位置,簇最低单体电压,簇最低单体电压所在pack,簇最低单体电压所在pack的第几位置,簇最高单体温度,簇最高单体温度所在pack,簇最高单体温度所在pack的第几个位置,簇最低单体温度,簇最低单体温度所在pack,簇最低单体温度所在pack的第几个位置,电池簇的充电电压,电池簇充电电流上限,电池簇放电电流上限,电池簇的放电截止电压,电池簇电压,电池簇电流,最高功率端子温度,电池充放电循环次数,实时剩余总容量,电池平均温度,额定功率,电池母线电压,bcu上送的bms状态,电池簇SOC,电池簇SOH,簇内电池包数量,硬件版本号,充电大电流偏压,充电小电流偏压,放电大电流偏压,放电小电流偏压,RT1环境温度,eeprom测试结果,485测试结果,CAN1测试结果,CAN2测试结果,CAN3测试结果,复位方式,干接点2输入,唤醒原因,BCU软件版本,BCU硬件版本";
         }
-
+    
         public string GetValue()
         {
-            return $"{this.CreateDate},{this.PackID},{this.Fault},{this.Warning},{this.Protection},{this.Fault2},{this.Warning2},{this.Protection2}";
-            //return $"{this.CreateDate},{this.PackID},{this.Fault},{this.Warning},{this.Protection},{this.Fault2},{this.Warning2},{this.Protection2}," +
-            //    $"{this.BatteryStatus},{this.BmsStatus},{this.ChargeEnable},{this.DischargeEnable},{this.BmuCutOffRequest},{this.BmuPowOffRequest}," +
-            //    $"{this.ForceChrgRequest},{this.ChagreStatus},{this.DischargeStatus},{this.DiIO},{this.ChargeIO},{this.HeatRequest},{this.BatteryVolt}," +
-            //    $"{this.LoadVolt},{this.BatteryCurrent},{this.SOC}, {this.SOH},{this.RemainingCapacity},{this.FullCapacity},{this.ChargeCurrentLimitation}," +
-            //    $"{this.DischargeCurrentLimitation},{this.CumulativeDischargeCapacity},{this.CumulativeChargeCapacity},{this.TotalChgCap},{this.TotalDsgCap}," +
-            //    $"{this.BatMaxCellVoltNum},{this.BatMaxCellVolt},{this.BatMinCellVoltNum},{this.BatMinCellVolt},{this.BatDiffCellVolt},{this.CellVoltage1}," +
-            //    $"{this.CellVoltage2},{this.CellVoltage3},{this.CellVoltage4},{this.CellVoltage5},{this.CellVoltage6},{this.CellVoltage7},{this.CellVoltage8}," +
-            //    $"{this.CellVoltage9},{this.CellVoltage10},{this.CellVoltage11},{this.CellVoltage12},{this.CellVoltage13},{this.CellVoltage14},{this.CellVoltage15}," +
-            //    $"{this.CellVoltage16},{this.EnvTemperature},{this.MosTemperature},{this.BalanceTemperature1},{this.BalanceTemperature2},{this.DcdcTemperature1}," +
-            //    $"{this.DcdcTemperature2},{this.BatMaxCellTempNum},{this.BatMaxCellTemp},{this.BatMinCellTempNum},{this.BatMinCellTemp},{this.CellTemperature1}, " +
-            //    $"{this.CellTemperature2}, {this.CellTemperature3}, {this.CellTemperature4},{this.CellTemperature5}, {this.CellTemperature6}, {this.CellTemperature7}, " +
-            //    $"{this.CellTemperature8}, {this.EquaState},{this.BalanceBusVoltage},{this.BalanceCurrent},{this.ActiveBalanceMaxCellVolt},{this.BatAverageTemp}," +
-            //    $"{this.ActiveBalanceCellSoc},{this.ActiveBalanceAccCap},{this.ActiveBalanceRemainCap},{this.AuxVolt},{this.ChgCurOffsetVolt},{this.DsgCurOffsetVolt}," +
-            //    $"{this.ResetMode},{this.SyncFallSoc},{this.ActiveBalanceStatus},{this.BatNominalCapacity},{this.RegisterName},{this.BatType}";
+
+            return $"{this.CreateDate},{this.PackID},{this.Fault},{this.Warning},{this.Protection},{this.Fault2},{this.Warning2},{this.Protection2}," +
+                   $"{this.Di_Status_Get},{this.Balance_Chg_Status},{this.Balance_Dchg_Status},{this.Relay_Status},{this.Other_Dev_Staus},{this.Power_Terminal_Temperature1}," +
+                   $"{this.Power_Terminal_Temperature2},{this.Power_Terminal_Temperature3},{this.Power_Terminal_Temperature4},{this.Insulation_Resistance},{this.Auxiliary_Power_Supply_Voltage},{this.Fuse_Voltage},{this.Power_Voltage}," +
+                   $"{this.Load_Voltage},{this.Bat_Max_Cell_Volt},{this.Bat_Max_Cell_VoltPack}, {this.Bat_Max_Cell_VoltNum},{this.Bat_Min_Cell_Volt},{this.Bat_Min_Cell_Volt_Pack},{this.Bat_Min_Cell_Volt_Num}," +
+                   $"{this.Bat_Max_Cell_Temp},{this.Bat_Max_Cell_Temp_Pack},{this.Bat_Max_Cell_Temp_Num},{this.Bat_Min_Cell_Temp},{this.Bat_Min_Cell_Temp_Pack}," +
+                   $"{this.Bat_Min_Cell_Temp_Num},{this.Battery_Charge_Voltage},{this.Charge_Current_Limitation},{this.Discharge_Current_Limitation},{this.Battery_Discharge_Voltage},{this.Cluster_Voltage}," +
+                   $"{this.Cluster_Current},{this.Max_Power_Terminal_Temperature},{this.Cycles},{this.Remaining_Total_Capacity},{this.Bat_Temp},{this.Cluster_Rate_Power},{this.Bat_Bus_Volt}," +
+                   $"{this.Bms_State},{this.Cluster_SOC},{this.Cluster_SOH},{this.Pack_Num},{this.HW_Version},{this.Max_Ring_Charge_Zero_Volt},{this.Min_Ring_Charge_Zero_Volt}," +
+                   $"{this.Max_Ring_Discharge_Zero_Volt},{this.Min_Ring_Discharge_Zero_Volt},{this.RT1_Tempture},{this.Eeprom_Test_Result},{this.Test_Result_485},{this.CAN1_Test_Result}," +
+                   $"{this.CAN2_Test_Result},{this.CAN3_Test_Result},{this.Reset_Mode},{this.Dry2_In_Status},{this.Wake_Source},{this.BCUSaftwareVersion},{this.BCUHardwareVersion}";
+
         }
     }
 }

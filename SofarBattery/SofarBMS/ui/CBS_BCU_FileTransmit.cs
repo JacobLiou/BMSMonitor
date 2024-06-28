@@ -42,7 +42,7 @@ SOC显示值,U8,1,1,%
 SOH显示值,U8,1,1,%
 SOC计算值,U32,1,0.001,%
 SOH计算值,U32,1,0.001,%
-电池电流,I16,1,1,mA
+电池电流,I16,1,0.01,A
 最高单体电压,U16,1,1,mV
 最低单体电压,U16,1,1,mV
 最高单体电压序号,U8,1,,
@@ -167,6 +167,8 @@ RSV6,U32,1,,";
         int questCycle = 0;
         int fileOffset = 200;
         int dataLength = 200;
+        int fileOffset_BCU = 200;
+        int readCount = 0;
 
         int fileSize = 0;
         string textStr = "";
@@ -206,11 +208,15 @@ RSV6,U32,1,,";
 
             //初始化值
             this.txtSlaveAddress.Text = FrmMain.BCU_ID.ToString();
-            this.txtSubDeviceAddress.Text = "1" ;
+            this.txtSubDeviceAddress.Text = "0" ;     
             this.cbbFileNumber.SelectedIndex = 3;
             this.cbbModeName.SelectedIndex = 0;
             this.cbbModeName.Enabled = false;
             this.ckReadAll.Checked = true;
+
+            //slaveAddress = Convert.ToInt32(txtSlaveAddress.Text);
+            //subDeviceAddress= Convert.ToInt32(txtSubDeviceAddress.Text);
+            //readCount = Convert.ToInt32(txtReadCount.Text);
         }
 
         private void btnFileTransmit_Click(object sender, EventArgs e)
@@ -279,17 +285,37 @@ RSV6,U32,1,,";
                                     {
                                         filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//{fileName}.txt";
                                     }
+                                  
+
                                     fileOffset = 200;
                                     dataLength = 200;
+                                   
                                 }
-                                questCycle = fileSize % fileOffset == 0 ? (fileSize / fileOffset - 1) : fileSize / fileOffset;//一般结果为true
+
+
+
+                                if (readType == 0)
+                                {
+                                    fileOffset_BCU = fileOffset;
+                                    questCycle = fileSize % fileOffset == 0 ? fileSize / fileOffset + 1 : (fileSize / fileOffset);//一般结果为true
+                                    //questCycle = fileSize % fileOffset == 0 ? (fileSize / fileOffset - 1) : fileSize / fileOffset;//一般结果为true
+
+                                }
+                                else
+                                {
+                                    fileOffset_BCU = ((fileSize - (readCount + 1)  * fileOffset) < 0) ? fileOffset : (fileSize - (readCount + 1) * fileOffset);
+                                    questCycle = (fileSize - fileOffset_BCU) % fileOffset == 0 ? (fileSize - fileOffset_BCU) / fileOffset : ((fileSize - fileOffset_BCU) / fileOffset - 1);
+
+                                }
+                               
+                            
                             }
 
                             if (!File.Exists(filePath))
                             {
                                 File.AppendAllText(filePath, headStr);
                             }
-
+                           
                             stepFlag = StepRemark.读文件数据内容帧;
                         }
                     }
@@ -465,11 +491,12 @@ RSV6,U32,1,,";
                                     {
                                         recount++;
                                         Debug.WriteLine("Read file data content:fail!");
+                                       
                                     }
                                     else
                                     {
                                         questCycle--;
-                                        fileOffset += dataLength;
+                                        fileOffset_BCU += dataLength;
                                     }
                                 }
                                 else
@@ -547,8 +574,8 @@ RSV6,U32,1,,";
             isResponse = false;
             stepFlag = StepRemark.None;
 
-            fileNumber = -1;
-            readType = -1;
+            //fileNumber = -1;
+            //readType = -1;
 
             questCycle = 0;
             fileOffset = 200;
@@ -579,14 +606,14 @@ RSV6,U32,1,,";
         private bool ReadFileDataContent()
         {
             byte[] canid = { 0xE0, Convert.ToByte(slaveAddress), 0xF1, 0x07 };
-
+           
             byte[] data = new byte[8];
             data[0] = 0x0;
             data[1] = (byte)subDeviceAddress;
             data[2] = (byte)fileNumber;
-            data[3] = (byte)(fileOffset & 0xff);
-            data[4] = (byte)(fileOffset >> 8);
-            data[5] = (byte)(fileOffset >> 16);
+            data[3] = (byte)(fileOffset_BCU & 0xff);
+            data[4] = (byte)(fileOffset_BCU >> 8);
+            data[5] = (byte)(fileOffset_BCU >> 16);
             data[6] = (byte)(dataLength & 0xff);
             data[7] = (byte)(dataLength >> 8);
 
@@ -678,6 +705,11 @@ RSV6,U32,1,,";
         private void txtSubDeviceAddress_TextChanged(object sender, EventArgs e)
         {
             subDeviceAddress = Convert.ToInt32(txtSubDeviceAddress.Text);
+        }
+
+        private void txtReadCount_TextChanged(object sender, EventArgs e)
+        {
+            readCount = Convert.ToInt32(txtReadCount.Text);
         }
     }
 

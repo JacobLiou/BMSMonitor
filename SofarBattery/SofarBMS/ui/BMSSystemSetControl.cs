@@ -557,8 +557,9 @@ namespace SofarBMS.UI
                     foreach (var item in buttons_bcu1.Keys)
                     {
                         Button btn = buttons_bcu1[item][bitResult1[item]];
-                        string name = btn.Name;
+                        string name = btn.Name;                      
                         btn.Enabled = false;
+                        
                     }
                     break;
 
@@ -608,8 +609,9 @@ namespace SofarBMS.UI
                     foreach (var item in buttons_bcu.Keys)
                     {
                         Button btn = buttons_bcu[item][bitResult[item]];
-                        string name = btn.Name;
+                        string name = btn.Name;                       
                         btn.Enabled = false;
+                       
                     }
                     break;
 
@@ -756,6 +758,7 @@ namespace SofarBMS.UI
                     }
                     btnSystemset_debug.Enabled = true;
                     btnSystemset_debug.Text = LanguageHelper.GetLanguage("BmsDebug_Start");
+                    btnSystemset_debug.BackColor = Color.Green;
                 }
             }
             else
@@ -785,6 +788,7 @@ namespace SofarBMS.UI
                     }
 
                     btnSystemset_debug.Text = LanguageHelper.GetLanguage("BmsDebug_End");
+                    btnSystemset_debug.BackColor = Color.Red;
                 }
             }
         }
@@ -816,6 +820,7 @@ namespace SofarBMS.UI
                     }
                     btnSystemset_debug1.Enabled = true;
                     btnSystemset_debug1.Text = LanguageHelper.GetLanguage("BmsDebug_Start");
+                    btnSystemset_debug1.BackColor = Color.Green;
                 }
             }
             else
@@ -845,6 +850,7 @@ namespace SofarBMS.UI
                     }
 
                     btnSystemset_debug1.Text = LanguageHelper.GetLanguage("BmsDebug_End");
+                    btnSystemset_debug1.BackColor = Color.Red;
                 }
             }
         }
@@ -1904,7 +1910,7 @@ namespace SofarBMS.UI
         #region BCU时间校准
         private void btnBCU_Time_Click(object sender, EventArgs e)
         {
-            canid[2] = 0xF2;
+            byte[] canid_BCU = new byte[] { 0xE0, FrmMain.BCU_ID, 0xF2, 0x10 };         
             string[] date = dateTimePicker2.Text.Split(new char[] { ' ', '-', ':' });
             bytes = new byte[] {
                                     Convert.ToByte(Convert.ToInt32(date[0]) - 2000),
@@ -1915,7 +1921,7 @@ namespace SofarBMS.UI
                                     Convert.ToByte(Convert.ToInt32(date[5])),
                                     0x00, 0x00 };
             //发送指令
-            if (ecanHelper.Send(bytes, canid))
+            if (ecanHelper.Send(bytes, canid_BCU))
             {
                 MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
             }

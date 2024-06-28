@@ -9,7 +9,7 @@ namespace SofarBMS.Model
     internal class RealtimeData_CBS5000S
     {
         public String PackID { get; set; }
-        public String CreateDate { get { return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"); } }
+        public String CreateDate { get { return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); } }
         //状态信息区
         public Double BatteryVolt { get; set; }                     //电池电压
         public Double LoadVolt { get; set; }                        //负载电压

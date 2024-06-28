@@ -167,7 +167,8 @@ namespace SofarBMS.UI
                                  new Dictionary<short, string> {{1, "pbNegativeRelay" }},
                                  new Dictionary<short, string> {{2, "pbPreChargeRelay" }},
                                  new Dictionary<short, string> {{3, "pbInsulationDetectionRelay1" }},
-                                 new Dictionary<short, string> {{4, "pbInsulationDetectionRelay2" }}
+                                 new Dictionary<short, string> {{4, "pbInsulationDetectionRelay2" }},
+                                 new Dictionary<short, string> {{5, "pbHeatingFilmRelay" }}
                              },
                              new List<Dictionary<short, string>>
                              {
@@ -477,7 +478,7 @@ namespace SofarBMS.UI
                         analysisLog(data, 0);
                         break;
                     case 0x10C6E0FF:
-                        richTextBox1.Clear(); richTextBox2.Clear(); richTextBox3.Clear();
+                        //richTextBox1.Clear(); richTextBox2.Clear(); richTextBox3.Clear();
                         analysisLog(data, 1);
                         break;
 
@@ -766,7 +767,7 @@ namespace SofarBMS.UI
                                     model.Protection = richTextBox2.Text.Replace("\n", "，").Replace("\r", "，");
                                     break;
                                 case "3":
-                                    richTextBox1.AppendText(msg[0] + "\r");
+                                    richTextBox1.AppendText(msg[0] + "\r"); 
                                     model.Fault = richTextBox1.Text.Replace("\n", "，").Replace("\r", "，");
                                     break;
                             }
@@ -812,10 +813,10 @@ namespace SofarBMS.UI
             switch (faultNum)
             {
                 case 0:
-                    faultInfos = FrmMain.FaultInfos;// 0x08:BMS发送内部电池故障信息1
+                    faultInfos = FrmMain.FaultInfos;// 0x08:BMS发送内部电池故障信息1     BCU 0x0C5
                     break;
                 case 1:
-                    faultInfos = FrmMain.FaultInfos2;//0x45:BMS发送内部电池故障信息2
+                    faultInfos = FrmMain.FaultInfos2;//0x45:BMS发送内部电池故障信息2     BCU 0x0C6
                     break;
                 case 2:
                     faultInfos = FrmMain.FaultInfos3;//0x0C3:BCU故障上报1
