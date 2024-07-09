@@ -46,12 +46,18 @@ namespace SofarBMS.UI
 
             Task.Run(() =>
             {
-                while (EcanHelper._task.Count > 0
-                    && !cts.IsCancellationRequested)
+                while (!cts.IsCancellationRequested)
                 {
-                    CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                    lock (EcanHelper._locker)
+                    {
+                        while (EcanHelper._task.Count > 0
+                        && !cts.IsCancellationRequested)
+                        {
+                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
-                    analysisData(ch.ID, ch.Data);
+                            analysisData(ch.ID, ch.Data);
+                        }
+                    }
                 }
             },cts.Token);        
         }
