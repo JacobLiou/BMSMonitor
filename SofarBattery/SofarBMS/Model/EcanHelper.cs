@@ -173,14 +173,14 @@ namespace SofarBMS.Model
                         //进入队列前，先进行筛选（集合内的ID可加入至队列，否则过滤掉）
                         foreach (Protocols item in protocols)
                         {
-                            uint index = 0x00;
-                            switch (item.Index)
-                            {
-                                case 0: index = 0xff000000; break;
-                                case 1: index = 0xff0000; break;
-                                case 2: index = 0xff00; break;
-                                case 3: index = 0xff; break;
-                            }
+                            //uint index = 0x00;
+                            //switch (item.Index)
+                            //{
+                            //    case 0: index = 0xff000000; break;
+                            //    case 1: index = 0xff0000; break;
+                            //    case 2: index = 0xff00; break;
+                            //    case 3: index = 0xff; break;
+                            //}
 
                             uint revId = coMsg.ID | 0xff;
                             uint devId = AnalysisID(coMsg.ID);
@@ -260,7 +260,7 @@ namespace SofarBMS.Model
             lock (_locker)
             {
                 //测试打印接收报文
-                //Debug.WriteLine($"{System.DateTime.Now.ToString("hh:mm:ss:fff")} 入队数据   帧ID:{CANOBJ.ID.ToString("X8")}");
+                Debug.WriteLine($"{System.DateTime.Now.ToString("hh:mm:ss:fff")} 入队数据   帧ID:{CANOBJ.ID.ToString("X8")}");
 
                 _task.Enqueue(CANOBJ);
                 _wh.Set();

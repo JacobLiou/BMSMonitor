@@ -232,7 +232,7 @@ namespace SofarBMS.UI
                                     {
                                         if (retryCount < MAX_RETRY_COUNT)
                                         {
-                                            file_size = (Convert.ToInt32(file_length / 1024) + Convert.ToInt32((file_length % 1024) != 0 ? 1 : 0) - 1);//upgradeModel.FileLength
+                                            file_size = Convert.ToInt32(file_length / 1024) + Convert.ToInt32((file_length % 1024) != 0 ? 1 : 0);//upgradeModel.FileLength
                                             startDownloadFlag1(chip_role, chip_code, file_size, 1024);
                                             retryCount++;
                                         }

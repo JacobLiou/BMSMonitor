@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -846,20 +847,25 @@ namespace SofarBMS.UI
                 {
                     if (GetBit(data[i], j) == 1)
                     {
+                        string type = "";
                         getLog(out msg, i, j, faultNum);
                         if (faultNum == 1)
                         {
                             switch (msg[1])
                             {
                                 case "1":
+                                    type = "告警";
                                     richTextBox6.AppendText(msg[0] + "\r");
                                     model.Warning2 = richTextBox3.Text.Replace("\n", "，").Replace("\r", "，");
+
                                     break;
                                 case "2":
+                                    type = "保护";
                                     richTextBox5.AppendText(msg[0] + "\r");
                                     model.Protection2 = richTextBox2.Text.Replace("\n", "，").Replace("\r", "，");
                                     break;
                                 case "3":
+                                    type = "故障";
                                     richTextBox4.AppendText(msg[0] + "\r");
                                     model.Fault2 = richTextBox1.Text.Replace("\n", "，").Replace("\r", "，");
                                     break;
@@ -870,18 +876,64 @@ namespace SofarBMS.UI
                             switch (msg[1])
                             {
                                 case "1":
+                                    type = "告警";
                                     richTextBox3.AppendText(msg[0] + "\r");
                                     model.Warning = richTextBox3.Text.Replace("\n", "，").Replace("\r", "，");
                                     break;
                                 case "2":
+                                    type = "保护";
                                     richTextBox2.AppendText(msg[0] + "\r");
                                     model.Protection = richTextBox2.Text.Replace("\n", "，").Replace("\r", "，");
                                     break;
                                 case "3":
+                                    type = "故障";
                                     richTextBox1.AppendText(msg[0] + "\r");
                                     model.Fault = richTextBox1.Text.Replace("\n", "，").Replace("\r", "，");
                                     break;
                             }
+                        }
+
+                        var query = FrmMain.AlarmList.FirstOrDefault(t => t.Id == FrmMain.BMS_ID && t.Content == "BMU:" + msg[0]);
+                        if (query == null)
+                        {
+                            FrmMain.AlarmList.Add(new AlarmInfo()
+                            {
+                                DataTime = DateTime.Now.ToString("yy-MM-dd HH:mm:ss"),
+                                Id = FrmMain.BMS_ID,
+                                Type = type,
+                                Content = $"BMU:{msg[0]}"
+                            });
+                        }
+                    }
+                    else
+                    {
+                        getLog(out msg, i, j, faultNum);
+                        string type = "";
+                        switch (msg[1])
+                        {
+                            case "1":
+                                type = "告警";
+                                break;
+                            case "2":
+                                type = "保护";
+                                break;
+                            case "3":
+                                type = "故障";
+                                break;
+                        }
+
+                        var query = FrmMain.AlarmList.FirstOrDefault(t => t.Id == FrmMain.BMS_ID && t.Type == type && t.Content == "BMU:" + msg[0] && t.State == 0);
+                        if (query != null)
+                        {
+                            query.State = 1;
+                            FrmMain.AlarmList.Add(new AlarmInfo()
+                            {
+                                DataTime = DateTime.Now.ToString("yy-MM-dd HH:mm:ss"),
+                                State = 1,
+                                Id = FrmMain.BMS_ID,
+                                Type = type,
+                                Content = $"[解除]BMU:{msg[0]}"
+                            });
                         }
                     }
                 }

@@ -1,4 +1,5 @@
-﻿using SofarBMS.Helper;
+﻿using NPOI.SS.Formula.Functions;
+using SofarBMS.Helper;
 using SofarBMS.Model;
 using System;
 using System.Collections.Generic;
@@ -726,7 +727,6 @@ namespace SofarBMS.UI
         /// <returns></returns>
         private void analysisLog(byte[] data, int faultNum)
         {
-
             string[] msg = new string[2];
 
             for (int i = 0; i < data.Length; i++)
@@ -736,21 +736,25 @@ namespace SofarBMS.UI
                     if (GetBit(data[i], j) == 1)
                     {
                         getLog(out msg, i, j, faultNum);
+                        string type = "";
                         if (faultNum == 2)
                         {
                             switch (msg[1])
                             {
                                 case "1":
                                     richTextBox6.AppendText(msg[0] + "\r");
-                                    model.Warning2 = richTextBox3.Text.Replace("\n", "，").Replace("\r", "，");
+                                    model.Warning2 = richTextBox6.Text.Replace("\n", "，").Replace("\r", "，");
+                                    type = "告警";
                                     break;
                                 case "2":
                                     richTextBox5.AppendText(msg[0] + "\r");
-                                    model.Protection2 = richTextBox2.Text.Replace("\n", "，").Replace("\r", "，");
+                                    model.Protection2 = richTextBox5.Text.Replace("\n", "，").Replace("\r", "，");
+                                    type = "保护";
                                     break;
                                 case "3":
                                     richTextBox4.AppendText(msg[0] + "\r");
-                                    model.Fault2 = richTextBox1.Text.Replace("\n", "，").Replace("\r", "，");
+                                    model.Fault2 = richTextBox4.Text.Replace("\n", "，").Replace("\r", "，");
+                                    type = "故障";
                                     break;
                             }
                         }
@@ -761,16 +765,62 @@ namespace SofarBMS.UI
                                 case "1":
                                     richTextBox3.AppendText(msg[0] + "\r");
                                     model.Warning = richTextBox3.Text.Replace("\n", "，").Replace("\r", "，");
+                                    type = "告警";
                                     break;
                                 case "2":
                                     richTextBox2.AppendText(msg[0] + "\r");
                                     model.Protection = richTextBox2.Text.Replace("\n", "，").Replace("\r", "，");
+                                    type = "保护";
                                     break;
                                 case "3":
-                                    richTextBox1.AppendText(msg[0] + "\r"); 
+                                    richTextBox1.AppendText(msg[0] + "\r");
                                     model.Fault = richTextBox1.Text.Replace("\n", "，").Replace("\r", "，");
+                                    type = "故障";
                                     break;
                             }
+                        }
+
+                        var query = FrmMain.AlarmList.FirstOrDefault(t => t.Id == FrmMain.BMS_ID && t.Content == "BCU:" + msg[0]);
+                        if (query == null)
+                        {
+                            FrmMain.AlarmList.Add(new AlarmInfo()
+                            {
+                                DataTime = DateTime.Now.ToString("yy-MM-dd HH:mm:ss"),
+                                Id = FrmMain.BMS_ID,
+                                Type = type,
+                                Content = $"BCU:{msg[0]}"
+                            });
+                        }
+                    }
+                    else
+                    {
+                        getLog(out msg, i, j, faultNum);
+                        string type = "";
+                        switch (msg[1])
+                        {
+                            case "1":
+                                type = "告警";
+                                break;
+                            case "2":
+                                type = "保护";
+                                break;
+                            case "3":
+                                type = "故障";
+                                break;
+                        }
+
+                        var query = FrmMain.AlarmList.FirstOrDefault(t => t.Id == FrmMain.BMS_ID && t.Type == type && t.Content == "BMU:" + msg[0] && t.State == 0);
+                        if (query != null)
+                        {
+                            query.State = 1;
+                            FrmMain.AlarmList.Add(new AlarmInfo()
+                            {
+                                DataTime = DateTime.Now.ToString("yy-MM-dd HH:mm:ss"),
+                                State = 1,
+                                Id = FrmMain.BMS_ID,
+                                Type = type,
+                                Content = $"[解除]BCU:{msg[0]}"
+                            });
                         }
                     }
                 }

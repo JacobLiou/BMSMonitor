@@ -20,7 +20,7 @@ namespace SofarBMS.UI
         private EcanHelper ecanHelper = EcanHelper.Instance;
 
         //变量定义
-        private readonly string FiveMinHeadStr = "时间年,月,日,时,分,秒,电池采集电压(mV),电池累计电压(mV),SOC显示值(%),SOH显示值(%),SOC计算值,SOH计算值,电池电流(mA),最高单体电压(mV),最低单体电压(mV),最高单体电压序号,最低单体电压序号,最高单体温度(℃),最低单体温度(℃),最高单体温度序号,最低单体温度序号,BMU编号,系统状态,充放电使能,切断请求,关机请求,充电电流上限(A),放电电流上限(A),保护1,保护2,告警1,告警2,故障1,故障2,故障1,故障2,故障3,故障4,主动均衡状态,均衡母线电压(mV),均衡母线电流(mA),辅助供电电压(mV),满充容量(Ah),循环次数,累计放电安时(Ah),累计充电安时(Ah),累计放电瓦时(Wh),累计充电瓦时(Wh),环境温度(℃),DCDC温度1(℃),均衡温度1(℃),均衡温度2(℃),功率端子温度1(℃),功率端子温度2(℃),其他温度1(℃),其他温度2(℃),其他温度3(℃),其他温度4(℃),1-16串均衡状态,单体电压1(mV),单体电压2(mV),单体电压3(mV),单体电压4(mV),单体电压5(mV),单体电压6(mV),单体电压7(mV),单体电压8(mV),单体电压9(mV),单体电压10(mV),单体电压11(mV),单体电压12(mV),单体电压13(mV),单体电压14(mV),单体电压15(mV),单体电压16(mV),单体温度1(℃),单体温度2(℃),单体温度3(℃),单体温度4(℃),单体温度5(℃),单体温度6(℃),单体温度7(℃),单体温度8(℃),单体温度9(℃),单体温度10(℃),单体温度11(℃),单体温度12(℃),单体温度13(℃),单体温度14(℃),单体温度15(℃),单体温度16(℃),RSV1,RSV2,RSV3,RSV4,RSV5,RSV6\r\n";
+        private readonly string FiveMinHeadStr = "时间年,月,日,时,分,秒,电池簇累加电压(V),SOC(%),SOH(%),电池簇电流(A),继电器状态,风扇状态,继电器切断请求,BCU状态,充放电使能,保护信息1,保护信息2,保护信息3,保护信息4,告警信息1,告警信息2,最高pack电压(V),最低pack电压(V),最高pack电压序号,最低pack电压序号,簇号,簇内电池包个数,高压绝缘阻抗(V),保险丝后电压(V),母线侧电压(V),负载端电压(V),辅助电源电压(V),电池簇的充电电压(V),电池簇充电电流上限(A),电池簇放电电流上限(A),电池簇的放电截止电压(V),电池包均衡状态,最高功率端子温度(℃),环境温度(℃),累计充电安时(Ah),累计放电安时(Ah),累计充电瓦时(Wh),累计放电瓦时(Wh),BMU编号,单体电压1(mV),单体电压2(mV),单体电压3(mV),单体电压4(mV),单体电压5(mV),单体电压6(mV),单体电压7(mV),单体电压8(mV),单体电压9(mV),单体电压10(mV),单体电压11(mV),单体电压12(mV),单体电压13(mV),单体电压14(mV),单体电压15(mV),单体电压16(mV),PACK1最大单体电压(mV),PACK2最大单体电压(mV),PACK3最大单体电压(mV),PACK4最大单体电压(mV),PACK5最大单体电压(mV),PACK6最大单体电压(mV),PACK7最大单体电压(mV),PACK8最大单体电压(mV),PACK9最大单体电压(mV),PACK10最大单体电压(mV),PACK1最小单体电压(mV),PACK2最小单体电压(mV),PACK3最小单体电压(mV),PACK4最小单体电压(mV),PACK5最小单体电压(mV),PACK6最小单体电压(mV),PACK7最小单体电压(mV),PACK8最小单体电压(mV),PACK9最小单体电压(mV),PACK10最小单体电压(mV),PACK1平均单体电压(mV),PACK2平均单体电压(mV),PACK3平均单体电压(mV),PACK4平均单体电压(mV),PACK5平均单体电压(mV),PACK6平均单体电压(mV),PACK7平均单体电压(mV),PACK8平均单体电压(mV),PACK9平均单体电压(mV),PACK10平均单体电压(mV),PACK1最大单体温度(℃),PACK2最大单体温度(℃),PACK3最大单体温度(℃),PACK4最大单体温度(℃),PACK5最大单体温度(℃),PACK6最大单体温度(℃),PACK7最大单体温度(℃),PACK8最大单体温度(℃),PACK9最大单体温度(℃),PACK10最大单体温度(℃),PACK1最小单体温度(℃),PACK2最小单体温度(℃),PACK3最小单体温度(℃),PACK4最小单体温度(℃),PACK5最小单体温度(℃),PACK6最小单体温度(℃),PACK7最小单体温度(℃),PACK8最小单体温度(℃),PACK9最小单体温度(℃),PACK10最小单体温度(℃),告警信息3,告警信息4,RSV2\r\n";
         private readonly string FaultRecordStr = "电流(A),最大电压(mV),最小电压(mV),最大温度(℃),最小温度(℃)\r\n";
         private readonly string HistoryEventStr = "时间年,月,日,时,分,秒,事件类型\r\n";
 
@@ -36,59 +36,44 @@ namespace SofarBMS.UI
 时间-时,U8,1,1,1,
 时间-分,U8,1,1,1,
 时间-秒,U8,1,1,1,
-电池采样电压,U16,1,1,mV
-电池累计电压,U16,1,1,mV
-SOC显示值,U8,1,1,%
-SOH显示值,U8,1,1,%
-SOC计算值,U32,1,0.001,%
-SOH计算值,U32,1,0.001,%
-电池电流,I16,1,0.01,A
-最高单体电压,U16,1,1,mV
-最低单体电压,U16,1,1,mV
-最高单体电压序号,U8,1,,
-最低单体电压序号,U8,1,,
-最高单体温度,I16,1,0.1,℃
-最低单体温度,I16,1,0.1,℃
-最高单体温度序号,U8,1,,
-最低单体温度序号,U8,1,,
-BMU编号,U8,1,,
-系统状态,U8,1,,
-充放电使能,U16,1,,
-切断请求,U8,1,,
-关机请求,U8,1,,
-充电电流上限,U16,1,1,A
-放电电流上限,U16,1,1,A
-保护1,U16,1,,
-保护2,U16,1,,
-告警1,U16,1,,
-告警2,U16,1,,
-故障1,U16,1,,
-故障2,U16,1,,
-告警3,U16,1,,
-告警4,U16,1,,
-故障3,U16,1,,
-故障4,U16,1,,
-主动均衡状态,U16,1,,
-均衡母线电压,U16,1,,mV
-均衡母线电流,I16,1,,mA
-辅助供电电压,U16,1,,mV
-满充容量,U16,1,,Ah
-循环次数,U16,1,,
+电池簇累加电压,U16,1,0.1,V
+电池簇SOC,U8,1,1,%
+电池簇SOH,U8,1,1,%
+电池簇电流,I16,1,0.01,A
+继电器状态,U16,1,1,
+风扇状态,U8,1,1,
+继电器切断请求,U8,1,1,
+BCU状态,U8,1,1,
+充放电使能,U16,1,1,
+保护信息1,U16,1,,
+保护信息2,U16,1,,
+保护信息3,U16,1,,
+保护信息4,U16,1,,
+告警信息1,U16,1,,
+告警信息2,U16,1,,
+最高pack电压,U16,1,0.1,V
+最低pack电压,U16,1,0.1,V
+最高pack电压序号,U8,1,1,号
+最低pack电压序号,U8,1,1,号
+簇号,U8,1,,号
+簇内电池包个数,U8,1,1,个
+高压绝缘阻抗,U16,1,0.1,V
+保险丝后电压,U16,1,0,1,V
+母线侧电压,U16,1,0.1,V
+负载端电压,U16,1,0.1,V
+辅助电源电压,U16,1,0.1,V
+电池簇的充电电压,U16,1,0.1,V
+电池簇充电电流上限,U16,1,0.1,A
+电池簇放电电流上限,U16,1,0.1,A
+电池簇的放电截止电压,U16,1,0.1,V
+电池包均衡状态,U16,1,,
+最高功率端子温度,I16,1,0.1,℃
+环境温度,I16,1,0.1,℃
 累计放电安时,U32,1,1,Ah
 累计充电安时,U32,1,1,Ah
 累计放电瓦时,U32,1,1,Wh
 累计充电瓦时,U32,1,1,Wh
-环境温度,I16,1,0.1,℃
-dcdc温度1,I16,1,0.1,℃
-均衡温度1,I16,1,0.1,℃
-均衡温度2,I16,1,0.1,℃
-功率端子温度1,I16,1,0.1,℃
-功率端子温度2,I16,1,0.1,℃
-其他温度1,I16,1,0.1,℃
-其他温度2,I16,1,0.1,℃
-其他温度3,I16,1,0.1,℃
-其他温度4,I16,1,0.1,℃
-1-16串均衡状态,U16,1,1,
+BMU编号,U8,1,,号
 单体电压1,U16,1,1,mV
 单体电压2,U16,1,1,mV
 单体电压3,U16,1,1,mV
@@ -105,28 +90,59 @@ dcdc温度1,I16,1,0.1,℃
 单体电压14,U16,1,1,mV
 单体电压15,U16,1,1,mV
 单体电压16,U16,1,1,mV
-单体温度1,I16,1,0.1,℃
-单体温度2,I16,1,0.1,℃
-单体温度3,I16,1,0.1,℃
-单体温度4,I16,1,0.1,℃
-单体温度5,I16,1,0.1,℃
-单体温度6,I16,1,0.1,℃
-单体温度7,I16,1,0.1,℃
-单体温度8,I16,1,0.1,℃
-单体温度9,I16,1,0.1,℃
-单体温度10,I16,1,0.1,℃
-单体温度11,I16,1,0.1,℃
-单体温度12,I16,1,0.1,℃
-单体温度13,I16,1,0.1,℃
-单体温度14,I16,1,0.1,℃
-单体温度15,I16,1,0.1,℃
-单体温度16,I16,1,0.1,℃
-RSV1,U16,1,,
-RSV2,U32,1,,
-RSV3,U32,1,,
-RSV4,U32,1,,
-RSV5,U32,1,,
-RSV6,U32,1,,";
+PACK1最大单体电压,U16,1,1,mV
+PACK2最大单体电压,U16,1,1,mV
+PACK3最大单体电压,U16,1,1,mV
+PACK4最大单体电压,U16,1,1,mV
+PACK5最大单体电压,U16,1,1,mV
+PACK6最大单体电压,U16,1,1,mV
+PACK7最大单体电压,U16,1,1,mV
+PACK8最大单体电压,U16,1,1,mV
+PACK9最大单体电压,U16,1,1,mV
+PACK10最大单体电压,U16,1,1,mV
+PACK1最小单体电压,U16,1,1,mV
+PACK2最小单体电压,U16,1,1,mV
+PACK3最小单体电压,U16,1,1,mV
+PACK4最小单体电压,U16,1,1,mV
+PACK5最小单体电压,U16,1,1,mV
+PACK6最小单体电压,U16,1,1,mV
+PACK7最小单体电压,U16,1,1,mV
+PACK8最小单体电压,U16,1,1,mV
+PACK9最小单体电压,U16,1,1,mV
+PACK10最小单体电压,U16,1,1,mV
+PACK1平均单体电压,U16,1,1,mV
+PACK2平均单体电压,U16,1,1,mV
+PACK3平均单体电压,U16,1,1,mV
+PACK4平均单体电压,U16,1,1,mV
+PACK5平均单体电压,U16,1,1,mV
+PACK6平均单体电压,U16,1,1,mV
+PACK7平均单体电压,U16,1,1,mV
+PACK8平均单体电压,U16,1,1,mV
+PACK9平均单体电压,U16,1,1,mV
+PACK10平均单体电压,U16,1,1,mV
+PACK1最大单体温度,I8,1,1,℃
+PACK2最大单体温度,I8,1,1,℃
+PACK3最大单体温度,I8,1,1,℃
+PACK4最大单体温度,I8,1,1,℃
+PACK5最大单体温度,I8,1,1,℃
+PACK6最大单体温度,I8,1,1,℃
+PACK7最大单体温度,I8,1,1,℃
+PACK8最大单体温度,I8,1,1,℃
+PACK9最大单体温度,I8,1,1,℃
+PACK10最大单体温度,I8,1,1,℃
+PACK1最小单体温度,I8,1,1,℃
+PACK2最小单体温度,I8,1,1,℃
+PACK3最小单体温度,I8,1,1,℃
+PACK4最小单体温度,I8,1,1,℃
+PACK5最小单体温度,I8,1,1,℃
+PACK6最小单体温度,I8,1,1,℃
+PACK7最小单体温度,I8,1,1,℃
+PACK8最小单体温度,I8,1,1,℃
+PACK9最小单体温度,I8,1,1,℃
+PACK10最小单体温度,I8,1,1,℃
+告警信息3,U16,1,,
+告警信息4,U16,1,,
+RSV2,U32,1,,";
         private readonly string HistoryEventText = @"时间-年,U8,1,1,1,
 时间-月,U8,1,1,1,
 时间-日,U8,1,1,1,
@@ -169,6 +185,7 @@ RSV6,U32,1,,";
         int dataLength = 200;
         int fileOffset_BCU = 200;
         int readCount = 0;
+        int readIndex = 0;
 
         int fileSize = 0;
         string textStr = "";
@@ -208,7 +225,7 @@ RSV6,U32,1,,";
 
             //初始化值
             this.txtSlaveAddress.Text = FrmMain.BCU_ID.ToString();
-            this.txtSubDeviceAddress.Text = "0" ;     
+            this.txtSubDeviceAddress.Text = "0";
             this.cbbFileNumber.SelectedIndex = 3;
             this.cbbModeName.SelectedIndex = 0;
             this.cbbModeName.Enabled = false;
@@ -223,6 +240,17 @@ RSV6,U32,1,,";
         {
             fileNumber = cbbFileNumber.SelectedIndex;//确认解析点表
             readType = ckReadAll.Checked ? 0 : 1;
+
+            //if (readType == 1)
+            //{
+            //    if (!int.TryParse(txtStartLocal.Text, out readIndex))
+            //    {
+            //        MessageBox.Show("起始地址错误，终止操作！");
+            //        return;
+            //    }
+
+            //    fileOffset *= readIndex;//变更起始偏移地址
+            //}
 
             StartTransmit();
         }
@@ -285,11 +313,11 @@ RSV6,U32,1,,";
                                     {
                                         filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//{fileName}.txt";
                                     }
-                                  
+
 
                                     fileOffset = 200;
                                     dataLength = 200;
-                                   
+
                                 }
 
 
@@ -303,19 +331,19 @@ RSV6,U32,1,,";
                                 }
                                 else
                                 {
-                                    fileOffset_BCU = ((fileSize - (readCount + 1)  * fileOffset) < 0) ? fileOffset : (fileSize - (readCount + 1) * fileOffset);
-                                    questCycle = (fileSize - fileOffset_BCU) % fileOffset == 0 ? (fileSize - fileOffset_BCU) / fileOffset : ((fileSize - fileOffset_BCU) / fileOffset - 1);
+                                    fileOffset_BCU = ((fileSize - readCount * fileOffset) < 0) ? fileOffset : (fileSize - readCount * fileOffset);
+                                    questCycle = (fileSize - fileOffset_BCU) % fileOffset == 0 ? ((fileSize - fileOffset_BCU) / fileOffset) + 1 : ((fileSize - fileOffset_BCU) / fileOffset);
 
                                 }
-                               
-                            
+
+
                             }
 
                             if (!File.Exists(filePath))
                             {
                                 File.AppendAllText(filePath, headStr);
                             }
-                           
+
                             stepFlag = StepRemark.读文件数据内容帧;
                         }
                     }
@@ -397,6 +425,7 @@ RSV6,U32,1,,";
         {
             StringBuilder valList = new StringBuilder();
             int index = 0;
+            bool toHex = false;
 
             List<ProtocolModel> _protocols = ToProtocol(textStr);
             for (int i = 0; i < _protocols.Count; i++)
@@ -404,33 +433,73 @@ RSV6,U32,1,,";
                 ProtocolModel model = _protocols[i];
                 object val = null;
 
-                switch (model.DataType)
+                if (toHex)
                 {
-                    case "U8":
-                        val = Convert.ToByte(dataBuffer[index++]);
-                        break;
-                    case "U16":
-                        byte[] bytes = new byte[2];
+                    switch (model.DataType)
+                    {
+                        case "U8":
+                            val = $"0x{dataBuffer[index++].ToString("X2")}";
+                            break;
+                        case "U16":
+                            byte[] bytes = new byte[2];
 
-                        int byte1 = bytes[0] = dataBuffer[index++];
-                        int byte2 = bytes[1] = dataBuffer[index++];
-                        val = byte1 + (byte2 << 8);
-                        break;
-                    case "I16":
-                        string byteStr1 = dataBuffer[index++].ToString("X2");
-                        string byteStr2 = dataBuffer[index++].ToString("X2");
-                        val = Convert.ToInt16(byteStr2 + byteStr1, 16);
-                        break;
-                    case "U32":
-                        val = (dataBuffer[index++] & 0xff) + (dataBuffer[index++] << 8) + (dataBuffer[index++] << 16) + (dataBuffer[index++] << 24);
-                        break;
-                    default:
-                        break;
+                            int byte1 = bytes[0] = dataBuffer[index++];
+                            int byte2 = bytes[1] = dataBuffer[index++];
+                            val = $"0x{(byte1 + (byte2 << 8)).ToString("X4")}";
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (model.DataType)
+                    {
+                        case "U8":
+                            val = Convert.ToByte(dataBuffer[index++]);
+                            break;
+                        case "U16":
+                            byte[] bytes = new byte[2];
+
+                            int byte1 = bytes[0] = dataBuffer[index++];
+                            int byte2 = bytes[1] = dataBuffer[index++];
+                            val = byte1 + (byte2 << 8);
+                            break;
+                        case "I16":
+                            string byteStr1 = dataBuffer[index++].ToString("X2");
+                            string byteStr2 = dataBuffer[index++].ToString("X2");
+                            val = Convert.ToInt16(byteStr2 + byteStr1, 16);
+                            break;
+                        case "U32":
+                            val = (dataBuffer[index++] & 0xff) + (dataBuffer[index++] << 8) + (dataBuffer[index++] << 16) + (dataBuffer[index++] << 24);
+                            break;
+                        default:
+                            break;
+                    }
+
+                    model.Value = (model.Accuracy * Convert.ToDouble(val)).ToString();
+
                 }
 
-                model.Value = (model.Accuracy * Convert.ToDouble(val)).ToString();
-
                 valList.Append(model.Value + ",");
+
+                // toHex=true 直接按16进制显示
+                if (model.Name == "电池簇电流")
+                {
+                    toHex = true;
+                }
+                else if (model.Name == "告警信息2")
+                {
+                    toHex = false;
+                }
+                else if (model.Name == "PACK10最小单体温度")
+                {
+                    toHex = true;
+                }
+                else if (model.Name == "告警信息4")
+                {
+                    toHex = false;
+                }
             }
 
             return valList.ToString();
@@ -491,7 +560,7 @@ RSV6,U32,1,,";
                                     {
                                         recount++;
                                         Debug.WriteLine("Read file data content:fail!");
-                                       
+
                                     }
                                     else
                                     {
@@ -543,7 +612,7 @@ RSV6,U32,1,,";
                             break;
                         }
 
-                        Thread.Sleep(100);
+                        Thread.Sleep(20);
                     }
                 });
             }
@@ -606,7 +675,7 @@ RSV6,U32,1,,";
         private bool ReadFileDataContent()
         {
             byte[] canid = { 0xE0, Convert.ToByte(slaveAddress), 0xF1, 0x07 };
-           
+
             byte[] data = new byte[8];
             data[0] = 0x0;
             data[1] = (byte)subDeviceAddress;

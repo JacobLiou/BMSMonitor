@@ -189,6 +189,12 @@
     <Compile Include="FrmAbout.Designer.cs">
       <DependentUpon>FrmAbout.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAlarm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAlarm.Designer.cs">
+      <DependentUpon>FrmAlarm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +216,7 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\AlarmInfo.cs" />
     <Compile Include="Model\BatteryState.cs" />
     <Compile Include="Helper\Crc16.cs" />
     <Compile Include="Model\EcanHelper.cs" />
@@ -324,6 +331,9 @@
     </Compile>
     <EmbeddedResource Include="FrmAbout.resx">
       <DependentUpon>FrmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAlarm.resx">
+      <DependentUpon>FrmAlarm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConfig.resx">
       <DependentUpon>FrmConfig.cs</DependentUpon>

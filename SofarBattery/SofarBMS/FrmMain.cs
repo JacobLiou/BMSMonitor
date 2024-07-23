@@ -11,6 +11,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -19,6 +20,9 @@ using System.Windows.Forms;
 
 namespace SofarBMS
 {
+    // 1.定义委托
+    public delegate void TransactEventHandler(List<AlarmInfo> infos);
+
     public partial class FrmMain : Form
     {
         public static string WIN_ID;
@@ -227,6 +231,11 @@ StartListen,启动总线监听,Start bus listen";
         public static List<int> Main_ids { get; set; } = new List<int>();
         public Dictionary<int, RealtimeData_GTX5000S> allQueue = new Dictionary<int, RealtimeData_GTX5000S>();
         public static bool flag { get; set; }
+
+        // 3.声明委托对象
+        public TransactEventHandler _transaction;
+
+        public static HashSet<AlarmInfo> AlarmList = new HashSet<AlarmInfo>();
 
         public FrmMain()
         {
@@ -723,7 +732,7 @@ StartListen,启动总线监听,Start bus listen";
             //BCU模块
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_55"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_56"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_57"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));       
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_57"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
 
             //添加“语言”菜单
             tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_4"), Menu.Items, null);
@@ -763,7 +772,7 @@ StartListen,启动总线监听,Start bus listen";
                 { LanguageHelper.GetLanguage("tsmi_54"), new CBSFileTransmit() },
                 { LanguageHelper.GetLanguage("tsmi_55"), new CBS_BCU_Control() },
                 { LanguageHelper.GetLanguage("tsmi_56"), new CBS_BCU_ParamControl() },
-                { LanguageHelper.GetLanguage("tsmi_57"), new CBS_BCU_FileTransmit() },              
+                { LanguageHelper.GetLanguage("tsmi_57"), new CBS_BCU_FileTransmit() },
             };
 
             bool isUserControl = false;
@@ -1296,6 +1305,17 @@ StartListen,启动总线监听,Start bus listen";
             }
 
             ecanHelper.StartListen = flag;
+        }
+
+        private void btnAlarmInfo_Click(object sender, EventArgs e)
+        {
+            FrmAlarm frm = new FrmAlarm();
+            // 4.建立连接关系
+            this._transaction = frm.ToReceived;
+
+            // 5.触发委托
+            this._transaction.Invoke(AlarmList.ToList());
+            frm.Show();
         }
     }
 }
