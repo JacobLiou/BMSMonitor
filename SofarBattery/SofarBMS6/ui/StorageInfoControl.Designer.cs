@@ -92,7 +92,7 @@
             this.btnExport.FlatAppearance.BorderSize = 0;
             this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnExport.ForeColor = System.Drawing.Color.Black;
-            //this.btnExport.Image = global::SofarBMS.Properties.Resources.daochu;
+            this.btnExport.Image = Resources.daochu;
             this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExport.Location = new System.Drawing.Point(948, 8);
             this.btnExport.Name = "btnExport";
@@ -107,7 +107,7 @@
             this.btn_01.FlatAppearance.BorderSize = 0;
             this.btn_01.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_01.ForeColor = System.Drawing.Color.Black;
-            //this.btn_01.Image = global::SofarBMS.Properties.Resources.zhongzhi;
+            this.btn_01.Image = Resources.zhongzhi;
             this.btn_01.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_01.Location = new System.Drawing.Point(63, 8);
             this.btn_01.Name = "btn_01";
@@ -122,7 +122,7 @@
             this.btn_03.FlatAppearance.BorderSize = 0;
             this.btn_03.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_03.ForeColor = System.Drawing.Color.Black;
-            //this.btn_03.Image = global::SofarBMS.Properties.Resources.zanting;
+            this.btn_03.Image = Resources.zanting;
             this.btn_03.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_03.Location = new System.Drawing.Point(500, 8);
             this.btn_03.Name = "btn_03";
@@ -137,7 +137,7 @@
             this.btn_04.FlatAppearance.BorderSize = 0;
             this.btn_04.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_04.ForeColor = System.Drawing.Color.Black;
-            //this.btn_04.Image = global::SofarBMS.Properties.Resources.qingkong;
+            this.btn_04.Image = Resources.qingkong;
             this.btn_04.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_04.Location = new System.Drawing.Point(724, 8);
             this.btn_04.Name = "btn_04";
@@ -152,7 +152,7 @@
             this.btn_02.FlatAppearance.BorderSize = 0;
             this.btn_02.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_02.ForeColor = System.Drawing.Color.Black;
-            //this.btn_02.Image = global::SofarBMS.Properties.Resources.duqushujuku;
+            this.btn_02.Image = Resources.duqushujuku;
             this.btn_02.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_02.Location = new System.Drawing.Point(276, 8);
             this.btn_02.Name = "btn_02";

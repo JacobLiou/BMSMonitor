@@ -61,6 +61,11 @@
     <Compile Update="ListViewBuff.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Update="ui\BMSControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -111,6 +116,10 @@
   <ItemGroup>
     <EmbeddedResource Update="FrmMain.resx">
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="ui\RTAControl.resx">
       <SubType>Designer</SubType>

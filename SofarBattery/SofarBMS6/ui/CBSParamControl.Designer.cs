@@ -566,7 +566,7 @@
             this.btnParameter_71.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnParameter_71.FlatAppearance.BorderSize = 0;
             this.btnParameter_71.ForeColor = System.Drawing.Color.Black;
-            //this.btnParameter_71.Image = global::SofarBMS.Properties.Resources.xierushujuku;
+            this.btnParameter_71.Image = Resources.xierushujuku;
             this.btnParameter_71.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnParameter_71.Location = new System.Drawing.Point(10, 58);
             this.btnParameter_71.Name = "btnParameter_71";
@@ -581,7 +581,7 @@
             this.btnParameter_72.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnParameter_72.FlatAppearance.BorderSize = 0;
             this.btnParameter_72.ForeColor = System.Drawing.Color.Black;
-            //this.btnParameter_72.Image = global::SofarBMS.Properties.Resources.chushihua;
+            this.btnParameter_72.Image = Resources.chushihua;
             this.btnParameter_72.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnParameter_72.Location = new System.Drawing.Point(10, 101);
             this.btnParameter_72.Name = "btnParameter_72";
@@ -1680,7 +1680,7 @@
             this.btnParameter_74.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnParameter_74.FlatAppearance.BorderSize = 0;
             this.btnParameter_74.ForeColor = System.Drawing.Color.Black;
-            //this.btnParameter_74.Image = global::SofarBMS.Properties.Resources.daochu;
+            this.btnParameter_74.Image = Resources.daochu;
             this.btnParameter_74.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnParameter_74.Location = new System.Drawing.Point(10, 187);
             this.btnParameter_74.Name = "btnParameter_74";
@@ -1695,7 +1695,7 @@
             this.btnParameter_73.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnParameter_73.FlatAppearance.BorderSize = 0;
             this.btnParameter_73.ForeColor = System.Drawing.Color.Black;
-            //this.btnParameter_73.Image = global::SofarBMS.Properties.Resources.daoru;
+            this.btnParameter_73.Image = Resources.daoru;
             this.btnParameter_73.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnParameter_73.Location = new System.Drawing.Point(10, 144);
             this.btnParameter_73.Name = "btnParameter_73";
@@ -1710,7 +1710,7 @@
             this.btnParameter_70.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnParameter_70.FlatAppearance.BorderSize = 0;
             this.btnParameter_70.ForeColor = System.Drawing.Color.Black;
-            //this.btnParameter_70.Image = global::SofarBMS.Properties.Resources.duqushujuku;
+            this.btnParameter_70.Image = Resources.duqushujuku;
             this.btnParameter_70.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnParameter_70.Location = new System.Drawing.Point(10, 15);
             this.btnParameter_70.Name = "btnParameter_70";
