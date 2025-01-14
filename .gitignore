@@ -4,3 +4,5 @@ obj/
 packages/
 /A4_BMS电池上位机/Publish
 /SofarBattery/SofarBMS/obj/Debug
+/SofarBattery/.vs/SofarBMS/v17/.suo
+/SofarBattery/SofarBMS/bin/Debug/SofarBMS.exe.config
