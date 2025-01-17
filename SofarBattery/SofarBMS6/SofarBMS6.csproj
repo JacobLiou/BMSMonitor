@@ -35,6 +35,8 @@
 
   <ItemGroup>
     <PackageReference Include="log4net" Version="3.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
     <PackageReference Include="Microsoft.Office.Interop.Excel" Version="15.0.4795.1000" />
     <PackageReference Include="MySql.Data" Version="8.0.31" />
     <PackageReference Include="NPOI" Version="2.7.2" />
@@ -127,6 +129,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="db\RealtimeDataBase">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

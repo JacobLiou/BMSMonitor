@@ -708,8 +708,8 @@ StartListen,启动总线监听,Start bus listen";
         /// </summary>
         private void InitMenuStrip()
         {
-            LanguageHelper.LanaguageIndex = Convert.ToInt32(ConfigurationManager.AppSettings["LanaguageIndex"]);
-
+            //LanguageHelper.LanaguageIndex = Convert.ToInt32(ConfigurationManager.AppSettings["LanaguageIndex"]);
+            LanguageHelper.LanaguageIndex = Convert.ToInt32(ConfigHelper.ReadConfig("LanaguageIndex"));
             //MenuStrip控件声明
             ToolStripMenuItem tsmiMenu;
 
@@ -848,11 +848,11 @@ StartListen,启动总线监听,Start bus listen";
 
         private void SaveAppsetting(string val)
         {
-            string file = System.Windows.Forms.Application.ExecutablePath;
-            Configuration config = ConfigurationManager.OpenExeConfiguration(file);
-            config.AppSettings.Settings["LanaguageIndex"].Value = val;
-            config.Save(ConfigurationSaveMode.Modified);
-            ConfigurationManager.RefreshSection("appSettings");
+
+            //ConfigurationManager.AppSettings["LanaguageIndex"] = val;
+            //ConfigurationManager.RefreshSection("appSettings");
+
+           var change = ConfigHelper.SaveConfig("LanaguageIndex", val);
         }
 
         private void AddMenuClick(UserControl bc)

@@ -1269,5 +1269,10 @@ Can通信故障,Can1CommFault
             }
             return numbers;
         }
+
+        private void gbRealtimeData_101_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

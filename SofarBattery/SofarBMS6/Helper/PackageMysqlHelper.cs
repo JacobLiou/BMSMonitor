@@ -14,8 +14,8 @@ namespace SofarBMS.Helper
     /// </summary>
     public class PackageMysqlHelper
     {
-        private static string connectionStrings = ConfigurationManager.AppSettings["ConnectionSQLString"]?? "server=172.30.16.147;database=sh_db;uid=zhaokai;pwd=zhaokai;";
-
+        //private static string connectionStrings = ConfigurationManager.AppSettings["ConnectionSQLString"]?? "server=172.30.16.147;database=sh_db;uid=zhaokai;pwd=zhaokai;";
+        private static string connectionStrings = ConfigHelper.ReadConfig("ConnectionSQLString") ?? "server=172.30.16.147;database=sh_db;uid=zhaokai;pwd=zhaokai;";
         static MySqlConnection conn = new MySqlConnection(connectionStrings);
 
         public static bool IsConnectioned { get; set; } = false;

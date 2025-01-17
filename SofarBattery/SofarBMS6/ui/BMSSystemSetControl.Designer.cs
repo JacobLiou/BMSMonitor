@@ -454,7 +454,7 @@
             gbSystemset_04.Margin = new Padding(11, 14, 11, 14);
             gbSystemset_04.Name = "gbSystemset_04";
             gbSystemset_04.Padding = new Padding(6, 7, 6, 7);
-            gbSystemset_04.Size = new Size(388, 943);
+            gbSystemset_04.Size = new Size(358, 619);
             gbSystemset_04.TabIndex = 37;
             gbSystemset_04.TabStop = false;
             gbSystemset_04.Text = "开关控制";
@@ -463,11 +463,11 @@
             // 
             btnSystemset_45_Lifted10.AutoSize = true;
             btnSystemset_45_Lifted10.Enabled = false;
-            btnSystemset_45_Lifted10.Location = new Point(295, 494);
+            btnSystemset_45_Lifted10.Location = new Point(272, 409);
             btnSystemset_45_Lifted10.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_Lifted10.Name = "btnSystemset_45_Lifted10";
             btnSystemset_45_Lifted10.Padding = new Padding(1);
-            btnSystemset_45_Lifted10.Size = new Size(81, 39);
+            btnSystemset_45_Lifted10.Size = new Size(67, 29);
             btnSystemset_45_Lifted10.TabIndex = 46;
             btnSystemset_45_Lifted10.Text = "解除";
             btnSystemset_45_Lifted10.UseVisualStyleBackColor = true;
@@ -476,11 +476,11 @@
             // 
             btnSystemset_43_Close10.AutoSize = true;
             btnSystemset_43_Close10.Enabled = false;
-            btnSystemset_43_Close10.Location = new Point(207, 496);
+            btnSystemset_43_Close10.Location = new Point(198, 409);
             btnSystemset_43_Close10.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_Close10.Name = "btnSystemset_43_Close10";
             btnSystemset_43_Close10.Padding = new Padding(1);
-            btnSystemset_43_Close10.Size = new Size(81, 39);
+            btnSystemset_43_Close10.Size = new Size(68, 29);
             btnSystemset_43_Close10.TabIndex = 45;
             btnSystemset_43_Close10.Text = "关闭";
             btnSystemset_43_Close10.UseVisualStyleBackColor = true;
@@ -489,11 +489,11 @@
             // 
             btnSystemset_44_Open10.AutoSize = true;
             btnSystemset_44_Open10.Enabled = false;
-            btnSystemset_44_Open10.Location = new Point(122, 496);
+            btnSystemset_44_Open10.Location = new Point(122, 409);
             btnSystemset_44_Open10.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_Open10.Name = "btnSystemset_44_Open10";
             btnSystemset_44_Open10.Padding = new Padding(1);
-            btnSystemset_44_Open10.Size = new Size(81, 39);
+            btnSystemset_44_Open10.Size = new Size(70, 29);
             btnSystemset_44_Open10.TabIndex = 44;
             btnSystemset_44_Open10.Text = "打开";
             btnSystemset_44_Open10.UseVisualStyleBackColor = true;
@@ -501,7 +501,7 @@
             // lblSystemset_52
             // 
             lblSystemset_52.AutoSize = true;
-            lblSystemset_52.Location = new Point(10, 503);
+            lblSystemset_52.Location = new Point(10, 416);
             lblSystemset_52.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_52.Name = "lblSystemset_52";
             lblSystemset_52.Size = new Size(145, 17);
@@ -512,11 +512,11 @@
             // 
             btnSystemset_45_Lifted3.AutoSize = true;
             btnSystemset_45_Lifted3.Enabled = false;
-            btnSystemset_45_Lifted3.Location = new Point(295, 211);
+            btnSystemset_45_Lifted3.Location = new Point(272, 166);
             btnSystemset_45_Lifted3.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_Lifted3.Name = "btnSystemset_45_Lifted3";
             btnSystemset_45_Lifted3.Padding = new Padding(1);
-            btnSystemset_45_Lifted3.Size = new Size(81, 39);
+            btnSystemset_45_Lifted3.Size = new Size(67, 29);
             btnSystemset_45_Lifted3.TabIndex = 42;
             btnSystemset_45_Lifted3.Text = "解除";
             btnSystemset_45_Lifted3.UseVisualStyleBackColor = true;
@@ -526,11 +526,11 @@
             // 
             btnSystemset_43_Close3.AutoSize = true;
             btnSystemset_43_Close3.Enabled = false;
-            btnSystemset_43_Close3.Location = new Point(207, 213);
+            btnSystemset_43_Close3.Location = new Point(198, 166);
             btnSystemset_43_Close3.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_Close3.Name = "btnSystemset_43_Close3";
             btnSystemset_43_Close3.Padding = new Padding(1);
-            btnSystemset_43_Close3.Size = new Size(81, 39);
+            btnSystemset_43_Close3.Size = new Size(68, 29);
             btnSystemset_43_Close3.TabIndex = 41;
             btnSystemset_43_Close3.Text = "关闭";
             btnSystemset_43_Close3.UseVisualStyleBackColor = true;
@@ -540,11 +540,11 @@
             // 
             btnSystemset_44_Open3.AutoSize = true;
             btnSystemset_44_Open3.Enabled = false;
-            btnSystemset_44_Open3.Location = new Point(122, 213);
+            btnSystemset_44_Open3.Location = new Point(122, 166);
             btnSystemset_44_Open3.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_Open3.Name = "btnSystemset_44_Open3";
             btnSystemset_44_Open3.Padding = new Padding(1);
-            btnSystemset_44_Open3.Size = new Size(81, 39);
+            btnSystemset_44_Open3.Size = new Size(70, 29);
             btnSystemset_44_Open3.TabIndex = 40;
             btnSystemset_44_Open3.Text = "打开";
             btnSystemset_44_Open3.UseVisualStyleBackColor = true;
@@ -553,7 +553,7 @@
             // lblSystemset_07
             // 
             lblSystemset_07.AutoSize = true;
-            lblSystemset_07.Location = new Point(10, 220);
+            lblSystemset_07.Location = new Point(10, 173);
             lblSystemset_07.Name = "lblSystemset_07";
             lblSystemset_07.Size = new Size(81, 17);
             lblSystemset_07.TabIndex = 39;
@@ -567,10 +567,10 @@
             btnSystemset_47.ForeColor = Color.White;
             btnSystemset_47.Image = Resources.debugtool;
             btnSystemset_47.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSystemset_47.Location = new Point(13, 32);
+            btnSystemset_47.Location = new Point(13, 23);
             btnSystemset_47.Margin = new Padding(4, 5, 4, 5);
             btnSystemset_47.Name = "btnSystemset_47";
-            btnSystemset_47.Size = new Size(364, 43);
+            btnSystemset_47.Size = new Size(326, 29);
             btnSystemset_47.TabIndex = 38;
             btnSystemset_47.Text = "开始调试";
             btnSystemset_47.UseVisualStyleBackColor = false;
@@ -580,11 +580,11 @@
             // 
             btnSystemset_45_Lifted9.AutoSize = true;
             btnSystemset_45_Lifted9.Enabled = false;
-            btnSystemset_45_Lifted9.Location = new Point(295, 607);
+            btnSystemset_45_Lifted9.Location = new Point(272, 499);
             btnSystemset_45_Lifted9.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_Lifted9.Name = "btnSystemset_45_Lifted9";
             btnSystemset_45_Lifted9.Padding = new Padding(1);
-            btnSystemset_45_Lifted9.Size = new Size(81, 39);
+            btnSystemset_45_Lifted9.Size = new Size(67, 29);
             btnSystemset_45_Lifted9.TabIndex = 38;
             btnSystemset_45_Lifted9.Text = "解除";
             btnSystemset_45_Lifted9.UseVisualStyleBackColor = true;
@@ -594,11 +594,11 @@
             // 
             btnSystemset_45_Lifted8.AutoSize = true;
             btnSystemset_45_Lifted8.Enabled = false;
-            btnSystemset_45_Lifted8.Location = new Point(295, 551);
+            btnSystemset_45_Lifted8.Location = new Point(272, 454);
             btnSystemset_45_Lifted8.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_Lifted8.Name = "btnSystemset_45_Lifted8";
             btnSystemset_45_Lifted8.Padding = new Padding(1);
-            btnSystemset_45_Lifted8.Size = new Size(81, 39);
+            btnSystemset_45_Lifted8.Size = new Size(67, 29);
             btnSystemset_45_Lifted8.TabIndex = 37;
             btnSystemset_45_Lifted8.Text = "解除";
             btnSystemset_45_Lifted8.UseVisualStyleBackColor = true;
@@ -608,11 +608,11 @@
             // 
             btnSystemset_45_Lifted7.AutoSize = true;
             btnSystemset_45_Lifted7.Enabled = false;
-            btnSystemset_45_Lifted7.Location = new Point(295, 437);
+            btnSystemset_45_Lifted7.Location = new Point(272, 360);
             btnSystemset_45_Lifted7.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_Lifted7.Name = "btnSystemset_45_Lifted7";
             btnSystemset_45_Lifted7.Padding = new Padding(1);
-            btnSystemset_45_Lifted7.Size = new Size(81, 39);
+            btnSystemset_45_Lifted7.Size = new Size(67, 29);
             btnSystemset_45_Lifted7.TabIndex = 36;
             btnSystemset_45_Lifted7.Text = "解除";
             btnSystemset_45_Lifted7.UseVisualStyleBackColor = true;
@@ -622,11 +622,11 @@
             // 
             btnSystemset_43_Close9.AutoSize = true;
             btnSystemset_43_Close9.Enabled = false;
-            btnSystemset_43_Close9.Location = new Point(207, 610);
+            btnSystemset_43_Close9.Location = new Point(198, 499);
             btnSystemset_43_Close9.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_Close9.Name = "btnSystemset_43_Close9";
             btnSystemset_43_Close9.Padding = new Padding(1);
-            btnSystemset_43_Close9.Size = new Size(81, 39);
+            btnSystemset_43_Close9.Size = new Size(68, 29);
             btnSystemset_43_Close9.TabIndex = 35;
             btnSystemset_43_Close9.Text = "关闭";
             btnSystemset_43_Close9.UseVisualStyleBackColor = true;
@@ -636,11 +636,11 @@
             // 
             btnSystemset_44_Open9.AutoSize = true;
             btnSystemset_44_Open9.Enabled = false;
-            btnSystemset_44_Open9.Location = new Point(122, 610);
+            btnSystemset_44_Open9.Location = new Point(122, 499);
             btnSystemset_44_Open9.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_Open9.Name = "btnSystemset_44_Open9";
             btnSystemset_44_Open9.Padding = new Padding(1);
-            btnSystemset_44_Open9.Size = new Size(81, 39);
+            btnSystemset_44_Open9.Size = new Size(70, 29);
             btnSystemset_44_Open9.TabIndex = 34;
             btnSystemset_44_Open9.Text = "打开";
             btnSystemset_44_Open9.UseVisualStyleBackColor = true;
@@ -650,11 +650,11 @@
             // 
             btnSystemset_43_Close8.AutoSize = true;
             btnSystemset_43_Close8.Enabled = false;
-            btnSystemset_43_Close8.Location = new Point(207, 553);
+            btnSystemset_43_Close8.Location = new Point(198, 454);
             btnSystemset_43_Close8.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_Close8.Name = "btnSystemset_43_Close8";
             btnSystemset_43_Close8.Padding = new Padding(1);
-            btnSystemset_43_Close8.Size = new Size(81, 39);
+            btnSystemset_43_Close8.Size = new Size(68, 29);
             btnSystemset_43_Close8.TabIndex = 33;
             btnSystemset_43_Close8.Text = "关闭";
             btnSystemset_43_Close8.UseVisualStyleBackColor = true;
@@ -663,7 +663,7 @@
             // lblSystemset_13
             // 
             lblSystemset_13.AutoSize = true;
-            lblSystemset_13.Location = new Point(10, 617);
+            lblSystemset_13.Location = new Point(10, 506);
             lblSystemset_13.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_13.Name = "lblSystemset_13";
             lblSystemset_13.Size = new Size(55, 17);
@@ -674,11 +674,11 @@
             // 
             btnSystemset_43_Close7.AutoSize = true;
             btnSystemset_43_Close7.Enabled = false;
-            btnSystemset_43_Close7.Location = new Point(207, 440);
+            btnSystemset_43_Close7.Location = new Point(198, 360);
             btnSystemset_43_Close7.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_Close7.Name = "btnSystemset_43_Close7";
             btnSystemset_43_Close7.Padding = new Padding(1);
-            btnSystemset_43_Close7.Size = new Size(81, 39);
+            btnSystemset_43_Close7.Size = new Size(68, 29);
             btnSystemset_43_Close7.TabIndex = 31;
             btnSystemset_43_Close7.Text = "关闭";
             btnSystemset_43_Close7.UseVisualStyleBackColor = true;
@@ -688,11 +688,11 @@
             // 
             btnSystemset_44_Open8.AutoSize = true;
             btnSystemset_44_Open8.Enabled = false;
-            btnSystemset_44_Open8.Location = new Point(122, 553);
+            btnSystemset_44_Open8.Location = new Point(122, 454);
             btnSystemset_44_Open8.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_Open8.Name = "btnSystemset_44_Open8";
             btnSystemset_44_Open8.Padding = new Padding(1);
-            btnSystemset_44_Open8.Size = new Size(81, 39);
+            btnSystemset_44_Open8.Size = new Size(70, 29);
             btnSystemset_44_Open8.TabIndex = 32;
             btnSystemset_44_Open8.Text = "打开";
             btnSystemset_44_Open8.UseVisualStyleBackColor = true;
@@ -702,11 +702,11 @@
             // 
             btnSystemset_44_Open7.AutoSize = true;
             btnSystemset_44_Open7.Enabled = false;
-            btnSystemset_44_Open7.Location = new Point(122, 440);
+            btnSystemset_44_Open7.Location = new Point(122, 360);
             btnSystemset_44_Open7.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_Open7.Name = "btnSystemset_44_Open7";
             btnSystemset_44_Open7.Padding = new Padding(1);
-            btnSystemset_44_Open7.Size = new Size(81, 39);
+            btnSystemset_44_Open7.Size = new Size(70, 29);
             btnSystemset_44_Open7.TabIndex = 30;
             btnSystemset_44_Open7.Text = "打开";
             btnSystemset_44_Open7.UseVisualStyleBackColor = true;
@@ -715,7 +715,7 @@
             // lblSystemset_11
             // 
             lblSystemset_11.AutoSize = true;
-            lblSystemset_11.Location = new Point(10, 447);
+            lblSystemset_11.Location = new Point(10, 367);
             lblSystemset_11.Name = "lblSystemset_11";
             lblSystemset_11.Size = new Size(56, 17);
             lblSystemset_11.TabIndex = 27;
@@ -724,7 +724,7 @@
             // lblSystemset_12
             // 
             lblSystemset_12.AutoSize = true;
-            lblSystemset_12.Location = new Point(10, 560);
+            lblSystemset_12.Location = new Point(10, 461);
             lblSystemset_12.Name = "lblSystemset_12";
             lblSystemset_12.Size = new Size(43, 17);
             lblSystemset_12.TabIndex = 29;
@@ -734,11 +734,11 @@
             // 
             btnSystemset_45_Lifted4.AutoSize = true;
             btnSystemset_45_Lifted4.Enabled = false;
-            btnSystemset_45_Lifted4.Location = new Point(295, 267);
+            btnSystemset_45_Lifted4.Location = new Point(272, 216);
             btnSystemset_45_Lifted4.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_Lifted4.Name = "btnSystemset_45_Lifted4";
             btnSystemset_45_Lifted4.Padding = new Padding(1);
-            btnSystemset_45_Lifted4.Size = new Size(81, 39);
+            btnSystemset_45_Lifted4.Size = new Size(67, 29);
             btnSystemset_45_Lifted4.TabIndex = 26;
             btnSystemset_45_Lifted4.Text = "解除";
             btnSystemset_45_Lifted4.UseVisualStyleBackColor = true;
@@ -748,11 +748,11 @@
             // 
             btnSystemset_45_Lifted5.AutoSize = true;
             btnSystemset_45_Lifted5.Enabled = false;
-            btnSystemset_45_Lifted5.Location = new Point(295, 324);
+            btnSystemset_45_Lifted5.Location = new Point(272, 265);
             btnSystemset_45_Lifted5.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_Lifted5.Name = "btnSystemset_45_Lifted5";
             btnSystemset_45_Lifted5.Padding = new Padding(1);
-            btnSystemset_45_Lifted5.Size = new Size(81, 39);
+            btnSystemset_45_Lifted5.Size = new Size(67, 29);
             btnSystemset_45_Lifted5.TabIndex = 25;
             btnSystemset_45_Lifted5.Text = "解除";
             btnSystemset_45_Lifted5.UseVisualStyleBackColor = true;
@@ -762,11 +762,11 @@
             // 
             btnSystemset_45_Lifted6.AutoSize = true;
             btnSystemset_45_Lifted6.Enabled = false;
-            btnSystemset_45_Lifted6.Location = new Point(295, 381);
+            btnSystemset_45_Lifted6.Location = new Point(272, 312);
             btnSystemset_45_Lifted6.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_Lifted6.Name = "btnSystemset_45_Lifted6";
             btnSystemset_45_Lifted6.Padding = new Padding(1);
-            btnSystemset_45_Lifted6.Size = new Size(81, 39);
+            btnSystemset_45_Lifted6.Size = new Size(67, 29);
             btnSystemset_45_Lifted6.TabIndex = 24;
             btnSystemset_45_Lifted6.Text = "解除";
             btnSystemset_45_Lifted6.UseVisualStyleBackColor = true;
@@ -776,11 +776,11 @@
             // 
             btnSystemset_45_Lifted2.AutoSize = true;
             btnSystemset_45_Lifted2.Enabled = false;
-            btnSystemset_45_Lifted2.Location = new Point(295, 154);
+            btnSystemset_45_Lifted2.Location = new Point(272, 118);
             btnSystemset_45_Lifted2.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_Lifted2.Name = "btnSystemset_45_Lifted2";
             btnSystemset_45_Lifted2.Padding = new Padding(1);
-            btnSystemset_45_Lifted2.Size = new Size(81, 39);
+            btnSystemset_45_Lifted2.Size = new Size(67, 29);
             btnSystemset_45_Lifted2.TabIndex = 22;
             btnSystemset_45_Lifted2.Text = "解除";
             btnSystemset_45_Lifted2.UseVisualStyleBackColor = true;
@@ -789,11 +789,11 @@
             // 
             btnSystemset_45_Lifted1.AutoSize = true;
             btnSystemset_45_Lifted1.Enabled = false;
-            btnSystemset_45_Lifted1.Location = new Point(295, 97);
+            btnSystemset_45_Lifted1.Location = new Point(272, 68);
             btnSystemset_45_Lifted1.Margin = new Padding(4, 5, 4, 5);
             btnSystemset_45_Lifted1.Name = "btnSystemset_45_Lifted1";
             btnSystemset_45_Lifted1.Padding = new Padding(1);
-            btnSystemset_45_Lifted1.Size = new Size(81, 39);
+            btnSystemset_45_Lifted1.Size = new Size(67, 29);
             btnSystemset_45_Lifted1.TabIndex = 21;
             btnSystemset_45_Lifted1.Text = "解除";
             btnSystemset_45_Lifted1.UseVisualStyleBackColor = true;
@@ -802,11 +802,11 @@
             // 
             btnSystemset_43_Close4.AutoSize = true;
             btnSystemset_43_Close4.Enabled = false;
-            btnSystemset_43_Close4.Location = new Point(207, 270);
+            btnSystemset_43_Close4.Location = new Point(198, 216);
             btnSystemset_43_Close4.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_Close4.Name = "btnSystemset_43_Close4";
             btnSystemset_43_Close4.Padding = new Padding(1);
-            btnSystemset_43_Close4.Size = new Size(81, 39);
+            btnSystemset_43_Close4.Size = new Size(68, 29);
             btnSystemset_43_Close4.TabIndex = 20;
             btnSystemset_43_Close4.Text = "关闭";
             btnSystemset_43_Close4.UseVisualStyleBackColor = true;
@@ -816,11 +816,11 @@
             // 
             btnSystemset_44_Open4.AutoSize = true;
             btnSystemset_44_Open4.Enabled = false;
-            btnSystemset_44_Open4.Location = new Point(122, 270);
+            btnSystemset_44_Open4.Location = new Point(122, 216);
             btnSystemset_44_Open4.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_Open4.Name = "btnSystemset_44_Open4";
             btnSystemset_44_Open4.Padding = new Padding(1);
-            btnSystemset_44_Open4.Size = new Size(81, 39);
+            btnSystemset_44_Open4.Size = new Size(70, 29);
             btnSystemset_44_Open4.TabIndex = 19;
             btnSystemset_44_Open4.Text = "打开";
             btnSystemset_44_Open4.UseVisualStyleBackColor = true;
@@ -830,11 +830,11 @@
             // 
             btnSystemset_43_Close5.AutoSize = true;
             btnSystemset_43_Close5.Enabled = false;
-            btnSystemset_43_Close5.Location = new Point(207, 326);
+            btnSystemset_43_Close5.Location = new Point(198, 265);
             btnSystemset_43_Close5.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_Close5.Name = "btnSystemset_43_Close5";
             btnSystemset_43_Close5.Padding = new Padding(1);
-            btnSystemset_43_Close5.Size = new Size(81, 39);
+            btnSystemset_43_Close5.Size = new Size(68, 29);
             btnSystemset_43_Close5.TabIndex = 18;
             btnSystemset_43_Close5.Text = "关闭";
             btnSystemset_43_Close5.UseVisualStyleBackColor = true;
@@ -843,7 +843,7 @@
             // lblSystemset_08
             // 
             lblSystemset_08.AutoSize = true;
-            lblSystemset_08.Location = new Point(10, 277);
+            lblSystemset_08.Location = new Point(10, 223);
             lblSystemset_08.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_08.Name = "lblSystemset_08";
             lblSystemset_08.Size = new Size(68, 17);
@@ -854,11 +854,11 @@
             // 
             btnSystemset_43_Close6.AutoSize = true;
             btnSystemset_43_Close6.Enabled = false;
-            btnSystemset_43_Close6.Location = new Point(207, 383);
+            btnSystemset_43_Close6.Location = new Point(198, 312);
             btnSystemset_43_Close6.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_Close6.Name = "btnSystemset_43_Close6";
             btnSystemset_43_Close6.Padding = new Padding(1);
-            btnSystemset_43_Close6.Size = new Size(81, 39);
+            btnSystemset_43_Close6.Size = new Size(68, 29);
             btnSystemset_43_Close6.TabIndex = 15;
             btnSystemset_43_Close6.Text = "关闭";
             btnSystemset_43_Close6.UseVisualStyleBackColor = true;
@@ -868,11 +868,11 @@
             // 
             btnSystemset_44_Open5.AutoSize = true;
             btnSystemset_44_Open5.Enabled = false;
-            btnSystemset_44_Open5.Location = new Point(122, 326);
+            btnSystemset_44_Open5.Location = new Point(122, 265);
             btnSystemset_44_Open5.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_Open5.Name = "btnSystemset_44_Open5";
             btnSystemset_44_Open5.Padding = new Padding(1);
-            btnSystemset_44_Open5.Size = new Size(81, 39);
+            btnSystemset_44_Open5.Size = new Size(70, 29);
             btnSystemset_44_Open5.TabIndex = 16;
             btnSystemset_44_Open5.Text = "打开";
             btnSystemset_44_Open5.UseVisualStyleBackColor = true;
@@ -882,11 +882,11 @@
             // 
             btnSystemset_44_Open6.AutoSize = true;
             btnSystemset_44_Open6.Enabled = false;
-            btnSystemset_44_Open6.Location = new Point(122, 383);
+            btnSystemset_44_Open6.Location = new Point(122, 312);
             btnSystemset_44_Open6.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_Open6.Name = "btnSystemset_44_Open6";
             btnSystemset_44_Open6.Padding = new Padding(1);
-            btnSystemset_44_Open6.Size = new Size(81, 39);
+            btnSystemset_44_Open6.Size = new Size(70, 29);
             btnSystemset_44_Open6.TabIndex = 14;
             btnSystemset_44_Open6.Text = "打开";
             btnSystemset_44_Open6.UseVisualStyleBackColor = true;
@@ -896,11 +896,11 @@
             // 
             btnSystemset_43_Close2.AutoSize = true;
             btnSystemset_43_Close2.Enabled = false;
-            btnSystemset_43_Close2.Location = new Point(207, 156);
+            btnSystemset_43_Close2.Location = new Point(198, 118);
             btnSystemset_43_Close2.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_Close2.Name = "btnSystemset_43_Close2";
             btnSystemset_43_Close2.Padding = new Padding(1);
-            btnSystemset_43_Close2.Size = new Size(81, 39);
+            btnSystemset_43_Close2.Size = new Size(68, 29);
             btnSystemset_43_Close2.TabIndex = 11;
             btnSystemset_43_Close2.Text = "关闭";
             btnSystemset_43_Close2.UseVisualStyleBackColor = true;
@@ -910,11 +910,11 @@
             // 
             btnSystemset_44_Open2.AutoSize = true;
             btnSystemset_44_Open2.Enabled = false;
-            btnSystemset_44_Open2.Location = new Point(122, 156);
+            btnSystemset_44_Open2.Location = new Point(122, 118);
             btnSystemset_44_Open2.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_Open2.Name = "btnSystemset_44_Open2";
             btnSystemset_44_Open2.Padding = new Padding(1);
-            btnSystemset_44_Open2.Size = new Size(81, 39);
+            btnSystemset_44_Open2.Size = new Size(70, 29);
             btnSystemset_44_Open2.TabIndex = 10;
             btnSystemset_44_Open2.Text = "打开";
             btnSystemset_44_Open2.UseVisualStyleBackColor = true;
@@ -924,11 +924,11 @@
             // 
             btnSystemset_43_Close1.AutoSize = true;
             btnSystemset_43_Close1.Enabled = false;
-            btnSystemset_43_Close1.Location = new Point(207, 100);
+            btnSystemset_43_Close1.Location = new Point(198, 71);
             btnSystemset_43_Close1.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_Close1.Name = "btnSystemset_43_Close1";
             btnSystemset_43_Close1.Padding = new Padding(1);
-            btnSystemset_43_Close1.Size = new Size(81, 39);
+            btnSystemset_43_Close1.Size = new Size(68, 29);
             btnSystemset_43_Close1.TabIndex = 9;
             btnSystemset_43_Close1.Text = "关闭";
             btnSystemset_43_Close1.UseVisualStyleBackColor = true;
@@ -938,11 +938,11 @@
             // 
             btnSystemset_44_Open1.AutoSize = true;
             btnSystemset_44_Open1.Enabled = false;
-            btnSystemset_44_Open1.Location = new Point(122, 100);
+            btnSystemset_44_Open1.Location = new Point(122, 71);
             btnSystemset_44_Open1.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_Open1.Name = "btnSystemset_44_Open1";
             btnSystemset_44_Open1.Padding = new Padding(1);
-            btnSystemset_44_Open1.Size = new Size(81, 39);
+            btnSystemset_44_Open1.Size = new Size(70, 29);
             btnSystemset_44_Open1.TabIndex = 8;
             btnSystemset_44_Open1.Text = "打开";
             btnSystemset_44_Open1.UseVisualStyleBackColor = true;
@@ -951,7 +951,7 @@
             // lblSystemset_10
             // 
             lblSystemset_10.AutoSize = true;
-            lblSystemset_10.Location = new Point(10, 390);
+            lblSystemset_10.Location = new Point(10, 319);
             lblSystemset_10.Name = "lblSystemset_10";
             lblSystemset_10.Size = new Size(68, 17);
             lblSystemset_10.TabIndex = 3;
@@ -960,7 +960,7 @@
             // lblSystemset_06
             // 
             lblSystemset_06.AutoSize = true;
-            lblSystemset_06.Location = new Point(10, 163);
+            lblSystemset_06.Location = new Point(10, 127);
             lblSystemset_06.Name = "lblSystemset_06";
             lblSystemset_06.Size = new Size(81, 17);
             lblSystemset_06.TabIndex = 1;
@@ -969,7 +969,7 @@
             // lblSystemset_09
             // 
             lblSystemset_09.AutoSize = true;
-            lblSystemset_09.Location = new Point(10, 333);
+            lblSystemset_09.Location = new Point(10, 272);
             lblSystemset_09.Name = "lblSystemset_09";
             lblSystemset_09.Size = new Size(56, 17);
             lblSystemset_09.TabIndex = 5;
@@ -978,7 +978,7 @@
             // lblSystemset_05
             // 
             lblSystemset_05.AutoSize = true;
-            lblSystemset_05.Location = new Point(10, 107);
+            lblSystemset_05.Location = new Point(10, 78);
             lblSystemset_05.Name = "lblSystemset_05";
             lblSystemset_05.Size = new Size(81, 17);
             lblSystemset_05.TabIndex = 0;
@@ -987,11 +987,11 @@
             // btnSetPackSN
             // 
             btnSetPackSN.AutoSize = true;
-            btnSetPackSN.Location = new Point(245, 34);
+            btnSetPackSN.Location = new Point(245, 21);
             btnSetPackSN.Margin = new Padding(3, 1, 3, 1);
             btnSetPackSN.Name = "btnSetPackSN";
             btnSetPackSN.Padding = new Padding(1);
-            btnSetPackSN.Size = new Size(88, 39);
+            btnSetPackSN.Size = new Size(88, 29);
             btnSetPackSN.TabIndex = 11;
             btnSetPackSN.Text = "设置";
             btnSetPackSN.UseVisualStyleBackColor = true;
@@ -1000,11 +1000,11 @@
             // btnSetTime
             // 
             btnSetTime.AutoSize = true;
-            btnSetTime.Location = new Point(935, 34);
+            btnSetTime.Location = new Point(935, 21);
             btnSetTime.Margin = new Padding(3, 1, 3, 1);
             btnSetTime.Name = "btnSetTime";
             btnSetTime.Padding = new Padding(1);
-            btnSetTime.Size = new Size(84, 39);
+            btnSetTime.Size = new Size(84, 29);
             btnSetTime.TabIndex = 10;
             btnSetTime.Text = "设置";
             btnSetTime.UseVisualStyleBackColor = true;
@@ -1012,7 +1012,7 @@
             // 
             // txt_67
             // 
-            txt_67.Location = new Point(64, 39);
+            txt_67.Location = new Point(64, 26);
             txt_67.Margin = new Padding(4, 5, 4, 5);
             txt_67.Name = "txt_67";
             txt_67.Size = new Size(176, 23);
@@ -1021,7 +1021,7 @@
             // lblSystemset_01
             // 
             lblSystemset_01.AutoSize = true;
-            lblSystemset_01.Location = new Point(15, 44);
+            lblSystemset_01.Location = new Point(15, 31);
             lblSystemset_01.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_01.Name = "lblSystemset_01";
             lblSystemset_01.Size = new Size(44, 17);
@@ -1031,7 +1031,7 @@
             // lblSystemset_03
             // 
             lblSystemset_03.AutoSize = true;
-            lblSystemset_03.Location = new Point(704, 44);
+            lblSystemset_03.Location = new Point(704, 31);
             lblSystemset_03.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_03.Name = "lblSystemset_03";
             lblSystemset_03.Size = new Size(32, 17);
@@ -1040,18 +1040,18 @@
             // 
             // txtCalibration01
             // 
-            txtCalibration01.Location = new Point(234, 103);
+            txtCalibration01.Location = new Point(167, 70);
             txtCalibration01.Margin = new Padding(4, 5, 4, 5);
             txtCalibration01.Name = "txtCalibration01";
-            txtCalibration01.Size = new Size(87, 23);
+            txtCalibration01.Size = new Size(83, 23);
             txtCalibration01.TabIndex = 6;
             // 
             // txt_0
             // 
-            txt_0.Location = new Point(234, 505);
+            txt_0.Location = new Point(167, 393);
             txt_0.Margin = new Padding(4, 5, 4, 5);
             txt_0.Name = "txt_0";
-            txt_0.Size = new Size(87, 23);
+            txt_0.Size = new Size(83, 23);
             txt_0.TabIndex = 10;
             txt_0.Text = "0";
             txt_0.Visible = false;
@@ -1059,11 +1059,11 @@
             // btnSetVoltage
             // 
             btnSetVoltage.AutoSize = true;
-            btnSetVoltage.Location = new Point(682, 100);
+            btnSetVoltage.Location = new Point(611, 67);
             btnSetVoltage.Margin = new Padding(3, 1, 3, 1);
             btnSetVoltage.Name = "btnSetVoltage";
             btnSetVoltage.Padding = new Padding(1);
-            btnSetVoltage.Size = new Size(84, 39);
+            btnSetVoltage.Size = new Size(84, 29);
             btnSetVoltage.TabIndex = 15;
             btnSetVoltage.Text = "设置";
             btnSetVoltage.UseVisualStyleBackColor = true;
@@ -1071,7 +1071,7 @@
             // 
             // txt_62
             // 
-            txt_62.Location = new Point(594, 216);
+            txt_62.Location = new Point(523, 162);
             txt_62.Margin = new Padding(3, 2, 3, 2);
             txt_62.Name = "txt_62";
             txt_62.Size = new Size(81, 23);
@@ -1080,7 +1080,7 @@
             // lblSystemset_23
             // 
             lblSystemset_23.AutoSize = true;
-            lblSystemset_23.Location = new Point(431, 222);
+            lblSystemset_23.Location = new Point(360, 168);
             lblSystemset_23.Name = "lblSystemset_23";
             lblSystemset_23.Size = new Size(107, 17);
             lblSystemset_23.TabIndex = 12;
@@ -1088,7 +1088,7 @@
             // 
             // txt_61
             // 
-            txt_61.Location = new Point(594, 160);
+            txt_61.Location = new Point(523, 117);
             txt_61.Margin = new Padding(3, 2, 3, 2);
             txt_61.Name = "txt_61";
             txt_61.Size = new Size(81, 23);
@@ -1096,7 +1096,7 @@
             // 
             // txt_60
             // 
-            txt_60.Location = new Point(594, 103);
+            txt_60.Location = new Point(523, 70);
             txt_60.Margin = new Padding(3, 2, 3, 2);
             txt_60.Name = "txt_60";
             txt_60.Size = new Size(81, 23);
@@ -1105,7 +1105,7 @@
             // lblSystemset_22
             // 
             lblSystemset_22.AutoSize = true;
-            lblSystemset_22.Location = new Point(431, 165);
+            lblSystemset_22.Location = new Point(360, 122);
             lblSystemset_22.Name = "lblSystemset_22";
             lblSystemset_22.Size = new Size(114, 17);
             lblSystemset_22.TabIndex = 1;
@@ -1114,7 +1114,7 @@
             // lblSystemset_21
             // 
             lblSystemset_21.AutoSize = true;
-            lblSystemset_21.Location = new Point(431, 109);
+            lblSystemset_21.Location = new Point(360, 76);
             lblSystemset_21.Name = "lblSystemset_21";
             lblSystemset_21.Size = new Size(81, 17);
             lblSystemset_21.TabIndex = 0;
@@ -1123,11 +1123,11 @@
             // btnSetSOC
             // 
             btnSetSOC.AutoSize = true;
-            btnSetSOC.Location = new Point(682, 381);
+            btnSetSOC.Location = new Point(611, 302);
             btnSetSOC.Margin = new Padding(3, 1, 3, 1);
             btnSetSOC.Name = "btnSetSOC";
             btnSetSOC.Padding = new Padding(1);
-            btnSetSOC.Size = new Size(84, 39);
+            btnSetSOC.Size = new Size(84, 29);
             btnSetSOC.TabIndex = 16;
             btnSetSOC.Text = "设置";
             btnSetSOC.UseVisualStyleBackColor = true;
@@ -1135,7 +1135,7 @@
             // 
             // txt_65
             // 
-            txt_65.Location = new Point(594, 386);
+            txt_65.Location = new Point(523, 303);
             txt_65.Margin = new Padding(3, 2, 3, 2);
             txt_65.Name = "txt_65";
             txt_65.Size = new Size(81, 23);
@@ -1144,7 +1144,7 @@
             // lblSystemset_26
             // 
             lblSystemset_26.AutoSize = true;
-            lblSystemset_26.Location = new Point(431, 392);
+            lblSystemset_26.Location = new Point(360, 309);
             lblSystemset_26.Name = "lblSystemset_26";
             lblSystemset_26.Size = new Size(89, 17);
             lblSystemset_26.TabIndex = 0;
@@ -1153,11 +1153,11 @@
             // btnSetCapacity
             // 
             btnSetCapacity.AutoSize = true;
-            btnSetCapacity.Location = new Point(682, 271);
+            btnSetCapacity.Location = new Point(611, 204);
             btnSetCapacity.Margin = new Padding(3, 1, 3, 1);
             btnSetCapacity.Name = "btnSetCapacity";
             btnSetCapacity.Padding = new Padding(1);
-            btnSetCapacity.Size = new Size(84, 39);
+            btnSetCapacity.Size = new Size(84, 29);
             btnSetCapacity.TabIndex = 16;
             btnSetCapacity.Text = "设置";
             btnSetCapacity.UseVisualStyleBackColor = true;
@@ -1165,7 +1165,7 @@
             // 
             // txt_64
             // 
-            txt_64.Location = new Point(594, 330);
+            txt_64.Location = new Point(523, 251);
             txt_64.Margin = new Padding(3, 2, 3, 2);
             txt_64.Name = "txt_64";
             txt_64.Size = new Size(81, 23);
@@ -1173,7 +1173,7 @@
             // 
             // txt_63
             // 
-            txt_63.Location = new Point(594, 273);
+            txt_63.Location = new Point(523, 206);
             txt_63.Margin = new Padding(3, 2, 3, 2);
             txt_63.Name = "txt_63";
             txt_63.Size = new Size(81, 23);
@@ -1182,7 +1182,7 @@
             // lblSystemset_25
             // 
             lblSystemset_25.AutoSize = true;
-            lblSystemset_25.Location = new Point(431, 335);
+            lblSystemset_25.Location = new Point(360, 256);
             lblSystemset_25.Name = "lblSystemset_25";
             lblSystemset_25.Size = new Size(116, 17);
             lblSystemset_25.TabIndex = 1;
@@ -1191,7 +1191,7 @@
             // lblSystemset_24
             // 
             lblSystemset_24.AutoSize = true;
-            lblSystemset_24.Location = new Point(431, 279);
+            lblSystemset_24.Location = new Point(360, 212);
             lblSystemset_24.Name = "lblSystemset_24";
             lblSystemset_24.Size = new Size(116, 17);
             lblSystemset_24.TabIndex = 0;
@@ -1237,7 +1237,7 @@
             gbSystemset_27.Margin = new Padding(4, 5, 4, 5);
             gbSystemset_27.Name = "gbSystemset_27";
             gbSystemset_27.Padding = new Padding(4, 5, 4, 5);
-            gbSystemset_27.Size = new Size(1583, 943);
+            gbSystemset_27.Size = new Size(1324, 619);
             gbSystemset_27.TabIndex = 44;
             gbSystemset_27.TabStop = false;
             gbSystemset_27.Text = "PCU参数设置";
@@ -1249,7 +1249,7 @@
             btnSetCalibration_17.Margin = new Padding(4, 5, 4, 5);
             btnSetCalibration_17.Name = "btnSetCalibration_17";
             btnSetCalibration_17.Padding = new Padding(1);
-            btnSetCalibration_17.Size = new Size(88, 39);
+            btnSetCalibration_17.Size = new Size(88, 29);
             btnSetCalibration_17.TabIndex = 32;
             btnSetCalibration_17.Text = "写入";
             btnSetCalibration_17.UseVisualStyleBackColor = true;
@@ -1262,7 +1262,7 @@
             btnSetCalibration_16.Margin = new Padding(4, 5, 4, 5);
             btnSetCalibration_16.Name = "btnSetCalibration_16";
             btnSetCalibration_16.Padding = new Padding(1);
-            btnSetCalibration_16.Size = new Size(88, 39);
+            btnSetCalibration_16.Size = new Size(88, 29);
             btnSetCalibration_16.TabIndex = 31;
             btnSetCalibration_16.Text = "写入";
             btnSetCalibration_16.UseVisualStyleBackColor = true;
@@ -1275,7 +1275,7 @@
             btnSetCalibration_15.Margin = new Padding(4, 5, 4, 5);
             btnSetCalibration_15.Name = "btnSetCalibration_15";
             btnSetCalibration_15.Padding = new Padding(1);
-            btnSetCalibration_15.Size = new Size(88, 39);
+            btnSetCalibration_15.Size = new Size(88, 29);
             btnSetCalibration_15.TabIndex = 30;
             btnSetCalibration_15.Text = "写入";
             btnSetCalibration_15.UseVisualStyleBackColor = true;
@@ -1288,7 +1288,7 @@
             btnSetCalibration_14.Margin = new Padding(4, 5, 4, 5);
             btnSetCalibration_14.Name = "btnSetCalibration_14";
             btnSetCalibration_14.Padding = new Padding(1);
-            btnSetCalibration_14.Size = new Size(88, 39);
+            btnSetCalibration_14.Size = new Size(88, 29);
             btnSetCalibration_14.TabIndex = 29;
             btnSetCalibration_14.Text = "写入";
             btnSetCalibration_14.UseVisualStyleBackColor = true;
@@ -1301,7 +1301,7 @@
             btnSetCalibration_13.Margin = new Padding(4, 5, 4, 5);
             btnSetCalibration_13.Name = "btnSetCalibration_13";
             btnSetCalibration_13.Padding = new Padding(1);
-            btnSetCalibration_13.Size = new Size(88, 39);
+            btnSetCalibration_13.Size = new Size(88, 29);
             btnSetCalibration_13.TabIndex = 28;
             btnSetCalibration_13.Text = "写入";
             btnSetCalibration_13.UseVisualStyleBackColor = true;
@@ -1314,7 +1314,7 @@
             btnSetCalibration_12.Margin = new Padding(4, 5, 4, 5);
             btnSetCalibration_12.Name = "btnSetCalibration_12";
             btnSetCalibration_12.Padding = new Padding(1);
-            btnSetCalibration_12.Size = new Size(88, 39);
+            btnSetCalibration_12.Size = new Size(88, 29);
             btnSetCalibration_12.TabIndex = 27;
             btnSetCalibration_12.Text = "写入";
             btnSetCalibration_12.UseVisualStyleBackColor = true;
@@ -1327,7 +1327,7 @@
             btnSetCalibration_11.Margin = new Padding(4, 5, 4, 5);
             btnSetCalibration_11.Name = "btnSetCalibration_11";
             btnSetCalibration_11.Padding = new Padding(1);
-            btnSetCalibration_11.Size = new Size(88, 39);
+            btnSetCalibration_11.Size = new Size(88, 29);
             btnSetCalibration_11.TabIndex = 26;
             btnSetCalibration_11.Text = "写入";
             btnSetCalibration_11.UseVisualStyleBackColor = true;
@@ -1340,7 +1340,7 @@
             btnSetTestFlag.Margin = new Padding(4, 5, 4, 5);
             btnSetTestFlag.Name = "btnSetTestFlag";
             btnSetTestFlag.Padding = new Padding(1);
-            btnSetTestFlag.Size = new Size(88, 39);
+            btnSetTestFlag.Size = new Size(88, 29);
             btnSetTestFlag.TabIndex = 25;
             btnSetTestFlag.Text = "写入";
             btnSetTestFlag.UseVisualStyleBackColor = true;
@@ -1353,7 +1353,7 @@
             btnSetComm.Margin = new Padding(4, 5, 4, 5);
             btnSetComm.Name = "btnSetComm";
             btnSetComm.Padding = new Padding(1);
-            btnSetComm.Size = new Size(88, 39);
+            btnSetComm.Size = new Size(88, 29);
             btnSetComm.TabIndex = 24;
             btnSetComm.Text = "写入";
             btnSetComm.UseVisualStyleBackColor = true;
@@ -1366,7 +1366,7 @@
             btnSetSN.Margin = new Padding(4, 5, 4, 5);
             btnSetSN.Name = "btnSetSN";
             btnSetSN.Padding = new Padding(1);
-            btnSetSN.Size = new Size(88, 39);
+            btnSetSN.Size = new Size(88, 29);
             btnSetSN.TabIndex = 23;
             btnSetSN.Text = "写入";
             btnSetSN.UseVisualStyleBackColor = true;
@@ -1655,11 +1655,11 @@
             gbSystemset_14.Controls.Add(lblSystemset_24);
             gbSystemset_14.Controls.Add(lblSystemset_23);
             gbSystemset_14.Dock = DockStyle.Fill;
-            gbSystemset_14.Location = new Point(392, 5);
+            gbSystemset_14.Location = new Point(362, 5);
             gbSystemset_14.Margin = new Padding(4, 5, 4, 5);
             gbSystemset_14.Name = "gbSystemset_14";
             gbSystemset_14.Padding = new Padding(4, 5, 4, 5);
-            gbSystemset_14.Size = new Size(1195, 943);
+            gbSystemset_14.Size = new Size(966, 619);
             gbSystemset_14.TabIndex = 43;
             gbSystemset_14.TabStop = false;
             gbSystemset_14.Text = "BMS参数设置";
@@ -1668,7 +1668,7 @@
             // 
             cbb_106.FormattingEnabled = true;
             cbb_106.Items.AddRange(new object[] { "0：无", "1：查询重置真实容量标志" });
-            cbb_106.Location = new Point(946, 274);
+            cbb_106.Location = new Point(875, 207);
             cbb_106.Margin = new Padding(4, 5, 4, 5);
             cbb_106.Name = "cbb_106";
             cbb_106.Size = new Size(140, 25);
@@ -1677,7 +1677,7 @@
             // lblSystemset_83
             // 
             lblSystemset_83.AutoSize = true;
-            lblSystemset_83.Location = new Point(431, 562);
+            lblSystemset_83.Location = new Point(360, 434);
             lblSystemset_83.Name = "lblSystemset_83";
             lblSystemset_83.Size = new Size(34, 17);
             lblSystemset_83.TabIndex = 61;
@@ -1685,7 +1685,7 @@
             // 
             // txtFlag
             // 
-            txtFlag.Location = new Point(1092, 274);
+            txtFlag.Location = new Point(1021, 207);
             txtFlag.Margin = new Padding(3, 2, 3, 2);
             txtFlag.Name = "txtFlag";
             txtFlag.Size = new Size(47, 23);
@@ -1694,7 +1694,7 @@
             // lblSystemset_82
             // 
             lblSystemset_82.AutoSize = true;
-            lblSystemset_82.Location = new Point(431, 505);
+            lblSystemset_82.Location = new Point(360, 393);
             lblSystemset_82.Name = "lblSystemset_82";
             lblSystemset_82.Size = new Size(112, 17);
             lblSystemset_82.TabIndex = 60;
@@ -1704,7 +1704,7 @@
             // 
             cbb_105.FormattingEnabled = true;
             cbb_105.Items.AddRange(new object[] { "0：无", "1：清除重置真实容量标志" });
-            cbb_105.Location = new Point(946, 218);
+            cbb_105.Location = new Point(875, 164);
             cbb_105.Margin = new Padding(4, 5, 4, 5);
             cbb_105.Name = "cbb_105";
             cbb_105.Size = new Size(140, 25);
@@ -1712,7 +1712,7 @@
             // 
             // txt_102
             // 
-            txt_102.Location = new Point(594, 556);
+            txt_102.Location = new Point(523, 428);
             txt_102.Margin = new Padding(4, 5, 4, 5);
             txt_102.Name = "txt_102";
             txt_102.Size = new Size(81, 23);
@@ -1723,7 +1723,7 @@
             // 
             cbb_103.FormattingEnabled = true;
             cbb_103.Items.AddRange(new object[] { "1：宁德时代", "2：亿纬锂能", "3：其他" });
-            cbb_103.Location = new Point(946, 103);
+            cbb_103.Location = new Point(875, 70);
             cbb_103.Margin = new Padding(4, 5, 4, 5);
             cbb_103.Name = "cbb_103";
             cbb_103.Size = new Size(140, 25);
@@ -1731,7 +1731,7 @@
             // 
             // txt_100
             // 
-            txt_100.Location = new Point(594, 500);
+            txt_100.Location = new Point(523, 388);
             txt_100.Margin = new Padding(4, 5, 4, 5);
             txt_100.Name = "txt_100";
             txt_100.Size = new Size(81, 23);
@@ -1740,7 +1740,7 @@
             // 
             // txt_104
             // 
-            txt_104.Location = new Point(946, 160);
+            txt_104.Location = new Point(875, 117);
             txt_104.Margin = new Padding(3, 2, 3, 2);
             txt_104.Name = "txt_104";
             txt_104.Size = new Size(140, 23);
@@ -1748,7 +1748,7 @@
             // 
             // txt_101
             // 
-            txt_101.Location = new Point(594, 443);
+            txt_101.Location = new Point(523, 351);
             txt_101.Margin = new Padding(3, 2, 3, 2);
             txt_101.Name = "txt_101";
             txt_101.Size = new Size(81, 23);
@@ -1757,7 +1757,7 @@
             // lblSystemset_106
             // 
             lblSystemset_106.AutoSize = true;
-            lblSystemset_106.Location = new Point(781, 281);
+            lblSystemset_106.Location = new Point(710, 214);
             lblSystemset_106.Name = "lblSystemset_106";
             lblSystemset_106.Size = new Size(92, 17);
             lblSystemset_106.TabIndex = 53;
@@ -1766,7 +1766,7 @@
             // lblSystemset_101
             // 
             lblSystemset_101.AutoSize = true;
-            lblSystemset_101.Location = new Point(431, 449);
+            lblSystemset_101.Location = new Point(360, 357);
             lblSystemset_101.Name = "lblSystemset_101";
             lblSystemset_101.Size = new Size(112, 17);
             lblSystemset_101.TabIndex = 53;
@@ -1775,7 +1775,7 @@
             // lblSystemset_105
             // 
             lblSystemset_105.AutoSize = true;
-            lblSystemset_105.Location = new Point(781, 222);
+            lblSystemset_105.Location = new Point(710, 168);
             lblSystemset_105.Name = "lblSystemset_105";
             lblSystemset_105.Size = new Size(92, 17);
             lblSystemset_105.TabIndex = 51;
@@ -1784,11 +1784,11 @@
             // btnSetBatteryinfo
             // 
             btnSetBatteryinfo.AutoSize = true;
-            btnSetBatteryinfo.Location = new Point(1092, 97);
+            btnSetBatteryinfo.Location = new Point(1021, 64);
             btnSetBatteryinfo.Margin = new Padding(3, 1, 3, 1);
             btnSetBatteryinfo.Name = "btnSetBatteryinfo";
             btnSetBatteryinfo.Padding = new Padding(1);
-            btnSetBatteryinfo.Size = new Size(84, 39);
+            btnSetBatteryinfo.Size = new Size(84, 29);
             btnSetBatteryinfo.TabIndex = 16;
             btnSetBatteryinfo.Text = "设置";
             btnSetBatteryinfo.UseVisualStyleBackColor = true;
@@ -1797,7 +1797,7 @@
             // lblSystemset_103
             // 
             lblSystemset_103.AutoSize = true;
-            lblSystemset_103.Location = new Point(781, 109);
+            lblSystemset_103.Location = new Point(710, 76);
             lblSystemset_103.Name = "lblSystemset_103";
             lblSystemset_103.Size = new Size(56, 17);
             lblSystemset_103.TabIndex = 12;
@@ -1806,7 +1806,7 @@
             // lblSystemset_104
             // 
             lblSystemset_104.AutoSize = true;
-            lblSystemset_104.Location = new Point(781, 164);
+            lblSystemset_104.Location = new Point(710, 121);
             lblSystemset_104.Name = "lblSystemset_104";
             lblSystemset_104.Size = new Size(80, 17);
             lblSystemset_104.TabIndex = 13;
@@ -1815,7 +1815,7 @@
             // lblSystemset_50
             // 
             lblSystemset_50.AutoSize = true;
-            lblSystemset_50.Location = new Point(18, 449);
+            lblSystemset_50.Location = new Point(18, 357);
             lblSystemset_50.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_50.Name = "lblSystemset_50";
             lblSystemset_50.Size = new Size(124, 17);
@@ -1824,20 +1824,20 @@
             // 
             // txtCalibration07
             // 
-            txtCalibration07.Location = new Point(234, 443);
+            txtCalibration07.Location = new Point(167, 351);
             txtCalibration07.Margin = new Padding(4, 5, 4, 5);
             txtCalibration07.Name = "txtCalibration07";
-            txtCalibration07.Size = new Size(87, 23);
+            txtCalibration07.Size = new Size(83, 23);
             txtCalibration07.TabIndex = 48;
             // 
             // btnSetCalibration_07
             // 
             btnSetCalibration_07.AutoSize = true;
-            btnSetCalibration_07.Location = new Point(328, 440);
+            btnSetCalibration_07.Location = new Point(261, 348);
             btnSetCalibration_07.Margin = new Padding(3, 1, 3, 1);
             btnSetCalibration_07.Name = "btnSetCalibration_07";
             btnSetCalibration_07.Padding = new Padding(1);
-            btnSetCalibration_07.Size = new Size(88, 39);
+            btnSetCalibration_07.Size = new Size(84, 29);
             btnSetCalibration_07.TabIndex = 46;
             btnSetCalibration_07.Text = "设置";
             btnSetCalibration_07.UseVisualStyleBackColor = true;
@@ -1847,7 +1847,7 @@
             // 
             dateTimePicker1.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.Location = new Point(745, 39);
+            dateTimePicker1.Location = new Point(745, 26);
             dateTimePicker1.Margin = new Padding(4, 5, 4, 5);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(185, 23);
@@ -1856,11 +1856,11 @@
             // btnSetBoardSN
             // 
             btnSetBoardSN.AutoSize = true;
-            btnSetBoardSN.Location = new Point(613, 34);
+            btnSetBoardSN.Location = new Point(613, 21);
             btnSetBoardSN.Margin = new Padding(3, 1, 3, 1);
             btnSetBoardSN.Name = "btnSetBoardSN";
             btnSetBoardSN.Padding = new Padding(1);
-            btnSetBoardSN.Size = new Size(84, 39);
+            btnSetBoardSN.Size = new Size(84, 29);
             btnSetBoardSN.TabIndex = 44;
             btnSetBoardSN.Text = "设置";
             btnSetBoardSN.UseVisualStyleBackColor = true;
@@ -1868,7 +1868,7 @@
             // 
             // txtBoardSN
             // 
-            txtBoardSN.Location = new Point(426, 39);
+            txtBoardSN.Location = new Point(426, 26);
             txtBoardSN.Margin = new Padding(4, 5, 4, 5);
             txtBoardSN.Name = "txtBoardSN";
             txtBoardSN.Size = new Size(176, 23);
@@ -1877,7 +1877,7 @@
             // lblSystemset_02
             // 
             lblSystemset_02.AutoSize = true;
-            lblSystemset_02.Location = new Point(343, 44);
+            lblSystemset_02.Location = new Point(343, 31);
             lblSystemset_02.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_02.Name = "lblSystemset_02";
             lblSystemset_02.Size = new Size(68, 17);
@@ -1887,7 +1887,7 @@
             // lblSystemset_20
             // 
             lblSystemset_20.AutoSize = true;
-            lblSystemset_20.Location = new Point(17, 392);
+            lblSystemset_20.Location = new Point(17, 309);
             lblSystemset_20.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_20.Name = "lblSystemset_20";
             lblSystemset_20.Size = new Size(131, 17);
@@ -1896,16 +1896,16 @@
             // 
             // txtCalibration06
             // 
-            txtCalibration06.Location = new Point(234, 386);
+            txtCalibration06.Location = new Point(167, 303);
             txtCalibration06.Margin = new Padding(4, 5, 4, 5);
             txtCalibration06.Name = "txtCalibration06";
-            txtCalibration06.Size = new Size(87, 23);
+            txtCalibration06.Size = new Size(83, 23);
             txtCalibration06.TabIndex = 31;
             // 
             // lblSystemset_19
             // 
             lblSystemset_19.AutoSize = true;
-            lblSystemset_19.Location = new Point(18, 335);
+            lblSystemset_19.Location = new Point(18, 256);
             lblSystemset_19.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_19.Name = "lblSystemset_19";
             lblSystemset_19.Size = new Size(126, 17);
@@ -1914,16 +1914,16 @@
             // 
             // txtCalibration05
             // 
-            txtCalibration05.Location = new Point(234, 330);
+            txtCalibration05.Location = new Point(167, 251);
             txtCalibration05.Margin = new Padding(4, 5, 4, 5);
             txtCalibration05.Name = "txtCalibration05";
-            txtCalibration05.Size = new Size(87, 23);
+            txtCalibration05.Size = new Size(83, 23);
             txtCalibration05.TabIndex = 29;
             // 
             // lblSystemset_18
             // 
             lblSystemset_18.AutoSize = true;
-            lblSystemset_18.Location = new Point(17, 279);
+            lblSystemset_18.Location = new Point(17, 212);
             lblSystemset_18.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_18.Name = "lblSystemset_18";
             lblSystemset_18.Size = new Size(131, 17);
@@ -1932,16 +1932,16 @@
             // 
             // txtCalibration04
             // 
-            txtCalibration04.Location = new Point(234, 273);
+            txtCalibration04.Location = new Point(167, 206);
             txtCalibration04.Margin = new Padding(4, 5, 4, 5);
             txtCalibration04.Name = "txtCalibration04";
-            txtCalibration04.Size = new Size(87, 23);
+            txtCalibration04.Size = new Size(83, 23);
             txtCalibration04.TabIndex = 27;
             // 
             // lblSystemset_16
             // 
             lblSystemset_16.AutoSize = true;
-            lblSystemset_16.Location = new Point(17, 165);
+            lblSystemset_16.Location = new Point(17, 122);
             lblSystemset_16.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_16.Name = "lblSystemset_16";
             lblSystemset_16.Size = new Size(140, 17);
@@ -1951,7 +1951,7 @@
             // lblSystemset_15
             // 
             lblSystemset_15.AutoSize = true;
-            lblSystemset_15.Location = new Point(15, 109);
+            lblSystemset_15.Location = new Point(15, 76);
             lblSystemset_15.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_15.Name = "lblSystemset_15";
             lblSystemset_15.Size = new Size(116, 17);
@@ -1960,16 +1960,16 @@
             // 
             // txtCalibration02
             // 
-            txtCalibration02.Location = new Point(234, 160);
+            txtCalibration02.Location = new Point(167, 117);
             txtCalibration02.Margin = new Padding(4, 5, 4, 5);
             txtCalibration02.Name = "txtCalibration02";
-            txtCalibration02.Size = new Size(87, 23);
+            txtCalibration02.Size = new Size(83, 23);
             txtCalibration02.TabIndex = 22;
             // 
             // lblSystemset_17
             // 
             lblSystemset_17.AutoSize = true;
-            lblSystemset_17.Location = new Point(18, 222);
+            lblSystemset_17.Location = new Point(18, 168);
             lblSystemset_17.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_17.Name = "lblSystemset_17";
             lblSystemset_17.Size = new Size(126, 17);
@@ -1979,11 +1979,11 @@
             // btnSetCalibration_06
             // 
             btnSetCalibration_06.AutoSize = true;
-            btnSetCalibration_06.Location = new Point(328, 383);
+            btnSetCalibration_06.Location = new Point(261, 300);
             btnSetCalibration_06.Margin = new Padding(3, 1, 3, 1);
             btnSetCalibration_06.Name = "btnSetCalibration_06";
             btnSetCalibration_06.Padding = new Padding(1);
-            btnSetCalibration_06.Size = new Size(88, 39);
+            btnSetCalibration_06.Size = new Size(84, 29);
             btnSetCalibration_06.TabIndex = 18;
             btnSetCalibration_06.Text = "设置";
             btnSetCalibration_06.UseVisualStyleBackColor = true;
@@ -1992,11 +1992,11 @@
             // btnSetCalibration_01
             // 
             btnSetCalibration_01.AutoSize = true;
-            btnSetCalibration_01.Location = new Point(326, 100);
+            btnSetCalibration_01.Location = new Point(259, 67);
             btnSetCalibration_01.Margin = new Padding(3, 1, 3, 1);
             btnSetCalibration_01.Name = "btnSetCalibration_01";
             btnSetCalibration_01.Padding = new Padding(1);
-            btnSetCalibration_01.Size = new Size(88, 39);
+            btnSetCalibration_01.Size = new Size(84, 29);
             btnSetCalibration_01.TabIndex = 13;
             btnSetCalibration_01.Text = "设置";
             btnSetCalibration_01.UseVisualStyleBackColor = true;
@@ -2005,11 +2005,11 @@
             // btnSetCalibration_03
             // 
             btnSetCalibration_03.AutoSize = true;
-            btnSetCalibration_03.Location = new Point(329, 213);
+            btnSetCalibration_03.Location = new Point(262, 159);
             btnSetCalibration_03.Margin = new Padding(3, 1, 3, 1);
             btnSetCalibration_03.Name = "btnSetCalibration_03";
             btnSetCalibration_03.Padding = new Padding(1);
-            btnSetCalibration_03.Size = new Size(88, 39);
+            btnSetCalibration_03.Size = new Size(84, 29);
             btnSetCalibration_03.TabIndex = 15;
             btnSetCalibration_03.Text = "设置";
             btnSetCalibration_03.UseVisualStyleBackColor = true;
@@ -2018,11 +2018,11 @@
             // btnSetCalibration_05
             // 
             btnSetCalibration_05.AutoSize = true;
-            btnSetCalibration_05.Location = new Point(328, 326);
+            btnSetCalibration_05.Location = new Point(261, 247);
             btnSetCalibration_05.Margin = new Padding(3, 1, 3, 1);
             btnSetCalibration_05.Name = "btnSetCalibration_05";
             btnSetCalibration_05.Padding = new Padding(1);
-            btnSetCalibration_05.Size = new Size(88, 39);
+            btnSetCalibration_05.Size = new Size(84, 29);
             btnSetCalibration_05.TabIndex = 17;
             btnSetCalibration_05.Text = "设置";
             btnSetCalibration_05.UseVisualStyleBackColor = true;
@@ -2031,11 +2031,11 @@
             // btnSetCalibration_02
             // 
             btnSetCalibration_02.AutoSize = true;
-            btnSetCalibration_02.Location = new Point(328, 156);
+            btnSetCalibration_02.Location = new Point(261, 113);
             btnSetCalibration_02.Margin = new Padding(3, 1, 3, 1);
             btnSetCalibration_02.Name = "btnSetCalibration_02";
             btnSetCalibration_02.Padding = new Padding(1);
-            btnSetCalibration_02.Size = new Size(88, 39);
+            btnSetCalibration_02.Size = new Size(84, 29);
             btnSetCalibration_02.TabIndex = 14;
             btnSetCalibration_02.Text = "设置";
             btnSetCalibration_02.UseVisualStyleBackColor = true;
@@ -2044,11 +2044,11 @@
             // btnSetCalibration_04
             // 
             btnSetCalibration_04.AutoSize = true;
-            btnSetCalibration_04.Location = new Point(328, 270);
+            btnSetCalibration_04.Location = new Point(261, 203);
             btnSetCalibration_04.Margin = new Padding(3, 1, 3, 1);
             btnSetCalibration_04.Name = "btnSetCalibration_04";
             btnSetCalibration_04.Padding = new Padding(1);
-            btnSetCalibration_04.Size = new Size(88, 39);
+            btnSetCalibration_04.Size = new Size(84, 29);
             btnSetCalibration_04.TabIndex = 16;
             btnSetCalibration_04.Text = "设置";
             btnSetCalibration_04.UseVisualStyleBackColor = true;
@@ -2056,10 +2056,10 @@
             // 
             // txtCalibration03
             // 
-            txtCalibration03.Location = new Point(234, 216);
+            txtCalibration03.Location = new Point(167, 162);
             txtCalibration03.Margin = new Padding(4, 5, 4, 5);
             txtCalibration03.Name = "txtCalibration03";
-            txtCalibration03.Size = new Size(87, 23);
+            txtCalibration03.Size = new Size(83, 23);
             txtCalibration03.TabIndex = 25;
             // 
             // btnSystemset_46
@@ -2069,10 +2069,10 @@
             btnSystemset_46.FlatStyle = FlatStyle.Flat;
             btnSystemset_46.ForeColor = Color.White;
             btnSystemset_46.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSystemset_46.Location = new Point(11, 2);
+            btnSystemset_46.Location = new Point(11, 5);
             btnSystemset_46.Margin = new Padding(4, 5, 4, 5);
             btnSystemset_46.Name = "btnSystemset_46";
-            btnSystemset_46.Size = new Size(154, 43);
+            btnSystemset_46.Size = new Size(135, 29);
             btnSystemset_46.TabIndex = 45;
             btnSystemset_46.Text = "读取";
             btnSystemset_46.UseVisualStyleBackColor = false;
@@ -2088,7 +2088,7 @@
             gbSystemset_54.Margin = new Padding(4, 5, 4, 5);
             gbSystemset_54.Name = "gbSystemset_54";
             gbSystemset_54.Padding = new Padding(4, 5, 4, 5);
-            gbSystemset_54.Size = new Size(1583, 943);
+            gbSystemset_54.Size = new Size(1324, 619);
             gbSystemset_54.TabIndex = 47;
             gbSystemset_54.TabStop = false;
             gbSystemset_54.Text = "BDU参数设置";
@@ -2096,11 +2096,11 @@
             // btnSetBDUSN
             // 
             btnSetBDUSN.AutoSize = true;
-            btnSetBDUSN.Location = new Point(290, 28);
+            btnSetBDUSN.Location = new Point(292, 33);
             btnSetBDUSN.Margin = new Padding(4, 5, 4, 5);
             btnSetBDUSN.Name = "btnSetBDUSN";
             btnSetBDUSN.Padding = new Padding(1);
-            btnSetBDUSN.Size = new Size(84, 39);
+            btnSetBDUSN.Size = new Size(84, 29);
             btnSetBDUSN.TabIndex = 26;
             btnSetBDUSN.Text = "写入";
             btnSetBDUSN.UseVisualStyleBackColor = true;
@@ -2132,11 +2132,11 @@
             tabControl1.Controls.Add(tabPage4);
             tabControl1.Controls.Add(tabPage5);
             tabControl1.Dock = DockStyle.Fill;
-            tabControl1.Location = new Point(0, 51);
+            tabControl1.Location = new Point(0, 41);
             tabControl1.Margin = new Padding(4, 5, 4, 5);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1599, 983);
+            tabControl1.Size = new Size(1340, 659);
             tabControl1.TabIndex = 48;
             // 
             // tabPage1
@@ -2147,7 +2147,7 @@
             tabPage1.Margin = new Padding(4, 5, 4, 5);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(4, 5, 4, 5);
-            tabPage1.Size = new Size(1591, 953);
+            tabPage1.Size = new Size(1332, 629);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "BTS5K-bms";
             tabPage1.UseVisualStyleBackColor = true;
@@ -2159,7 +2159,7 @@
             tabPage2.Margin = new Padding(4, 5, 4, 5);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(4, 5, 4, 5);
-            tabPage2.Size = new Size(1591, 953);
+            tabPage2.Size = new Size(1332, 629);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "BTS5K-pcu";
             tabPage2.UseVisualStyleBackColor = true;
@@ -2171,7 +2171,7 @@
             tabPage3.Margin = new Padding(4, 5, 4, 5);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(4, 5, 4, 5);
-            tabPage3.Size = new Size(1591, 953);
+            tabPage3.Size = new Size(1332, 629);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "BTS5K-bdu";
             tabPage3.UseVisualStyleBackColor = true;
@@ -2185,7 +2185,7 @@
             tabPage4.Margin = new Padding(4, 5, 4, 5);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(4, 5, 4, 5);
-            tabPage4.Size = new Size(1591, 953);
+            tabPage4.Size = new Size(1332, 629);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "CBS5000";
             tabPage4.UseVisualStyleBackColor = true;
@@ -2210,22 +2210,22 @@
             gbSystemset_0.Controls.Add(lblSystemset_66);
             gbSystemset_0.Controls.Add(lblSystemset_65);
             gbSystemset_0.Dock = DockStyle.Fill;
-            gbSystemset_0.Location = new Point(727, 5);
+            gbSystemset_0.Location = new Point(629, 5);
             gbSystemset_0.Margin = new Padding(4, 5, 4, 5);
             gbSystemset_0.Name = "gbSystemset_0";
             gbSystemset_0.Padding = new Padding(4, 5, 4, 5);
-            gbSystemset_0.Size = new Size(860, 943);
+            gbSystemset_0.Size = new Size(699, 619);
             gbSystemset_0.TabIndex = 39;
             gbSystemset_0.TabStop = false;
             // 
             // btnSetControlInfo
             // 
             btnSetControlInfo.AutoSize = true;
-            btnSetControlInfo.Location = new Point(734, 36);
+            btnSetControlInfo.Location = new Point(604, 40);
             btnSetControlInfo.Margin = new Padding(4, 5, 4, 5);
             btnSetControlInfo.Name = "btnSetControlInfo";
             btnSetControlInfo.Padding = new Padding(1);
-            btnSetControlInfo.Size = new Size(88, 39);
+            btnSetControlInfo.Size = new Size(68, 29);
             btnSetControlInfo.TabIndex = 63;
             btnSetControlInfo.Text = "写入";
             btnSetControlInfo.UseVisualStyleBackColor = true;
@@ -2234,11 +2234,11 @@
             // btnSetStateParam
             // 
             btnSetStateParam.AutoSize = true;
-            btnSetStateParam.Location = new Point(318, 41);
+            btnSetStateParam.Location = new Point(232, 41);
             btnSetStateParam.Margin = new Padding(4, 5, 4, 5);
             btnSetStateParam.Name = "btnSetStateParam";
             btnSetStateParam.Padding = new Padding(1);
-            btnSetStateParam.Size = new Size(88, 39);
+            btnSetStateParam.Size = new Size(74, 29);
             btnSetStateParam.TabIndex = 56;
             btnSetStateParam.Text = "写入";
             btnSetStateParam.UseVisualStyleBackColor = true;
@@ -2246,7 +2246,7 @@
             // 
             // txtPackActiveBalanceCap
             // 
-            txtPackActiveBalanceCap.Location = new Point(570, 150);
+            txtPackActiveBalanceCap.Location = new Point(456, 149);
             txtPackActiveBalanceCap.Margin = new Padding(4, 5, 4, 5);
             txtPackActiveBalanceCap.Name = "txtPackActiveBalanceCap";
             txtPackActiveBalanceCap.Size = new Size(140, 23);
@@ -2254,7 +2254,7 @@
             // 
             // txtSyncFallSoc
             // 
-            txtSyncFallSoc.Location = new Point(153, 271);
+            txtSyncFallSoc.Location = new Point(84, 271);
             txtSyncFallSoc.Margin = new Padding(4, 5, 4, 5);
             txtSyncFallSoc.Name = "txtSyncFallSoc";
             txtSyncFallSoc.Size = new Size(140, 23);
@@ -2262,7 +2262,7 @@
             // 
             // txtPackActiveBalanceCur
             // 
-            txtPackActiveBalanceCur.Location = new Point(570, 96);
+            txtPackActiveBalanceCur.Location = new Point(456, 95);
             txtPackActiveBalanceCur.Margin = new Padding(4, 5, 4, 5);
             txtPackActiveBalanceCur.Name = "txtPackActiveBalanceCur";
             txtPackActiveBalanceCur.Size = new Size(140, 23);
@@ -2272,7 +2272,7 @@
             // 
             cbbState.FormattingEnabled = true;
             cbbState.Items.AddRange(new object[] { "待机状态", "充电状态", "放电状态" });
-            cbbState.Location = new Point(153, 97);
+            cbbState.Location = new Point(84, 97);
             cbbState.Margin = new Padding(4, 5, 4, 5);
             cbbState.Name = "cbbState";
             cbbState.Size = new Size(140, 25);
@@ -2282,7 +2282,7 @@
             // 
             cbbActiveBalanceCtrl.FormattingEnabled = true;
             cbbActiveBalanceCtrl.Items.AddRange(new object[] { "禁止", "放电", "充电", "无效" });
-            cbbActiveBalanceCtrl.Location = new Point(570, 43);
+            cbbActiveBalanceCtrl.Location = new Point(456, 42);
             cbbActiveBalanceCtrl.Margin = new Padding(4, 5, 4, 5);
             cbbActiveBalanceCtrl.Name = "cbbActiveBalanceCtrl";
             cbbActiveBalanceCtrl.Size = new Size(140, 25);
@@ -2290,7 +2290,7 @@
             // 
             // txtPackCurrent
             // 
-            txtPackCurrent.Location = new Point(153, 46);
+            txtPackCurrent.Location = new Point(84, 46);
             txtPackCurrent.Margin = new Padding(4, 5, 4, 5);
             txtPackCurrent.Name = "txtPackCurrent";
             txtPackCurrent.Size = new Size(140, 23);
@@ -2299,7 +2299,7 @@
             // lblSystemset_74
             // 
             lblSystemset_74.AutoSize = true;
-            lblSystemset_74.Location = new Point(445, 154);
+            lblSystemset_74.Location = new Point(331, 153);
             lblSystemset_74.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_74.Name = "lblSystemset_74";
             lblSystemset_74.Size = new Size(104, 17);
@@ -2309,7 +2309,7 @@
             // ckSystemset_69
             // 
             ckSystemset_69.AutoSize = true;
-            ckSystemset_69.Location = new Point(153, 222);
+            ckSystemset_69.Location = new Point(84, 222);
             ckSystemset_69.Margin = new Padding(4, 5, 4, 5);
             ckSystemset_69.Name = "ckSystemset_69";
             ckSystemset_69.Size = new Size(51, 21);
@@ -2320,7 +2320,7 @@
             // lblSystemset_73
             // 
             lblSystemset_73.AutoSize = true;
-            lblSystemset_73.Location = new Point(445, 101);
+            lblSystemset_73.Location = new Point(331, 100);
             lblSystemset_73.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_73.Name = "lblSystemset_73";
             lblSystemset_73.Size = new Size(104, 17);
@@ -2330,7 +2330,7 @@
             // ckSystemset_68
             // 
             ckSystemset_68.AutoSize = true;
-            ckSystemset_68.Location = new Point(153, 184);
+            ckSystemset_68.Location = new Point(84, 184);
             ckSystemset_68.Margin = new Padding(4, 5, 4, 5);
             ckSystemset_68.Name = "ckSystemset_68";
             ckSystemset_68.Size = new Size(51, 21);
@@ -2341,7 +2341,7 @@
             // lblSystemset_72
             // 
             lblSystemset_72.AutoSize = true;
-            lblSystemset_72.Location = new Point(445, 46);
+            lblSystemset_72.Location = new Point(331, 45);
             lblSystemset_72.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_72.Name = "lblSystemset_72";
             lblSystemset_72.Size = new Size(104, 17);
@@ -2351,7 +2351,7 @@
             // ckSystemset_67
             // 
             ckSystemset_67.AutoSize = true;
-            ckSystemset_67.Location = new Point(153, 146);
+            ckSystemset_67.Location = new Point(84, 146);
             ckSystemset_67.Margin = new Padding(4, 5, 4, 5);
             ckSystemset_67.Name = "ckSystemset_67";
             ckSystemset_67.Size = new Size(51, 21);
@@ -2362,7 +2362,7 @@
             // lblSystemset_70
             // 
             lblSystemset_70.AutoSize = true;
-            lblSystemset_70.Location = new Point(29, 273);
+            lblSystemset_70.Location = new Point(8, 271);
             lblSystemset_70.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_70.Name = "lblSystemset_70";
             lblSystemset_70.Size = new Size(76, 17);
@@ -2372,7 +2372,7 @@
             // lblSystemset_66
             // 
             lblSystemset_66.AutoSize = true;
-            lblSystemset_66.Location = new Point(29, 101);
+            lblSystemset_66.Location = new Point(8, 99);
             lblSystemset_66.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_66.Name = "lblSystemset_66";
             lblSystemset_66.Size = new Size(68, 17);
@@ -2382,7 +2382,7 @@
             // lblSystemset_65
             // 
             lblSystemset_65.AutoSize = true;
-            lblSystemset_65.Location = new Point(29, 51);
+            lblSystemset_65.Location = new Point(8, 49);
             lblSystemset_65.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_65.Name = "lblSystemset_65";
             lblSystemset_65.Size = new Size(68, 17);
@@ -2407,11 +2407,11 @@
             gbControl020.Controls.Add(lblSystemset_77);
             gbControl020.Controls.Add(lblSystemset_76);
             gbControl020.Dock = DockStyle.Left;
-            gbControl020.Location = new Point(392, 5);
+            gbControl020.Location = new Point(351, 5);
             gbControl020.Margin = new Padding(4, 5, 4, 5);
             gbControl020.Name = "gbControl020";
             gbControl020.Padding = new Padding(4, 5, 4, 5);
-            gbControl020.Size = new Size(335, 943);
+            gbControl020.Size = new Size(278, 619);
             gbControl020.TabIndex = 41;
             gbControl020.TabStop = false;
             gbControl020.Text = "0x020上位机控制";
@@ -2420,7 +2420,7 @@
             // 
             cbbRequest3.FormattingEnabled = true;
             cbbRequest3.Items.AddRange(new object[] { "0x00：查询", "0xAA：开启", "0x55：关闭" });
-            cbbRequest3.Location = new Point(171, 187);
+            cbbRequest3.Location = new Point(122, 187);
             cbbRequest3.Margin = new Padding(4, 5, 4, 5);
             cbbRequest3.Name = "cbbRequest3";
             cbbRequest3.Size = new Size(140, 25);
@@ -2430,7 +2430,7 @@
             // 
             cbbRequest2.FormattingEnabled = true;
             cbbRequest2.Items.AddRange(new object[] { "0x00：查询", "0xAA：开启", "0x55：关闭" });
-            cbbRequest2.Location = new Point(171, 141);
+            cbbRequest2.Location = new Point(122, 141);
             cbbRequest2.Margin = new Padding(4, 5, 4, 5);
             cbbRequest2.Name = "cbbRequest2";
             cbbRequest2.Size = new Size(140, 25);
@@ -2440,7 +2440,7 @@
             // 
             cbbRequest0.FormattingEnabled = true;
             cbbRequest0.Items.AddRange(new object[] { "0x00：查询", "0xAA：开启", "0x55：关闭" });
-            cbbRequest0.Location = new Point(171, 46);
+            cbbRequest0.Location = new Point(122, 46);
             cbbRequest0.Margin = new Padding(4, 5, 4, 5);
             cbbRequest0.Name = "cbbRequest0";
             cbbRequest0.Size = new Size(140, 25);
@@ -2450,7 +2450,7 @@
             // 
             cbbRequest1.FormattingEnabled = true;
             cbbRequest1.Items.AddRange(new object[] { "0x00：查询", "0xAA：开启", "0x55：关闭" });
-            cbbRequest1.Location = new Point(171, 93);
+            cbbRequest1.Location = new Point(122, 93);
             cbbRequest1.Margin = new Padding(4, 5, 4, 5);
             cbbRequest1.Name = "cbbRequest1";
             cbbRequest1.Size = new Size(140, 25);
@@ -2459,7 +2459,7 @@
             // lblSystemset_51
             // 
             lblSystemset_51.AutoSize = true;
-            lblSystemset_51.Location = new Point(22, 192);
+            lblSystemset_51.Location = new Point(14, 188);
             lblSystemset_51.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_51.Name = "lblSystemset_51";
             lblSystemset_51.Size = new Size(80, 17);
@@ -2468,7 +2468,7 @@
             // 
             // txtSlaveAddr
             // 
-            txtSlaveAddr.Location = new Point(171, 328);
+            txtSlaveAddr.Location = new Point(122, 328);
             txtSlaveAddr.Margin = new Padding(4, 5, 4, 5);
             txtSlaveAddr.Name = "txtSlaveAddr";
             txtSlaveAddr.Size = new Size(140, 23);
@@ -2477,11 +2477,11 @@
             // btnSet020_1
             // 
             btnSet020_1.AutoSize = true;
-            btnSet020_1.Location = new Point(223, 379);
+            btnSet020_1.Location = new Point(195, 379);
             btnSet020_1.Margin = new Padding(4, 5, 4, 5);
             btnSet020_1.Name = "btnSet020_1";
             btnSet020_1.Padding = new Padding(1);
-            btnSet020_1.Size = new Size(88, 39);
+            btnSet020_1.Size = new Size(67, 29);
             btnSet020_1.TabIndex = 55;
             btnSet020_1.Text = "写入";
             btnSet020_1.UseVisualStyleBackColor = true;
@@ -2490,7 +2490,7 @@
             // lblSystemset_81
             // 
             lblSystemset_81.AutoSize = true;
-            lblSystemset_81.Location = new Point(22, 143);
+            lblSystemset_81.Location = new Point(14, 139);
             lblSystemset_81.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_81.Name = "lblSystemset_81";
             lblSystemset_81.Size = new Size(78, 17);
@@ -2500,7 +2500,7 @@
             // lblSystemset_78
             // 
             lblSystemset_78.AutoSize = true;
-            lblSystemset_78.Location = new Point(22, 335);
+            lblSystemset_78.Location = new Point(14, 331);
             lblSystemset_78.Name = "lblSystemset_78";
             lblSystemset_78.Size = new Size(101, 17);
             lblSystemset_78.TabIndex = 59;
@@ -2509,7 +2509,7 @@
             // lblSystemset_80
             // 
             lblSystemset_80.AutoSize = true;
-            lblSystemset_80.Location = new Point(22, 95);
+            lblSystemset_80.Location = new Point(14, 91);
             lblSystemset_80.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_80.Name = "lblSystemset_80";
             lblSystemset_80.Size = new Size(56, 17);
@@ -2519,7 +2519,7 @@
             // lblSystemset_79
             // 
             lblSystemset_79.AutoSize = true;
-            lblSystemset_79.Location = new Point(22, 46);
+            lblSystemset_79.Location = new Point(14, 42);
             lblSystemset_79.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_79.Name = "lblSystemset_79";
             lblSystemset_79.Size = new Size(56, 17);
@@ -2530,7 +2530,7 @@
             // 
             cbbRequest5.FormattingEnabled = true;
             cbbRequest5.Items.AddRange(new object[] { "0x00：无效操作", "0xAA：恢复所有默认设置", "0x55：其他" });
-            cbbRequest5.Location = new Point(171, 281);
+            cbbRequest5.Location = new Point(122, 281);
             cbbRequest5.Margin = new Padding(4, 5, 4, 5);
             cbbRequest5.Name = "cbbRequest5";
             cbbRequest5.Size = new Size(140, 25);
@@ -2540,7 +2540,7 @@
             // 
             cbbRequest4.FormattingEnabled = true;
             cbbRequest4.Items.AddRange(new object[] { "0x00：无效操作", "0xAA：开启", "0x55：关闭" });
-            cbbRequest4.Location = new Point(171, 233);
+            cbbRequest4.Location = new Point(122, 233);
             cbbRequest4.Margin = new Padding(4, 5, 4, 5);
             cbbRequest4.Name = "cbbRequest4";
             cbbRequest4.Size = new Size(140, 25);
@@ -2549,7 +2549,7 @@
             // lblSystemset_77
             // 
             lblSystemset_77.AutoSize = true;
-            lblSystemset_77.Location = new Point(22, 288);
+            lblSystemset_77.Location = new Point(14, 284);
             lblSystemset_77.Name = "lblSystemset_77";
             lblSystemset_77.Size = new Size(80, 17);
             lblSystemset_77.TabIndex = 56;
@@ -2558,7 +2558,7 @@
             // lblSystemset_76
             // 
             lblSystemset_76.AutoSize = true;
-            lblSystemset_76.Location = new Point(22, 239);
+            lblSystemset_76.Location = new Point(14, 235);
             lblSystemset_76.Name = "lblSystemset_76";
             lblSystemset_76.Size = new Size(80, 17);
             lblSystemset_76.TabIndex = 53;
@@ -2583,7 +2583,7 @@
             gbSystemset_60.Margin = new Padding(11, 14, 11, 14);
             gbSystemset_60.Name = "gbSystemset_60";
             gbSystemset_60.Padding = new Padding(6, 7, 6, 7);
-            gbSystemset_60.Size = new Size(388, 943);
+            gbSystemset_60.Size = new Size(347, 619);
             gbSystemset_60.TabIndex = 38;
             gbSystemset_60.TabStop = false;
             gbSystemset_60.Text = "开关控制";
@@ -2591,11 +2591,11 @@
             // btnSystemset_45_Unique_Lifted3
             // 
             btnSystemset_45_Unique_Lifted3.AutoSize = true;
-            btnSystemset_45_Unique_Lifted3.Location = new Point(301, 159);
+            btnSystemset_45_Unique_Lifted3.Location = new Point(257, 153);
             btnSystemset_45_Unique_Lifted3.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_Unique_Lifted3.Name = "btnSystemset_45_Unique_Lifted3";
             btnSystemset_45_Unique_Lifted3.Padding = new Padding(1);
-            btnSystemset_45_Unique_Lifted3.Size = new Size(81, 39);
+            btnSystemset_45_Unique_Lifted3.Size = new Size(81, 29);
             btnSystemset_45_Unique_Lifted3.TabIndex = 42;
             btnSystemset_45_Unique_Lifted3.Text = "解除";
             btnSystemset_45_Unique_Lifted3.UseVisualStyleBackColor = true;
@@ -2604,11 +2604,11 @@
             // btnSystemset_43_Unique_Close3
             // 
             btnSystemset_43_Unique_Close3.AutoSize = true;
-            btnSystemset_43_Unique_Close3.Location = new Point(214, 160);
+            btnSystemset_43_Unique_Close3.Location = new Point(170, 154);
             btnSystemset_43_Unique_Close3.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_Unique_Close3.Name = "btnSystemset_43_Unique_Close3";
             btnSystemset_43_Unique_Close3.Padding = new Padding(1);
-            btnSystemset_43_Unique_Close3.Size = new Size(81, 39);
+            btnSystemset_43_Unique_Close3.Size = new Size(81, 29);
             btnSystemset_43_Unique_Close3.TabIndex = 41;
             btnSystemset_43_Unique_Close3.Text = "关闭";
             btnSystemset_43_Unique_Close3.UseVisualStyleBackColor = true;
@@ -2617,11 +2617,11 @@
             // btnSystemset_44_Unique_Open3
             // 
             btnSystemset_44_Unique_Open3.AutoSize = true;
-            btnSystemset_44_Unique_Open3.Location = new Point(127, 160);
+            btnSystemset_44_Unique_Open3.Location = new Point(83, 154);
             btnSystemset_44_Unique_Open3.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_Unique_Open3.Name = "btnSystemset_44_Unique_Open3";
             btnSystemset_44_Unique_Open3.Padding = new Padding(1);
-            btnSystemset_44_Unique_Open3.Size = new Size(81, 39);
+            btnSystemset_44_Unique_Open3.Size = new Size(81, 29);
             btnSystemset_44_Unique_Open3.TabIndex = 40;
             btnSystemset_44_Unique_Open3.Text = "打开";
             btnSystemset_44_Unique_Open3.UseVisualStyleBackColor = true;
@@ -2630,7 +2630,7 @@
             // lblSystemset_63
             // 
             lblSystemset_63.AutoSize = true;
-            lblSystemset_63.Location = new Point(20, 168);
+            lblSystemset_63.Location = new Point(6, 161);
             lblSystemset_63.Name = "lblSystemset_63";
             lblSystemset_63.Size = new Size(66, 17);
             lblSystemset_63.TabIndex = 39;
@@ -2639,11 +2639,11 @@
             // btnSystemset_45_Unique_Lifted2
             // 
             btnSystemset_45_Unique_Lifted2.AutoSize = true;
-            btnSystemset_45_Unique_Lifted2.Location = new Point(301, 101);
+            btnSystemset_45_Unique_Lifted2.Location = new Point(257, 95);
             btnSystemset_45_Unique_Lifted2.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_Unique_Lifted2.Name = "btnSystemset_45_Unique_Lifted2";
             btnSystemset_45_Unique_Lifted2.Padding = new Padding(1);
-            btnSystemset_45_Unique_Lifted2.Size = new Size(81, 39);
+            btnSystemset_45_Unique_Lifted2.Size = new Size(81, 29);
             btnSystemset_45_Unique_Lifted2.TabIndex = 22;
             btnSystemset_45_Unique_Lifted2.Text = "解除";
             btnSystemset_45_Unique_Lifted2.UseVisualStyleBackColor = true;
@@ -2652,11 +2652,11 @@
             // btnSystemset_45_Unique_Lifted1
             // 
             btnSystemset_45_Unique_Lifted1.AutoSize = true;
-            btnSystemset_45_Unique_Lifted1.Location = new Point(301, 43);
+            btnSystemset_45_Unique_Lifted1.Location = new Point(257, 37);
             btnSystemset_45_Unique_Lifted1.Margin = new Padding(4, 5, 4, 5);
             btnSystemset_45_Unique_Lifted1.Name = "btnSystemset_45_Unique_Lifted1";
             btnSystemset_45_Unique_Lifted1.Padding = new Padding(1);
-            btnSystemset_45_Unique_Lifted1.Size = new Size(81, 39);
+            btnSystemset_45_Unique_Lifted1.Size = new Size(81, 29);
             btnSystemset_45_Unique_Lifted1.TabIndex = 21;
             btnSystemset_45_Unique_Lifted1.Text = "解除";
             btnSystemset_45_Unique_Lifted1.UseVisualStyleBackColor = true;
@@ -2665,11 +2665,11 @@
             // btnSystemset_43_Unique_Close2
             // 
             btnSystemset_43_Unique_Close2.AutoSize = true;
-            btnSystemset_43_Unique_Close2.Location = new Point(214, 102);
+            btnSystemset_43_Unique_Close2.Location = new Point(170, 96);
             btnSystemset_43_Unique_Close2.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_Unique_Close2.Name = "btnSystemset_43_Unique_Close2";
             btnSystemset_43_Unique_Close2.Padding = new Padding(1);
-            btnSystemset_43_Unique_Close2.Size = new Size(81, 39);
+            btnSystemset_43_Unique_Close2.Size = new Size(81, 29);
             btnSystemset_43_Unique_Close2.TabIndex = 11;
             btnSystemset_43_Unique_Close2.Text = "关闭";
             btnSystemset_43_Unique_Close2.UseVisualStyleBackColor = true;
@@ -2678,11 +2678,11 @@
             // btnSystemset_44_Unique_Open2
             // 
             btnSystemset_44_Unique_Open2.AutoSize = true;
-            btnSystemset_44_Unique_Open2.Location = new Point(127, 102);
+            btnSystemset_44_Unique_Open2.Location = new Point(83, 96);
             btnSystemset_44_Unique_Open2.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_Unique_Open2.Name = "btnSystemset_44_Unique_Open2";
             btnSystemset_44_Unique_Open2.Padding = new Padding(1);
-            btnSystemset_44_Unique_Open2.Size = new Size(81, 39);
+            btnSystemset_44_Unique_Open2.Size = new Size(81, 29);
             btnSystemset_44_Unique_Open2.TabIndex = 10;
             btnSystemset_44_Unique_Open2.Text = "打开";
             btnSystemset_44_Unique_Open2.UseVisualStyleBackColor = true;
@@ -2691,11 +2691,11 @@
             // btnSystemset_43_Unique_Close1
             // 
             btnSystemset_43_Unique_Close1.AutoSize = true;
-            btnSystemset_43_Unique_Close1.Location = new Point(214, 44);
+            btnSystemset_43_Unique_Close1.Location = new Point(170, 38);
             btnSystemset_43_Unique_Close1.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_Unique_Close1.Name = "btnSystemset_43_Unique_Close1";
             btnSystemset_43_Unique_Close1.Padding = new Padding(1);
-            btnSystemset_43_Unique_Close1.Size = new Size(81, 39);
+            btnSystemset_43_Unique_Close1.Size = new Size(81, 29);
             btnSystemset_43_Unique_Close1.TabIndex = 9;
             btnSystemset_43_Unique_Close1.Text = "关闭";
             btnSystemset_43_Unique_Close1.UseVisualStyleBackColor = true;
@@ -2704,11 +2704,11 @@
             // btnSystemset_44_Unique_Open1
             // 
             btnSystemset_44_Unique_Open1.AutoSize = true;
-            btnSystemset_44_Unique_Open1.Location = new Point(127, 44);
+            btnSystemset_44_Unique_Open1.Location = new Point(83, 38);
             btnSystemset_44_Unique_Open1.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_Unique_Open1.Name = "btnSystemset_44_Unique_Open1";
             btnSystemset_44_Unique_Open1.Padding = new Padding(1);
-            btnSystemset_44_Unique_Open1.Size = new Size(81, 39);
+            btnSystemset_44_Unique_Open1.Size = new Size(81, 29);
             btnSystemset_44_Unique_Open1.TabIndex = 8;
             btnSystemset_44_Unique_Open1.Text = "打开";
             btnSystemset_44_Unique_Open1.UseVisualStyleBackColor = true;
@@ -2717,7 +2717,7 @@
             // lblSystemset_62
             // 
             lblSystemset_62.AutoSize = true;
-            lblSystemset_62.Location = new Point(20, 109);
+            lblSystemset_62.Location = new Point(6, 102);
             lblSystemset_62.Name = "lblSystemset_62";
             lblSystemset_62.Size = new Size(68, 17);
             lblSystemset_62.TabIndex = 1;
@@ -2726,7 +2726,7 @@
             // lblSystemset_61
             // 
             lblSystemset_61.AutoSize = true;
-            lblSystemset_61.Location = new Point(20, 51);
+            lblSystemset_61.Location = new Point(6, 44);
             lblSystemset_61.Name = "lblSystemset_61";
             lblSystemset_61.Size = new Size(68, 17);
             lblSystemset_61.TabIndex = 0;
@@ -2743,7 +2743,7 @@
             tabPage5.Location = new Point(4, 26);
             tabPage5.Margin = new Padding(4, 5, 4, 5);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(1591, 953);
+            tabPage5.Size = new Size(1332, 629);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "CBS5000_BCU";
             tabPage5.UseVisualStyleBackColor = true;
@@ -2778,11 +2778,11 @@
             gbBCU_SystemSet.Controls.Add(txtbcuCode);
             gbBCU_SystemSet.Controls.Add(lblSystemset_BCU_33);
             gbBCU_SystemSet.Controls.Add(lblSystemset_BCU_35);
-            gbBCU_SystemSet.Location = new Point(473, 623);
+            gbBCU_SystemSet.Location = new Point(405, 433);
             gbBCU_SystemSet.Margin = new Padding(3, 2, 3, 2);
             gbBCU_SystemSet.Name = "gbBCU_SystemSet";
             gbBCU_SystemSet.Padding = new Padding(3, 2, 3, 2);
-            gbBCU_SystemSet.Size = new Size(470, 255);
+            gbBCU_SystemSet.Size = new Size(380, 192);
             gbBCU_SystemSet.TabIndex = 92;
             gbBCU_SystemSet.TabStop = false;
             gbBCU_SystemSet.Text = "BCU参数设置";
@@ -2790,11 +2790,11 @@
             // btnFlashData
             // 
             btnFlashData.AutoSize = true;
-            btnFlashData.Location = new Point(351, 197);
+            btnFlashData.Location = new Point(296, 137);
             btnFlashData.Margin = new Padding(3, 1, 3, 1);
             btnFlashData.Name = "btnFlashData";
             btnFlashData.Padding = new Padding(1);
-            btnFlashData.Size = new Size(88, 39);
+            btnFlashData.Size = new Size(60, 29);
             btnFlashData.TabIndex = 70;
             btnFlashData.Text = "写入";
             btnFlashData.UseVisualStyleBackColor = true;
@@ -2802,16 +2802,16 @@
             // 
             // txtFlashData
             // 
-            txtFlashData.Location = new Point(127, 202);
+            txtFlashData.Location = new Point(92, 141);
             txtFlashData.Margin = new Padding(4, 5, 4, 5);
             txtFlashData.Name = "txtFlashData";
-            txtFlashData.Size = new Size(176, 23);
+            txtFlashData.Size = new Size(143, 23);
             txtFlashData.TabIndex = 69;
             // 
             // lblSystemset_BCU_36
             // 
             lblSystemset_BCU_36.AutoSize = true;
-            lblSystemset_BCU_36.Location = new Point(18, 205);
+            lblSystemset_BCU_36.Location = new Point(7, 143);
             lblSystemset_BCU_36.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_36.Name = "lblSystemset_BCU_36";
             lblSystemset_BCU_36.Size = new Size(61, 17);
@@ -2821,11 +2821,11 @@
             // btnBCU_Time
             // 
             btnBCU_Time.AutoSize = true;
-            btnBCU_Time.Location = new Point(354, 135);
+            btnBCU_Time.Location = new Point(298, 91);
             btnBCU_Time.Margin = new Padding(3, 1, 3, 1);
             btnBCU_Time.Name = "btnBCU_Time";
             btnBCU_Time.Padding = new Padding(1);
-            btnBCU_Time.Size = new Size(84, 39);
+            btnBCU_Time.Size = new Size(56, 29);
             btnBCU_Time.TabIndex = 67;
             btnBCU_Time.Text = "写入";
             btnBCU_Time.UseVisualStyleBackColor = true;
@@ -2835,20 +2835,20 @@
             // 
             dateTimePicker2.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             dateTimePicker2.Format = DateTimePickerFormat.Custom;
-            dateTimePicker2.Location = new Point(127, 141);
+            dateTimePicker2.Location = new Point(92, 102);
             dateTimePicker2.Margin = new Padding(4, 5, 4, 5);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(176, 23);
+            dateTimePicker2.Size = new Size(143, 23);
             dateTimePicker2.TabIndex = 66;
             // 
             // btnBCUBoardSN
             // 
             btnBCUBoardSN.AutoSize = true;
-            btnBCUBoardSN.Location = new Point(354, 84);
+            btnBCUBoardSN.Location = new Point(298, 56);
             btnBCUBoardSN.Margin = new Padding(3, 1, 3, 1);
             btnBCUBoardSN.Name = "btnBCUBoardSN";
             btnBCUBoardSN.Padding = new Padding(1);
-            btnBCUBoardSN.Size = new Size(84, 39);
+            btnBCUBoardSN.Size = new Size(56, 29);
             btnBCUBoardSN.TabIndex = 65;
             btnBCUBoardSN.Text = "写入";
             btnBCUBoardSN.UseVisualStyleBackColor = true;
@@ -2856,16 +2856,16 @@
             // 
             // txtBCUBoardSN
             // 
-            txtBCUBoardSN.Location = new Point(127, 88);
+            txtBCUBoardSN.Location = new Point(92, 65);
             txtBCUBoardSN.Margin = new Padding(4, 5, 4, 5);
             txtBCUBoardSN.Name = "txtBCUBoardSN";
-            txtBCUBoardSN.Size = new Size(176, 23);
+            txtBCUBoardSN.Size = new Size(143, 23);
             txtBCUBoardSN.TabIndex = 64;
             // 
             // lblSystemset_BCU_34
             // 
             lblSystemset_BCU_34.AutoSize = true;
-            lblSystemset_BCU_34.Location = new Point(17, 95);
+            lblSystemset_BCU_34.Location = new Point(6, 65);
             lblSystemset_BCU_34.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_34.Name = "lblSystemset_BCU_34";
             lblSystemset_BCU_34.Size = new Size(68, 17);
@@ -2875,11 +2875,11 @@
             // btnbcuCode
             // 
             btnbcuCode.AutoSize = true;
-            btnbcuCode.Location = new Point(354, 25);
+            btnbcuCode.Location = new Point(296, 13);
             btnbcuCode.Margin = new Padding(3, 1, 3, 1);
             btnbcuCode.Name = "btnbcuCode";
             btnbcuCode.Padding = new Padding(1);
-            btnbcuCode.Size = new Size(88, 39);
+            btnbcuCode.Size = new Size(60, 29);
             btnbcuCode.TabIndex = 62;
             btnbcuCode.Text = "写入";
             btnbcuCode.UseVisualStyleBackColor = true;
@@ -2887,16 +2887,16 @@
             // 
             // txtbcuCode
             // 
-            txtbcuCode.Location = new Point(127, 29);
+            txtbcuCode.Location = new Point(92, 22);
             txtbcuCode.Margin = new Padding(4, 5, 4, 5);
             txtbcuCode.Name = "txtbcuCode";
-            txtbcuCode.Size = new Size(176, 23);
+            txtbcuCode.Size = new Size(143, 23);
             txtbcuCode.TabIndex = 61;
             // 
             // lblSystemset_BCU_33
             // 
             lblSystemset_BCU_33.AutoSize = true;
-            lblSystemset_BCU_33.Location = new Point(18, 39);
+            lblSystemset_BCU_33.Location = new Point(7, 25);
             lblSystemset_BCU_33.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_33.Name = "lblSystemset_BCU_33";
             lblSystemset_BCU_33.Size = new Size(44, 17);
@@ -2906,7 +2906,7 @@
             // lblSystemset_BCU_35
             // 
             lblSystemset_BCU_35.AutoSize = true;
-            lblSystemset_BCU_35.Location = new Point(17, 148);
+            lblSystemset_BCU_35.Location = new Point(6, 102);
             lblSystemset_BCU_35.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_35.Name = "lblSystemset_BCU_35";
             lblSystemset_BCU_35.Size = new Size(32, 17);
@@ -2932,11 +2932,11 @@
             gbControl0F6.Controls.Add(lblSystemset_BCU_29);
             gbControl0F6.Controls.Add(btnSystemset_43_BCU1_Close1);
             gbControl0F6.Controls.Add(btnSystemset_44_BCU1_Open1);
-            gbControl0F6.Location = new Point(11, 621);
+            gbControl0F6.Location = new Point(11, 426);
             gbControl0F6.Margin = new Padding(3, 2, 3, 2);
             gbControl0F6.Name = "gbControl0F6";
             gbControl0F6.Padding = new Padding(3, 2, 3, 2);
-            gbControl0F6.Size = new Size(454, 257);
+            gbControl0F6.Size = new Size(374, 207);
             gbControl0F6.TabIndex = 63;
             gbControl0F6.TabStop = false;
             gbControl0F6.Text = "0xF6控制";
@@ -2951,7 +2951,7 @@
             btnSystemset_debug1.Location = new Point(13, 24);
             btnSystemset_debug1.Margin = new Padding(4, 5, 4, 5);
             btnSystemset_debug1.Name = "btnSystemset_debug1";
-            btnSystemset_debug1.Size = new Size(423, 43);
+            btnSystemset_debug1.Size = new Size(341, 29);
             btnSystemset_debug1.TabIndex = 91;
             btnSystemset_debug1.Text = "开始调试";
             btnSystemset_debug1.UseVisualStyleBackColor = false;
@@ -2961,11 +2961,11 @@
             // 
             btnSystemset_45_BCU1_Lifted4.AutoSize = true;
             btnSystemset_45_BCU1_Lifted4.Enabled = false;
-            btnSystemset_45_BCU1_Lifted4.Location = new Point(354, 211);
+            btnSystemset_45_BCU1_Lifted4.Location = new Point(299, 162);
             btnSystemset_45_BCU1_Lifted4.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU1_Lifted4.Name = "btnSystemset_45_BCU1_Lifted4";
             btnSystemset_45_BCU1_Lifted4.Padding = new Padding(1);
-            btnSystemset_45_BCU1_Lifted4.Size = new Size(81, 39);
+            btnSystemset_45_BCU1_Lifted4.Size = new Size(55, 29);
             btnSystemset_45_BCU1_Lifted4.TabIndex = 74;
             btnSystemset_45_BCU1_Lifted4.Text = "解除";
             btnSystemset_45_BCU1_Lifted4.UseVisualStyleBackColor = true;
@@ -2975,11 +2975,11 @@
             // 
             btnSystemset_43_BCU1_Close4.AutoSize = true;
             btnSystemset_43_BCU1_Close4.Enabled = false;
-            btnSystemset_43_BCU1_Close4.Location = new Point(266, 213);
+            btnSystemset_43_BCU1_Close4.Location = new Point(211, 162);
             btnSystemset_43_BCU1_Close4.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU1_Close4.Name = "btnSystemset_43_BCU1_Close4";
             btnSystemset_43_BCU1_Close4.Padding = new Padding(1);
-            btnSystemset_43_BCU1_Close4.Size = new Size(81, 39);
+            btnSystemset_43_BCU1_Close4.Size = new Size(55, 29);
             btnSystemset_43_BCU1_Close4.TabIndex = 73;
             btnSystemset_43_BCU1_Close4.Text = "关闭";
             btnSystemset_43_BCU1_Close4.UseVisualStyleBackColor = true;
@@ -2989,11 +2989,11 @@
             // 
             btnSystemset_44_BCU1_Open4.AutoSize = true;
             btnSystemset_44_BCU1_Open4.Enabled = false;
-            btnSystemset_44_BCU1_Open4.Location = new Point(179, 213);
+            btnSystemset_44_BCU1_Open4.Location = new Point(124, 162);
             btnSystemset_44_BCU1_Open4.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU1_Open4.Name = "btnSystemset_44_BCU1_Open4";
             btnSystemset_44_BCU1_Open4.Padding = new Padding(1);
-            btnSystemset_44_BCU1_Open4.Size = new Size(81, 39);
+            btnSystemset_44_BCU1_Open4.Size = new Size(55, 29);
             btnSystemset_44_BCU1_Open4.TabIndex = 72;
             btnSystemset_44_BCU1_Open4.Text = "打开";
             btnSystemset_44_BCU1_Open4.UseVisualStyleBackColor = true;
@@ -3002,7 +3002,7 @@
             // lblSystemset_BCU_32
             // 
             lblSystemset_BCU_32.AutoSize = true;
-            lblSystemset_BCU_32.Location = new Point(14, 222);
+            lblSystemset_BCU_32.Location = new Point(13, 174);
             lblSystemset_BCU_32.Name = "lblSystemset_BCU_32";
             lblSystemset_BCU_32.Size = new Size(32, 17);
             lblSystemset_BCU_32.TabIndex = 71;
@@ -3012,11 +3012,11 @@
             // 
             btnSystemset_45_BCU1_Lifted3.AutoSize = true;
             btnSystemset_45_BCU1_Lifted3.Enabled = false;
-            btnSystemset_45_BCU1_Lifted3.Location = new Point(354, 168);
+            btnSystemset_45_BCU1_Lifted3.Location = new Point(299, 127);
             btnSystemset_45_BCU1_Lifted3.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU1_Lifted3.Name = "btnSystemset_45_BCU1_Lifted3";
             btnSystemset_45_BCU1_Lifted3.Padding = new Padding(1);
-            btnSystemset_45_BCU1_Lifted3.Size = new Size(81, 39);
+            btnSystemset_45_BCU1_Lifted3.Size = new Size(55, 29);
             btnSystemset_45_BCU1_Lifted3.TabIndex = 70;
             btnSystemset_45_BCU1_Lifted3.Text = "解除";
             btnSystemset_45_BCU1_Lifted3.UseVisualStyleBackColor = true;
@@ -3026,11 +3026,11 @@
             // 
             btnSystemset_43_BCU1_Close3.AutoSize = true;
             btnSystemset_43_BCU1_Close3.Enabled = false;
-            btnSystemset_43_BCU1_Close3.Location = new Point(266, 170);
+            btnSystemset_43_BCU1_Close3.Location = new Point(211, 127);
             btnSystemset_43_BCU1_Close3.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU1_Close3.Name = "btnSystemset_43_BCU1_Close3";
             btnSystemset_43_BCU1_Close3.Padding = new Padding(1);
-            btnSystemset_43_BCU1_Close3.Size = new Size(81, 39);
+            btnSystemset_43_BCU1_Close3.Size = new Size(55, 29);
             btnSystemset_43_BCU1_Close3.TabIndex = 69;
             btnSystemset_43_BCU1_Close3.Text = "关闭";
             btnSystemset_43_BCU1_Close3.UseVisualStyleBackColor = true;
@@ -3040,11 +3040,11 @@
             // 
             btnSystemset_44_BCU1_Open3.AutoSize = true;
             btnSystemset_44_BCU1_Open3.Enabled = false;
-            btnSystemset_44_BCU1_Open3.Location = new Point(179, 170);
+            btnSystemset_44_BCU1_Open3.Location = new Point(124, 127);
             btnSystemset_44_BCU1_Open3.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU1_Open3.Name = "btnSystemset_44_BCU1_Open3";
             btnSystemset_44_BCU1_Open3.Padding = new Padding(1);
-            btnSystemset_44_BCU1_Open3.Size = new Size(81, 39);
+            btnSystemset_44_BCU1_Open3.Size = new Size(55, 29);
             btnSystemset_44_BCU1_Open3.TabIndex = 68;
             btnSystemset_44_BCU1_Open3.Text = "打开";
             btnSystemset_44_BCU1_Open3.UseVisualStyleBackColor = true;
@@ -3053,7 +3053,7 @@
             // lblSystemset_BCU_31
             // 
             lblSystemset_BCU_31.AutoSize = true;
-            lblSystemset_BCU_31.Location = new Point(14, 181);
+            lblSystemset_BCU_31.Location = new Point(13, 141);
             lblSystemset_BCU_31.Name = "lblSystemset_BCU_31";
             lblSystemset_BCU_31.Size = new Size(92, 17);
             lblSystemset_BCU_31.TabIndex = 67;
@@ -3063,11 +3063,11 @@
             // 
             btnSystemset_45_BCU1_Lifted2.AutoSize = true;
             btnSystemset_45_BCU1_Lifted2.Enabled = false;
-            btnSystemset_45_BCU1_Lifted2.Location = new Point(354, 119);
+            btnSystemset_45_BCU1_Lifted2.Location = new Point(299, 92);
             btnSystemset_45_BCU1_Lifted2.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU1_Lifted2.Name = "btnSystemset_45_BCU1_Lifted2";
             btnSystemset_45_BCU1_Lifted2.Padding = new Padding(1);
-            btnSystemset_45_BCU1_Lifted2.Size = new Size(81, 39);
+            btnSystemset_45_BCU1_Lifted2.Size = new Size(55, 29);
             btnSystemset_45_BCU1_Lifted2.TabIndex = 66;
             btnSystemset_45_BCU1_Lifted2.Text = "解除";
             btnSystemset_45_BCU1_Lifted2.UseVisualStyleBackColor = true;
@@ -3077,11 +3077,11 @@
             // 
             btnSystemset_43_BCU1_Close2.AutoSize = true;
             btnSystemset_43_BCU1_Close2.Enabled = false;
-            btnSystemset_43_BCU1_Close2.Location = new Point(266, 122);
+            btnSystemset_43_BCU1_Close2.Location = new Point(211, 92);
             btnSystemset_43_BCU1_Close2.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU1_Close2.Name = "btnSystemset_43_BCU1_Close2";
             btnSystemset_43_BCU1_Close2.Padding = new Padding(1);
-            btnSystemset_43_BCU1_Close2.Size = new Size(81, 39);
+            btnSystemset_43_BCU1_Close2.Size = new Size(55, 29);
             btnSystemset_43_BCU1_Close2.TabIndex = 65;
             btnSystemset_43_BCU1_Close2.Text = "关闭";
             btnSystemset_43_BCU1_Close2.UseVisualStyleBackColor = true;
@@ -3091,11 +3091,11 @@
             // 
             btnSystemset_44_BCU1_Open2.AutoSize = true;
             btnSystemset_44_BCU1_Open2.Enabled = false;
-            btnSystemset_44_BCU1_Open2.Location = new Point(179, 122);
+            btnSystemset_44_BCU1_Open2.Location = new Point(124, 92);
             btnSystemset_44_BCU1_Open2.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU1_Open2.Name = "btnSystemset_44_BCU1_Open2";
             btnSystemset_44_BCU1_Open2.Padding = new Padding(1);
-            btnSystemset_44_BCU1_Open2.Size = new Size(81, 39);
+            btnSystemset_44_BCU1_Open2.Size = new Size(55, 29);
             btnSystemset_44_BCU1_Open2.TabIndex = 64;
             btnSystemset_44_BCU1_Open2.Text = "打开";
             btnSystemset_44_BCU1_Open2.UseVisualStyleBackColor = true;
@@ -3104,7 +3104,7 @@
             // lblSystemset_BCU_30
             // 
             lblSystemset_BCU_30.AutoSize = true;
-            lblSystemset_BCU_30.Location = new Point(14, 130);
+            lblSystemset_BCU_30.Location = new Point(13, 98);
             lblSystemset_BCU_30.Name = "lblSystemset_BCU_30";
             lblSystemset_BCU_30.Size = new Size(92, 17);
             lblSystemset_BCU_30.TabIndex = 63;
@@ -3114,11 +3114,11 @@
             // 
             btnSystemset_45_BCU1_Lifted1.AutoSize = true;
             btnSystemset_45_BCU1_Lifted1.Enabled = false;
-            btnSystemset_45_BCU1_Lifted1.Location = new Point(354, 70);
+            btnSystemset_45_BCU1_Lifted1.Location = new Point(299, 58);
             btnSystemset_45_BCU1_Lifted1.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU1_Lifted1.Name = "btnSystemset_45_BCU1_Lifted1";
             btnSystemset_45_BCU1_Lifted1.Padding = new Padding(1);
-            btnSystemset_45_BCU1_Lifted1.Size = new Size(81, 39);
+            btnSystemset_45_BCU1_Lifted1.Size = new Size(55, 29);
             btnSystemset_45_BCU1_Lifted1.TabIndex = 62;
             btnSystemset_45_BCU1_Lifted1.Text = "解除";
             btnSystemset_45_BCU1_Lifted1.UseVisualStyleBackColor = true;
@@ -3127,7 +3127,7 @@
             // lblSystemset_BCU_29
             // 
             lblSystemset_BCU_29.AutoSize = true;
-            lblSystemset_BCU_29.Location = new Point(14, 82);
+            lblSystemset_BCU_29.Location = new Point(13, 64);
             lblSystemset_BCU_29.Name = "lblSystemset_BCU_29";
             lblSystemset_BCU_29.Size = new Size(56, 17);
             lblSystemset_BCU_29.TabIndex = 59;
@@ -3137,11 +3137,11 @@
             // 
             btnSystemset_43_BCU1_Close1.AutoSize = true;
             btnSystemset_43_BCU1_Close1.Enabled = false;
-            btnSystemset_43_BCU1_Close1.Location = new Point(266, 73);
+            btnSystemset_43_BCU1_Close1.Location = new Point(211, 58);
             btnSystemset_43_BCU1_Close1.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU1_Close1.Name = "btnSystemset_43_BCU1_Close1";
             btnSystemset_43_BCU1_Close1.Padding = new Padding(1);
-            btnSystemset_43_BCU1_Close1.Size = new Size(81, 39);
+            btnSystemset_43_BCU1_Close1.Size = new Size(55, 29);
             btnSystemset_43_BCU1_Close1.TabIndex = 61;
             btnSystemset_43_BCU1_Close1.Text = "关闭";
             btnSystemset_43_BCU1_Close1.UseVisualStyleBackColor = true;
@@ -3151,11 +3151,11 @@
             // 
             btnSystemset_44_BCU1_Open1.AutoSize = true;
             btnSystemset_44_BCU1_Open1.Enabled = false;
-            btnSystemset_44_BCU1_Open1.Location = new Point(179, 73);
+            btnSystemset_44_BCU1_Open1.Location = new Point(124, 58);
             btnSystemset_44_BCU1_Open1.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU1_Open1.Name = "btnSystemset_44_BCU1_Open1";
             btnSystemset_44_BCU1_Open1.Padding = new Padding(1);
-            btnSystemset_44_BCU1_Open1.Size = new Size(81, 39);
+            btnSystemset_44_BCU1_Open1.Size = new Size(55, 29);
             btnSystemset_44_BCU1_Open1.TabIndex = 60;
             btnSystemset_44_BCU1_Open1.Text = "打开";
             btnSystemset_44_BCU1_Open1.UseVisualStyleBackColor = true;
@@ -3187,11 +3187,11 @@
             gbBCU_Calibration.Controls.Add(lblSystemset_BCU_39);
             gbBCU_Calibration.Controls.Add(txtBCU_Calibration01);
             gbBCU_Calibration.Controls.Add(txtBCU_Calibration03);
-            gbBCU_Calibration.Location = new Point(959, 433);
+            gbBCU_Calibration.Location = new Point(800, 298);
             gbBCU_Calibration.Margin = new Padding(4, 5, 4, 5);
             gbBCU_Calibration.Name = "gbBCU_Calibration";
             gbBCU_Calibration.Padding = new Padding(4, 5, 4, 5);
-            gbBCU_Calibration.Size = new Size(388, 445);
+            gbBCU_Calibration.Size = new Size(388, 308);
             gbBCU_Calibration.TabIndex = 44;
             gbBCU_Calibration.TabStop = false;
             gbBCU_Calibration.Text = "校准";
@@ -3199,11 +3199,11 @@
             // btnSetCalibration_BCU_08
             // 
             btnSetCalibration_BCU_08.AutoSize = true;
-            btnSetCalibration_BCU_08.Location = new Point(288, 384);
+            btnSetCalibration_BCU_08.Location = new Point(272, 268);
             btnSetCalibration_BCU_08.Margin = new Padding(4, 5, 4, 5);
             btnSetCalibration_BCU_08.Name = "btnSetCalibration_BCU_08";
             btnSetCalibration_BCU_08.Padding = new Padding(1);
-            btnSetCalibration_BCU_08.Size = new Size(85, 39);
+            btnSetCalibration_BCU_08.Size = new Size(85, 29);
             btnSetCalibration_BCU_08.TabIndex = 70;
             btnSetCalibration_BCU_08.Text = "写入";
             btnSetCalibration_BCU_08.UseVisualStyleBackColor = true;
@@ -3212,11 +3212,11 @@
             // btnSetCalibration_BCU_07
             // 
             btnSetCalibration_BCU_07.AutoSize = true;
-            btnSetCalibration_BCU_07.Location = new Point(288, 339);
+            btnSetCalibration_BCU_07.Location = new Point(272, 239);
             btnSetCalibration_BCU_07.Margin = new Padding(4, 5, 4, 5);
             btnSetCalibration_BCU_07.Name = "btnSetCalibration_BCU_07";
             btnSetCalibration_BCU_07.Padding = new Padding(1);
-            btnSetCalibration_BCU_07.Size = new Size(85, 39);
+            btnSetCalibration_BCU_07.Size = new Size(85, 29);
             btnSetCalibration_BCU_07.TabIndex = 69;
             btnSetCalibration_BCU_07.Text = "写入";
             btnSetCalibration_BCU_07.UseVisualStyleBackColor = true;
@@ -3225,11 +3225,11 @@
             // btnSetCalibration_BCU_06
             // 
             btnSetCalibration_BCU_06.AutoSize = true;
-            btnSetCalibration_BCU_06.Location = new Point(288, 289);
+            btnSetCalibration_BCU_06.Location = new Point(272, 205);
             btnSetCalibration_BCU_06.Margin = new Padding(4, 5, 4, 5);
             btnSetCalibration_BCU_06.Name = "btnSetCalibration_BCU_06";
             btnSetCalibration_BCU_06.Padding = new Padding(1);
-            btnSetCalibration_BCU_06.Size = new Size(85, 39);
+            btnSetCalibration_BCU_06.Size = new Size(85, 29);
             btnSetCalibration_BCU_06.TabIndex = 68;
             btnSetCalibration_BCU_06.Text = "写入";
             btnSetCalibration_BCU_06.UseVisualStyleBackColor = true;
@@ -3238,11 +3238,11 @@
             // btnSetCalibration_BCU_05
             // 
             btnSetCalibration_BCU_05.AutoSize = true;
-            btnSetCalibration_BCU_05.Location = new Point(288, 236);
+            btnSetCalibration_BCU_05.Location = new Point(272, 168);
             btnSetCalibration_BCU_05.Margin = new Padding(4, 5, 4, 5);
             btnSetCalibration_BCU_05.Name = "btnSetCalibration_BCU_05";
             btnSetCalibration_BCU_05.Padding = new Padding(1);
-            btnSetCalibration_BCU_05.Size = new Size(85, 39);
+            btnSetCalibration_BCU_05.Size = new Size(85, 29);
             btnSetCalibration_BCU_05.TabIndex = 67;
             btnSetCalibration_BCU_05.Text = "写入";
             btnSetCalibration_BCU_05.UseVisualStyleBackColor = true;
@@ -3251,11 +3251,11 @@
             // btnSetCalibration_BCU_04
             // 
             btnSetCalibration_BCU_04.AutoSize = true;
-            btnSetCalibration_BCU_04.Location = new Point(288, 180);
+            btnSetCalibration_BCU_04.Location = new Point(272, 128);
             btnSetCalibration_BCU_04.Margin = new Padding(4, 5, 4, 5);
             btnSetCalibration_BCU_04.Name = "btnSetCalibration_BCU_04";
             btnSetCalibration_BCU_04.Padding = new Padding(1);
-            btnSetCalibration_BCU_04.Size = new Size(85, 39);
+            btnSetCalibration_BCU_04.Size = new Size(85, 29);
             btnSetCalibration_BCU_04.TabIndex = 66;
             btnSetCalibration_BCU_04.Text = "写入";
             btnSetCalibration_BCU_04.UseVisualStyleBackColor = true;
@@ -3264,11 +3264,11 @@
             // btnSetCalibration_BCU_03
             // 
             btnSetCalibration_BCU_03.AutoSize = true;
-            btnSetCalibration_BCU_03.Location = new Point(288, 127);
+            btnSetCalibration_BCU_03.Location = new Point(272, 91);
             btnSetCalibration_BCU_03.Margin = new Padding(4, 5, 4, 5);
             btnSetCalibration_BCU_03.Name = "btnSetCalibration_BCU_03";
             btnSetCalibration_BCU_03.Padding = new Padding(1);
-            btnSetCalibration_BCU_03.Size = new Size(85, 39);
+            btnSetCalibration_BCU_03.Size = new Size(85, 29);
             btnSetCalibration_BCU_03.TabIndex = 65;
             btnSetCalibration_BCU_03.Text = "写入";
             btnSetCalibration_BCU_03.UseVisualStyleBackColor = true;
@@ -3277,11 +3277,11 @@
             // btnSetCalibration_BCU_02
             // 
             btnSetCalibration_BCU_02.AutoSize = true;
-            btnSetCalibration_BCU_02.Location = new Point(288, 74);
+            btnSetCalibration_BCU_02.Location = new Point(272, 54);
             btnSetCalibration_BCU_02.Margin = new Padding(4, 5, 4, 5);
             btnSetCalibration_BCU_02.Name = "btnSetCalibration_BCU_02";
             btnSetCalibration_BCU_02.Padding = new Padding(1);
-            btnSetCalibration_BCU_02.Size = new Size(85, 39);
+            btnSetCalibration_BCU_02.Size = new Size(85, 29);
             btnSetCalibration_BCU_02.TabIndex = 64;
             btnSetCalibration_BCU_02.Text = "写入";
             btnSetCalibration_BCU_02.UseVisualStyleBackColor = true;
@@ -3290,7 +3290,7 @@
             // lblSystemset_BCU_44
             // 
             lblSystemset_BCU_44.AutoSize = true;
-            lblSystemset_BCU_44.Location = new Point(10, 394);
+            lblSystemset_BCU_44.Location = new Point(11, 278);
             lblSystemset_BCU_44.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_44.Name = "lblSystemset_BCU_44";
             lblSystemset_BCU_44.Size = new Size(80, 17);
@@ -3299,7 +3299,7 @@
             // 
             // txtBCU_Calibration08
             // 
-            txtBCU_Calibration08.Location = new Point(172, 388);
+            txtBCU_Calibration08.Location = new Point(170, 270);
             txtBCU_Calibration08.Margin = new Padding(4, 5, 4, 5);
             txtBCU_Calibration08.Name = "txtBCU_Calibration08";
             txtBCU_Calibration08.Size = new Size(94, 23);
@@ -3308,11 +3308,11 @@
             // btnSetCalibration_BCU_01
             // 
             btnSetCalibration_BCU_01.AutoSize = true;
-            btnSetCalibration_BCU_01.Location = new Point(288, 20);
+            btnSetCalibration_BCU_01.Location = new Point(272, 16);
             btnSetCalibration_BCU_01.Margin = new Padding(4, 5, 4, 5);
             btnSetCalibration_BCU_01.Name = "btnSetCalibration_BCU_01";
             btnSetCalibration_BCU_01.Padding = new Padding(1);
-            btnSetCalibration_BCU_01.Size = new Size(85, 39);
+            btnSetCalibration_BCU_01.Size = new Size(85, 29);
             btnSetCalibration_BCU_01.TabIndex = 51;
             btnSetCalibration_BCU_01.Text = "写入";
             btnSetCalibration_BCU_01.UseVisualStyleBackColor = true;
@@ -3321,7 +3321,7 @@
             // lblSystemset_BCU_43
             // 
             lblSystemset_BCU_43.AutoSize = true;
-            lblSystemset_BCU_43.Location = new Point(8, 349);
+            lblSystemset_BCU_43.Location = new Point(9, 249);
             lblSystemset_BCU_43.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_43.Name = "lblSystemset_BCU_43";
             lblSystemset_BCU_43.Size = new Size(68, 17);
@@ -3330,7 +3330,7 @@
             // 
             // txtBCU_Calibration07
             // 
-            txtBCU_Calibration07.Location = new Point(172, 342);
+            txtBCU_Calibration07.Location = new Point(170, 240);
             txtBCU_Calibration07.Margin = new Padding(4, 5, 4, 5);
             txtBCU_Calibration07.Name = "txtBCU_Calibration07";
             txtBCU_Calibration07.Size = new Size(94, 23);
@@ -3339,7 +3339,7 @@
             // lblSystemset_BCU_42
             // 
             lblSystemset_BCU_42.AutoSize = true;
-            lblSystemset_BCU_42.Location = new Point(7, 297);
+            lblSystemset_BCU_42.Location = new Point(8, 213);
             lblSystemset_BCU_42.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_42.Name = "lblSystemset_BCU_42";
             lblSystemset_BCU_42.Size = new Size(131, 17);
@@ -3348,7 +3348,7 @@
             // 
             // txtBCU_Calibration06
             // 
-            txtBCU_Calibration06.Location = new Point(172, 295);
+            txtBCU_Calibration06.Location = new Point(170, 209);
             txtBCU_Calibration06.Margin = new Padding(4, 5, 4, 5);
             txtBCU_Calibration06.Name = "txtBCU_Calibration06";
             txtBCU_Calibration06.Size = new Size(94, 23);
@@ -3357,7 +3357,7 @@
             // lblSystemset_BCU_41
             // 
             lblSystemset_BCU_41.AutoSize = true;
-            lblSystemset_BCU_41.Location = new Point(8, 245);
+            lblSystemset_BCU_41.Location = new Point(9, 177);
             lblSystemset_BCU_41.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_41.Name = "lblSystemset_BCU_41";
             lblSystemset_BCU_41.Size = new Size(126, 17);
@@ -3366,7 +3366,7 @@
             // 
             // txtBCU_Calibration05
             // 
-            txtBCU_Calibration05.Location = new Point(172, 240);
+            txtBCU_Calibration05.Location = new Point(170, 170);
             txtBCU_Calibration05.Margin = new Padding(4, 5, 4, 5);
             txtBCU_Calibration05.Name = "txtBCU_Calibration05";
             txtBCU_Calibration05.Size = new Size(94, 23);
@@ -3375,7 +3375,7 @@
             // lblSystemset_BCU_40
             // 
             lblSystemset_BCU_40.AutoSize = true;
-            lblSystemset_BCU_40.Location = new Point(7, 190);
+            lblSystemset_BCU_40.Location = new Point(8, 138);
             lblSystemset_BCU_40.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_40.Name = "lblSystemset_BCU_40";
             lblSystemset_BCU_40.Size = new Size(131, 17);
@@ -3384,7 +3384,7 @@
             // 
             // txtBCU_Calibration04
             // 
-            txtBCU_Calibration04.Location = new Point(172, 186);
+            txtBCU_Calibration04.Location = new Point(170, 132);
             txtBCU_Calibration04.Margin = new Padding(4, 5, 4, 5);
             txtBCU_Calibration04.Name = "txtBCU_Calibration04";
             txtBCU_Calibration04.Size = new Size(94, 23);
@@ -3393,7 +3393,7 @@
             // lblSystemset_BCU_38
             // 
             lblSystemset_BCU_38.AutoSize = true;
-            lblSystemset_BCU_38.Location = new Point(7, 82);
+            lblSystemset_BCU_38.Location = new Point(8, 62);
             lblSystemset_BCU_38.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_38.Name = "lblSystemset_BCU_38";
             lblSystemset_BCU_38.Size = new Size(140, 17);
@@ -3403,7 +3403,7 @@
             // lblSystemset_BCU_37
             // 
             lblSystemset_BCU_37.AutoSize = true;
-            lblSystemset_BCU_37.Location = new Point(7, 29);
+            lblSystemset_BCU_37.Location = new Point(8, 25);
             lblSystemset_BCU_37.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_37.Name = "lblSystemset_BCU_37";
             lblSystemset_BCU_37.Size = new Size(116, 17);
@@ -3412,7 +3412,7 @@
             // 
             // txtBCU_Calibration02
             // 
-            txtBCU_Calibration02.Location = new Point(172, 79);
+            txtBCU_Calibration02.Location = new Point(170, 57);
             txtBCU_Calibration02.Margin = new Padding(4, 5, 4, 5);
             txtBCU_Calibration02.Name = "txtBCU_Calibration02";
             txtBCU_Calibration02.Size = new Size(94, 23);
@@ -3421,7 +3421,7 @@
             // lblSystemset_BCU_39
             // 
             lblSystemset_BCU_39.AutoSize = true;
-            lblSystemset_BCU_39.Location = new Point(7, 137);
+            lblSystemset_BCU_39.Location = new Point(8, 101);
             lblSystemset_BCU_39.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_39.Name = "lblSystemset_BCU_39";
             lblSystemset_BCU_39.Size = new Size(126, 17);
@@ -3430,7 +3430,7 @@
             // 
             // txtBCU_Calibration01
             // 
-            txtBCU_Calibration01.Location = new Point(172, 25);
+            txtBCU_Calibration01.Location = new Point(170, 19);
             txtBCU_Calibration01.Margin = new Padding(4, 5, 4, 5);
             txtBCU_Calibration01.Name = "txtBCU_Calibration01";
             txtBCU_Calibration01.Size = new Size(94, 23);
@@ -3438,7 +3438,7 @@
             // 
             // txtBCU_Calibration03
             // 
-            txtBCU_Calibration03.Location = new Point(172, 134);
+            txtBCU_Calibration03.Location = new Point(170, 96);
             txtBCU_Calibration03.Margin = new Padding(4, 5, 4, 5);
             txtBCU_Calibration03.Name = "txtBCU_Calibration03";
             txtBCU_Calibration03.Size = new Size(94, 23);
@@ -3461,11 +3461,11 @@
             gbControl0F0.Controls.Add(cbbRequestF0_4);
             gbControl0F0.Controls.Add(lblSystemset_BCU_27);
             gbControl0F0.Controls.Add(lblSystemset_BCU_26);
-            gbControl0F0.Location = new Point(959, 10);
+            gbControl0F0.Location = new Point(800, 10);
             gbControl0F0.Margin = new Padding(4, 5, 4, 5);
             gbControl0F0.Name = "gbControl0F0";
             gbControl0F0.Padding = new Padding(4, 5, 4, 5);
-            gbControl0F0.Size = new Size(388, 414);
+            gbControl0F0.Size = new Size(388, 277);
             gbControl0F0.TabIndex = 42;
             gbControl0F0.TabStop = false;
             gbControl0F0.Text = "0x0F0上位机控制";
@@ -3474,7 +3474,7 @@
             // 
             cbbRequestF0_3.FormattingEnabled = true;
             cbbRequestF0_3.Items.AddRange(new object[] { "0x00：查询", "0xAA：使能", "0x55：失能" });
-            cbbRequestF0_3.Location = new Point(171, 187);
+            cbbRequestF0_3.Location = new Point(169, 120);
             cbbRequestF0_3.Margin = new Padding(4, 5, 4, 5);
             cbbRequestF0_3.Name = "cbbRequestF0_3";
             cbbRequestF0_3.Size = new Size(95, 25);
@@ -3484,7 +3484,7 @@
             // 
             cbbRequestF0_2.FormattingEnabled = true;
             cbbRequestF0_2.Items.AddRange(new object[] { "0x00：查询", "0xAA：开启", "0x55：关闭" });
-            cbbRequestF0_2.Location = new Point(171, 141);
+            cbbRequestF0_2.Location = new Point(169, 90);
             cbbRequestF0_2.Margin = new Padding(4, 5, 4, 5);
             cbbRequestF0_2.Name = "cbbRequestF0_2";
             cbbRequestF0_2.Size = new Size(95, 25);
@@ -3494,7 +3494,7 @@
             // 
             cbbRequestF0_0.FormattingEnabled = true;
             cbbRequestF0_0.Items.AddRange(new object[] { "0x00：查询", "0xAA：开启", "0x55：关闭" });
-            cbbRequestF0_0.Location = new Point(171, 46);
+            cbbRequestF0_0.Location = new Point(169, 27);
             cbbRequestF0_0.Margin = new Padding(4, 5, 4, 5);
             cbbRequestF0_0.Name = "cbbRequestF0_0";
             cbbRequestF0_0.Size = new Size(95, 25);
@@ -3504,7 +3504,7 @@
             // 
             cbbRequestF0_1.FormattingEnabled = true;
             cbbRequestF0_1.Items.AddRange(new object[] { "0x00：查询", "0xAA：开启", "0x55：关闭" });
-            cbbRequestF0_1.Location = new Point(171, 93);
+            cbbRequestF0_1.Location = new Point(169, 58);
             cbbRequestF0_1.Margin = new Padding(4, 5, 4, 5);
             cbbRequestF0_1.Name = "cbbRequestF0_1";
             cbbRequestF0_1.Size = new Size(95, 25);
@@ -3513,7 +3513,7 @@
             // lblSystemset_BCU_25
             // 
             lblSystemset_BCU_25.AutoSize = true;
-            lblSystemset_BCU_25.Location = new Point(22, 192);
+            lblSystemset_BCU_25.Location = new Point(9, 125);
             lblSystemset_BCU_25.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_25.Name = "lblSystemset_BCU_25";
             lblSystemset_BCU_25.Size = new Size(76, 17);
@@ -3522,7 +3522,7 @@
             // 
             // txtSlaveAddr_BCU
             // 
-            txtSlaveAddr_BCU.Location = new Point(171, 328);
+            txtSlaveAddr_BCU.Location = new Point(169, 213);
             txtSlaveAddr_BCU.Margin = new Padding(4, 5, 4, 5);
             txtSlaveAddr_BCU.Name = "txtSlaveAddr_BCU";
             txtSlaveAddr_BCU.Size = new Size(95, 23);
@@ -3531,11 +3531,11 @@
             // btnSet0F0
             // 
             btnSet0F0.AutoSize = true;
-            btnSet0F0.Location = new Point(287, 367);
+            btnSet0F0.Location = new Point(272, 237);
             btnSet0F0.Margin = new Padding(4, 5, 4, 5);
             btnSet0F0.Name = "btnSet0F0";
             btnSet0F0.Padding = new Padding(1);
-            btnSet0F0.Size = new Size(85, 39);
+            btnSet0F0.Size = new Size(85, 30);
             btnSet0F0.TabIndex = 55;
             btnSet0F0.Text = "写入";
             btnSet0F0.UseVisualStyleBackColor = true;
@@ -3544,7 +3544,7 @@
             // lblSystemset_BCU_24
             // 
             lblSystemset_BCU_24.AutoSize = true;
-            lblSystemset_BCU_24.Location = new Point(22, 143);
+            lblSystemset_BCU_24.Location = new Point(9, 92);
             lblSystemset_BCU_24.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_24.Name = "lblSystemset_BCU_24";
             lblSystemset_BCU_24.Size = new Size(78, 17);
@@ -3554,7 +3554,7 @@
             // lblSystemset_BCU_28
             // 
             lblSystemset_BCU_28.AutoSize = true;
-            lblSystemset_BCU_28.Location = new Point(22, 335);
+            lblSystemset_BCU_28.Location = new Point(9, 220);
             lblSystemset_BCU_28.Name = "lblSystemset_BCU_28";
             lblSystemset_BCU_28.Size = new Size(101, 17);
             lblSystemset_BCU_28.TabIndex = 59;
@@ -3563,7 +3563,7 @@
             // lblSystemset_BCU_23
             // 
             lblSystemset_BCU_23.AutoSize = true;
-            lblSystemset_BCU_23.Location = new Point(22, 95);
+            lblSystemset_BCU_23.Location = new Point(9, 60);
             lblSystemset_BCU_23.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_23.Name = "lblSystemset_BCU_23";
             lblSystemset_BCU_23.Size = new Size(56, 17);
@@ -3573,7 +3573,7 @@
             // lblSystemset_BCU_22
             // 
             lblSystemset_BCU_22.AutoSize = true;
-            lblSystemset_BCU_22.Location = new Point(22, 46);
+            lblSystemset_BCU_22.Location = new Point(9, 27);
             lblSystemset_BCU_22.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_22.Name = "lblSystemset_BCU_22";
             lblSystemset_BCU_22.Size = new Size(56, 17);
@@ -3584,7 +3584,7 @@
             // 
             cbbRequestF0_5.FormattingEnabled = true;
             cbbRequestF0_5.Items.AddRange(new object[] { "0x00：无效操作", "0xAA：恢复所有默认设置", "0x55：其他" });
-            cbbRequestF0_5.Location = new Point(171, 281);
+            cbbRequestF0_5.Location = new Point(169, 182);
             cbbRequestF0_5.Margin = new Padding(4, 5, 4, 5);
             cbbRequestF0_5.Name = "cbbRequestF0_5";
             cbbRequestF0_5.Size = new Size(95, 25);
@@ -3594,7 +3594,7 @@
             // 
             cbbRequestF0_4.FormattingEnabled = true;
             cbbRequestF0_4.Items.AddRange(new object[] { "0x00：无效操作", "0xAA：开启", "0x55：关闭" });
-            cbbRequestF0_4.Location = new Point(171, 233);
+            cbbRequestF0_4.Location = new Point(169, 150);
             cbbRequestF0_4.Margin = new Padding(4, 5, 4, 5);
             cbbRequestF0_4.Name = "cbbRequestF0_4";
             cbbRequestF0_4.Size = new Size(95, 25);
@@ -3603,7 +3603,7 @@
             // lblSystemset_BCU_27
             // 
             lblSystemset_BCU_27.AutoSize = true;
-            lblSystemset_BCU_27.Location = new Point(22, 288);
+            lblSystemset_BCU_27.Location = new Point(9, 189);
             lblSystemset_BCU_27.Name = "lblSystemset_BCU_27";
             lblSystemset_BCU_27.Size = new Size(80, 17);
             lblSystemset_BCU_27.TabIndex = 56;
@@ -3612,7 +3612,7 @@
             // lblSystemset_BCU_26
             // 
             lblSystemset_BCU_26.AutoSize = true;
-            lblSystemset_BCU_26.Location = new Point(22, 239);
+            lblSystemset_BCU_26.Location = new Point(9, 156);
             lblSystemset_BCU_26.Name = "lblSystemset_BCU_26";
             lblSystemset_BCU_26.Size = new Size(80, 17);
             lblSystemset_BCU_26.TabIndex = 53;
@@ -3709,7 +3709,7 @@
             gb0FA.Margin = new Padding(11, 14, 11, 14);
             gb0FA.Name = "gb0FA";
             gb0FA.Padding = new Padding(6, 7, 6, 7);
-            gb0FA.Size = new Size(932, 607);
+            gb0FA.Size = new Size(774, 414);
             gb0FA.TabIndex = 38;
             gb0FA.TabStop = false;
             gb0FA.Text = "0xFA控制";
@@ -3718,11 +3718,11 @@
             // 
             btnSystemset_45_BCU_Lifted21.AutoSize = true;
             btnSystemset_45_BCU_Lifted21.Enabled = false;
-            btnSystemset_45_BCU_Lifted21.Location = new Point(830, 501);
+            btnSystemset_45_BCU_Lifted21.Location = new Point(690, 342);
             btnSystemset_45_BCU_Lifted21.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted21.Name = "btnSystemset_45_BCU_Lifted21";
             btnSystemset_45_BCU_Lifted21.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted21.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted21.Size = new Size(65, 29);
             btnSystemset_45_BCU_Lifted21.TabIndex = 90;
             btnSystemset_45_BCU_Lifted21.Text = "解除";
             btnSystemset_45_BCU_Lifted21.UseVisualStyleBackColor = false;
@@ -3732,11 +3732,11 @@
             // 
             btnSystemset_43_BCU_Close21.AutoSize = true;
             btnSystemset_43_BCU_Close21.Enabled = false;
-            btnSystemset_43_BCU_Close21.Location = new Point(742, 501);
+            btnSystemset_43_BCU_Close21.Location = new Point(619, 342);
             btnSystemset_43_BCU_Close21.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close21.Name = "btnSystemset_43_BCU_Close21";
             btnSystemset_43_BCU_Close21.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close21.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close21.Size = new Size(65, 29);
             btnSystemset_43_BCU_Close21.TabIndex = 89;
             btnSystemset_43_BCU_Close21.Text = "关闭";
             btnSystemset_43_BCU_Close21.UseVisualStyleBackColor = false;
@@ -3746,11 +3746,11 @@
             // 
             btnSystemset_44_BCU_Open21.AutoSize = true;
             btnSystemset_44_BCU_Open21.Enabled = false;
-            btnSystemset_44_BCU_Open21.Location = new Point(655, 501);
+            btnSystemset_44_BCU_Open21.Location = new Point(548, 342);
             btnSystemset_44_BCU_Open21.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open21.Name = "btnSystemset_44_BCU_Open21";
             btnSystemset_44_BCU_Open21.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open21.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open21.Size = new Size(65, 29);
             btnSystemset_44_BCU_Open21.TabIndex = 88;
             btnSystemset_44_BCU_Open21.Text = "打开";
             btnSystemset_44_BCU_Open21.UseVisualStyleBackColor = false;
@@ -3759,7 +3759,7 @@
             // lblSystemset_BCU_21
             // 
             lblSystemset_BCU_21.AutoSize = true;
-            lblSystemset_BCU_21.Location = new Point(479, 508);
+            lblSystemset_BCU_21.Location = new Point(394, 348);
             lblSystemset_BCU_21.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_21.Name = "lblSystemset_BCU_21";
             lblSystemset_BCU_21.Size = new Size(93, 17);
@@ -3770,11 +3770,11 @@
             // 
             btnSystemset_45_BCU_Lifted20.AutoSize = true;
             btnSystemset_45_BCU_Lifted20.Enabled = false;
-            btnSystemset_45_BCU_Lifted20.Location = new Point(830, 451);
+            btnSystemset_45_BCU_Lifted20.Location = new Point(690, 311);
             btnSystemset_45_BCU_Lifted20.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted20.Name = "btnSystemset_45_BCU_Lifted20";
             btnSystemset_45_BCU_Lifted20.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted20.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted20.Size = new Size(65, 29);
             btnSystemset_45_BCU_Lifted20.TabIndex = 86;
             btnSystemset_45_BCU_Lifted20.Text = "解除";
             btnSystemset_45_BCU_Lifted20.UseVisualStyleBackColor = false;
@@ -3784,11 +3784,11 @@
             // 
             btnSystemset_43_BCU_Close20.AutoSize = true;
             btnSystemset_43_BCU_Close20.Enabled = false;
-            btnSystemset_43_BCU_Close20.Location = new Point(742, 451);
+            btnSystemset_43_BCU_Close20.Location = new Point(619, 311);
             btnSystemset_43_BCU_Close20.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close20.Name = "btnSystemset_43_BCU_Close20";
             btnSystemset_43_BCU_Close20.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close20.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close20.Size = new Size(65, 29);
             btnSystemset_43_BCU_Close20.TabIndex = 85;
             btnSystemset_43_BCU_Close20.Text = "关闭";
             btnSystemset_43_BCU_Close20.UseVisualStyleBackColor = false;
@@ -3798,11 +3798,11 @@
             // 
             btnSystemset_44_BCU_Open20.AutoSize = true;
             btnSystemset_44_BCU_Open20.Enabled = false;
-            btnSystemset_44_BCU_Open20.Location = new Point(655, 451);
+            btnSystemset_44_BCU_Open20.Location = new Point(548, 311);
             btnSystemset_44_BCU_Open20.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open20.Name = "btnSystemset_44_BCU_Open20";
             btnSystemset_44_BCU_Open20.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open20.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open20.Size = new Size(65, 29);
             btnSystemset_44_BCU_Open20.TabIndex = 84;
             btnSystemset_44_BCU_Open20.Text = "打开";
             btnSystemset_44_BCU_Open20.UseVisualStyleBackColor = false;
@@ -3811,7 +3811,7 @@
             // lblSystemset_BCU_20
             // 
             lblSystemset_BCU_20.AutoSize = true;
-            lblSystemset_BCU_20.Location = new Point(479, 458);
+            lblSystemset_BCU_20.Location = new Point(394, 317);
             lblSystemset_BCU_20.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_20.Name = "lblSystemset_BCU_20";
             lblSystemset_BCU_20.Size = new Size(104, 17);
@@ -3822,11 +3822,11 @@
             // 
             btnSystemset_45_BCU_Lifted19.AutoSize = true;
             btnSystemset_45_BCU_Lifted19.Enabled = false;
-            btnSystemset_45_BCU_Lifted19.Location = new Point(830, 403);
+            btnSystemset_45_BCU_Lifted19.Location = new Point(690, 280);
             btnSystemset_45_BCU_Lifted19.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted19.Name = "btnSystemset_45_BCU_Lifted19";
             btnSystemset_45_BCU_Lifted19.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted19.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted19.Size = new Size(65, 29);
             btnSystemset_45_BCU_Lifted19.TabIndex = 82;
             btnSystemset_45_BCU_Lifted19.Text = "解除";
             btnSystemset_45_BCU_Lifted19.UseVisualStyleBackColor = false;
@@ -3836,11 +3836,11 @@
             // 
             btnSystemset_43_BCU_Close19.AutoSize = true;
             btnSystemset_43_BCU_Close19.Enabled = false;
-            btnSystemset_43_BCU_Close19.Location = new Point(742, 403);
+            btnSystemset_43_BCU_Close19.Location = new Point(619, 280);
             btnSystemset_43_BCU_Close19.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close19.Name = "btnSystemset_43_BCU_Close19";
             btnSystemset_43_BCU_Close19.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close19.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close19.Size = new Size(65, 29);
             btnSystemset_43_BCU_Close19.TabIndex = 81;
             btnSystemset_43_BCU_Close19.Text = "关闭";
             btnSystemset_43_BCU_Close19.UseVisualStyleBackColor = false;
@@ -3850,11 +3850,11 @@
             // 
             btnSystemset_44_BCU_Open19.AutoSize = true;
             btnSystemset_44_BCU_Open19.Enabled = false;
-            btnSystemset_44_BCU_Open19.Location = new Point(655, 403);
+            btnSystemset_44_BCU_Open19.Location = new Point(548, 280);
             btnSystemset_44_BCU_Open19.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open19.Name = "btnSystemset_44_BCU_Open19";
             btnSystemset_44_BCU_Open19.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open19.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open19.Size = new Size(65, 29);
             btnSystemset_44_BCU_Open19.TabIndex = 80;
             btnSystemset_44_BCU_Open19.Text = "打开";
             btnSystemset_44_BCU_Open19.UseVisualStyleBackColor = false;
@@ -3863,7 +3863,7 @@
             // lblSystemset_BCU_19
             // 
             lblSystemset_BCU_19.AutoSize = true;
-            lblSystemset_BCU_19.Location = new Point(479, 410);
+            lblSystemset_BCU_19.Location = new Point(394, 286);
             lblSystemset_BCU_19.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_19.Name = "lblSystemset_BCU_19";
             lblSystemset_BCU_19.Size = new Size(66, 17);
@@ -3874,11 +3874,11 @@
             // 
             btnSystemset_45_BCU_Lifted18.AutoSize = true;
             btnSystemset_45_BCU_Lifted18.Enabled = false;
-            btnSystemset_45_BCU_Lifted18.Location = new Point(830, 356);
+            btnSystemset_45_BCU_Lifted18.Location = new Point(690, 248);
             btnSystemset_45_BCU_Lifted18.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted18.Name = "btnSystemset_45_BCU_Lifted18";
             btnSystemset_45_BCU_Lifted18.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted18.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted18.Size = new Size(65, 29);
             btnSystemset_45_BCU_Lifted18.TabIndex = 78;
             btnSystemset_45_BCU_Lifted18.Text = "解除";
             btnSystemset_45_BCU_Lifted18.UseVisualStyleBackColor = false;
@@ -3888,11 +3888,11 @@
             // 
             btnSystemset_43_BCU_Close18.AutoSize = true;
             btnSystemset_43_BCU_Close18.Enabled = false;
-            btnSystemset_43_BCU_Close18.Location = new Point(742, 356);
+            btnSystemset_43_BCU_Close18.Location = new Point(619, 248);
             btnSystemset_43_BCU_Close18.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close18.Name = "btnSystemset_43_BCU_Close18";
             btnSystemset_43_BCU_Close18.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close18.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close18.Size = new Size(65, 29);
             btnSystemset_43_BCU_Close18.TabIndex = 77;
             btnSystemset_43_BCU_Close18.Text = "关闭";
             btnSystemset_43_BCU_Close18.UseVisualStyleBackColor = false;
@@ -3902,11 +3902,11 @@
             // 
             btnSystemset_44_BCU_Open18.AutoSize = true;
             btnSystemset_44_BCU_Open18.Enabled = false;
-            btnSystemset_44_BCU_Open18.Location = new Point(655, 356);
+            btnSystemset_44_BCU_Open18.Location = new Point(548, 248);
             btnSystemset_44_BCU_Open18.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open18.Name = "btnSystemset_44_BCU_Open18";
             btnSystemset_44_BCU_Open18.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open18.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open18.Size = new Size(65, 29);
             btnSystemset_44_BCU_Open18.TabIndex = 76;
             btnSystemset_44_BCU_Open18.Text = "打开";
             btnSystemset_44_BCU_Open18.UseVisualStyleBackColor = false;
@@ -3915,7 +3915,7 @@
             // lblSystemset_BCU_18
             // 
             lblSystemset_BCU_18.AutoSize = true;
-            lblSystemset_BCU_18.Location = new Point(479, 363);
+            lblSystemset_BCU_18.Location = new Point(394, 254);
             lblSystemset_BCU_18.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_18.Name = "lblSystemset_BCU_18";
             lblSystemset_BCU_18.Size = new Size(68, 17);
@@ -3926,11 +3926,11 @@
             // 
             btnSystemset_45_BCU_Lifted17.AutoSize = true;
             btnSystemset_45_BCU_Lifted17.Enabled = false;
-            btnSystemset_45_BCU_Lifted17.Location = new Point(830, 308);
+            btnSystemset_45_BCU_Lifted17.Location = new Point(690, 217);
             btnSystemset_45_BCU_Lifted17.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted17.Name = "btnSystemset_45_BCU_Lifted17";
             btnSystemset_45_BCU_Lifted17.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted17.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted17.Size = new Size(65, 29);
             btnSystemset_45_BCU_Lifted17.TabIndex = 74;
             btnSystemset_45_BCU_Lifted17.Text = "解除";
             btnSystemset_45_BCU_Lifted17.UseVisualStyleBackColor = false;
@@ -3940,11 +3940,11 @@
             // 
             btnSystemset_43_BCU_Close17.AutoSize = true;
             btnSystemset_43_BCU_Close17.Enabled = false;
-            btnSystemset_43_BCU_Close17.Location = new Point(742, 308);
+            btnSystemset_43_BCU_Close17.Location = new Point(619, 217);
             btnSystemset_43_BCU_Close17.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close17.Name = "btnSystemset_43_BCU_Close17";
             btnSystemset_43_BCU_Close17.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close17.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close17.Size = new Size(65, 29);
             btnSystemset_43_BCU_Close17.TabIndex = 73;
             btnSystemset_43_BCU_Close17.Text = "关闭";
             btnSystemset_43_BCU_Close17.UseVisualStyleBackColor = false;
@@ -3954,11 +3954,11 @@
             // 
             btnSystemset_44_BCU_Open17.AutoSize = true;
             btnSystemset_44_BCU_Open17.Enabled = false;
-            btnSystemset_44_BCU_Open17.Location = new Point(655, 308);
+            btnSystemset_44_BCU_Open17.Location = new Point(548, 217);
             btnSystemset_44_BCU_Open17.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open17.Name = "btnSystemset_44_BCU_Open17";
             btnSystemset_44_BCU_Open17.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open17.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open17.Size = new Size(65, 29);
             btnSystemset_44_BCU_Open17.TabIndex = 72;
             btnSystemset_44_BCU_Open17.Text = "打开";
             btnSystemset_44_BCU_Open17.UseVisualStyleBackColor = false;
@@ -3967,7 +3967,7 @@
             // lblSystemset_BCU_17
             // 
             lblSystemset_BCU_17.AutoSize = true;
-            lblSystemset_BCU_17.Location = new Point(479, 315);
+            lblSystemset_BCU_17.Location = new Point(394, 223);
             lblSystemset_BCU_17.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_17.Name = "lblSystemset_BCU_17";
             lblSystemset_BCU_17.Size = new Size(68, 17);
@@ -3978,11 +3978,11 @@
             // 
             btnSystemset_45_BCU_Lifted16.AutoSize = true;
             btnSystemset_45_BCU_Lifted16.Enabled = false;
-            btnSystemset_45_BCU_Lifted16.Location = new Point(830, 262);
+            btnSystemset_45_BCU_Lifted16.Location = new Point(690, 184);
             btnSystemset_45_BCU_Lifted16.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted16.Name = "btnSystemset_45_BCU_Lifted16";
             btnSystemset_45_BCU_Lifted16.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted16.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted16.Size = new Size(65, 29);
             btnSystemset_45_BCU_Lifted16.TabIndex = 70;
             btnSystemset_45_BCU_Lifted16.Text = "解除";
             btnSystemset_45_BCU_Lifted16.UseVisualStyleBackColor = false;
@@ -3992,11 +3992,11 @@
             // 
             btnSystemset_43_BCU_Close16.AutoSize = true;
             btnSystemset_43_BCU_Close16.Enabled = false;
-            btnSystemset_43_BCU_Close16.Location = new Point(742, 261);
+            btnSystemset_43_BCU_Close16.Location = new Point(619, 184);
             btnSystemset_43_BCU_Close16.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close16.Name = "btnSystemset_43_BCU_Close16";
             btnSystemset_43_BCU_Close16.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close16.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close16.Size = new Size(65, 29);
             btnSystemset_43_BCU_Close16.TabIndex = 69;
             btnSystemset_43_BCU_Close16.Text = "关闭";
             btnSystemset_43_BCU_Close16.UseVisualStyleBackColor = false;
@@ -4006,11 +4006,11 @@
             // 
             btnSystemset_44_BCU_Open16.AutoSize = true;
             btnSystemset_44_BCU_Open16.Enabled = false;
-            btnSystemset_44_BCU_Open16.Location = new Point(655, 261);
+            btnSystemset_44_BCU_Open16.Location = new Point(548, 184);
             btnSystemset_44_BCU_Open16.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open16.Name = "btnSystemset_44_BCU_Open16";
             btnSystemset_44_BCU_Open16.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open16.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open16.Size = new Size(65, 29);
             btnSystemset_44_BCU_Open16.TabIndex = 68;
             btnSystemset_44_BCU_Open16.Text = "打开";
             btnSystemset_44_BCU_Open16.UseVisualStyleBackColor = false;
@@ -4019,7 +4019,7 @@
             // lblSystemset_BCU_16
             // 
             lblSystemset_BCU_16.AutoSize = true;
-            lblSystemset_BCU_16.Location = new Point(479, 267);
+            lblSystemset_BCU_16.Location = new Point(394, 190);
             lblSystemset_BCU_16.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_16.Name = "lblSystemset_BCU_16";
             lblSystemset_BCU_16.Size = new Size(92, 17);
@@ -4030,11 +4030,11 @@
             // 
             btnSystemset_45_BCU_Lifted15.AutoSize = true;
             btnSystemset_45_BCU_Lifted15.Enabled = false;
-            btnSystemset_45_BCU_Lifted15.Location = new Point(830, 213);
+            btnSystemset_45_BCU_Lifted15.Location = new Point(690, 150);
             btnSystemset_45_BCU_Lifted15.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted15.Name = "btnSystemset_45_BCU_Lifted15";
             btnSystemset_45_BCU_Lifted15.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted15.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted15.Size = new Size(65, 29);
             btnSystemset_45_BCU_Lifted15.TabIndex = 66;
             btnSystemset_45_BCU_Lifted15.Text = "解除";
             btnSystemset_45_BCU_Lifted15.UseVisualStyleBackColor = false;
@@ -4044,11 +4044,11 @@
             // 
             btnSystemset_43_BCU_Close15.AutoSize = true;
             btnSystemset_43_BCU_Close15.Enabled = false;
-            btnSystemset_43_BCU_Close15.Location = new Point(742, 213);
+            btnSystemset_43_BCU_Close15.Location = new Point(619, 150);
             btnSystemset_43_BCU_Close15.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close15.Name = "btnSystemset_43_BCU_Close15";
             btnSystemset_43_BCU_Close15.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close15.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close15.Size = new Size(65, 29);
             btnSystemset_43_BCU_Close15.TabIndex = 65;
             btnSystemset_43_BCU_Close15.Text = "关闭";
             btnSystemset_43_BCU_Close15.UseVisualStyleBackColor = false;
@@ -4058,11 +4058,11 @@
             // 
             btnSystemset_44_BCU_Open15.AutoSize = true;
             btnSystemset_44_BCU_Open15.Enabled = false;
-            btnSystemset_44_BCU_Open15.Location = new Point(655, 213);
+            btnSystemset_44_BCU_Open15.Location = new Point(548, 150);
             btnSystemset_44_BCU_Open15.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open15.Name = "btnSystemset_44_BCU_Open15";
             btnSystemset_44_BCU_Open15.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open15.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open15.Size = new Size(65, 29);
             btnSystemset_44_BCU_Open15.TabIndex = 64;
             btnSystemset_44_BCU_Open15.Text = "打开";
             btnSystemset_44_BCU_Open15.UseVisualStyleBackColor = false;
@@ -4071,7 +4071,7 @@
             // lblSystemset_BCU_15
             // 
             lblSystemset_BCU_15.AutoSize = true;
-            lblSystemset_BCU_15.Location = new Point(479, 220);
+            lblSystemset_BCU_15.Location = new Point(394, 156);
             lblSystemset_BCU_15.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_15.Name = "lblSystemset_BCU_15";
             lblSystemset_BCU_15.Size = new Size(59, 17);
@@ -4082,11 +4082,11 @@
             // 
             btnSystemset_45_BCU_Lifted14.AutoSize = true;
             btnSystemset_45_BCU_Lifted14.Enabled = false;
-            btnSystemset_45_BCU_Lifted14.Location = new Point(830, 165);
+            btnSystemset_45_BCU_Lifted14.Location = new Point(690, 117);
             btnSystemset_45_BCU_Lifted14.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted14.Name = "btnSystemset_45_BCU_Lifted14";
             btnSystemset_45_BCU_Lifted14.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted14.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted14.Size = new Size(65, 29);
             btnSystemset_45_BCU_Lifted14.TabIndex = 62;
             btnSystemset_45_BCU_Lifted14.Text = "解除";
             btnSystemset_45_BCU_Lifted14.UseVisualStyleBackColor = false;
@@ -4096,11 +4096,11 @@
             // 
             btnSystemset_43_BCU_Close14.AutoSize = true;
             btnSystemset_43_BCU_Close14.Enabled = false;
-            btnSystemset_43_BCU_Close14.Location = new Point(742, 165);
+            btnSystemset_43_BCU_Close14.Location = new Point(619, 117);
             btnSystemset_43_BCU_Close14.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close14.Name = "btnSystemset_43_BCU_Close14";
             btnSystemset_43_BCU_Close14.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close14.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close14.Size = new Size(65, 29);
             btnSystemset_43_BCU_Close14.TabIndex = 61;
             btnSystemset_43_BCU_Close14.Text = "关闭";
             btnSystemset_43_BCU_Close14.UseVisualStyleBackColor = false;
@@ -4110,11 +4110,11 @@
             // 
             btnSystemset_44_BCU_Open14.AutoSize = true;
             btnSystemset_44_BCU_Open14.Enabled = false;
-            btnSystemset_44_BCU_Open14.Location = new Point(655, 165);
+            btnSystemset_44_BCU_Open14.Location = new Point(548, 117);
             btnSystemset_44_BCU_Open14.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open14.Name = "btnSystemset_44_BCU_Open14";
             btnSystemset_44_BCU_Open14.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open14.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open14.Size = new Size(65, 29);
             btnSystemset_44_BCU_Open14.TabIndex = 60;
             btnSystemset_44_BCU_Open14.Text = "打开";
             btnSystemset_44_BCU_Open14.UseVisualStyleBackColor = false;
@@ -4123,7 +4123,7 @@
             // lblSystemset_BCU_14
             // 
             lblSystemset_BCU_14.AutoSize = true;
-            lblSystemset_BCU_14.Location = new Point(479, 172);
+            lblSystemset_BCU_14.Location = new Point(394, 123);
             lblSystemset_BCU_14.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_14.Name = "lblSystemset_BCU_14";
             lblSystemset_BCU_14.Size = new Size(79, 17);
@@ -4134,11 +4134,11 @@
             // 
             btnSystemset_45_BCU_Lifted13.AutoSize = true;
             btnSystemset_45_BCU_Lifted13.Enabled = false;
-            btnSystemset_45_BCU_Lifted13.Location = new Point(830, 122);
+            btnSystemset_45_BCU_Lifted13.Location = new Point(690, 85);
             btnSystemset_45_BCU_Lifted13.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted13.Name = "btnSystemset_45_BCU_Lifted13";
             btnSystemset_45_BCU_Lifted13.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted13.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted13.Size = new Size(65, 29);
             btnSystemset_45_BCU_Lifted13.TabIndex = 58;
             btnSystemset_45_BCU_Lifted13.Text = "解除";
             btnSystemset_45_BCU_Lifted13.UseVisualStyleBackColor = false;
@@ -4148,11 +4148,11 @@
             // 
             btnSystemset_43_BCU_Close13.AutoSize = true;
             btnSystemset_43_BCU_Close13.Enabled = false;
-            btnSystemset_43_BCU_Close13.Location = new Point(742, 122);
+            btnSystemset_43_BCU_Close13.Location = new Point(619, 85);
             btnSystemset_43_BCU_Close13.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close13.Name = "btnSystemset_43_BCU_Close13";
             btnSystemset_43_BCU_Close13.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close13.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close13.Size = new Size(65, 29);
             btnSystemset_43_BCU_Close13.TabIndex = 57;
             btnSystemset_43_BCU_Close13.Text = "关闭";
             btnSystemset_43_BCU_Close13.UseVisualStyleBackColor = false;
@@ -4162,11 +4162,11 @@
             // 
             btnSystemset_44_BCU_Open13.AutoSize = true;
             btnSystemset_44_BCU_Open13.Enabled = false;
-            btnSystemset_44_BCU_Open13.Location = new Point(655, 122);
+            btnSystemset_44_BCU_Open13.Location = new Point(548, 85);
             btnSystemset_44_BCU_Open13.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open13.Name = "btnSystemset_44_BCU_Open13";
             btnSystemset_44_BCU_Open13.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open13.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open13.Size = new Size(65, 29);
             btnSystemset_44_BCU_Open13.TabIndex = 56;
             btnSystemset_44_BCU_Open13.Text = "打开";
             btnSystemset_44_BCU_Open13.UseVisualStyleBackColor = false;
@@ -4175,7 +4175,7 @@
             // lblSystemset_BCU_13
             // 
             lblSystemset_BCU_13.AutoSize = true;
-            lblSystemset_BCU_13.Location = new Point(479, 127);
+            lblSystemset_BCU_13.Location = new Point(394, 91);
             lblSystemset_BCU_13.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_13.Name = "lblSystemset_BCU_13";
             lblSystemset_BCU_13.Size = new Size(116, 17);
@@ -4186,11 +4186,11 @@
             // 
             btnSystemset_45_BCU_Lifted12.AutoSize = true;
             btnSystemset_45_BCU_Lifted12.Enabled = false;
-            btnSystemset_45_BCU_Lifted12.Location = new Point(830, 77);
+            btnSystemset_45_BCU_Lifted12.Location = new Point(690, 52);
             btnSystemset_45_BCU_Lifted12.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted12.Name = "btnSystemset_45_BCU_Lifted12";
             btnSystemset_45_BCU_Lifted12.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted12.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted12.Size = new Size(65, 29);
             btnSystemset_45_BCU_Lifted12.TabIndex = 54;
             btnSystemset_45_BCU_Lifted12.Text = "解除";
             btnSystemset_45_BCU_Lifted12.UseVisualStyleBackColor = false;
@@ -4200,11 +4200,11 @@
             // 
             btnSystemset_43_BCU_Close12.AutoSize = true;
             btnSystemset_43_BCU_Close12.Enabled = false;
-            btnSystemset_43_BCU_Close12.Location = new Point(742, 77);
+            btnSystemset_43_BCU_Close12.Location = new Point(619, 52);
             btnSystemset_43_BCU_Close12.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close12.Name = "btnSystemset_43_BCU_Close12";
             btnSystemset_43_BCU_Close12.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close12.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close12.Size = new Size(65, 29);
             btnSystemset_43_BCU_Close12.TabIndex = 53;
             btnSystemset_43_BCU_Close12.Text = "关闭";
             btnSystemset_43_BCU_Close12.UseVisualStyleBackColor = false;
@@ -4214,11 +4214,11 @@
             // 
             btnSystemset_44_BCU_Open12.AutoSize = true;
             btnSystemset_44_BCU_Open12.Enabled = false;
-            btnSystemset_44_BCU_Open12.Location = new Point(655, 77);
+            btnSystemset_44_BCU_Open12.Location = new Point(548, 52);
             btnSystemset_44_BCU_Open12.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open12.Name = "btnSystemset_44_BCU_Open12";
             btnSystemset_44_BCU_Open12.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open12.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open12.Size = new Size(65, 29);
             btnSystemset_44_BCU_Open12.TabIndex = 52;
             btnSystemset_44_BCU_Open12.Text = "打开";
             btnSystemset_44_BCU_Open12.UseVisualStyleBackColor = false;
@@ -4227,7 +4227,7 @@
             // lblSystemset_BCU_12
             // 
             lblSystemset_BCU_12.AutoSize = true;
-            lblSystemset_BCU_12.Location = new Point(479, 84);
+            lblSystemset_BCU_12.Location = new Point(394, 58);
             lblSystemset_BCU_12.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_12.Name = "lblSystemset_BCU_12";
             lblSystemset_BCU_12.Size = new Size(147, 17);
@@ -4238,11 +4238,11 @@
             // 
             btnSystemset_45_BCU_Lifted11.AutoSize = true;
             btnSystemset_45_BCU_Lifted11.Enabled = false;
-            btnSystemset_45_BCU_Lifted11.Location = new Point(354, 556);
+            btnSystemset_45_BCU_Lifted11.Location = new Point(313, 374);
             btnSystemset_45_BCU_Lifted11.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted11.Name = "btnSystemset_45_BCU_Lifted11";
             btnSystemset_45_BCU_Lifted11.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted11.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted11.Size = new Size(68, 29);
             btnSystemset_45_BCU_Lifted11.TabIndex = 50;
             btnSystemset_45_BCU_Lifted11.Text = "解除";
             btnSystemset_45_BCU_Lifted11.UseVisualStyleBackColor = true;
@@ -4252,11 +4252,11 @@
             // 
             btnSystemset_43_BCU_Close11.AutoSize = true;
             btnSystemset_43_BCU_Close11.Enabled = false;
-            btnSystemset_43_BCU_Close11.Location = new Point(266, 556);
+            btnSystemset_43_BCU_Close11.Location = new Point(238, 374);
             btnSystemset_43_BCU_Close11.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close11.Name = "btnSystemset_43_BCU_Close11";
             btnSystemset_43_BCU_Close11.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close11.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close11.Size = new Size(68, 29);
             btnSystemset_43_BCU_Close11.TabIndex = 49;
             btnSystemset_43_BCU_Close11.Text = "关闭";
             btnSystemset_43_BCU_Close11.UseVisualStyleBackColor = true;
@@ -4266,11 +4266,11 @@
             // 
             btnSystemset_44_BCU_Open11.AutoSize = true;
             btnSystemset_44_BCU_Open11.Enabled = false;
-            btnSystemset_44_BCU_Open11.Location = new Point(179, 556);
+            btnSystemset_44_BCU_Open11.Location = new Point(164, 374);
             btnSystemset_44_BCU_Open11.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open11.Name = "btnSystemset_44_BCU_Open11";
             btnSystemset_44_BCU_Open11.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open11.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open11.Size = new Size(68, 29);
             btnSystemset_44_BCU_Open11.TabIndex = 48;
             btnSystemset_44_BCU_Open11.Text = "打开";
             btnSystemset_44_BCU_Open11.UseVisualStyleBackColor = true;
@@ -4279,7 +4279,7 @@
             // lblSystemset_BCU_11
             // 
             lblSystemset_BCU_11.AutoSize = true;
-            lblSystemset_BCU_11.Location = new Point(10, 564);
+            lblSystemset_BCU_11.Location = new Point(13, 380);
             lblSystemset_BCU_11.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_11.Name = "lblSystemset_BCU_11";
             lblSystemset_BCU_11.Size = new Size(147, 17);
@@ -4290,11 +4290,11 @@
             // 
             btnSystemset_45_BCU_Lifted8.AutoSize = true;
             btnSystemset_45_BCU_Lifted8.Enabled = false;
-            btnSystemset_45_BCU_Lifted8.Location = new Point(354, 407);
+            btnSystemset_45_BCU_Lifted8.Location = new Point(313, 280);
             btnSystemset_45_BCU_Lifted8.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted8.Name = "btnSystemset_45_BCU_Lifted8";
             btnSystemset_45_BCU_Lifted8.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted8.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted8.Size = new Size(68, 29);
             btnSystemset_45_BCU_Lifted8.TabIndex = 46;
             btnSystemset_45_BCU_Lifted8.Text = "解除";
             btnSystemset_45_BCU_Lifted8.UseVisualStyleBackColor = true;
@@ -4304,11 +4304,11 @@
             // 
             btnSystemset_43_BCU_Close8.AutoSize = true;
             btnSystemset_43_BCU_Close8.Enabled = false;
-            btnSystemset_43_BCU_Close8.Location = new Point(266, 407);
+            btnSystemset_43_BCU_Close8.Location = new Point(238, 280);
             btnSystemset_43_BCU_Close8.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close8.Name = "btnSystemset_43_BCU_Close8";
             btnSystemset_43_BCU_Close8.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close8.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close8.Size = new Size(68, 29);
             btnSystemset_43_BCU_Close8.TabIndex = 45;
             btnSystemset_43_BCU_Close8.Text = "关闭";
             btnSystemset_43_BCU_Close8.UseVisualStyleBackColor = true;
@@ -4318,11 +4318,11 @@
             // 
             btnSystemset_44_BCU_Open8.AutoSize = true;
             btnSystemset_44_BCU_Open8.Enabled = false;
-            btnSystemset_44_BCU_Open8.Location = new Point(179, 407);
+            btnSystemset_44_BCU_Open8.Location = new Point(164, 280);
             btnSystemset_44_BCU_Open8.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open8.Name = "btnSystemset_44_BCU_Open8";
             btnSystemset_44_BCU_Open8.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open8.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open8.Size = new Size(68, 29);
             btnSystemset_44_BCU_Open8.TabIndex = 44;
             btnSystemset_44_BCU_Open8.Text = "打开";
             btnSystemset_44_BCU_Open8.UseVisualStyleBackColor = true;
@@ -4331,7 +4331,7 @@
             // lblSystemset_BCU_8
             // 
             lblSystemset_BCU_8.AutoSize = true;
-            lblSystemset_BCU_8.Location = new Point(10, 418);
+            lblSystemset_BCU_8.Location = new Point(13, 286);
             lblSystemset_BCU_8.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_8.Name = "lblSystemset_BCU_8";
             lblSystemset_BCU_8.Size = new Size(128, 17);
@@ -4342,11 +4342,11 @@
             // 
             btnSystemset_45_BCU_Lifted3.AutoSize = true;
             btnSystemset_45_BCU_Lifted3.Enabled = false;
-            btnSystemset_45_BCU_Lifted3.Location = new Point(354, 168);
+            btnSystemset_45_BCU_Lifted3.Location = new Point(313, 117);
             btnSystemset_45_BCU_Lifted3.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted3.Name = "btnSystemset_45_BCU_Lifted3";
             btnSystemset_45_BCU_Lifted3.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted3.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted3.Size = new Size(68, 29);
             btnSystemset_45_BCU_Lifted3.TabIndex = 42;
             btnSystemset_45_BCU_Lifted3.Text = "解除";
             btnSystemset_45_BCU_Lifted3.UseVisualStyleBackColor = true;
@@ -4356,11 +4356,11 @@
             // 
             btnSystemset_43_BCU_Close3.AutoSize = true;
             btnSystemset_43_BCU_Close3.Enabled = false;
-            btnSystemset_43_BCU_Close3.Location = new Point(266, 168);
+            btnSystemset_43_BCU_Close3.Location = new Point(238, 117);
             btnSystemset_43_BCU_Close3.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close3.Name = "btnSystemset_43_BCU_Close3";
             btnSystemset_43_BCU_Close3.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close3.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close3.Size = new Size(68, 29);
             btnSystemset_43_BCU_Close3.TabIndex = 41;
             btnSystemset_43_BCU_Close3.Text = "关闭";
             btnSystemset_43_BCU_Close3.UseVisualStyleBackColor = true;
@@ -4370,11 +4370,11 @@
             // 
             btnSystemset_44_BCU_Open3.AutoSize = true;
             btnSystemset_44_BCU_Open3.Enabled = false;
-            btnSystemset_44_BCU_Open3.Location = new Point(179, 168);
+            btnSystemset_44_BCU_Open3.Location = new Point(164, 117);
             btnSystemset_44_BCU_Open3.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open3.Name = "btnSystemset_44_BCU_Open3";
             btnSystemset_44_BCU_Open3.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open3.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open3.Size = new Size(68, 29);
             btnSystemset_44_BCU_Open3.TabIndex = 40;
             btnSystemset_44_BCU_Open3.Text = "打开";
             btnSystemset_44_BCU_Open3.UseVisualStyleBackColor = true;
@@ -4383,7 +4383,7 @@
             // lblSystemset_BCU_3
             // 
             lblSystemset_BCU_3.AutoSize = true;
-            lblSystemset_BCU_3.Location = new Point(10, 172);
+            lblSystemset_BCU_3.Location = new Point(13, 123);
             lblSystemset_BCU_3.Name = "lblSystemset_BCU_3";
             lblSystemset_BCU_3.Size = new Size(67, 17);
             lblSystemset_BCU_3.TabIndex = 39;
@@ -4396,10 +4396,10 @@
             btnSystemset_debug.FlatStyle = FlatStyle.Flat;
             btnSystemset_debug.ForeColor = Color.White;
             btnSystemset_debug.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSystemset_debug.Location = new Point(13, 24);
+            btnSystemset_debug.Location = new Point(13, 21);
             btnSystemset_debug.Margin = new Padding(4, 5, 4, 5);
             btnSystemset_debug.Name = "btnSystemset_debug";
-            btnSystemset_debug.Size = new Size(899, 43);
+            btnSystemset_debug.Size = new Size(742, 29);
             btnSystemset_debug.TabIndex = 38;
             btnSystemset_debug.Text = "开始调试";
             btnSystemset_debug.UseVisualStyleBackColor = false;
@@ -4409,11 +4409,11 @@
             // 
             btnSystemset_45_BCU_Lifted10.AutoSize = true;
             btnSystemset_45_BCU_Lifted10.Enabled = false;
-            btnSystemset_45_BCU_Lifted10.Location = new Point(354, 510);
+            btnSystemset_45_BCU_Lifted10.Location = new Point(313, 342);
             btnSystemset_45_BCU_Lifted10.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted10.Name = "btnSystemset_45_BCU_Lifted10";
             btnSystemset_45_BCU_Lifted10.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted10.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted10.Size = new Size(68, 29);
             btnSystemset_45_BCU_Lifted10.TabIndex = 38;
             btnSystemset_45_BCU_Lifted10.Text = "解除";
             btnSystemset_45_BCU_Lifted10.UseVisualStyleBackColor = true;
@@ -4423,11 +4423,11 @@
             // 
             btnSystemset_45_BCU_Lifted9.AutoSize = true;
             btnSystemset_45_BCU_Lifted9.Enabled = false;
-            btnSystemset_45_BCU_Lifted9.Location = new Point(353, 462);
+            btnSystemset_45_BCU_Lifted9.Location = new Point(312, 311);
             btnSystemset_45_BCU_Lifted9.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted9.Name = "btnSystemset_45_BCU_Lifted9";
             btnSystemset_45_BCU_Lifted9.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted9.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted9.Size = new Size(68, 29);
             btnSystemset_45_BCU_Lifted9.TabIndex = 37;
             btnSystemset_45_BCU_Lifted9.Text = "解除";
             btnSystemset_45_BCU_Lifted9.UseVisualStyleBackColor = true;
@@ -4437,11 +4437,11 @@
             // 
             btnSystemset_45_BCU_Lifted7.AutoSize = true;
             btnSystemset_45_BCU_Lifted7.Enabled = false;
-            btnSystemset_45_BCU_Lifted7.Location = new Point(354, 356);
+            btnSystemset_45_BCU_Lifted7.Location = new Point(313, 248);
             btnSystemset_45_BCU_Lifted7.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted7.Name = "btnSystemset_45_BCU_Lifted7";
             btnSystemset_45_BCU_Lifted7.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted7.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted7.Size = new Size(68, 29);
             btnSystemset_45_BCU_Lifted7.TabIndex = 36;
             btnSystemset_45_BCU_Lifted7.Text = "解除";
             btnSystemset_45_BCU_Lifted7.UseVisualStyleBackColor = true;
@@ -4451,11 +4451,11 @@
             // 
             btnSystemset_43_BCU_Close10.AutoSize = true;
             btnSystemset_43_BCU_Close10.Enabled = false;
-            btnSystemset_43_BCU_Close10.Location = new Point(266, 510);
+            btnSystemset_43_BCU_Close10.Location = new Point(238, 342);
             btnSystemset_43_BCU_Close10.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close10.Name = "btnSystemset_43_BCU_Close10";
             btnSystemset_43_BCU_Close10.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close10.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close10.Size = new Size(68, 29);
             btnSystemset_43_BCU_Close10.TabIndex = 35;
             btnSystemset_43_BCU_Close10.Text = "关闭";
             btnSystemset_43_BCU_Close10.UseVisualStyleBackColor = true;
@@ -4465,11 +4465,11 @@
             // 
             btnSystemset_44_BCU_Open10.AutoSize = true;
             btnSystemset_44_BCU_Open10.Enabled = false;
-            btnSystemset_44_BCU_Open10.Location = new Point(179, 510);
+            btnSystemset_44_BCU_Open10.Location = new Point(164, 342);
             btnSystemset_44_BCU_Open10.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open10.Name = "btnSystemset_44_BCU_Open10";
             btnSystemset_44_BCU_Open10.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open10.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open10.Size = new Size(68, 29);
             btnSystemset_44_BCU_Open10.TabIndex = 34;
             btnSystemset_44_BCU_Open10.Text = "打开";
             btnSystemset_44_BCU_Open10.UseVisualStyleBackColor = true;
@@ -4479,11 +4479,11 @@
             // 
             btnSystemset_43_BCU_Close9.AutoSize = true;
             btnSystemset_43_BCU_Close9.Enabled = false;
-            btnSystemset_43_BCU_Close9.Location = new Point(266, 462);
+            btnSystemset_43_BCU_Close9.Location = new Point(238, 311);
             btnSystemset_43_BCU_Close9.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close9.Name = "btnSystemset_43_BCU_Close9";
             btnSystemset_43_BCU_Close9.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close9.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close9.Size = new Size(68, 29);
             btnSystemset_43_BCU_Close9.TabIndex = 33;
             btnSystemset_43_BCU_Close9.Text = "关闭";
             btnSystemset_43_BCU_Close9.UseVisualStyleBackColor = true;
@@ -4492,7 +4492,7 @@
             // lblSystemset_BCU_10
             // 
             lblSystemset_BCU_10.AutoSize = true;
-            lblSystemset_BCU_10.Location = new Point(10, 517);
+            lblSystemset_BCU_10.Location = new Point(13, 348);
             lblSystemset_BCU_10.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_10.Name = "lblSystemset_BCU_10";
             lblSystemset_BCU_10.Size = new Size(123, 17);
@@ -4503,11 +4503,11 @@
             // 
             btnSystemset_43_BCU_Close7.AutoSize = true;
             btnSystemset_43_BCU_Close7.Enabled = false;
-            btnSystemset_43_BCU_Close7.Location = new Point(266, 356);
+            btnSystemset_43_BCU_Close7.Location = new Point(238, 248);
             btnSystemset_43_BCU_Close7.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close7.Name = "btnSystemset_43_BCU_Close7";
             btnSystemset_43_BCU_Close7.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close7.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close7.Size = new Size(68, 29);
             btnSystemset_43_BCU_Close7.TabIndex = 31;
             btnSystemset_43_BCU_Close7.Text = "关闭";
             btnSystemset_43_BCU_Close7.UseVisualStyleBackColor = true;
@@ -4517,11 +4517,11 @@
             // 
             btnSystemset_44_BCU_Open9.AutoSize = true;
             btnSystemset_44_BCU_Open9.Enabled = false;
-            btnSystemset_44_BCU_Open9.Location = new Point(179, 462);
+            btnSystemset_44_BCU_Open9.Location = new Point(164, 311);
             btnSystemset_44_BCU_Open9.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open9.Name = "btnSystemset_44_BCU_Open9";
             btnSystemset_44_BCU_Open9.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open9.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open9.Size = new Size(68, 29);
             btnSystemset_44_BCU_Open9.TabIndex = 32;
             btnSystemset_44_BCU_Open9.Text = "打开";
             btnSystemset_44_BCU_Open9.UseVisualStyleBackColor = true;
@@ -4531,11 +4531,11 @@
             // 
             btnSystemset_44_BCU_Open7.AutoSize = true;
             btnSystemset_44_BCU_Open7.Enabled = false;
-            btnSystemset_44_BCU_Open7.Location = new Point(179, 356);
+            btnSystemset_44_BCU_Open7.Location = new Point(164, 248);
             btnSystemset_44_BCU_Open7.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open7.Name = "btnSystemset_44_BCU_Open7";
             btnSystemset_44_BCU_Open7.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open7.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open7.Size = new Size(68, 29);
             btnSystemset_44_BCU_Open7.TabIndex = 30;
             btnSystemset_44_BCU_Open7.Text = "打开";
             btnSystemset_44_BCU_Open7.UseVisualStyleBackColor = true;
@@ -4544,7 +4544,7 @@
             // lblSystemset_BCU_7
             // 
             lblSystemset_BCU_7.AutoSize = true;
-            lblSystemset_BCU_7.Location = new Point(10, 363);
+            lblSystemset_BCU_7.Location = new Point(13, 254);
             lblSystemset_BCU_7.Name = "lblSystemset_BCU_7";
             lblSystemset_BCU_7.Size = new Size(128, 17);
             lblSystemset_BCU_7.TabIndex = 27;
@@ -4553,7 +4553,7 @@
             // lblSystemset_BCU_9
             // 
             lblSystemset_BCU_9.AutoSize = true;
-            lblSystemset_BCU_9.Location = new Point(10, 470);
+            lblSystemset_BCU_9.Location = new Point(13, 317);
             lblSystemset_BCU_9.Name = "lblSystemset_BCU_9";
             lblSystemset_BCU_9.Size = new Size(80, 17);
             lblSystemset_BCU_9.TabIndex = 29;
@@ -4563,11 +4563,11 @@
             // 
             btnSystemset_45_BCU_Lifted4.AutoSize = true;
             btnSystemset_45_BCU_Lifted4.Enabled = false;
-            btnSystemset_45_BCU_Lifted4.Location = new Point(354, 213);
+            btnSystemset_45_BCU_Lifted4.Location = new Point(313, 150);
             btnSystemset_45_BCU_Lifted4.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted4.Name = "btnSystemset_45_BCU_Lifted4";
             btnSystemset_45_BCU_Lifted4.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted4.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted4.Size = new Size(68, 29);
             btnSystemset_45_BCU_Lifted4.TabIndex = 26;
             btnSystemset_45_BCU_Lifted4.Text = "解除";
             btnSystemset_45_BCU_Lifted4.UseVisualStyleBackColor = true;
@@ -4577,11 +4577,11 @@
             // 
             btnSystemset_45_BCU_Lifted5.AutoSize = true;
             btnSystemset_45_BCU_Lifted5.Enabled = false;
-            btnSystemset_45_BCU_Lifted5.Location = new Point(354, 262);
+            btnSystemset_45_BCU_Lifted5.Location = new Point(313, 184);
             btnSystemset_45_BCU_Lifted5.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted5.Name = "btnSystemset_45_BCU_Lifted5";
             btnSystemset_45_BCU_Lifted5.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted5.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted5.Size = new Size(68, 29);
             btnSystemset_45_BCU_Lifted5.TabIndex = 25;
             btnSystemset_45_BCU_Lifted5.Text = "解除";
             btnSystemset_45_BCU_Lifted5.UseVisualStyleBackColor = true;
@@ -4591,11 +4591,11 @@
             // 
             btnSystemset_45_BCU_Lifted6.AutoSize = true;
             btnSystemset_45_BCU_Lifted6.Enabled = false;
-            btnSystemset_45_BCU_Lifted6.Location = new Point(354, 308);
+            btnSystemset_45_BCU_Lifted6.Location = new Point(313, 217);
             btnSystemset_45_BCU_Lifted6.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted6.Name = "btnSystemset_45_BCU_Lifted6";
             btnSystemset_45_BCU_Lifted6.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted6.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted6.Size = new Size(68, 29);
             btnSystemset_45_BCU_Lifted6.TabIndex = 24;
             btnSystemset_45_BCU_Lifted6.Text = "解除";
             btnSystemset_45_BCU_Lifted6.UseVisualStyleBackColor = true;
@@ -4605,11 +4605,11 @@
             // 
             btnSystemset_45_BCU_Lifted2.AutoSize = true;
             btnSystemset_45_BCU_Lifted2.Enabled = false;
-            btnSystemset_45_BCU_Lifted2.Location = new Point(354, 120);
+            btnSystemset_45_BCU_Lifted2.Location = new Point(313, 85);
             btnSystemset_45_BCU_Lifted2.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_45_BCU_Lifted2.Name = "btnSystemset_45_BCU_Lifted2";
             btnSystemset_45_BCU_Lifted2.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted2.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted2.Size = new Size(68, 29);
             btnSystemset_45_BCU_Lifted2.TabIndex = 22;
             btnSystemset_45_BCU_Lifted2.Text = "解除";
             btnSystemset_45_BCU_Lifted2.UseVisualStyleBackColor = true;
@@ -4619,11 +4619,11 @@
             // 
             btnSystemset_45_BCU_Lifted1.AutoSize = true;
             btnSystemset_45_BCU_Lifted1.Enabled = false;
-            btnSystemset_45_BCU_Lifted1.Location = new Point(354, 74);
+            btnSystemset_45_BCU_Lifted1.Location = new Point(313, 52);
             btnSystemset_45_BCU_Lifted1.Margin = new Padding(4, 5, 4, 5);
             btnSystemset_45_BCU_Lifted1.Name = "btnSystemset_45_BCU_Lifted1";
             btnSystemset_45_BCU_Lifted1.Padding = new Padding(1);
-            btnSystemset_45_BCU_Lifted1.Size = new Size(81, 39);
+            btnSystemset_45_BCU_Lifted1.Size = new Size(68, 29);
             btnSystemset_45_BCU_Lifted1.TabIndex = 21;
             btnSystemset_45_BCU_Lifted1.Text = "解除";
             btnSystemset_45_BCU_Lifted1.UseVisualStyleBackColor = true;
@@ -4633,11 +4633,11 @@
             // 
             btnSystemset_43_BCU_Close4.AutoSize = true;
             btnSystemset_43_BCU_Close4.Enabled = false;
-            btnSystemset_43_BCU_Close4.Location = new Point(266, 213);
+            btnSystemset_43_BCU_Close4.Location = new Point(238, 150);
             btnSystemset_43_BCU_Close4.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close4.Name = "btnSystemset_43_BCU_Close4";
             btnSystemset_43_BCU_Close4.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close4.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close4.Size = new Size(68, 29);
             btnSystemset_43_BCU_Close4.TabIndex = 20;
             btnSystemset_43_BCU_Close4.Text = "关闭";
             btnSystemset_43_BCU_Close4.UseVisualStyleBackColor = true;
@@ -4647,11 +4647,11 @@
             // 
             btnSystemset_44_BCU_Open4.AutoSize = true;
             btnSystemset_44_BCU_Open4.Enabled = false;
-            btnSystemset_44_BCU_Open4.Location = new Point(179, 213);
+            btnSystemset_44_BCU_Open4.Location = new Point(164, 150);
             btnSystemset_44_BCU_Open4.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open4.Name = "btnSystemset_44_BCU_Open4";
             btnSystemset_44_BCU_Open4.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open4.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open4.Size = new Size(68, 29);
             btnSystemset_44_BCU_Open4.TabIndex = 19;
             btnSystemset_44_BCU_Open4.Text = "打开";
             btnSystemset_44_BCU_Open4.UseVisualStyleBackColor = true;
@@ -4661,11 +4661,11 @@
             // 
             btnSystemset_43_BCU_Close5.AutoSize = true;
             btnSystemset_43_BCU_Close5.Enabled = false;
-            btnSystemset_43_BCU_Close5.Location = new Point(266, 262);
+            btnSystemset_43_BCU_Close5.Location = new Point(238, 184);
             btnSystemset_43_BCU_Close5.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close5.Name = "btnSystemset_43_BCU_Close5";
             btnSystemset_43_BCU_Close5.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close5.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close5.Size = new Size(68, 29);
             btnSystemset_43_BCU_Close5.TabIndex = 18;
             btnSystemset_43_BCU_Close5.Text = "关闭";
             btnSystemset_43_BCU_Close5.UseVisualStyleBackColor = true;
@@ -4674,7 +4674,7 @@
             // lblSystemset_BCU_4
             // 
             lblSystemset_BCU_4.AutoSize = true;
-            lblSystemset_BCU_4.Location = new Point(10, 220);
+            lblSystemset_BCU_4.Location = new Point(13, 156);
             lblSystemset_BCU_4.Margin = new Padding(4, 0, 4, 0);
             lblSystemset_BCU_4.Name = "lblSystemset_BCU_4";
             lblSystemset_BCU_4.Size = new Size(109, 17);
@@ -4685,11 +4685,11 @@
             // 
             btnSystemset_43_BCU_Close6.AutoSize = true;
             btnSystemset_43_BCU_Close6.Enabled = false;
-            btnSystemset_43_BCU_Close6.Location = new Point(266, 308);
+            btnSystemset_43_BCU_Close6.Location = new Point(238, 217);
             btnSystemset_43_BCU_Close6.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close6.Name = "btnSystemset_43_BCU_Close6";
             btnSystemset_43_BCU_Close6.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close6.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close6.Size = new Size(68, 29);
             btnSystemset_43_BCU_Close6.TabIndex = 15;
             btnSystemset_43_BCU_Close6.Text = "关闭";
             btnSystemset_43_BCU_Close6.UseVisualStyleBackColor = true;
@@ -4699,11 +4699,11 @@
             // 
             btnSystemset_44_BCU_Open5.AutoSize = true;
             btnSystemset_44_BCU_Open5.Enabled = false;
-            btnSystemset_44_BCU_Open5.Location = new Point(179, 262);
+            btnSystemset_44_BCU_Open5.Location = new Point(164, 184);
             btnSystemset_44_BCU_Open5.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open5.Name = "btnSystemset_44_BCU_Open5";
             btnSystemset_44_BCU_Open5.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open5.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open5.Size = new Size(68, 29);
             btnSystemset_44_BCU_Open5.TabIndex = 16;
             btnSystemset_44_BCU_Open5.Text = "打开";
             btnSystemset_44_BCU_Open5.UseVisualStyleBackColor = true;
@@ -4713,11 +4713,11 @@
             // 
             btnSystemset_44_BCU_Open6.AutoSize = true;
             btnSystemset_44_BCU_Open6.Enabled = false;
-            btnSystemset_44_BCU_Open6.Location = new Point(179, 308);
+            btnSystemset_44_BCU_Open6.Location = new Point(164, 217);
             btnSystemset_44_BCU_Open6.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open6.Name = "btnSystemset_44_BCU_Open6";
             btnSystemset_44_BCU_Open6.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open6.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open6.Size = new Size(68, 29);
             btnSystemset_44_BCU_Open6.TabIndex = 14;
             btnSystemset_44_BCU_Open6.Text = "打开";
             btnSystemset_44_BCU_Open6.UseVisualStyleBackColor = true;
@@ -4727,11 +4727,11 @@
             // 
             btnSystemset_43_BCU_Close2.AutoSize = true;
             btnSystemset_43_BCU_Close2.Enabled = false;
-            btnSystemset_43_BCU_Close2.Location = new Point(266, 122);
+            btnSystemset_43_BCU_Close2.Location = new Point(238, 85);
             btnSystemset_43_BCU_Close2.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close2.Name = "btnSystemset_43_BCU_Close2";
             btnSystemset_43_BCU_Close2.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close2.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close2.Size = new Size(68, 29);
             btnSystemset_43_BCU_Close2.TabIndex = 11;
             btnSystemset_43_BCU_Close2.Text = "关闭";
             btnSystemset_43_BCU_Close2.UseVisualStyleBackColor = true;
@@ -4741,11 +4741,11 @@
             // 
             btnSystemset_44_BCU_Open2.AutoSize = true;
             btnSystemset_44_BCU_Open2.Enabled = false;
-            btnSystemset_44_BCU_Open2.Location = new Point(179, 122);
+            btnSystemset_44_BCU_Open2.Location = new Point(164, 85);
             btnSystemset_44_BCU_Open2.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open2.Name = "btnSystemset_44_BCU_Open2";
             btnSystemset_44_BCU_Open2.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open2.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open2.Size = new Size(68, 29);
             btnSystemset_44_BCU_Open2.TabIndex = 10;
             btnSystemset_44_BCU_Open2.Text = "打开";
             btnSystemset_44_BCU_Open2.UseVisualStyleBackColor = true;
@@ -4755,11 +4755,11 @@
             // 
             btnSystemset_43_BCU_Close1.AutoSize = true;
             btnSystemset_43_BCU_Close1.Enabled = false;
-            btnSystemset_43_BCU_Close1.Location = new Point(266, 77);
+            btnSystemset_43_BCU_Close1.Location = new Point(238, 52);
             btnSystemset_43_BCU_Close1.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_43_BCU_Close1.Name = "btnSystemset_43_BCU_Close1";
             btnSystemset_43_BCU_Close1.Padding = new Padding(1);
-            btnSystemset_43_BCU_Close1.Size = new Size(81, 39);
+            btnSystemset_43_BCU_Close1.Size = new Size(68, 29);
             btnSystemset_43_BCU_Close1.TabIndex = 9;
             btnSystemset_43_BCU_Close1.Text = "关闭";
             btnSystemset_43_BCU_Close1.UseVisualStyleBackColor = true;
@@ -4769,11 +4769,11 @@
             // 
             btnSystemset_44_BCU_Open1.AutoSize = true;
             btnSystemset_44_BCU_Open1.Enabled = false;
-            btnSystemset_44_BCU_Open1.Location = new Point(179, 77);
+            btnSystemset_44_BCU_Open1.Location = new Point(164, 52);
             btnSystemset_44_BCU_Open1.Margin = new Padding(3, 1, 3, 1);
             btnSystemset_44_BCU_Open1.Name = "btnSystemset_44_BCU_Open1";
             btnSystemset_44_BCU_Open1.Padding = new Padding(1);
-            btnSystemset_44_BCU_Open1.Size = new Size(81, 39);
+            btnSystemset_44_BCU_Open1.Size = new Size(68, 29);
             btnSystemset_44_BCU_Open1.TabIndex = 8;
             btnSystemset_44_BCU_Open1.Text = "打开";
             btnSystemset_44_BCU_Open1.UseVisualStyleBackColor = true;
@@ -4782,7 +4782,7 @@
             // lblSystemset_BCU_6
             // 
             lblSystemset_BCU_6.AutoSize = true;
-            lblSystemset_BCU_6.Location = new Point(10, 316);
+            lblSystemset_BCU_6.Location = new Point(13, 223);
             lblSystemset_BCU_6.Name = "lblSystemset_BCU_6";
             lblSystemset_BCU_6.Size = new Size(128, 17);
             lblSystemset_BCU_6.TabIndex = 3;
@@ -4791,7 +4791,7 @@
             // lblSystemset_BCU_2
             // 
             lblSystemset_BCU_2.AutoSize = true;
-            lblSystemset_BCU_2.Location = new Point(10, 127);
+            lblSystemset_BCU_2.Location = new Point(13, 91);
             lblSystemset_BCU_2.Name = "lblSystemset_BCU_2";
             lblSystemset_BCU_2.Size = new Size(78, 17);
             lblSystemset_BCU_2.TabIndex = 1;
@@ -4800,7 +4800,7 @@
             // lblSystemset_BCU_5
             // 
             lblSystemset_BCU_5.AutoSize = true;
-            lblSystemset_BCU_5.Location = new Point(10, 270);
+            lblSystemset_BCU_5.Location = new Point(13, 190);
             lblSystemset_BCU_5.Name = "lblSystemset_BCU_5";
             lblSystemset_BCU_5.Size = new Size(128, 17);
             lblSystemset_BCU_5.TabIndex = 5;
@@ -4809,7 +4809,7 @@
             // lblSystemset_BCU_1
             // 
             lblSystemset_BCU_1.AutoSize = true;
-            lblSystemset_BCU_1.Location = new Point(10, 82);
+            lblSystemset_BCU_1.Location = new Point(13, 58);
             lblSystemset_BCU_1.Name = "lblSystemset_BCU_1";
             lblSystemset_BCU_1.Size = new Size(56, 17);
             lblSystemset_BCU_1.TabIndex = 0;
@@ -4822,7 +4822,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1599, 51);
+            panel1.Size = new Size(1340, 41);
             panel1.TabIndex = 49;
             // 
             // BMSSystemSetControl
@@ -4834,7 +4834,7 @@
             Controls.Add(panel1);
             Margin = new Padding(4, 5, 4, 5);
             Name = "BMSSystemSetControl";
-            Size = new Size(1599, 1034);
+            Size = new Size(1340, 700);
             Load += SystemSetControl_Load;
             gbSystemset_04.ResumeLayout(false);
             gbSystemset_04.PerformLayout();
