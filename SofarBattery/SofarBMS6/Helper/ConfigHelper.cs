@@ -28,18 +28,19 @@ namespace SofarBMS.Helper
             if (config == null)
             {
                 config = new ConfigHelper();
+                config.builder = new ConfigurationBuilder();
+                config.root = config.builder.Add<WritableJsonConfigurationSource>(
+                    (Action<WritableJsonConfigurationSource>)(s =>
+                    {
+                        s.FileProvider = null;
+                        s.Path = "App.json";
+                        s.Optional = false;
+                        s.ReloadOnChange = true;
+                        s.ResolveFileProvider();
+                    })).Build();
             }
 
-            config.builder = new ConfigurationBuilder();
-            config.root = config.builder.Add<WritableJsonConfigurationSource>(
-                (Action<WritableJsonConfigurationSource>)(s =>
-                {
-                    s.FileProvider = null;
-                    s.Path = "config.json";
-                    s.Optional = false;
-                    s.ReloadOnChange = true;
-                    s.ResolveFileProvider();
-                })).Build();
+
 
             return config;
         }

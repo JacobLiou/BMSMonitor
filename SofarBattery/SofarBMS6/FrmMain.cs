@@ -852,7 +852,7 @@ StartListen,启动总线监听,Start bus listen";
             //ConfigurationManager.AppSettings["LanaguageIndex"] = val;
             //ConfigurationManager.RefreshSection("appSettings");
 
-           var change = ConfigHelper.GetHeper().SaveConfig("AppSetting:LanaguageIndex", val);
+           ConfigHelper.GetHeper().SaveConfig("AppSetting:LanaguageIndex", val);
         }
 
         private void AddMenuClick(UserControl bc)

@@ -152,13 +152,17 @@ namespace SofarBMS.Model
             ReceivecEventHandler += EnqueueTask_MLQ;
 
             CANMessageEvent.GetInstance().MessageReceived += ReceivingEvent;
-            CANMessageEvent.GetInstance().OpenReceiving(1, 0, 0);
+            CANMessageEvent.GetInstance().OpenReceiving(4, 0, 0);
         }
 
         public void ReceivingEvent(object sender, CANMessageEventArgs eventArgs)
         {
 
             CAN_OBJ coMsg = eventArgs.MessageData;
+            if (!(eventArgs.DeviceType == 4 && eventArgs.DeviceIndex == 0 && eventArgs.ChannelIndex == 0))
+            {
+                return;
+            }
 
             gRecMsgBuf[gRecMsgBufHead].ID = coMsg.ID;
             gRecMsgBuf[gRecMsgBufHead].Data = coMsg.Data;
