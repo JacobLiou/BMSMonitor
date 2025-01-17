@@ -7,6 +7,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>SofarBMS</RootNamespace>
+    <AssemblyName>SofarBMS</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,6 +40,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
     <PackageReference Include="Microsoft.Office.Interop.Excel" Version="15.0.4795.1000" />
     <PackageReference Include="MySql.Data" Version="8.0.31" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="NPOI" Version="2.7.2" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
   </ItemGroup>

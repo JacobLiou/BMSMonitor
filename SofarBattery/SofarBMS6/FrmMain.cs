@@ -709,7 +709,7 @@ StartListen,启动总线监听,Start bus listen";
         private void InitMenuStrip()
         {
             //LanguageHelper.LanaguageIndex = Convert.ToInt32(ConfigurationManager.AppSettings["LanaguageIndex"]);
-            LanguageHelper.LanaguageIndex = Convert.ToInt32(ConfigHelper.ReadConfig("LanaguageIndex"));
+            LanguageHelper.LanaguageIndex = Convert.ToInt32(ConfigHelper.GetHeper().ReadConfig("AppSetting:LanaguageIndex"));
             //MenuStrip控件声明
             ToolStripMenuItem tsmiMenu;
 
@@ -852,7 +852,7 @@ StartListen,启动总线监听,Start bus listen";
             //ConfigurationManager.AppSettings["LanaguageIndex"] = val;
             //ConfigurationManager.RefreshSection("appSettings");
 
-           var change = ConfigHelper.SaveConfig("LanaguageIndex", val);
+           var change = ConfigHelper.GetHeper().SaveConfig("AppSetting:LanaguageIndex", val);
         }
 
         private void AddMenuClick(UserControl bc)
