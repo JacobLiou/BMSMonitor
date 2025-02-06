@@ -46,7 +46,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\newproject\Sofar.ConnectionLibs\Sofar.ConnectionLibs.csproj" />
+    <ProjectReference Include="..\..\..\平台软件组-基础类库\协议类库\SofarDeviceSDK\Sofar.ConnectionLibs\Sofar.ConnectionLibs.csproj" />
   </ItemGroup>
 
   <ItemGroup>
