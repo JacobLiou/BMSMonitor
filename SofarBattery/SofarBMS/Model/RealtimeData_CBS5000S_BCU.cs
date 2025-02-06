@@ -1,5 +1,4 @@
-﻿using Microsoft.Office.Interop.Excel;
-using MySqlX.XDevAPI.Common;
+﻿using MySqlX.XDevAPI.Common;
 using NPOI.SS.Formula.Functions;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,6 @@ using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.UI;
 using System.Windows.Forms;
 using static NPOI.POIFS.Crypt.CryptoFunctions;
 using static System.Net.Mime.MediaTypeNames;

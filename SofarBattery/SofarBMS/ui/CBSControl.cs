@@ -1,4 +1,5 @@
-﻿using SofarBMS.Helper;
+﻿using Sofar.ConnectionLibs.CAN.Driver.ECAN;
+using SofarBMS.Helper;
 using SofarBMS.Model;
 using System;
 using System.Collections.Generic;

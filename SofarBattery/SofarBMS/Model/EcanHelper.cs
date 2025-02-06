@@ -1,4 +1,6 @@
-﻿using SofarBMS.Helper;
+﻿using Sofar.ConnectionLibs.CAN;
+using Sofar.ConnectionLibs.CAN.Driver.ECAN;
+using SofarBMS.Helper;
 using SofarBMS.Queue;
 using System;
 using System.Collections.Concurrent;
@@ -66,7 +68,7 @@ namespace SofarBMS.Model
             ,new Protocols(2,0x102FFFE0)
             ,new Protocols(3,0x1030FFFF),new Protocols(3,0x1031FFFF),new Protocols(3,0x1033FFFF),new Protocols(3,0x1034FFFF),new Protocols(3,0x1035FFFF),new Protocols(3,0x1036FFFF),new Protocols(3,0x1037FFFF),new Protocols(3,0x1038FFFF),new Protocols(3,0x1039FFFF),new Protocols(3,0x103AFFFF),new Protocols(3,0x103BFFFF),new Protocols(3,0x103CFFFF),new Protocols(3,0x103DFFFF),new Protocols(3,0x103EFFFF),new Protocols(3,0x103FFFFF),new Protocols(3,0x1050FFFF),new Protocols(3,0x1051FFFF),new Protocols(3,0x102DFFFF)
             ,new Protocols(3,0x1030E0FF),new Protocols(3,0x1031E0FF),new Protocols(3,0x1033E0FF),new Protocols(3,0x1034E0FF),new Protocols(3,0x1035E0FF),new Protocols(3,0x1036E0FF),new Protocols(3,0x1037E0FF),new Protocols(3,0x1038E0FF),new Protocols(3,0x1039E0FF),new Protocols(3,0x103AE0FF),new Protocols(3,0x103BE0FF),new Protocols(3,0x103CE0FF),new Protocols(3,0x103DE0FF),new Protocols(3,0x103EE0FF),new Protocols(3,0x103FE0FF),new Protocols(3,0x1050E0FF),new Protocols(3,0x1051E0FF),new Protocols(3,0x102DE0FF)
-            
+
             ,new Protocols(3,0x1010E0FF),new Protocols(3,0x1011E0FF),new Protocols(3,0x1012E0FF),new Protocols(3,0x1013E0FF),new Protocols(3,0x1014E0FF),new Protocols(3,0x1015E0FF),new Protocols(3,0x1016E0FF),new Protocols(3,0x1017E0FF),new Protocols(3,0x1018E0FF),new Protocols(3,0x1019E0FF),new Protocols(3,0x101AE0FF),new Protocols(3,0x101BE0FF),new Protocols(3,0x101CE0FF)
             ,new Protocols(3,0x1021E0FF),new Protocols(3,0x1022E0FF),new Protocols(3,0x1023E0FF),new Protocols(3,0x1024E0FF),new Protocols(3,0x1025E0FF),new Protocols(3,0x1026E0FF),new Protocols(3,0x1027E0FF),new Protocols(3,0x1028E0FF),new Protocols(3,0x1029E0FF),new Protocols(3,0x102AE0FF),new Protocols(3,0x102EE0FF),new Protocols(3,0x102FE0FF),new Protocols(3,0x101EE0FF)
 
@@ -125,10 +127,10 @@ namespace SofarBMS.Model
                     gSendMsgBufTail = 0;
                 }
 
-                if (ECANHelper.Transmit(1, 0, 0, coMsg, 1) == ECANStatus.STATUS_OK)
+                if (ECanDriver.Transmit(1, 0, 0, coMsg, 1) == (uint)ECANStatus.STATUS_OK)
                 {
-                    CAN_ERR_INFO err_info = new CAN_ERR_INFO();
-                    var v = ECANHelper.ReadErrInfo(1, 0, 0, out err_info) == ECANStatus.STATUS_OK;
+                    ERR_INFO err_info = new ERR_INFO();
+                    var v = ECanDriver.ReadErrInfo(1, 0, 0, out err_info) == ECANStatus.STATUS_OK;
                     if (err_info.ErrCode == 0x00)//成功
                     {
                         Debug.WriteLine($"{System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")} 发送数据   帧ID:{co.ID.ToString("X8")}");
@@ -149,53 +151,56 @@ namespace SofarBMS.Model
             ReceivecEventHandler += EnqueueTask;
             ReceivecEventHandler += EnqueueTask_MLQ;
 
-            Task.Run(() =>
+            CANMessageEvent.GetInstance().MessageReceived += ReceivingEvent;
+            CANMessageEvent.GetInstance().OpenReceiving(4, 0, 0);
+        }
+
+        public void ReceivingEvent(object sender, CANMessageEventArgs eventArgs)
+        {
+
+            CAN_OBJ coMsg = eventArgs.MessageData;
+            if (!(eventArgs.DeviceType == 4 && eventArgs.DeviceIndex == 0 && eventArgs.ChannelIndex == 0))
             {
-                while (true)
+                return;
+            }
+
+            gRecMsgBuf[gRecMsgBufHead].ID = coMsg.ID;
+            gRecMsgBuf[gRecMsgBufHead].Data = coMsg.Data;
+            gRecMsgBuf[gRecMsgBufHead].DataLen = coMsg.DataLen;
+            gRecMsgBuf[gRecMsgBufHead].ExternFlag = coMsg.ExternFlag;
+            gRecMsgBuf[gRecMsgBufHead].RemoteFlag = coMsg.RemoteFlag;
+            gRecMsgBuf[gRecMsgBufHead].TimeStamp = coMsg.TimeStamp;
+            gRecMsgBuf[gRecMsgBufHead].Reserved = coMsg.Reserved;
+            gRecMsgBuf[gRecMsgBufHead].TimeFlag = coMsg.TimeFlag;
+            gRecMsgBufHead += 1;
+            if (gRecMsgBufHead >= REC_MSG_BUF_MAX)
+            {
+                gRecMsgBufHead = 0;
+            }
+
+            //进入队列前，先进行筛选（集合内的ID可加入至队列，否则过滤掉）
+            foreach (Protocols item in protocols)
+            {
+                //uint index = 0x00;
+                //switch (item.Index)
+                //{
+                //    case 0: index = 0xff000000; break;
+                //    case 1: index = 0xff0000; break;
+                //    case 2: index = 0xff00; break;
+                //    case 3: index = 0xff; break;
+                //}
+
+                uint revId = coMsg.ID | 0xff;
+                uint devId = AnalysisID(coMsg.ID);
+                if (revId == item.Id)
                 {
-                    CAN_OBJ coMsg = new CAN_OBJ();
 
-                    if (ECANHelper.Receive(1, 0, 0, out coMsg, 1, 1) == ECANStatus.STATUS_OK)
-                    {
-                        gRecMsgBuf[gRecMsgBufHead].ID = coMsg.ID;
-                        gRecMsgBuf[gRecMsgBufHead].Data = coMsg.Data;
-                        gRecMsgBuf[gRecMsgBufHead].DataLen = coMsg.DataLen;
-                        gRecMsgBuf[gRecMsgBufHead].ExternFlag = coMsg.ExternFlag;
-                        gRecMsgBuf[gRecMsgBufHead].RemoteFlag = coMsg.RemoteFlag;
-                        gRecMsgBuf[gRecMsgBufHead].TimeStamp = coMsg.TimeStamp;
-                        gRecMsgBuf[gRecMsgBufHead].Reserved = coMsg.Reserved;
-                        gRecMsgBuf[gRecMsgBufHead].TimeFlag = coMsg.TimeFlag;
-                        gRecMsgBufHead += 1;
-                        if (gRecMsgBufHead >= REC_MSG_BUF_MAX)
-                        {
-                            gRecMsgBufHead = 0;
-                        }
-
-                        //进入队列前，先进行筛选（集合内的ID可加入至队列，否则过滤掉）
-                        foreach (Protocols item in protocols)
-                        {
-                            //uint index = 0x00;
-                            //switch (item.Index)
-                            //{
-                            //    case 0: index = 0xff000000; break;
-                            //    case 1: index = 0xff0000; break;
-                            //    case 2: index = 0xff00; break;
-                            //    case 3: index = 0xff; break;
-                            //}
-
-                            uint revId = coMsg.ID | 0xff;
-                            uint devId = AnalysisID(coMsg.ID);
-                            if (revId == item.Id)
-                            {
-
-                                //EnqueueTask(coMsg);
-                                ReceivecEventHandler(coMsg);
-                                break;
-                            }
-                        }
-                    }
+                    //EnqueueTask(coMsg);
+                    ReceivecEventHandler(coMsg);
+                    break;
                 }
-            });
+            }
+
         }
 
         public uint AnalysisID(uint id)
@@ -224,9 +229,9 @@ namespace SofarBMS.Model
         {
             string error = string.Empty;
 
-            CAN_ERR_INFO err_info = new CAN_ERR_INFO();
+            ERR_INFO err_info = new ERR_INFO();
 
-            if (ECANHelper.ReadErrInfo(1, 0, 0, out err_info) == ECANStatus.STATUS_OK)
+            if (ECanDriver.ReadErrInfo(1, 0, 0, out err_info) == ECANStatus.STATUS_OK)
             {
                 error = "当前错误码：" + err_info.ErrCode.ToString("X2");
 
@@ -238,10 +243,10 @@ namespace SofarBMS.Model
                     }
                     else
                     {
-                        if (ECANHelper.ResetCAN(1, 0, 0) == ECANStatus.STATUS_OK)
+                        if (ECanDriver.ResetCAN(1, 0, 0) == ECANStatus.STATUS_OK)
                         {
                             Can_error_count = 0;
-                            ECANHelper.StartCAN(1, 0, 0);
+                            ECanDriver.StartCAN(1, 0, 0);
                             Debug.WriteLine($"当前错误码：{0}，执行了复位CAN操作");
                         }
                     }
@@ -285,7 +290,7 @@ namespace SofarBMS.Model
             {
                 ss += " " + coMsg.Data[i].ToString("X2");
             }
-            
+
             //Debug.WriteLine($"{System.DateTime.Now.ToString("hh:mm:ss:fff")} Dev:{devId} CAN_ID:{coMsg.ID.ToString("X8")},Data：{ss.ToString()}");
 
         }

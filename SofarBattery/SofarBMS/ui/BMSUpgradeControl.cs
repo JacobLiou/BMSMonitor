@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sofar.ConnectionLibs.CAN.Driver.ECAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
 
@@ -86,18 +87,12 @@ namespace SofarBMS.UI
 
             Task.Run(delegate
             {
-                while (!cts.IsCancellationRequested)
+                while (EcanHelper._task.Count > 0
+                && !cts.IsCancellationRequested)
                 {
-                    lock (EcanHelper._locker)
-                    {
-                        while (EcanHelper._task.Count > 0
-                        && !cts.IsCancellationRequested)
-                        {
-                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                    CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
-                            this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
-                        }
-                    }
+                    this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
                 }
             }, cts.Token);
 

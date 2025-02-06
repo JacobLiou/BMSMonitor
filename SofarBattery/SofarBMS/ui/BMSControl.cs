@@ -1,4 +1,5 @@
-﻿using SofarBMS.Helper;
+﻿using Sofar.ConnectionLibs.CAN.Driver.ECAN;
+using SofarBMS.Helper;
 using SofarBMS.Model;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace SofarBMS.UI
 
             cts = new CancellationTokenSource();
         }
-
+        
         string[] packSN = new string[3];
 
         int initCount = 0;
@@ -30,10 +31,10 @@ namespace SofarBMS.UI
 
         private void RTAControl_Load(object sender, EventArgs e)
         {
-            foreach (Control item in this.Controls)
-            {
-                GetControls(item);
-            }
+            //foreach (Control item in this.Controls)
+            //{
+            //    GetControls(item);
+            //}
 
             //return;
             Task.Run(async delegate
@@ -42,7 +43,7 @@ namespace SofarBMS.UI
                  {
                      while (!cts.IsCancellationRequested)
                      {
-                         if (ecanHelper.IsConnection)
+                         /*if (ecanHelper.IsConnection)
                          {
                              if (model != null && initCount >= 13)
                              {
@@ -64,7 +65,7 @@ namespace SofarBMS.UI
 
                              //定时一秒存储一次数据
                              await Task.Delay(1000);
-                         }
+                         }*/
 
                          while (EcanHelper._task.Count > 0
                             && !cts.IsCancellationRequested)

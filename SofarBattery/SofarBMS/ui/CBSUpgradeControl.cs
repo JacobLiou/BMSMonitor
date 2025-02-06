@@ -1,4 +1,5 @@
 ﻿using NPOI.SS.Formula.Functions;
+using Sofar.ConnectionLibs.CAN.Driver.ECAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
 using System;

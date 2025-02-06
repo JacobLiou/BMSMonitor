@@ -1,5 +1,8 @@
 ﻿using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
+using Sofar.BMS;
+using Sofar.BMS.Common;
+using Sofar.ConnectionLibs.CAN.Driver.ECAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
 using SofarBMS.UI;
@@ -237,13 +240,23 @@ StartListen,启动总线监听,Start bus listen";
 
         public static HashSet<AlarmInfo> AlarmList = new HashSet<AlarmInfo>();
 
+        // BMS服务对象
+        DeviceServiceBase deviceService = new DeviceServiceBase();
+        BmsCanHelper canHelper = null;
+
         public FrmMain()
         {
             InitializeComponent();
         }
-
+        public FrmMain(ref bool IsConnection) : this()
+        {
+            ecanHelper.IsConnection = IsConnection;
+            btnConnectionCAN.Visible = false;
+        }
         private void FrmMain_Load(object sender, EventArgs e)
         {
+            canHelper = deviceService.baseCanHelper;
+
             //程序确保Log文件的存在性
             if (!Directory.Exists("Log"))
             {
@@ -251,7 +264,7 @@ StartListen,启动总线监听,Start bus listen";
             }
 
             //本地SQLite数据库连接字符串（后期需要去除冗余，要调整为MySQL数据库）Pooling=true;FailIfMissing=false;
-            SQLiteHelper.ConStr = "Data Source=DB//RealtimeDataBase;Version=3;";
+            SQLiteHelper.ConStr = "Data Source=DB//RealtimeDataBase;";
 
             //使用多线程轮询获取CAN错误码（后期需要去除冗余，改为异常后自动复位）
             Task.Run(async () =>
@@ -702,8 +715,8 @@ StartListen,启动总线监听,Start bus listen";
         /// </summary>
         private void InitMenuStrip()
         {
-            LanguageHelper.LanaguageIndex = Convert.ToInt32(ConfigurationManager.AppSettings["LanaguageIndex"]);
-
+            //LanguageHelper.LanaguageIndex = Convert.ToInt32(ConfigurationManager.AppSettings["LanaguageIndex"]);
+            LanguageHelper.LanaguageIndex = Convert.ToInt32(ConfigHelper.GetHeper().ReadConfig("AppSetting:LanaguageIndex"));
             //MenuStrip控件声明
             ToolStripMenuItem tsmiMenu;
 
@@ -842,11 +855,11 @@ StartListen,启动总线监听,Start bus listen";
 
         private void SaveAppsetting(string val)
         {
-            string file = System.Windows.Forms.Application.ExecutablePath;
-            Configuration config = ConfigurationManager.OpenExeConfiguration(file);
-            config.AppSettings.Settings["LanaguageIndex"].Value = val;
-            config.Save(ConfigurationSaveMode.Modified);
-            ConfigurationManager.RefreshSection("appSettings");
+
+            //ConfigurationManager.AppSettings["LanaguageIndex"] = val;
+            //ConfigurationManager.RefreshSection("appSettings");
+
+            ConfigHelper.GetHeper().SaveConfig("AppSetting:LanaguageIndex", val);
         }
 
         private void AddMenuClick(UserControl bc)
@@ -956,9 +969,16 @@ StartListen,启动总线监听,Start bus listen";
         #region 连接/断开/复位CAN
         private void btnConnectionCAN_Click(object sender, EventArgs e)
         {
-            if (!ecanHelper.IsConnection)
+            if (!canHelper.IsConnected())
             {
-                if (ECANHelper.OpenDevice(1, 0, 0) != ECANStatus.STATUS_OK)
+                canHelper.Connect();
+            }
+            return;
+
+
+            /*if (!ecanHelper.IsConnection)
+            {
+                if (ECanDriver.OpenDevice(1, 0, 0) != ECANStatus.STATUS_OK)
                 {
                     MessageBox.Show(LanguageHelper.GetLanguage("OpenCAN_Error"));
                     return;
@@ -991,17 +1011,17 @@ StartListen,启动总线监听,Start bus listen";
                 INITCONFIG.Mode = 0;
 
 
-                if (ECANHelper.InitCAN(1, 0, 0, ref INITCONFIG) != ECANStatus.STATUS_OK)
+                if (ECanDriver.InitCAN(1, 0, 0, ref INITCONFIG) != ECANStatus.STATUS_OK)
                 {
                     MessageBox.Show(LanguageHelper.GetLanguage("InitCAN_Error"));
-                    ECANHelper.CloseDevice(1, 0);
+                    ECanDriver.CloseDevice(1, 0);
                     return;
                 }
 
-                if (ECANHelper.StartCAN(1, 0, 0) != ECANStatus.STATUS_OK)
+                if (ECanDriver.StartCAN(1, 0, 0) != ECANStatus.STATUS_OK)
                 {
                     MessageBox.Show(LanguageHelper.GetLanguage("StartCAN_Error"));
-                    ECANHelper.CloseDevice(1, 0);
+                    ECanDriver.CloseDevice(1, 0);
                     return;
                 }
 
@@ -1010,13 +1030,13 @@ StartListen,启动总线监听,Start bus listen";
             }
             else
             {
-                ECANHelper.CloseDevice(0, 0);
+                ECanDriver.CloseDevice(0, 0);
                 btnConnectionCAN.Text = LanguageHelper.GetLanguage("CanState_Conn");
                 ecanHelper.IsConnection = false;
 
                 //ExportData(System.AppDomain.CurrentDomain.BaseDirectory + "\\Log\\" + System.DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ff") + ".xlsx");
                 //SQLiteHelper.Update("delete from RealtimeData");
-            }
+            }*/
         }
 
         private void btnResetCAN_Click(object sender, EventArgs e)
@@ -1027,13 +1047,13 @@ StartListen,启动总线监听,Start bus listen";
                 return;
             }
             //复位CAN
-            if (ECANHelper.ResetCAN(1, 0, 0) != ECANStatus.STATUS_OK)
+            if (ECanDriver.ResetCAN(1, 0, 0) != ECANStatus.STATUS_OK)
             {
                 //MessageBox.Show(LanguageHelper.GetLanguage("Message_ResetError"));
                 return;
             }
             //启动CAN
-            if (ECANHelper.StartCAN(1, 0, 0) != ECANStatus.STATUS_OK)
+            if (ECanDriver.StartCAN(1, 0, 0) != ECANStatus.STATUS_OK)
             {
                 //MessageBox.Show(LanguageHelper.GetLanguage("Message_StartError"));
                 return;

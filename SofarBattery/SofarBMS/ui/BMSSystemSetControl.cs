@@ -1,5 +1,6 @@
 ﻿using NPOI.SS.Formula.Functions;
 using NPOI.XSSF.Streaming.Values;
+using Sofar.ConnectionLibs.CAN.Driver.ECAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
 using System;

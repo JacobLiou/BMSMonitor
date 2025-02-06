@@ -28,241 +28,248 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtSlaveAddress = new System.Windows.Forms.TextBox();
-            this.cbbFileNumber = new System.Windows.Forms.ComboBox();
-            this.cbbModeName = new System.Windows.Forms.ComboBox();
-            this.btnFileTransmit = new System.Windows.Forms.Button();
-            this.ckReadAll = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtStartLocal = new System.Windows.Forms.TextBox();
-            this.txtReadCount = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtSubDeviceAddress = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lvPrintBlock = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.SuspendLayout();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            txtSlaveAddress = new TextBox();
+            cbbFileNumber = new ComboBox();
+            cbbModeName = new ComboBox();
+            btnFileTransmit = new Button();
+            ckReadAll = new CheckBox();
+            label4 = new Label();
+            label5 = new Label();
+            txtStartLocal = new TextBox();
+            txtReadCount = new TextBox();
+            groupBox1 = new GroupBox();
+            label6 = new Label();
+            txtSubDeviceAddress = new TextBox();
+            groupBox2 = new GroupBox();
+            lvPrintBlock = new ListView();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "BCU设备地址";
+            label1.AutoSize = true;
+            label1.Location = new Point(17, 27);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(81, 17);
+            label1.TabIndex = 0;
+            label1.Text = "BCU设备地址";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "文件编号";
+            label2.AutoSize = true;
+            label2.Location = new Point(14, 61);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(56, 17);
+            label2.TabIndex = 1;
+            label2.Text = "文件编号";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 92);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "访问模块";
+            label3.AutoSize = true;
+            label3.Location = new Point(17, 91);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(56, 17);
+            label3.TabIndex = 2;
+            label3.Text = "访问模块";
             // 
             // txtSlaveAddress
             // 
-            this.txtSlaveAddress.Location = new System.Drawing.Point(93, 26);
-            this.txtSlaveAddress.Name = "txtSlaveAddress";
-            this.txtSlaveAddress.Size = new System.Drawing.Size(121, 21);
-            this.txtSlaveAddress.TabIndex = 3;
-            this.txtSlaveAddress.TextChanged += new System.EventHandler(this.txtSlaveAddress_TextChanged);
+            txtSlaveAddress.Location = new Point(102, 24);
+            txtSlaveAddress.Margin = new Padding(4, 4, 4, 4);
+            txtSlaveAddress.Name = "txtSlaveAddress";
+            txtSlaveAddress.Size = new Size(140, 23);
+            txtSlaveAddress.TabIndex = 3;
+            txtSlaveAddress.TextChanged += txtSlaveAddress_TextChanged;
             // 
             // cbbFileNumber
             // 
-            this.cbbFileNumber.FormattingEnabled = true;
-            this.cbbFileNumber.Items.AddRange(new object[] {
-            "0：故障录波文件1\t",
-            "1：故障录波文件2\t",
-            "2：故障录波文件3\t",
-            "3：5min特性数据文件\t",
-            "4：运行日志文件\t    ",
-            "5：历史事件文件"});
-            this.cbbFileNumber.Location = new System.Drawing.Point(93, 58);
-            this.cbbFileNumber.Name = "cbbFileNumber";
-            this.cbbFileNumber.Size = new System.Drawing.Size(121, 20);
-            this.cbbFileNumber.TabIndex = 4;
+            cbbFileNumber.FormattingEnabled = true;
+            cbbFileNumber.Items.AddRange(new object[] { "0：故障录波文件1\t", "1：故障录波文件2\t", "2：故障录波文件3\t", "3：5min特性数据文件\t", "4：运行日志文件\t    ", "5：历史事件文件" });
+            cbbFileNumber.Location = new Point(101, 54);
+            cbbFileNumber.Margin = new Padding(4, 4, 4, 4);
+            cbbFileNumber.Name = "cbbFileNumber";
+            cbbFileNumber.Size = new Size(140, 25);
+            cbbFileNumber.TabIndex = 4;
             // 
             // cbbModeName
             // 
-            this.cbbModeName.FormattingEnabled = true;
-            this.cbbModeName.Items.AddRange(new object[] {
-            "BCU",
-            "BMU"});
-            this.cbbModeName.Location = new System.Drawing.Point(93, 88);
-            this.cbbModeName.Name = "cbbModeName";
-            this.cbbModeName.Size = new System.Drawing.Size(121, 20);
-            this.cbbModeName.TabIndex = 5;
+            cbbModeName.FormattingEnabled = true;
+            cbbModeName.Items.AddRange(new object[] { "BCU", "BMU" });
+            cbbModeName.Location = new Point(102, 86);
+            cbbModeName.Margin = new Padding(4, 4, 4, 4);
+            cbbModeName.Name = "cbbModeName";
+            cbbModeName.Size = new Size(140, 25);
+            cbbModeName.TabIndex = 5;
             // 
             // btnFileTransmit
             // 
-            this.btnFileTransmit.Location = new System.Drawing.Point(623, 53);
-            this.btnFileTransmit.Name = "btnFileTransmit";
-            this.btnFileTransmit.Size = new System.Drawing.Size(75, 51);
-            this.btnFileTransmit.TabIndex = 6;
-            this.btnFileTransmit.Text = "启动";
-            this.btnFileTransmit.UseVisualStyleBackColor = true;
-            this.btnFileTransmit.Click += new System.EventHandler(this.btnFileTransmit_Click);
+            btnFileTransmit.Location = new Point(651, 29);
+            btnFileTransmit.Margin = new Padding(4, 4, 4, 4);
+            btnFileTransmit.Name = "btnFileTransmit";
+            btnFileTransmit.Size = new Size(88, 49);
+            btnFileTransmit.TabIndex = 6;
+            btnFileTransmit.Text = "启动";
+            btnFileTransmit.UseVisualStyleBackColor = true;
+            btnFileTransmit.Click += btnFileTransmit_Click;
             // 
             // ckReadAll
             // 
-            this.ckReadAll.AutoSize = true;
-            this.ckReadAll.Location = new System.Drawing.Point(227, 60);
-            this.ckReadAll.Name = "ckReadAll";
-            this.ckReadAll.Size = new System.Drawing.Size(96, 16);
-            this.ckReadAll.TabIndex = 7;
-            this.ckReadAll.Text = "是否读取全部";
-            this.ckReadAll.UseVisualStyleBackColor = true;
-            this.ckReadAll.CheckedChanged += new System.EventHandler(this.ckReadAll_CheckedChanged);
+            ckReadAll.AutoSize = true;
+            ckReadAll.Location = new Point(256, 58);
+            ckReadAll.Margin = new Padding(4, 4, 4, 4);
+            ckReadAll.Name = "ckReadAll";
+            ckReadAll.Size = new Size(99, 21);
+            ckReadAll.TabIndex = 7;
+            ckReadAll.Text = "是否读取全部";
+            ckReadAll.UseVisualStyleBackColor = true;
+            ckReadAll.CheckedChanged += ckReadAll_CheckedChanged;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(326, 92);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 12);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "起始位置";
-            this.label4.Visible = false;
+            label4.AutoSize = true;
+            label4.Location = new Point(374, 91);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(56, 17);
+            label4.TabIndex = 8;
+            label4.Text = "起始位置";
+            label4.Visible = false;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(328, 62);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 12);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "读取条数";
+            label5.AutoSize = true;
+            label5.Location = new Point(374, 61);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(56, 17);
+            label5.TabIndex = 9;
+            label5.Text = "读取条数";
             // 
             // txtStartLocal
             // 
-            this.txtStartLocal.Location = new System.Drawing.Point(385, 88);
-            this.txtStartLocal.Name = "txtStartLocal";
-            this.txtStartLocal.Size = new System.Drawing.Size(100, 21);
-            this.txtStartLocal.TabIndex = 10;
-            this.txtStartLocal.Visible = false;
+            txtStartLocal.Location = new Point(443, 86);
+            txtStartLocal.Margin = new Padding(4, 4, 4, 4);
+            txtStartLocal.Name = "txtStartLocal";
+            txtStartLocal.Size = new Size(116, 23);
+            txtStartLocal.TabIndex = 10;
+            txtStartLocal.Visible = false;
             // 
             // txtReadCount
             // 
-            this.txtReadCount.Location = new System.Drawing.Point(385, 58);
-            this.txtReadCount.Name = "txtReadCount";
-            this.txtReadCount.Size = new System.Drawing.Size(100, 21);
-            this.txtReadCount.TabIndex = 11;
-            this.txtReadCount.TextChanged += new System.EventHandler(this.txtReadCount_TextChanged);
+            txtReadCount.Location = new Point(440, 55);
+            txtReadCount.Margin = new Padding(4, 4, 4, 4);
+            txtReadCount.Name = "txtReadCount";
+            txtReadCount.Size = new Size(116, 23);
+            txtReadCount.TabIndex = 11;
+            txtReadCount.TextChanged += txtReadCount_TextChanged;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtSubDeviceAddress);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtReadCount);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtStartLocal);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txtSlaveAddress);
-            this.groupBox1.Controls.Add(this.cbbFileNumber);
-            this.groupBox1.Controls.Add(this.ckReadAll);
-            this.groupBox1.Controls.Add(this.cbbModeName);
-            this.groupBox1.Controls.Add(this.btnFileTransmit);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1266, 130);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(txtSubDeviceAddress);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(txtReadCount);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(txtStartLocal);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(txtSlaveAddress);
+            groupBox1.Controls.Add(cbbFileNumber);
+            groupBox1.Controls.Add(ckReadAll);
+            groupBox1.Controls.Add(cbbModeName);
+            groupBox1.Controls.Add(btnFileTransmit);
+            groupBox1.Dock = DockStyle.Top;
+            groupBox1.Location = new Point(0, 0);
+            groupBox1.Margin = new Padding(4, 4, 4, 4);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new Padding(4, 4, 4, 4);
+            groupBox1.Size = new Size(1277, 123);
+            groupBox1.TabIndex = 12;
+            groupBox1.TabStop = false;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(225, 32);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 12);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "子设备BMU地址";
+            label6.AutoSize = true;
+            label6.Location = new Point(256, 27);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(97, 17);
+            label6.TabIndex = 12;
+            label6.Text = "子设备BMU地址";
             // 
             // txtSubDeviceAddress
             // 
-            this.txtSubDeviceAddress.Location = new System.Drawing.Point(313, 26);
-            this.txtSubDeviceAddress.Name = "txtSubDeviceAddress";
-            this.txtSubDeviceAddress.Size = new System.Drawing.Size(121, 21);
-            this.txtSubDeviceAddress.TabIndex = 13;
-            this.txtSubDeviceAddress.TextChanged += new System.EventHandler(this.txtSubDeviceAddress_TextChanged);
+            txtSubDeviceAddress.Location = new Point(359, 24);
+            txtSubDeviceAddress.Margin = new Padding(4, 4, 4, 4);
+            txtSubDeviceAddress.Name = "txtSubDeviceAddress";
+            txtSubDeviceAddress.Size = new Size(140, 23);
+            txtSubDeviceAddress.TabIndex = 13;
+            txtSubDeviceAddress.TextChanged += txtSubDeviceAddress_TextChanged;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.lvPrintBlock);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 130);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1266, 588);
-            this.groupBox2.TabIndex = 24;
-            this.groupBox2.TabStop = false;
+            groupBox2.Controls.Add(lvPrintBlock);
+            groupBox2.Dock = DockStyle.Fill;
+            groupBox2.Location = new Point(0, 123);
+            groupBox2.Margin = new Padding(4, 4, 4, 4);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Padding = new Padding(4, 4, 4, 4);
+            groupBox2.Size = new Size(1277, 577);
+            groupBox2.TabIndex = 24;
+            groupBox2.TabStop = false;
             // 
             // lvPrintBlock
             // 
-            this.lvPrintBlock.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3});
-            this.lvPrintBlock.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvPrintBlock.HideSelection = false;
-            this.lvPrintBlock.Location = new System.Drawing.Point(3, 17);
-            this.lvPrintBlock.Name = "lvPrintBlock";
-            this.lvPrintBlock.Size = new System.Drawing.Size(1260, 568);
-            this.lvPrintBlock.TabIndex = 0;
-            this.lvPrintBlock.UseCompatibleStateImageBehavior = false;
-            this.lvPrintBlock.View = System.Windows.Forms.View.Details;
+            lvPrintBlock.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
+            lvPrintBlock.Dock = DockStyle.Fill;
+            lvPrintBlock.Location = new Point(4, 20);
+            lvPrintBlock.Margin = new Padding(4, 4, 4, 4);
+            lvPrintBlock.Name = "lvPrintBlock";
+            lvPrintBlock.Size = new Size(1269, 553);
+            lvPrintBlock.TabIndex = 0;
+            lvPrintBlock.UseCompatibleStateImageBehavior = false;
+            lvPrintBlock.View = View.Details;
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "datetime";
-            this.columnHeader1.Width = 200;
+            columnHeader1.Text = "datetime";
+            columnHeader1.Width = 200;
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "ID";
-            this.columnHeader2.Width = 200;
+            columnHeader2.Text = "ID";
+            columnHeader2.Width = 200;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Data";
-            this.columnHeader3.Width = 500;
+            columnHeader3.Text = "Data";
+            columnHeader3.Width = 500;
             // 
             // CBS_BCU_FileTransmit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Name = "CBS_BCU_FileTransmit";
-            this.Size = new System.Drawing.Size(1266, 718);
-            this.Load += new System.EventHandler(this.CBSFileTransmit_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
+            Margin = new Padding(4, 4, 4, 4);
+            Name = "CBS_BCU_FileTransmit";
+            Size = new Size(1277, 700);
+            Load += CBSFileTransmit_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion

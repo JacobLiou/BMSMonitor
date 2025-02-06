@@ -14,6 +14,7 @@ using System.Threading;
 using SofarBMS.Helper;
 using SofarBMS.Model;
 using NPOI.POIFS.Crypt.Dsig;
+using Sofar.ConnectionLibs.CAN.Driver.ECAN;
 
 namespace SofarBMS.UI
 {

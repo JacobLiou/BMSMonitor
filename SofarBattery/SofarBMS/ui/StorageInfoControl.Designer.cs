@@ -28,155 +28,159 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvStorageInfo = new System.Windows.Forms.DataGridView();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.btn_01 = new System.Windows.Forms.Button();
-            this.btn_03 = new System.Windows.Forms.Button();
-            this.btn_04 = new System.Windows.Forms.Button();
-            this.btn_02 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStorageInfo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.SuspendLayout();
+            dgvStorageInfo = new DataGridView();
+            splitContainer1 = new SplitContainer();
+            btnExport = new Button();
+            btn_01 = new Button();
+            btn_03 = new Button();
+            btn_02 = new Button();
+            btn_04 = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvStorageInfo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
+            SuspendLayout();
             // 
             // dgvStorageInfo
             // 
-            this.dgvStorageInfo.AllowUserToAddRows = false;
-            this.dgvStorageInfo.AllowUserToDeleteRows = false;
-            this.dgvStorageInfo.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvStorageInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStorageInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvStorageInfo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.dgvStorageInfo.Location = new System.Drawing.Point(0, 0);
-            this.dgvStorageInfo.Margin = new System.Windows.Forms.Padding(15, 16, 15, 16);
-            this.dgvStorageInfo.Name = "dgvStorageInfo";
-            this.dgvStorageInfo.ReadOnly = true;
-            this.dgvStorageInfo.RowHeadersWidth = 51;
-            this.dgvStorageInfo.RowTemplate.Height = 23;
-            this.dgvStorageInfo.Size = new System.Drawing.Size(1370, 578);
-            this.dgvStorageInfo.TabIndex = 0;
-            this.dgvStorageInfo.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView1_RowStateChanged);
+            dgvStorageInfo.AllowUserToAddRows = false;
+            dgvStorageInfo.AllowUserToDeleteRows = false;
+            dgvStorageInfo.BackgroundColor = SystemColors.ControlLightLight;
+            dgvStorageInfo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvStorageInfo.Dock = DockStyle.Fill;
+            dgvStorageInfo.GridColor = Color.FromArgb(204, 204, 204);
+            dgvStorageInfo.Location = new Point(0, 0);
+            dgvStorageInfo.Margin = new Padding(18, 23, 18, 23);
+            dgvStorageInfo.Name = "dgvStorageInfo";
+            dgvStorageInfo.ReadOnly = true;
+            dgvStorageInfo.RowHeadersWidth = 51;
+            dgvStorageInfo.RowTemplate.Height = 23;
+            dgvStorageInfo.Size = new Size(1298, 577);
+            dgvStorageInfo.TabIndex = 0;
+            dgvStorageInfo.RowStateChanged += dataGridView1_RowStateChanged;
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            splitContainer1.Dock = DockStyle.Fill;
+            splitContainer1.FixedPanel = FixedPanel.Panel2;
+            splitContainer1.Location = new Point(0, 0);
+            splitContainer1.Margin = new Padding(2, 3, 2, 3);
+            splitContainer1.Name = "splitContainer1";
+            splitContainer1.Orientation = Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.splitContainer1.Panel1.Controls.Add(this.btnExport);
-            this.splitContainer1.Panel1.Controls.Add(this.btn_01);
-            this.splitContainer1.Panel1.Controls.Add(this.btn_03);
-            this.splitContainer1.Panel1.Controls.Add(this.btn_02);
-            this.splitContainer1.Panel1.Controls.Add(this.btn_04);
+            splitContainer1.Panel1.BackColor = SystemColors.ControlLightLight;
+            splitContainer1.Panel1.Controls.Add(btnExport);
+            splitContainer1.Panel1.Controls.Add(btn_01);
+            splitContainer1.Panel1.Controls.Add(btn_03);
+            splitContainer1.Panel1.Controls.Add(btn_02);
+            splitContainer1.Panel1.Controls.Add(btn_04);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.splitContainer1.Panel2.Controls.Add(this.dgvStorageInfo);
-            this.splitContainer1.Size = new System.Drawing.Size(1370, 630);
-            this.splitContainer1.SplitterDistance = 49;
-            this.splitContainer1.SplitterWidth = 3;
-            this.splitContainer1.TabIndex = 2;
+            splitContainer1.Panel2.BackColor = SystemColors.ControlLightLight;
+            splitContainer1.Panel2.Controls.Add(dgvStorageInfo);
+            splitContainer1.Size = new Size(1298, 700);
+            splitContainer1.SplitterDistance = 119;
+            splitContainer1.TabIndex = 2;
             // 
             // btnExport
             // 
-            this.btnExport.FlatAppearance.BorderSize = 0;
-            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnExport.ForeColor = System.Drawing.Color.Black;
-            this.btnExport.Image = global::SofarBMS.Properties.Resources.daochu;
-            this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExport.Location = new System.Drawing.Point(948, 8);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(130, 32);
-            this.btnExport.TabIndex = 12;
-            this.btnExport.Text = "导出";
-            this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            btnExport.FlatAppearance.BorderSize = 0;
+            btnExport.FlatStyle = FlatStyle.System;
+            btnExport.ForeColor = Color.Black;
+            btnExport.Image = Resources.daochu;
+            btnExport.ImageAlign = ContentAlignment.MiddleLeft;
+            btnExport.Location = new Point(763, 11);
+            btnExport.Margin = new Padding(4, 4, 4, 4);
+            btnExport.Name = "btnExport";
+            btnExport.Size = new Size(107, 34);
+            btnExport.TabIndex = 12;
+            btnExport.Text = "导出";
+            btnExport.UseVisualStyleBackColor = true;
+            btnExport.Click += btnExport_Click;
             // 
             // btn_01
             // 
-            this.btn_01.FlatAppearance.BorderSize = 0;
-            this.btn_01.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btn_01.ForeColor = System.Drawing.Color.Black;
-            this.btn_01.Image = global::SofarBMS.Properties.Resources.zhongzhi;
-            this.btn_01.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_01.Location = new System.Drawing.Point(63, 8);
-            this.btn_01.Name = "btn_01";
-            this.btn_01.Size = new System.Drawing.Size(130, 32);
-            this.btn_01.TabIndex = 8;
-            this.btn_01.Text = "重置";
-            this.btn_01.UseVisualStyleBackColor = true;
-            this.btn_01.Click += new System.EventHandler(this.btn_01_Click);
+            btn_01.FlatAppearance.BorderSize = 0;
+            btn_01.FlatStyle = FlatStyle.System;
+            btn_01.ForeColor = Color.Black;
+            btn_01.Image = Resources.zhongzhi;
+            btn_01.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_01.Location = new Point(74, 11);
+            btn_01.Margin = new Padding(4, 4, 4, 4);
+            btn_01.Name = "btn_01";
+            btn_01.Size = new Size(107, 34);
+            btn_01.TabIndex = 8;
+            btn_01.Text = "重置";
+            btn_01.UseVisualStyleBackColor = true;
+            btn_01.Click += btn_01_Click;
             // 
             // btn_03
             // 
-            this.btn_03.FlatAppearance.BorderSize = 0;
-            this.btn_03.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btn_03.ForeColor = System.Drawing.Color.Black;
-            this.btn_03.Image = global::SofarBMS.Properties.Resources.zanting;
-            this.btn_03.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_03.Location = new System.Drawing.Point(500, 8);
-            this.btn_03.Name = "btn_03";
-            this.btn_03.Size = new System.Drawing.Size(130, 32);
-            this.btn_03.TabIndex = 11;
-            this.btn_03.Text = "停止";
-            this.btn_03.UseVisualStyleBackColor = true;
-            this.btn_03.Click += new System.EventHandler(this.btn_Stop_Click);
-            // 
-            // btn_04
-            // 
-            this.btn_04.FlatAppearance.BorderSize = 0;
-            this.btn_04.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btn_04.ForeColor = System.Drawing.Color.Black;
-            this.btn_04.Image = global::SofarBMS.Properties.Resources.qingkong;
-            this.btn_04.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_04.Location = new System.Drawing.Point(724, 8);
-            this.btn_04.Name = "btn_04";
-            this.btn_04.Size = new System.Drawing.Size(130, 32);
-            this.btn_04.TabIndex = 10;
-            this.btn_04.Text = "清空";
-            this.btn_04.UseVisualStyleBackColor = true;
-            this.btn_04.Click += new System.EventHandler(this.btn_AA_Click);
+            btn_03.FlatAppearance.BorderSize = 0;
+            btn_03.FlatStyle = FlatStyle.System;
+            btn_03.ForeColor = Color.Black;
+            btn_03.Image = Resources.zanting;
+            btn_03.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_03.Location = new Point(419, 11);
+            btn_03.Margin = new Padding(4, 4, 4, 4);
+            btn_03.Name = "btn_03";
+            btn_03.Size = new Size(107, 34);
+            btn_03.TabIndex = 11;
+            btn_03.Text = "停止";
+            btn_03.UseVisualStyleBackColor = true;
+            btn_03.Click += btn_Stop_Click;
             // 
             // btn_02
             // 
-            this.btn_02.FlatAppearance.BorderSize = 0;
-            this.btn_02.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btn_02.ForeColor = System.Drawing.Color.Black;
-            this.btn_02.Image = global::SofarBMS.Properties.Resources.duqushujuku;
-            this.btn_02.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_02.Location = new System.Drawing.Point(276, 8);
-            this.btn_02.Name = "btn_02";
-            this.btn_02.Size = new System.Drawing.Size(130, 32);
-            this.btn_02.TabIndex = 9;
-            this.btn_02.Text = "读取";
-            this.btn_02.UseVisualStyleBackColor = true;
-            this.btn_02.Click += new System.EventHandler(this.btn_02_Click);
+            btn_02.FlatAppearance.BorderSize = 0;
+            btn_02.FlatStyle = FlatStyle.System;
+            btn_02.ForeColor = Color.Black;
+            btn_02.Image = Resources.duqushujuku;
+            btn_02.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_02.Location = new Point(246, 11);
+            btn_02.Margin = new Padding(4, 4, 4, 4);
+            btn_02.Name = "btn_02";
+            btn_02.Size = new Size(107, 34);
+            btn_02.TabIndex = 9;
+            btn_02.Text = "读取";
+            btn_02.UseVisualStyleBackColor = true;
+            btn_02.Click += btn_02_Click;
+            // 
+            // btn_04
+            // 
+            btn_04.FlatAppearance.BorderSize = 0;
+            btn_04.FlatStyle = FlatStyle.System;
+            btn_04.ForeColor = Color.Black;
+            btn_04.Image = Resources.qingkong;
+            btn_04.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_04.Location = new Point(595, 11);
+            btn_04.Margin = new Padding(4, 4, 4, 4);
+            btn_04.Name = "btn_04";
+            btn_04.Size = new Size(107, 34);
+            btn_04.TabIndex = 10;
+            btn_04.Text = "清空";
+            btn_04.UseVisualStyleBackColor = true;
+            btn_04.Click += btn_AA_Click;
             // 
             // StorageInfoControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.splitContainer1);
-            this.Name = "StorageInfoControl";
-            this.Size = new System.Drawing.Size(1370, 630);
-            this.Load += new System.EventHandler(this.StorageInfoControl_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStorageInfo)).EndInit();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(splitContainer1);
+            Margin = new Padding(4, 4, 4, 4);
+            Name = "StorageInfoControl";
+            Size = new Size(1298, 700);
+            Load += StorageInfoControl_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvStorageInfo).EndInit();
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion

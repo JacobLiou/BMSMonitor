@@ -1,5 +1,6 @@
 ﻿using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
+using Sofar.ConnectionLibs.CAN.Driver.ECAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
 using System;
@@ -1267,6 +1268,11 @@ Can通信故障,Can1CommFault
                 numbers[i] = Convert.ToInt32(data[i].ToString("X2"), 16);
             }
             return numbers;
+        }
+
+        private void gbRealtimeData_101_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

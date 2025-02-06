@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SofarBMS.Helper;
 using SofarBMS.Model;
+using Sofar.ConnectionLibs.CAN.Driver.ECAN;
 
 namespace SofarBMS.UI
 {
