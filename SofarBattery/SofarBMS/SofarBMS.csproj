@@ -45,8 +45,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\newproject\Sofar.ConnectionLibs\Sofar.ConnectionLibs.csproj" />
     <ProjectReference Include="..\..\..\..\newproject\Sofarsolar.BMS\Sofarsolar.BMS\Sofar.BMS.csproj" />
+    <ProjectReference Include="..\..\..\..\平台软件组-基础类库\协议类库\SofarDeviceSDK\Sofar.ConnectionLibs\Sofar.ConnectionLibs.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -94,13 +94,10 @@
     <Compile Update="ui\CBSUpgradeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="ui\CBS_BCU_Control.cs">
+    <Compile Update="ui\CBSControl_BCU.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="ui\CBS_BCU_FileTransmit.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="ui\CBS_BCU_ParamControl.cs">
+    <Compile Update="ui\CBSParamControl_BCU.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="ui\ParamControl.cs">

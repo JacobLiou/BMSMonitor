@@ -81,7 +81,7 @@ namespace SofarBMS.Model
             ,new Protocols(3,0xB70E0FF),new Protocols(3,0xB71E0FF),new Protocols(3,0xB72E0FF),new Protocols(3,0xB73E0FF),new Protocols(3,0xB74E0FF),new Protocols(3,0xB76E0FF),new Protocols(3,0xB77E0FF),new Protocols(3,0x0B78E0FF),new Protocols(3,0x0B6A5FFF)
             ,new Protocols(3,0x1403FFFF),new Protocols(3,0x1400E0FF)
             ,new Protocols(3,0x1060FFFF),new Protocols(3,0x1060FF1F),new Protocols(3, 0x1061FFFF),new Protocols(3,0x1061FF1F)
-            ,new Protocols(3,0x10B6E0FF),new Protocols(3,0x10B7E0FF),new Protocols(3,0x10B8E0FF),new Protocols(3,0x10B9E0FF),new Protocols(3,0x10BAE0FF),new Protocols(3,0x10BBE0FF),new Protocols(3,0x10BCE0FF),new Protocols(3,0x10BDE0FF),new Protocols(3,0x10BEE0FF),new Protocols(3,0x10BFE0FF),new Protocols(3,0x10C0E0FF),new Protocols(3,0x10C1E0FF),new Protocols(3,0x10C2E0FF),new Protocols(3,0x10C3E0FF),new Protocols(3,0x10C4E0FF),new Protocols(3,0x10C5E0FF),new Protocols(3,0x10C6E0FF)
+            ,new Protocols(3,0x10B6E0FF),new Protocols(3,0x10B7E0FF),new Protocols(3,0x10B8E0FF),new Protocols(3,0x10B9E0FF),new Protocols(3,0x10BAE0FF),new Protocols(3,0x10BBE0FF),new Protocols(3,0x10BCE0FF),new Protocols(3,0x10BDE0FF),new Protocols(3,0x10BEE0FF),new Protocols(3,0x10BFE0FF),new Protocols(3,0x10C0E0FF),new Protocols(3,0x10C1E0FF),new Protocols(3,0x10C2E0FF),new Protocols(3,0x10C3E0FF),new Protocols(3,0x10C4E0FF),new Protocols(3,0x10C5E0FF),new Protocols(3,0x10C6E0FF),new Protocols(3,0x10C7E0FF),new Protocols(3,0x10C8E0FF)
             ,new Protocols(3,0x10E0E0FF),new Protocols(3,0x10E1E0FF),new Protocols(3,0x10E2E0FF),new Protocols(3,0x10E3E0FF),new Protocols(3,0x10E4E0FF),new Protocols(3,0x10E5E0FF),new Protocols(3,0x10EFE0FF),new Protocols(3,0x10F0E0FF),new Protocols(3,0x10F1E0FF),new Protocols(3,0x10F2E0FF),new Protocols(3,0x10F3E0FF),new Protocols(3,0x10F4E0FF),new Protocols(3,0x10F5E0FF),new Protocols(3,0x10F6E0FF),new Protocols(3,0x10F7E0FF),new Protocols(3,0x10F8E0FF),new Protocols(3,0x10F9E0FF),new Protocols(3,0x10FAE0FF)
         };
         public bool IsConnection { get; set; }
@@ -133,7 +133,7 @@ namespace SofarBMS.Model
                     var v = ECanDriver.ReadErrInfo(1, 0, 0, out err_info) == ECANStatus.STATUS_OK;
                     if (err_info.ErrCode == 0x00)//成功
                     {
-                        Debug.WriteLine($"{System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")} 发送数据   帧ID:{co.ID.ToString("X8")}");
+                        Debug.WriteLine($"{System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")} 发送数据   帧ID:{co.ID.ToString("X8")} Data:{co.Data[0].ToString("X2")} {co.Data[1].ToString("X2")} {co.Data[2].ToString("X2")} {co.Data[3].ToString("X2")} {co.Data[4].ToString("X2")} {co.Data[5].ToString("X2")} {co.Data[6].ToString("X2")} {co.Data[7].ToString("X2")}");
                         return true;
                     }
                     else if (err_info.ErrCode == 0x400)
@@ -157,7 +157,6 @@ namespace SofarBMS.Model
 
         public void ReceivingEvent(object sender, CANMessageEventArgs eventArgs)
         {
-
             CAN_OBJ coMsg = eventArgs.MessageData;
             if (!(eventArgs.DeviceType == 4 && eventArgs.DeviceIndex == 0 && eventArgs.ChannelIndex == 0))
             {
@@ -266,7 +265,7 @@ namespace SofarBMS.Model
             lock (_locker)
             {
                 //测试打印接收报文
-                Debug.WriteLine($"{System.DateTime.Now.ToString("hh:mm:ss:fff")} 入队数据   帧ID:{CANOBJ.ID.ToString("X8")}");
+                Debug.WriteLine($"{System.DateTime.Now.ToString("hh:mm:ss:fff")} 入队数据   帧ID:{CANOBJ.ID.ToString("X8")} Data:{CANOBJ.Data[0].ToString("X2")} {CANOBJ.Data[1].ToString("X2")} {CANOBJ.Data[2].ToString("X2")} {CANOBJ.Data[3].ToString("X2")} {CANOBJ.Data[4].ToString("X2")} {CANOBJ.Data[5].ToString("X2")} {CANOBJ.Data[6].ToString("X2")} {CANOBJ.Data[7].ToString("X2")}");
 
                 _task.Enqueue(CANOBJ);
                 _wh.Set();

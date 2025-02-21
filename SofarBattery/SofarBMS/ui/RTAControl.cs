@@ -522,7 +522,7 @@ Can通信故障,Can1CommFault
                         {
                             if (i == 0)
                             {
-                                (this.Controls.Find(controls[i], true)[0] as TextBox).Text = Enum.Parse(typeof(WorkState), strs[i]).ToString();
+                                (this.Controls.Find(controls[i], true)[0] as TextBox).Text = Enum.Parse(typeof(WorkState_PCU), strs[i]).ToString();
                             }
                             else if (i == 1)
                             {

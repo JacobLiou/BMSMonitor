@@ -5,6 +5,7 @@ using Sofar.BMS.Common;
 using Sofar.ConnectionLibs.CAN.Driver.ECAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
+using SofarBMS.ui;
 using SofarBMS.UI;
 using System;
 using System.Collections;
@@ -216,6 +217,8 @@ namespace SofarBMS
                     new FaultInfo("加热保险丝异常(BCU),BOARD_HEAT_FUSE_ERR",7,6,0,0,1),
                     new FaultInfo("保留,res",7,7,0,0,1)
         };
+        
+
 
         public static string MessageBoxTextStr = @"keyWriteSuccess,写入成功,WriteSuccess
 keyWriteFail,写入失败,WriteFail
@@ -241,7 +244,7 @@ StartListen,启动总线监听,Start bus listen";
         public static HashSet<AlarmInfo> AlarmList = new HashSet<AlarmInfo>();
 
         // BMS服务对象
-        DeviceServiceBase deviceService = new DeviceServiceBase();
+        public static DeviceServiceBase DeviceService = new DeviceServiceBase();
         BmsCanHelper canHelper = null;
 
         public FrmMain()
@@ -255,7 +258,7 @@ StartListen,启动总线监听,Start bus listen";
         }
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            canHelper = deviceService.baseCanHelper;
+            canHelper = DeviceService.baseCanHelper;
 
             //程序确保Log文件的存在性
             if (!Directory.Exists("Log"))
@@ -738,14 +741,17 @@ StartListen,启动总线监听,Start bus listen";
             //添加“CBS高压储能项目”菜单
             tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_5"), Menu.Items, null);
             //BMU模块
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_51"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_52"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            //AddContextMenu(LanguageHelper.GetLanguage("tsmi_51"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            //AddContextMenu(LanguageHelper.GetLanguage("tsmi_52"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_53"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_54"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
             //BCU模块
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_55"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_56"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_57"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_58"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_59"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_12"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
 
             //添加“语言”菜单
             tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_4"), Menu.Items, null);
@@ -783,9 +789,12 @@ StartListen,启动总线监听,Start bus listen";
                 { LanguageHelper.GetLanguage("tsmi_52"), new CBSParamControl() },
                 { LanguageHelper.GetLanguage("tsmi_53"), new CBSUpgradeControl() },
                 { LanguageHelper.GetLanguage("tsmi_54"), new CBSFileTransmit() },
-                { LanguageHelper.GetLanguage("tsmi_55"), new CBS_BCU_Control() },
-                { LanguageHelper.GetLanguage("tsmi_56"), new CBS_BCU_ParamControl() },
-                { LanguageHelper.GetLanguage("tsmi_57"), new CBS_BCU_FileTransmit() },
+                { LanguageHelper.GetLanguage("tsmi_55"), new CBSControl_BCU() },
+                { LanguageHelper.GetLanguage("tsmi_56"), new CBSParamControl_BCU() },
+                { LanguageHelper.GetLanguage("tsmi_57"), new CBSFileTransmit_BCU() },
+                { LanguageHelper.GetLanguage("tsmi_58"), new CBSControl_BMU() },
+                { LanguageHelper.GetLanguage("tsmi_59"), new CBSParamControl_BMU() },
+                { LanguageHelper.GetLanguage("tsmi_12"), new CBSSystemSetControl() },
             };
 
             bool isUserControl = false;
@@ -900,6 +909,10 @@ StartListen,启动总线监听,Start bus listen";
             {
                 BMSSystemSetControl.cts?.Cancel();
             }
+            if (bc.Name != "CBSSystemSetControl")
+            {
+                CBSSystemSetControl.cts?.Cancel();
+            }
             if (bc.Name != "CBSControl")
             {
                 CBSControl.cts?.Cancel();
@@ -916,19 +929,26 @@ StartListen,启动总线监听,Start bus listen";
             {
                 CBSFileTransmit.cts?.Cancel();
             }
-            if (bc.Name != "CBS_BCU_Control")
+            if (bc.Name != "CBSControl_BCU")
             {
-                CBS_BCU_Control.cts?.Cancel();
+                CBSControl_BCU.cts?.Cancel();
             }
-            if (bc.Name != "CBS_BCU_ParamControl")
+            if (bc.Name != "CBSParamControl_BCU")
             {
-                CBS_BCU_ParamControl.cts?.Cancel();
+                CBSParamControl_BCU.cts?.Cancel();
             }
-            if (bc.Name != "CBS_BCU_FileTransmit")
+            if (bc.Name != "CBSFileTransmit_BCU")
             {
-                CBS_BCU_FileTransmit.cts?.Cancel();
+                CBSFileTransmit_BCU.cts?.Cancel();
             }
-
+            if (bc.Name != "CBSControl_BMU")
+            {
+                CBSControl_BMU.cts?.Cancel();
+            }
+            if (bc.Name != "CBSParamControl_BMU")
+            {
+                CBSParamControl_BMU.cts?.Cancel();
+            }
             EcanHelper._task.Clear();
         }
 
@@ -973,8 +993,6 @@ StartListen,启动总线监听,Start bus listen";
             {
                 canHelper.Connect();
             }
-            return;
-
 
             /*if (!ecanHelper.IsConnection)
             {

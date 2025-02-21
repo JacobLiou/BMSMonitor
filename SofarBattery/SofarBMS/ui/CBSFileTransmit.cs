@@ -341,7 +341,7 @@ RSV6,U32,1,,";
                                     String asciiStr = ((char)dataBuffer[i]).ToString();//十六进制转ASCII码
                                     sbContent += asciiStr;
                                 }
-                                TxtHleper.FileWrite(filePath, sbContent);
+                                TxtHelper.FileWrite(filePath, sbContent);
                                 Debug.WriteLine(sbContent);
                             }
                         }

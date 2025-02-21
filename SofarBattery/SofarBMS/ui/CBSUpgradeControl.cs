@@ -1,17 +1,8 @@
-﻿using NPOI.SS.Formula.Functions;
-using Sofar.ConnectionLibs.CAN.Driver.ECAN;
+﻿using Sofar.ConnectionLibs.CAN.Driver.ECAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace SofarBMS.UI
 {
@@ -38,7 +29,7 @@ namespace SofarBMS.UI
         //int Flag = 0; //当前标识：步骤1 FB /步骤2 FC + FD /步骤4 FE /步骤5 FF
         int GroupIndex = 0;
         int MAX_RETRY_COUNT = 5;
-        int TX_INTERVAL_TIME = 200;
+        int TX_INTERVAL_TIME = 20;
         int TX_INTERVAL_TIME_Data = 3;
         private bool state = false;
         public bool State
@@ -88,7 +79,7 @@ namespace SofarBMS.UI
             }
 
             cbbChiprole.SelectedIndex = 1;
-            cbbChipcode.SelectedIndex = 1;
+            txtChipcode.Text = "S3";
             Task.Run(() =>
             {
                 while (!cts.IsCancellationRequested)
@@ -117,7 +108,7 @@ namespace SofarBMS.UI
         private void btnUpgrade_03_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "(*.sofar;*.tar)|*.sofar;*.tar||";
+            openFileDialog.Filter = "(*.bin;*.sofar;*.tar)|*.bin;*.sofar;*.tar";
             openFileDialog.RestoreDirectory = true;
             openFileDialog.FilterIndex = 1;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -147,7 +138,8 @@ namespace SofarBMS.UI
                         file_data[i] = 0x00;
                     }
                     bin_file.Read(file_data, 0, file_length);
-                    this.AnalysisBinchar(file_data);
+                    //this.AnalysisBinchar(file_data);
+                    this.AnalysisBin(file_data);
                 }
                 txtPath.Text = file_name;
             }
@@ -211,7 +203,7 @@ namespace SofarBMS.UI
                     int.TryParse(txtFC.Text.Trim(), out TX_INTERVAL_TIME);
                     int.TryParse(txtFD.Text.Trim(), out TX_INTERVAL_TIME_Data);
 
-                    Task.Factory.StartNew(() =>
+                    Task.Run(() =>
                     {
                         int retryCount = 0;
                         do
@@ -260,7 +252,7 @@ namespace SofarBMS.UI
                                 case StepFlag.FC升级数据块开始帧:
                                 case StepFlag.FD升级数据块数据帧:
                                     startDownloadPack2(GroupIndex, 1024);
-                                    Thread.Sleep(TX_INTERVAL_TIME);
+                                    //Thread.Sleep(TX_INTERVAL_TIME);
                                     AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FC", "PACK_ID" + GroupIndex);
                                     int offset = GroupIndex * 1024;
                                     for (int i = 0; i < 1024; i += 8)
@@ -314,7 +306,7 @@ namespace SofarBMS.UI
                                             for (int i = 0; i < ErrorList.Count; i++)
                                             {
                                                 startDownloadPack2(ErrorList[i] - 1, 1024);
-                                                Thread.Sleep(TX_INTERVAL_TIME);
+                                                //Thread.Sleep(TX_INTERVAL_TIME);
 
                                                 GroupIndex = ErrorList[i] % 24 == 0 ? ErrorList[i] / 24 - 1 : ErrorList[i] / 24;
                                                 AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FE", $"等{GroupIndex}组异常，Pack为{ErrorList[i]} ");
@@ -386,6 +378,130 @@ namespace SofarBMS.UI
                 Debug.WriteLine(DateTime.Now.ToString("HH:mm:ss:ffff") + " 出现异常，错误信息：" + ex.Message);
             }
         }
+
+        #region BIN文件处理-1K
+        /// <summary>
+        /// 导入Bin文件处理-1K
+        /// </summary>
+        /// <param name="binchar"></param>
+        private void AnalysisBin(byte[] binchar)
+        {
+            ////清空旧数据
+            //firmwareModels_bms.Clear();
+            //FirmwareModel_BMS1500V_DataList.Clear();
+            FirmwareModel_BMS1500V firmwareModel = new FirmwareModel_BMS1500V();
+            //签名信息字节大小
+            int SIGNATURE_SIZE = 1024;
+
+            //签名信息字节数组
+            byte[] SignatureBytes = new byte[SIGNATURE_SIZE];
+
+            // 读取签名信息
+            Array.Copy(binchar, binchar.Length - 1024, SignatureBytes, 0, 1024);
+
+            //文件长度
+            firmwareModel.FirmwareSize = (uint)(SignatureBytes[(1) + 0] |
+                                       SignatureBytes[(1) + 1] << 8 |
+                                       SignatureBytes[(1) + 2] << 16 |
+                                       SignatureBytes[(1) + 3] << 24);
+            //有效字节CRC
+            uint Crc32 = (uint)(SignatureBytes[(1 + 4) + 0] |
+                        SignatureBytes[(1 + 4) + 1] << 8 |
+                        SignatureBytes[(1 + 4) + 2] << 16 |
+                        SignatureBytes[(1 + 4) + 3] << 24);
+
+            //芯片型号
+            firmwareModel.ChipModel = Encoding.ASCII.GetString(SignatureBytes, (1 + 4 + 4), 30).Trim('\0');
+
+            //软件版本
+            firmwareModel.SoftwareVersion = Encoding.ASCII.GetString(SignatureBytes, (1 + 4 + 4 + 30), 20).Trim('\0');
+
+            //硬件版本
+            firmwareModel.HardwareVersion = Encoding.ASCII.GetString(SignatureBytes, (1 + 4 + 4 + 30 + 20), 20).Trim('\0');
+
+            //工程名称
+            firmwareModel.ProjectName = Encoding.ASCII.GetString(SignatureBytes, (1 + 4 + 4 + 30 + 20 + 20), 30).Trim('\0');
+
+            firmwareModel.dateTimeString = AnalysisTime(SignatureBytes);
+
+
+            //程序起始地址
+            uint ProgramOffset = (uint)(SignatureBytes[(1 + 4 + 4 + 30 + 20 + 20 + 30 + 12) + 0] |
+                          SignatureBytes[(1 + 4 + 4 + 30 + 20 + 20 + 30 + 12) + 1] << 8 |
+                          SignatureBytes[(1 + 4 + 4 + 30 + 20 + 20 + 30 + 12) + 2] << 16 |
+                          SignatureBytes[(1 + 4 + 4 + 30 + 20 + 20 + 30 + 12) + 3] << 24);
+
+
+            // 芯片角色代号
+            firmwareModel.FirmwareChipRoleCode = SignatureBytes[(1 + 4 + 4 + 30 + 20 + 20 + 30 + 12 + 4)];
+
+            // 芯片角色
+            firmwareModel.FirmwareChipRole = Enum.Parse(typeof(ChipRole), firmwareModel.FirmwareChipRoleCode.ToString()).ToString() + $"(0x{firmwareModel.FirmwareChipRoleCode:X2})";
+
+            //文件类型代号
+            string fileType = "0x" + SignatureBytes[(1 + 4 + 4 + 30 + 20 + 20 + 30 + 12 + 4 + 1 + 2)].ToString("X2");
+            firmwareModel.FirmwareFileTypeCode = Convert.ToByte(fileType, 16);
+            //文件类型
+            firmwareModel.FirmwareFileType = Enum.Parse(typeof(FileType), (Convert.ToInt32(fileType, 16) & 0x0f).ToString()).ToString() + $"({fileType})";
+
+            //芯片代号
+            firmwareModel.ChipMark = Encoding.ASCII.GetString(SignatureBytes, (1 + 4 + 4 + 30 + 20 + 20 + 30 + 12 + 4 + 1), 2).Trim('\0');
+
+            //整体(固件 + 签名)CRC32
+            uint Crc32WithSignature = (uint)(SignatureBytes[SignatureBytes.Length - 4] |
+                          SignatureBytes[SignatureBytes.Length - 3] << 8 |
+                          SignatureBytes[SignatureBytes.Length - 2] << 16 |
+                          SignatureBytes[SignatureBytes.Length - 1] << 24);
+
+            txtChipcode.Text = firmwareModel.ChipMark;
+            cbbChiprole_val.Text = "0x" + firmwareModel.FirmwareChipRoleCode.ToString("X2");
+            switch (cbbChiprole_val.Text.Trim())
+            {
+                case "0x24":
+                    cbbChiprole.Text = "BCU";
+                    txtSlaveAddress.Text = slaveAddress = "0x9F";
+                    break;
+                case "0x2D":
+                    cbbChiprole.Text = "BMU";
+                    txtSlaveAddress.Text = slaveAddress = "0x1F";
+                    break;
+                default:
+                    break;
+            }
+            //firmwareModels.Add(firmwareModel);
+        }
+
+        public string AnalysisTime(byte[] binchar)
+        {
+            string TimeStampString = Encoding.ASCII.GetString(binchar, (1 + 4 + 4 + 30 + 20 + 20 + 30), 12).Trim('\0');
+
+            int ParseTimeComponent(string timeString, int startIndex, int length, int minValue, int maxValue, string componentName)
+            {
+                if (!int.TryParse(timeString.Substring(startIndex, length), out int value) || value < minValue || value > maxValue)
+                    throw new FormatException($"无法转换{componentName}部分");
+                return value;
+            }
+
+            try
+            {
+                int year = ParseTimeComponent(TimeStampString, 0, 2, 0, 99, "年份") + 2000;
+                int month = ParseTimeComponent(TimeStampString, 2, 2, 1, 12, "月份");
+                int day = ParseTimeComponent(TimeStampString, 4, 2, 1, 31, "日期");
+                int hour = ParseTimeComponent(TimeStampString, 6, 2, 0, 23, "小时");
+                int minute = ParseTimeComponent(TimeStampString, 8, 2, 0, 59, "分钟");
+                int second = ParseTimeComponent(TimeStampString, 10, 2, 0, 59, "秒");
+
+                DateTime dateTime = new DateTime(year, month, day, hour, minute, second);
+                return dateTime.ToString("yyyy-MM-dd HH:mm:ss");
+            }
+            catch (FormatException ex)
+            {
+               //throw new FormatException($"文件创建时间解析失败: {ex.Message}");
+                return "";
+            }
+        }
+
+        #endregion
 
         /// <summary>
         /// 导入SOFAR文件处理-2K
@@ -897,13 +1013,19 @@ namespace SofarBMS.UI
 
         private void cbbChipcode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chip_code = cbbChipcode.Text.Trim();
-            slaveAddress = txtSlaveAddress.Text;
+            //chip_code = txtChipcode.Text.Trim();
+            //slaveAddress = txtSlaveAddress.Text;
         }
 
         private void cbbChiprole_val_SelectedIndexChanged(object sender, EventArgs e)
         {
             chip_role = cbbChiprole_val.Text;
+        }
+
+        private void txtChipcode_TextChanged(object sender, EventArgs e)
+        {
+            chip_code = txtChipcode.Text.Trim();
+            slaveAddress = txtSlaveAddress.Text;
         }
     }
 
@@ -915,5 +1037,57 @@ namespace SofarBMS.UI
         FD升级数据块数据帧 = 3,
         FE升级文件接收结果查询帧 = 4,
         FF升级完成状态查询帧 = 5
+    }
+
+    public enum FileType : byte
+    {
+        app = 0x00,
+        core = 0x01,
+        kernel = 0x02,
+        rootfs = 0x03,
+        safety = 0x04,
+        pack = 0x80,
+    }
+
+    public enum ChipRole : byte
+    {
+        ARM = 0x21,
+        DSPM = 0x22,
+        DSPS = 0x23,
+        BMS_BCU = 0x24,
+        PCU = 0x25,
+        BDU = 0x26,
+        DCDC = 0x27,
+        DCDC_ARM = 0x28,
+        DCDC_DSP = 0x29,
+        BMU = 0x2D,
+        PCS_M = 0x30,
+        PCS_S = 0x31,
+        PCS_CPLD = 0x32,
+        CSU_MCU1 = 0x33,
+        CSU_MCU2 = 0x34,
+        DCDC_M = 0x38,
+        DCDC_S = 0x39,
+        DCDC_CPLD = 0x3A,
+        CMU_MCU1 = 0x3B,
+        CMU_MCU2 = 0x3C,
+        FUSE = 0x41,
+        AFCI = 0x42,
+        MPPT = 0x43,
+        PID = 0x44,
+        WIFI = 0x61,
+        BLE = 0x62,
+        PLC_CCO = 0x63,
+        PLC_STA = 0x64,
+        SUB1G_GW = 0x65,
+        SUB1G_STA = 0x66,
+        HUB_MCU1 = 0x67,
+        HUB_MCU2 = 0x68,
+        CSU = 0x80,
+        TFC = 0x81,
+        SSMGFD = 0x82,
+        COM = 0x88,
+        D2D = 0x90,
+        PFC = 0x91,
     }
 }

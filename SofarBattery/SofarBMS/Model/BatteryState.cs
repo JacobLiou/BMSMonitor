@@ -12,7 +12,7 @@ namespace SofarBMS.Model
         Discharge//放电状态 = 1
     }
 
-    public enum WorkState
+    public enum WorkState_PCU
     {
         Upgrade = 0,
         Check = 1,
@@ -49,5 +49,21 @@ namespace SofarBMS.Model
         can唤醒 = 3,
         电池包IN唤醒 = 4,
         充电激活换唤醒 = 5,
+    }
+
+    public enum WorkState_DCDC
+    {
+        等待唤醒 = 0,
+        开机自检 = 1,
+        运行 = 2,
+        永久性故障 = 3,
+        升级 = 4,
+    }
+
+    public enum BatteryState_DCDC
+    {
+        待机 = 0x0,
+        充电 = 0x1,
+        放电 = 0x2
     }
 }
