@@ -1,14 +1,7 @@
-﻿using Sofar.ConnectionLibs.CAN.Driver.ECAN;
+﻿using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace SofarBMS.UI
 {
@@ -20,14 +13,18 @@ namespace SofarBMS.UI
 
             cts = new CancellationTokenSource();
         }
-        
+
         string[] packSN = new string[3];
 
         int initCount = 0;
         RealtimeData_GTX5000S model = null;
-        EcanHelper ecanHelper = EcanHelper.Instance;
 
+        // 取消令牌源
         public static CancellationTokenSource cts = null;
+
+        // ECAN助手实例
+        private EcanHelper ecanHelper = EcanHelper.Instance;
+
 
         private void RTAControl_Load(object sender, EventArgs e)
         {
@@ -43,7 +40,7 @@ namespace SofarBMS.UI
                  {
                      while (!cts.IsCancellationRequested)
                      {
-                         /*if (ecanHelper.IsConnection)
+                         if (ecanHelper.IsConnected)
                          {
                              if (model != null && initCount >= 13)
                              {
@@ -65,18 +62,17 @@ namespace SofarBMS.UI
 
                              //定时一秒存储一次数据
                              await Task.Delay(1000);
-                         }*/
-
-                         while (EcanHelper._task.Count > 0
-                            && !cts.IsCancellationRequested)
-                         {
-                             CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-
-                             this.Invoke(new Action(() =>
-                             {
-                                 analysisData(ch.ID, ch.Data);
-                             }));
                          }
+
+                         //while (EcanHelper._task.Count > 0
+                         //   && !cts.IsCancellationRequested)
+                         //{
+                         //    CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                         //    this.Invoke(new Action(() =>
+                         //    {
+                         //        analysisData(ch.ID, ch.Data);
+                         //    }));
+                         //}
                      }
                  }
                  catch (Exception ex)
@@ -84,9 +80,20 @@ namespace SofarBMS.UI
                      throw new Exception(ex.Message);
                  }
              }, cts.Token);
+
+            ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
         }
 
-        public void analysisData(uint canID, byte[] data)
+        private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
+        {
+            var frameModel = e as CanFrameModel;
+            if (frameModel != null)
+            {
+                this.Invoke(() => { AnalysisData(frameModel.CanID, frameModel.Data); });
+            }
+        }
+
+        public void AnalysisData(uint canID, byte[] data)
         {
             if ((canID & 0xff) != FrmMain.BMS_ID)
                 return;
@@ -749,10 +756,10 @@ namespace SofarBMS.UI
         public static string[] getLog(out string[] msg, int row, int column, int faultNum)
         {
             msg = new string[2];
-            List<FaultInfo> faultInfos = FrmMain.FaultInfos;
+            List<FaultInfo> faultInfos = FaultInfo.FaultInfos;
             if (faultNum == 1)
             {
-                faultInfos = FrmMain.FaultInfos2;
+                faultInfos = FaultInfo.FaultInfos2;
             }
 
             for (int i = 0; i < faultInfos.Count; i++)

@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sofar.BMS;
+using Sofar.ConnectionLibs.CAN;
 using Sofar.ConnectionLibs.CAN.Driver.ECAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
@@ -18,8 +20,12 @@ namespace SofarBMS.UI
 {
     public partial class BMSUpgradeControl : UserControl
     {
-        EcanHelper ecanHelper = EcanHelper.Instance;
-        public static CancellationTokenSource cts;
+        // 取消令牌源
+        public static CancellationTokenSource cts = null;
+
+        // ECAN助手实例
+        private EcanHelper ecanHelper = EcanHelper.Instance;
+
         private static Crc16 _crc = new Crc16(Crc16Model.CcittKermit);
         private CancellationTokenSource _cts = new CancellationTokenSource(); //取消任务信号源对象-固件升级
 
@@ -85,18 +91,29 @@ namespace SofarBMS.UI
                 GetControls(item);
             }
 
-            Task.Run(delegate
-            {
-                while (EcanHelper._task.Count > 0
-                && !cts.IsCancellationRequested)
-                {
-                    CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+            //Task.Run(delegate
+            //{
+            //    while (EcanHelper._task.Count > 0
+            //    && !cts.IsCancellationRequested)
+            //    {
+            //        CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
-                    this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
-                }
-            }, cts.Token);
+            //        this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
+            //    }
+            //}, cts.Token);
 
             cbbChipcode.SelectedIndex = 0;
+
+            ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
+        }
+
+        private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
+        {
+            var frameModel = e as CanFrameModel;
+            if (frameModel != null)
+            {
+                this.Invoke(() => { AnalysisData(frameModel.CanID, frameModel.Data); });
+            }
         }
 
         /// <summary>
@@ -212,7 +229,7 @@ namespace SofarBMS.UI
             try
             {
                 //0.检查CAN连接
-                if (!ecanHelper.IsConnection)
+                if (!ecanHelper.IsConnected)
                 {
                     MessageBox.Show("串口未打开，请先连接设备...");
                     return;

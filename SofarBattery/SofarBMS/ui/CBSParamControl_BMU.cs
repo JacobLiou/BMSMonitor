@@ -7,7 +7,7 @@ namespace SofarBMS.ui
 {
     public partial class CBSParamControl_BMU : UserControl
     {
-        BmsCanHelper ecanHelper = BmsCanHelper.Instance;
+        EcanHelper ecanHelper = EcanHelper.Instance;
         BMUParamVM paramVM = new BMUParamVM();
         public static CancellationTokenSource cts = null;
 
@@ -101,31 +101,31 @@ namespace SofarBMS.ui
         public CBSParamControl_BMU()
         {
             InitializeComponent();
-
-            cts = new CancellationTokenSource();
         }
 
         private void CBSParamControl_BMU_Load(object? sender, EventArgs e)
         {
-            paramVM.AnalysisDataInvoked += ParamVM_AnalysisDataInvoked;
+            cts = new CancellationTokenSource();
 
             Task.Run(async delegate
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    if (ecanHelper.IsConnected())
+                    if (ecanHelper.IsConnected)
                     {
                         if (readFlag)
                         {
+                            await Task.Delay(1000);
                             byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
                             ecanHelper.Send(bytes, new byte[] { 0xE0, (byte)(bmuAddress + 0x80), 0x2E, 0x10 });
 
                             readFlag = false;
-                            await Task.Delay(1000);
                         }
                     }
                 }
             }, cts.Token);
+
+            ecanHelper.AnalysisDataInvoked += ParamVM_AnalysisDataInvoked;
         }
 
         private void ParamVM_AnalysisDataInvoked(object? sender, object e)
@@ -133,7 +133,7 @@ namespace SofarBMS.ui
             var frameModel = e as CanFrameModel;
             if (frameModel != null)
             {
-                AnalysisData(frameModel.CanID, frameModel.Data);
+                this.Invoke(() => { AnalysisData(frameModel.CanID, frameModel.Data); });
             }
         }
 
@@ -221,52 +221,52 @@ namespace SofarBMS.ui
                     txt_51.Text = numbers[2].ToString();
                     txt_52.Text = numbers[3].ToString();
                     break;
-                //单体过充、过放提示
-                case 0x80:
-                    txt_53.Text = numbers[0].ToString();
-                    txt_54.Text = numbers[1].ToString();
-                    txt_55.Text = numbers[2].ToString();
-                    txt_56.Text = numbers[3].ToString();
-                    break;
-                //单体压差过大提示、告警
-                case 0x81:
-                    txt_57.Text = numbers[0].ToString();
-                    txt_58.Text = numbers[1].ToString();
-                    txt_59.Text = numbers[2].ToString();
-                    txt_60.Text = numbers[3].ToString();
-                    break;
-                //单体压差过大故障
-                case 0x82:
-                    txt_61.Text = numbers[0].ToString();
-                    txt_62.Text = numbers[1].ToString();
-                    break;
-                //充放电高低温提示
-                case 0x83:
-                    txt_63.Text = (numbers_bit[0] - 40).ToString();
-                    txt_64.Text = (numbers_bit[1] - 40).ToString();
-                    txt_65.Text = (numbers_bit[2] - 40).ToString();
-                    txt_66.Text = (numbers_bit[3] - 40).ToString();
-                    txt_67.Text = (numbers_bit[4] - 40).ToString();
-                    txt_68.Text = (numbers_bit[5] - 40).ToString();
-                    txt_69.Text = (numbers_bit[6] - 40).ToString();
-                    txt_70.Text = (numbers_bit[7] - 40).ToString();
-                    break;
-                //电芯温差过大
-                case 0x84:
-                    txt_71.Text = numbers_bit[0].ToString();
-                    txt_72.Text = numbers_bit[1].ToString();
-                    txt_73.Text = numbers_bit[2].ToString();
-                    txt_74.Text = numbers_bit[3].ToString();
-                    txt_75.Text = numbers_bit[4].ToString();
-                    txt_76.Text = numbers_bit[5].ToString();
-                    break;
-                //总体过充、过放提示
-                case 0x85:
-                    txt_77.Text = (numbers[0] * 0.1).ToString();
-                    txt_78.Text = (numbers[1] * 0.1).ToString();
-                    txt_79.Text = (numbers[2] * 0.1).ToString();
-                    txt_80.Text = (numbers[3] * 0.1).ToString();
-                    break;
+                    /*//单体过充、过放提示
+                    case 0x80:
+                        txt_53.Text = numbers[0].ToString();
+                        txt_54.Text = numbers[1].ToString();
+                        txt_55.Text = numbers[2].ToString();
+                        txt_56.Text = numbers[3].ToString();
+                        break;
+                    //单体压差过大提示、告警
+                    case 0x81:
+                        txt_57.Text = numbers[0].ToString();
+                        txt_58.Text = numbers[1].ToString();
+                        txt_59.Text = numbers[2].ToString();
+                        txt_60.Text = numbers[3].ToString();
+                        break;
+                    //单体压差过大故障
+                    case 0x82:
+                        txt_61.Text = numbers[0].ToString();
+                        txt_62.Text = numbers[1].ToString();
+                        break;
+                    //充放电高低温提示
+                    case 0x83:
+                        txt_63.Text = (numbers_bit[0] - 40).ToString();
+                        txt_64.Text = (numbers_bit[1] - 40).ToString();
+                        txt_65.Text = (numbers_bit[2] - 40).ToString();
+                        txt_66.Text = (numbers_bit[3] - 40).ToString();
+                        txt_67.Text = (numbers_bit[4] - 40).ToString();
+                        txt_68.Text = (numbers_bit[5] - 40).ToString();
+                        txt_69.Text = (numbers_bit[6] - 40).ToString();
+                        txt_70.Text = (numbers_bit[7] - 40).ToString();
+                        break;
+                    //电芯温差过大
+                    case 0x84:
+                        txt_71.Text = numbers_bit[0].ToString();
+                        txt_72.Text = numbers_bit[1].ToString();
+                        txt_73.Text = numbers_bit[2].ToString();
+                        txt_74.Text = numbers_bit[3].ToString();
+                        txt_75.Text = numbers_bit[4].ToString();
+                        txt_76.Text = numbers_bit[5].ToString();
+                        break;
+                    //总体过充、过放提示
+                    case 0x85:
+                        txt_77.Text = (numbers[0] * 0.1).ToString();
+                        txt_78.Text = (numbers[1] * 0.1).ToString();
+                        txt_79.Text = (numbers[2] * 0.1).ToString();
+                        txt_80.Text = (numbers[3] * 0.1).ToString();
+                        break;*/
             }
         }
 
@@ -336,24 +336,24 @@ namespace SofarBMS.ui
                         case "ckb_11"://ckb_10
                             paramList.Add(0x1C, new string[] { txt_49.Text.Trim(), txt_50.Text.Trim(), txt_51.Text.Trim(), txt_52.Text.Trim() });
                             break;
-                        case "ckb_12":
-                            paramList.Add(0x80, new string[] { txt_53.Text.Trim(), txt_54.Text.Trim(), txt_55.Text.Trim(), txt_56.Text.Trim() });
-                            break;
-                        case "ckb_13":
-                            paramList.Add(0x81, new string[] { txt_57.Text.Trim(), txt_58.Text.Trim(), txt_59.Text.Trim(), txt_60.Text.Trim() });
-                            break;
-                        case "ckb_14":
-                            paramList.Add(0x82, new string[] { txt_61.Text.Trim(), txt_62.Text.Trim(), txt_63.Text.Trim(), txt_64.Text.Trim() });
-                            break;
-                        case "ckb_15":
-                            paramList.Add(0x83, new string[] { txt_65.Text.Trim(), txt_66.Text.Trim(), txt_67.Text.Trim(), txt_68.Text.Trim(), txt_69.Text.Trim(), txt_70.Text.Trim(), txt_71.Text.Trim(), txt_72.Text.Trim() });
-                            break;
-                        case "ckb_16":
-                            paramList.Add(0x84, new string[] { txt_73.Text.Trim(), txt_74.Text.Trim(), txt_75.Text.Trim(), txt_76.Text.Trim() });
-                            break;
-                        case "ckb_17":
-                            paramList.Add(0x85, new string[] { txt_77.Text.Trim(), txt_78.Text.Trim(), txt_79.Text.Trim(), txt_80.Text.Trim() });
-                            break;
+                            //case "ckb_12":
+                            //    paramList.Add(0x80, new string[] { txt_53.Text.Trim(), txt_54.Text.Trim(), txt_55.Text.Trim(), txt_56.Text.Trim() });
+                            //    break;
+                            //case "ckb_13":
+                            //    paramList.Add(0x81, new string[] { txt_57.Text.Trim(), txt_58.Text.Trim(), txt_59.Text.Trim(), txt_60.Text.Trim() });
+                            //    break;
+                            //case "ckb_14":
+                            //    paramList.Add(0x82, new string[] { txt_61.Text.Trim(), txt_62.Text.Trim(), txt_63.Text.Trim(), txt_64.Text.Trim() });
+                            //    break;
+                            //case "ckb_15":
+                            //    paramList.Add(0x83, new string[] { txt_65.Text.Trim(), txt_66.Text.Trim(), txt_67.Text.Trim(), txt_68.Text.Trim(), txt_69.Text.Trim(), txt_70.Text.Trim(), txt_71.Text.Trim(), txt_72.Text.Trim() });
+                            //    break;
+                            //case "ckb_16":
+                            //    paramList.Add(0x84, new string[] { txt_73.Text.Trim(), txt_74.Text.Trim(), txt_75.Text.Trim(), txt_76.Text.Trim() });
+                            //    break;
+                            //case "ckb_17":
+                            //    paramList.Add(0x85, new string[] { txt_77.Text.Trim(), txt_78.Text.Trim(), txt_79.Text.Trim(), txt_80.Text.Trim() });
+                            //    break;
                     }
                 }
                 else

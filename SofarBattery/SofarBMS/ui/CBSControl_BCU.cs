@@ -1,36 +1,26 @@
-﻿using NPOI.SS.Formula.Functions;
-using Sofar.ConnectionLibs.CAN.Driver.ECAN;
+﻿using Sofar.BMS;
+using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace SofarBMS.UI
 {
     public partial class CBSControl_BCU : UserControl
     {
-        public CBSControl_BCU()
-        {
-            InitializeComponent();
+        public static CancellationTokenSource cts = null;
 
-            cts = new CancellationTokenSource();
-        }
-
-        string[] packSN = new string[3];
+        // BCU序列号
+        private string[] packSN = new string[3];
 
         RealtimeData_CBS5000S_BCU model = null;
 
-        public static CancellationTokenSource cts = null;
         private EcanHelper ecanHelper = EcanHelper.Instance;
+
+        public CBSControl_BCU()
+        {
+            InitializeComponent();
+        }
 
         private void RTAControl_Load(object sender, EventArgs e)
         {
@@ -39,29 +29,30 @@ namespace SofarBMS.UI
             {
                 GetControls(item);
             }
+
+            cts = new CancellationTokenSource();
             Task.Run(async delegate
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    if (ecanHelper.IsConnection)
+                    if (ecanHelper.IsConnected)
                     {
                         //if (model != null)
                         //{
                         //    var filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//CBS5000_BCU{DateTime.Now.ToString("yyyy-MM-dd")}.csv";
                         //    if (!File.Exists(filePath))
                         //    {
-                        //        File.AppendAllText(filePath, model.GetHeader() + "\r\n");
+                        //        File.AppendAllText(filePath, //model.GetHeader() + "\r\n");
                         //    }
-                        //    File.AppendAllText(filePath, model.GetValue() + "\r\n");
+                        //    File.AppendAllText(filePath, //model.GetValue() + "\r\n");
                         //    model = null;
                         //}
 
-                        while (EcanHelper._task.Count > 0 && !cts.IsCancellationRequested)
-                        {
-                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-
-                            this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
-                        }
+                        //while (EcanHelper._task.Count > 0 && !cts.IsCancellationRequested)
+                        //{
+                        //    CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                        //    this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
+                        //}
 
                         //一键操作标定参数
                         ecanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
@@ -78,8 +69,18 @@ namespace SofarBMS.UI
                     }
                 }
             }, cts.Token);
+
+            ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
         }
 
+        private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
+        {
+            var frameModel = e as CanFrameModel;
+            if (frameModel != null)
+            {
+                this.Invoke(() => { AnalysisData(frameModel.CanID, frameModel.Data); });
+            }
+        }
 
         public void AnalysisData(uint canID, byte[] data)
         {
@@ -278,12 +279,12 @@ namespace SofarBMS.UI
                             (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
                         }
 
-                        model.Bat_Max_Cell_Volt = Convert.ToUInt16(strs[0]);
-                        model.Bat_Max_Cell_VoltPack = Convert.ToUInt16(strs[1]);
-                        model.Bat_Max_Cell_VoltNum = Convert.ToUInt16(strs[2]);
-                        model.Bat_Min_Cell_Volt = Convert.ToUInt16(strs[3]);
-                        model.Bat_Min_Cell_Volt_Pack = Convert.ToUInt16(strs[4]);
-                        model.Bat_Min_Cell_Volt_Num = Convert.ToUInt16(strs[5]);
+                        //model.Bat_Max_Cell_Volt = Convert.ToUInt16(strs[0]);
+                        //model.Bat_Max_Cell_VoltPack = Convert.ToUInt16(strs[1]);
+                        //model.Bat_Max_Cell_VoltNum = Convert.ToUInt16(strs[2]);
+                        //model.Bat_Min_Cell_Volt = Convert.ToUInt16(strs[3]);
+                        //model.Bat_Min_Cell_Volt_Pack = Convert.ToUInt16(strs[4]);
+                        //model.Bat_Min_Cell_Volt_Num = Convert.ToUInt16(strs[5]);
                         break;
                     //0x0BB:BCU遥测数据上报5--簇最高最低单体温度信息
                     case 0x10BBE0FF:
@@ -301,12 +302,12 @@ namespace SofarBMS.UI
                             (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
                         }
 
-                        model.Bat_Max_Cell_Temp = Convert.ToUInt16(strs[0]);
-                        model.Bat_Max_Cell_Temp_Pack = Convert.ToUInt16(strs[1]);
-                        model.Bat_Max_Cell_Temp_Num = Convert.ToUInt16(strs[2]);
-                        model.Bat_Min_Cell_Temp = Convert.ToUInt16(strs[3]);
-                        model.Bat_Min_Cell_Temp_Pack = Convert.ToUInt16(strs[4]);
-                        model.Bat_Min_Cell_Temp_Num = Convert.ToUInt16(strs[5]);
+                        //model.Bat_Max_Cell_Temp = Convert.ToUInt16(strs[0]);
+                        //model.Bat_Max_Cell_Temp_Pack = Convert.ToUInt16(strs[1]);
+                        //model.Bat_Max_Cell_Temp_Num = Convert.ToUInt16(strs[2]);
+                        //model.Bat_Min_Cell_Temp = Convert.ToUInt16(strs[3]);
+                        //model.Bat_Min_Cell_Temp_Pack = Convert.ToUInt16(strs[4]);
+                        //model.Bat_Min_Cell_Temp_Num = Convert.ToUInt16(strs[5]);
                         break;
                     //0x0BC:BCU遥信数据2--簇充放电限流限压值
                     case 0x10BCE0FF:
@@ -322,10 +323,10 @@ namespace SofarBMS.UI
                             (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
                         }
 
-                        model.Battery_Charge_Voltage = Convert.ToDouble(strs[0]);
-                        model.Charge_Current_Limitation = Convert.ToDouble(strs[1]);
-                        model.Discharge_Current_Limitation = Convert.ToDouble(strs[2]);
-                        model.Battery_Discharge_Voltage = Convert.ToDouble(strs[3]);
+                        //model.Battery_Charge_Voltage = Convert.ToDouble(strs[0]);
+                        //model.Charge_Current_Limitation = Convert.ToDouble(strs[1]);
+                        //model.Discharge_Current_Limitation = Convert.ToDouble(strs[2]);
+                        //model.Battery_Discharge_Voltage = Convert.ToDouble(strs[3]);
                         break;
                     //0x0BD:BCU遥测数据2->>BCU版本号信息
                     case 0x10BDE0FF:
@@ -346,8 +347,8 @@ namespace SofarBMS.UI
                         //CAN协议版本号
                         txtCANprotocolVersion.Text = BytesToIntger(data[6], data[5]);
 
-                        model.BCUSaftwareVersion = txtSoftware_Version_BCU.Text;
-                        model.BCUHardwareVersion = txtHardware_Version_BCU.Text;
+                        //model.BCUSaftwareVersion = txtSoftware_Version_BCU.Text;
+                        //model.BCUHardwareVersion = txtHardware_Version_BCU.Text;
                         break;
                     //0x0BE:BCU遥信数据4--簇容量信息
                     case 0x10BEE0FF:
@@ -363,10 +364,10 @@ namespace SofarBMS.UI
                             (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
                         }
 
-                        model.Remaining_Total_Capacity = Convert.ToDouble(strs[0]);
-                        model.Bat_Temp = Convert.ToDouble(strs[1]);
-                        model.Cluster_Rate_Power = Convert.ToDouble(strs[2]);
-                        model.Cycles = Convert.ToDouble(strs[3]);
+                        //model.Remaining_Total_Capacity = Convert.ToDouble(strs[0]);
+                        //model.Bat_Temp = Convert.ToDouble(strs[1]);
+                        //model.Cluster_Rate_Power = Convert.ToDouble(strs[2]);
+                        //model.Cycles = Convert.ToDouble(strs[3]);
                         break;
                     //0x0BF:BCU遥信数据5--簇基本信息
                     case 0x10BFE0FF:
@@ -387,10 +388,10 @@ namespace SofarBMS.UI
                                 }
 
                                 txtBms_State.Text = Enum.Parse(typeof(BMSState), (Convert.ToInt32(data[1].ToString("X2"), 16) & 0x0f).ToString()).ToString();
-                                model.Bms_State = txtBms_State.Text;
-                                model.Cluster_SOC = Convert.ToUInt16(strs[1]);
-                                model.Cluster_SOH = Convert.ToUInt16(strs[2]);
-                                model.Pack_Num = Convert.ToUInt16(strs[3]);
+                                //model.Bms_State = txtBms_State.Text;
+                                //model.Cluster_SOC = Convert.ToUInt16(strs[1]);
+                                //model.Cluster_SOH = Convert.ToUInt16(strs[2]);
+                                //model.Pack_Num = Convert.ToUInt16(strs[3]);
                                 break;
                             default:
                                 break;
@@ -587,7 +588,7 @@ namespace SofarBMS.UI
                     default: break;
                 }
 
-                model.PackID = FrmMain.BCU_ID.ToString("X2");
+                //model.PackID = FrmMain.BCU_ID.ToString("X2");
             }
             catch (Exception)
             {
@@ -850,17 +851,17 @@ namespace SofarBMS.UI
                         //    {
                         //        case "1":
                         //            richTextBox6.AppendText(msg[0] + "\r");
-                        //            model.Warning2 = richTextBox6.Text.Replace("\n", "，").Replace("\r", "，");
+                        //            //model.Warning2 = richTextBox6.Text.Replace("\n", "，").Replace("\r", "，");
                         //            type = "告警";
                         //            break;
                         //        case "2":
                         //            richTextBox5.AppendText(msg[0] + "\r");
-                        //            model.Protection2 = richTextBox5.Text.Replace("\n", "，").Replace("\r", "，");
+                        //            //model.Protection2 = richTextBox5.Text.Replace("\n", "，").Replace("\r", "，");
                         //            type = "保护";
                         //            break;
                         //        case "3":
                         //            richTextBox4.AppendText(msg[0] + "\r");
-                        //            model.Fault2 = richTextBox4.Text.Replace("\n", "，").Replace("\r", "，");
+                        //            //model.Fault2 = richTextBox4.Text.Replace("\n", "，").Replace("\r", "，");
                         //            type = "故障";
                         //            break;
                         //    }
@@ -871,17 +872,17 @@ namespace SofarBMS.UI
                             {
                                 case "1":
                                     richTextBox4.AppendText(msg[0] + "\r");
-                                    model.Warning = richTextBox4.Text.Replace("\n", "，").Replace("\r", "，");
+                                    //model.Warning = richTextBox4.Text.Replace("\n", "，").Replace("\r", "，");
                                     type = "告警";
                                     break;
                                 case "2":
                                     richTextBox2.AppendText(msg[0] + "\r");
-                                    model.Protection = richTextBox2.Text.Replace("\n", "，").Replace("\r", "，");
+                                    //model.Protection = richTextBox2.Text.Replace("\n", "，").Replace("\r", "，");
                                     type = "保护";
                                     break;
                                 case "3":
                                     richTextBox1.AppendText(msg[0] + "\r");
-                                    model.Fault = richTextBox1.Text.Replace("\n", "，").Replace("\r", "，");
+                                    //model.Fault = richTextBox1.Text.Replace("\n", "，").Replace("\r", "，");
                                     type = "故障";
                                     break;
                             }
@@ -959,22 +960,22 @@ namespace SofarBMS.UI
                                     richTextBox5.AppendText(msg[0] + "\r");
                                 }
 
-                                //model.Warning = richTextBox1.Text.Replace("\n", "，").Replace("\r", "，");
+                                ////model.Warning = richTextBox1.Text.Replace("\n", "，").Replace("\r", "，");
                                 type = "故障";
                                 break;
                             case 2:
                                 richTextBox2.AppendText(msg[0] + "\r");
-                                //model.Protection = richTextBox2.Text.Replace("\n", "，").Replace("\r", "，");
+                                ////model.Protection = richTextBox2.Text.Replace("\n", "，").Replace("\r", "，");
                                 type = "保护";
                                 break;
                             case 3:
                                 richTextBox3.AppendText(msg[0] + "\r");
-                                //model.Fault = richTextBox3.Text.Replace("\n", "，").Replace("\r", "，");
+                                ////model.Fault = richTextBox3.Text.Replace("\n", "，").Replace("\r", "，");
                                 type = "告警";
                                 break;
                             case 4:
                                 richTextBox4.AppendText(msg[0] + "\r");
-                                //model.Fault = richTextBox4.Text.Replace("\n", "，").Replace("\r", "，");
+                                ////model.Fault = richTextBox4.Text.Replace("\n", "，").Replace("\r", "，");
                                 type = "提示";
                                 break;
                             default:
@@ -1094,17 +1095,17 @@ namespace SofarBMS.UI
         public static string[] getLog1(out string[] msg, int row, int column, int faultNum = 0)
         {
             msg = new string[2];
-            List<FaultInfo> faultInfos = FrmMain.FaultInfos;
+            List<FaultInfo> faultInfos = FaultInfo.FaultInfos;
             switch (faultNum)
             {
                 case 0:
-                    faultInfos = FrmMain.FaultInfos;// 0x08:BMS发送内部电池故障信息1     BCU 0x0C5
+                    faultInfos = FaultInfo.FaultInfos;// 0x08:BMS发送内部电池故障信息1     BCU 0x0C5
                     break;
                 case 1:
-                    faultInfos = FrmMain.FaultInfos2;//0x45:BMS发送内部电池故障信息2     BCU 0x0C6
+                    faultInfos = FaultInfo.FaultInfos2;//0x45:BMS发送内部电池故障信息2     BCU 0x0C6
                     break;
                 case 2:
-                    faultInfos = FrmMain.FaultInfos3;//0x0C3:BCU故障上报1
+                    faultInfos = FaultInfo.FaultInfos3;//0x0C3:BCU故障上报1
                     break;
             }
 

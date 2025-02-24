@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using NPOI.POIFS.Crypt.Dsig;
-using Sofar.ConnectionLibs.CAN.Driver.ECAN;
+﻿using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
-using SofarBMS.Model;
+using System.Diagnostics;
+using System.Text;
 
 namespace SofarBMS.UI
 {
@@ -27,8 +15,12 @@ namespace SofarBMS.UI
         }
 
         #region 字段
-        EcanHelper ecanHelper = EcanHelper.Instance;
-        public static CancellationTokenSource cts;
+        // 取消令牌源
+        public static CancellationTokenSource cts = null;
+
+        // ECAN助手实例
+        private EcanHelper ecanHelper = EcanHelper.Instance;
+
         private const int TX_INTERVAL_TIME = 200;
         private const int TX_INTERVAL_TIME_Data = 5;
         private byte[] fileData;
@@ -79,25 +71,34 @@ namespace SofarBMS.UI
             cbbChip_role.SelectedIndex = 3;
             lblUpgradeRole.Text = LanguageHelper.GetLanguage("Upgrade_Role");
 
-            Task.Run(() =>
-            {
-                while (!cts.IsCancellationRequested)
-                {
-                    lock (EcanHelper._locker)
-                    {
-                        while (EcanHelper._task.Count > 0
-                    && !cts.IsCancellationRequested)
-                        {
-                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+            //Task.Run(() =>
+            //{
+            //    while (!cts.IsCancellationRequested)
+            //    {
+            //        lock (EcanHelper._locker)
+            //        {
+            //            while (EcanHelper._task.Count > 0 && !cts.IsCancellationRequested)
+            //            {
+            //                CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
-                            this.Invoke(new Action(() =>
-                            {
-                                AnalysisData(ch.ID, ch.Data);
-                            }));
-                        }
-                    }
-                }
-            }, cts.Token);
+            //                this.Invoke(new Action(() =>
+            //                {
+            //                    AnalysisData(ch.ID, ch.Data);
+            //                }));
+            //            }
+            //        }
+            //    }
+            //}, cts.Token);
+            ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
+        }
+
+        private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
+        {
+            var frameModel = e as CanFrameModel;
+            if (frameModel != null)
+            {
+                this.Invoke(() => { AnalysisData(frameModel.CanID, frameModel.Data); });
+            }
         }
 
         private void AnalysisData(uint obj_ID, byte[] data)

@@ -1,35 +1,35 @@
 ﻿using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
-using Sofar.ConnectionLibs.CAN.Driver.ECAN;
+using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
-using System.IO;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace SofarBMS.UI
 {
     public partial class RTAControl : UserControl
     {
-        public RTAControl()
-        {
-            InitializeComponent();
+        // 取消令牌源
+        public static CancellationTokenSource cts = null;
 
-            cts = new CancellationTokenSource();
-        }
+        // ECAN助手实例
+        private EcanHelper ecanHelper = EcanHelper.Instance;
 
-        int initCount = 0;
-        RealtimeData_BTS5K model = null;
-        EcanHelper ecanHelper = EcanHelper.Instance;
+        // 实时数据模型
+        private RealtimeData_BTS5K model = null;
 
-        string[] eventList
+        // 初始帧数
+        private int initCount = 0;
+
+        // BMS序列号
+        private string[] packSN = new string[3];
+
+        // BDU序列号
+        private string[] packSN_BDU = new string[3];
+
+        private string[] eventList
         {
             get
             {
@@ -101,25 +101,25 @@ Can通信故障,Can1CommFault
                 return eventStr.Split("\n".ToCharArray());
             }
         }
-        string[] packSN = new string[3];
-        string[] packSN_BDU = new string[3];
 
-        public static CancellationTokenSource cts = null;
+        public RTAControl()
+        {
+            InitializeComponent();
+        }
 
         private void RTAControl_Load(object sender, EventArgs e)
         {
-            //翻译：轮询界面控件
             foreach (Control item in this.Controls)
             {
                 GetControls(item);
             }
-
-            //启动接收线程
+            
+            cts = new CancellationTokenSource();
             Task.Run(async delegate
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    if (ecanHelper.IsConnection)
+                    if (ecanHelper.IsConnected)
                     {
                         if (model != null && initCount >= 13)
                         {
@@ -155,32 +155,32 @@ Can通信故障,Can1CommFault
                         await Task.Delay(1000);
                     }
 
-                    while (EcanHelper._task.Count > 0
-                        && !cts.IsCancellationRequested)
-                    {
-                        CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                    //while (EcanHelper._task.Count > 0
+                    //    && !cts.IsCancellationRequested)
+                    //{
+                    //    CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
-                        this.Invoke(new Action(() =>
-                        {
-                            analysisData(ch.ID, ch.Data);
-                        }));
-                    }
+                    //    this.Invoke(new Action(() =>
+                    //    {
+                    //        analysisData(ch.ID, ch.Data);
+                    //    }));
+                    //}
                 }
             }, cts.Token);
+
+            ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
         }
 
-        private void GetBduSn()
+        private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
         {
-            //读取SN从4开始-6结束
-            for (int i = 4; i < 7; i++)
+            var frameModel = e as CanFrameModel;
+            if (frameModel != null)
             {
-                byte[] data = new byte[8];
-                data[0] = (byte)i;
-                ecanHelper.Send(data, new byte[] { 0xE0, FrmMain.BDU_ID, 0x00, 0x14 });
+                this.Invoke(() => { AnalysisData(frameModel.CanID, frameModel.Data); });
             }
         }
 
-        public void analysisData(uint canID, byte[] data)
+        public void AnalysisData(uint canID, byte[] data)
         {
             if (!(((canID & 0xff) == FrmMain.BMS_ID)
                 || ((canID & 0xff) == FrmMain.PCU_ID)
@@ -710,6 +710,16 @@ Can通信故障,Can1CommFault
             }
         }
 
+        private void GetBduSn()
+        {
+            //读取SN从4开始-6结束
+            for (int i = 4; i < 7; i++)
+            {
+                byte[] data = new byte[8];
+                data[0] = (byte)i;
+                ecanHelper.Send(data, new byte[] { 0xE0, FrmMain.BDU_ID, 0x00, 0x14 });
+            }
+        }
         private string GetPackSN(byte[] data)
         {
             //条形码解析
@@ -1068,10 +1078,10 @@ Can通信故障,Can1CommFault
         public static string[] getLog(out string[] msg, int row, int column, int faultNum = 0)
         {
             msg = new string[2];
-            List<FaultInfo> faultInfos = FrmMain.FaultInfos;
+            List<FaultInfo> faultInfos = FaultInfo.FaultInfos;
             if (faultNum != 0)
             {
-                faultInfos = FrmMain.FaultInfos2;
+                faultInfos = FaultInfo.FaultInfos2;
             }
 
             for (int i = 0; i < faultInfos.Count; i++)
@@ -1175,90 +1185,86 @@ Can通信故障,Can1CommFault
             };
         }
 
-        private void ExportData(string path)
-        {
-            DataSet ds = SQLiteHelper.GetDataSet("select * from RealtimeData");
-            DataTable dt = ds.Tables[0];
-
-            if (dt.Rows.Count == 0)
-                return;
-
-            //List集合导出为Excel
-            //创建工作簿对象
-            IWorkbook workbook = new HSSFWorkbook();
-            //创建工作表
-            ISheet sheet = workbook.CreateSheet("onesheet");
-            IRow row0 = sheet.CreateRow(0);
-            string[] cells = new string[] { "运行时间", "电池状态", "故障信息", "告警信息", "保护信息", "充电电流上限", "放电电流上限", "充电MOS", "放电MOS", "预充MOS", "充电急停", "加热MOS", "电池电压", "负载电压", "电池电流", "电池剩余容量", "最高单体电压", "最高单体电压编号", "最低单体电压", "最低单体电压编号", "单体电压差值", "最高单体温度", "最高单体温度编号", "最低单体温度", "最低单体温度编号", "累计充电容量", "累计放电容量", "电芯电压1", "电芯电压2", "电芯电压3", "电芯电压4", "电芯电压5", "电芯电压6", "电芯电压7", "电芯电压8", "电芯电压9", "电芯电压10", "电芯电压11", "电芯电压12", "电芯电压13", "电芯电压14", "电芯电压15", "电芯电压16", "电芯温度1", "电芯温度2", "电芯温度3", "电芯温度4", "Mos温度", "环境温度", "电池健康程度" };
-            for (int i = 0; i < cells.Length; i++)
-            {
-                row0.CreateCell(i).SetCellValue(cells[i]);
-            }
-
-            for (int r = 1; r < dt.Rows.Count; r++)
-            {
-                //创建行row
-                IRow row = sheet.CreateRow(r);
-                int c = 0;
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["CreateDate"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatteryStatus"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Fault"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Warning"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Protection"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Charge_current_limitation"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Discharge_current_limitation"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["ChargeMosEnable"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["DischargeMosEnable"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["PrechgMosEnable"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["StopChgEnable"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["HeatEnable"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Battery_Volt"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Load_Volt"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Battery_current"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["SOC"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatMaxCellVolt"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatMaxCellVoltNum"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatMinCellVolt"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatMinCellVoltNum"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatDiffCellVolt"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatMaxCellTemp"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatMaxCellTempNum"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatMinCellTemp"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatMinCellTempNum"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["TotalChgCap"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["TotalDsgCap"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage1"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage2"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage3"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage4"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage5"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage6"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage7"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage8"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage9"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage10"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage11"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage12"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage13"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage14"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage15"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage16"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_temperature1"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_temperature2"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_temperature3"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_temperature4"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["MOS_temperature"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["Env_Temperature"].ToString());
-                row.CreateCell(c++).SetCellValue(dt.Rows[r]["SOH"].ToString());
-            }
-
-            //创建流对象并设置存储Excel文件的路径
-            using (FileStream url = File.OpenWrite(path))//OpenWrite  @"C:\Users\admin\Desktop\1.xls"
-            {
-                //导出Excel文件
-                workbook.Write(url);
-            };
-        }
+        //private void ExportData(string path)
+        //{
+        //    DataSet ds = SQLiteHelper.GetDataSet("select * from RealtimeData");
+        //    DataTable dt = ds.Tables[0];
+        //    if (dt.Rows.Count == 0)
+        //        return;
+        //    //List集合导出为Excel
+        //    //创建工作簿对象
+        //    IWorkbook workbook = new HSSFWorkbook();
+        //    //创建工作表
+        //    ISheet sheet = workbook.CreateSheet("onesheet");
+        //    IRow row0 = sheet.CreateRow(0);
+        //    string[] cells = new string[] { "运行时间", "电池状态", "故障信息", "告警信息", "保护信息", "充电电流上限", "放电电流上限", "充电MOS", "放电MOS", "预充MOS", "充电急停", "加热MOS", "电池电压", "负载电压", "电池电流", "电池剩余容量", "最高单体电压", "最高单体电压编号", "最低单体电压", "最低单体电压编号", "单体电压差值", "最高单体温度", "最高单体温度编号", "最低单体温度", "最低单体温度编号", "累计充电容量", "累计放电容量", "电芯电压1", "电芯电压2", "电芯电压3", "电芯电压4", "电芯电压5", "电芯电压6", "电芯电压7", "电芯电压8", "电芯电压9", "电芯电压10", "电芯电压11", "电芯电压12", "电芯电压13", "电芯电压14", "电芯电压15", "电芯电压16", "电芯温度1", "电芯温度2", "电芯温度3", "电芯温度4", "Mos温度", "环境温度", "电池健康程度" };
+        //    for (int i = 0; i < cells.Length; i++)
+        //    {
+        //        row0.CreateCell(i).SetCellValue(cells[i]);
+        //    }
+        //    for (int r = 1; r < dt.Rows.Count; r++)
+        //    {
+        //        //创建行row
+        //        IRow row = sheet.CreateRow(r);
+        //        int c = 0;
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["CreateDate"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatteryStatus"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Fault"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Warning"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Protection"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Charge_current_limitation"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Discharge_current_limitation"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["ChargeMosEnable"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["DischargeMosEnable"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["PrechgMosEnable"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["StopChgEnable"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["HeatEnable"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Battery_Volt"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Load_Volt"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Battery_current"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["SOC"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatMaxCellVolt"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatMaxCellVoltNum"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatMinCellVolt"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatMinCellVoltNum"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatDiffCellVolt"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatMaxCellTemp"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatMaxCellTempNum"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatMinCellTemp"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["BatMinCellTempNum"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["TotalChgCap"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["TotalDsgCap"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage1"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage2"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage3"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage4"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage5"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage6"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage7"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage8"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage9"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage10"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage11"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage12"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage13"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage14"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage15"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_voltage16"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_temperature1"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_temperature2"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_temperature3"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Cell_temperature4"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["MOS_temperature"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["Env_Temperature"].ToString());
+        //        row.CreateCell(c++).SetCellValue(dt.Rows[r]["SOH"].ToString());
+        //    }
+        //    //创建流对象并设置存储Excel文件的路径
+        //    using (FileStream url = File.OpenWrite(path))//OpenWrite  @"C:\Users\admin\Desktop\1.xls"
+        //    {
+        //        //导出Excel文件
+        //        workbook.Write(url);
+        //    };
+        //}
 
         private int[] BytesToBit(byte[] data)
         {

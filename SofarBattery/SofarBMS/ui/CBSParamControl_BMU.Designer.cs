@@ -1318,6 +1318,7 @@
             this.groupBox10.Size = new System.Drawing.Size(250, 145);
             this.groupBox10.TabIndex = 20;
             this.groupBox10.TabStop = false;
+            this.groupBox10.Visible = false;
             // 
             // txt_56
             // 
@@ -1417,6 +1418,7 @@
             this.groupBox17.Size = new System.Drawing.Size(250, 145);
             this.groupBox17.TabIndex = 36;
             this.groupBox17.TabStop = false;
+            this.groupBox17.Visible = false;
             // 
             // txt_80
             // 
@@ -1522,6 +1524,7 @@
             this.groupBox15.Size = new System.Drawing.Size(250, 290);
             this.groupBox15.TabIndex = 35;
             this.groupBox15.TabStop = false;
+            this.groupBox15.Visible = false;
             // 
             // txt_76
             // 
@@ -1667,6 +1670,7 @@
             this.groupBox12.Size = new System.Drawing.Size(250, 290);
             this.groupBox12.TabIndex = 34;
             this.groupBox12.TabStop = false;
+            this.groupBox12.Visible = false;
             // 
             // txt_70
             // 
@@ -1836,6 +1840,7 @@
             this.groupBox11.Size = new System.Drawing.Size(250, 145);
             this.groupBox11.TabIndex = 33;
             this.groupBox11.TabStop = false;
+            this.groupBox11.Visible = false;
             // 
             // txt_62
             // 
@@ -1901,6 +1906,7 @@
             this.groupBox9.Size = new System.Drawing.Size(250, 145);
             this.groupBox9.TabIndex = 32;
             this.groupBox9.TabStop = false;
+            this.groupBox9.Visible = false;
             // 
             // txt_60
             // 

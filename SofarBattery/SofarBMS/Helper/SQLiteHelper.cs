@@ -10,7 +10,7 @@ namespace SofarBMS.Helper
 {
     public static class SQLiteHelper
     {
-        public static string ConStr = "";
+        public static string ConStr = "Data Source=DB//RealtimeDataBase;";
         /// <summary>
         /// 执行增删改
         /// </summary>

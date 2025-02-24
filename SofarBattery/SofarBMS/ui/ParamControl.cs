@@ -15,14 +15,19 @@ using SofarBMS.Helper;
 using SofarBMS.Model;
 using NPOI.POIFS.Crypt.Dsig;
 using Sofar.ConnectionLibs.CAN.Driver.ECAN;
+using Sofar.BMS;
+using Sofar.ConnectionLibs.CAN;
 
 namespace SofarBMS.UI
 {
     public partial class ParamControl : UserControl
     {
+        // 取消令牌源
         public static CancellationTokenSource cts = null;
 
-        EcanHelper ecanHelper = EcanHelper.Instance;
+        // ECAN助手实例
+        private EcanHelper ecanHelper = EcanHelper.Instance;
+
         XmlDocument mDocument;
 
         public bool flag = true;
@@ -119,7 +124,7 @@ namespace SofarBMS.UI
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    if (ecanHelper.IsConnection)
+                    if (ecanHelper.IsConnected)
                     {
                         if (flag)
                         {
@@ -130,21 +135,32 @@ namespace SofarBMS.UI
                             await Task.Delay(1000);
                         }
 
-                        while (EcanHelper._task.Count > 0
-                            && !cts.IsCancellationRequested)
-                        {
-                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-
-                            this.Invoke(new Action(() => { analysisData(ch.ID, ch.Data); }));
-                        }
+                        //while (EcanHelper._task.Count > 0
+                        //    && !cts.IsCancellationRequested)
+                        //{
+                        //    CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                        //    this.Invoke(new Action(() => { analysisData(ch.ID, ch.Data); }));
+                        //}
                     }
                 }
             }, cts.Token);
+
+
+            ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
+        }
+
+        private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
+        {
+            var frameModel = e as CanFrameModel;
+            if (frameModel != null)
+            {
+                this.Invoke(() => { AnalysisData(frameModel.CanID, frameModel.Data); });
+            }
         }
 
         private void btnRead_Click(object sender, EventArgs e)
         {
-            if (!ecanHelper.IsConnection)
+            if (!ecanHelper.IsConnected)
             {
                 MessageBox.Show(FrmMain.GetString("keyOpenPrompt"));
                 return;
@@ -164,7 +180,7 @@ namespace SofarBMS.UI
 
         private void btnWrite_Click(object sender, EventArgs e)
         {
-            if (!ecanHelper.IsConnection)
+            if (!ecanHelper.IsConnected)
             {
                 MessageBox.Show(FrmMain.GetString("keyOpenPrompt"));
                 return;
@@ -324,7 +340,7 @@ namespace SofarBMS.UI
 
         private void btnInit_Click(object sender, EventArgs e)
         {
-            if (!ecanHelper.IsConnection)
+            if (!ecanHelper.IsConnected)
             {
                 MessageBox.Show(FrmMain.GetString("keyOpenPrompt"));
                 return;
@@ -533,7 +549,7 @@ namespace SofarBMS.UI
         }
         #endregion
 
-        public void analysisData(uint canID, byte[] data)
+        public void AnalysisData(uint canID, byte[] data)
         {
             byte[] canid = BitConverter.GetBytes(canID);
             if (canid[0] != FrmMain.BMS_ID || !(canid[0] == FrmMain.BMS_ID && canid[1] == 0xE0 && canid[3] == 0x10)) return;

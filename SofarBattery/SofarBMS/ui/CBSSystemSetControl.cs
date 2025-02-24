@@ -1,6 +1,5 @@
-﻿using Sofar.ConnectionLibs.CAN.Driver.ECAN;
+﻿using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
-using SofarBMS.Model;
 using System.Text;
 
 namespace SofarBMS.UI
@@ -14,8 +13,11 @@ namespace SofarBMS.UI
             cts = new CancellationTokenSource();
         }
 
-        EcanHelper ecanHelper = EcanHelper.Instance;
+        // 取消令牌源
         public static CancellationTokenSource cts = null;
+
+        // ECAN助手实例
+        private EcanHelper ecanHelper = EcanHelper.Instance;
 
         string[] boardCode = new string[3];
         string[] bmsCode = new string[3];
@@ -40,16 +42,6 @@ namespace SofarBMS.UI
                 GetControls(item);
             }
 
-            foreach (Control item in this.gbControl020.Controls)
-            {
-                if (item is ComboBox)
-                {
-                    ComboBox cbb = item as ComboBox;
-                    cbb.SelectedIndex = 0;
-                }
-            }
-            txtSlaveAddr.Text = FrmMain.BMS_ID.ToString();
-
             foreach (Control item in this.gbControl0F0.Controls)
             {
                 if (item is ComboBox)
@@ -63,7 +55,7 @@ namespace SofarBMS.UI
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    if (ecanHelper.IsConnection)
+                    if (ecanHelper.IsConnected)
                     {
                         if (flag)
                         {
@@ -91,18 +83,28 @@ namespace SofarBMS.UI
                         }
                     }
 
-                    while (EcanHelper._task.Count > 0
-                        && !cts.IsCancellationRequested)
-                    {
-                        CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-
-                        this.Invoke(new Action(() =>
-                        {
-                            analysisData(ch.ID, ch.Data);
-                        }));
-                    }
+                    //while (EcanHelper._task.Count > 0
+                    //    && !cts.IsCancellationRequested)
+                    //{
+                    //    CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                    //    this.Invoke(new Action(() =>
+                    //    {
+                    //        analysisData(ch.ID, ch.Data);
+                    //    }));
+                    //}
                 }
             }, cts.Token);
+
+            ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
+        }
+
+        private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
+        {
+            var frameModel = e as CanFrameModel;
+            if (frameModel != null)
+            {
+                this.Invoke(() => { AnalysisData(frameModel.CanID, frameModel.Data); });
+            }
         }
 
         private void btnSystemset_46_Click(object sender, EventArgs e)
@@ -139,7 +141,7 @@ namespace SofarBMS.UI
             ecanHelper.Send(data, id);
         }
 
-        public void analysisData(uint canID, byte[] data)
+        public void AnalysisData(uint canID, byte[] data)
         {
             byte[] canid = BitConverter.GetBytes(canID);
 
@@ -154,7 +156,7 @@ namespace SofarBMS.UI
 
             switch (BitConverter.ToUInt32(canid, 0) | 0xff)
             {
-                case 0x1020E0FF:
+                /*case 0x1020E0FF:
                     // cbbSetComm2.SelectedIndex = data[3] == 0xAA ? 0 : 1;
 
                     foreach (Control item in this.gbControl020.Controls)
@@ -183,7 +185,7 @@ namespace SofarBMS.UI
                             cbb.SelectedIndex = value;
                         }
                     }
-                    break;
+                    break;*/
                 case 0x10F0E0FF:
                     foreach (Control item in this.gbControl0F0.Controls)
                     {
@@ -216,39 +218,6 @@ namespace SofarBMS.UI
 
             switch (canid[2])
             {
-                case 0x1E:
-                    Dictionary<short, Button[]> buttons_unique = new Dictionary<short, Button[]>();
-                    buttons_unique.Add(0, new Button[] { btnSystemset_45_Unique_Lifted1, btnSystemset_43_Unique_Close1, btnSystemset_44_Unique_Open1 });
-                    buttons_unique.Add(1, new Button[] { btnSystemset_45_Unique_Lifted2, btnSystemset_43_Unique_Close2, btnSystemset_44_Unique_Open2 });
-                    buttons_unique.Add(2, new Button[] { btnSystemset_45_Unique_Lifted3, btnSystemset_43_Unique_Close3, btnSystemset_44_Unique_Open3 });
-
-                    //byte[]转为二进制字符串
-                    strResult = string.Empty;
-                    for (int i = 0; i <= 2; i++)
-                    {
-                        string strTemp = Convert.ToString(data[i], 2);
-                        strTemp = strTemp.Insert(0, new string('0', 8 - strTemp.Length));
-                        strResult = strTemp + strResult;
-                    }
-
-                    //二进制字符串转化为short[]
-                    bitResult = new short[strResult.Length / 2];
-                    int index2 = bitResult.Length - 1;
-                    for (int i = 0; i < bitResult.Length; i++)
-                    {
-                        bitResult[index2--] = (short)Convert.ToByte(Convert.ToInt32(strResult.Substring(i * 2, 2)) & 0x03);
-                    }
-
-                    //根据short得值来找到对应得button
-                    foreach (var item in buttons_unique.Keys)
-                    {
-                        Button btn = buttons_unique[item][bitResult[item]];
-                        string name = btn.Name;
-                        btn.Enabled = false;
-                    }
-                    break;
-
-
                 //BCU Flash数据
                 case 0xEF:
                     if (data[0] == 0x00)
@@ -1049,26 +1018,6 @@ namespace SofarBMS.UI
             byte[] can_id = new byte[4] { 0xE0, FrmMain.BMS_ID, 0x20, 0x10 };
 
             byte[] data = new byte[8];
-            foreach (Control item in this.gbControl020.Controls)
-            {
-                if (item is ComboBox)
-                {
-                    ComboBox cbb = item as ComboBox;
-                    int index = 0;
-                    int.TryParse(cbb.Name.Replace("cbbRequest", ""), out index);
-                    int value = 0;
-                    switch (cbb.SelectedIndex)
-                    {
-                        case 0: value = 0x00; break;
-                        case 1: value = 0xAA; break;
-                        case 2: value = 0x55; break;
-                        default:
-                            break;
-                    }
-                    data[index] = (byte)(value & 0xff);
-                }
-            }
-            data[6] = Convert.ToByte(txtSlaveAddr.Text.Trim());
             byte crc8 = (byte)(0x10 + 0x20 + data[6] + 0xE0);
             for (int i = 0; i < data.Length - 1; i++)
             {

@@ -1,6 +1,5 @@
-﻿using Sofar.ConnectionLibs.CAN.Driver.ECAN;
+﻿using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
-using SofarBMS.Model;
 using System.Text;
 
 namespace SofarBMS.UI
@@ -10,12 +9,14 @@ namespace SofarBMS.UI
         public BMSSystemSetControl()
         {
             InitializeComponent();
-
-            cts = new CancellationTokenSource();
         }
 
-        EcanHelper ecanHelper = EcanHelper.Instance;
+        // 取消令牌源
         public static CancellationTokenSource cts = null;
+
+        // ECAN助手实例
+        private EcanHelper ecanHelper = EcanHelper.Instance;
+
 
         string[] boardCode = new string[3];
         string[] bmsCode = new string[3];
@@ -68,11 +69,13 @@ namespace SofarBMS.UI
             cbbSetComm.Items.Clear();
             cbbSetComm.Items.AddRange(setComms);
             btnSystemset_47.Text = LanguageHelper.GetLanguage("BmsDebug_Start");
+
+            cts = new CancellationTokenSource();
             Task.Run(async delegate
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    if (ecanHelper.IsConnection)
+                    if (ecanHelper.IsConnected)
                     {
                         if (flag)
                         {
@@ -100,18 +103,27 @@ namespace SofarBMS.UI
                         }
                     }
 
-                    while (EcanHelper._task.Count > 0
-                        && !cts.IsCancellationRequested)
-                    {
-                        CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-
-                        this.Invoke(new Action(() =>
-                        {
-                            analysisData(ch.ID, ch.Data);
-                        }));
-                    }
+                    //while (EcanHelper._task.Count > 0
+                    //    && !cts.IsCancellationRequested)
+                    //{
+                    //    CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                    //    this.Invoke(new Action(() =>
+                    //    {
+                    //        analysisData(ch.ID, ch.Data);
+                    //    }));
+                    //}
                 }
             }, cts.Token);
+            ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
+        }
+
+        private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
+        {
+            var frameModel = e as CanFrameModel;
+            if (frameModel != null)
+            {
+                this.Invoke(() => { AnalysisData(frameModel.CanID, frameModel.Data); });
+            }
         }
 
         private void btnSystemset_46_Click(object sender, EventArgs e)
@@ -167,7 +179,7 @@ namespace SofarBMS.UI
             ecanHelper.Send(data, id);
         }
 
-        public void analysisData(uint canID, byte[] data)
+        public void AnalysisData(uint canID, byte[] data)
         {
             byte[] canid = BitConverter.GetBytes(canID);
 

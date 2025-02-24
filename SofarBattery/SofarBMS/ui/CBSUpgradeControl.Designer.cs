@@ -30,10 +30,10 @@
         {
             this.lblUpgrade_07 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtChiprole_val = new System.Windows.Forms.TextBox();
             this.txtChipcode = new System.Windows.Forms.TextBox();
             this.txtFD = new System.Windows.Forms.TextBox();
             this.txtFC = new System.Windows.Forms.TextBox();
-            this.cbbChiprole_val = new System.Windows.Forms.ComboBox();
             this.txtSlaveAddress = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lblUpgrade_02 = new System.Windows.Forms.Label();
@@ -66,10 +66,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtChiprole_val);
             this.groupBox2.Controls.Add(this.txtChipcode);
             this.groupBox2.Controls.Add(this.txtFD);
             this.groupBox2.Controls.Add(this.txtFC);
-            this.groupBox2.Controls.Add(this.cbbChiprole_val);
             this.groupBox2.Controls.Add(this.txtSlaveAddress);
             this.groupBox2.Controls.Add(this.progressBar1);
             this.groupBox2.Controls.Add(this.lblUpgrade_02);
@@ -91,6 +91,14 @@
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "升级固件";
+            // 
+            // txtChiprole_val
+            // 
+            this.txtChiprole_val.Location = new System.Drawing.Point(572, 93);
+            this.txtChiprole_val.Name = "txtChiprole_val";
+            this.txtChiprole_val.Size = new System.Drawing.Size(100, 23);
+            this.txtChiprole_val.TabIndex = 37;
+            this.txtChiprole_val.TextChanged += new System.EventHandler(this.txtChiprole_val_TextChanged);
             // 
             // txtChipcode
             // 
@@ -117,19 +125,6 @@
             this.txtFC.Size = new System.Drawing.Size(79, 23);
             this.txtFC.TabIndex = 34;
             this.txtFC.Text = "20";
-            // 
-            // cbbChiprole_val
-            // 
-            this.cbbChiprole_val.FormattingEnabled = true;
-            this.cbbChiprole_val.Items.AddRange(new object[] {
-            "0x24",
-            "0x2D"});
-            this.cbbChiprole_val.Location = new System.Drawing.Point(574, 92);
-            this.cbbChiprole_val.Margin = new System.Windows.Forms.Padding(4);
-            this.cbbChiprole_val.Name = "cbbChiprole_val";
-            this.cbbChiprole_val.Size = new System.Drawing.Size(116, 25);
-            this.cbbChiprole_val.TabIndex = 33;
-            this.cbbChiprole_val.SelectedIndexChanged += new System.EventHandler(this.cbbChiprole_val_SelectedIndexChanged);
             // 
             // txtSlaveAddress
             // 
@@ -327,9 +322,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.TextBox txtSlaveAddress;
-        private System.Windows.Forms.ComboBox cbbChiprole_val;
         private System.Windows.Forms.TextBox txtFC;
         private System.Windows.Forms.TextBox txtFD;
         private TextBox txtChipcode;
+        private TextBox txtChiprole_val;
     }
 }

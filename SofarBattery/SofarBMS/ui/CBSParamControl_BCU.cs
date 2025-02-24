@@ -1,7 +1,6 @@
 ﻿using Sofar.BMS.Common;
-using Sofar.ConnectionLibs.CAN.Driver.ECAN;
+using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
-using SofarBMS.Model;
 using System.Text;
 using System.Xml;
 
@@ -11,6 +10,7 @@ namespace SofarBMS.UI
     {
         public static CancellationTokenSource cts = null;
         private EcanHelper ecanHelper = EcanHelper.Instance;
+
         XmlDocument mDocument;
 
         public bool flag = true;
@@ -19,8 +19,6 @@ namespace SofarBMS.UI
         public CBSParamControl_BCU()
         {
             InitializeComponent();
-
-            cts = new CancellationTokenSource();
         }
 
         private void ParamControl_Load(object sender, EventArgs e)
@@ -61,11 +59,13 @@ namespace SofarBMS.UI
                 keys.Add("txt_26", "单簇PACK个数");              
             }
             #endregion
+
+            cts = new CancellationTokenSource();
             Task.Run(async delegate
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    if (ecanHelper.IsConnection)
+                    if (ecanHelper.IsConnected)
                     {
                         if (flag)
                         {
@@ -77,23 +77,33 @@ namespace SofarBMS.UI
                         }
                     }
 
-                    lock (EcanHelper._locker)
-                    {
-                        while (EcanHelper._task.Count > 0 
-                            && !cts.IsCancellationRequested)
-                        {
-                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-
-                            this.Invoke(new Action(() => { analysisData(ch.ID, ch.Data); }));
-                        }
-                    }
+                    //lock (EcanHelper._locker)
+                    //{
+                    //    while (EcanHelper._task.Count > 0 
+                    //        && !cts.IsCancellationRequested)
+                    //    {
+                    //        CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                    //        this.Invoke(new Action(() => { analysisData(ch.ID, ch.Data); }));
+                    //    }
+                    //}
                 }
             }, cts.Token);
+
+            ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
+        }
+
+        private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
+        {
+            var frameModel = e as CanFrameModel;
+            if (frameModel != null)
+            {
+                this.Invoke(() => { AnalysisData(frameModel.CanID, frameModel.Data); });
+            }
         }
 
         private void btnRead_Click(object sender, EventArgs e)
         {
-            if (!ecanHelper.IsConnection)
+            if (!ecanHelper.IsConnected)
             {
                 MessageBox.Show(FrmMain.GetString("keyOpenPrompt"));
                 return;
@@ -113,7 +123,7 @@ namespace SofarBMS.UI
 
         private void btnWrite_Click(object sender, EventArgs e)
         {
-            if (!ecanHelper.IsConnection)
+            if (!ecanHelper.IsConnected)
             {
                 MessageBox.Show(FrmMain.GetString("keyOpenPrompt"));
                 return;
@@ -202,7 +212,7 @@ namespace SofarBMS.UI
 
         private void btnInit_Click(object sender, EventArgs e)
         {
-            if (!ecanHelper.IsConnection)
+            if (!ecanHelper.IsConnected)
             {
                 MessageBox.Show(FrmMain.GetString("keyOpenPrompt"));
                 return;
@@ -215,7 +225,7 @@ namespace SofarBMS.UI
             ecanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }, new byte[] { 0xE0, FrmMain.BCU_ID, 0xF9, 0x10 });
         }
         
-        public void analysisData(uint canID, byte[] data)
+        public void AnalysisData(uint canID, byte[] data)
         {
             byte[] canid = BitConverter.GetBytes(canID);
             if (canid[0] != FrmMain.BCU_ID || !(canid[0] == FrmMain.BCU_ID && (canid[1] == 0xE0 || canid[1] == 0xFF) && canid[3] == 0x10)) return;

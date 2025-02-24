@@ -1,15 +1,7 @@
-﻿using log4net.Util;
+﻿using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
-using SofarBMS.Model;
-using Sofar.ConnectionLibs.CAN.Driver.ECAN;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace SofarBMS.UI
 {
@@ -204,24 +196,26 @@ RSV2,U32,1,,";
 
         private void CBSFileTransmit_Load(object sender, EventArgs e)
         {
-            Task.Factory.StartNew(() =>
-            {
-                while (!cts.IsCancellationRequested)
-                {
-                    lock (EcanHelper._locker)
-                    {
-                        while (EcanHelper._task.Count > 0
-                        && !_token.IsCancellationRequested)
-                        {
-                            //出队
-                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+            ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
 
-                            //解析
-                            this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
-                        }
-                    }
-                }
-            }, cts.Token);
+            //Task.Factory.StartNew(() =>
+            //{
+            //    while (!cts.IsCancellationRequested)
+            //    {
+            //        lock (EcanHelper._locker)
+            //        {
+            //            while (EcanHelper._task.Count > 0
+            //            && !_token.IsCancellationRequested)
+            //            {
+            //                //出队
+            //                CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+
+            //                //解析
+            //                this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
+            //            }
+            //        }
+            //    }
+            //}, cts.Token);
 
             //初始化值
             this.txtSlaveAddress.Text = FrmMain.BCU_ID.ToString();
@@ -234,6 +228,15 @@ RSV2,U32,1,,";
             //slaveAddress = Convert.ToInt32(txtSlaveAddress.Text);
             //subDeviceAddress= Convert.ToInt32(txtSubDeviceAddress.Text);
             //readCount = Convert.ToInt32(txtReadCount.Text);
+        }
+
+        private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
+        {
+            var frameModel = e as CanFrameModel;
+            if (frameModel != null)
+            {
+                this.Invoke(() => { AnalysisData(frameModel.CanID, frameModel.Data); });
+            }
         }
 
         private void btnFileTransmit_Click(object sender, EventArgs e)

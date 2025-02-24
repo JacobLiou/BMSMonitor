@@ -16,7 +16,7 @@ namespace SofarBMS.ui
         private string[] packSN = new string[3];
 
         public static CancellationTokenSource cts = null;
-        private BmsCanHelper ecanHelper = null;
+        private EcanHelper ecanHelper = EcanHelper.Instance;
         public BMURealDataVM RealDataVM = new BMURealDataVM();
 
         private List<batteryVoltageData> batteryVoltageDataList = new();
@@ -29,10 +29,6 @@ namespace SofarBMS.ui
         public CBSControl_BMU()
         {
             InitializeComponent();
-
-            cts = new CancellationTokenSource();
-
-            ecanHelper = RealDataVM.baseCanHelper;
         }
 
         private void RealDataVM_AnalysisDataInvoked(object? sender, object e)
@@ -46,15 +42,17 @@ namespace SofarBMS.ui
 
         private void CBSControl_BMU_Load(object sender, EventArgs e)
         {
-            RealDataVM.AnalysisDataInvoked += RealDataVM_AnalysisDataInvoked;
+            ecanHelper.AnalysisDataInvoked += RealDataVM_AnalysisDataInvoked;
+
             Task.Run(async delegate
             {
+                cts = new CancellationTokenSource();
                 while (!cts.IsCancellationRequested)
                 {
-                    if (ecanHelper.IsConnected())
+                    if (ecanHelper.IsConnected)
                     {
                         RealDataVM.ReadAllParameter();
-                        await Task.Delay(3000);
+                        await Task.Delay(1000);
                     }
                 }
             });
@@ -390,15 +388,18 @@ namespace SofarBMS.ui
                             //调试时只有一个模块 共48个电池电压数据
                             if (sequenceNumber == 0x01)
                             {
-                                if (frameNumber >= 0x01 && frameNumber <= 0x10)
+                                if (frameNumber >= 0x01 && frameNumber <= 0x6)
                                 {
                                     int startBatteryIndex = GetBatteryStartIndex(sequenceNumber, frameNumber);
                                     ProcessBatteryData(startBatteryIndex, data);
+                                }
 
+                                if (batteryVoltageDataList.Count >= 16)
+                                {
                                     for (int i = 1; i <= 16; i++)
                                     {
                                         TextBox c = this.Controls.Find("txtCellvoltage" + i, true)[0] as TextBox;
-                                        c.Text = batteryVoltageDataList[i - 1].ToString();
+                                        c.Text = batteryVoltageDataList[i - 1].Voltage.ToString();
                                     }
                                 }
                             }
@@ -455,18 +456,22 @@ namespace SofarBMS.ui
                             //实际调试30个电池温度数据
                             if (sequenceNumber >= 0x01)
                             {
-                                if (frameNumber >= 0x01 && frameNumber <= 0x0A)
+                                if (frameNumber >= 0x01 && frameNumber <= 0x3)
                                 {
                                     int startBatteryIndex = GetbatteryTemperaturesStartIndex(sequenceNumber, frameNumber);
                                     ProcessBatteryTemperature(startBatteryIndex, data);
-
-                                    for (int i = 1; i <= 8; i++)
-                                    {
-                                        TextBox c = this.Controls.Find("txtCelltemperature" + i, true)[0] as TextBox;
-                                        c.Text = batteryEquilibriumStateDataList[i - 1].ToString();
-                                    }
                                 }
                             }
+
+                            if (batteryTemperatureDataList.Count >= 8)
+                            {
+                                for (int i = 1; i <= 8; i++)
+                                {
+                                    TextBox c = this.Controls.Find("txtCelltemperature" + i, true)[0] as TextBox;
+                                    c.Text = batteryTemperatureDataList[i - 1].Temperature.ToString();
+                                }
+                            }
+
                             int GetbatteryTemperaturesStartIndex(int sequenceNumber, int frameNumber)
                             {
                                 // 每个包有30个电池温度，每帧 3个电池温度数据                       
@@ -630,7 +635,7 @@ namespace SofarBMS.ui
                             frameNumber = data[0];
 
                             //调试数据 实际7包共48个电池SOC数据,最后一帧是48 % 7 = 6
-                            if (frameNumber >= 0x00 && frameNumber <= 0x05)
+                            if (frameNumber >= 0x00 && frameNumber <= 0x02)
                             {
                                 int startBatteryIndex = GetbatterySOCStartIndex(frameNumber);
                                 ProcessBatterySOC(startBatteryIndex, data);
@@ -643,7 +648,7 @@ namespace SofarBMS.ui
                             }
 
                             //最后一帧
-                            if (frameNumber == 0x06)
+                            if (frameNumber == 0x02)
                             {
                                 int startBatteryIndex = (frameNumber + 1) * (48 % 7);
                                 ProcessBatterySOC(startBatteryIndex, data);
@@ -651,7 +656,7 @@ namespace SofarBMS.ui
                                 for (int i = 1; i <= 16; i++)
                                 {
                                     TextBox c = this.Controls.Find("txtSOC" + i, true)[0] as TextBox;
-                                    c.Text = batterySohDataList[i - 1].ToString();
+                                    c.Text = batterySocDataList[i - 1].SOC.ToString();
                                 }
                             }
 
@@ -718,13 +723,13 @@ namespace SofarBMS.ui
                             frameNumber = data[0];
 
                             //调试数据 实际7包共48个电池SOH数据,最后一帧是48 % 7 = 6
-                            if (frameNumber >= 0x00 && frameNumber <= 0x05)
+                            if (frameNumber >= 0x00 && frameNumber <= 0x06)
                             {
                                 int startBatteryIndex = GetbatterySOHStartIndex(frameNumber);
                                 ProcessBatterySOH(startBatteryIndex, data);
                             }
 
-                            if (frameNumber == 0x06)
+                            if (batterySohDataList.Count >= 16)
                             {
                                 int startBatteryIndex = (frameNumber + 1) * (48 % 7);
                                 ProcessBatterySOH(startBatteryIndex, data);
@@ -732,7 +737,7 @@ namespace SofarBMS.ui
                                 for (int i = 1; i <= 16; i++)
                                 {
                                     TextBox c = this.Controls.Find("txtSOH" + i, true)[0] as TextBox;
-                                    c.Text = batterySohDataList[i - 1].ToString();
+                                    c.Text = batterySohDataList[i - 1].SOH.ToString();
                                 }
                             }
 
@@ -795,21 +800,6 @@ namespace SofarBMS.ui
                             break;
                     }
                 }));
-
-                if (data.Length <= 0)
-                    return;
-
-                int[] numbers_bit = new int[8];
-                for (int i = 0; i < data.Length; i++)
-                {
-                    numbers_bit[i] = Convert.ToInt32(data[i].ToString("X2"), 16);
-                }
-
-                int[] numbers = new int[4];
-                for (int i = 0; i < data.Length; i += 2)
-                {
-                    numbers[i / 2] = Convert.ToInt32(data[i + 1].ToString("X2") + data[i].ToString("X2"), 16);
-                }
             }
             catch (Exception)
             {

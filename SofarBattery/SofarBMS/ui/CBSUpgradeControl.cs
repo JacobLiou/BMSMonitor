@@ -1,4 +1,4 @@
-﻿using Sofar.ConnectionLibs.CAN.Driver.ECAN;
+﻿using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
 using System.Diagnostics;
@@ -9,6 +9,7 @@ namespace SofarBMS.UI
     public partial class CBSUpgradeControl : UserControl
     {
         EcanHelper ecanHelper = EcanHelper.Instance;
+
         //定义校验CRC帮助类对象
         private static Crc16 _crc = new Crc16(Crc16Model.CcittKermit);
         //定义固件升级任务信号源对象
@@ -80,7 +81,7 @@ namespace SofarBMS.UI
 
             cbbChiprole.SelectedIndex = 1;
             txtChipcode.Text = "S3";
-            Task.Run(() =>
+            /*Task.Run(() =>
             {
                 while (!cts.IsCancellationRequested)
                 {
@@ -97,7 +98,17 @@ namespace SofarBMS.UI
                         }
                     }
                 }
-            }, cts.Token);
+            }, cts.Token);*/
+            ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
+        }
+
+        private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
+        {
+            var frameModel = e as CanFrameModel;
+            if (frameModel != null)
+            {
+                this.Invoke(() => { AnalysisData(frameModel.CanID, frameModel.Data); });
+            }
         }
 
         /// <summary>
@@ -159,11 +170,11 @@ namespace SofarBMS.UI
             try
             {
                 //0.检查CAN连接
-                if (!ecanHelper.IsConnection)
-                {
-                    MessageBox.Show("串口未打开，请先连接设备...");
-                    return;
-                }
+                //if (!ecanHelper.Connect())
+                //{
+                //    MessageBox.Show("串口未打开，请先连接设备...");
+                //    return;
+                //}
                 //1.判断文件是否为空
                 if (string.IsNullOrEmpty(txtPath.Text.Trim()))
                 {
@@ -454,8 +465,8 @@ namespace SofarBMS.UI
                           SignatureBytes[SignatureBytes.Length - 1] << 24);
 
             txtChipcode.Text = firmwareModel.ChipMark;
-            cbbChiprole_val.Text = "0x" + firmwareModel.FirmwareChipRoleCode.ToString("X2");
-            switch (cbbChiprole_val.Text.Trim())
+            txtChiprole_val.Text = "0x" + firmwareModel.FirmwareChipRoleCode.ToString("X2");
+            switch (txtChiprole_val.Text.Trim())
             {
                 case "0x24":
                     cbbChiprole.Text = "BCU";
@@ -999,11 +1010,11 @@ namespace SofarBMS.UI
             switch (cbbChiprole.SelectedIndex)
             {
                 case 0:
-                    cbbChiprole_val.Text = "0x24";
+                    txtChiprole_val.Text = "0x24";
                     txtSlaveAddress.Text = slaveAddress = "0x9F";
                     break;
                 case 1:
-                    cbbChiprole_val.Text = "0x2D";
+                    txtChiprole_val.Text = "0x2D";
                     txtSlaveAddress.Text = slaveAddress = "0x1F";
                     break;
                 default:
@@ -1019,13 +1030,18 @@ namespace SofarBMS.UI
 
         private void cbbChiprole_val_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chip_role = cbbChiprole_val.Text;
+            //chip_role = cbbChiprole_val.Text;
         }
 
         private void txtChipcode_TextChanged(object sender, EventArgs e)
         {
             chip_code = txtChipcode.Text.Trim();
             slaveAddress = txtSlaveAddress.Text;
+        }
+
+        private void txtChiprole_val_TextChanged(object sender, EventArgs e)
+        {
+            chip_role = txtChiprole_val.Text;
         }
     }
 

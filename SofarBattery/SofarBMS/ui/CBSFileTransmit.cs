@@ -1,4 +1,6 @@
 ﻿using log4net.Util;
+using Sofar.BMS;
+using Sofar.ConnectionLibs.CAN;
 using Sofar.ConnectionLibs.CAN.Driver.ECAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
@@ -15,9 +17,14 @@ namespace SofarBMS.UI
 {
     public partial class CBSFileTransmit : UserControl
     {
-        public static CancellationTokenSource cts = new CancellationTokenSource();
+        // 取消令牌源
+        public static CancellationTokenSource cts = null;
+
+        // ECAN助手实例
+        private EcanHelper ecanHelper = EcanHelper.Instance;
+
         private CancellationTokenSource _token = new CancellationTokenSource();
-        EcanHelper ecanHelper = EcanHelper.Instance;
+
 
         //变量定义
         private readonly string FiveMinHeadStr = "时间年,月,日,时,分,秒,电池采集电压(mV),电池累计电压(mV),SOC显示值(%),SOH显示值(%),SOC计算值,SOH计算值,电池电流(A),最高单体电压(mV),最低单体电压(mV),最高单体电压序号,最低单体电压序号,最高单体温度(℃),最低单体温度(℃),最高单体温度序号,最低单体温度序号,BMU编号,系统状态,充放电使能,切断请求,关机请求,充电电流上限(A),放电电流上限(A),保护1,保护2,告警1,告警2,故障1,故障2,故障1,故障2,故障3,故障4,主动均衡状态,均衡母线电压(mV),均衡母线电流(mA),辅助供电电压(mV),满充容量(Ah),循环次数,累计放电安时(Ah),累计充电安时(Ah),累计放电瓦时(Wh),累计充电瓦时(Wh),环境温度(℃),DCDC温度1(℃),均衡温度1(℃),均衡温度2(℃),功率端子温度1(℃),功率端子温度2(℃),其他温度1(℃),其他温度2(℃),其他温度3(℃),其他温度4(℃),1-16串均衡状态,单体电压1(mV),单体电压2(mV),单体电压3(mV),单体电压4(mV),单体电压5(mV),单体电压6(mV),单体电压7(mV),单体电压8(mV),单体电压9(mV),单体电压10(mV),单体电压11(mV),单体电压12(mV),单体电压13(mV),单体电压14(mV),单体电压15(mV),单体电压16(mV),单体温度1(℃),单体温度2(℃),单体温度3(℃),单体温度4(℃),单体温度5(℃),单体温度6(℃),单体温度7(℃),单体温度8(℃),单体温度9(℃),单体温度10(℃),单体温度11(℃),单体温度12(℃),单体温度13(℃),单体温度14(℃),单体温度15(℃),单体温度16(℃),RSV1,RSV2,RSV3,RSV4,RSV5,RSV6\r\n";
@@ -184,24 +191,23 @@ RSV6,U32,1,,";
 
         private void CBSFileTransmit_Load(object sender, EventArgs e)
         {
-            Task.Factory.StartNew(() =>
-            {
-                while (!cts.IsCancellationRequested)
-                {
-                    lock (EcanHelper._locker)
-                    {
-                        while (EcanHelper._task.Count > 0
-                        && !_token.IsCancellationRequested)
-                        {
-                            //出队
-                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-
-                            //解析
-                            this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
-                        }
-                    }
-                }
-            }, cts.Token);
+            //Task.Factory.StartNew(() =>
+            //{
+            //    while (!cts.IsCancellationRequested)
+            //    {
+            //        lock (EcanHelper._locker)
+            //        {
+            //            while (EcanHelper._task.Count > 0
+            //            && !_token.IsCancellationRequested)
+            //            {
+            //                //出队
+            //                CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+            //                //解析
+            //                this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
+            //            }
+            //        }
+            //    }
+            //}, cts.Token);
 
             //初始化值
             this.txtSlaveAddress.Text = FrmMain.BMS_ID.ToString();
@@ -209,6 +215,17 @@ RSV6,U32,1,,";
             this.cbbModeName.SelectedIndex = 1;
             this.cbbModeName.Enabled = false;
             this.ckReadAll.Checked = true;
+
+            ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
+        }
+
+        private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
+        {
+            var frameModel = e as CanFrameModel;
+            if (frameModel != null)
+            {
+                this.Invoke(() => { AnalysisData(frameModel.CanID, frameModel.Data); });
+            }
         }
 
         private void btnFileTransmit_Click(object sender, EventArgs e)

@@ -13,6 +13,7 @@
   <ItemGroup>
     <Compile Remove="Helper\ECanDriver.cs" />
     <Compile Remove="Model\BaseModel.cs" />
+    <Compile Remove="Model\EcanHelper.cs" />
     <Compile Remove="ui\DownloadControl.cs" />
     <Compile Remove="ui\DownloadControl.Designer.cs" />
     <Compile Remove="ui\PCUSystemSetControl.cs" />

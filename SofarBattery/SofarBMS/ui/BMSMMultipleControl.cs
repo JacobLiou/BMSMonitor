@@ -1,24 +1,17 @@
-﻿using Org.BouncyCastle.Asn1.Ocsp;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
-using Sofar.ConnectionLibs.CAN.Driver.ECAN;
 
 namespace SofarBMS.UI
 {
     public partial class BMSMMultipleControl : UserControl
     {
-        EcanHelper ecanHelper = EcanHelper.Instance;
+        // 取消令牌源
         public static CancellationTokenSource cts = null;
+
+        // ECAN助手实例
+        private EcanHelper ecanHelper = EcanHelper.Instance;
+
         List<FaultInfo> faultInfos = new List<FaultInfo>() {
                     new FaultInfo("单体过压保护",0,0,0,0,2),
                     new FaultInfo("单体过压告警",0,1,0,0,1),
@@ -127,7 +120,7 @@ namespace SofarBMS.UI
                         }
                     }
 
-                    if (ecanHelper.IsConnection)
+                    if (ecanHelper.IsConnected)
                     {
                         //获取实时数据指令
                         ecanHelper.Send(new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
@@ -140,19 +133,29 @@ namespace SofarBMS.UI
                                         , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
                     }
 
-
-                    //增加信号量状态的检查
-                    while (!cts.IsCancellationRequested && EcanHelper._task.Count > 0)
-                    {
-                        CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-                        analysisData(ch.ID, ch.Data);
-                    }
+                    ////增加信号量状态的检查
+                    //while (!cts.IsCancellationRequested && EcanHelper._task.Count > 0)
+                    //{
+                    //    CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                    //    analysisData(ch.ID, ch.Data);
+                    //}
                     await Task.Delay(1000);
                 }
             }, cts.Token);
+
+            ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
         }
 
-        public void analysisData(uint canID, byte[] data)
+        private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
+        {
+            var frameModel = e as CanFrameModel;
+            if (frameModel != null)
+            {
+                this.Invoke(() => { AnalysisData(frameModel.CanID, frameModel.Data); });
+            }
+        }
+
+        public void AnalysisData(uint canID, byte[] data)
         {
             string[] strs;
             string[] controls;
