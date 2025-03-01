@@ -1280,5 +1280,15 @@ Can通信故障,Can1CommFault
         {
 
         }
+
+        protected override void OnHandleDestroyed(EventArgs e)
+        {
+            if (ecanHelper!=null)
+            {
+                ecanHelper.AnalysisDataInvoked -= ServiceBase_AnalysisDataInvoked;
+            }
+            base.OnHandleDestroyed(e);
+        }
+
     }
 }

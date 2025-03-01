@@ -28,10 +28,10 @@ namespace SofarBMS.UI
 
         private void RTAControl_Load(object sender, EventArgs e)
         {
-            //foreach (Control item in this.Controls)
-            //{
-            //    GetControls(item);
-            //}
+            foreach (Control item in this.Controls)
+            {
+                GetControls(item);
+            }
 
             //return;
             Task.Run(async delegate

@@ -152,6 +152,7 @@ namespace SofarBMS
             this.btnAlarmInfo.TabIndex = 56;
             this.btnAlarmInfo.Text = "报警记录";
             this.btnAlarmInfo.UseVisualStyleBackColor = false;
+            this.btnAlarmInfo.Visible = false;
             this.btnAlarmInfo.Click += new System.EventHandler(this.btnAlarmInfo_Click);
             // 
             // btnStratListen
@@ -168,6 +169,7 @@ namespace SofarBMS
             this.btnStratListen.TabIndex = 55;
             this.btnStratListen.Text = "总线监听";
             this.btnStratListen.UseVisualStyleBackColor = false;
+            this.btnStratListen.Visible = false;
             this.btnStratListen.Click += new System.EventHandler(this.btnStratListen_Click);
             // 
             // btnClearInit
