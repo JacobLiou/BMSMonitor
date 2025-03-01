@@ -1773,6 +1773,7 @@
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "BMSControl";
             this.Size = new System.Drawing.Size(1272, 612);
+            this.Load += new System.EventHandler(this.RTAControl_Load);
             this.gbRealtimeData_108.ResumeLayout(false);
             this.gbRealtimeData_108.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbHeatEnable)).EndInit();

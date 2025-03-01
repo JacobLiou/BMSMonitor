@@ -46,8 +46,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\newproject\Sofarsolar.BMS\Sofarsolar.BMS\Sofar.BMS.csproj" />
     <ProjectReference Include="..\..\..\..\平台软件组-基础类库\协议类库\SofarDeviceSDK\Sofar.ConnectionLibs\Sofar.ConnectionLibs.csproj" />
+    <ProjectReference Include="..\..\..\A21_设备监控系统\Sofarsolar.BMS\Sofarsolar.BMS\Sofar.BMS.csproj" />
   </ItemGroup>
 
   <ItemGroup>
