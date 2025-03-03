@@ -102,6 +102,10 @@ StartListen,启动总线监听,Start bus listen";
                     await Task.Delay(1000 * 10);
                 }
             });
+
+            //使用多线程实时获取接收数据
+            ecanHelper.StartReceiving();
+
             //Task.Run(async delegate
             //{
             //    while (true)
