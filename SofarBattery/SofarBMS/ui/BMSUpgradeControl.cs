@@ -42,7 +42,7 @@ namespace SofarBMS.UI
         int Flag = 0; //当前标识：步骤1 FB /步骤2 FC + FD /步骤4 FE /步骤5 FF
         int GroupIndex = 0;
         const int MAX_RETRY_COUNT = 5;
-        const int TX_INTERVAL_TIME = 200;
+        const int TX_INTERVAL_TIME = 100;
         const int TX_INTERVAL_TIME_Data = 3;
         private bool state = false;
         public bool State
@@ -117,58 +117,6 @@ namespace SofarBMS.UI
         }
 
         /// <summary>
-        /// 导入文件-APP
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnUpgrade_03_Click(object sender, EventArgs e)
-        {
-            UpgradeModel upgradeModel = ImportUpgradeFile();
-
-            if (upgradeModel == null || upgradeModel.FwObj != 0x00)
-            {
-                MessageBox.Show(LanguageHelper.GetLanguage("BMSUpgrade_ImportError"));
-                ckLocal_Upgrade_Control0.Checked = false;
-            }
-            else
-            {
-                if (upgradeModel != null)
-                    upgradeList["APP"] = upgradeModel;
-
-                txtCoreFile.Text = upgradeModel.FileName;
-
-                ckLocal_Upgrade_Control0.Checked = upgradeModel.FileName == null ? false : true;
-            }
-        }
-
-        /// <summary>
-        /// 导入文件-CORE
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnImportCore_Click(object sender, EventArgs e)
-        {
-            UpgradeModel upgradeModel = ImportUpgradeFile();
-
-            if (upgradeModel == null || upgradeModel.FwObj != 0x01)
-            {
-                MessageBox.Show(LanguageHelper.GetLanguage("BMSUpgrade_ImportError"));
-                ckLocal_Upgrade_Control1.Checked = false;
-            }
-            else
-            {
-                if (upgradeModel != null)
-                    upgradeList["CORE"] = upgradeModel;
-
-                txtCoreFile.Text = upgradeModel.FileName;
-
-                chip_code = upgradeModel.ChipCode;
-
-                ckLocal_Upgrade_Control1.Checked = upgradeModel.FileName == null ? false : true;
-            }
-        }
-
-        /// <summary>
         /// 导入文件包
         /// </summary>
         /// <param name="sender"></param>
@@ -176,7 +124,7 @@ namespace SofarBMS.UI
         private void btnImport_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "(*.sofar;*.tar)|*.sofar;*.tar||";
+            openFileDialog.Filter = "(*.sofar;*.tar)|*.sofar;*.tar";
             openFileDialog.RestoreDirectory = true;
             openFileDialog.FilterIndex = 1;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -214,8 +162,6 @@ namespace SofarBMS.UI
             else
             {
                 txtPath.Text = "";
-                ckLocal_Upgrade_Control0.Checked = false;
-                ckLocal_Upgrade_Control1.Checked = false;
             }
         }
 
@@ -235,10 +181,7 @@ namespace SofarBMS.UI
                     return;
                 }
                 //1.判断文件是否为空
-                if (string.IsNullOrEmpty(txtPath.Text.Trim())
-                    && string.IsNullOrEmpty(txtAppFile.Text.Trim())
-                    && string.IsNullOrEmpty(txtCoreFile.Text.Trim())
-                    && (!ckLocal_Upgrade_Control0.Checked && !ckLocal_Upgrade_Control1.Checked))
+                if (string.IsNullOrEmpty(txtPath.Text.Trim()))
                 {
                     MessageBox.Show(LanguageHelper.GetLanguage("BMSUpgrade_ImportNull"), LanguageHelper.GetLanguage("BmsDebug_Tip"));
                     return;
@@ -275,180 +218,135 @@ namespace SofarBMS.UI
 
                     Task.Factory.StartNew(() =>
                     {
-                        if (rbUpgrade_05.Checked)
+                        int retryCount = 0;
+                        do
                         {
-                            int retryCount = 0;
-                            do
+                            switch (Flag)
                             {
-                                switch (Flag)
-                                {
-                                    case 1:
-                                        Thread.Sleep(3000);
+                                case 1:
+                                    Thread.Sleep(3000);
 
-                                        if (DeviceList.Count == 0)
+                                    if (DeviceList.Count == 0)
+                                    {
+                                        if (retryCount < MAX_RETRY_COUNT)
                                         {
-                                            if (retryCount < MAX_RETRY_COUNT)
-                                            {
-                                                file_size = (Convert.ToInt32(file_length / 1024) + Convert.ToInt32((file_length % 1024) != 0 ? 1 : 0) - 1);//upgradeModel.FileLength
-                                                startDownloadFlag1(0x24, chip_code, file_size, 1024);
-                                                retryCount++;
-                                            }
-                                            else
-                                            {
-                                                this.Invoke(new Action(() =>
-                                                {
-                                                    lblUpgrade_05.Text = LanguageHelper.GetLanguage("Response_Timed");
-                                                }));
-                                                _cts.Cancel();
-                                            }
+                                            file_size = (Convert.ToInt32(file_length / 1024) + Convert.ToInt32((file_length % 1024) != 0 ? 1 : 0) - 1);//upgradeModel.FileLength
+                                            startDownloadFlag1(0x24, chip_code, file_size, 1024);
+                                            retryCount++;
                                         }
                                         else
                                         {
-                                            Flag = 2;
-
                                             this.Invoke(new Action(() =>
                                             {
-                                                lblUpgrade_05.Text = LanguageHelper.GetLanguage("Upgrade_Start") + DeviceList.Count;
-                                                lblUpgrade_05.ForeColor = System.Drawing.Color.Black;
+                                                lblUpgrade_05.Text = LanguageHelper.GetLanguage("Response_Timed");
                                             }));
+                                            _cts.Cancel();
                                         }
-                                        break;
-                                    case 2:
-                                        startDownloadPack2(GroupIndex, 1024);
-                                        Thread.Sleep(TX_INTERVAL_TIME);
-                                        AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FC", "PACK_ID" + GroupIndex);
-                                        int offset = GroupIndex * 1024;
-                                        for (int i = 0; i < 1024; i += 8)
-                                        {
-                                            Thread.Sleep(TX_INTERVAL_TIME_Data);
-                                            startDownloadData3(offset + i);
-                                        }
-                                        Thread.Sleep(TX_INTERVAL_TIME);
-                                        if (GroupIndex == file_size)
-                                            Flag = 4;
-                                        else
-                                            GroupIndex++;
-
-                                        this.Invoke(new Action(() =>
-                                        {
-                                            progressBar1.Maximum = file_size;
-                                            progressBar1.Value = GroupIndex;
-
-                                            //decimal proVal = ((decimal)GroupIndex / file_size) * 100;
-                                            //progressBar1.Text = $"正在升级，当前进度为：{Convert.ToInt32(proVal)}%";
-                                        }));
-                                        break;
-                                    case 4:
-                                        do
-                                        {
-                                            ErrorList.Clear();
-                                            ResultList.Clear();
-                                            Thread.Sleep(5000);
-
-                                            if (ResultList.Count >= DeviceList.Count)
-                                            {
-                                                int[][] resultArray = new int[ResultList.Count][];
-                                                for (int i = 0; i < ResultList.Count; i++)
-                                                {
-                                                    byte[] rec = ResultList[i];
-                                                    int[] error = Check(rec).ToArray();
-                                                    resultArray[i] = error;
-                                                }
-                                                for (int i = 0; i < resultArray.Length; ++i)
-                                                {
-                                                    foreach (int j in resultArray[i])
-                                                    {
-                                                        if (!ErrorList.Contains(j))
-                                                            ErrorList.Add(j);
-                                                    }
-                                                }
-                                                for (int i = 0; i < ErrorList.Count; i++)
-                                                {
-                                                    startDownloadPack2(ErrorList[i] - 1, 1024);
-                                                    Thread.Sleep(TX_INTERVAL_TIME);
-
-                                                    GroupIndex = ErrorList[i] % 24 == 0 ? ErrorList[i] / 24 - 1 : ErrorList[i] / 24;
-                                                    //AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FE", $"等{GroupIndex}组异常，Pack为{ErrorList[i]} ");
-                                                    offset = (ErrorList[i] - 1) * 1024;
-
-                                                    for (int j = 0; j < 1024; j += 8)
-                                                    {
-                                                        Thread.Sleep(TX_INTERVAL_TIME_Data);
-                                                        startDownloadData3(offset + j);
-                                                    }
-                                                    Thread.Sleep(TX_INTERVAL_TIME);
-                                                }
-                                            }
-                                            else
-                                            {
-                                                this.Invoke(new Action(() =>
-                                                {
-                                                    AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FE", "PACK_ID" + GroupIndex);
-                                                    startDownloadCheck4(0x24, chip_code, file_data);
-                                                }));
-                                            }
-                                        } while (ErrorList.Count != 0 || ResultList.Count < DeviceList.Count);
-
-                                        if (ckUpgrade_06.Checked && upgradeTime != null)
-                                        {
-                                            startDownloadFlag6(upgradeTime);
-                                            Thread.Sleep(TX_INTERVAL_TIME);
-
-                                            startDownloadState5(0x24, chip_code, 03, 0x80);
-                                        }
-                                        else
-                                        {
-                                            startDownloadState5(0x24, chip_code, 02, 0x80);
-                                        }
-
-                                        Flag = 5;
-                                        break;
-                                }
-                            } while (Flag < 5);
-                        }
-                        else if (rbBin.Checked)
-                        {
-                            int upgradeCount = 0;
-                            if (ckLocal_Upgrade_Control0.Checked)
-                                upgradeCount++;
-                            if (ckLocal_Upgrade_Control1.Checked)
-                                upgradeCount++;
-
-                            foreach (var item in upgradeList)
-                            {
-                                if (item.Value != null)
-                                {
-                                    upgradeModel = item.Value;
-
-                                    Upgrade();
-
-                                    if (upgradeCount > 1)
-                                    {
-                                        startDownloadState5(0x24, chip_code, 03);//暂存升级
-                                        upgradeCount--;
                                     }
                                     else
                                     {
-                                        int file_type = item.Key == "CORE" ? 0x01 : 0x00;
+                                        Flag = 2;
 
-                                        if (upgradeTime != null)
+                                        this.Invoke(new Action(() =>
                                         {
-                                            startDownloadState5(0x24, chip_code, 03, file_type);//暂存升级，等待定时升级
-                                            upgradeTime = null;
+                                            lblUpgrade_05.Text = LanguageHelper.GetLanguage("Upgrade_Start") + DeviceList.Count;
+                                            lblUpgrade_05.ForeColor = System.Drawing.Color.Black;
+                                        }));
+                                    }
+                                    break;
+                                case 2:
+                                    startDownloadPack2(GroupIndex, 1024);
+                                    Thread.Sleep(TX_INTERVAL_TIME);
+                                    AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FC", "PACK_ID" + GroupIndex);
+                                    int offset = GroupIndex * 1024;
+                                    for (int i = 0; i < 1024; i += 8)
+                                    {
+                                        startDownloadData3(offset + i);
+                                        Thread.Sleep(TX_INTERVAL_TIME_Data);
+                                    }
+
+                                    //Thread.Sleep(TX_INTERVAL_TIME);
+                                    if (GroupIndex == file_size)
+                                        Flag = 4;
+                                    else
+                                        GroupIndex++;
+
+                                    this.Invoke(new Action(() =>
+                                    {
+                                        progressBar1.Maximum = file_size;
+                                        progressBar1.Value = GroupIndex;
+
+                                        //decimal proVal = ((decimal)GroupIndex / file_size) * 100;
+                                        //progressBar1.Text = $"正在升级，当前进度为：{Convert.ToInt32(proVal)}%";
+                                    }));
+                                    break;
+                                case 4:
+                                    do
+                                    {
+                                        ErrorList.Clear();
+                                        ResultList.Clear();
+                                        Thread.Sleep(5000);
+
+                                        if (ResultList.Count >= DeviceList.Count)
+                                        {
+                                            int[][] resultArray = new int[ResultList.Count][];
+                                            for (int i = 0; i < ResultList.Count; i++)
+                                            {
+                                                byte[] rec = ResultList[i];
+                                                int[] error = Check(rec).ToArray();
+                                                resultArray[i] = error;
+                                            }
+                                            for (int i = 0; i < resultArray.Length; ++i)
+                                            {
+                                                foreach (int j in resultArray[i])
+                                                {
+                                                    if (!ErrorList.Contains(j))
+                                                        ErrorList.Add(j);
+                                                }
+                                            }
+                                            for (int i = 0; i < ErrorList.Count; i++)
+                                            {
+                                                startDownloadPack2(ErrorList[i] - 1, 1024);
+                                                Thread.Sleep(TX_INTERVAL_TIME);
+
+                                                GroupIndex = ErrorList[i] % 24 == 0 ? ErrorList[i] / 24 - 1 : ErrorList[i] / 24;
+                                                //AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FE", $"等{GroupIndex}组异常，Pack为{ErrorList[i]} ");
+                                                offset = (ErrorList[i] - 1) * 1024;
+
+                                                for (int j = 0; j < 1024; j += 8)
+                                                {
+                                                    Thread.Sleep(TX_INTERVAL_TIME_Data);
+                                                    startDownloadData3(offset + j);
+                                                }
+                                                Thread.Sleep(TX_INTERVAL_TIME);
+                                            }
                                         }
                                         else
                                         {
-                                            startDownloadState5(0x24, chip_code, 02, file_type);//立即升级
+                                            this.Invoke(new Action(() =>
+                                            {
+                                                AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FE", "PACK_ID" + GroupIndex);
+                                                startDownloadCheck4(0x24, chip_code, file_data);
+                                            }));
                                         }
+                                    } while (ErrorList.Count != 0 || ResultList.Count < DeviceList.Count);
+
+                                    if (ckUpgrade_06.Checked && upgradeTime != null)
+                                    {
+                                        startDownloadFlag6(upgradeTime);
+                                        Thread.Sleep(TX_INTERVAL_TIME);
+
+                                        startDownloadState5(0x24, chip_code, 03, 0x80);
                                     }
-                                }
+                                    else
+                                    {
+                                        startDownloadState5(0x24, chip_code, 02, 0x80);
+                                    }
+
+                                    Flag = 5;
+                                    break;
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show(LanguageHelper.GetLanguage("BMSUpgrade_ImportError"));// "升级类型选择错误！"
-                            return;
-                        }
+                        } while (Flag < 5);
                     });
 
                     //注册一个委托：这个委托将任务取消的时候调用
@@ -1001,16 +899,9 @@ namespace SofarBMS.UI
         {
             try
             {
-                if (rbBin.Checked)
-                {
-                    var temp = upgradeModel.FileBuffer.Skip(offset).Take(data.Length).ToArray();
-                    data = temp;
-                }
-                else if (rbUpgrade_05.Checked)
-                {
-                    var temp = file_data.Skip(offset).Take(data.Length).ToArray();
-                    data = temp;
-                }
+                var temp = file_data.Skip(offset).Take(data.Length).ToArray();
+                data = temp;
+
                 return true;
             }
             catch (Exception ex)
@@ -1105,46 +996,6 @@ namespace SofarBMS.UI
             {
                 this.listView1.Items.Insert(0, lvi);
             }));
-        }
-
-        private void radioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            switch (((System.Windows.Forms.Control.ControlAccessibleObject)((System.Windows.Forms.Control)sender).AccessibilityObject).Name)
-            {
-                case "SOFAR文件":
-                    lblUpgrade_01.Enabled = true;
-                    lblUpgrade_00_1.Enabled = false;
-                    lblUpgrade_00_2.Enabled = false;
-
-                    txtPath.Enabled = true;
-                    txtAppFile.Enabled = false;
-                    txtCoreFile.Enabled = false;
-
-                    btnUpgrade_03.Enabled = true;
-                    btnImportApp.Enabled = false;
-                    btnImportCore.Enabled = false;
-
-                    txtAppFile.Text = "";
-                    txtCoreFile.Text = "";
-                    break;
-                case "BIN文件":
-                    lblUpgrade_01.Enabled = false;
-                    lblUpgrade_00_1.Enabled = true;
-                    lblUpgrade_00_2.Enabled = true;
-
-                    txtPath.Enabled = false;
-                    txtAppFile.Enabled = true;
-                    txtCoreFile.Enabled = true;
-
-                    btnUpgrade_03.Enabled = false;
-                    btnImportApp.Enabled = true;
-                    btnImportCore.Enabled = true;
-
-                    txtPath.Text = "";
-                    break;
-                default:
-                    break;
-            }
         }
 
         private static fw_info getFileInfo(byte[] file_data, int index)

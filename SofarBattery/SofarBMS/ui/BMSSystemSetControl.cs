@@ -1629,7 +1629,7 @@ namespace SofarBMS.UI
         private int[] BytesToBit(byte[] data)
         {
             int[] numbers = new int[8];
-            for (int i = 0; i < numbers.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
                 numbers[i] = Convert.ToInt32(data[i].ToString("X2"), 16);
             }

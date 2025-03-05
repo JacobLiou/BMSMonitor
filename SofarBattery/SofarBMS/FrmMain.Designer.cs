@@ -175,7 +175,7 @@ namespace SofarBMS
             // btnClearInit
             // 
             this.btnClearInit.AutoSize = true;
-            this.btnClearInit.Location = new System.Drawing.Point(1008, 4);
+            this.btnClearInit.Location = new System.Drawing.Point(1008, 3);
             this.btnClearInit.Margin = new System.Windows.Forms.Padding(4);
             this.btnClearInit.Name = "btnClearInit";
             this.btnClearInit.Size = new System.Drawing.Size(125, 28);
@@ -193,17 +193,17 @@ namespace SofarBMS
             this.cbbIDP.Items.AddRange(new object[] {
             "1",
             "2"});
-            this.cbbIDP.Location = new System.Drawing.Point(66, 7);
+            this.cbbIDP.Location = new System.Drawing.Point(73, 6);
             this.cbbIDP.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.cbbIDP.Name = "cbbIDP";
-            this.cbbIDP.Size = new System.Drawing.Size(75, 23);
+            this.cbbIDP.Size = new System.Drawing.Size(85, 23);
             this.cbbIDP.TabIndex = 53;
             this.cbbIDP.Click += new System.EventHandler(this.cbbIDP_SelectedIndexChanged);
             // 
             // btnResetCAN
             // 
             this.btnResetCAN.AutoSize = true;
-            this.btnResetCAN.Location = new System.Drawing.Point(487, 4);
+            this.btnResetCAN.Location = new System.Drawing.Point(556, 3);
             this.btnResetCAN.Margin = new System.Windows.Forms.Padding(4);
             this.btnResetCAN.Name = "btnResetCAN";
             this.btnResetCAN.Size = new System.Drawing.Size(75, 28);
@@ -229,10 +229,10 @@ namespace SofarBMS
             "666Kbps",
             "800Kbps",
             "1000Kbps"});
-            this.cbbBaud.Location = new System.Drawing.Point(303, 7);
+            this.cbbBaud.Location = new System.Drawing.Point(380, 6);
             this.cbbBaud.Margin = new System.Windows.Forms.Padding(4);
             this.cbbBaud.Name = "cbbBaud";
-            this.cbbBaud.Size = new System.Drawing.Size(93, 23);
+            this.cbbBaud.Size = new System.Drawing.Size(85, 23);
             this.cbbBaud.TabIndex = 42;
             // 
             // cbbID
@@ -251,10 +251,10 @@ namespace SofarBMS
             "8",
             "9",
             "10"});
-            this.cbbID.Location = new System.Drawing.Point(170, 7);
+            this.cbbID.Location = new System.Drawing.Point(215, 6);
             this.cbbID.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.cbbID.Name = "cbbID";
-            this.cbbID.Size = new System.Drawing.Size(75, 23);
+            this.cbbID.Size = new System.Drawing.Size(85, 23);
             this.cbbID.TabIndex = 31;
             this.cbbID.Click += new System.EventHandler(this.cbbID_SelectedIndexChanged);
             // 
@@ -262,7 +262,7 @@ namespace SofarBMS
             // 
             this.lblSp_01.AutoSize = true;
             this.lblSp_01.ForeColor = System.Drawing.Color.Black;
-            this.lblSp_01.Location = new System.Drawing.Point(247, 10);
+            this.lblSp_01.Location = new System.Drawing.Point(314, 9);
             this.lblSp_01.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSp_01.Name = "lblSp_01";
             this.lblSp_01.Size = new System.Drawing.Size(44, 17);
@@ -273,7 +273,7 @@ namespace SofarBMS
             // 
             this.lblSp_03.AutoSize = true;
             this.lblSp_03.ForeColor = System.Drawing.Color.Black;
-            this.lblSp_03.Location = new System.Drawing.Point(144, 10);
+            this.lblSp_03.Location = new System.Drawing.Point(176, 9);
             this.lblSp_03.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSp_03.Name = "lblSp_03";
             this.lblSp_03.Size = new System.Drawing.Size(21, 17);
@@ -283,7 +283,7 @@ namespace SofarBMS
             // btnConnectionCAN
             // 
             this.btnConnectionCAN.AutoSize = true;
-            this.btnConnectionCAN.Location = new System.Drawing.Point(404, 4);
+            this.btnConnectionCAN.Location = new System.Drawing.Point(473, 3);
             this.btnConnectionCAN.Margin = new System.Windows.Forms.Padding(4);
             this.btnConnectionCAN.Name = "btnConnectionCAN";
             this.btnConnectionCAN.Size = new System.Drawing.Size(75, 28);
@@ -296,7 +296,7 @@ namespace SofarBMS
             // 
             this.lblSp_02.AutoSize = true;
             this.lblSp_02.ForeColor = System.Drawing.Color.Black;
-            this.lblSp_02.Location = new System.Drawing.Point(10, 10);
+            this.lblSp_02.Location = new System.Drawing.Point(11, 9);
             this.lblSp_02.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSp_02.Name = "lblSp_02";
             this.lblSp_02.Size = new System.Drawing.Size(44, 17);

@@ -609,10 +609,5 @@ namespace SofarBMS.UI
 
             return (b & _byte) == _byte ? 1 : 0;
         }
-
-        private void label19_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

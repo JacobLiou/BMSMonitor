@@ -550,24 +550,24 @@ StartListen,启动总线监听,Start bus listen";
             //AddContextMenu(LanguageHelper.GetLanguage("tsmi_13"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
 
             //添加“CBS高压储能项目”菜单
-            tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_5"), Menu.Items, null);
+            //tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_5"), Menu.Items, null);
             //BMU模块
             //AddContextMenu(LanguageHelper.GetLanguage("tsmi_51"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
             //AddContextMenu(LanguageHelper.GetLanguage("tsmi_52"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_53"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_54"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            //BCU模块
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_55"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_56"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_57"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_58"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_59"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_12"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            //AddContextMenu(LanguageHelper.GetLanguage("tsmi_53"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            //AddContextMenu(LanguageHelper.GetLanguage("tsmi_54"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            ////BCU模块
+            //AddContextMenu(LanguageHelper.GetLanguage("tsmi_55"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            //AddContextMenu(LanguageHelper.GetLanguage("tsmi_56"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            //AddContextMenu(LanguageHelper.GetLanguage("tsmi_57"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            //AddContextMenu(LanguageHelper.GetLanguage("tsmi_58"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            //AddContextMenu(LanguageHelper.GetLanguage("tsmi_59"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            //AddContextMenu(LanguageHelper.GetLanguage("tsmi_12"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
 
             //添加“语言”菜单
-            tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_4"), Menu.Items, null);
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_41"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_42"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            //tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_4"), Menu.Items, null);
+            //AddContextMenu(LanguageHelper.GetLanguage("tsmi_41"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            //AddContextMenu(LanguageHelper.GetLanguage("tsmi_42"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
         }
 
         /// <summary>

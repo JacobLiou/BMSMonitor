@@ -21,8 +21,8 @@ namespace SofarBMS.UI
         // ECAN助手实例
         private EcanHelper ecanHelper = EcanHelper.Instance;
 
-        private const int TX_INTERVAL_TIME = 200;
-        private const int TX_INTERVAL_TIME_Data = 5;
+        private const int TX_INTERVAL_TIME = 100;
+        private const int TX_INTERVAL_TIME_Data = 3;
         private byte[] fileData;
         private int file_size;
         private int groupIndex;//定义组坐标
@@ -330,7 +330,7 @@ namespace SofarBMS.UI
                                     progressBar1.Value = groupIndex;
                                 }));
 
-                                Thread.Sleep(TX_INTERVAL_TIME);
+                                //Thread.Sleep(TX_INTERVAL_TIME);
 
                                 //当前包数据未发送完成
                                 if (groupIndex != file_size - 1)
