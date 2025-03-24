@@ -41,7 +41,7 @@
             this.txtManufacturerName = new System.Windows.Forms.TextBox();
             this.pbDischargeEnable = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gbRealtimeData_160 = new System.Windows.Forms.GroupBox();
             this.txtSOH16 = new System.Windows.Forms.TextBox();
             this.txtSOH15 = new System.Windows.Forms.TextBox();
             this.txtSOH14 = new System.Windows.Forms.TextBox();
@@ -77,7 +77,7 @@
             this.gbRealtimeData_109 = new System.Windows.Forms.GroupBox();
             this.lblRealtimeData_72 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblRealtimeData_161 = new System.Windows.Forms.Label();
             this.txtRegisterName = new System.Windows.Forms.TextBox();
             this.txtActiveBalanceStatus = new System.Windows.Forms.TextBox();
             this.lblRealtimeData_141 = new System.Windows.Forms.Label();
@@ -142,9 +142,9 @@
             this.lblRealtimeData_14 = new System.Windows.Forms.Label();
             this.gbRealtimeData_108 = new System.Windows.Forms.GroupBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblRealtimeData_163 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblRealtimeData_162 = new System.Windows.Forms.Label();
             this.pbChargeIO = new System.Windows.Forms.PictureBox();
             this.lblRealtimeData_148 = new System.Windows.Forms.Label();
             this.pbDiIO = new System.Windows.Forms.PictureBox();
@@ -159,12 +159,15 @@
             this.lblRealtimeData_151 = new System.Windows.Forms.Label();
             this.lblRealtimeData_152 = new System.Windows.Forms.Label();
             this.lblRealtimeData_153 = new System.Windows.Forms.Label();
+            this.gbRealtimeData_164 = new System.Windows.Forms.GroupBox();
+            this.gbRealtimeData_105 = new System.Windows.Forms.GroupBox();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.gbRealtimeData_165 = new System.Windows.Forms.GroupBox();
+            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.gbRealtimeData_104 = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.gbRealtimeData_103 = new System.Windows.Forms.GroupBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.gbRealtimeData_101 = new System.Windows.Forms.GroupBox();
             this.txtBatDiffCellVolt = new System.Windows.Forms.TextBox();
             this.lblRealtimeData_57 = new System.Windows.Forms.Label();
@@ -254,7 +257,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbBmuCutOffRequest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDischargeEnable)).BeginInit();
             this.panel3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.gbRealtimeData_160.SuspendLayout();
             this.gbRealtimeData_109.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbRealtimeData_100.SuspendLayout();
@@ -266,7 +269,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbDischargeStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbChagreStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbChargeEnable)).BeginInit();
+            this.gbRealtimeData_164.SuspendLayout();
+            this.gbRealtimeData_105.SuspendLayout();
+            this.gbRealtimeData_165.SuspendLayout();
             this.gbRealtimeData_104.SuspendLayout();
+            this.gbRealtimeData_103.SuspendLayout();
             this.gbRealtimeData_101.SuspendLayout();
             this.gbRealtimeData_102.SuspendLayout();
             this.SuspendLayout();
@@ -390,12 +397,12 @@
             // 
             this.panel3.AutoScroll = true;
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel3.Controls.Add(this.groupBox2);
+            this.panel3.Controls.Add(this.gbRealtimeData_160);
             this.panel3.Controls.Add(this.gbRealtimeData_109);
             this.panel3.Controls.Add(this.groupBox1);
             this.panel3.Controls.Add(this.gbRealtimeData_100);
             this.panel3.Controls.Add(this.gbRealtimeData_108);
-            this.panel3.Controls.Add(this.gbRealtimeData_104);
+            this.panel3.Controls.Add(this.gbRealtimeData_164);
             this.panel3.Controls.Add(this.gbRealtimeData_101);
             this.panel3.Controls.Add(this.gbRealtimeData_102);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -403,49 +410,49 @@
             this.panel3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.panel3.Size = new System.Drawing.Size(1306, 692);
+            this.panel3.Size = new System.Drawing.Size(1329, 808);
             this.panel3.TabIndex = 61;
             // 
-            // groupBox2
+            // gbRealtimeData_160
             // 
-            this.groupBox2.Controls.Add(this.txtSOH16);
-            this.groupBox2.Controls.Add(this.txtSOH15);
-            this.groupBox2.Controls.Add(this.txtSOH14);
-            this.groupBox2.Controls.Add(this.txtSOH13);
-            this.groupBox2.Controls.Add(this.txtSOH12);
-            this.groupBox2.Controls.Add(this.txtSOH11);
-            this.groupBox2.Controls.Add(this.txtSOH10);
-            this.groupBox2.Controls.Add(this.txtSOH5);
-            this.groupBox2.Controls.Add(this.txtSOH9);
-            this.groupBox2.Controls.Add(this.txtSOH4);
-            this.groupBox2.Controls.Add(this.txtSOH8);
-            this.groupBox2.Controls.Add(this.txtSOH3);
-            this.groupBox2.Controls.Add(this.txtSOH7);
-            this.groupBox2.Controls.Add(this.txtSOH2);
-            this.groupBox2.Controls.Add(this.txtSOH6);
-            this.groupBox2.Controls.Add(this.txtSOH1);
-            this.groupBox2.Controls.Add(this.txtSOC16);
-            this.groupBox2.Controls.Add(this.txtSOC15);
-            this.groupBox2.Controls.Add(this.txtSOC14);
-            this.groupBox2.Controls.Add(this.txtSOC13);
-            this.groupBox2.Controls.Add(this.txtSOC12);
-            this.groupBox2.Controls.Add(this.txtSOC11);
-            this.groupBox2.Controls.Add(this.txtSOC10);
-            this.groupBox2.Controls.Add(this.txtSOC5);
-            this.groupBox2.Controls.Add(this.txtSOC9);
-            this.groupBox2.Controls.Add(this.txtSOC4);
-            this.groupBox2.Controls.Add(this.txtSOC8);
-            this.groupBox2.Controls.Add(this.txtSOC3);
-            this.groupBox2.Controls.Add(this.txtSOC7);
-            this.groupBox2.Controls.Add(this.txtSOC2);
-            this.groupBox2.Controls.Add(this.txtSOC6);
-            this.groupBox2.Controls.Add(this.txtSOC1);
-            this.groupBox2.Location = new System.Drawing.Point(1156, 7);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(144, 517);
-            this.groupBox2.TabIndex = 66;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "SOC || SOH 升序";
+            this.gbRealtimeData_160.Controls.Add(this.txtSOH16);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOH15);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOH14);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOH13);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOH12);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOH11);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOH10);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOH5);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOH9);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOH4);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOH8);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOH3);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOH7);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOH2);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOH6);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOH1);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOC16);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOC15);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOC14);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOC13);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOC12);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOC11);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOC10);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOC5);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOC9);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOC4);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOC8);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOC3);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOC7);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOC2);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOC6);
+            this.gbRealtimeData_160.Controls.Add(this.txtSOC1);
+            this.gbRealtimeData_160.Location = new System.Drawing.Point(1156, 7);
+            this.gbRealtimeData_160.Name = "gbRealtimeData_160";
+            this.gbRealtimeData_160.Size = new System.Drawing.Size(147, 510);
+            this.gbRealtimeData_160.TabIndex = 66;
+            this.gbRealtimeData_160.TabStop = false;
+            this.gbRealtimeData_160.Text = "SOC || SOH 升序";
             // 
             // txtSOH16
             // 
@@ -765,7 +772,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lblRealtimeData_161);
             this.groupBox1.Controls.Add(this.txtRegisterName);
             this.groupBox1.Controls.Add(this.txtActiveBalanceStatus);
             this.groupBox1.Controls.Add(this.lblRealtimeData_141);
@@ -799,25 +806,24 @@
             this.groupBox1.Controls.Add(this.txtBalanceCurrent);
             this.groupBox1.Controls.Add(this.lblRealtimeData_135);
             this.groupBox1.Controls.Add(this.lblRealtimeData_133);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Location = new System.Drawing.Point(215, 7);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(232, 517);
+            this.groupBox1.Size = new System.Drawing.Size(238, 510);
             this.groupBox1.TabIndex = 65;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "电池信息";
             // 
-            // label1
+            // lblRealtimeData_161
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 477);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 17);
-            this.label1.TabIndex = 113;
-            this.label1.Text = "厂家注册ID-new";
+            this.lblRealtimeData_161.AutoSize = true;
+            this.lblRealtimeData_161.Location = new System.Drawing.Point(6, 476);
+            this.lblRealtimeData_161.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRealtimeData_161.Name = "lblRealtimeData_161";
+            this.lblRealtimeData_161.Size = new System.Drawing.Size(97, 17);
+            this.lblRealtimeData_161.TabIndex = 113;
+            this.lblRealtimeData_161.Text = "厂家注册ID-new";
             // 
             // txtRegisterName
             // 
@@ -1145,19 +1151,18 @@
             this.gbRealtimeData_100.Controls.Add(this.lblRealtimeData_17);
             this.gbRealtimeData_100.Controls.Add(this.lblRealtimeData_16);
             this.gbRealtimeData_100.Controls.Add(this.lblRealtimeData_14);
-            this.gbRealtimeData_100.Dock = System.Windows.Forms.DockStyle.Left;
-            this.gbRealtimeData_100.Location = new System.Drawing.Point(6, 7);
+            this.gbRealtimeData_100.Location = new System.Drawing.Point(3, 7);
             this.gbRealtimeData_100.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.gbRealtimeData_100.Name = "gbRealtimeData_100";
             this.gbRealtimeData_100.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.gbRealtimeData_100.Size = new System.Drawing.Size(209, 517);
+            this.gbRealtimeData_100.Size = new System.Drawing.Size(209, 510);
             this.gbRealtimeData_100.TabIndex = 32;
             this.gbRealtimeData_100.TabStop = false;
             this.gbRealtimeData_100.Text = "运行信息";
             // 
             // txtDischargeCurrentLimitation
             // 
-            this.txtDischargeCurrentLimitation.Location = new System.Drawing.Point(126, 481);
+            this.txtDischargeCurrentLimitation.Location = new System.Drawing.Point(126, 474);
             this.txtDischargeCurrentLimitation.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtDischargeCurrentLimitation.Name = "txtDischargeCurrentLimitation";
             this.txtDischargeCurrentLimitation.ReadOnly = true;
@@ -1176,12 +1181,12 @@
             // lblRealtimeData_05
             // 
             this.lblRealtimeData_05.AutoSize = true;
-            this.lblRealtimeData_05.Location = new System.Drawing.Point(3, 481);
+            this.lblRealtimeData_05.Location = new System.Drawing.Point(3, 474);
             this.lblRealtimeData_05.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_05.Name = "lblRealtimeData_05";
             this.lblRealtimeData_05.Size = new System.Drawing.Size(80, 17);
             this.lblRealtimeData_05.TabIndex = 115;
-            this.lblRealtimeData_05.Text = "充电电流下限";
+            this.lblRealtimeData_05.Text = "放电电流下限";
             // 
             // lblRealtimeData_121
             // 
@@ -1195,7 +1200,7 @@
             // 
             // txtChargeCurrentLimitation
             // 
-            this.txtChargeCurrentLimitation.Location = new System.Drawing.Point(126, 447);
+            this.txtChargeCurrentLimitation.Location = new System.Drawing.Point(126, 442);
             this.txtChargeCurrentLimitation.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtChargeCurrentLimitation.Name = "txtChargeCurrentLimitation";
             this.txtChargeCurrentLimitation.ReadOnly = true;
@@ -1205,7 +1210,7 @@
             // lblRealtimeData_04
             // 
             this.lblRealtimeData_04.AutoSize = true;
-            this.lblRealtimeData_04.Location = new System.Drawing.Point(3, 447);
+            this.lblRealtimeData_04.Location = new System.Drawing.Point(3, 442);
             this.lblRealtimeData_04.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_04.Name = "lblRealtimeData_04";
             this.lblRealtimeData_04.Size = new System.Drawing.Size(80, 17);
@@ -1250,7 +1255,7 @@
             // 
             // txtBMSStatus
             // 
-            this.txtBMSStatus.Location = new System.Drawing.Point(126, 413);
+            this.txtBMSStatus.Location = new System.Drawing.Point(126, 410);
             this.txtBMSStatus.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtBMSStatus.Name = "txtBMSStatus";
             this.txtBMSStatus.ReadOnly = true;
@@ -1260,7 +1265,7 @@
             // lblRealtimeData_03
             // 
             this.lblRealtimeData_03.AutoSize = true;
-            this.lblRealtimeData_03.Location = new System.Drawing.Point(3, 415);
+            this.lblRealtimeData_03.Location = new System.Drawing.Point(3, 412);
             this.lblRealtimeData_03.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_03.Name = "lblRealtimeData_03";
             this.lblRealtimeData_03.Size = new System.Drawing.Size(59, 17);
@@ -1443,9 +1448,9 @@
             // gbRealtimeData_108
             // 
             this.gbRealtimeData_108.Controls.Add(this.pictureBox2);
-            this.gbRealtimeData_108.Controls.Add(this.label3);
+            this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_163);
             this.gbRealtimeData_108.Controls.Add(this.pictureBox1);
-            this.gbRealtimeData_108.Controls.Add(this.label2);
+            this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_162);
             this.gbRealtimeData_108.Controls.Add(this.pbChargeIO);
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_148);
             this.gbRealtimeData_108.Controls.Add(this.pbDiIO);
@@ -1464,7 +1469,7 @@
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_151);
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_152);
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_153);
-            this.gbRealtimeData_108.Location = new System.Drawing.Point(455, 448);
+            this.gbRealtimeData_108.Location = new System.Drawing.Point(455, 441);
             this.gbRealtimeData_108.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.gbRealtimeData_108.Name = "gbRealtimeData_108";
             this.gbRealtimeData_108.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
@@ -1483,15 +1488,15 @@
             this.pictureBox2.TabIndex = 23;
             this.pictureBox2.TabStop = false;
             // 
-            // label3
+            // lblRealtimeData_163
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(173, 43);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 17);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "加热请求";
+            this.lblRealtimeData_163.AutoSize = true;
+            this.lblRealtimeData_163.Location = new System.Drawing.Point(173, 43);
+            this.lblRealtimeData_163.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRealtimeData_163.Name = "lblRealtimeData_163";
+            this.lblRealtimeData_163.Size = new System.Drawing.Size(56, 17);
+            this.lblRealtimeData_163.TabIndex = 22;
+            this.lblRealtimeData_163.Text = "加热请求";
             // 
             // pictureBox1
             // 
@@ -1503,15 +1508,15 @@
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
             // 
-            // label2
+            // lblRealtimeData_162
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 43);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 17);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "告警阈值同步";
+            this.lblRealtimeData_162.AutoSize = true;
+            this.lblRealtimeData_162.Location = new System.Drawing.Point(21, 43);
+            this.lblRealtimeData_162.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRealtimeData_162.Name = "lblRealtimeData_162";
+            this.lblRealtimeData_162.Size = new System.Drawing.Size(80, 17);
+            this.lblRealtimeData_162.TabIndex = 20;
+            this.lblRealtimeData_162.Text = "告警阈值同步";
             // 
             // pbChargeIO
             // 
@@ -1653,50 +1658,112 @@
             this.lblRealtimeData_153.TabIndex = 0;
             this.lblRealtimeData_153.Text = "允许充电";
             // 
+            // gbRealtimeData_164
+            // 
+            this.gbRealtimeData_164.Controls.Add(this.gbRealtimeData_105);
+            this.gbRealtimeData_164.Controls.Add(this.gbRealtimeData_165);
+            this.gbRealtimeData_164.Controls.Add(this.gbRealtimeData_104);
+            this.gbRealtimeData_164.Controls.Add(this.gbRealtimeData_103);
+            this.gbRealtimeData_164.Location = new System.Drawing.Point(3, 521);
+            this.gbRealtimeData_164.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.gbRealtimeData_164.Name = "gbRealtimeData_164";
+            this.gbRealtimeData_164.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.gbRealtimeData_164.Size = new System.Drawing.Size(1306, 288);
+            this.gbRealtimeData_164.TabIndex = 52;
+            this.gbRealtimeData_164.TabStop = false;
+            this.gbRealtimeData_164.Text = "报警信息";
+            this.gbRealtimeData_164.UseCompatibleTextRendering = true;
+            // 
+            // gbRealtimeData_105
+            // 
+            this.gbRealtimeData_105.Controls.Add(this.richTextBox3);
+            this.gbRealtimeData_105.Location = new System.Drawing.Point(581, 21);
+            this.gbRealtimeData_105.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbRealtimeData_105.Name = "gbRealtimeData_105";
+            this.gbRealtimeData_105.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbRealtimeData_105.Size = new System.Drawing.Size(280, 251);
+            this.gbRealtimeData_105.TabIndex = 70;
+            this.gbRealtimeData_105.TabStop = false;
+            this.gbRealtimeData_105.Text = "告警状态-new";
+            this.gbRealtimeData_105.UseCompatibleTextRendering = true;
+            // 
+            // richTextBox3
+            // 
+            this.richTextBox3.Location = new System.Drawing.Point(6, 22);
+            this.richTextBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.ReadOnly = true;
+            this.richTextBox3.Size = new System.Drawing.Size(270, 225);
+            this.richTextBox3.TabIndex = 1;
+            this.richTextBox3.Text = "";
+            // 
+            // gbRealtimeData_165
+            // 
+            this.gbRealtimeData_165.Controls.Add(this.richTextBox4);
+            this.gbRealtimeData_165.Location = new System.Drawing.Point(869, 21);
+            this.gbRealtimeData_165.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbRealtimeData_165.Name = "gbRealtimeData_165";
+            this.gbRealtimeData_165.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbRealtimeData_165.Size = new System.Drawing.Size(280, 251);
+            this.gbRealtimeData_165.TabIndex = 67;
+            this.gbRealtimeData_165.TabStop = false;
+            this.gbRealtimeData_165.Text = "提示状态";
+            // 
+            // richTextBox4
+            // 
+            this.richTextBox4.Location = new System.Drawing.Point(5, 22);
+            this.richTextBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.richTextBox4.Name = "richTextBox4";
+            this.richTextBox4.ReadOnly = true;
+            this.richTextBox4.Size = new System.Drawing.Size(270, 225);
+            this.richTextBox4.TabIndex = 0;
+            this.richTextBox4.Text = "";
+            // 
             // gbRealtimeData_104
             // 
-            this.gbRealtimeData_104.Controls.Add(this.listView1);
-            this.gbRealtimeData_104.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gbRealtimeData_104.Location = new System.Drawing.Point(6, 524);
-            this.gbRealtimeData_104.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.gbRealtimeData_104.Controls.Add(this.richTextBox1);
+            this.gbRealtimeData_104.Location = new System.Drawing.Point(5, 21);
+            this.gbRealtimeData_104.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbRealtimeData_104.Name = "gbRealtimeData_104";
-            this.gbRealtimeData_104.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.gbRealtimeData_104.Size = new System.Drawing.Size(1294, 161);
-            this.gbRealtimeData_104.TabIndex = 52;
+            this.gbRealtimeData_104.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbRealtimeData_104.Size = new System.Drawing.Size(280, 251);
+            this.gbRealtimeData_104.TabIndex = 69;
             this.gbRealtimeData_104.TabStop = false;
-            this.gbRealtimeData_104.Text = "报警信息";
+            this.gbRealtimeData_104.Text = "故障状态";
             this.gbRealtimeData_104.UseCompatibleTextRendering = true;
             // 
-            // listView1
+            // richTextBox1
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.Location = new System.Drawing.Point(2, 19);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1290, 139);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.richTextBox1.Location = new System.Drawing.Point(5, 24);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(270, 225);
+            this.richTextBox1.TabIndex = 1;
+            this.richTextBox1.Text = "";
             // 
-            // columnHeader1
+            // gbRealtimeData_103
             // 
-            this.columnHeader1.Text = "序号";
+            this.gbRealtimeData_103.Controls.Add(this.richTextBox2);
+            this.gbRealtimeData_103.Location = new System.Drawing.Point(293, 21);
+            this.gbRealtimeData_103.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbRealtimeData_103.Name = "gbRealtimeData_103";
+            this.gbRealtimeData_103.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbRealtimeData_103.Size = new System.Drawing.Size(280, 251);
+            this.gbRealtimeData_103.TabIndex = 68;
+            this.gbRealtimeData_103.TabStop = false;
+            this.gbRealtimeData_103.Text = "保护状态";
+            this.gbRealtimeData_103.UseCompatibleTextRendering = true;
             // 
-            // columnHeader2
+            // richTextBox2
             // 
-            this.columnHeader2.Text = "报警类型";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "报警描述";
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "状态";
+            this.richTextBox2.Location = new System.Drawing.Point(5, 24);
+            this.richTextBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.ReadOnly = true;
+            this.richTextBox2.Size = new System.Drawing.Size(270, 225);
+            this.richTextBox2.TabIndex = 1;
+            this.richTextBox2.Text = "";
             // 
             // gbRealtimeData_101
             // 
@@ -2593,15 +2660,15 @@
             this.AutoScroll = true;
             this.Controls.Add(this.panel3);
             this.Name = "CBSControl_BMU";
-            this.Size = new System.Drawing.Size(1306, 692);
+            this.Size = new System.Drawing.Size(1329, 808);
             this.Load += new System.EventHandler(this.CBSControl_BMU_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbForceChrgRequest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBmuPowOffRequest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBmuCutOffRequest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDischargeEnable)).EndInit();
             this.panel3.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.gbRealtimeData_160.ResumeLayout(false);
+            this.gbRealtimeData_160.PerformLayout();
             this.gbRealtimeData_109.ResumeLayout(false);
             this.gbRealtimeData_109.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -2617,7 +2684,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbDischargeStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbChagreStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbChargeEnable)).EndInit();
+            this.gbRealtimeData_164.ResumeLayout(false);
+            this.gbRealtimeData_105.ResumeLayout(false);
+            this.gbRealtimeData_165.ResumeLayout(false);
             this.gbRealtimeData_104.ResumeLayout(false);
+            this.gbRealtimeData_103.ResumeLayout(false);
             this.gbRealtimeData_101.ResumeLayout(false);
             this.gbRealtimeData_101.PerformLayout();
             this.gbRealtimeData_102.ResumeLayout(false);
@@ -2720,15 +2791,9 @@
         private Label lblRealtimeData_151;
         private Label lblRealtimeData_152;
         private Label lblRealtimeData_153;
-        private GroupBox gbRealtimeData_104;
         private GroupBox gbRealtimeData_101;
         private GroupBox gbRealtimeData_102;
-        private ListView listView1;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader4;
-        private Label label1;
+        private Label lblRealtimeData_161;
         private TextBox txtRegisterName;
         private TextBox txtPowerTemperture2;
         private Label lblRealtimeData_125;
@@ -2813,10 +2878,10 @@
         private Label lblRealtimeData_19;
         private Label lblRealtimeData_18;
         private PictureBox pictureBox1;
-        private Label label2;
+        private Label lblRealtimeData_162;
         private PictureBox pictureBox2;
-        private Label label3;
-        private GroupBox groupBox2;
+        private Label lblRealtimeData_163;
+        private GroupBox gbRealtimeData_160;
         private TextBox txtSOC16;
         private TextBox txtSOC15;
         private TextBox txtSOC14;
@@ -2849,5 +2914,14 @@
         private TextBox txtSOH2;
         private TextBox txtSOH6;
         private TextBox txtSOH1;
+        private GroupBox gbRealtimeData_164;
+        private GroupBox gbRealtimeData_105;
+        private RichTextBox richTextBox3;
+        private GroupBox gbRealtimeData_165;
+        private RichTextBox richTextBox4;
+        private GroupBox gbRealtimeData_104;
+        private RichTextBox richTextBox1;
+        private GroupBox gbRealtimeData_103;
+        private RichTextBox richTextBox2;
     }
 }

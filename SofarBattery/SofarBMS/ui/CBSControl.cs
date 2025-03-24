@@ -1,4 +1,5 @@
-﻿using Sofar.ConnectionLibs.CAN;
+﻿using Sofar.BMS.Models;
+using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
 using System.Text;
@@ -10,8 +11,6 @@ namespace SofarBMS.UI
         public CBSControl()
         {
             InitializeComponent();
-
-            cts = new CancellationTokenSource();
         }
 
         string[] packSN = new string[3];
@@ -24,12 +23,15 @@ namespace SofarBMS.UI
 
         private void RTAControl_Load(object sender, EventArgs e)
         {
-            //多语言翻译
-            foreach (Control item in this.Controls)
+            this.Invoke(new Action(() =>
             {
-                GetControls(item);
-            }
+                foreach (Control item in this.Controls)
+                {
+                    GetControls(item);
+                }
+            }));
 
+            cts = new CancellationTokenSource();
             Task.Run(async delegate
             {
                 while (!cts.IsCancellationRequested)
@@ -61,13 +63,6 @@ namespace SofarBMS.UI
 
                         //定时一秒存储一次数据
                         await Task.Delay(500);
-
-                        //while (EcanHelper._task.Count > 0
-                        //    && !cts.IsCancellationRequested)
-                        //{
-                        //    CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-                        //    this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
-                        //}
                     }
                 }
             }, cts.Token);
@@ -77,6 +72,12 @@ namespace SofarBMS.UI
 
         private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
         {
+            if (cts.IsCancellationRequested && ecanHelper.IsConnected)
+            {
+                ecanHelper.AnalysisDataInvoked -= ServiceBase_AnalysisDataInvoked;
+                return;
+            }
+
             var frameModel = e as CanFrameModel;
             if (frameModel != null)
             {

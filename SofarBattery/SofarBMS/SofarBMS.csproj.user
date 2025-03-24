@@ -30,5 +30,8 @@
     <EmbeddedResource Update="ui\BMSSystemSetControl.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Update="ui\CBSControl_BCU.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

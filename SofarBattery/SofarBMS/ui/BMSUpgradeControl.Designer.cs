@@ -47,13 +47,15 @@
             this.lblUpgrade_07 = new System.Windows.Forms.Label();
             this.lblUpgradeRole = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtTX_INTERVAL_TIME_Data = new System.Windows.Forms.TextBox();
+            this.txtTX_INTERVAL_TIME = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(122, 101);
+            this.progressBar1.Location = new System.Drawing.Point(122, 90);
             this.progressBar1.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(892, 26);
@@ -65,7 +67,7 @@
             this.btnUpgrade_04.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnUpgrade_04.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnUpgrade_04.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnUpgrade_04.Location = new System.Drawing.Point(1022, 58);
+            this.btnUpgrade_04.Location = new System.Drawing.Point(1022, 50);
             this.btnUpgrade_04.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpgrade_04.Name = "btnUpgrade_04";
             this.btnUpgrade_04.Size = new System.Drawing.Size(100, 35);
@@ -77,7 +79,7 @@
             // lblUpgrade_05
             // 
             this.lblUpgrade_05.AutoSize = true;
-            this.lblUpgrade_05.Location = new System.Drawing.Point(122, 131);
+            this.lblUpgrade_05.Location = new System.Drawing.Point(122, 120);
             this.lblUpgrade_05.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUpgrade_05.Name = "lblUpgrade_05";
             this.lblUpgrade_05.Size = new System.Drawing.Size(32, 17);
@@ -141,7 +143,7 @@
             // lblUpgrade_02
             // 
             this.lblUpgrade_02.AutoSize = true;
-            this.lblUpgrade_02.Location = new System.Drawing.Point(22, 105);
+            this.lblUpgrade_02.Location = new System.Drawing.Point(22, 94);
             this.lblUpgrade_02.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUpgrade_02.Name = "lblUpgrade_02";
             this.lblUpgrade_02.Size = new System.Drawing.Size(56, 17);
@@ -153,7 +155,7 @@
             this.dateTimePicker1.Checked = false;
             this.dateTimePicker1.CustomFormat = "yy-MM-dd HH:mm:ss";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(122, 64);
+            this.dateTimePicker1.Location = new System.Drawing.Point(122, 56);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.ShowUpDown = true;
@@ -163,7 +165,7 @@
             // ckUpgrade_06
             // 
             this.ckUpgrade_06.AutoSize = true;
-            this.ckUpgrade_06.Location = new System.Drawing.Point(322, 65);
+            this.ckUpgrade_06.Location = new System.Drawing.Point(322, 57);
             this.ckUpgrade_06.Margin = new System.Windows.Forms.Padding(4);
             this.ckUpgrade_06.Name = "ckUpgrade_06";
             this.ckUpgrade_06.Size = new System.Drawing.Size(99, 21);
@@ -207,7 +209,7 @@
             this.cbbChipcode.Items.AddRange(new object[] {
             "E0",
             "S3"});
-            this.cbbChipcode.Location = new System.Drawing.Point(503, 63);
+            this.cbbChipcode.Location = new System.Drawing.Point(503, 55);
             this.cbbChipcode.Margin = new System.Windows.Forms.Padding(4);
             this.cbbChipcode.Name = "cbbChipcode";
             this.cbbChipcode.Size = new System.Drawing.Size(117, 25);
@@ -217,7 +219,7 @@
             // lblUpgrade_07
             // 
             this.lblUpgrade_07.AutoSize = true;
-            this.lblUpgrade_07.Location = new System.Drawing.Point(22, 67);
+            this.lblUpgrade_07.Location = new System.Drawing.Point(22, 59);
             this.lblUpgrade_07.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUpgrade_07.Name = "lblUpgrade_07";
             this.lblUpgrade_07.Size = new System.Drawing.Size(56, 17);
@@ -227,7 +229,7 @@
             // lblUpgradeRole
             // 
             this.lblUpgradeRole.AutoSize = true;
-            this.lblUpgradeRole.Location = new System.Drawing.Point(439, 67);
+            this.lblUpgradeRole.Location = new System.Drawing.Point(439, 59);
             this.lblUpgradeRole.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUpgradeRole.Name = "lblUpgradeRole";
             this.lblUpgradeRole.Size = new System.Drawing.Size(56, 17);
@@ -236,6 +238,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtTX_INTERVAL_TIME_Data);
+            this.panel1.Controls.Add(this.txtTX_INTERVAL_TIME);
             this.panel1.Controls.Add(this.lblUpgradeRole);
             this.panel1.Controls.Add(this.progressBar1);
             this.panel1.Controls.Add(this.ckUpgrade_06);
@@ -253,6 +257,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1132, 155);
             this.panel1.TabIndex = 23;
+            // 
+            // txtTX_INTERVAL_TIME_Data
+            // 
+            this.txtTX_INTERVAL_TIME_Data.Location = new System.Drawing.Point(708, 55);
+            this.txtTX_INTERVAL_TIME_Data.Name = "txtTX_INTERVAL_TIME_Data";
+            this.txtTX_INTERVAL_TIME_Data.Size = new System.Drawing.Size(75, 23);
+            this.txtTX_INTERVAL_TIME_Data.TabIndex = 31;
+            this.txtTX_INTERVAL_TIME_Data.Text = "3";
+            this.txtTX_INTERVAL_TIME_Data.TextChanged += new System.EventHandler(this.txtTX_INTERVAL_TIME_Data_TextChanged);
+            // 
+            // txtTX_INTERVAL_TIME
+            // 
+            this.txtTX_INTERVAL_TIME.Location = new System.Drawing.Point(627, 55);
+            this.txtTX_INTERVAL_TIME.Name = "txtTX_INTERVAL_TIME";
+            this.txtTX_INTERVAL_TIME.Size = new System.Drawing.Size(75, 23);
+            this.txtTX_INTERVAL_TIME.TabIndex = 30;
+            this.txtTX_INTERVAL_TIME.Text = "100";
+            this.txtTX_INTERVAL_TIME.TextChanged += new System.EventHandler(this.txtTX_INTERVAL_TIME_TextChanged);
             // 
             // BMSUpgradeControl
             // 
@@ -293,5 +315,7 @@
         private System.Windows.Forms.ComboBox cbbChipcode;
         private Label lblUpgradeRole;
         private Panel panel1;
+        private TextBox txtTX_INTERVAL_TIME_Data;
+        private TextBox txtTX_INTERVAL_TIME;
     }
 }

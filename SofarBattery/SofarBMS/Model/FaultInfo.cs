@@ -30,7 +30,7 @@ namespace SofarBMS.Model
         public int Byte { get => _byte; set => _byte = value; }
         public int Bit { get => _bit; set => _bit = value; }
 
-
+        //内部电池故障信息1
         public static List<FaultInfo> FaultInfos = new List<FaultInfo>() {
                     new FaultInfo("单体过压保护,CELL_U_H1",0,0,0,0,2),
                     new FaultInfo("单体过压告警,CELL_U_H2",0,1,0,0,1),
@@ -67,7 +67,7 @@ namespace SofarBMS.Model
                     new FaultInfo("电池满充,CHG_FULL",4,0,0,0,1),
                     new FaultInfo("短路保护,SHORT_CIRCUIT",4,1,0,0,2),
                     new FaultInfo("EEPROM异常,EEPROM_ERROR",4,2,0,0,3),
-                    new FaultInfo("电芯失效,CELL_INVALID",4,3,0,0,3),
+                    new FaultInfo("电芯电压故障,FLT_CELL_VOLT_FAULT",4,3,0,0,3),
                     new FaultInfo("NTC异常,NTC_INVALID",4,4,0,0,3),
                     new FaultInfo("充电MOS异常,CHG_MOS_INVALID",4,5,0,0,3),
                     new FaultInfo("放电MOS异常,DSG_MOS_INVALID",4,6,0,0,3),
@@ -82,18 +82,23 @@ namespace SofarBMS.Model
                     new FaultInfo("软件异常,SOFT_ERROR",5,7,0,0,3),
                     new FaultInfo("充电电流大环零点不良,CHG_CURR_BIG_RING_BADNESS",6,0,0,0,3),
                     new FaultInfo("充电电流小环零点不良,CHG_CURR_LITTLE_RING_BADNESS",6,1,0,0,3),
-                    new FaultInfo("零点电流异常,CURR_OFFSET_BADNESS",6,2,0,0,3),
+                    new FaultInfo("电流偏置位不良,CURR_OFFSET_BADNESS",6,2,0,0,3),
                     new FaultInfo("主回路保险丝熔断,MAIN_CIRCUIT_BLOWN_FUSE",6,3,0,0,3),
                     new FaultInfo("锁存器异常,LATCH_ERR",6,4,0,0,3),
-                    new FaultInfo("12V电压异常,VOLT_12V_ERR",6,5,0,0,3),
+                    new FaultInfo("辅源电压异常,VOLT_12V_ERR",6,5,0,0,3),
                     new FaultInfo("电池过压严重故障,CELL_VOLT_OVER_MAJOR_FAULT",6,6,0,0,3),
                     new FaultInfo("电池欠压严重故障,CELL_VOLT_LOW_MAJOR_FAULT",6,7,0,0,3),
                     new FaultInfo("放电电流大环零点不良,DSG_CURR_BIG_RING_BADNESS",7,0,0,0,3),
                     new FaultInfo("放电电流小环零点不良,DSG_CURR_LITTLE_RING_BADNESS",7,1,0,0,3),
                     new FaultInfo("电芯温度过大,CELL_TEMP_DIFF_OVER",7,2,0,0,2),
-                    new FaultInfo("绝缘检测,INSUALATION_FAULT",7,3,0,0,2)
+                    new FaultInfo("绝缘检测,INSUALATION_FAULT",7,3,0,0,2),
+                    new FaultInfo("保留,res",7,4,0,0,2),
+                    new FaultInfo("保留,res",7,5,0,0,2),
+                    new FaultInfo("保留,res",7,6,0,0,2),
+                    new FaultInfo("保留,res",7,7,0,0,2),
         };
-        
+
+        //内部电池故障信息2
         public static List<FaultInfo> FaultInfos2 = new List<FaultInfo>()
         {
                     new FaultInfo("主动均衡失效,ACTIVE_BALANCE_ERR",0,0,0,0,1),
@@ -147,6 +152,11 @@ namespace SofarBMS.Model
                     new FaultInfo("充电严重过流故障锁定,FLT_CHG_CUR_OVER_SERIOUS_LOCK",6,0,0,0,3),
                     new FaultInfo("放电严重过流故障锁定,FLT_DCHG_CUR_OVER_SERIOUS_LOCK",6,1,0,0,3),
                     new FaultInfo("加热回路失控故障,FLT_HEAT_LOSE_CONTROL",6,2,0,0,3),
+                    new FaultInfo("保留,res",6,3,0,0,3),
+                    new FaultInfo("保留,res",6,4,0,0,3),
+                    new FaultInfo("保留,res",6,5,0,0,3),
+                    new FaultInfo("保留,res",6,6,0,0,3),
+                    new FaultInfo("保留,res",6,7,0,0,3)
         };
 
         public static List<FaultInfo> FaultInfos3 = new List<FaultInfo>()

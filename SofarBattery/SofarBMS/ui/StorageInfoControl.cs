@@ -39,41 +39,32 @@ namespace SofarBMS.UI
         public StorageInfoControl()
         {
             InitializeComponent();
-
-            cts = new CancellationTokenSource();
         }
 
         private void StorageInfoControl_Load(object sender, EventArgs e)
         {
-            foreach (Control item in this.Controls)
+            this.Invoke(new Action(() =>
             {
-                GetControls(item);
-            }
-            splitContainer1.FixedPanel = FixedPanel.Panel1;
-            BindData();
+                foreach (Control item in this.Controls)
+                {
+                    GetControls(item);
+                }
+                splitContainer1.FixedPanel = FixedPanel.Panel1;
+                BindData();
+            }));
 
-            //Task.Run(() =>
-            //{
-            //    while (!cts.IsCancellationRequested)
-            //    {
-            //        lock (EcanHelper._locker)
-            //        {
-            //            while (EcanHelper._task.Count > 0
-            //            && !cts.IsCancellationRequested)
-            //            {
-            //                CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-
-            //                analysisData(ch.ID, ch.Data);
-            //            }
-            //        }
-            //    }
-            //},cts.Token);
-
+            cts = new CancellationTokenSource();
             ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
         }
 
         private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
         {
+            if (cts.IsCancellationRequested && ecanHelper.IsConnected)
+            {
+                ecanHelper.AnalysisDataInvoked -= ServiceBase_AnalysisDataInvoked;
+                return;
+            }
+
             var frameModel = e as CanFrameModel;
             if (frameModel != null)
             {

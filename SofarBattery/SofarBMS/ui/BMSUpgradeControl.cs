@@ -1,20 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Sofar.BMS;
-using Sofar.ConnectionLibs.CAN;
-using Sofar.ConnectionLibs.CAN.Driver.ECAN;
+﻿using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
+using System.Diagnostics;
+using System.Text;
 
 namespace SofarBMS.UI
 {
@@ -42,8 +30,8 @@ namespace SofarBMS.UI
         int Flag = 0; //当前标识：步骤1 FB /步骤2 FC + FD /步骤4 FE /步骤5 FF
         int GroupIndex = 0;
         const int MAX_RETRY_COUNT = 5;
-        const int TX_INTERVAL_TIME = 100;
-        const int TX_INTERVAL_TIME_Data = 3;
+        private int TX_INTERVAL_TIME = 300;
+        private int TX_INTERVAL_TIME_Data = 3;
         private bool state = false;
         public bool State
         {
@@ -75,8 +63,6 @@ namespace SofarBMS.UI
         public BMSUpgradeControl()
         {
             InitializeComponent();
-
-            cts = new CancellationTokenSource();
         }
 
         /// <summary>
@@ -86,29 +72,28 @@ namespace SofarBMS.UI
         /// <param name="e"></param>
         private void BMSUpgradeControl_Load(object sender, EventArgs e)
         {
-            foreach (Control item in this.Controls)
+            this.Invoke(() =>
             {
-                GetControls(item);
-            }
+                foreach (Control item in this.Controls)
+                {
+                    GetControls(item);
+                }
 
-            //Task.Run(delegate
-            //{
-            //    while (EcanHelper._task.Count > 0
-            //    && !cts.IsCancellationRequested)
-            //    {
-            //        CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                cbbChipcode.SelectedIndex = 0;
+            });
 
-            //        this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
-            //    }
-            //}, cts.Token);
-
-            cbbChipcode.SelectedIndex = 0;
-
+            cts = new CancellationTokenSource();
             ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
         }
 
         private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
         {
+            if (cts.IsCancellationRequested && ecanHelper.IsConnected)
+            {
+                ecanHelper.AnalysisDataInvoked -= ServiceBase_AnalysisDataInvoked;
+                return;
+            }
+
             var frameModel = e as CanFrameModel;
             if (frameModel != null)
             {
@@ -216,7 +201,7 @@ namespace SofarBMS.UI
                     DeviceList.Clear();
                     State = true;
 
-                    Task.Factory.StartNew(() =>
+                    Task.Factory.StartNew(async () =>
                     {
                         int retryCount = 0;
                         do
@@ -224,7 +209,7 @@ namespace SofarBMS.UI
                             switch (Flag)
                             {
                                 case 1:
-                                    Thread.Sleep(3000);
+                                    //Thread.Sleep(3000);
 
                                     if (DeviceList.Count == 0)
                                     {
@@ -253,16 +238,19 @@ namespace SofarBMS.UI
                                             lblUpgrade_05.ForeColor = System.Drawing.Color.Black;
                                         }));
                                     }
+
+                                    await Task.Delay(3000);
                                     break;
                                 case 2:
-                                    startDownloadPack2(GroupIndex, 1024);
                                     Thread.Sleep(TX_INTERVAL_TIME);
+                                    startDownloadPack2(GroupIndex, 1024);
+
                                     AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FC", "PACK_ID" + GroupIndex);
                                     int offset = GroupIndex * 1024;
                                     for (int i = 0; i < 1024; i += 8)
                                     {
-                                        startDownloadData3(offset + i);
                                         Thread.Sleep(TX_INTERVAL_TIME_Data);
+                                        startDownloadData3(offset + i);
                                     }
 
                                     //Thread.Sleep(TX_INTERVAL_TIME);
@@ -1191,6 +1179,16 @@ namespace SofarBMS.UI
                 SizeF siF = g.MeasureString(str, font);
                 return (int)siF.Width;
             }
+        }
+
+        private void txtTX_INTERVAL_TIME_TextChanged(object sender, EventArgs e)
+        {
+            int.TryParse(txtTX_INTERVAL_TIME.Text, out TX_INTERVAL_TIME);
+        }
+
+        private void txtTX_INTERVAL_TIME_Data_TextChanged(object sender, EventArgs e)
+        {
+            int.TryParse(txtTX_INTERVAL_TIME_Data.Text, out TX_INTERVAL_TIME_Data);
         }
     }
 }

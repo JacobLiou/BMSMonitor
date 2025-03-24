@@ -32,14 +32,14 @@ namespace SofarBMS.Model
         Pin引脚复位 = 5
     }
 
-    public enum BMSState
-    {
-        开机自检 = 0,
-        运行 = 1,
-        永久性故障 = 2,
-        升级 = 3,
-        关机 = 4
-    }
+    //public enum BMSState
+    //{
+    //    开机自检 = 0,
+    //    运行 = 1,
+    //    永久性故障 = 2,
+    //    升级 = 3,
+    //    关机 = 4
+    //}
 
     public enum WakeSource
     {

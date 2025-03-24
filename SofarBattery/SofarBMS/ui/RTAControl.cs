@@ -1,10 +1,12 @@
 ﻿using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
+using Sofar.BMS.Models;
 using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
 using System.Collections;
 using System.Data;
+using System.Reflection.Metadata;
 using System.Text;
 
 namespace SofarBMS.UI
@@ -109,12 +111,66 @@ Can通信故障,Can1CommFault
 
         private void RTAControl_Load(object sender, EventArgs e)
         {
-            foreach (Control item in this.Controls)
+            this.Invoke(new Action(() =>
             {
-                GetControls(item);
-            }
-            
+                foreach (Control item in this.Controls)
+                {
+                    GetControls(item);
+                }
+            }));
+
             cts = new CancellationTokenSource();
+            Task.Run(async () =>
+            {
+                try
+                {
+                    var logDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Log");
+                    Directory.CreateDirectory(logDirectory); // 确保目录存在
+
+                    while (!cts.IsCancellationRequested)
+                    {
+                        if (ecanHelper.IsConnected)
+                        {
+                            if (model != null && initCount >= InitCountThreshold)
+                            {
+                                var fileName = $"BTS5K_{DateTime.Now:yyyy-MM-dd}.csv";
+                                var filePath = Path.Combine(logDirectory, fileName);
+
+                                lock (_fileLock)
+                                {
+                                    if (!File.Exists(filePath))
+                                    {
+                                        InitLogWriter(filePath);
+                                    }
+                                    _logWriter?.WriteLine(model.GetValue());
+                                }
+
+                                initCount = 0;
+                                model = null;
+                            }
+
+                            SendEcanCommands(); // 发送指令集
+                            GetBduSn();
+                            await Task.Delay(LoopIntervalMs);
+                        }
+                        else
+                        {
+                            await Task.Delay(LoopIntervalMs); // 等待连接恢复
+                        }
+                    }
+                }
+                catch (OperationCanceledException) { /* 取消操作正常退出 */ }
+                catch (Exception ex)
+                {
+                    //Log.Error("Background task error", ex);
+                }
+                finally
+                {
+                    lock (_fileLock) { _logWriter?.Dispose(); } // 释放资源
+                }
+            }, cts.Token);
+
+            /*cts = new CancellationTokenSource();
             Task.Run(async delegate
             {
                 while (!cts.IsCancellationRequested)
@@ -166,13 +222,67 @@ Can通信故障,Can1CommFault
                     //    }));
                     //}
                 }
-            }, cts.Token);
+            }, cts.Token);*/
 
             ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
         }
 
+        #region 窗体加载>>内容
+        // 使用 StreamWriter 保持文件流打开（注意线程安全）
+        private static StreamWriter _logWriter;
+        private static readonly object _fileLock = new object();
+
+        // 初始化日志写入器
+        void InitLogWriter(string filePath)
+        {
+            lock (_fileLock)
+            {
+                _logWriter?.Dispose();
+                _logWriter = new StreamWriter(filePath, append: true) { AutoFlush = true };
+                if (new FileInfo(filePath).Length == 0)
+                {
+                    _logWriter.WriteLine(model.GetHeader());
+                }
+            }
+        }
+
+        // 提取常量配置
+        const int InitCountThreshold = 13;
+        const int LoopIntervalMs = 1000;
+        string LogDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Log"); // 使用 Path.Combine
+
+        // 独立发送指令方法
+        void SendEcanCommands()
+        {
+            //获取实时数据指令
+            ecanHelper.Send(new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                           , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2C, 0x10 });
+
+            //读取BMS序列号
+            ecanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                           , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
+
+            //获取高压放电电流、充电电流；获取低压放电电流、充电电流
+            ecanHelper.Send(new byte[] { 0x77, 0xAA, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                       , new byte[4] { 0xE0, Convert.ToByte(FrmMain.BMS_ID + 0x20), 0x77, 0x0B });
+
+            ecanHelper.Send(new byte[] { 0x66, 0xAA, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                       , new byte[4] { 0xE0, Convert.ToByte(FrmMain.BMS_ID + 0x20), 0x77, 0x0B });
+
+        }
+
+
+        #endregion
+
         private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
         {
+            // 检查取消标志位
+            if (cts.IsCancellationRequested && ecanHelper.IsConnected)
+            {
+                ecanHelper.AnalysisDataInvoked -= ServiceBase_AnalysisDataInvoked;
+                return;
+            }
+
             var frameModel = e as CanFrameModel;
             if (frameModel != null)
             {
@@ -1275,20 +1385,5 @@ Can通信故障,Can1CommFault
             }
             return numbers;
         }
-
-        private void gbRealtimeData_101_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        protected override void OnHandleDestroyed(EventArgs e)
-        {
-            if (ecanHelper!=null)
-            {
-                ecanHelper.AnalysisDataInvoked -= ServiceBase_AnalysisDataInvoked;
-            }
-            base.OnHandleDestroyed(e);
-        }
-
     }
 }

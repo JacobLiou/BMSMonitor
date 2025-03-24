@@ -1,6 +1,7 @@
 ﻿using Sofar.BMS;
 using Sofar.BMS.Common;
 using Sofar.ConnectionLibs.CAN;
+using SofarBMS.Helper;
 using System.Xml;
 
 namespace SofarBMS.ui
@@ -105,8 +106,15 @@ namespace SofarBMS.ui
 
         private void CBSParamControl_BMU_Load(object? sender, EventArgs e)
         {
-            cts = new CancellationTokenSource();
+            this.Invoke(() =>
+            {
+                foreach (Control item in this.Controls)
+                {
+                    GetControls(item);
+                }
+            });
 
+            cts = new CancellationTokenSource();
             Task.Run(async delegate
             {
                 while (!cts.IsCancellationRequested)
@@ -130,6 +138,12 @@ namespace SofarBMS.ui
 
         private void ParamVM_AnalysisDataInvoked(object? sender, object e)
         {
+            if (cts.IsCancellationRequested && ecanHelper.IsConnected)
+            {
+                ecanHelper.AnalysisDataInvoked -= ParamVM_AnalysisDataInvoked;
+                return;
+            }
+
             var frameModel = e as CanFrameModel;
             if (frameModel != null)
             {
@@ -166,22 +180,22 @@ namespace SofarBMS.ui
                     txt_12.Text = numbers[3].ToString();
                     break;
                 case 0x13://总体过放                                                                                    
-                    txt_13.Text = (numbers[0] * 0.1).ToString();
-                    txt_14.Text = (numbers[1] * 0.1).ToString();
-                    txt_15.Text = (numbers[2] * 0.1).ToString();
-                    txt_16.Text = (numbers[3] * 0.1).ToString();
+                    txt_13.Text = (numbers[0] * 0.1).ToString("0.0");
+                    txt_14.Text = (numbers[1] * 0.1).ToString("0.0");
+                    txt_15.Text = (numbers[2] * 0.1).ToString("0.0");
+                    txt_16.Text = (numbers[3] * 0.1).ToString("0.0");
                     break;
                 case 0x14://充电过流                                                                                
-                    txt_17.Text = (numbers[0] * 0.01).ToString();
-                    txt_18.Text = (numbers[1] * 0.01).ToString();
-                    txt_19.Text = (numbers[2] * 0.01).ToString();
-                    txt_20.Text = (numbers[3] * 0.01).ToString();
+                    txt_17.Text = (numbers[0] * 0.01).ToString("0.00");
+                    txt_18.Text = (numbers[1] * 0.01).ToString("0.00");
+                    txt_19.Text = (numbers[2] * 0.01).ToString("0.00");
+                    txt_20.Text = (numbers[3] * 0.01).ToString("0.00");
                     break;
                 case 0x15://放电过流                                                                             
-                    txt_21.Text = (numbers[0] * 0.01).ToString();
-                    txt_22.Text = (numbers[1] * 0.01).ToString();
-                    txt_23.Text = (numbers[2] * 0.01).ToString();
-                    txt_24.Text = (numbers[3] * 0.01).ToString();
+                    txt_21.Text = (numbers[0] * 0.01).ToString("0.00");
+                    txt_22.Text = (numbers[1] * 0.01).ToString("0.00");
+                    txt_23.Text = (numbers[2] * 0.01).ToString("0.00");
+                    txt_24.Text = (numbers[3] * 0.01).ToString("0.00");
                     break;
                 case 0x16://充电、放电高温                                                                        
                     txt_25.Text = (numbers_bit[0] - 40).ToString();
@@ -210,10 +224,10 @@ namespace SofarBMS.ui
                     txt_44.Text = numbers[3].ToString();
                     break;
                 case 0x1B://充放电过流                                                                             
-                    txt_45.Text = (numbers[0] * 0.01).ToString();
-                    txt_46.Text = (numbers[1] * 0.01).ToString();
-                    txt_47.Text = (numbers[2] * 0.01).ToString();
-                    txt_48.Text = (numbers[3] * 0.01).ToString();
+                    txt_45.Text = (numbers[0] * 0.01).ToString("0.00");
+                    txt_46.Text = (numbers[1] * 0.01).ToString("0.00");
+                    txt_47.Text = (numbers[2] * 0.01).ToString("0.00");
+                    txt_48.Text = (numbers[3] * 0.01).ToString("0.00");
                     break;
                 case 0x1C://单体超限、超低
                     txt_49.Text = numbers[0].ToString();
@@ -580,6 +594,116 @@ namespace SofarBMS.ui
                 }
             }
         }
+
+        #region 翻译所用得函数
+        private void GetControls(Control c)
+        {
+            if (c is GroupBox || c is TabControl)
+            {
+                c.Text = LanguageHelper.GetLanguage(c.Name.Remove(0, 2));
+
+                foreach (Control item in c.Controls)
+                {
+                    this.GetControls(item);
+                }
+            }
+            else
+            {
+                string name = c.Name;
+
+                if (c is CheckBox)
+                {
+                    c.Text = LanguageHelper.GetLanguage(name.Remove(0, 2));
+
+                    LTooltip(c as CheckBox, c.Text);
+                }
+                else if (c is RadioButton)
+                {
+                    c.Text = LanguageHelper.GetLanguage(name.Remove(0, 2));
+
+                    LTooltip(c as RadioButton, c.Text);
+                }
+                else if (c is Label)
+                {
+                    c.Text = LanguageHelper.GetLanguage(name.Remove(0, 3));
+
+                    LTooltip(c as Label, c.Text);
+                }
+                else if (c is Button)
+                {
+                    if (name.Contains("Set"))
+                    {
+                        c.Text = LanguageHelper.GetLanguage("Settings");
+                    }
+                    else if (name.Contains("_Close"))
+                    {
+                        c.Text = LanguageHelper.GetLanguage("Systemset_43");
+                    }
+                    else if (name.Contains("_Open"))
+                    {
+                        c.Text = LanguageHelper.GetLanguage("Systemset_44");
+                    }
+                    else if (name.Contains("_Lifted"))
+                    {
+                        c.Text = LanguageHelper.GetLanguage("Systemset_45");
+                    }
+                    else
+                    {
+                        c.Text = LanguageHelper.GetLanguage(name.Remove(0, 3));
+
+                    }
+                }
+                else if (c is TabPage | c is Panel)
+                {
+                    foreach (Control item in c.Controls)
+                    {
+                        this.GetControls(item);
+                    }
+                }
+            }
+        }
+
+        public static void LTooltip(System.Windows.Forms.Control control, string value)
+        {
+            if (value.Length == 0) return;
+            control.Text = Abbreviation(control, value);
+            var tip = new ToolTip();
+            tip.IsBalloon = false;
+            tip.ShowAlways = true;
+            tip.SetToolTip(control, value);
+        }
+
+        public static string Abbreviation(Control control, string str)
+        {
+            if (str == null)
+            {
+                return null;
+            }
+            int strWidth = FontWidth(control.Font, control, str);
+
+            //获取label最长可以显示多少字符
+            int len = control.Width * str.Length / strWidth;
+
+            if (len > 20 && len < str.Length)
+
+            {
+                return str.Substring(0, 20) + "...";
+            }
+            else
+            {
+                return str;
+            }
+        }
+
+        private static int FontWidth(Font font, Control control, string str)
+        {
+            using (Graphics g = control.CreateGraphics())
+            {
+                SizeF siF = g.MeasureString(str, font);
+                return (int)siF.Width;
+            }
+        }
+        #endregion
     }
 
     public class AlarmParameter

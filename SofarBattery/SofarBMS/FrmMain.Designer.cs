@@ -152,7 +152,6 @@ namespace SofarBMS
             this.btnAlarmInfo.TabIndex = 56;
             this.btnAlarmInfo.Text = "报警记录";
             this.btnAlarmInfo.UseVisualStyleBackColor = false;
-            this.btnAlarmInfo.Visible = false;
             this.btnAlarmInfo.Click += new System.EventHandler(this.btnAlarmInfo_Click);
             // 
             // btnStratListen
@@ -198,7 +197,7 @@ namespace SofarBMS
             this.cbbIDP.Name = "cbbIDP";
             this.cbbIDP.Size = new System.Drawing.Size(85, 23);
             this.cbbIDP.TabIndex = 53;
-            this.cbbIDP.Click += new System.EventHandler(this.cbbIDP_SelectedIndexChanged);
+            this.cbbIDP.SelectedIndexChanged += new System.EventHandler(this.cbbIDP_SelectedIndexChanged);
             // 
             // btnResetCAN
             // 
@@ -250,13 +249,19 @@ namespace SofarBMS
             "7",
             "8",
             "9",
-            "10"});
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16"});
             this.cbbID.Location = new System.Drawing.Point(215, 6);
             this.cbbID.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.cbbID.Name = "cbbID";
             this.cbbID.Size = new System.Drawing.Size(85, 23);
             this.cbbID.TabIndex = 31;
-            this.cbbID.Click += new System.EventHandler(this.cbbID_SelectedIndexChanged);
+            this.cbbID.SelectedIndexChanged += new System.EventHandler(this.cbbID_SelectedIndexChanged);
             // 
             // lblSp_01
             // 
@@ -320,7 +325,7 @@ namespace SofarBMS
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BMS电池上位机T1.0.2.4.20250224";
+            this.Text = "BMS电池上位机V1.0.2.5.20250324";
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();

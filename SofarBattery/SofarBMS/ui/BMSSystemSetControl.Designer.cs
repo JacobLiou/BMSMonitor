@@ -37,30 +37,31 @@
             this.lblSystemset_53 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.gbSystemset_27 = new System.Windows.Forms.GroupBox();
+            this.gbCalibration_PCU = new System.Windows.Forms.GroupBox();
+            this.lblSystemset_35 = new System.Windows.Forms.Label();
             this.btnSetCalibration_17 = new System.Windows.Forms.Button();
+            this.lblSystemset_36 = new System.Windows.Forms.Label();
             this.btnSetCalibration_16 = new System.Windows.Forms.Button();
+            this.lblSystemset_37 = new System.Windows.Forms.Label();
             this.btnSetCalibration_15 = new System.Windows.Forms.Button();
+            this.lblSystemset_38 = new System.Windows.Forms.Label();
             this.btnSetCalibration_14 = new System.Windows.Forms.Button();
+            this.lblSystemset_39 = new System.Windows.Forms.Label();
             this.btnSetCalibration_13 = new System.Windows.Forms.Button();
+            this.lblSystemset_40 = new System.Windows.Forms.Label();
             this.btnSetCalibration_12 = new System.Windows.Forms.Button();
+            this.lblSystemset_41 = new System.Windows.Forms.Label();
             this.btnSetCalibration_11 = new System.Windows.Forms.Button();
+            this.txtLV_Calibration_Coefficient = new System.Windows.Forms.TextBox();
+            this.txtLV_Charge_Current_Calibration_Coefficient = new System.Windows.Forms.TextBox();
+            this.txtLV_Discharge_Current_Calibration_Coefficient = new System.Windows.Forms.TextBox();
+            this.txtVhvbus_Calibration_Coefficient = new System.Windows.Forms.TextBox();
+            this.txtHV_Discharge_Current_Calibration_Coefficient = new System.Windows.Forms.TextBox();
+            this.txtVpbus_Calibration_Coefficient = new System.Windows.Forms.TextBox();
+            this.txtHV_Charge_Current_Calibration_Coefficient = new System.Windows.Forms.TextBox();
             this.btnSetTestFlag = new System.Windows.Forms.Button();
             this.btnSetComm = new System.Windows.Forms.Button();
             this.btnSetSN = new System.Windows.Forms.Button();
-            this.txtHV_Discharge_Current_Calibration_Coefficient = new System.Windows.Forms.TextBox();
-            this.txtHV_Charge_Current_Calibration_Coefficient = new System.Windows.Forms.TextBox();
-            this.txtVpbus_Calibration_Coefficient = new System.Windows.Forms.TextBox();
-            this.txtVhvbus_Calibration_Coefficient = new System.Windows.Forms.TextBox();
-            this.txtLV_Discharge_Current_Calibration_Coefficient = new System.Windows.Forms.TextBox();
-            this.txtLV_Charge_Current_Calibration_Coefficient = new System.Windows.Forms.TextBox();
-            this.txtLV_Calibration_Coefficient = new System.Windows.Forms.TextBox();
-            this.lblSystemset_41 = new System.Windows.Forms.Label();
-            this.lblSystemset_40 = new System.Windows.Forms.Label();
-            this.lblSystemset_39 = new System.Windows.Forms.Label();
-            this.lblSystemset_38 = new System.Windows.Forms.Label();
-            this.lblSystemset_37 = new System.Windows.Forms.Label();
-            this.lblSystemset_36 = new System.Windows.Forms.Label();
-            this.lblSystemset_35 = new System.Windows.Forms.Label();
             this.ckSystemset_33 = new System.Windows.Forms.CheckBox();
             this.ckSystemset_32 = new System.Windows.Forms.CheckBox();
             this.ckSystemset_31 = new System.Windows.Forms.CheckBox();
@@ -88,7 +89,6 @@
             this.btnSetBatteryinfo = new System.Windows.Forms.Button();
             this.lblSystemset_103 = new System.Windows.Forms.Label();
             this.lblSystemset_104 = new System.Windows.Forms.Label();
-            this.lblSystemset_50 = new System.Windows.Forms.Label();
             this.txtCalibration07 = new System.Windows.Forms.TextBox();
             this.btnSetCalibration_07 = new System.Windows.Forms.Button();
             this.btnSetSOC = new System.Windows.Forms.Button();
@@ -107,19 +107,13 @@
             this.lblSystemset_02 = new System.Windows.Forms.Label();
             this.btnSetPackSN = new System.Windows.Forms.Button();
             this.btnSetTime = new System.Windows.Forms.Button();
-            this.lblSystemset_20 = new System.Windows.Forms.Label();
             this.txtCalibration06 = new System.Windows.Forms.TextBox();
             this.txt_67 = new System.Windows.Forms.TextBox();
-            this.lblSystemset_19 = new System.Windows.Forms.Label();
             this.txtCalibration05 = new System.Windows.Forms.TextBox();
             this.lblSystemset_01 = new System.Windows.Forms.Label();
-            this.lblSystemset_18 = new System.Windows.Forms.Label();
             this.txtCalibration04 = new System.Windows.Forms.TextBox();
-            this.lblSystemset_16 = new System.Windows.Forms.Label();
             this.lblSystemset_03 = new System.Windows.Forms.Label();
-            this.lblSystemset_15 = new System.Windows.Forms.Label();
             this.txtCalibration02 = new System.Windows.Forms.TextBox();
-            this.lblSystemset_17 = new System.Windows.Forms.Label();
             this.btnSetCalibration_06 = new System.Windows.Forms.Button();
             this.btnSetCalibration_01 = new System.Windows.Forms.Button();
             this.btnSetCalibration_03 = new System.Windows.Forms.Button();
@@ -134,6 +128,13 @@
             this.lblSystemset_22 = new System.Windows.Forms.Label();
             this.lblSystemset_24 = new System.Windows.Forms.Label();
             this.lblSystemset_23 = new System.Windows.Forms.Label();
+            this.lblSystemset_50 = new System.Windows.Forms.Label();
+            this.lblSystemset_20 = new System.Windows.Forms.Label();
+            this.lblSystemset_19 = new System.Windows.Forms.Label();
+            this.lblSystemset_18 = new System.Windows.Forms.Label();
+            this.lblSystemset_16 = new System.Windows.Forms.Label();
+            this.lblSystemset_15 = new System.Windows.Forms.Label();
+            this.lblSystemset_17 = new System.Windows.Forms.Label();
             this.gbSystemset_04 = new System.Windows.Forms.GroupBox();
             this.btnSystemset_45_Lifted10 = new System.Windows.Forms.Button();
             this.btnSystemset_43_Close10 = new System.Windows.Forms.Button();
@@ -177,17 +178,16 @@
             this.lblSystemset_09 = new System.Windows.Forms.Label();
             this.lblSystemset_05 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.gbCalibration_PCU = new System.Windows.Forms.GroupBox();
             this.panel1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.gbSystemset_54.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.gbSystemset_27.SuspendLayout();
+            this.gbCalibration_PCU.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gbSystemset_14.SuspendLayout();
             this.gbSystemset_04.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.gbCalibration_PCU.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSystemset_46
@@ -311,6 +311,46 @@
             this.gbSystemset_27.TabStop = false;
             this.gbSystemset_27.Text = "PCU参数设置";
             // 
+            // gbCalibration_PCU
+            // 
+            this.gbCalibration_PCU.Controls.Add(this.lblSystemset_35);
+            this.gbCalibration_PCU.Controls.Add(this.btnSetCalibration_17);
+            this.gbCalibration_PCU.Controls.Add(this.lblSystemset_36);
+            this.gbCalibration_PCU.Controls.Add(this.btnSetCalibration_16);
+            this.gbCalibration_PCU.Controls.Add(this.lblSystemset_37);
+            this.gbCalibration_PCU.Controls.Add(this.btnSetCalibration_15);
+            this.gbCalibration_PCU.Controls.Add(this.lblSystemset_38);
+            this.gbCalibration_PCU.Controls.Add(this.btnSetCalibration_14);
+            this.gbCalibration_PCU.Controls.Add(this.lblSystemset_39);
+            this.gbCalibration_PCU.Controls.Add(this.btnSetCalibration_13);
+            this.gbCalibration_PCU.Controls.Add(this.lblSystemset_40);
+            this.gbCalibration_PCU.Controls.Add(this.btnSetCalibration_12);
+            this.gbCalibration_PCU.Controls.Add(this.lblSystemset_41);
+            this.gbCalibration_PCU.Controls.Add(this.btnSetCalibration_11);
+            this.gbCalibration_PCU.Controls.Add(this.txtLV_Calibration_Coefficient);
+            this.gbCalibration_PCU.Controls.Add(this.txtLV_Charge_Current_Calibration_Coefficient);
+            this.gbCalibration_PCU.Controls.Add(this.txtLV_Discharge_Current_Calibration_Coefficient);
+            this.gbCalibration_PCU.Controls.Add(this.txtVhvbus_Calibration_Coefficient);
+            this.gbCalibration_PCU.Controls.Add(this.txtHV_Discharge_Current_Calibration_Coefficient);
+            this.gbCalibration_PCU.Controls.Add(this.txtVpbus_Calibration_Coefficient);
+            this.gbCalibration_PCU.Controls.Add(this.txtHV_Charge_Current_Calibration_Coefficient);
+            this.gbCalibration_PCU.Location = new System.Drawing.Point(500, 24);
+            this.gbCalibration_PCU.Name = "gbCalibration_PCU";
+            this.gbCalibration_PCU.Size = new System.Drawing.Size(473, 333);
+            this.gbCalibration_PCU.TabIndex = 33;
+            this.gbCalibration_PCU.TabStop = false;
+            this.gbCalibration_PCU.Text = "PCU校准系数";
+            // 
+            // lblSystemset_35
+            // 
+            this.lblSystemset_35.AutoSize = true;
+            this.lblSystemset_35.Location = new System.Drawing.Point(16, 40);
+            this.lblSystemset_35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_35.Name = "lblSystemset_35";
+            this.lblSystemset_35.Size = new System.Drawing.Size(116, 17);
+            this.lblSystemset_35.TabIndex = 9;
+            this.lblSystemset_35.Text = "低压端电压校准系数";
+            // 
             // btnSetCalibration_17
             // 
             this.btnSetCalibration_17.AutoSize = true;
@@ -323,6 +363,16 @@
             this.btnSetCalibration_17.Text = "写入";
             this.btnSetCalibration_17.UseVisualStyleBackColor = true;
             this.btnSetCalibration_17.Click += new System.EventHandler(this.btnCalibrationPCU_Click);
+            // 
+            // lblSystemset_36
+            // 
+            this.lblSystemset_36.AutoSize = true;
+            this.lblSystemset_36.Location = new System.Drawing.Point(16, 79);
+            this.lblSystemset_36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_36.Name = "lblSystemset_36";
+            this.lblSystemset_36.Size = new System.Drawing.Size(140, 17);
+            this.lblSystemset_36.TabIndex = 10;
+            this.lblSystemset_36.Text = "低压端充电电流校准系数";
             // 
             // btnSetCalibration_16
             // 
@@ -337,6 +387,16 @@
             this.btnSetCalibration_16.UseVisualStyleBackColor = true;
             this.btnSetCalibration_16.Click += new System.EventHandler(this.btnCalibrationPCU_Click);
             // 
+            // lblSystemset_37
+            // 
+            this.lblSystemset_37.AutoSize = true;
+            this.lblSystemset_37.Location = new System.Drawing.Point(16, 118);
+            this.lblSystemset_37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_37.Name = "lblSystemset_37";
+            this.lblSystemset_37.Size = new System.Drawing.Size(140, 17);
+            this.lblSystemset_37.TabIndex = 11;
+            this.lblSystemset_37.Text = "低压端放电电流校准系数";
+            // 
             // btnSetCalibration_15
             // 
             this.btnSetCalibration_15.AutoSize = true;
@@ -349,6 +409,16 @@
             this.btnSetCalibration_15.Text = "写入";
             this.btnSetCalibration_15.UseVisualStyleBackColor = true;
             this.btnSetCalibration_15.Click += new System.EventHandler(this.btnCalibrationPCU_Click);
+            // 
+            // lblSystemset_38
+            // 
+            this.lblSystemset_38.AutoSize = true;
+            this.lblSystemset_38.Location = new System.Drawing.Point(17, 157);
+            this.lblSystemset_38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_38.Name = "lblSystemset_38";
+            this.lblSystemset_38.Size = new System.Drawing.Size(158, 17);
+            this.lblSystemset_38.TabIndex = 12;
+            this.lblSystemset_38.Text = "高压侧电压Vhvbus校准系数";
             // 
             // btnSetCalibration_14
             // 
@@ -363,6 +433,16 @@
             this.btnSetCalibration_14.UseVisualStyleBackColor = true;
             this.btnSetCalibration_14.Click += new System.EventHandler(this.btnCalibrationPCU_Click);
             // 
+            // lblSystemset_39
+            // 
+            this.lblSystemset_39.AutoSize = true;
+            this.lblSystemset_39.Location = new System.Drawing.Point(16, 196);
+            this.lblSystemset_39.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_39.Name = "lblSystemset_39";
+            this.lblSystemset_39.Size = new System.Drawing.Size(153, 17);
+            this.lblSystemset_39.TabIndex = 13;
+            this.lblSystemset_39.Text = "高压侧电压Vpbus校准系数";
+            // 
             // btnSetCalibration_13
             // 
             this.btnSetCalibration_13.AutoSize = true;
@@ -375,6 +455,16 @@
             this.btnSetCalibration_13.Text = "写入";
             this.btnSetCalibration_13.UseVisualStyleBackColor = true;
             this.btnSetCalibration_13.Click += new System.EventHandler(this.btnCalibrationPCU_Click);
+            // 
+            // lblSystemset_40
+            // 
+            this.lblSystemset_40.AutoSize = true;
+            this.lblSystemset_40.Location = new System.Drawing.Point(16, 235);
+            this.lblSystemset_40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_40.Name = "lblSystemset_40";
+            this.lblSystemset_40.Size = new System.Drawing.Size(140, 17);
+            this.lblSystemset_40.TabIndex = 14;
+            this.lblSystemset_40.Text = "高压侧充电电流校准系数";
             // 
             // btnSetCalibration_12
             // 
@@ -389,6 +479,16 @@
             this.btnSetCalibration_12.UseVisualStyleBackColor = true;
             this.btnSetCalibration_12.Click += new System.EventHandler(this.btnCalibrationPCU_Click);
             // 
+            // lblSystemset_41
+            // 
+            this.lblSystemset_41.AutoSize = true;
+            this.lblSystemset_41.Location = new System.Drawing.Point(17, 274);
+            this.lblSystemset_41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_41.Name = "lblSystemset_41";
+            this.lblSystemset_41.Size = new System.Drawing.Size(140, 17);
+            this.lblSystemset_41.TabIndex = 15;
+            this.lblSystemset_41.Text = "高压侧放电电流校准系数";
+            // 
             // btnSetCalibration_11
             // 
             this.btnSetCalibration_11.AutoSize = true;
@@ -401,6 +501,62 @@
             this.btnSetCalibration_11.Text = "写入";
             this.btnSetCalibration_11.UseVisualStyleBackColor = true;
             this.btnSetCalibration_11.Click += new System.EventHandler(this.btnCalibrationPCU_Click);
+            // 
+            // txtLV_Calibration_Coefficient
+            // 
+            this.txtLV_Calibration_Coefficient.Location = new System.Drawing.Point(244, 37);
+            this.txtLV_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtLV_Calibration_Coefficient.Name = "txtLV_Calibration_Coefficient";
+            this.txtLV_Calibration_Coefficient.Size = new System.Drawing.Size(81, 23);
+            this.txtLV_Calibration_Coefficient.TabIndex = 16;
+            // 
+            // txtLV_Charge_Current_Calibration_Coefficient
+            // 
+            this.txtLV_Charge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(244, 76);
+            this.txtLV_Charge_Current_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtLV_Charge_Current_Calibration_Coefficient.Name = "txtLV_Charge_Current_Calibration_Coefficient";
+            this.txtLV_Charge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(81, 23);
+            this.txtLV_Charge_Current_Calibration_Coefficient.TabIndex = 17;
+            // 
+            // txtLV_Discharge_Current_Calibration_Coefficient
+            // 
+            this.txtLV_Discharge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(244, 115);
+            this.txtLV_Discharge_Current_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtLV_Discharge_Current_Calibration_Coefficient.Name = "txtLV_Discharge_Current_Calibration_Coefficient";
+            this.txtLV_Discharge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(81, 23);
+            this.txtLV_Discharge_Current_Calibration_Coefficient.TabIndex = 18;
+            // 
+            // txtVhvbus_Calibration_Coefficient
+            // 
+            this.txtVhvbus_Calibration_Coefficient.Location = new System.Drawing.Point(245, 154);
+            this.txtVhvbus_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtVhvbus_Calibration_Coefficient.Name = "txtVhvbus_Calibration_Coefficient";
+            this.txtVhvbus_Calibration_Coefficient.Size = new System.Drawing.Size(81, 23);
+            this.txtVhvbus_Calibration_Coefficient.TabIndex = 19;
+            // 
+            // txtHV_Discharge_Current_Calibration_Coefficient
+            // 
+            this.txtHV_Discharge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(245, 271);
+            this.txtHV_Discharge_Current_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtHV_Discharge_Current_Calibration_Coefficient.Name = "txtHV_Discharge_Current_Calibration_Coefficient";
+            this.txtHV_Discharge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(81, 23);
+            this.txtHV_Discharge_Current_Calibration_Coefficient.TabIndex = 22;
+            // 
+            // txtVpbus_Calibration_Coefficient
+            // 
+            this.txtVpbus_Calibration_Coefficient.Location = new System.Drawing.Point(244, 193);
+            this.txtVpbus_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtVpbus_Calibration_Coefficient.Name = "txtVpbus_Calibration_Coefficient";
+            this.txtVpbus_Calibration_Coefficient.Size = new System.Drawing.Size(81, 23);
+            this.txtVpbus_Calibration_Coefficient.TabIndex = 20;
+            // 
+            // txtHV_Charge_Current_Calibration_Coefficient
+            // 
+            this.txtHV_Charge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(244, 232);
+            this.txtHV_Charge_Current_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtHV_Charge_Current_Calibration_Coefficient.Name = "txtHV_Charge_Current_Calibration_Coefficient";
+            this.txtHV_Charge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(81, 23);
+            this.txtHV_Charge_Current_Calibration_Coefficient.TabIndex = 21;
             // 
             // btnSetTestFlag
             // 
@@ -440,132 +596,6 @@
             this.btnSetSN.Text = "写入";
             this.btnSetSN.UseVisualStyleBackColor = true;
             this.btnSetSN.Click += new System.EventHandler(this.btnSetSN_Click);
-            // 
-            // txtHV_Discharge_Current_Calibration_Coefficient
-            // 
-            this.txtHV_Discharge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(245, 271);
-            this.txtHV_Discharge_Current_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtHV_Discharge_Current_Calibration_Coefficient.Name = "txtHV_Discharge_Current_Calibration_Coefficient";
-            this.txtHV_Discharge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(81, 23);
-            this.txtHV_Discharge_Current_Calibration_Coefficient.TabIndex = 22;
-            // 
-            // txtHV_Charge_Current_Calibration_Coefficient
-            // 
-            this.txtHV_Charge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(244, 232);
-            this.txtHV_Charge_Current_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtHV_Charge_Current_Calibration_Coefficient.Name = "txtHV_Charge_Current_Calibration_Coefficient";
-            this.txtHV_Charge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(81, 23);
-            this.txtHV_Charge_Current_Calibration_Coefficient.TabIndex = 21;
-            // 
-            // txtVpbus_Calibration_Coefficient
-            // 
-            this.txtVpbus_Calibration_Coefficient.Location = new System.Drawing.Point(244, 193);
-            this.txtVpbus_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtVpbus_Calibration_Coefficient.Name = "txtVpbus_Calibration_Coefficient";
-            this.txtVpbus_Calibration_Coefficient.Size = new System.Drawing.Size(81, 23);
-            this.txtVpbus_Calibration_Coefficient.TabIndex = 20;
-            // 
-            // txtVhvbus_Calibration_Coefficient
-            // 
-            this.txtVhvbus_Calibration_Coefficient.Location = new System.Drawing.Point(245, 154);
-            this.txtVhvbus_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtVhvbus_Calibration_Coefficient.Name = "txtVhvbus_Calibration_Coefficient";
-            this.txtVhvbus_Calibration_Coefficient.Size = new System.Drawing.Size(81, 23);
-            this.txtVhvbus_Calibration_Coefficient.TabIndex = 19;
-            // 
-            // txtLV_Discharge_Current_Calibration_Coefficient
-            // 
-            this.txtLV_Discharge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(244, 115);
-            this.txtLV_Discharge_Current_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtLV_Discharge_Current_Calibration_Coefficient.Name = "txtLV_Discharge_Current_Calibration_Coefficient";
-            this.txtLV_Discharge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(81, 23);
-            this.txtLV_Discharge_Current_Calibration_Coefficient.TabIndex = 18;
-            // 
-            // txtLV_Charge_Current_Calibration_Coefficient
-            // 
-            this.txtLV_Charge_Current_Calibration_Coefficient.Location = new System.Drawing.Point(244, 76);
-            this.txtLV_Charge_Current_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtLV_Charge_Current_Calibration_Coefficient.Name = "txtLV_Charge_Current_Calibration_Coefficient";
-            this.txtLV_Charge_Current_Calibration_Coefficient.Size = new System.Drawing.Size(81, 23);
-            this.txtLV_Charge_Current_Calibration_Coefficient.TabIndex = 17;
-            // 
-            // txtLV_Calibration_Coefficient
-            // 
-            this.txtLV_Calibration_Coefficient.Location = new System.Drawing.Point(244, 37);
-            this.txtLV_Calibration_Coefficient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtLV_Calibration_Coefficient.Name = "txtLV_Calibration_Coefficient";
-            this.txtLV_Calibration_Coefficient.Size = new System.Drawing.Size(81, 23);
-            this.txtLV_Calibration_Coefficient.TabIndex = 16;
-            // 
-            // lblSystemset_41
-            // 
-            this.lblSystemset_41.AutoSize = true;
-            this.lblSystemset_41.Location = new System.Drawing.Point(17, 274);
-            this.lblSystemset_41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSystemset_41.Name = "lblSystemset_41";
-            this.lblSystemset_41.Size = new System.Drawing.Size(140, 17);
-            this.lblSystemset_41.TabIndex = 15;
-            this.lblSystemset_41.Text = "高压侧放电电流校准系数";
-            // 
-            // lblSystemset_40
-            // 
-            this.lblSystemset_40.AutoSize = true;
-            this.lblSystemset_40.Location = new System.Drawing.Point(16, 235);
-            this.lblSystemset_40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSystemset_40.Name = "lblSystemset_40";
-            this.lblSystemset_40.Size = new System.Drawing.Size(140, 17);
-            this.lblSystemset_40.TabIndex = 14;
-            this.lblSystemset_40.Text = "高压侧充电电流校准系数";
-            // 
-            // lblSystemset_39
-            // 
-            this.lblSystemset_39.AutoSize = true;
-            this.lblSystemset_39.Location = new System.Drawing.Point(16, 196);
-            this.lblSystemset_39.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSystemset_39.Name = "lblSystemset_39";
-            this.lblSystemset_39.Size = new System.Drawing.Size(153, 17);
-            this.lblSystemset_39.TabIndex = 13;
-            this.lblSystemset_39.Text = "高压侧电压Vpbus校准系数";
-            // 
-            // lblSystemset_38
-            // 
-            this.lblSystemset_38.AutoSize = true;
-            this.lblSystemset_38.Location = new System.Drawing.Point(17, 157);
-            this.lblSystemset_38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSystemset_38.Name = "lblSystemset_38";
-            this.lblSystemset_38.Size = new System.Drawing.Size(158, 17);
-            this.lblSystemset_38.TabIndex = 12;
-            this.lblSystemset_38.Text = "高压侧电压Vhvbus校准系数";
-            // 
-            // lblSystemset_37
-            // 
-            this.lblSystemset_37.AutoSize = true;
-            this.lblSystemset_37.Location = new System.Drawing.Point(16, 118);
-            this.lblSystemset_37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSystemset_37.Name = "lblSystemset_37";
-            this.lblSystemset_37.Size = new System.Drawing.Size(140, 17);
-            this.lblSystemset_37.TabIndex = 11;
-            this.lblSystemset_37.Text = "低压端放电电流校准系数";
-            // 
-            // lblSystemset_36
-            // 
-            this.lblSystemset_36.AutoSize = true;
-            this.lblSystemset_36.Location = new System.Drawing.Point(16, 79);
-            this.lblSystemset_36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSystemset_36.Name = "lblSystemset_36";
-            this.lblSystemset_36.Size = new System.Drawing.Size(140, 17);
-            this.lblSystemset_36.TabIndex = 10;
-            this.lblSystemset_36.Text = "低压端充电电流校准系数";
-            // 
-            // lblSystemset_35
-            // 
-            this.lblSystemset_35.AutoSize = true;
-            this.lblSystemset_35.Location = new System.Drawing.Point(16, 40);
-            this.lblSystemset_35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSystemset_35.Name = "lblSystemset_35";
-            this.lblSystemset_35.Size = new System.Drawing.Size(116, 17);
-            this.lblSystemset_35.TabIndex = 9;
-            this.lblSystemset_35.Text = "低压端电压校准系数";
             // 
             // ckSystemset_33
             // 
@@ -811,9 +841,11 @@
             // 
             this.cbb_103.FormattingEnabled = true;
             this.cbb_103.Items.AddRange(new object[] {
+            "0：其他",
             "1：宁德时代",
             "2：亿纬锂能",
-            "3：其他"});
+            "3：鹏辉",
+            "4：豪鹏"});
             this.cbb_103.Location = new System.Drawing.Point(579, 28);
             this.cbb_103.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbb_103.Name = "cbb_103";
@@ -902,16 +934,6 @@
             this.lblSystemset_104.Size = new System.Drawing.Size(80, 17);
             this.lblSystemset_104.TabIndex = 13;
             this.lblSystemset_104.Text = "电芯型号编号";
-            // 
-            // lblSystemset_50
-            // 
-            this.lblSystemset_50.AutoSize = true;
-            this.lblSystemset_50.Location = new System.Drawing.Point(11, 378);
-            this.lblSystemset_50.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSystemset_50.Name = "lblSystemset_50";
-            this.lblSystemset_50.Size = new System.Drawing.Size(124, 17);
-            this.lblSystemset_50.TabIndex = 47;
-            this.lblSystemset_50.Text = "校准P-电压(0-1000V)";
             // 
             // txtCalibration07
             // 
@@ -1098,16 +1120,6 @@
             this.btnSetTime.UseVisualStyleBackColor = true;
             this.btnSetTime.Click += new System.EventHandler(this.btnSetTime_Click);
             // 
-            // lblSystemset_20
-            // 
-            this.lblSystemset_20.AutoSize = true;
-            this.lblSystemset_20.Location = new System.Drawing.Point(11, 344);
-            this.lblSystemset_20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSystemset_20.Name = "lblSystemset_20";
-            this.lblSystemset_20.Size = new System.Drawing.Size(131, 17);
-            this.lblSystemset_20.TabIndex = 30;
-            this.lblSystemset_20.Text = "校准放电小电流(0~5A)";
-            // 
             // txtCalibration06
             // 
             this.txtCalibration06.Location = new System.Drawing.Point(184, 341);
@@ -1123,16 +1135,6 @@
             this.txt_67.Name = "txt_67";
             this.txt_67.Size = new System.Drawing.Size(180, 23);
             this.txt_67.TabIndex = 3;
-            // 
-            // lblSystemset_19
-            // 
-            this.lblSystemset_19.AutoSize = true;
-            this.lblSystemset_19.Location = new System.Drawing.Point(11, 310);
-            this.lblSystemset_19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSystemset_19.Name = "lblSystemset_19";
-            this.lblSystemset_19.Size = new System.Drawing.Size(126, 17);
-            this.lblSystemset_19.TabIndex = 28;
-            this.lblSystemset_19.Text = "校准放电电流(0~50A)";
             // 
             // txtCalibration05
             // 
@@ -1152,16 +1154,6 @@
             this.lblSystemset_01.TabIndex = 2;
             this.lblSystemset_01.Text = "序列号";
             // 
-            // lblSystemset_18
-            // 
-            this.lblSystemset_18.AutoSize = true;
-            this.lblSystemset_18.Location = new System.Drawing.Point(11, 276);
-            this.lblSystemset_18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSystemset_18.Name = "lblSystemset_18";
-            this.lblSystemset_18.Size = new System.Drawing.Size(131, 17);
-            this.lblSystemset_18.TabIndex = 26;
-            this.lblSystemset_18.Text = "校准充电小电流(0~5A)";
-            // 
             // txtCalibration04
             // 
             this.txtCalibration04.Location = new System.Drawing.Point(184, 273);
@@ -1169,16 +1161,6 @@
             this.txtCalibration04.Name = "txtCalibration04";
             this.txtCalibration04.Size = new System.Drawing.Size(83, 23);
             this.txtCalibration04.TabIndex = 27;
-            // 
-            // lblSystemset_16
-            // 
-            this.lblSystemset_16.AutoSize = true;
-            this.lblSystemset_16.Location = new System.Drawing.Point(11, 208);
-            this.lblSystemset_16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSystemset_16.Name = "lblSystemset_16";
-            this.lblSystemset_16.Size = new System.Drawing.Size(140, 17);
-            this.lblSystemset_16.TabIndex = 24;
-            this.lblSystemset_16.Text = "校准负载电压(0~1000V)";
             // 
             // lblSystemset_03
             // 
@@ -1190,16 +1172,6 @@
             this.lblSystemset_03.TabIndex = 0;
             this.lblSystemset_03.Text = "时间";
             // 
-            // lblSystemset_15
-            // 
-            this.lblSystemset_15.AutoSize = true;
-            this.lblSystemset_15.Location = new System.Drawing.Point(11, 175);
-            this.lblSystemset_15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSystemset_15.Name = "lblSystemset_15";
-            this.lblSystemset_15.Size = new System.Drawing.Size(116, 17);
-            this.lblSystemset_15.TabIndex = 23;
-            this.lblSystemset_15.Text = "校准总压(0~1000V)";
-            // 
             // txtCalibration02
             // 
             this.txtCalibration02.Location = new System.Drawing.Point(184, 205);
@@ -1207,16 +1179,6 @@
             this.txtCalibration02.Name = "txtCalibration02";
             this.txtCalibration02.Size = new System.Drawing.Size(83, 23);
             this.txtCalibration02.TabIndex = 22;
-            // 
-            // lblSystemset_17
-            // 
-            this.lblSystemset_17.AutoSize = true;
-            this.lblSystemset_17.Location = new System.Drawing.Point(11, 242);
-            this.lblSystemset_17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSystemset_17.Name = "lblSystemset_17";
-            this.lblSystemset_17.Size = new System.Drawing.Size(126, 17);
-            this.lblSystemset_17.TabIndex = 21;
-            this.lblSystemset_17.Text = "校准充电电流(0~50A)";
             // 
             // btnSetCalibration_06
             // 
@@ -1365,6 +1327,76 @@
             this.lblSystemset_23.Size = new System.Drawing.Size(107, 17);
             this.lblSystemset_23.TabIndex = 12;
             this.lblSystemset_23.Text = "单体温度个数(1-8)";
+            // 
+            // lblSystemset_50
+            // 
+            this.lblSystemset_50.AutoSize = true;
+            this.lblSystemset_50.Location = new System.Drawing.Point(11, 378);
+            this.lblSystemset_50.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_50.Name = "lblSystemset_50";
+            this.lblSystemset_50.Size = new System.Drawing.Size(124, 17);
+            this.lblSystemset_50.TabIndex = 47;
+            this.lblSystemset_50.Text = "校准P-电压(0-1000V)";
+            // 
+            // lblSystemset_20
+            // 
+            this.lblSystemset_20.AutoSize = true;
+            this.lblSystemset_20.Location = new System.Drawing.Point(11, 344);
+            this.lblSystemset_20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_20.Name = "lblSystemset_20";
+            this.lblSystemset_20.Size = new System.Drawing.Size(131, 17);
+            this.lblSystemset_20.TabIndex = 30;
+            this.lblSystemset_20.Text = "校准放电小电流(0~5A)";
+            // 
+            // lblSystemset_19
+            // 
+            this.lblSystemset_19.AutoSize = true;
+            this.lblSystemset_19.Location = new System.Drawing.Point(11, 310);
+            this.lblSystemset_19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_19.Name = "lblSystemset_19";
+            this.lblSystemset_19.Size = new System.Drawing.Size(126, 17);
+            this.lblSystemset_19.TabIndex = 28;
+            this.lblSystemset_19.Text = "校准放电电流(0~50A)";
+            // 
+            // lblSystemset_18
+            // 
+            this.lblSystemset_18.AutoSize = true;
+            this.lblSystemset_18.Location = new System.Drawing.Point(11, 276);
+            this.lblSystemset_18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_18.Name = "lblSystemset_18";
+            this.lblSystemset_18.Size = new System.Drawing.Size(131, 17);
+            this.lblSystemset_18.TabIndex = 26;
+            this.lblSystemset_18.Text = "校准充电小电流(0~5A)";
+            // 
+            // lblSystemset_16
+            // 
+            this.lblSystemset_16.AutoSize = true;
+            this.lblSystemset_16.Location = new System.Drawing.Point(11, 208);
+            this.lblSystemset_16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_16.Name = "lblSystemset_16";
+            this.lblSystemset_16.Size = new System.Drawing.Size(140, 17);
+            this.lblSystemset_16.TabIndex = 24;
+            this.lblSystemset_16.Text = "校准负载电压(0~1000V)";
+            // 
+            // lblSystemset_15
+            // 
+            this.lblSystemset_15.AutoSize = true;
+            this.lblSystemset_15.Location = new System.Drawing.Point(11, 175);
+            this.lblSystemset_15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_15.Name = "lblSystemset_15";
+            this.lblSystemset_15.Size = new System.Drawing.Size(116, 17);
+            this.lblSystemset_15.TabIndex = 23;
+            this.lblSystemset_15.Text = "校准总压(0~1000V)";
+            // 
+            // lblSystemset_17
+            // 
+            this.lblSystemset_17.AutoSize = true;
+            this.lblSystemset_17.Location = new System.Drawing.Point(11, 242);
+            this.lblSystemset_17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_17.Name = "lblSystemset_17";
+            this.lblSystemset_17.Size = new System.Drawing.Size(126, 17);
+            this.lblSystemset_17.TabIndex = 21;
+            this.lblSystemset_17.Text = "校准充电电流(0~50A)";
             // 
             // gbSystemset_04
             // 
@@ -1963,36 +1995,6 @@
             this.tabControl1.Size = new System.Drawing.Size(1406, 806);
             this.tabControl1.TabIndex = 48;
             // 
-            // gbCalibration_PCU
-            // 
-            this.gbCalibration_PCU.Controls.Add(this.lblSystemset_35);
-            this.gbCalibration_PCU.Controls.Add(this.btnSetCalibration_17);
-            this.gbCalibration_PCU.Controls.Add(this.lblSystemset_36);
-            this.gbCalibration_PCU.Controls.Add(this.btnSetCalibration_16);
-            this.gbCalibration_PCU.Controls.Add(this.lblSystemset_37);
-            this.gbCalibration_PCU.Controls.Add(this.btnSetCalibration_15);
-            this.gbCalibration_PCU.Controls.Add(this.lblSystemset_38);
-            this.gbCalibration_PCU.Controls.Add(this.btnSetCalibration_14);
-            this.gbCalibration_PCU.Controls.Add(this.lblSystemset_39);
-            this.gbCalibration_PCU.Controls.Add(this.btnSetCalibration_13);
-            this.gbCalibration_PCU.Controls.Add(this.lblSystemset_40);
-            this.gbCalibration_PCU.Controls.Add(this.btnSetCalibration_12);
-            this.gbCalibration_PCU.Controls.Add(this.lblSystemset_41);
-            this.gbCalibration_PCU.Controls.Add(this.btnSetCalibration_11);
-            this.gbCalibration_PCU.Controls.Add(this.txtLV_Calibration_Coefficient);
-            this.gbCalibration_PCU.Controls.Add(this.txtLV_Charge_Current_Calibration_Coefficient);
-            this.gbCalibration_PCU.Controls.Add(this.txtLV_Discharge_Current_Calibration_Coefficient);
-            this.gbCalibration_PCU.Controls.Add(this.txtVhvbus_Calibration_Coefficient);
-            this.gbCalibration_PCU.Controls.Add(this.txtHV_Discharge_Current_Calibration_Coefficient);
-            this.gbCalibration_PCU.Controls.Add(this.txtVpbus_Calibration_Coefficient);
-            this.gbCalibration_PCU.Controls.Add(this.txtHV_Charge_Current_Calibration_Coefficient);
-            this.gbCalibration_PCU.Location = new System.Drawing.Point(500, 24);
-            this.gbCalibration_PCU.Name = "gbCalibration_PCU";
-            this.gbCalibration_PCU.Size = new System.Drawing.Size(473, 333);
-            this.gbCalibration_PCU.TabIndex = 33;
-            this.gbCalibration_PCU.TabStop = false;
-            this.gbCalibration_PCU.Text = "PCU校准系数";
-            // 
             // BMSSystemSetControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -2012,14 +2014,14 @@
             this.tabPage2.ResumeLayout(false);
             this.gbSystemset_27.ResumeLayout(false);
             this.gbSystemset_27.PerformLayout();
+            this.gbCalibration_PCU.ResumeLayout(false);
+            this.gbCalibration_PCU.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.gbSystemset_14.ResumeLayout(false);
             this.gbSystemset_14.PerformLayout();
             this.gbSystemset_04.ResumeLayout(false);
             this.gbSystemset_04.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.gbCalibration_PCU.ResumeLayout(false);
-            this.gbCalibration_PCU.PerformLayout();
             this.ResumeLayout(false);
 
         }

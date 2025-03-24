@@ -1304,14 +1304,14 @@
             // gbRealtimeData_94
             // 
             this.gbRealtimeData_94.Controls.Add(this.richTextBox5);
-            this.gbRealtimeData_94.Location = new System.Drawing.Point(1039, 549);
+            this.gbRealtimeData_94.Location = new System.Drawing.Point(1039, 547);
             this.gbRealtimeData_94.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbRealtimeData_94.Name = "gbRealtimeData_94";
             this.gbRealtimeData_94.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbRealtimeData_94.Size = new System.Drawing.Size(234, 253);
+            this.gbRealtimeData_94.Size = new System.Drawing.Size(234, 251);
             this.gbRealtimeData_94.TabIndex = 67;
             this.gbRealtimeData_94.TabStop = false;
-            this.gbRealtimeData_94.Text = "故障状态";
+            this.gbRealtimeData_94.Text = "PCU故障状态";
             this.gbRealtimeData_94.UseCompatibleTextRendering = true;
             // 
             // richTextBox5
@@ -1320,7 +1320,7 @@
             this.richTextBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox5.Name = "richTextBox5";
             this.richTextBox5.ReadOnly = true;
-            this.richTextBox5.Size = new System.Drawing.Size(218, 221);
+            this.richTextBox5.Size = new System.Drawing.Size(218, 223);
             this.richTextBox5.TabIndex = 1;
             this.richTextBox5.Text = "";
             // 
@@ -1343,7 +1343,7 @@
             this.richTextBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.ReadOnly = true;
-            this.richTextBox3.Size = new System.Drawing.Size(180, 223);
+            this.richTextBox3.Size = new System.Drawing.Size(180, 225);
             this.richTextBox3.TabIndex = 1;
             this.richTextBox3.Text = "";
             // 
@@ -1365,7 +1365,7 @@
             this.richTextBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox4.Name = "richTextBox4";
             this.richTextBox4.ReadOnly = true;
-            this.richTextBox4.Size = new System.Drawing.Size(180, 223);
+            this.richTextBox4.Size = new System.Drawing.Size(180, 225);
             this.richTextBox4.TabIndex = 0;
             this.richTextBox4.Text = "";
             // 
@@ -2136,7 +2136,7 @@
             this.gbBatteryInformation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbBatteryInformation.Name = "gbBatteryInformation";
             this.gbBatteryInformation.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gbBatteryInformation.Size = new System.Drawing.Size(234, 537);
+            this.gbBatteryInformation.Size = new System.Drawing.Size(234, 532);
             this.gbBatteryInformation.TabIndex = 65;
             this.gbBatteryInformation.TabStop = false;
             this.gbBatteryInformation.Text = "电池信息";
@@ -2567,7 +2567,7 @@
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(180, 221);
+            this.richTextBox1.Size = new System.Drawing.Size(180, 223);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
@@ -2590,7 +2590,7 @@
             this.richTextBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.ReadOnly = true;
-            this.richTextBox2.Size = new System.Drawing.Size(180, 221);
+            this.richTextBox2.Size = new System.Drawing.Size(180, 223);
             this.richTextBox2.TabIndex = 1;
             this.richTextBox2.Text = "";
             // 
@@ -2695,12 +2695,6 @@
         private System.Windows.Forms.Label lblFullCharge;
         private System.Windows.Forms.PictureBox pbForceChargingEnable;
         private System.Windows.Forms.Label lblForceChargingEnable;
-        private System.Windows.Forms.GroupBox gbRealtimeData_104;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.GroupBox gbRealtimeData_103;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.GroupBox gbRealtimeData_105;
-        private System.Windows.Forms.RichTextBox richTextBox4;
         private System.Windows.Forms.GroupBox gbBatteryInformation;
         private System.Windows.Forms.PictureBox pbEmpty;
         private System.Windows.Forms.Label lblEmpty;
@@ -2849,8 +2843,6 @@
         private Label lblHigh_voltage_bus_voltage;
         private Label lblBattery_cluster_voltage1;
         private Label lblContactor_voltage;
-        private GroupBox gbRealtimeData_93;
-        private RichTextBox richTextBox3;
         private Label lblDCDC_State;
         private Label lblWorkState;
         private TextBox txtRadiator_temperature4;
@@ -2895,5 +2887,13 @@
         private Label lblSoftware_Version_DSP;
         private GroupBox gbRealtimeData_94;
         private RichTextBox richTextBox5;
+        private GroupBox gbRealtimeData_93;
+        private RichTextBox richTextBox3;
+        private GroupBox gbRealtimeData_105;
+        private RichTextBox richTextBox4;
+        private GroupBox gbRealtimeData_104;
+        private RichTextBox richTextBox1;
+        private GroupBox gbRealtimeData_103;
+        private RichTextBox richTextBox2;
     }
 }

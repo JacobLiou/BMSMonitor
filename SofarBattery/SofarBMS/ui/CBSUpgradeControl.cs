@@ -63,8 +63,6 @@ namespace SofarBMS.UI
         public CBSUpgradeControl()
         {
             InitializeComponent();
-
-            cts = new CancellationTokenSource();
         }
 
         /// <summary>
@@ -74,36 +72,29 @@ namespace SofarBMS.UI
         /// <param name="e"></param>
         private void CBSUpgradeControl_Load(object sender, EventArgs e)
         {
-            foreach (Control item in this.Controls)
+            this.Invoke(() =>
             {
-                GetControls(item);
-            }
-
-            cbbChiprole.SelectedIndex = 1;
-            txtChipcode.Text = "S3";
-            /*Task.Run(() =>
-            {
-                while (!cts.IsCancellationRequested)
+                foreach (Control item in this.Controls)
                 {
-                    lock (EcanHelper._locker)
-                    {
-                        while (EcanHelper._task.Count > 0
-                            && !_token.IsCancellationRequested)
-                        {
-                            //出队
-                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-
-                            //解析
-                            this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
-                        }
-                    }
+                    GetControls(item);
                 }
-            }, cts.Token);*/
+
+                cbbChiprole.SelectedIndex = 1;
+                txtChipcode.Text = "S3";
+            });
+
+            cts = new CancellationTokenSource();
             ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
         }
 
         private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
         {
+            if (cts.IsCancellationRequested && ecanHelper.IsConnected)
+            {
+                ecanHelper.AnalysisDataInvoked -= ServiceBase_AnalysisDataInvoked;
+                return;
+            }
+
             var frameModel = e as CanFrameModel;
             if (frameModel != null)
             {
@@ -170,11 +161,11 @@ namespace SofarBMS.UI
             try
             {
                 //0.检查CAN连接
-                //if (!ecanHelper.Connect())
-                //{
-                //    MessageBox.Show("串口未打开，请先连接设备...");
-                //    return;
-                //}
+                if (!ecanHelper.Connect())
+                {
+                    MessageBox.Show("串口未打开，请先连接设备...");
+                    return;
+                }
                 //1.判断文件是否为空
                 if (string.IsNullOrEmpty(txtPath.Text.Trim()))
                 {
@@ -214,6 +205,13 @@ namespace SofarBMS.UI
                     int.TryParse(txtFC.Text.Trim(), out TX_INTERVAL_TIME);
                     int.TryParse(txtFD.Text.Trim(), out TX_INTERVAL_TIME_Data);
 
+
+                    var progress = new Progress<int>(percent =>
+                                    {
+                                        progressBar1.Value = percent;
+                                        progressBar1.Text = $"{percent}%";
+                                    });
+
                     Task.Run(() =>
                     {
                         int retryCount = 0;
@@ -230,7 +228,7 @@ namespace SofarBMS.UI
                                 case StepFlag.None:
                                     break;
                                 case StepFlag.FB升级文件传输开始帧:
-                                    Thread.Sleep(3000);//待优化
+                                    Thread.Sleep(1000);//待优化
 
                                     if (DeviceList.Count == 0)
                                     {
@@ -263,7 +261,7 @@ namespace SofarBMS.UI
                                 case StepFlag.FC升级数据块开始帧:
                                 case StepFlag.FD升级数据块数据帧:
                                     startDownloadPack2(GroupIndex, 1024);
-                                    //Thread.Sleep(TX_INTERVAL_TIME);
+                                    //5Thread.Sleep(TX_INTERVAL_TIME);
                                     AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FC", "PACK_ID" + GroupIndex);
                                     int offset = GroupIndex * 1024;
                                     for (int i = 0; i < 1024; i += 8)
@@ -281,14 +279,17 @@ namespace SofarBMS.UI
                                         GroupIndex++;
                                     }
 
-                                    this.Invoke(new Action(() =>
-                                    {
-                                        progressBar1.Maximum = file_size;
-                                        progressBar1.Value = GroupIndex;
+                                    decimal proVal = ((decimal)GroupIndex / file_size) * 100;
+                                    ((IProgress<int>)progress).Report(Convert.ToInt32(proVal));
+                                    //this.BeginInvoke(new Action(() =>
+                                    //{
+                                    //    progressBar1.Maximum = file_size;
+                                    //    progressBar1.Value = GroupIndex;
 
-                                        decimal proVal = ((decimal)GroupIndex / file_size) * 100;
-                                        progressBar1.Text = $"正在升级，当前进度为：{Convert.ToInt32(proVal)}%";
-                                    }));
+                                    //    decimal proVal = ((decimal)GroupIndex / file_size) * 100;
+                                    //    progressBar1.Text = $"正在升级，当前进度为：{Convert.ToInt32(proVal)}%";
+                                    //}));
+
                                     break;
                                 case StepFlag.FE升级文件接收结果查询帧:
                                     do
@@ -334,10 +335,10 @@ namespace SofarBMS.UI
                                         else
                                         {
                                             this.Invoke(new Action(() =>
-                                            {
-                                                AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FE", "PACK_ID" + GroupIndex);
-                                                startDownloadCheck4(chip_role, chip_code, file_data);
-                                            }));
+                                           {
+                                               AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FE", "PACK_ID" + GroupIndex);
+                                               startDownloadCheck4(chip_role, chip_code, file_data);
+                                           }));
                                         }
                                     } while (ErrorList.Count != 0 || ResultList.Count < DeviceList.Count);
 
@@ -472,6 +473,10 @@ namespace SofarBMS.UI
                     cbbChiprole.Text = "BCU";
                     txtSlaveAddress.Text = slaveAddress = "0x9F";
                     break;
+                case "0x25":
+                    cbbChiprole.Text = "PCU";
+                    txtSlaveAddress.Text = slaveAddress = "0x9F";
+                    break;
                 case "0x2D":
                     cbbChiprole.Text = "BMU";
                     txtSlaveAddress.Text = slaveAddress = "0x1F";
@@ -507,7 +512,7 @@ namespace SofarBMS.UI
             }
             catch (FormatException ex)
             {
-               //throw new FormatException($"文件创建时间解析失败: {ex.Message}");
+                //throw new FormatException($"文件创建时间解析失败: {ex.Message}");
                 return "";
             }
         }
@@ -1005,16 +1010,19 @@ namespace SofarBMS.UI
             }
         }
 
+
         private void cbbChiprole_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Chiprole_val被导入文件时，识别芯片所取代（把芯片类型做成自动设别）
             switch (cbbChiprole.SelectedIndex)
             {
                 case 0:
-                    txtChiprole_val.Text = "0x24";
+                case 2:
+                    //txtChiprole_val.Text = "0x24";
                     txtSlaveAddress.Text = slaveAddress = "0x9F";
                     break;
                 case 1:
-                    txtChiprole_val.Text = "0x2D";
+                    //txtChiprole_val.Text = "0x2D";
                     txtSlaveAddress.Text = slaveAddress = "0x1F";
                     break;
                 default:
