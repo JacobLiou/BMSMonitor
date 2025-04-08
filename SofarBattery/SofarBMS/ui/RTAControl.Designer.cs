@@ -1662,7 +1662,6 @@
             // 
             // gbRealtimeData_101
             // 
-            this.gbRealtimeData_101.Controls.Add(this.lblRealtimeData_57);
             this.gbRealtimeData_101.Controls.Add(this.txtCellvoltage16);
             this.gbRealtimeData_101.Controls.Add(this.txtCellvoltage14);
             this.gbRealtimeData_101.Controls.Add(this.txtCellvoltage12);
@@ -1704,6 +1703,7 @@
             this.gbRealtimeData_101.Controls.Add(this.lblRealtimeData_19);
             this.gbRealtimeData_101.Controls.Add(this.lblRealtimeData_18);
             this.gbRealtimeData_101.Controls.Add(this.txtBatDiffCellVolt);
+            this.gbRealtimeData_101.Controls.Add(this.lblRealtimeData_57);
             this.gbRealtimeData_101.Location = new System.Drawing.Point(258, 4);
             this.gbRealtimeData_101.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.gbRealtimeData_101.Name = "gbRealtimeData_101";

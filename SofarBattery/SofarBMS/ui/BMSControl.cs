@@ -1,4 +1,5 @@
-﻿using Sofar.ConnectionLibs.CAN;
+﻿using Sofar.BMS.Models;
+using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
 using System.Text;
@@ -7,16 +8,10 @@ namespace SofarBMS.UI
 {
     public partial class BMSControl : UserControl
     {
-        public BMSControl()
-        {
-            InitializeComponent();
-
-            cts = new CancellationTokenSource();
-        }
-
         string[] packSN = new string[3];
 
         int initCount = 0;
+
         RealtimeData_GTX5000S model = null;
 
         // 取消令牌源
@@ -25,15 +20,22 @@ namespace SofarBMS.UI
         // ECAN助手实例
         private EcanHelper ecanHelper = EcanHelper.Instance;
 
+        public BMSControl()
+        {
+            InitializeComponent();
+        }
 
         private void RTAControl_Load(object sender, EventArgs e)
         {
-            foreach (Control item in this.Controls)
+            this.Invoke(() =>
             {
-                GetControls(item);
-            }
+                foreach (Control item in this.Controls)
+                {
+                    GetControls(item);
+                }
+            });
 
-            //return;
+            cts = new CancellationTokenSource();
             Task.Run(async delegate
              {
                  try
@@ -63,21 +65,11 @@ namespace SofarBMS.UI
                              //定时一秒存储一次数据
                              await Task.Delay(1000);
                          }
-
-                         //while (EcanHelper._task.Count > 0
-                         //   && !cts.IsCancellationRequested)
-                         //{
-                         //    CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-                         //    this.Invoke(new Action(() =>
-                         //    {
-                         //        analysisData(ch.ID, ch.Data);
-                         //    }));
-                         //}
                      }
                  }
                  catch (Exception ex)
                  {
-                     throw new Exception(ex.Message);
+                     //throw new Exception(ex.Message);
                  }
              }, cts.Token);
 
@@ -86,6 +78,12 @@ namespace SofarBMS.UI
 
         private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
         {
+            if (cts.IsCancellationRequested && ecanHelper.IsConnected)
+            {
+                ecanHelper.AnalysisDataInvoked -= ServiceBase_AnalysisDataInvoked;
+                return;
+            }
+
             var frameModel = e as CanFrameModel;
             if (frameModel != null)
             {
@@ -626,7 +624,7 @@ namespace SofarBMS.UI
             }
         }
 
-        public static void LTooltip(System.Windows.Forms.Control control, string value)
+        public static void LTooltip(Control control, string value)
         {
             if (value.Length == 0) return;
             control.Text = Abbreviation(control, value);
@@ -775,45 +773,5 @@ namespace SofarBMS.UI
             return msg;
         }
         #endregion
-
-        private void lblRealtimeData_45_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCelltemperature1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblRealtimeData_48_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblRealtimeData_47_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblRealtimeData_46_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCelltemperature3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCelltemperature4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCelltemperature2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

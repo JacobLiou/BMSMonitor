@@ -212,34 +212,44 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox49 = new System.Windows.Forms.CheckBox();
-            this.checkBox50 = new System.Windows.Forms.CheckBox();
-            this.checkBox51 = new System.Windows.Forms.CheckBox();
-            this.checkBox52 = new System.Windows.Forms.CheckBox();
+            this.ckSystemset_33 = new System.Windows.Forms.CheckBox();
+            this.ckSystemset_30 = new System.Windows.Forms.CheckBox();
+            this.ckSystemset_32 = new System.Windows.Forms.CheckBox();
+            this.ckSystemset_31 = new System.Windows.Forms.CheckBox();
             this.lblSystemset_BMU_09 = new System.Windows.Forms.Label();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnSet0F0_2 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lblSystemset_76 = new System.Windows.Forms.Label();
             this.lblParameter_06 = new System.Windows.Forms.Label();
             this.lblParameter_05 = new System.Windows.Forms.Label();
             this.lblParameter_07 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnSetSN_Board = new System.Windows.Forms.Button();
             this.lblSystemset_BMU_05 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBoardSN_BMU = new System.Windows.Forms.TextBox();
+            this.txtFlashData_BMU = new System.Windows.Forms.TextBox();
             this.lblSystemset_BMU_08 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnSetAteFlash = new System.Windows.Forms.Button();
+            this.btnSetSN_Pack = new System.Windows.Forms.Button();
             this.lblSystemset_03 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtPackSN_BMU = new System.Windows.Forms.TextBox();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.lblSystemset_BMU_07 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSetDatetime = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbb_106 = new System.Windows.Forms.ComboBox();
+            this.txtFlag = new System.Windows.Forms.TextBox();
+            this.cbb_105 = new System.Windows.Forms.ComboBox();
+            this.cbb_103 = new System.Windows.Forms.ComboBox();
+            this.txt_104 = new System.Windows.Forms.TextBox();
+            this.lblSystemset_106 = new System.Windows.Forms.Label();
+            this.lblSystemset_105 = new System.Windows.Forms.Label();
+            this.btnSetBatteryinfo = new System.Windows.Forms.Button();
+            this.lblSystemset_103 = new System.Windows.Forms.Label();
+            this.lblSystemset_104 = new System.Windows.Forms.Label();
             this.btnSetControlInfo = new System.Windows.Forms.Button();
             this.txtPackActiveBalanceCap = new System.Windows.Forms.TextBox();
             this.txtPackActiveBalanceCur = new System.Windows.Forms.TextBox();
@@ -258,22 +268,22 @@
             this.lblSystemset_66 = new System.Windows.Forms.Label();
             this.lblSystemset_65 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnSet_0x21 = new System.Windows.Forms.Button();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtHeatFilmCloseTemp = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.lblParameter_61 = new System.Windows.Forms.Label();
             this.lblSystemset_23 = new System.Windows.Forms.Label();
             this.lblParameter_63 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.txtHeatFilmOpenTemp = new System.Windows.Forms.TextBox();
             this.lblSystemset_24 = new System.Windows.Forms.Label();
             this.lblParameter_62 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.txtFullChgVolt = new System.Windows.Forms.TextBox();
             this.lblSystemset_22 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.txtBalOpenVoltDiff = new System.Windows.Forms.TextBox();
             this.lblParameter_60 = new System.Windows.Forms.Label();
             this.lblSystemset_25 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.txtBalOpenVolt = new System.Windows.Forms.TextBox();
             this.lblParameter_58 = new System.Windows.Forms.Label();
             this.lblSystemset_21 = new System.Windows.Forms.Label();
             this.lblSystemset_26 = new System.Windows.Forms.Label();
@@ -295,60 +305,60 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.button10 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
+            this.btnSetCalibration_BMU_06 = new System.Windows.Forms.Button();
+            this.btnSetCalibration_BMU_05 = new System.Windows.Forms.Button();
+            this.btnSetCalibration_BMU_04 = new System.Windows.Forms.Button();
+            this.btnSetCalibration_BMU_03 = new System.Windows.Forms.Button();
+            this.btnSetCalibration_BMU_02 = new System.Windows.Forms.Button();
+            this.btnSetCalibration_BMU_01 = new System.Windows.Forms.Button();
             this.lblSystemset_20 = new System.Windows.Forms.Label();
-            this.textBox24 = new System.Windows.Forms.TextBox();
+            this.txtBMU_Calibration06 = new System.Windows.Forms.TextBox();
             this.lblSystemset_19 = new System.Windows.Forms.Label();
-            this.textBox25 = new System.Windows.Forms.TextBox();
+            this.txtBMU_Calibration05 = new System.Windows.Forms.TextBox();
             this.lblSystemset_18 = new System.Windows.Forms.Label();
-            this.textBox26 = new System.Windows.Forms.TextBox();
+            this.txtBMU_Calibration04 = new System.Windows.Forms.TextBox();
             this.lblSystemset_16 = new System.Windows.Forms.Label();
             this.lblSystemset_15 = new System.Windows.Forms.Label();
-            this.textBox27 = new System.Windows.Forms.TextBox();
+            this.txtBMU_Calibration02 = new System.Windows.Forms.TextBox();
             this.lblSystemset_17 = new System.Windows.Forms.Label();
-            this.textBox28 = new System.Windows.Forms.TextBox();
-            this.textBox29 = new System.Windows.Forms.TextBox();
+            this.txtBMU_Calibration01 = new System.Windows.Forms.TextBox();
+            this.txtBMU_Calibration03 = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button51 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button52 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
-            this.button53 = new System.Windows.Forms.Button();
+            this.btnSystemset_45_BMU_Lifted8 = new System.Windows.Forms.Button();
+            this.btnSystemset_45_BMU_Lifted4 = new System.Windows.Forms.Button();
+            this.btnSystemset_43_BMU_Close8 = new System.Windows.Forms.Button();
+            this.btnSystemset_43_BMU_Close4 = new System.Windows.Forms.Button();
+            this.btnSystemset_44_BMU_Open8 = new System.Windows.Forms.Button();
+            this.btnSystemset_44_BMU_Open4 = new System.Windows.Forms.Button();
             this.lblSystemset_63 = new System.Windows.Forms.Label();
             this.lblSystemset_BMU_02 = new System.Windows.Forms.Label();
-            this.button26 = new System.Windows.Forms.Button();
-            this.button54 = new System.Windows.Forms.Button();
-            this.button55 = new System.Windows.Forms.Button();
-            this.button28 = new System.Windows.Forms.Button();
-            this.button56 = new System.Windows.Forms.Button();
-            this.button29 = new System.Windows.Forms.Button();
+            this.btnSystemset_debug2 = new System.Windows.Forms.Button();
+            this.btnSystemset_45_BMU_Lifted3 = new System.Windows.Forms.Button();
+            this.btnSystemset_43_BMU_Close3 = new System.Windows.Forms.Button();
+            this.btnSystemset_45_BMU_Lifted9 = new System.Windows.Forms.Button();
+            this.btnSystemset_44_BMU_Open3 = new System.Windows.Forms.Button();
+            this.btnSystemset_45_BMU_Lifted7 = new System.Windows.Forms.Button();
             this.lblSystemset_BMU_01 = new System.Windows.Forms.Label();
-            this.button57 = new System.Windows.Forms.Button();
-            this.button58 = new System.Windows.Forms.Button();
-            this.button32 = new System.Windows.Forms.Button();
-            this.button59 = new System.Windows.Forms.Button();
+            this.btnSystemset_45_BMU_Lifted2 = new System.Windows.Forms.Button();
+            this.btnSystemset_43_BMU_Close2 = new System.Windows.Forms.Button();
+            this.btnSystemset_43_BMU_Close9 = new System.Windows.Forms.Button();
+            this.btnSystemset_44_BMU_Open2 = new System.Windows.Forms.Button();
             this.lblSystemset_10 = new System.Windows.Forms.Label();
-            this.button33 = new System.Windows.Forms.Button();
-            this.button60 = new System.Windows.Forms.Button();
-            this.button34 = new System.Windows.Forms.Button();
+            this.btnSystemset_43_BMU_Close7 = new System.Windows.Forms.Button();
+            this.btnSystemset_45_BMU_Lifted1 = new System.Windows.Forms.Button();
+            this.btnSystemset_44_BMU_Open9 = new System.Windows.Forms.Button();
             this.lblSystemset_09 = new System.Windows.Forms.Label();
-            this.button61 = new System.Windows.Forms.Button();
-            this.button35 = new System.Windows.Forms.Button();
-            this.button62 = new System.Windows.Forms.Button();
+            this.btnSystemset_43_BMU_Close1 = new System.Windows.Forms.Button();
+            this.btnSystemset_44_BMU_Open7 = new System.Windows.Forms.Button();
+            this.btnSystemset_44_BMU_Open1 = new System.Windows.Forms.Button();
             this.lblSystemset_62 = new System.Windows.Forms.Label();
             this.lblSystemset_BMU_04 = new System.Windows.Forms.Label();
-            this.button37 = new System.Windows.Forms.Button();
-            this.button38 = new System.Windows.Forms.Button();
-            this.button43 = new System.Windows.Forms.Button();
-            this.button44 = new System.Windows.Forms.Button();
-            this.button45 = new System.Windows.Forms.Button();
-            this.button46 = new System.Windows.Forms.Button();
+            this.btnSystemset_45_BMU_Lifted5 = new System.Windows.Forms.Button();
+            this.btnSystemset_45_BMU_Lifted6 = new System.Windows.Forms.Button();
+            this.btnSystemset_43_BMU_Close5 = new System.Windows.Forms.Button();
+            this.btnSystemset_43_BMU_Close6 = new System.Windows.Forms.Button();
+            this.btnSystemset_44_BMU_Open5 = new System.Windows.Forms.Button();
+            this.btnSystemset_44_BMU_Open6 = new System.Windows.Forms.Button();
             this.lblSystemset_61 = new System.Windows.Forms.Label();
             this.lblSystemset_BMU_03 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -2590,9 +2600,9 @@
             this.lblSystemset_BCU_38.Location = new System.Drawing.Point(19, 57);
             this.lblSystemset_BCU_38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_BCU_38.Name = "lblSystemset_BCU_38";
-            this.lblSystemset_BCU_38.Size = new System.Drawing.Size(140, 17);
+            this.lblSystemset_BCU_38.Size = new System.Drawing.Size(116, 17);
             this.lblSystemset_BCU_38.TabIndex = 24;
-            this.lblSystemset_BCU_38.Text = "校准负载电压(0~1000V)";
+            this.lblSystemset_BCU_38.Text = "母线电压(0~1000V)";
             // 
             // lblSystemset_BCU_37
             // 
@@ -2602,7 +2612,7 @@
             this.lblSystemset_BCU_37.Name = "lblSystemset_BCU_37";
             this.lblSystemset_BCU_37.Size = new System.Drawing.Size(116, 17);
             this.lblSystemset_BCU_37.TabIndex = 23;
-            this.lblSystemset_BCU_37.Text = "校准总压(0~1000V)";
+            this.lblSystemset_BCU_37.Text = "电池总压(0~1000V)";
             // 
             // txtBCU_Calibration02
             // 
@@ -2666,15 +2676,15 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.checkBox49);
-            this.groupBox1.Controls.Add(this.checkBox50);
-            this.groupBox1.Controls.Add(this.checkBox51);
-            this.groupBox1.Controls.Add(this.checkBox52);
+            this.groupBox1.Controls.Add(this.ckSystemset_33);
+            this.groupBox1.Controls.Add(this.ckSystemset_30);
+            this.groupBox1.Controls.Add(this.ckSystemset_32);
+            this.groupBox1.Controls.Add(this.ckSystemset_31);
             this.groupBox1.Controls.Add(this.lblSystemset_BMU_09);
             this.groupBox1.Controls.Add(this.comboBox5);
             this.groupBox1.Controls.Add(this.comboBox3);
             this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.btnSet0F0_2);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.lblSystemset_76);
             this.groupBox1.Controls.Add(this.lblParameter_06);
@@ -2686,45 +2696,45 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             // 
-            // checkBox49
+            // ckSystemset_33
             // 
-            this.checkBox49.AutoSize = true;
-            this.checkBox49.Location = new System.Drawing.Point(131, 199);
-            this.checkBox49.Name = "checkBox49";
-            this.checkBox49.Size = new System.Drawing.Size(75, 21);
-            this.checkBox49.TabIndex = 72;
-            this.checkBox49.Text = "Bit0：T2";
-            this.checkBox49.UseVisualStyleBackColor = true;
+            this.ckSystemset_33.AutoSize = true;
+            this.ckSystemset_33.Location = new System.Drawing.Point(131, 199);
+            this.ckSystemset_33.Name = "ckSystemset_33";
+            this.ckSystemset_33.Size = new System.Drawing.Size(75, 21);
+            this.ckSystemset_33.TabIndex = 72;
+            this.ckSystemset_33.Text = "Bit0：T2";
+            this.ckSystemset_33.UseVisualStyleBackColor = true;
             // 
-            // checkBox50
+            // ckSystemset_30
             // 
-            this.checkBox50.AutoSize = true;
-            this.checkBox50.Location = new System.Drawing.Point(131, 224);
-            this.checkBox50.Name = "checkBox50";
-            this.checkBox50.Size = new System.Drawing.Size(85, 21);
-            this.checkBox50.TabIndex = 71;
-            this.checkBox50.Text = "Bit0：包装";
-            this.checkBox50.UseVisualStyleBackColor = true;
+            this.ckSystemset_30.AutoSize = true;
+            this.ckSystemset_30.Location = new System.Drawing.Point(131, 224);
+            this.ckSystemset_30.Name = "ckSystemset_30";
+            this.ckSystemset_30.Size = new System.Drawing.Size(85, 21);
+            this.ckSystemset_30.TabIndex = 71;
+            this.ckSystemset_30.Text = "Bit0：包装";
+            this.ckSystemset_30.UseVisualStyleBackColor = true;
             // 
-            // checkBox51
+            // ckSystemset_32
             // 
-            this.checkBox51.AutoSize = true;
-            this.checkBox51.Location = new System.Drawing.Point(131, 174);
-            this.checkBox51.Name = "checkBox51";
-            this.checkBox51.Size = new System.Drawing.Size(85, 21);
-            this.checkBox51.TabIndex = 70;
-            this.checkBox51.Text = "Bit0：老化";
-            this.checkBox51.UseVisualStyleBackColor = true;
+            this.ckSystemset_32.AutoSize = true;
+            this.ckSystemset_32.Location = new System.Drawing.Point(131, 174);
+            this.ckSystemset_32.Name = "ckSystemset_32";
+            this.ckSystemset_32.Size = new System.Drawing.Size(85, 21);
+            this.ckSystemset_32.TabIndex = 70;
+            this.ckSystemset_32.Text = "Bit0：老化";
+            this.ckSystemset_32.UseVisualStyleBackColor = true;
             // 
-            // checkBox52
+            // ckSystemset_31
             // 
-            this.checkBox52.AutoSize = true;
-            this.checkBox52.Location = new System.Drawing.Point(131, 149);
-            this.checkBox52.Name = "checkBox52";
-            this.checkBox52.Size = new System.Drawing.Size(75, 21);
-            this.checkBox52.TabIndex = 69;
-            this.checkBox52.Text = "Bit0：T1";
-            this.checkBox52.UseVisualStyleBackColor = true;
+            this.ckSystemset_31.AutoSize = true;
+            this.ckSystemset_31.Location = new System.Drawing.Point(131, 149);
+            this.ckSystemset_31.Name = "ckSystemset_31";
+            this.ckSystemset_31.Size = new System.Drawing.Size(75, 21);
+            this.ckSystemset_31.TabIndex = 69;
+            this.ckSystemset_31.Text = "Bit0：T1";
+            this.ckSystemset_31.UseVisualStyleBackColor = true;
             // 
             // lblSystemset_BMU_09
             // 
@@ -2759,17 +2769,17 @@
             this.comboBox2.Size = new System.Drawing.Size(95, 25);
             this.comboBox2.TabIndex = 30;
             // 
-            // button5
+            // btnSet0F0_2
             // 
-            this.button5.AutoSize = true;
-            this.button5.Location = new System.Drawing.Point(248, 182);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button5.Name = "button5";
-            this.button5.Padding = new System.Windows.Forms.Padding(1);
-            this.button5.Size = new System.Drawing.Size(75, 29);
-            this.button5.TabIndex = 55;
-            this.button5.Text = "写入";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnSet0F0_2.AutoSize = true;
+            this.btnSet0F0_2.Location = new System.Drawing.Point(258, 18);
+            this.btnSet0F0_2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSet0F0_2.Name = "btnSet0F0_2";
+            this.btnSet0F0_2.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSet0F0_2.Size = new System.Drawing.Size(75, 29);
+            this.btnSet0F0_2.TabIndex = 55;
+            this.btnSet0F0_2.Text = "写入";
+            this.btnSet0F0_2.UseVisualStyleBackColor = true;
             // 
             // comboBox1
             // 
@@ -2821,32 +2831,33 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.button4);
+            this.groupBox7.Controls.Add(this.btnSetSN_Board);
             this.groupBox7.Controls.Add(this.lblSystemset_BMU_05);
-            this.groupBox7.Controls.Add(this.textBox3);
-            this.groupBox7.Controls.Add(this.textBox1);
+            this.groupBox7.Controls.Add(this.txtBoardSN_BMU);
+            this.groupBox7.Controls.Add(this.txtFlashData_BMU);
             this.groupBox7.Controls.Add(this.lblSystemset_BMU_08);
-            this.groupBox7.Controls.Add(this.button1);
-            this.groupBox7.Controls.Add(this.button3);
+            this.groupBox7.Controls.Add(this.btnSetAteFlash);
+            this.groupBox7.Controls.Add(this.btnSetSN_Pack);
             this.groupBox7.Controls.Add(this.lblSystemset_03);
-            this.groupBox7.Controls.Add(this.textBox2);
+            this.groupBox7.Controls.Add(this.txtPackSN_BMU);
             this.groupBox7.Controls.Add(this.dateTimePicker3);
             this.groupBox7.Controls.Add(this.lblSystemset_BMU_07);
-            this.groupBox7.Controls.Add(this.button2);
+            this.groupBox7.Controls.Add(this.btnSetDatetime);
             this.groupBox7.Location = new System.Drawing.Point(3, 6);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(337, 168);
             this.groupBox7.TabIndex = 104;
             this.groupBox7.TabStop = false;
             // 
-            // button4
+            // btnSetSN_Board
             // 
-            this.button4.Location = new System.Drawing.Point(258, 121);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 29);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "写入";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnSetSN_Board.Location = new System.Drawing.Point(258, 121);
+            this.btnSetSN_Board.Name = "btnSetSN_Board";
+            this.btnSetSN_Board.Size = new System.Drawing.Size(75, 29);
+            this.btnSetSN_Board.TabIndex = 11;
+            this.btnSetSN_Board.Text = "写入";
+            this.btnSetSN_Board.UseVisualStyleBackColor = true;
+            this.btnSetSN_Board.Click += new System.EventHandler(this.btnSetSN_Board_Click);
             // 
             // lblSystemset_BMU_05
             // 
@@ -2857,19 +2868,19 @@
             this.lblSystemset_BMU_05.TabIndex = 0;
             this.lblSystemset_BMU_05.Text = "ATE Flash测试";
             // 
-            // textBox3
+            // txtBoardSN_BMU
             // 
-            this.textBox3.Location = new System.Drawing.Point(102, 124);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(150, 23);
-            this.textBox3.TabIndex = 10;
+            this.txtBoardSN_BMU.Location = new System.Drawing.Point(102, 124);
+            this.txtBoardSN_BMU.Name = "txtBoardSN_BMU";
+            this.txtBoardSN_BMU.Size = new System.Drawing.Size(150, 23);
+            this.txtBoardSN_BMU.TabIndex = 10;
             // 
-            // textBox1
+            // txtFlashData_BMU
             // 
-            this.textBox1.Location = new System.Drawing.Point(102, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(150, 23);
-            this.textBox1.TabIndex = 1;
+            this.txtFlashData_BMU.Location = new System.Drawing.Point(102, 19);
+            this.txtFlashData_BMU.Name = "txtFlashData_BMU";
+            this.txtFlashData_BMU.Size = new System.Drawing.Size(150, 23);
+            this.txtFlashData_BMU.TabIndex = 1;
             // 
             // lblSystemset_BMU_08
             // 
@@ -2880,23 +2891,25 @@
             this.lblSystemset_BMU_08.TabIndex = 9;
             this.lblSystemset_BMU_08.Text = "BOARD条形码";
             // 
-            // button1
+            // btnSetAteFlash
             // 
-            this.button1.Location = new System.Drawing.Point(258, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 29);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "写入";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSetAteFlash.Location = new System.Drawing.Point(258, 16);
+            this.btnSetAteFlash.Name = "btnSetAteFlash";
+            this.btnSetAteFlash.Size = new System.Drawing.Size(75, 29);
+            this.btnSetAteFlash.TabIndex = 2;
+            this.btnSetAteFlash.Text = "写入";
+            this.btnSetAteFlash.UseVisualStyleBackColor = true;
+            this.btnSetAteFlash.Click += new System.EventHandler(this.btnSetAteFlash_Click);
             // 
-            // button3
+            // btnSetSN_Pack
             // 
-            this.button3.Location = new System.Drawing.Point(258, 86);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 29);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "写入";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnSetSN_Pack.Location = new System.Drawing.Point(258, 86);
+            this.btnSetSN_Pack.Name = "btnSetSN_Pack";
+            this.btnSetSN_Pack.Size = new System.Drawing.Size(75, 29);
+            this.btnSetSN_Pack.TabIndex = 8;
+            this.btnSetSN_Pack.Text = "写入";
+            this.btnSetSN_Pack.UseVisualStyleBackColor = true;
+            this.btnSetSN_Pack.Click += new System.EventHandler(this.btnSetSN_Pack_Click);
             // 
             // lblSystemset_03
             // 
@@ -2907,12 +2920,12 @@
             this.lblSystemset_03.TabIndex = 3;
             this.lblSystemset_03.Text = "时间";
             // 
-            // textBox2
+            // txtPackSN_BMU
             // 
-            this.textBox2.Location = new System.Drawing.Point(102, 89);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(150, 23);
-            this.textBox2.TabIndex = 7;
+            this.txtPackSN_BMU.Location = new System.Drawing.Point(102, 89);
+            this.txtPackSN_BMU.Name = "txtPackSN_BMU";
+            this.txtPackSN_BMU.Size = new System.Drawing.Size(150, 23);
+            this.txtPackSN_BMU.TabIndex = 7;
             // 
             // dateTimePicker3
             // 
@@ -2933,17 +2946,27 @@
             this.lblSystemset_BMU_07.TabIndex = 6;
             this.lblSystemset_BMU_07.Text = "PACK条形码";
             // 
-            // button2
+            // btnSetDatetime
             // 
-            this.button2.Location = new System.Drawing.Point(258, 51);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 29);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "写入";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSetDatetime.Location = new System.Drawing.Point(258, 51);
+            this.btnSetDatetime.Name = "btnSetDatetime";
+            this.btnSetDatetime.Size = new System.Drawing.Size(75, 29);
+            this.btnSetDatetime.TabIndex = 5;
+            this.btnSetDatetime.Text = "写入";
+            this.btnSetDatetime.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cbb_106);
+            this.groupBox2.Controls.Add(this.txtFlag);
+            this.groupBox2.Controls.Add(this.cbb_105);
+            this.groupBox2.Controls.Add(this.cbb_103);
+            this.groupBox2.Controls.Add(this.txt_104);
+            this.groupBox2.Controls.Add(this.lblSystemset_106);
+            this.groupBox2.Controls.Add(this.lblSystemset_105);
+            this.groupBox2.Controls.Add(this.btnSetBatteryinfo);
+            this.groupBox2.Controls.Add(this.lblSystemset_103);
+            this.groupBox2.Controls.Add(this.lblSystemset_104);
             this.groupBox2.Controls.Add(this.btnSetControlInfo);
             this.groupBox2.Controls.Add(this.txtPackActiveBalanceCap);
             this.groupBox2.Controls.Add(this.txtPackActiveBalanceCur);
@@ -2962,22 +2985,22 @@
             this.groupBox2.Controls.Add(this.lblSystemset_66);
             this.groupBox2.Controls.Add(this.lblSystemset_65);
             this.groupBox2.Controls.Add(this.button7);
-            this.groupBox2.Controls.Add(this.button6);
+            this.groupBox2.Controls.Add(this.btnSet_0x21);
             this.groupBox2.Controls.Add(this.textBox7);
-            this.groupBox2.Controls.Add(this.textBox9);
+            this.groupBox2.Controls.Add(this.txtHeatFilmCloseTemp);
             this.groupBox2.Controls.Add(this.textBox8);
             this.groupBox2.Controls.Add(this.lblParameter_61);
             this.groupBox2.Controls.Add(this.lblSystemset_23);
             this.groupBox2.Controls.Add(this.lblParameter_63);
-            this.groupBox2.Controls.Add(this.textBox10);
+            this.groupBox2.Controls.Add(this.txtHeatFilmOpenTemp);
             this.groupBox2.Controls.Add(this.lblSystemset_24);
             this.groupBox2.Controls.Add(this.lblParameter_62);
-            this.groupBox2.Controls.Add(this.textBox11);
+            this.groupBox2.Controls.Add(this.txtFullChgVolt);
             this.groupBox2.Controls.Add(this.lblSystemset_22);
-            this.groupBox2.Controls.Add(this.textBox12);
+            this.groupBox2.Controls.Add(this.txtBalOpenVoltDiff);
             this.groupBox2.Controls.Add(this.lblParameter_60);
             this.groupBox2.Controls.Add(this.lblSystemset_25);
-            this.groupBox2.Controls.Add(this.textBox13);
+            this.groupBox2.Controls.Add(this.txtBalOpenVolt);
             this.groupBox2.Controls.Add(this.lblParameter_58);
             this.groupBox2.Controls.Add(this.lblSystemset_21);
             this.groupBox2.Controls.Add(this.lblSystemset_26);
@@ -3003,6 +3026,108 @@
             this.groupBox2.Size = new System.Drawing.Size(692, 757);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
+            // 
+            // cbb_106
+            // 
+            this.cbb_106.FormattingEnabled = true;
+            this.cbb_106.Items.AddRange(new object[] {
+            "0：无",
+            "1：查询重置真实容量标志"});
+            this.cbb_106.Location = new System.Drawing.Point(466, 481);
+            this.cbb_106.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbb_106.Name = "cbb_106";
+            this.cbb_106.Size = new System.Drawing.Size(140, 25);
+            this.cbb_106.TabIndex = 130;
+            // 
+            // txtFlag
+            // 
+            this.txtFlag.Location = new System.Drawing.Point(612, 482);
+            this.txtFlag.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFlag.Name = "txtFlag";
+            this.txtFlag.Size = new System.Drawing.Size(47, 23);
+            this.txtFlag.TabIndex = 129;
+            // 
+            // cbb_105
+            // 
+            this.cbb_105.FormattingEnabled = true;
+            this.cbb_105.Items.AddRange(new object[] {
+            "0：无",
+            "1：清除重置真实容量标志"});
+            this.cbb_105.Location = new System.Drawing.Point(466, 448);
+            this.cbb_105.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbb_105.Name = "cbb_105";
+            this.cbb_105.Size = new System.Drawing.Size(140, 25);
+            this.cbb_105.TabIndex = 128;
+            // 
+            // cbb_103
+            // 
+            this.cbb_103.FormattingEnabled = true;
+            this.cbb_103.Items.AddRange(new object[] {
+            "1：宁德时代",
+            "2：亿纬锂能",
+            "3：其他"});
+            this.cbb_103.Location = new System.Drawing.Point(466, 389);
+            this.cbb_103.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbb_103.Name = "cbb_103";
+            this.cbb_103.Size = new System.Drawing.Size(140, 25);
+            this.cbb_103.TabIndex = 127;
+            // 
+            // txt_104
+            // 
+            this.txt_104.Location = new System.Drawing.Point(466, 418);
+            this.txt_104.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txt_104.Name = "txt_104";
+            this.txt_104.Size = new System.Drawing.Size(140, 23);
+            this.txt_104.TabIndex = 126;
+            // 
+            // lblSystemset_106
+            // 
+            this.lblSystemset_106.AutoSize = true;
+            this.lblSystemset_106.Location = new System.Drawing.Point(341, 484);
+            this.lblSystemset_106.Name = "lblSystemset_106";
+            this.lblSystemset_106.Size = new System.Drawing.Size(92, 17);
+            this.lblSystemset_106.TabIndex = 125;
+            this.lblSystemset_106.Text = "查询FLASH标志";
+            // 
+            // lblSystemset_105
+            // 
+            this.lblSystemset_105.AutoSize = true;
+            this.lblSystemset_105.Location = new System.Drawing.Point(341, 451);
+            this.lblSystemset_105.Name = "lblSystemset_105";
+            this.lblSystemset_105.Size = new System.Drawing.Size(92, 17);
+            this.lblSystemset_105.TabIndex = 124;
+            this.lblSystemset_105.Text = "清除FLASH标志";
+            // 
+            // btnSetBatteryinfo
+            // 
+            this.btnSetBatteryinfo.AutoSize = true;
+            this.btnSetBatteryinfo.Location = new System.Drawing.Point(612, 387);
+            this.btnSetBatteryinfo.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSetBatteryinfo.Name = "btnSetBatteryinfo";
+            this.btnSetBatteryinfo.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSetBatteryinfo.Size = new System.Drawing.Size(68, 29);
+            this.btnSetBatteryinfo.TabIndex = 123;
+            this.btnSetBatteryinfo.Text = "设置";
+            this.btnSetBatteryinfo.UseVisualStyleBackColor = true;
+            this.btnSetBatteryinfo.Click += new System.EventHandler(this.btnSetBatteryinfo_Click);
+            // 
+            // lblSystemset_103
+            // 
+            this.lblSystemset_103.AutoSize = true;
+            this.lblSystemset_103.Location = new System.Drawing.Point(341, 392);
+            this.lblSystemset_103.Name = "lblSystemset_103";
+            this.lblSystemset_103.Size = new System.Drawing.Size(56, 17);
+            this.lblSystemset_103.TabIndex = 121;
+            this.lblSystemset_103.Text = "电芯品牌";
+            // 
+            // lblSystemset_104
+            // 
+            this.lblSystemset_104.AutoSize = true;
+            this.lblSystemset_104.Location = new System.Drawing.Point(341, 420);
+            this.lblSystemset_104.Name = "lblSystemset_104";
+            this.lblSystemset_104.Size = new System.Drawing.Size(80, 17);
+            this.lblSystemset_104.TabIndex = 122;
+            this.lblSystemset_104.Text = "电芯型号编号";
             // 
             // btnSetControlInfo
             // 
@@ -3194,17 +3319,18 @@
             this.button7.Text = "写入";
             this.button7.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnSet_0x21
             // 
-            this.button6.AutoSize = true;
-            this.button6.Location = new System.Drawing.Point(258, 16);
-            this.button6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button6.Name = "button6";
-            this.button6.Padding = new System.Windows.Forms.Padding(1);
-            this.button6.Size = new System.Drawing.Size(75, 29);
-            this.button6.TabIndex = 56;
-            this.button6.Text = "写入";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnSet_0x21.AutoSize = true;
+            this.btnSet_0x21.Location = new System.Drawing.Point(258, 16);
+            this.btnSet_0x21.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSet_0x21.Name = "btnSet_0x21";
+            this.btnSet_0x21.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSet_0x21.Size = new System.Drawing.Size(75, 29);
+            this.btnSet_0x21.TabIndex = 56;
+            this.btnSet_0x21.Text = "写入";
+            this.btnSet_0x21.UseVisualStyleBackColor = true;
+            this.btnSet_0x21.Click += new System.EventHandler(this.btnSet_0x21_Click);
             // 
             // textBox7
             // 
@@ -3214,13 +3340,13 @@
             this.textBox7.Size = new System.Drawing.Size(87, 23);
             this.textBox7.TabIndex = 23;
             // 
-            // textBox9
+            // txtHeatFilmCloseTemp
             // 
-            this.textBox9.Location = new System.Drawing.Point(156, 139);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(87, 23);
-            this.textBox9.TabIndex = 29;
+            this.txtHeatFilmCloseTemp.Location = new System.Drawing.Point(156, 139);
+            this.txtHeatFilmCloseTemp.Margin = new System.Windows.Forms.Padding(4);
+            this.txtHeatFilmCloseTemp.Name = "txtHeatFilmCloseTemp";
+            this.txtHeatFilmCloseTemp.Size = new System.Drawing.Size(87, 23);
+            this.txtHeatFilmCloseTemp.TabIndex = 29;
             // 
             // textBox8
             // 
@@ -3259,13 +3385,13 @@
             this.lblParameter_63.TabIndex = 20;
             this.lblParameter_63.Text = "电池包截止电流(A)";
             // 
-            // textBox10
+            // txtHeatFilmOpenTemp
             // 
-            this.textBox10.Location = new System.Drawing.Point(156, 108);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(87, 23);
-            this.textBox10.TabIndex = 25;
+            this.txtHeatFilmOpenTemp.Location = new System.Drawing.Point(156, 108);
+            this.txtHeatFilmOpenTemp.Margin = new System.Windows.Forms.Padding(4);
+            this.txtHeatFilmOpenTemp.Name = "txtHeatFilmOpenTemp";
+            this.txtHeatFilmOpenTemp.Size = new System.Drawing.Size(87, 23);
+            this.txtHeatFilmOpenTemp.TabIndex = 25;
             // 
             // lblSystemset_24
             // 
@@ -3286,13 +3412,13 @@
             this.lblParameter_62.TabIndex = 19;
             this.lblParameter_62.Text = "电池包截止电压(V)";
             // 
-            // textBox11
+            // txtFullChgVolt
             // 
-            this.textBox11.Location = new System.Drawing.Point(156, 77);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(87, 23);
-            this.textBox11.TabIndex = 24;
+            this.txtFullChgVolt.Location = new System.Drawing.Point(156, 77);
+            this.txtFullChgVolt.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFullChgVolt.Name = "txtFullChgVolt";
+            this.txtFullChgVolt.Size = new System.Drawing.Size(87, 23);
+            this.txtFullChgVolt.TabIndex = 24;
             // 
             // lblSystemset_22
             // 
@@ -3303,13 +3429,13 @@
             this.lblSystemset_22.TabIndex = 65;
             this.lblSystemset_22.Text = "单体电压个数(1-20)";
             // 
-            // textBox12
+            // txtBalOpenVoltDiff
             // 
-            this.textBox12.Location = new System.Drawing.Point(156, 46);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(87, 23);
-            this.textBox12.TabIndex = 23;
+            this.txtBalOpenVoltDiff.Location = new System.Drawing.Point(156, 46);
+            this.txtBalOpenVoltDiff.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBalOpenVoltDiff.Name = "txtBalOpenVoltDiff";
+            this.txtBalOpenVoltDiff.Size = new System.Drawing.Size(87, 23);
+            this.txtBalOpenVoltDiff.TabIndex = 23;
             // 
             // lblParameter_60
             // 
@@ -3330,13 +3456,13 @@
             this.lblSystemset_25.TabIndex = 66;
             this.lblSystemset_25.Text = "累计放电容量(mAH)";
             // 
-            // textBox13
+            // txtBalOpenVolt
             // 
-            this.textBox13.Location = new System.Drawing.Point(156, 16);
-            this.textBox13.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(87, 23);
-            this.textBox13.TabIndex = 22;
+            this.txtBalOpenVolt.Location = new System.Drawing.Point(156, 16);
+            this.txtBalOpenVolt.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBalOpenVolt.Name = "txtBalOpenVolt";
+            this.txtBalOpenVolt.Size = new System.Drawing.Size(87, 23);
+            this.txtBalOpenVolt.TabIndex = 22;
             // 
             // lblParameter_58
             // 
@@ -3525,24 +3651,24 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button14);
-            this.groupBox4.Controls.Add(this.button15);
-            this.groupBox4.Controls.Add(this.button16);
-            this.groupBox4.Controls.Add(this.button17);
-            this.groupBox4.Controls.Add(this.button18);
-            this.groupBox4.Controls.Add(this.button19);
+            this.groupBox4.Controls.Add(this.btnSetCalibration_BMU_06);
+            this.groupBox4.Controls.Add(this.btnSetCalibration_BMU_05);
+            this.groupBox4.Controls.Add(this.btnSetCalibration_BMU_04);
+            this.groupBox4.Controls.Add(this.btnSetCalibration_BMU_03);
+            this.groupBox4.Controls.Add(this.btnSetCalibration_BMU_02);
+            this.groupBox4.Controls.Add(this.btnSetCalibration_BMU_01);
             this.groupBox4.Controls.Add(this.lblSystemset_20);
-            this.groupBox4.Controls.Add(this.textBox24);
+            this.groupBox4.Controls.Add(this.txtBMU_Calibration06);
             this.groupBox4.Controls.Add(this.lblSystemset_19);
-            this.groupBox4.Controls.Add(this.textBox25);
+            this.groupBox4.Controls.Add(this.txtBMU_Calibration05);
             this.groupBox4.Controls.Add(this.lblSystemset_18);
-            this.groupBox4.Controls.Add(this.textBox26);
+            this.groupBox4.Controls.Add(this.txtBMU_Calibration04);
             this.groupBox4.Controls.Add(this.lblSystemset_16);
             this.groupBox4.Controls.Add(this.lblSystemset_15);
-            this.groupBox4.Controls.Add(this.textBox27);
+            this.groupBox4.Controls.Add(this.txtBMU_Calibration02);
             this.groupBox4.Controls.Add(this.lblSystemset_17);
-            this.groupBox4.Controls.Add(this.textBox28);
-            this.groupBox4.Controls.Add(this.textBox29);
+            this.groupBox4.Controls.Add(this.txtBMU_Calibration01);
+            this.groupBox4.Controls.Add(this.txtBMU_Calibration03);
             this.groupBox4.Location = new System.Drawing.Point(3, 436);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox4.Name = "groupBox4";
@@ -3550,79 +3676,85 @@
             this.groupBox4.Size = new System.Drawing.Size(337, 327);
             this.groupBox4.TabIndex = 93;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "校准";
+            this.groupBox4.Text = "校准-0x02A";
             // 
-            // button14
+            // btnSetCalibration_BMU_06
             // 
-            this.button14.AutoSize = true;
-            this.button14.Location = new System.Drawing.Point(249, 187);
-            this.button14.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button14.Name = "button14";
-            this.button14.Padding = new System.Windows.Forms.Padding(1);
-            this.button14.Size = new System.Drawing.Size(75, 29);
-            this.button14.TabIndex = 68;
-            this.button14.Text = "写入";
-            this.button14.UseVisualStyleBackColor = true;
+            this.btnSetCalibration_BMU_06.AutoSize = true;
+            this.btnSetCalibration_BMU_06.Location = new System.Drawing.Point(258, 187);
+            this.btnSetCalibration_BMU_06.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSetCalibration_BMU_06.Name = "btnSetCalibration_BMU_06";
+            this.btnSetCalibration_BMU_06.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSetCalibration_BMU_06.Size = new System.Drawing.Size(75, 29);
+            this.btnSetCalibration_BMU_06.TabIndex = 68;
+            this.btnSetCalibration_BMU_06.Text = "写入";
+            this.btnSetCalibration_BMU_06.UseVisualStyleBackColor = true;
+            this.btnSetCalibration_BMU_06.Click += new System.EventHandler(this.btnSetCalibrationBMU_Click);
             // 
-            // button15
+            // btnSetCalibration_BMU_05
             // 
-            this.button15.AutoSize = true;
-            this.button15.Location = new System.Drawing.Point(249, 153);
-            this.button15.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button15.Name = "button15";
-            this.button15.Padding = new System.Windows.Forms.Padding(1);
-            this.button15.Size = new System.Drawing.Size(75, 29);
-            this.button15.TabIndex = 67;
-            this.button15.Text = "写入";
-            this.button15.UseVisualStyleBackColor = true;
+            this.btnSetCalibration_BMU_05.AutoSize = true;
+            this.btnSetCalibration_BMU_05.Location = new System.Drawing.Point(258, 153);
+            this.btnSetCalibration_BMU_05.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSetCalibration_BMU_05.Name = "btnSetCalibration_BMU_05";
+            this.btnSetCalibration_BMU_05.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSetCalibration_BMU_05.Size = new System.Drawing.Size(75, 29);
+            this.btnSetCalibration_BMU_05.TabIndex = 67;
+            this.btnSetCalibration_BMU_05.Text = "写入";
+            this.btnSetCalibration_BMU_05.UseVisualStyleBackColor = true;
+            this.btnSetCalibration_BMU_05.Click += new System.EventHandler(this.btnSetCalibrationBMU_Click);
             // 
-            // button16
+            // btnSetCalibration_BMU_04
             // 
-            this.button16.AutoSize = true;
-            this.button16.Location = new System.Drawing.Point(249, 119);
-            this.button16.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button16.Name = "button16";
-            this.button16.Padding = new System.Windows.Forms.Padding(1);
-            this.button16.Size = new System.Drawing.Size(75, 29);
-            this.button16.TabIndex = 66;
-            this.button16.Text = "写入";
-            this.button16.UseVisualStyleBackColor = true;
+            this.btnSetCalibration_BMU_04.AutoSize = true;
+            this.btnSetCalibration_BMU_04.Location = new System.Drawing.Point(258, 119);
+            this.btnSetCalibration_BMU_04.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSetCalibration_BMU_04.Name = "btnSetCalibration_BMU_04";
+            this.btnSetCalibration_BMU_04.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSetCalibration_BMU_04.Size = new System.Drawing.Size(75, 29);
+            this.btnSetCalibration_BMU_04.TabIndex = 66;
+            this.btnSetCalibration_BMU_04.Text = "写入";
+            this.btnSetCalibration_BMU_04.UseVisualStyleBackColor = true;
+            this.btnSetCalibration_BMU_04.Click += new System.EventHandler(this.btnSetCalibrationBMU_Click);
             // 
-            // button17
+            // btnSetCalibration_BMU_03
             // 
-            this.button17.AutoSize = true;
-            this.button17.Location = new System.Drawing.Point(249, 85);
-            this.button17.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button17.Name = "button17";
-            this.button17.Padding = new System.Windows.Forms.Padding(1);
-            this.button17.Size = new System.Drawing.Size(75, 29);
-            this.button17.TabIndex = 65;
-            this.button17.Text = "写入";
-            this.button17.UseVisualStyleBackColor = true;
+            this.btnSetCalibration_BMU_03.AutoSize = true;
+            this.btnSetCalibration_BMU_03.Location = new System.Drawing.Point(258, 85);
+            this.btnSetCalibration_BMU_03.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSetCalibration_BMU_03.Name = "btnSetCalibration_BMU_03";
+            this.btnSetCalibration_BMU_03.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSetCalibration_BMU_03.Size = new System.Drawing.Size(75, 29);
+            this.btnSetCalibration_BMU_03.TabIndex = 65;
+            this.btnSetCalibration_BMU_03.Text = "写入";
+            this.btnSetCalibration_BMU_03.UseVisualStyleBackColor = true;
+            this.btnSetCalibration_BMU_03.Click += new System.EventHandler(this.btnSetCalibrationBMU_Click);
             // 
-            // button18
+            // btnSetCalibration_BMU_02
             // 
-            this.button18.AutoSize = true;
-            this.button18.Location = new System.Drawing.Point(249, 51);
-            this.button18.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button18.Name = "button18";
-            this.button18.Padding = new System.Windows.Forms.Padding(1);
-            this.button18.Size = new System.Drawing.Size(75, 29);
-            this.button18.TabIndex = 64;
-            this.button18.Text = "写入";
-            this.button18.UseVisualStyleBackColor = true;
+            this.btnSetCalibration_BMU_02.AutoSize = true;
+            this.btnSetCalibration_BMU_02.Location = new System.Drawing.Point(258, 51);
+            this.btnSetCalibration_BMU_02.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSetCalibration_BMU_02.Name = "btnSetCalibration_BMU_02";
+            this.btnSetCalibration_BMU_02.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSetCalibration_BMU_02.Size = new System.Drawing.Size(75, 29);
+            this.btnSetCalibration_BMU_02.TabIndex = 64;
+            this.btnSetCalibration_BMU_02.Text = "写入";
+            this.btnSetCalibration_BMU_02.UseVisualStyleBackColor = true;
+            this.btnSetCalibration_BMU_02.Click += new System.EventHandler(this.btnSetCalibrationBMU_Click);
             // 
-            // button19
+            // btnSetCalibration_BMU_01
             // 
-            this.button19.AutoSize = true;
-            this.button19.Location = new System.Drawing.Point(249, 17);
-            this.button19.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button19.Name = "button19";
-            this.button19.Padding = new System.Windows.Forms.Padding(1);
-            this.button19.Size = new System.Drawing.Size(75, 29);
-            this.button19.TabIndex = 51;
-            this.button19.Text = "写入";
-            this.button19.UseVisualStyleBackColor = true;
+            this.btnSetCalibration_BMU_01.AutoSize = true;
+            this.btnSetCalibration_BMU_01.Location = new System.Drawing.Point(258, 17);
+            this.btnSetCalibration_BMU_01.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSetCalibration_BMU_01.Name = "btnSetCalibration_BMU_01";
+            this.btnSetCalibration_BMU_01.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSetCalibration_BMU_01.Size = new System.Drawing.Size(75, 29);
+            this.btnSetCalibration_BMU_01.TabIndex = 51;
+            this.btnSetCalibration_BMU_01.Text = "写入";
+            this.btnSetCalibration_BMU_01.UseVisualStyleBackColor = true;
+            this.btnSetCalibration_BMU_01.Click += new System.EventHandler(this.btnSetCalibrationBMU_Click);
             // 
             // lblSystemset_20
             // 
@@ -3634,13 +3766,13 @@
             this.lblSystemset_20.TabIndex = 30;
             this.lblSystemset_20.Text = "校准放电小电流(0~5A)";
             // 
-            // textBox24
+            // txtBMU_Calibration06
             // 
-            this.textBox24.Location = new System.Drawing.Point(178, 190);
-            this.textBox24.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox24.Name = "textBox24";
-            this.textBox24.Size = new System.Drawing.Size(70, 23);
-            this.textBox24.TabIndex = 31;
+            this.txtBMU_Calibration06.Location = new System.Drawing.Point(178, 190);
+            this.txtBMU_Calibration06.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBMU_Calibration06.Name = "txtBMU_Calibration06";
+            this.txtBMU_Calibration06.Size = new System.Drawing.Size(70, 23);
+            this.txtBMU_Calibration06.TabIndex = 31;
             // 
             // lblSystemset_19
             // 
@@ -3652,13 +3784,13 @@
             this.lblSystemset_19.TabIndex = 28;
             this.lblSystemset_19.Text = "校准放电电流(0~50A)";
             // 
-            // textBox25
+            // txtBMU_Calibration05
             // 
-            this.textBox25.Location = new System.Drawing.Point(178, 156);
-            this.textBox25.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox25.Name = "textBox25";
-            this.textBox25.Size = new System.Drawing.Size(70, 23);
-            this.textBox25.TabIndex = 29;
+            this.txtBMU_Calibration05.Location = new System.Drawing.Point(178, 156);
+            this.txtBMU_Calibration05.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBMU_Calibration05.Name = "txtBMU_Calibration05";
+            this.txtBMU_Calibration05.Size = new System.Drawing.Size(70, 23);
+            this.txtBMU_Calibration05.TabIndex = 29;
             // 
             // lblSystemset_18
             // 
@@ -3670,13 +3802,13 @@
             this.lblSystemset_18.TabIndex = 26;
             this.lblSystemset_18.Text = "校准充电小电流(0~5A)";
             // 
-            // textBox26
+            // txtBMU_Calibration04
             // 
-            this.textBox26.Location = new System.Drawing.Point(178, 122);
-            this.textBox26.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox26.Name = "textBox26";
-            this.textBox26.Size = new System.Drawing.Size(70, 23);
-            this.textBox26.TabIndex = 27;
+            this.txtBMU_Calibration04.Location = new System.Drawing.Point(178, 122);
+            this.txtBMU_Calibration04.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBMU_Calibration04.Name = "txtBMU_Calibration04";
+            this.txtBMU_Calibration04.Size = new System.Drawing.Size(70, 23);
+            this.txtBMU_Calibration04.TabIndex = 27;
             // 
             // lblSystemset_16
             // 
@@ -3698,13 +3830,13 @@
             this.lblSystemset_15.TabIndex = 23;
             this.lblSystemset_15.Text = "校准总压(0~1000V)";
             // 
-            // textBox27
+            // txtBMU_Calibration02
             // 
-            this.textBox27.Location = new System.Drawing.Point(178, 54);
-            this.textBox27.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new System.Drawing.Size(70, 23);
-            this.textBox27.TabIndex = 22;
+            this.txtBMU_Calibration02.Location = new System.Drawing.Point(178, 54);
+            this.txtBMU_Calibration02.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBMU_Calibration02.Name = "txtBMU_Calibration02";
+            this.txtBMU_Calibration02.Size = new System.Drawing.Size(70, 23);
+            this.txtBMU_Calibration02.TabIndex = 22;
             // 
             // lblSystemset_17
             // 
@@ -3716,59 +3848,59 @@
             this.lblSystemset_17.TabIndex = 21;
             this.lblSystemset_17.Text = "校准充电电流(0~50A)";
             // 
-            // textBox28
+            // txtBMU_Calibration01
             // 
-            this.textBox28.Location = new System.Drawing.Point(178, 20);
-            this.textBox28.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(70, 23);
-            this.textBox28.TabIndex = 6;
+            this.txtBMU_Calibration01.Location = new System.Drawing.Point(178, 20);
+            this.txtBMU_Calibration01.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBMU_Calibration01.Name = "txtBMU_Calibration01";
+            this.txtBMU_Calibration01.Size = new System.Drawing.Size(70, 23);
+            this.txtBMU_Calibration01.TabIndex = 6;
             // 
-            // textBox29
+            // txtBMU_Calibration03
             // 
-            this.textBox29.Location = new System.Drawing.Point(178, 88);
-            this.textBox29.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox29.Name = "textBox29";
-            this.textBox29.Size = new System.Drawing.Size(70, 23);
-            this.textBox29.TabIndex = 25;
+            this.txtBMU_Calibration03.Location = new System.Drawing.Point(178, 88);
+            this.txtBMU_Calibration03.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBMU_Calibration03.Name = "txtBMU_Calibration03";
+            this.txtBMU_Calibration03.Size = new System.Drawing.Size(70, 23);
+            this.txtBMU_Calibration03.TabIndex = 25;
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.button20);
-            this.groupBox6.Controls.Add(this.button51);
-            this.groupBox6.Controls.Add(this.button21);
-            this.groupBox6.Controls.Add(this.button52);
-            this.groupBox6.Controls.Add(this.button22);
-            this.groupBox6.Controls.Add(this.button53);
+            this.groupBox6.Controls.Add(this.btnSystemset_45_BMU_Lifted8);
+            this.groupBox6.Controls.Add(this.btnSystemset_45_BMU_Lifted4);
+            this.groupBox6.Controls.Add(this.btnSystemset_43_BMU_Close8);
+            this.groupBox6.Controls.Add(this.btnSystemset_43_BMU_Close4);
+            this.groupBox6.Controls.Add(this.btnSystemset_44_BMU_Open8);
+            this.groupBox6.Controls.Add(this.btnSystemset_44_BMU_Open4);
             this.groupBox6.Controls.Add(this.lblSystemset_63);
             this.groupBox6.Controls.Add(this.lblSystemset_BMU_02);
-            this.groupBox6.Controls.Add(this.button26);
-            this.groupBox6.Controls.Add(this.button54);
-            this.groupBox6.Controls.Add(this.button55);
-            this.groupBox6.Controls.Add(this.button28);
-            this.groupBox6.Controls.Add(this.button56);
-            this.groupBox6.Controls.Add(this.button29);
+            this.groupBox6.Controls.Add(this.btnSystemset_debug2);
+            this.groupBox6.Controls.Add(this.btnSystemset_45_BMU_Lifted3);
+            this.groupBox6.Controls.Add(this.btnSystemset_43_BMU_Close3);
+            this.groupBox6.Controls.Add(this.btnSystemset_45_BMU_Lifted9);
+            this.groupBox6.Controls.Add(this.btnSystemset_44_BMU_Open3);
+            this.groupBox6.Controls.Add(this.btnSystemset_45_BMU_Lifted7);
             this.groupBox6.Controls.Add(this.lblSystemset_BMU_01);
-            this.groupBox6.Controls.Add(this.button57);
-            this.groupBox6.Controls.Add(this.button58);
-            this.groupBox6.Controls.Add(this.button32);
-            this.groupBox6.Controls.Add(this.button59);
+            this.groupBox6.Controls.Add(this.btnSystemset_45_BMU_Lifted2);
+            this.groupBox6.Controls.Add(this.btnSystemset_43_BMU_Close2);
+            this.groupBox6.Controls.Add(this.btnSystemset_43_BMU_Close9);
+            this.groupBox6.Controls.Add(this.btnSystemset_44_BMU_Open2);
             this.groupBox6.Controls.Add(this.lblSystemset_10);
-            this.groupBox6.Controls.Add(this.button33);
-            this.groupBox6.Controls.Add(this.button60);
-            this.groupBox6.Controls.Add(this.button34);
+            this.groupBox6.Controls.Add(this.btnSystemset_43_BMU_Close7);
+            this.groupBox6.Controls.Add(this.btnSystemset_45_BMU_Lifted1);
+            this.groupBox6.Controls.Add(this.btnSystemset_44_BMU_Open9);
             this.groupBox6.Controls.Add(this.lblSystemset_09);
-            this.groupBox6.Controls.Add(this.button61);
-            this.groupBox6.Controls.Add(this.button35);
-            this.groupBox6.Controls.Add(this.button62);
+            this.groupBox6.Controls.Add(this.btnSystemset_43_BMU_Close1);
+            this.groupBox6.Controls.Add(this.btnSystemset_44_BMU_Open7);
+            this.groupBox6.Controls.Add(this.btnSystemset_44_BMU_Open1);
             this.groupBox6.Controls.Add(this.lblSystemset_62);
             this.groupBox6.Controls.Add(this.lblSystemset_BMU_04);
-            this.groupBox6.Controls.Add(this.button37);
-            this.groupBox6.Controls.Add(this.button38);
-            this.groupBox6.Controls.Add(this.button43);
-            this.groupBox6.Controls.Add(this.button44);
-            this.groupBox6.Controls.Add(this.button45);
-            this.groupBox6.Controls.Add(this.button46);
+            this.groupBox6.Controls.Add(this.btnSystemset_45_BMU_Lifted5);
+            this.groupBox6.Controls.Add(this.btnSystemset_45_BMU_Lifted6);
+            this.groupBox6.Controls.Add(this.btnSystemset_43_BMU_Close5);
+            this.groupBox6.Controls.Add(this.btnSystemset_43_BMU_Close6);
+            this.groupBox6.Controls.Add(this.btnSystemset_44_BMU_Open5);
+            this.groupBox6.Controls.Add(this.btnSystemset_44_BMU_Open6);
             this.groupBox6.Controls.Add(this.lblSystemset_61);
             this.groupBox6.Controls.Add(this.lblSystemset_BMU_03);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Left;
@@ -3779,85 +3911,91 @@
             this.groupBox6.Size = new System.Drawing.Size(356, 770);
             this.groupBox6.TabIndex = 95;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "开关控制";
+            this.groupBox6.Text = "开关控制-0x02B";
             // 
-            // button20
+            // btnSystemset_45_BMU_Lifted8
             // 
-            this.button20.AutoSize = true;
-            this.button20.Enabled = false;
-            this.button20.Location = new System.Drawing.Point(282, 302);
-            this.button20.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button20.Name = "button20";
-            this.button20.Padding = new System.Windows.Forms.Padding(1);
-            this.button20.Size = new System.Drawing.Size(65, 29);
-            this.button20.TabIndex = 46;
-            this.button20.Text = "解除";
-            this.button20.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted8.AutoSize = true;
+            this.btnSystemset_45_BMU_Lifted8.Enabled = false;
+            this.btnSystemset_45_BMU_Lifted8.Location = new System.Drawing.Point(282, 302);
+            this.btnSystemset_45_BMU_Lifted8.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_45_BMU_Lifted8.Name = "btnSystemset_45_BMU_Lifted8";
+            this.btnSystemset_45_BMU_Lifted8.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_45_BMU_Lifted8.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_45_BMU_Lifted8.TabIndex = 46;
+            this.btnSystemset_45_BMU_Lifted8.Text = "解除";
+            this.btnSystemset_45_BMU_Lifted8.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted8.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button51
+            // btnSystemset_45_BMU_Lifted4
             // 
-            this.button51.AutoSize = true;
-            this.button51.Enabled = false;
-            this.button51.Location = new System.Drawing.Point(282, 162);
-            this.button51.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button51.Name = "button51";
-            this.button51.Padding = new System.Windows.Forms.Padding(1);
-            this.button51.Size = new System.Drawing.Size(65, 29);
-            this.button51.TabIndex = 74;
-            this.button51.Text = "解除";
-            this.button51.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted4.AutoSize = true;
+            this.btnSystemset_45_BMU_Lifted4.Enabled = false;
+            this.btnSystemset_45_BMU_Lifted4.Location = new System.Drawing.Point(282, 162);
+            this.btnSystemset_45_BMU_Lifted4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_45_BMU_Lifted4.Name = "btnSystemset_45_BMU_Lifted4";
+            this.btnSystemset_45_BMU_Lifted4.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_45_BMU_Lifted4.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_45_BMU_Lifted4.TabIndex = 74;
+            this.btnSystemset_45_BMU_Lifted4.Text = "解除";
+            this.btnSystemset_45_BMU_Lifted4.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted4.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button21
+            // btnSystemset_43_BMU_Close8
             // 
-            this.button21.AutoSize = true;
-            this.button21.Enabled = false;
-            this.button21.Location = new System.Drawing.Point(214, 302);
-            this.button21.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button21.Name = "button21";
-            this.button21.Padding = new System.Windows.Forms.Padding(1);
-            this.button21.Size = new System.Drawing.Size(65, 29);
-            this.button21.TabIndex = 45;
-            this.button21.Text = "关闭";
-            this.button21.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close8.AutoSize = true;
+            this.btnSystemset_43_BMU_Close8.Enabled = false;
+            this.btnSystemset_43_BMU_Close8.Location = new System.Drawing.Point(214, 302);
+            this.btnSystemset_43_BMU_Close8.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_43_BMU_Close8.Name = "btnSystemset_43_BMU_Close8";
+            this.btnSystemset_43_BMU_Close8.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_43_BMU_Close8.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_43_BMU_Close8.TabIndex = 45;
+            this.btnSystemset_43_BMU_Close8.Text = "关闭";
+            this.btnSystemset_43_BMU_Close8.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close8.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button52
+            // btnSystemset_43_BMU_Close4
             // 
-            this.button52.AutoSize = true;
-            this.button52.Enabled = false;
-            this.button52.Location = new System.Drawing.Point(214, 162);
-            this.button52.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button52.Name = "button52";
-            this.button52.Padding = new System.Windows.Forms.Padding(1);
-            this.button52.Size = new System.Drawing.Size(65, 29);
-            this.button52.TabIndex = 73;
-            this.button52.Text = "关闭";
-            this.button52.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close4.AutoSize = true;
+            this.btnSystemset_43_BMU_Close4.Enabled = false;
+            this.btnSystemset_43_BMU_Close4.Location = new System.Drawing.Point(214, 162);
+            this.btnSystemset_43_BMU_Close4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_43_BMU_Close4.Name = "btnSystemset_43_BMU_Close4";
+            this.btnSystemset_43_BMU_Close4.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_43_BMU_Close4.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_43_BMU_Close4.TabIndex = 73;
+            this.btnSystemset_43_BMU_Close4.Text = "关闭";
+            this.btnSystemset_43_BMU_Close4.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close4.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button22
+            // btnSystemset_44_BMU_Open8
             // 
-            this.button22.AutoSize = true;
-            this.button22.Enabled = false;
-            this.button22.Location = new System.Drawing.Point(146, 303);
-            this.button22.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button22.Name = "button22";
-            this.button22.Padding = new System.Windows.Forms.Padding(1);
-            this.button22.Size = new System.Drawing.Size(65, 29);
-            this.button22.TabIndex = 44;
-            this.button22.Text = "打开";
-            this.button22.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open8.AutoSize = true;
+            this.btnSystemset_44_BMU_Open8.Enabled = false;
+            this.btnSystemset_44_BMU_Open8.Location = new System.Drawing.Point(146, 303);
+            this.btnSystemset_44_BMU_Open8.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_44_BMU_Open8.Name = "btnSystemset_44_BMU_Open8";
+            this.btnSystemset_44_BMU_Open8.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_44_BMU_Open8.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_44_BMU_Open8.TabIndex = 44;
+            this.btnSystemset_44_BMU_Open8.Text = "打开";
+            this.btnSystemset_44_BMU_Open8.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open8.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button53
+            // btnSystemset_44_BMU_Open4
             // 
-            this.button53.AutoSize = true;
-            this.button53.Enabled = false;
-            this.button53.Location = new System.Drawing.Point(146, 163);
-            this.button53.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button53.Name = "button53";
-            this.button53.Padding = new System.Windows.Forms.Padding(1);
-            this.button53.Size = new System.Drawing.Size(65, 29);
-            this.button53.TabIndex = 72;
-            this.button53.Text = "打开";
-            this.button53.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open4.AutoSize = true;
+            this.btnSystemset_44_BMU_Open4.Enabled = false;
+            this.btnSystemset_44_BMU_Open4.Location = new System.Drawing.Point(146, 163);
+            this.btnSystemset_44_BMU_Open4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_44_BMU_Open4.Name = "btnSystemset_44_BMU_Open4";
+            this.btnSystemset_44_BMU_Open4.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_44_BMU_Open4.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_44_BMU_Open4.TabIndex = 72;
+            this.btnSystemset_44_BMU_Open4.Text = "打开";
+            this.btnSystemset_44_BMU_Open4.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open4.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
             // lblSystemset_63
             // 
@@ -3878,87 +4016,93 @@
             this.lblSystemset_BMU_02.TabIndex = 71;
             this.lblSystemset_BMU_02.Text = "加热功能";
             // 
-            // button26
+            // btnSystemset_debug2
             // 
-            this.button26.AutoSize = true;
-            this.button26.BackColor = System.Drawing.Color.Green;
-            this.button26.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button26.ForeColor = System.Drawing.Color.White;
-            this.button26.Image = global::SofarBMS.Resources.debugtool;
-            this.button26.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button26.Location = new System.Drawing.Point(6, 23);
-            this.button26.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(344, 29);
-            this.button26.TabIndex = 38;
-            this.button26.Text = "开始调试";
-            this.button26.UseVisualStyleBackColor = false;
+            this.btnSystemset_debug2.AutoSize = true;
+            this.btnSystemset_debug2.BackColor = System.Drawing.Color.Green;
+            this.btnSystemset_debug2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSystemset_debug2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSystemset_debug2.ForeColor = System.Drawing.Color.White;
+            this.btnSystemset_debug2.Image = global::SofarBMS.Resources.debugtool;
+            this.btnSystemset_debug2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSystemset_debug2.Location = new System.Drawing.Point(6, 23);
+            this.btnSystemset_debug2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSystemset_debug2.Name = "btnSystemset_debug2";
+            this.btnSystemset_debug2.Size = new System.Drawing.Size(344, 29);
+            this.btnSystemset_debug2.TabIndex = 38;
+            this.btnSystemset_debug2.Text = "开始调试";
+            this.btnSystemset_debug2.UseVisualStyleBackColor = false;
+            this.btnSystemset_debug2.Click += new System.EventHandler(this.btnSystemset_debug2_Click);
             // 
-            // button54
+            // btnSystemset_45_BMU_Lifted3
             // 
-            this.button54.AutoSize = true;
-            this.button54.Enabled = false;
-            this.button54.Location = new System.Drawing.Point(282, 127);
-            this.button54.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button54.Name = "button54";
-            this.button54.Padding = new System.Windows.Forms.Padding(1);
-            this.button54.Size = new System.Drawing.Size(65, 29);
-            this.button54.TabIndex = 70;
-            this.button54.Text = "解除";
-            this.button54.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted3.AutoSize = true;
+            this.btnSystemset_45_BMU_Lifted3.Enabled = false;
+            this.btnSystemset_45_BMU_Lifted3.Location = new System.Drawing.Point(282, 127);
+            this.btnSystemset_45_BMU_Lifted3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_45_BMU_Lifted3.Name = "btnSystemset_45_BMU_Lifted3";
+            this.btnSystemset_45_BMU_Lifted3.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_45_BMU_Lifted3.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_45_BMU_Lifted3.TabIndex = 70;
+            this.btnSystemset_45_BMU_Lifted3.Text = "解除";
+            this.btnSystemset_45_BMU_Lifted3.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted3.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button55
+            // btnSystemset_43_BMU_Close3
             // 
-            this.button55.AutoSize = true;
-            this.button55.Enabled = false;
-            this.button55.Location = new System.Drawing.Point(214, 127);
-            this.button55.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button55.Name = "button55";
-            this.button55.Padding = new System.Windows.Forms.Padding(1);
-            this.button55.Size = new System.Drawing.Size(65, 29);
-            this.button55.TabIndex = 69;
-            this.button55.Text = "关闭";
-            this.button55.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close3.AutoSize = true;
+            this.btnSystemset_43_BMU_Close3.Enabled = false;
+            this.btnSystemset_43_BMU_Close3.Location = new System.Drawing.Point(214, 127);
+            this.btnSystemset_43_BMU_Close3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_43_BMU_Close3.Name = "btnSystemset_43_BMU_Close3";
+            this.btnSystemset_43_BMU_Close3.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_43_BMU_Close3.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_43_BMU_Close3.TabIndex = 69;
+            this.btnSystemset_43_BMU_Close3.Text = "关闭";
+            this.btnSystemset_43_BMU_Close3.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close3.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button28
+            // btnSystemset_45_BMU_Lifted9
             // 
-            this.button28.AutoSize = true;
-            this.button28.Enabled = false;
-            this.button28.Location = new System.Drawing.Point(282, 337);
-            this.button28.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button28.Name = "button28";
-            this.button28.Padding = new System.Windows.Forms.Padding(1);
-            this.button28.Size = new System.Drawing.Size(65, 29);
-            this.button28.TabIndex = 37;
-            this.button28.Text = "解除";
-            this.button28.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted9.AutoSize = true;
+            this.btnSystemset_45_BMU_Lifted9.Enabled = false;
+            this.btnSystemset_45_BMU_Lifted9.Location = new System.Drawing.Point(282, 337);
+            this.btnSystemset_45_BMU_Lifted9.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_45_BMU_Lifted9.Name = "btnSystemset_45_BMU_Lifted9";
+            this.btnSystemset_45_BMU_Lifted9.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_45_BMU_Lifted9.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_45_BMU_Lifted9.TabIndex = 37;
+            this.btnSystemset_45_BMU_Lifted9.Text = "解除";
+            this.btnSystemset_45_BMU_Lifted9.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted9.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button56
+            // btnSystemset_44_BMU_Open3
             // 
-            this.button56.AutoSize = true;
-            this.button56.Enabled = false;
-            this.button56.Location = new System.Drawing.Point(146, 128);
-            this.button56.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button56.Name = "button56";
-            this.button56.Padding = new System.Windows.Forms.Padding(1);
-            this.button56.Size = new System.Drawing.Size(65, 29);
-            this.button56.TabIndex = 68;
-            this.button56.Text = "打开";
-            this.button56.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open3.AutoSize = true;
+            this.btnSystemset_44_BMU_Open3.Enabled = false;
+            this.btnSystemset_44_BMU_Open3.Location = new System.Drawing.Point(146, 128);
+            this.btnSystemset_44_BMU_Open3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_44_BMU_Open3.Name = "btnSystemset_44_BMU_Open3";
+            this.btnSystemset_44_BMU_Open3.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_44_BMU_Open3.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_44_BMU_Open3.TabIndex = 68;
+            this.btnSystemset_44_BMU_Open3.Text = "打开";
+            this.btnSystemset_44_BMU_Open3.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open3.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button29
+            // btnSystemset_45_BMU_Lifted7
             // 
-            this.button29.AutoSize = true;
-            this.button29.Enabled = false;
-            this.button29.Location = new System.Drawing.Point(282, 267);
-            this.button29.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button29.Name = "button29";
-            this.button29.Padding = new System.Windows.Forms.Padding(1);
-            this.button29.Size = new System.Drawing.Size(65, 29);
-            this.button29.TabIndex = 36;
-            this.button29.Text = "解除";
-            this.button29.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted7.AutoSize = true;
+            this.btnSystemset_45_BMU_Lifted7.Enabled = false;
+            this.btnSystemset_45_BMU_Lifted7.Location = new System.Drawing.Point(282, 267);
+            this.btnSystemset_45_BMU_Lifted7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_45_BMU_Lifted7.Name = "btnSystemset_45_BMU_Lifted7";
+            this.btnSystemset_45_BMU_Lifted7.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_45_BMU_Lifted7.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_45_BMU_Lifted7.TabIndex = 36;
+            this.btnSystemset_45_BMU_Lifted7.Text = "解除";
+            this.btnSystemset_45_BMU_Lifted7.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted7.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
             // lblSystemset_BMU_01
             // 
@@ -3969,57 +4113,61 @@
             this.lblSystemset_BMU_01.TabIndex = 67;
             this.lblSystemset_BMU_01.Text = "告警保护指示灯";
             // 
-            // button57
+            // btnSystemset_45_BMU_Lifted2
             // 
-            this.button57.AutoSize = true;
-            this.button57.Enabled = false;
-            this.button57.Location = new System.Drawing.Point(282, 92);
-            this.button57.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button57.Name = "button57";
-            this.button57.Padding = new System.Windows.Forms.Padding(1);
-            this.button57.Size = new System.Drawing.Size(65, 29);
-            this.button57.TabIndex = 66;
-            this.button57.Text = "解除";
-            this.button57.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted2.AutoSize = true;
+            this.btnSystemset_45_BMU_Lifted2.Enabled = false;
+            this.btnSystemset_45_BMU_Lifted2.Location = new System.Drawing.Point(282, 92);
+            this.btnSystemset_45_BMU_Lifted2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_45_BMU_Lifted2.Name = "btnSystemset_45_BMU_Lifted2";
+            this.btnSystemset_45_BMU_Lifted2.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_45_BMU_Lifted2.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_45_BMU_Lifted2.TabIndex = 66;
+            this.btnSystemset_45_BMU_Lifted2.Text = "解除";
+            this.btnSystemset_45_BMU_Lifted2.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted2.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button58
+            // btnSystemset_43_BMU_Close2
             // 
-            this.button58.AutoSize = true;
-            this.button58.Enabled = false;
-            this.button58.Location = new System.Drawing.Point(214, 92);
-            this.button58.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button58.Name = "button58";
-            this.button58.Padding = new System.Windows.Forms.Padding(1);
-            this.button58.Size = new System.Drawing.Size(65, 29);
-            this.button58.TabIndex = 65;
-            this.button58.Text = "关闭";
-            this.button58.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close2.AutoSize = true;
+            this.btnSystemset_43_BMU_Close2.Enabled = false;
+            this.btnSystemset_43_BMU_Close2.Location = new System.Drawing.Point(214, 92);
+            this.btnSystemset_43_BMU_Close2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_43_BMU_Close2.Name = "btnSystemset_43_BMU_Close2";
+            this.btnSystemset_43_BMU_Close2.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_43_BMU_Close2.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_43_BMU_Close2.TabIndex = 65;
+            this.btnSystemset_43_BMU_Close2.Text = "关闭";
+            this.btnSystemset_43_BMU_Close2.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close2.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button32
+            // btnSystemset_43_BMU_Close9
             // 
-            this.button32.AutoSize = true;
-            this.button32.Enabled = false;
-            this.button32.Location = new System.Drawing.Point(214, 337);
-            this.button32.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button32.Name = "button32";
-            this.button32.Padding = new System.Windows.Forms.Padding(1);
-            this.button32.Size = new System.Drawing.Size(65, 29);
-            this.button32.TabIndex = 33;
-            this.button32.Text = "关闭";
-            this.button32.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close9.AutoSize = true;
+            this.btnSystemset_43_BMU_Close9.Enabled = false;
+            this.btnSystemset_43_BMU_Close9.Location = new System.Drawing.Point(214, 337);
+            this.btnSystemset_43_BMU_Close9.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_43_BMU_Close9.Name = "btnSystemset_43_BMU_Close9";
+            this.btnSystemset_43_BMU_Close9.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_43_BMU_Close9.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_43_BMU_Close9.TabIndex = 33;
+            this.btnSystemset_43_BMU_Close9.Text = "关闭";
+            this.btnSystemset_43_BMU_Close9.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close9.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button59
+            // btnSystemset_44_BMU_Open2
             // 
-            this.button59.AutoSize = true;
-            this.button59.Enabled = false;
-            this.button59.Location = new System.Drawing.Point(146, 93);
-            this.button59.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button59.Name = "button59";
-            this.button59.Padding = new System.Windows.Forms.Padding(1);
-            this.button59.Size = new System.Drawing.Size(65, 29);
-            this.button59.TabIndex = 64;
-            this.button59.Text = "打开";
-            this.button59.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open2.AutoSize = true;
+            this.btnSystemset_44_BMU_Open2.Enabled = false;
+            this.btnSystemset_44_BMU_Open2.Location = new System.Drawing.Point(146, 93);
+            this.btnSystemset_44_BMU_Open2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_44_BMU_Open2.Name = "btnSystemset_44_BMU_Open2";
+            this.btnSystemset_44_BMU_Open2.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_44_BMU_Open2.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_44_BMU_Open2.TabIndex = 64;
+            this.btnSystemset_44_BMU_Open2.Text = "打开";
+            this.btnSystemset_44_BMU_Open2.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open2.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
             // lblSystemset_10
             // 
@@ -4030,44 +4178,47 @@
             this.lblSystemset_10.TabIndex = 63;
             this.lblSystemset_10.Text = "告警保护蜂鸣器";
             // 
-            // button33
+            // btnSystemset_43_BMU_Close7
             // 
-            this.button33.AutoSize = true;
-            this.button33.Enabled = false;
-            this.button33.Location = new System.Drawing.Point(214, 267);
-            this.button33.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button33.Name = "button33";
-            this.button33.Padding = new System.Windows.Forms.Padding(1);
-            this.button33.Size = new System.Drawing.Size(65, 29);
-            this.button33.TabIndex = 31;
-            this.button33.Text = "关闭";
-            this.button33.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close7.AutoSize = true;
+            this.btnSystemset_43_BMU_Close7.Enabled = false;
+            this.btnSystemset_43_BMU_Close7.Location = new System.Drawing.Point(214, 267);
+            this.btnSystemset_43_BMU_Close7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_43_BMU_Close7.Name = "btnSystemset_43_BMU_Close7";
+            this.btnSystemset_43_BMU_Close7.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_43_BMU_Close7.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_43_BMU_Close7.TabIndex = 31;
+            this.btnSystemset_43_BMU_Close7.Text = "关闭";
+            this.btnSystemset_43_BMU_Close7.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close7.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button60
+            // btnSystemset_45_BMU_Lifted1
             // 
-            this.button60.AutoSize = true;
-            this.button60.Enabled = false;
-            this.button60.Location = new System.Drawing.Point(282, 57);
-            this.button60.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button60.Name = "button60";
-            this.button60.Padding = new System.Windows.Forms.Padding(1);
-            this.button60.Size = new System.Drawing.Size(65, 29);
-            this.button60.TabIndex = 62;
-            this.button60.Text = "解除";
-            this.button60.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted1.AutoSize = true;
+            this.btnSystemset_45_BMU_Lifted1.Enabled = false;
+            this.btnSystemset_45_BMU_Lifted1.Location = new System.Drawing.Point(282, 57);
+            this.btnSystemset_45_BMU_Lifted1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_45_BMU_Lifted1.Name = "btnSystemset_45_BMU_Lifted1";
+            this.btnSystemset_45_BMU_Lifted1.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_45_BMU_Lifted1.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_45_BMU_Lifted1.TabIndex = 62;
+            this.btnSystemset_45_BMU_Lifted1.Text = "解除";
+            this.btnSystemset_45_BMU_Lifted1.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted1.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button34
+            // btnSystemset_44_BMU_Open9
             // 
-            this.button34.AutoSize = true;
-            this.button34.Enabled = false;
-            this.button34.Location = new System.Drawing.Point(146, 338);
-            this.button34.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button34.Name = "button34";
-            this.button34.Padding = new System.Windows.Forms.Padding(1);
-            this.button34.Size = new System.Drawing.Size(65, 29);
-            this.button34.TabIndex = 32;
-            this.button34.Text = "打开";
-            this.button34.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open9.AutoSize = true;
+            this.btnSystemset_44_BMU_Open9.Enabled = false;
+            this.btnSystemset_44_BMU_Open9.Location = new System.Drawing.Point(146, 338);
+            this.btnSystemset_44_BMU_Open9.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_44_BMU_Open9.Name = "btnSystemset_44_BMU_Open9";
+            this.btnSystemset_44_BMU_Open9.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_44_BMU_Open9.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_44_BMU_Open9.TabIndex = 32;
+            this.btnSystemset_44_BMU_Open9.Text = "打开";
+            this.btnSystemset_44_BMU_Open9.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open9.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
             // lblSystemset_09
             // 
@@ -4078,44 +4229,47 @@
             this.lblSystemset_09.TabIndex = 59;
             this.lblSystemset_09.Text = "强制休眠";
             // 
-            // button61
+            // btnSystemset_43_BMU_Close1
             // 
-            this.button61.AutoSize = true;
-            this.button61.Enabled = false;
-            this.button61.Location = new System.Drawing.Point(214, 57);
-            this.button61.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button61.Name = "button61";
-            this.button61.Padding = new System.Windows.Forms.Padding(1);
-            this.button61.Size = new System.Drawing.Size(65, 29);
-            this.button61.TabIndex = 61;
-            this.button61.Text = "关闭";
-            this.button61.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close1.AutoSize = true;
+            this.btnSystemset_43_BMU_Close1.Enabled = false;
+            this.btnSystemset_43_BMU_Close1.Location = new System.Drawing.Point(214, 57);
+            this.btnSystemset_43_BMU_Close1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_43_BMU_Close1.Name = "btnSystemset_43_BMU_Close1";
+            this.btnSystemset_43_BMU_Close1.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_43_BMU_Close1.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_43_BMU_Close1.TabIndex = 61;
+            this.btnSystemset_43_BMU_Close1.Text = "关闭";
+            this.btnSystemset_43_BMU_Close1.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close1.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button35
+            // btnSystemset_44_BMU_Open7
             // 
-            this.button35.AutoSize = true;
-            this.button35.Enabled = false;
-            this.button35.Location = new System.Drawing.Point(146, 268);
-            this.button35.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button35.Name = "button35";
-            this.button35.Padding = new System.Windows.Forms.Padding(1);
-            this.button35.Size = new System.Drawing.Size(65, 29);
-            this.button35.TabIndex = 30;
-            this.button35.Text = "打开";
-            this.button35.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open7.AutoSize = true;
+            this.btnSystemset_44_BMU_Open7.Enabled = false;
+            this.btnSystemset_44_BMU_Open7.Location = new System.Drawing.Point(146, 268);
+            this.btnSystemset_44_BMU_Open7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_44_BMU_Open7.Name = "btnSystemset_44_BMU_Open7";
+            this.btnSystemset_44_BMU_Open7.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_44_BMU_Open7.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_44_BMU_Open7.TabIndex = 30;
+            this.btnSystemset_44_BMU_Open7.Text = "打开";
+            this.btnSystemset_44_BMU_Open7.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open7.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button62
+            // btnSystemset_44_BMU_Open1
             // 
-            this.button62.AutoSize = true;
-            this.button62.Enabled = false;
-            this.button62.Location = new System.Drawing.Point(146, 58);
-            this.button62.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button62.Name = "button62";
-            this.button62.Padding = new System.Windows.Forms.Padding(1);
-            this.button62.Size = new System.Drawing.Size(65, 29);
-            this.button62.TabIndex = 60;
-            this.button62.Text = "打开";
-            this.button62.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open1.AutoSize = true;
+            this.btnSystemset_44_BMU_Open1.Enabled = false;
+            this.btnSystemset_44_BMU_Open1.Location = new System.Drawing.Point(146, 58);
+            this.btnSystemset_44_BMU_Open1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_44_BMU_Open1.Name = "btnSystemset_44_BMU_Open1";
+            this.btnSystemset_44_BMU_Open1.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_44_BMU_Open1.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_44_BMU_Open1.TabIndex = 60;
+            this.btnSystemset_44_BMU_Open1.Text = "打开";
+            this.btnSystemset_44_BMU_Open1.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open1.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
             // lblSystemset_62
             // 
@@ -4135,83 +4289,89 @@
             this.lblSystemset_BMU_04.TabIndex = 29;
             this.lblSystemset_BMU_04.Text = "硬件看门狗失能控制";
             // 
-            // button37
+            // btnSystemset_45_BMU_Lifted5
             // 
-            this.button37.AutoSize = true;
-            this.button37.Enabled = false;
-            this.button37.Location = new System.Drawing.Point(282, 197);
-            this.button37.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button37.Name = "button37";
-            this.button37.Padding = new System.Windows.Forms.Padding(1);
-            this.button37.Size = new System.Drawing.Size(65, 29);
-            this.button37.TabIndex = 25;
-            this.button37.Text = "解除";
-            this.button37.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted5.AutoSize = true;
+            this.btnSystemset_45_BMU_Lifted5.Enabled = false;
+            this.btnSystemset_45_BMU_Lifted5.Location = new System.Drawing.Point(282, 197);
+            this.btnSystemset_45_BMU_Lifted5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_45_BMU_Lifted5.Name = "btnSystemset_45_BMU_Lifted5";
+            this.btnSystemset_45_BMU_Lifted5.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_45_BMU_Lifted5.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_45_BMU_Lifted5.TabIndex = 25;
+            this.btnSystemset_45_BMU_Lifted5.Text = "解除";
+            this.btnSystemset_45_BMU_Lifted5.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted5.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button38
+            // btnSystemset_45_BMU_Lifted6
             // 
-            this.button38.AutoSize = true;
-            this.button38.Enabled = false;
-            this.button38.Location = new System.Drawing.Point(282, 232);
-            this.button38.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button38.Name = "button38";
-            this.button38.Padding = new System.Windows.Forms.Padding(1);
-            this.button38.Size = new System.Drawing.Size(65, 29);
-            this.button38.TabIndex = 24;
-            this.button38.Text = "解除";
-            this.button38.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted6.AutoSize = true;
+            this.btnSystemset_45_BMU_Lifted6.Enabled = false;
+            this.btnSystemset_45_BMU_Lifted6.Location = new System.Drawing.Point(282, 232);
+            this.btnSystemset_45_BMU_Lifted6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_45_BMU_Lifted6.Name = "btnSystemset_45_BMU_Lifted6";
+            this.btnSystemset_45_BMU_Lifted6.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_45_BMU_Lifted6.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_45_BMU_Lifted6.TabIndex = 24;
+            this.btnSystemset_45_BMU_Lifted6.Text = "解除";
+            this.btnSystemset_45_BMU_Lifted6.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted6.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button43
+            // btnSystemset_43_BMU_Close5
             // 
-            this.button43.AutoSize = true;
-            this.button43.Enabled = false;
-            this.button43.Location = new System.Drawing.Point(214, 197);
-            this.button43.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button43.Name = "button43";
-            this.button43.Padding = new System.Windows.Forms.Padding(1);
-            this.button43.Size = new System.Drawing.Size(65, 29);
-            this.button43.TabIndex = 18;
-            this.button43.Text = "关闭";
-            this.button43.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close5.AutoSize = true;
+            this.btnSystemset_43_BMU_Close5.Enabled = false;
+            this.btnSystemset_43_BMU_Close5.Location = new System.Drawing.Point(214, 197);
+            this.btnSystemset_43_BMU_Close5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_43_BMU_Close5.Name = "btnSystemset_43_BMU_Close5";
+            this.btnSystemset_43_BMU_Close5.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_43_BMU_Close5.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_43_BMU_Close5.TabIndex = 18;
+            this.btnSystemset_43_BMU_Close5.Text = "关闭";
+            this.btnSystemset_43_BMU_Close5.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close5.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button44
+            // btnSystemset_43_BMU_Close6
             // 
-            this.button44.AutoSize = true;
-            this.button44.Enabled = false;
-            this.button44.Location = new System.Drawing.Point(214, 232);
-            this.button44.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button44.Name = "button44";
-            this.button44.Padding = new System.Windows.Forms.Padding(1);
-            this.button44.Size = new System.Drawing.Size(65, 29);
-            this.button44.TabIndex = 15;
-            this.button44.Text = "关闭";
-            this.button44.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close6.AutoSize = true;
+            this.btnSystemset_43_BMU_Close6.Enabled = false;
+            this.btnSystemset_43_BMU_Close6.Location = new System.Drawing.Point(214, 232);
+            this.btnSystemset_43_BMU_Close6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_43_BMU_Close6.Name = "btnSystemset_43_BMU_Close6";
+            this.btnSystemset_43_BMU_Close6.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_43_BMU_Close6.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_43_BMU_Close6.TabIndex = 15;
+            this.btnSystemset_43_BMU_Close6.Text = "关闭";
+            this.btnSystemset_43_BMU_Close6.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close6.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button45
+            // btnSystemset_44_BMU_Open5
             // 
-            this.button45.AutoSize = true;
-            this.button45.Enabled = false;
-            this.button45.Location = new System.Drawing.Point(146, 198);
-            this.button45.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button45.Name = "button45";
-            this.button45.Padding = new System.Windows.Forms.Padding(1);
-            this.button45.Size = new System.Drawing.Size(65, 29);
-            this.button45.TabIndex = 16;
-            this.button45.Text = "打开";
-            this.button45.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open5.AutoSize = true;
+            this.btnSystemset_44_BMU_Open5.Enabled = false;
+            this.btnSystemset_44_BMU_Open5.Location = new System.Drawing.Point(146, 198);
+            this.btnSystemset_44_BMU_Open5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_44_BMU_Open5.Name = "btnSystemset_44_BMU_Open5";
+            this.btnSystemset_44_BMU_Open5.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_44_BMU_Open5.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_44_BMU_Open5.TabIndex = 16;
+            this.btnSystemset_44_BMU_Open5.Text = "打开";
+            this.btnSystemset_44_BMU_Open5.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open5.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
-            // button46
+            // btnSystemset_44_BMU_Open6
             // 
-            this.button46.AutoSize = true;
-            this.button46.Enabled = false;
-            this.button46.Location = new System.Drawing.Point(146, 233);
-            this.button46.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button46.Name = "button46";
-            this.button46.Padding = new System.Windows.Forms.Padding(1);
-            this.button46.Size = new System.Drawing.Size(65, 29);
-            this.button46.TabIndex = 14;
-            this.button46.Text = "打开";
-            this.button46.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open6.AutoSize = true;
+            this.btnSystemset_44_BMU_Open6.Enabled = false;
+            this.btnSystemset_44_BMU_Open6.Location = new System.Drawing.Point(146, 233);
+            this.btnSystemset_44_BMU_Open6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_44_BMU_Open6.Name = "btnSystemset_44_BMU_Open6";
+            this.btnSystemset_44_BMU_Open6.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_44_BMU_Open6.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_44_BMU_Open6.TabIndex = 14;
+            this.btnSystemset_44_BMU_Open6.Text = "打开";
+            this.btnSystemset_44_BMU_Open6.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open6.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
             // lblSystemset_61
             // 
@@ -4425,43 +4585,43 @@
         private ComboBox comboBox5;
         private ComboBox comboBox3;
         private ComboBox comboBox2;
-        private Button button5;
+        private Button btnSet0F0_2;
         private ComboBox comboBox1;
         private Label lblSystemset_76;
         private Label lblParameter_06;
         private Label lblParameter_05;
         private Label lblParameter_07;
         private GroupBox groupBox7;
-        private Button button4;
+        private Button btnSetSN_Board;
         private Label lblSystemset_BMU_05;
-        private TextBox textBox3;
-        private TextBox textBox1;
+        private TextBox txtBoardSN_BMU;
+        private TextBox txtFlashData_BMU;
         private Label lblSystemset_BMU_08;
-        private Button button1;
-        private Button button3;
+        private Button btnSetAteFlash;
+        private Button btnSetSN_Pack;
         private Label lblSystemset_03;
-        private TextBox textBox2;
+        private TextBox txtPackSN_BMU;
         private DateTimePicker dateTimePicker3;
         private Label lblSystemset_BMU_07;
-        private Button button2;
+        private Button btnSetDatetime;
         private GroupBox groupBox2;
         private Button button7;
-        private Button button6;
+        private Button btnSet_0x21;
         private TextBox textBox7;
-        private TextBox textBox9;
+        private TextBox txtHeatFilmCloseTemp;
         private TextBox textBox8;
         private Label lblParameter_61;
         private Label lblSystemset_23;
         private Label lblParameter_63;
-        private TextBox textBox10;
+        private TextBox txtHeatFilmOpenTemp;
         private Label lblSystemset_24;
         private Label lblParameter_62;
-        private TextBox textBox11;
+        private TextBox txtFullChgVolt;
         private Label lblSystemset_22;
-        private TextBox textBox12;
+        private TextBox txtBalOpenVoltDiff;
         private Label lblParameter_60;
         private Label lblSystemset_25;
-        private TextBox textBox13;
+        private TextBox txtBalOpenVolt;
         private Label lblParameter_58;
         private Label lblSystemset_21;
         private Label lblSystemset_26;
@@ -4483,24 +4643,24 @@
         private TextBox textBox5;
         private Button button10;
         private GroupBox groupBox4;
-        private Button button14;
-        private Button button15;
-        private Button button16;
-        private Button button17;
-        private Button button18;
-        private Button button19;
+        private Button btnSetCalibration_BMU_06;
+        private Button btnSetCalibration_BMU_05;
+        private Button btnSetCalibration_BMU_04;
+        private Button btnSetCalibration_BMU_03;
+        private Button btnSetCalibration_BMU_02;
+        private Button btnSetCalibration_BMU_01;
         private Label lblSystemset_20;
-        private TextBox textBox24;
+        private TextBox txtBMU_Calibration06;
         private Label lblSystemset_19;
-        private TextBox textBox25;
+        private TextBox txtBMU_Calibration05;
         private Label lblSystemset_18;
-        private TextBox textBox26;
+        private TextBox txtBMU_Calibration04;
         private Label lblSystemset_16;
         private Label lblSystemset_15;
-        private TextBox textBox27;
+        private TextBox txtBMU_Calibration02;
         private Label lblSystemset_17;
-        private TextBox textBox28;
-        private TextBox textBox29;
+        private TextBox txtBMU_Calibration01;
+        private TextBox txtBMU_Calibration03;
         private Button btnSetCalibration_BCU_0A;
         private Button btnSetCalibration_BCU_09;
         private Label lblSystemset_BCU_57;
@@ -4552,47 +4712,47 @@
         private Button btnSystemset_45_BCU1_Lifted2;
         private Button btnSystemset_43_BCU1_Close2;
         private Button btnSystemset_44_BCU1_Open2;
-        private CheckBox checkBox49;
-        private CheckBox checkBox50;
-        private CheckBox checkBox51;
-        private CheckBox checkBox52;
+        private CheckBox ckSystemset_33;
+        private CheckBox ckSystemset_30;
+        private CheckBox ckSystemset_32;
+        private CheckBox ckSystemset_31;
         private Label lblSystemset_BMU_09;
         private GroupBox groupBox6;
-        private Button button20;
-        private Button button51;
-        private Button button21;
-        private Button button52;
-        private Button button22;
-        private Button button53;
+        private Button btnSystemset_45_BMU_Lifted8;
+        private Button btnSystemset_45_BMU_Lifted4;
+        private Button btnSystemset_43_BMU_Close8;
+        private Button btnSystemset_43_BMU_Close4;
+        private Button btnSystemset_44_BMU_Open8;
+        private Button btnSystemset_44_BMU_Open4;
         private Label lblSystemset_63;
         private Label lblSystemset_BMU_02;
-        private Button button26;
-        private Button button54;
-        private Button button55;
-        private Button button28;
-        private Button button56;
-        private Button button29;
+        private Button btnSystemset_debug2;
+        private Button btnSystemset_45_BMU_Lifted3;
+        private Button btnSystemset_43_BMU_Close3;
+        private Button btnSystemset_45_BMU_Lifted9;
+        private Button btnSystemset_44_BMU_Open3;
+        private Button btnSystemset_45_BMU_Lifted7;
         private Label lblSystemset_BMU_01;
-        private Button button57;
-        private Button button58;
-        private Button button32;
-        private Button button59;
+        private Button btnSystemset_45_BMU_Lifted2;
+        private Button btnSystemset_43_BMU_Close2;
+        private Button btnSystemset_43_BMU_Close9;
+        private Button btnSystemset_44_BMU_Open2;
         private Label lblSystemset_10;
-        private Button button33;
-        private Button button60;
-        private Button button34;
+        private Button btnSystemset_43_BMU_Close7;
+        private Button btnSystemset_45_BMU_Lifted1;
+        private Button btnSystemset_44_BMU_Open9;
         private Label lblSystemset_09;
-        private Button button61;
-        private Button button35;
-        private Button button62;
+        private Button btnSystemset_43_BMU_Close1;
+        private Button btnSystemset_44_BMU_Open7;
+        private Button btnSystemset_44_BMU_Open1;
         private Label lblSystemset_62;
         private Label lblSystemset_BMU_04;
-        private Button button37;
-        private Button button38;
-        private Button button43;
-        private Button button44;
-        private Button button45;
-        private Button button46;
+        private Button btnSystemset_45_BMU_Lifted5;
+        private Button btnSystemset_45_BMU_Lifted6;
+        private Button btnSystemset_43_BMU_Close5;
+        private Button btnSystemset_43_BMU_Close6;
+        private Button btnSystemset_44_BMU_Open5;
+        private Button btnSystemset_44_BMU_Open6;
         private Label lblSystemset_61;
         private Label lblSystemset_BMU_03;
         private Button btnSetStateParam;
@@ -4612,5 +4772,15 @@
         private Label lblSystemset_74;
         private Label lblSystemset_73;
         private Label lblSystemset_72;
+        private ComboBox cbb_106;
+        private TextBox txtFlag;
+        private ComboBox cbb_105;
+        private ComboBox cbb_103;
+        private TextBox txt_104;
+        private Label lblSystemset_106;
+        private Label lblSystemset_105;
+        private Button btnSetBatteryinfo;
+        private Label lblSystemset_103;
+        private Label lblSystemset_104;
     }
 }

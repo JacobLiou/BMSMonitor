@@ -36,19 +36,22 @@ namespace SofarBMS.UI
         #region 读取数据
         private void SystemSetControl_Load(object sender, EventArgs e)
         {
-            foreach (Control item in this.Controls)
+            this.Invoke(() =>
             {
-                GetControls(item);
-            }
+                foreach (Control item in this.Controls)
+                {
+                    GetControls(item);
+                }
 
-            string[] setComms = new string[2] {
-                LanguageHelper.GetLanguage("PCUCmd_Stop"),
-                LanguageHelper.GetLanguage("PCUCmd_Normal")
-            };
+                string[] setComms = new string[2] {
+                    LanguageHelper.GetLanguage("PCUCmd_Stop"),
+                    LanguageHelper.GetLanguage("PCUCmd_Normal")
+                };
 
-            cbbSetComm.Items.Clear();
-            cbbSetComm.Items.AddRange(setComms);
-            btnSystemset_47.Text = LanguageHelper.GetLanguage("BmsDebug_Start");
+                cbbSetComm.Items.Clear();
+                cbbSetComm.Items.AddRange(setComms);
+                btnSystemset_47.Text = LanguageHelper.GetLanguage("BmsDebug_Start");
+            });
 
             cts = new CancellationTokenSource();
             Task.Run(async delegate
@@ -82,16 +85,6 @@ namespace SofarBMS.UI
                             await Task.Delay(1000);
                         }
                     }
-
-                    //while (EcanHelper._task.Count > 0
-                    //    && !cts.IsCancellationRequested)
-                    //{
-                    //    CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-                    //    this.Invoke(new Action(() =>
-                    //    {
-                    //        analysisData(ch.ID, ch.Data);
-                    //    }));
-                    //}
                 }
             }, cts.Token);
             ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
@@ -99,6 +92,12 @@ namespace SofarBMS.UI
 
         private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
         {
+            if (cts.IsCancellationRequested && ecanHelper.IsConnected)
+            {
+                ecanHelper.AnalysisDataInvoked -= ServiceBase_AnalysisDataInvoked;
+                return;
+            }
+
             var frameModel = e as CanFrameModel;
             if (frameModel != null)
             {
@@ -118,31 +117,7 @@ namespace SofarBMS.UI
             }
 
             byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-            if (ecanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 }))
-            {
-                //MessageBox.Show(FrmMain.GetString("keyReadSuccess"));
-            }
-            else
-            {
-                MessageBox.Show(FrmMain.GetString("keyReadFail"));
-            }
-
-            //CBS5000
-            DataLists = new List<uint>() { 0xAA11, 0xAA22, 0xAA33, 0xAA44, 0xAA55, 0xAA66, 0xAA77, 0xAA88 };
-
-            for (int i = 0; i < DataLists.Count; i++)
-            {
-                DataSelected(DataLists[i]);
-
-                Thread.Sleep(100);
-            }
-
-            byte[] bytes1 = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-            if (ecanHelper.Send(bytes1, new byte[] { 0xE0, FrmMain.BCU_ID, 0xF9, 0x10 }))
-            {
-                //MessageBox.Show(FrmMain.GetString("keyReadSuccess"));
-            }
-            else
+            if (!ecanHelper.Send(bytes, new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 }))
             {
                 MessageBox.Show(FrmMain.GetString("keyReadFail"));
             }
@@ -328,8 +303,9 @@ namespace SofarBMS.UI
                     }
                     break;
                 case 0x29:
-                    int selVal = numbers_bit[0] - 1;
-                    cbb_103.SelectedIndex = selVal;
+                    int selVal = numbers_bit[0];
+                    if (selVal >= 0 && selVal <= 4)
+                        cbb_103.SelectedIndex = numbers_bit[0];
 
                     txt_104.Text = numbers_bit[1].ToString();
                     txtFlag.Text = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"))).ToString();
@@ -1017,7 +993,7 @@ namespace SofarBMS.UI
             byte[] can_id = new byte[4] { 0xE0, FrmMain.BMS_ID, 0x29, 0x10 };
 
             List<int> lists = new List<int>();
-            int batteryInfo1 = cbb_103.SelectedIndex + 1;
+            int batteryInfo1 = cbb_103.SelectedIndex;
             lists.Add(batteryInfo1);
             lists.Add(Convert.ToInt32(txt_104.Text));
             lists.Add(cbb_105.SelectedIndex);
@@ -1629,7 +1605,7 @@ namespace SofarBMS.UI
         private int[] BytesToBit(byte[] data)
         {
             int[] numbers = new int[8];
-            for (int i = 0; i < numbers.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
                 numbers[i] = Convert.ToInt32(data[i].ToString("X2"), 16);
             }

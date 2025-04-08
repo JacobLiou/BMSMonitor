@@ -1,5 +1,6 @@
 ﻿using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
+using Sofar.BMS.Models;
 using Sofar.ConnectionLibs.CAN.Driver.ECAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
@@ -62,49 +63,104 @@ StartListen,启动总线监听,Start bus listen";
         // 声明委托对象
         public TransactEventHandler _transaction;
 
+        public bool isStartReceiving = false;
+
+        // 添加CancellationToken用于可控停止
+        private CancellationTokenSource _canMonitorCts = new();
+
         public FrmMain()
         {
             InitializeComponent();
+
+            // 单机运行
+            if (!LicenseIntegration.LicenseManager.VerifyDialog(out var licStr))
+                Environment.Exit(0);
+            this.Text = this.Text + licStr;
         }
         public FrmMain(ref bool IsConnection) : this()
         {
             ecanHelper.IsConnected = IsConnection;
             btnConnectionCAN.Visible = false;
+            isStartReceiving = true;
         }
         private void FrmMain_Load(object sender, EventArgs e)
         {
+
             //canHelper = DeviceService.baseCanHelper;
 
             //程序确保Log文件的存在性
             if (!Directory.Exists("Log"))
-            {
                 Directory.CreateDirectory("Log");
-            }
+            
+            //使用多线程实时获取接收数据
+            if (isStartReceiving)
+                ecanHelper.StartReceiving();
 
-            //使用多线程轮询获取CAN错误码（后期需要去除冗余，改为异常后自动复位）
+            // 启动监控任务
             Task.Run(async () =>
             {
-                while (true)
+                var token = _canMonitorCts.Token;
+                while (!token.IsCancellationRequested)
                 {
-                    string error = ecanHelper.ReadError().Replace("当前错误码：", "");
-                    if (error != "00")
+                    try
                     {
-                        btnResetCAN_Click(sender, e);
-                        error = ecanHelper.ReadError();
+                        string rawError = ecanHelper.ReadError();
+                        string errorCode = rawError.Replace("当前错误码：", "");
+                        string displayText;
+
+                        if (errorCode != "00")
+                        {
+                            // 错误状态：快速重试（每2秒）
+                            await Task.Delay(1000, token);
+
+                            // 带UI线程安全的复位操作
+                            //this.Invoke((MethodInvoker)delegate
+                            //{
+                            //    btnResetCAN_Click(sender, e);
+                            //});
+                            //或者
+                            //if (ecanHelper.IsConnected)
+                            //{
+                            //    ECanDriver.ResetCAN(1, 0, 0);//复位CAN
+                            //    ECanDriver.StartCAN(1, 0, 0);//启动CAN
+                            //}
+
+                            // 复位后立即检查状态
+                            rawError = ecanHelper.ReadError();
+                            errorCode = rawError.Replace("当前错误码：", "");
+                        }
+                        else
+                        {
+                            // 正常状态：慢速轮询（10秒）
+                            await Task.Delay(5000, token);
+                        }
+
+                        // 统一构建显示文本
+                        displayText = errorCode == "00"
+                            ? $"当前状态码：{errorCode}"
+                            : $"错误码：{errorCode}";
+
+                        // 线程安全更新UI
+                        this.BeginInvoke(new Action(() =>
+                        {
+                            toolStripStatusLabel1.Text = displayText;
+                            toolStripStatusLabel1.ForeColor = errorCode == "00"
+                                ? Color.Green
+                                : Color.Red;
+                        }));
                     }
-                    else
+                    catch (OperationCanceledException)
                     {
-                        error = ecanHelper.ReadError().Replace("当前错误码：", "当前状态码：");
+                        break; // 正常退出
                     }
-
-                    this.BeginInvoke(new Action(() => { toolStripStatusLabel1.Text = error; }));
-
-                    await Task.Delay(1000 * 10);
+                    catch (Exception ex)
+                    {
+                        // 异常处理：记录日志并暂停30秒
+                        //Log.Error("CAN监控异常", ex);
+                        await Task.Delay(30000, token);
+                    }
                 }
-            });
-
-            //使用多线程实时获取接收数据
-            ecanHelper.StartReceiving();
+            }, _canMonitorCts.Token);
 
             //Task.Run(async delegate
             //{
@@ -551,17 +607,15 @@ StartListen,启动总线监听,Start bus listen";
 
             //添加“CBS高压储能项目”菜单
             tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_5"), Menu.Items, null);
-            //BMU模块
-            //AddContextMenu(LanguageHelper.GetLanguage("tsmi_51"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            //AddContextMenu(LanguageHelper.GetLanguage("tsmi_52"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_53"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_54"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
             //BCU模块
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_55"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_56"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_57"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            //BMU模块
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_58"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_59"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_54"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_53"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_12"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
 
             //添加“语言”菜单
@@ -597,14 +651,14 @@ StartListen,启动总线监听,Start bus listen";
             Dictionary<string, UserControl> MenuAndControl3 = new Dictionary<string, UserControl>()
             {
                 { LanguageHelper.GetLanguage("tsmi_51"), new CBSControl() },
+                { LanguageHelper.GetLanguage("tsmi_54"), new CBSFileTransmit_BMU() },
                 { LanguageHelper.GetLanguage("tsmi_52"), new CBSParamControl() },
-                { LanguageHelper.GetLanguage("tsmi_53"), new CBSUpgradeControl() },
-                { LanguageHelper.GetLanguage("tsmi_54"), new CBSFileTransmit() },
                 { LanguageHelper.GetLanguage("tsmi_55"), new CBSControl_BCU() },
                 { LanguageHelper.GetLanguage("tsmi_56"), new CBSParamControl_BCU() },
                 { LanguageHelper.GetLanguage("tsmi_57"), new CBSFileTransmit_BCU() },
                 { LanguageHelper.GetLanguage("tsmi_58"), new CBSControl_BMU() },
                 { LanguageHelper.GetLanguage("tsmi_59"), new CBSParamControl_BMU() },
+                { LanguageHelper.GetLanguage("tsmi_53"), new CBSUpgradeControl() },
                 { LanguageHelper.GetLanguage("tsmi_12"), new CBSSystemSetControl() },
             };
 
@@ -727,9 +781,9 @@ StartListen,启动总线监听,Start bus listen";
             {
                 CBSUpgradeControl.cts?.Cancel();
             }
-            if (bc.Name != "CBSFileTransmit")
+            if (bc.Name != "CBSFileTransmit_BMU")
             {
-                CBSFileTransmit.cts?.Cancel();
+                CBSFileTransmit_BMU.cts?.Cancel();
             }
             if (bc.Name != "CBSControl_BCU")
             {
@@ -789,44 +843,57 @@ StartListen,启动总线监听,Start bus listen";
         #endregion
 
         #region 连接/断开/复位CAN
-        private void btnConnectionCAN_Click(object sender, EventArgs e)
+        private async void btnConnectionCAN_Click(object sender, EventArgs e)
         {
-            if (!ecanHelper.IsConnected)
+            btnConnectionCAN.Enabled = false; //立即禁用按钮
+
+            try
             {
-                if (ecanHelper.Connect())
+                await Task.Delay(TimeSpan.FromSeconds(3));
+
+                if (ecanHelper.IsConnected)
                 {
-                    btnConnectionCAN.Text = LanguageHelper.GetLanguage("CanState_DisConn");
-                    ecanHelper.IsConnected = true;
-                    return;
+                    //_canMonitorCts?.Cancel();
+                    ecanHelper.Disconnect();
+                    btnConnectionCAN.Text = LanguageHelper.GetLanguage("CanState_Conn");
+                }
+                else
+                {
+                    bool result = ecanHelper.Connect();
+                    if (result)
+                    {
+                        //_canMonitorCts = new CancellationTokenSource();
+                        btnConnectionCAN.Text = LanguageHelper.GetLanguage("CanState_DisConn");
+                    }
                 }
             }
+            catch (Exception)
+            {
 
-            ecanHelper.Disconnect();
-            ecanHelper.IsConnected = false;
-            btnConnectionCAN.Text = LanguageHelper.GetLanguage("CanState_Conn");
+            }
+            finally
+            {
+                btnConnectionCAN.Enabled = true; //无论成功与否都恢复按钮
+            }
+            
         }
 
         private void btnResetCAN_Click(object sender, EventArgs e)
         {
-            if (!ecanHelper.IsConnected)
-            {
-                //MessageBox.Show(LanguageHelper.GetLanguage("Message_NotConn"));
-                return;
-            }
+            if (!ecanHelper.IsConnected) return;
+
             //复位CAN
             if (ECanDriver.ResetCAN(1, 0, 0) != ECANStatus.STATUS_OK)
-            {
-                //MessageBox.Show(LanguageHelper.GetLanguage("Message_ResetError"));
                 return;
-            }
+
             //启动CAN
             if (ECanDriver.StartCAN(1, 0, 0) != ECANStatus.STATUS_OK)
-            {
-                //MessageBox.Show(LanguageHelper.GetLanguage("Message_StartError"));
                 return;
-            }
+
             //MessageBox.Show(LanguageHelper.GetLanguage("Message_ResetSuccess"));
         }
+
+
         #endregion
 
         #region 设备ID
@@ -1106,7 +1173,7 @@ StartListen,启动总线监听,Start bus listen";
         }
     }
 
-    public static class GlobalSettings 
+    public static class GlobalSettings
     {
         // 设备ID
         public static byte BMS_ID = 0x01;

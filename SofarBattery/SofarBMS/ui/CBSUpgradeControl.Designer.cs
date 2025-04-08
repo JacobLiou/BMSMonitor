@@ -30,6 +30,10 @@
         {
             this.lblUpgrade_07 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblUpgrade_CBS_04 = new System.Windows.Forms.Label();
+            this.lblUpgrade_CBS_03 = new System.Windows.Forms.Label();
+            this.lblUpgrade_CBS_02 = new System.Windows.Forms.Label();
+            this.lblUpgrade_CBS_01 = new System.Windows.Forms.Label();
             this.txtChiprole_val = new System.Windows.Forms.TextBox();
             this.txtChipcode = new System.Windows.Forms.TextBox();
             this.txtFD = new System.Windows.Forms.TextBox();
@@ -66,6 +70,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblUpgrade_CBS_04);
+            this.groupBox2.Controls.Add(this.lblUpgrade_CBS_03);
+            this.groupBox2.Controls.Add(this.lblUpgrade_CBS_02);
+            this.groupBox2.Controls.Add(this.lblUpgrade_CBS_01);
             this.groupBox2.Controls.Add(this.txtChiprole_val);
             this.groupBox2.Controls.Add(this.txtChipcode);
             this.groupBox2.Controls.Add(this.txtFD);
@@ -92,9 +100,45 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "升级固件";
             // 
+            // lblUpgrade_CBS_04
+            // 
+            this.lblUpgrade_CBS_04.AutoSize = true;
+            this.lblUpgrade_CBS_04.Location = new System.Drawing.Point(857, 121);
+            this.lblUpgrade_CBS_04.Name = "lblUpgrade_CBS_04";
+            this.lblUpgrade_CBS_04.Size = new System.Drawing.Size(56, 17);
+            this.lblUpgrade_CBS_04.TabIndex = 41;
+            this.lblUpgrade_CBS_04.Text = "芯片型号";
+            // 
+            // lblUpgrade_CBS_03
+            // 
+            this.lblUpgrade_CBS_03.AutoSize = true;
+            this.lblUpgrade_CBS_03.Location = new System.Drawing.Point(761, 121);
+            this.lblUpgrade_CBS_03.Name = "lblUpgrade_CBS_03";
+            this.lblUpgrade_CBS_03.Size = new System.Drawing.Size(56, 17);
+            this.lblUpgrade_CBS_03.TabIndex = 40;
+            this.lblUpgrade_CBS_03.Text = "目标地址";
+            // 
+            // lblUpgrade_CBS_02
+            // 
+            this.lblUpgrade_CBS_02.AutoSize = true;
+            this.lblUpgrade_CBS_02.Location = new System.Drawing.Point(640, 121);
+            this.lblUpgrade_CBS_02.Name = "lblUpgrade_CBS_02";
+            this.lblUpgrade_CBS_02.Size = new System.Drawing.Size(56, 17);
+            this.lblUpgrade_CBS_02.TabIndex = 39;
+            this.lblUpgrade_CBS_02.Text = "芯片编码";
+            // 
+            // lblUpgrade_CBS_01
+            // 
+            this.lblUpgrade_CBS_01.AutoSize = true;
+            this.lblUpgrade_CBS_01.Location = new System.Drawing.Point(479, 121);
+            this.lblUpgrade_CBS_01.Name = "lblUpgrade_CBS_01";
+            this.lblUpgrade_CBS_01.Size = new System.Drawing.Size(56, 17);
+            this.lblUpgrade_CBS_01.TabIndex = 38;
+            this.lblUpgrade_CBS_01.Text = "升级目标";
+            // 
             // txtChiprole_val
             // 
-            this.txtChiprole_val.Location = new System.Drawing.Point(572, 93);
+            this.txtChiprole_val.Location = new System.Drawing.Point(640, 93);
             this.txtChiprole_val.Name = "txtChiprole_val";
             this.txtChiprole_val.Size = new System.Drawing.Size(100, 23);
             this.txtChiprole_val.TabIndex = 37;
@@ -102,7 +146,7 @@
             // 
             // txtChipcode
             // 
-            this.txtChipcode.Location = new System.Drawing.Point(779, 94);
+            this.txtChipcode.Location = new System.Drawing.Point(857, 93);
             this.txtChipcode.Name = "txtChipcode";
             this.txtChipcode.Size = new System.Drawing.Size(75, 23);
             this.txtChipcode.TabIndex = 36;
@@ -115,7 +159,7 @@
             this.txtFD.Name = "txtFD";
             this.txtFD.Size = new System.Drawing.Size(79, 23);
             this.txtFD.TabIndex = 35;
-            this.txtFD.Text = "3";
+            this.txtFD.Text = "0";
             // 
             // txtFC
             // 
@@ -124,11 +168,11 @@
             this.txtFC.Name = "txtFC";
             this.txtFC.Size = new System.Drawing.Size(79, 23);
             this.txtFC.TabIndex = 34;
-            this.txtFC.Text = "20";
+            this.txtFC.Text = "10";
             // 
             // txtSlaveAddress
             // 
-            this.txtSlaveAddress.Location = new System.Drawing.Point(697, 93);
+            this.txtSlaveAddress.Location = new System.Drawing.Point(761, 93);
             this.txtSlaveAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtSlaveAddress.Name = "txtSlaveAddress";
             this.txtSlaveAddress.ReadOnly = true;
@@ -158,8 +202,9 @@
             this.cbbChiprole.FormattingEnabled = true;
             this.cbbChiprole.Items.AddRange(new object[] {
             "BCU",
-            "BMU"});
-            this.cbbChiprole.Location = new System.Drawing.Point(425, 92);
+            "BMU",
+            "PCU"});
+            this.cbbChiprole.Location = new System.Drawing.Point(479, 92);
             this.cbbChiprole.Margin = new System.Windows.Forms.Padding(4);
             this.cbbChiprole.Name = "cbbChiprole";
             this.cbbChiprole.Size = new System.Drawing.Size(140, 25);
@@ -326,5 +371,9 @@
         private System.Windows.Forms.TextBox txtFD;
         private TextBox txtChipcode;
         private TextBox txtChiprole_val;
+        private Label lblUpgrade_CBS_01;
+        private Label lblUpgrade_CBS_02;
+        private Label lblUpgrade_CBS_03;
+        private Label lblUpgrade_CBS_04;
     }
 }

@@ -14,6 +14,7 @@
     <Compile Remove="Helper\ECanDriver.cs" />
     <Compile Remove="Model\BaseModel.cs" />
     <Compile Remove="Model\EcanHelper.cs" />
+    <Compile Remove="Model\FaultInfo.cs" />
     <Compile Remove="ui\DownloadControl.cs" />
     <Compile Remove="ui\DownloadControl.Designer.cs" />
     <Compile Remove="ui\PCUSystemSetControl.cs" />
@@ -46,6 +47,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\B6_License授权工具\LicenseIntegration\LicenseIntegration.csproj" />
     <ProjectReference Include="..\..\..\..\平台软件组-基础类库\协议类库\SofarDeviceSDK\Sofar.ConnectionLibs\Sofar.ConnectionLibs.csproj" />
     <ProjectReference Include="..\..\..\A21_设备监控系统\Sofarsolar.BMS\Sofarsolar.BMS\Sofar.BMS.csproj" />
   </ItemGroup>
@@ -86,7 +88,7 @@
     <Compile Update="ui\CBSControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="ui\CBSFileTransmit.cs">
+    <Compile Update="ui\CBSFileTransmit_BMU.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="ui\CBSParamControl.cs">

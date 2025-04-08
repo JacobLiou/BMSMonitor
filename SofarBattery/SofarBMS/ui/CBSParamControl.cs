@@ -20,8 +20,6 @@ namespace SofarBMS.UI
         public CBSParamControl()
         {
             InitializeComponent();
-
-            cts = new CancellationTokenSource();
         }
 
         private void ParamControl_Load(object sender, EventArgs e)
@@ -104,6 +102,7 @@ namespace SofarBMS.UI
             }
             #endregion
 
+            cts = new CancellationTokenSource();
             Task.Run(async delegate
             {
                 while (!cts.IsCancellationRequested)
@@ -119,13 +118,6 @@ namespace SofarBMS.UI
                             await Task.Delay(1000);
                         }
                     }
-
-                    //while (EcanHelper._task.Count > 0
-                    //    && !cts.IsCancellationRequested)
-                    //{
-                    //    CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-                    //    this.Invoke(new Action(() => { analysisData(ch.ID, ch.Data); }));
-                    //}
                 }
             }, cts.Token);
 
@@ -134,6 +126,12 @@ namespace SofarBMS.UI
 
         private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
         {
+            if (cts.IsCancellationRequested && ecanHelper.IsConnected)
+            {
+                ecanHelper.AnalysisDataInvoked -= ServiceBase_AnalysisDataInvoked;
+                return;
+            }
+
             var frameModel = e as CanFrameModel;
             if (frameModel != null)
             {

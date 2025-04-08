@@ -12,7 +12,7 @@ namespace SofarBMS.UI
         private EcanHelper ecanHelper = EcanHelper.Instance;
 
         //变量定义
-        private readonly string FiveMinHeadStr = "时间年,月,日,时,分,秒,电池簇累加电压(V),SOC(%),SOH(%),电池簇电流(A),继电器状态,风扇状态,继电器切断请求,BCU状态,充放电使能,保护信息1,保护信息2,保护信息3,保护信息4,告警信息1,告警信息2,最高pack电压(V),最低pack电压(V),最高pack电压序号,最低pack电压序号,簇号,簇内电池包个数,高压绝缘阻抗(V),保险丝后电压(V),母线侧电压(V),负载端电压(V),辅助电源电压(V),电池簇的充电电压(V),电池簇充电电流上限(A),电池簇放电电流上限(A),电池簇的放电截止电压(V),电池包均衡状态,最高功率端子温度(℃),环境温度(℃),累计充电安时(Ah),累计放电安时(Ah),累计充电瓦时(Wh),累计放电瓦时(Wh),BMU编号,单体电压1(mV),单体电压2(mV),单体电压3(mV),单体电压4(mV),单体电压5(mV),单体电压6(mV),单体电压7(mV),单体电压8(mV),单体电压9(mV),单体电压10(mV),单体电压11(mV),单体电压12(mV),单体电压13(mV),单体电压14(mV),单体电压15(mV),单体电压16(mV),PACK1最大单体电压(mV),PACK2最大单体电压(mV),PACK3最大单体电压(mV),PACK4最大单体电压(mV),PACK5最大单体电压(mV),PACK6最大单体电压(mV),PACK7最大单体电压(mV),PACK8最大单体电压(mV),PACK9最大单体电压(mV),PACK10最大单体电压(mV),PACK1最小单体电压(mV),PACK2最小单体电压(mV),PACK3最小单体电压(mV),PACK4最小单体电压(mV),PACK5最小单体电压(mV),PACK6最小单体电压(mV),PACK7最小单体电压(mV),PACK8最小单体电压(mV),PACK9最小单体电压(mV),PACK10最小单体电压(mV),PACK1平均单体电压(mV),PACK2平均单体电压(mV),PACK3平均单体电压(mV),PACK4平均单体电压(mV),PACK5平均单体电压(mV),PACK6平均单体电压(mV),PACK7平均单体电压(mV),PACK8平均单体电压(mV),PACK9平均单体电压(mV),PACK10平均单体电压(mV),PACK1最大单体温度(℃),PACK2最大单体温度(℃),PACK3最大单体温度(℃),PACK4最大单体温度(℃),PACK5最大单体温度(℃),PACK6最大单体温度(℃),PACK7最大单体温度(℃),PACK8最大单体温度(℃),PACK9最大单体温度(℃),PACK10最大单体温度(℃),PACK1最小单体温度(℃),PACK2最小单体温度(℃),PACK3最小单体温度(℃),PACK4最小单体温度(℃),PACK5最小单体温度(℃),PACK6最小单体温度(℃),PACK7最小单体温度(℃),PACK8最小单体温度(℃),PACK9最小单体温度(℃),PACK10最小单体温度(℃),告警信息3,告警信息4,RSV2\r\n";
+        private readonly string FiveMinHeadStr = "时间年,月,日,时,分,秒,电池簇累加电压(V),SOC(%),SOH(%),电池簇电流(A),继电器状态,风扇状态,继电器切断请求,BCU状态,保留,充放电使能,保护信息1,保护信息2,保护信息3,保护信息4,告警信息1,告警信息2,最高pack电压(V),最低pack电压(V),最高pack电压序号,最低pack电压序号,簇号,簇内电池包个数,高压绝缘阻抗(V),保险丝后电压(V),母线侧电压(V),负载端电压(V),辅助电源电压(V),电池簇的充电电压(V),电池簇充电电流上限(A),电池簇放电电流上限(A),电池簇的放电截止电压(V),电池包均衡状态,最高功率端子温度(℃),环境温度(℃),保留,保留,累计充电安时(Ah),累计放电安时(Ah),累计充电瓦时(Wh),累计放电瓦时(Wh),PACK1最大单体电压(mV),PACK2最大单体电压(mV),PACK3最大单体电压(mV),PACK4最大单体电压(mV),PACK5最大单体电压(mV),PACK6最大单体电压(mV),PACK7最大单体电压(mV),PACK8最大单体电压(mV),PACK9最大单体电压(mV),PACK10最大单体电压(mV),PACK11最大单体电压(mV),PACK12最大单体电压(mV),PACK1最小单体电压(mV),PACK2最小单体电压(mV),PACK3最小单体电压(mV),PACK4最小单体电压(mV),PACK5最小单体电压(mV),PACK6最小单体电压(mV),PACK7最小单体电压(mV),PACK8最小单体电压(mV),PACK9最小单体电压(mV),PACK10最小单体电压(mV),PACK11最小单体电压(mV),PACK12最小单体电压(mV),PACK1平均单体电压(mV),PACK2平均单体电压(mV),PACK3平均单体电压(mV),PACK4平均单体电压(mV),PACK5平均单体电压(mV),PACK6平均单体电压(mV),PACK7平均单体电压(mV),PACK8平均单体电压(mV),PACK9平均单体电压(mV),PACK10平均单体电压(mV),PACK1最大单体温度(℃),PACK2最大单体温度(℃),PACK3最大单体温度(℃),PACK4最大单体温度(℃),PACK5最大单体温度(℃),PACK6最大单体温度(℃),PACK7最大单体温度(℃),PACK8最大单体温度(℃),PACK9最大单体温度(℃),PACK10最大单体温度(℃),PACK11最大单体温度(℃),PACK12最大单体温度(℃),PACK1最小单体温度(℃),PACK2最小单体温度(℃),PACK3最小单体温度(℃),PACK4最小单体温度(℃),PACK5最小单体温度(℃),PACK6最小单体温度(℃),PACK7最小单体温度(℃),PACK8最小单体温度(℃),PACK9最小单体温度(℃),PACK10最小单体温度(℃),PACK11最小单体温度(℃),PACK12最小单体温度(℃),BMU保护信息1,BMU保护信息2,BMU故障信息1,BMU故障信息2\r\n";
         private readonly string FaultRecordStr = "电流(A),最大电压(mV),最小电压(mV),最大温度(℃),最小温度(℃)\r\n";
         private readonly string HistoryEventStr = "时间年,月,日,时,分,秒,事件类型\r\n";
 
@@ -36,13 +36,14 @@ namespace SofarBMS.UI
 风扇状态,U8,1,1,
 继电器切断请求,U8,1,1,
 BCU状态,U8,1,1,
+保留,U8,1,1,
 充放电使能,U16,1,1,
-保护信息1,U16,1,,
-保护信息2,U16,1,,
-保护信息3,U16,1,,
-保护信息4,U16,1,,
 告警信息1,U16,1,,
-告警信息2,U16,1,,
+保护信息1,U16,1,,
+故障信息1,U16,1,,
+故障信息2,U16,1,,
+BMU告警信息1,U16,1,,
+BMU告警信息2,U16,1,,
 最高pack电压,U16,1,0.1,V
 最低pack电压,U16,1,0.1,V
 最高pack电压序号,U8,1,1,号
@@ -59,29 +60,14 @@ BCU状态,U8,1,1,
 电池簇放电电流上限,U16,1,0.1,A
 电池簇的放电截止电压,U16,1,0.1,V
 电池包均衡状态,U16,1,,
-最高功率端子温度,I16,1,0.1,℃
-环境温度,I16,1,0.1,℃
+最高功率端子温度,I8,1,0.1,℃
+环境温度,I8,1,0.1,℃
+保留,U8,1,1,
+保留,U8,1,1,
 累计放电安时,U32,1,1,Ah
 累计充电安时,U32,1,1,Ah
 累计放电瓦时,U32,1,1,Wh
 累计充电瓦时,U32,1,1,Wh
-BMU编号,U8,1,,号
-单体电压1,U16,1,1,mV
-单体电压2,U16,1,1,mV
-单体电压3,U16,1,1,mV
-单体电压4,U16,1,1,mV
-单体电压5,U16,1,1,mV
-单体电压6,U16,1,1,mV
-单体电压7,U16,1,1,mV
-单体电压8,U16,1,1,mV
-单体电压9,U16,1,1,mV
-单体电压10,U16,1,1,mV
-单体电压11,U16,1,1,mV
-单体电压12,U16,1,1,mV
-单体电压13,U16,1,1,mV
-单体电压14,U16,1,1,mV
-单体电压15,U16,1,1,mV
-单体电压16,U16,1,1,mV
 PACK1最大单体电压,U16,1,1,mV
 PACK2最大单体电压,U16,1,1,mV
 PACK3最大单体电压,U16,1,1,mV
@@ -92,6 +78,8 @@ PACK7最大单体电压,U16,1,1,mV
 PACK8最大单体电压,U16,1,1,mV
 PACK9最大单体电压,U16,1,1,mV
 PACK10最大单体电压,U16,1,1,mV
+PACK11最大单体电压,U16,1,1,mV
+PACK12最大单体电压,U16,1,1,mV
 PACK1最小单体电压,U16,1,1,mV
 PACK2最小单体电压,U16,1,1,mV
 PACK3最小单体电压,U16,1,1,mV
@@ -102,6 +90,8 @@ PACK7最小单体电压,U16,1,1,mV
 PACK8最小单体电压,U16,1,1,mV
 PACK9最小单体电压,U16,1,1,mV
 PACK10最小单体电压,U16,1,1,mV
+PACK11最小单体电压,U16,1,1,mV
+PACK12最小单体电压,U16,1,1,mV
 PACK1平均单体电压,U16,1,1,mV
 PACK2平均单体电压,U16,1,1,mV
 PACK3平均单体电压,U16,1,1,mV
@@ -112,6 +102,8 @@ PACK7平均单体电压,U16,1,1,mV
 PACK8平均单体电压,U16,1,1,mV
 PACK9平均单体电压,U16,1,1,mV
 PACK10平均单体电压,U16,1,1,mV
+PACK11平均单体电压,U16,1,1,mV
+PACK12平均单体电压,U16,1,1,mV
 PACK1最大单体温度,I8,1,1,℃
 PACK2最大单体温度,I8,1,1,℃
 PACK3最大单体温度,I8,1,1,℃
@@ -132,9 +124,12 @@ PACK7最小单体温度,I8,1,1,℃
 PACK8最小单体温度,I8,1,1,℃
 PACK9最小单体温度,I8,1,1,℃
 PACK10最小单体温度,I8,1,1,℃
-告警信息3,U16,1,,
-告警信息4,U16,1,,
-RSV2,U32,1,,";
+PACK11最小单体温度,I8,1,1,℃
+PACK12最小单体温度,I8,1,1,℃
+BMU保护信息1,U16,1,,
+BMU保护信息2,U16,1,,
+BMU故障信息1,U16,1,,
+BMU故障信息2,U16,1,,";
         private readonly string HistoryEventText = @"时间-年,U8,1,1,1,
 时间-月,U8,1,1,1,
 时间-日,U8,1,1,1,
@@ -190,74 +185,44 @@ RSV2,U32,1,,";
         public CBSFileTransmit_BCU()
         {
             InitializeComponent();
-
-            cts = new CancellationTokenSource();
         }
 
         private void CBSFileTransmit_Load(object sender, EventArgs e)
         {
+            this.Invoke(() =>
+            {
+                //foreach (Control item in this.Controls)
+                //{
+                //    GetControls(item);
+                //}
+
+                this.txtSlaveAddress.Text = FrmMain.BCU_ID.ToString();
+                this.txtSubDeviceAddress.Text = "0";
+                this.cbbFileNumber.SelectedIndex = 3;
+                this.cbbModeName.SelectedIndex = 0;
+                this.cbbModeName.Enabled = false;
+                this.ckReadAll.Checked = true;
+            });
+
+
+            cts = new CancellationTokenSource();
             ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
-
-            //Task.Factory.StartNew(() =>
-            //{
-            //    while (!cts.IsCancellationRequested)
-            //    {
-            //        lock (EcanHelper._locker)
-            //        {
-            //            while (EcanHelper._task.Count > 0
-            //            && !_token.IsCancellationRequested)
-            //            {
-            //                //出队
-            //                CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-
-            //                //解析
-            //                this.Invoke(new Action(() => { AnalysisData(ch.ID, ch.Data); }));
-            //            }
-            //        }
-            //    }
-            //}, cts.Token);
-
-            //初始化值
-            this.txtSlaveAddress.Text = FrmMain.BCU_ID.ToString();
-            this.txtSubDeviceAddress.Text = "0";
-            this.cbbFileNumber.SelectedIndex = 3;
-            this.cbbModeName.SelectedIndex = 0;
-            this.cbbModeName.Enabled = false;
-            this.ckReadAll.Checked = true;
-
-            //slaveAddress = Convert.ToInt32(txtSlaveAddress.Text);
-            //subDeviceAddress= Convert.ToInt32(txtSubDeviceAddress.Text);
-            //readCount = Convert.ToInt32(txtReadCount.Text);
         }
 
         private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
         {
+            if (cts.IsCancellationRequested && ecanHelper.IsConnected)
+            {
+                ecanHelper.AnalysisDataInvoked -= ServiceBase_AnalysisDataInvoked;
+                return;
+            }
+
             var frameModel = e as CanFrameModel;
             if (frameModel != null)
             {
                 this.Invoke(() => { AnalysisData(frameModel.CanID, frameModel.Data); });
             }
         }
-
-        private void btnFileTransmit_Click(object sender, EventArgs e)
-        {
-            fileNumber = cbbFileNumber.SelectedIndex;//确认解析点表
-            readType = ckReadAll.Checked ? 0 : 1;
-
-            //if (readType == 1)
-            //{
-            //    if (!int.TryParse(txtStartLocal.Text, out readIndex))
-            //    {
-            //        MessageBox.Show("起始地址错误，终止操作！");
-            //        return;
-            //    }
-
-            //    fileOffset *= readIndex;//变更起始偏移地址
-            //}
-
-            StartTransmit();
-        }
-
 
         private void AnalysisData(uint id, byte[] data)
         {
@@ -277,10 +242,15 @@ RSV2,U32,1,,";
                             isResponse = true;
                             string headName = "";
 
-                            if (fileNumber == 0 || fileNumber == 1 || fileNumber == 2)
+                            if (fileNumber == 0)
+                            {
+                                headStr = FiveMinHeadStr;
+                                headName = "BCU通讯板故障录波";
+                            }
+                            else if (fileNumber == 1 || fileNumber == 2)
                             {
                                 headStr = FaultRecordStr;
-                                headName = "故障录波";
+                                headName = "BCU功率板故障录波";
                             }
                             else if (fileNumber == 3)
                             {
@@ -305,7 +275,12 @@ RSV2,U32,1,,";
                                 fileName = string.Format("{0}_{1}_{2}_{3}", headName, cbbModeName.Text.Trim(), subDeviceAddress, System.DateTime.Now.ToString("yy-MM-dd-HH-mm-ss"));
                                 filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//{fileName}.csv";
 
-                                if ((fileNumber < 3 && fileNumber >= 0) || fileNumber == 5)
+                                if (fileNumber == 0)
+                                {
+                                    fileOffset = 200;
+                                    dataLength = 200;
+                                }
+                                else if ((fileNumber < 3 && fileNumber > 0) || fileNumber == 5)
                                 {
                                     fileOffset = 8;
                                     dataLength = 8;
@@ -317,29 +292,20 @@ RSV2,U32,1,,";
                                         filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//{fileName}.txt";
                                     }
 
-
                                     fileOffset = 200;
                                     dataLength = 200;
-
                                 }
-
-
 
                                 if (readType == 0)
                                 {
                                     fileOffset_BCU = fileOffset;
                                     questCycle = fileSize % fileOffset == 0 ? fileSize / fileOffset + 1 : (fileSize / fileOffset);//一般结果为true
-                                    //questCycle = fileSize % fileOffset == 0 ? (fileSize / fileOffset - 1) : fileSize / fileOffset;//一般结果为true
-
                                 }
                                 else
                                 {
                                     fileOffset_BCU = ((fileSize - readCount * fileOffset) < 0) ? fileOffset : (fileSize - readCount * fileOffset);
                                     questCycle = (fileSize - fileOffset_BCU) % fileOffset == 0 ? ((fileSize - fileOffset_BCU) / fileOffset) + 1 : ((fileSize - fileOffset_BCU) / fileOffset);
-
                                 }
-
-
                             }
 
                             if (!File.Exists(filePath))
@@ -355,15 +321,14 @@ RSV2,U32,1,,";
                     if (id == 0x7F2E0FF)
                     {
                         dataBuffer.AddRange(data);
-
-                        if (fileNumber == 0 || fileNumber == 1 || fileNumber == 2)
+                        if (fileNumber == 1 || fileNumber == 2)
                         {
                             if (dataBuffer.Count == 8)
                             {
                                 textStr = FaultRecordText;
                             }
                         }
-                        else if (fileNumber == 3)
+                        else if (fileNumber == 0 || fileNumber == 3)
                         {
                             if (dataBuffer.Count == 200)
                             {
@@ -400,6 +365,7 @@ RSV2,U32,1,,";
                                     String asciiStr = ((char)dataBuffer[i]).ToString();//十六进制转ASCII码
                                     sbContent += asciiStr;
                                 }
+
                                 TxtHelper.FileWrite(filePath, sbContent);
                                 Debug.WriteLine(sbContent);
                             }
@@ -426,20 +392,26 @@ RSV2,U32,1,,";
 
         private string ToAnalysis(string textStr, byte[] dataBuffer)
         {
+            if (dataBuffer.Length == 0)
+                return "";
+
             StringBuilder valList = new StringBuilder();
             int index = 0;
-            bool toHex = false;
 
             List<ProtocolModel> _protocols = ToProtocol(textStr);
             for (int i = 0; i < _protocols.Count; i++)
             {
                 ProtocolModel model = _protocols[i];
                 object val = null;
+                bool toHex = false;
 
                 if (toHex)
                 {
                     switch (model.DataType)
                     {
+                        case "I8":
+                            val = (sbyte)dataBuffer[index++];
+                            break;
                         case "U8":
                             val = $"0x{dataBuffer[index++].ToString("X2")}";
                             break;
@@ -458,6 +430,9 @@ RSV2,U32,1,,";
                 {
                     switch (model.DataType)
                     {
+                        case "I8":
+                            val = (sbyte)dataBuffer[index++];
+                            break;
                         case "U8":
                             val = Convert.ToByte(dataBuffer[index++]);
                             break;
@@ -481,7 +456,6 @@ RSV2,U32,1,,";
                     }
 
                     model.Value = (model.Accuracy * Convert.ToDouble(val)).ToString();
-
                 }
 
                 valList.Append(model.Value + ",");
@@ -513,7 +487,6 @@ RSV2,U32,1,,";
             List<ProtocolModel> protocols = new List<ProtocolModel>();
 
             string[] textStr = text.Split('\n');
-
             for (int i = 0; i < textStr.Length; i++)
             {
                 string[] datas = textStr[i].Split(',');
@@ -529,6 +502,25 @@ RSV2,U32,1,,";
             }
 
             return protocols;
+        }
+
+        private void btnFileTransmit_Click(object sender, EventArgs e)
+        {
+            fileNumber = cbbFileNumber.SelectedIndex;//确认解析点表
+            readType = ckReadAll.Checked ? 0 : 1;
+
+            //if (readType == 1)
+            //{
+            //    if (!int.TryParse(txtStartLocal.Text, out readIndex))
+            //    {
+            //        MessageBox.Show("起始地址错误，终止操作！");
+            //        return;
+            //    }
+
+            //    fileOffset *= readIndex;//变更起始偏移地址
+            //}
+
+            StartTransmit();
         }
 
         private void StartTransmit()
@@ -634,7 +626,7 @@ RSV2,U32,1,,";
             Task.Run(async delegate
             {
                 this.Invoke(new Action(() => { btnFileTransmit.Enabled = false; }));
-                await Task.Delay(1000 * 15);
+                await Task.Delay(1000 * 10);
                 this.Invoke(new Action(() => { btnFileTransmit.Enabled = true; }));
             });
 
@@ -671,7 +663,7 @@ RSV2,U32,1,,";
             data[3] = (byte)readType;
 
             ecanHelper.Send(data, canid);
-            AddLog(System.DateTime.Now.ToString("HH:mm:ss:fff"), "F0", byteToHexString(data));
+            AddLog(System.DateTime.Now.ToString("HH:mm:ss:fff"), $"{BitConverter.ToUInt32(canid, 0).ToString("X8")}", byteToHexString(data));
             return CheckResponse();
         }
 
@@ -783,23 +775,116 @@ RSV2,U32,1,,";
         {
             readCount = Convert.ToInt32(txtReadCount.Text);
         }
+
+
+        #region 翻译所用得函数
+        private void GetControls(Control c)
+        {
+            if (c is GroupBox || c is TabControl)
+            {
+                c.Text = LanguageHelper.GetLanguage(c.Name.Remove(0, 2));
+
+                foreach (Control item in c.Controls)
+                {
+                    this.GetControls(item);
+                }
+            }
+            else
+            {
+                string name = c.Name;
+
+                if (c is CheckBox)
+                {
+                    c.Text = LanguageHelper.GetLanguage(name.Remove(0, 2));
+
+                    LTooltip(c as CheckBox, c.Text);
+                }
+                else if (c is RadioButton)
+                {
+                    c.Text = LanguageHelper.GetLanguage(name.Remove(0, 2));
+
+                    LTooltip(c as RadioButton, c.Text);
+                }
+                else if (c is Label)
+                {
+                    c.Text = LanguageHelper.GetLanguage(name.Remove(0, 3));
+
+                    LTooltip(c as Label, c.Text);
+                }
+                else if (c is Button)
+                {
+                    if (name.Contains("Set"))
+                    {
+                        c.Text = LanguageHelper.GetLanguage("Settings");
+                    }
+                    else if (name.Contains("_Close"))
+                    {
+                        c.Text = LanguageHelper.GetLanguage("Systemset_43");
+                    }
+                    else if (name.Contains("_Open"))
+                    {
+                        c.Text = LanguageHelper.GetLanguage("Systemset_44");
+                    }
+                    else if (name.Contains("_Lifted"))
+                    {
+                        c.Text = LanguageHelper.GetLanguage("Systemset_45");
+                    }
+                    else
+                    {
+                        c.Text = LanguageHelper.GetLanguage(name.Remove(0, 3));
+
+                    }
+                }
+                else if (c is TabPage | c is Panel)
+                {
+                    foreach (Control item in c.Controls)
+                    {
+                        this.GetControls(item);
+                    }
+                }
+            }
+        }
+
+        public static void LTooltip(System.Windows.Forms.Control control, string value)
+        {
+            if (value.Length == 0) return;
+            control.Text = Abbreviation(control, value);
+            var tip = new ToolTip();
+            tip.IsBalloon = false;
+            tip.ShowAlways = true;
+            tip.SetToolTip(control, value);
+        }
+
+        public static string Abbreviation(Control control, string str)
+        {
+            if (str == null)
+            {
+                return null;
+            }
+            int strWidth = FontWidth(control.Font, control, str);
+
+            //获取label最长可以显示多少字符
+            int len = control.Width * str.Length / strWidth;
+
+            if (len > 20 && len < str.Length)
+
+            {
+                return str.Substring(0, 20) + "...";
+            }
+            else
+            {
+                return str;
+            }
+        }
+
+        private static int FontWidth(Font font, Control control, string str)
+        {
+            using (Graphics g = control.CreateGraphics())
+            {
+                SizeF siF = g.MeasureString(str, font);
+                return (int)siF.Width;
+            }
+        }
+        #endregion
     }
-
-    //class ProtocolModel
-    //{
-    //    public string Name;
-    //    public string DataType;
-    //    public int DataLength;
-    //    public double Accuracy;
-    //    public string Unit;
-    //    public object Value;
-    //}
-
-    //enum StepRemark
-    //{
-    //    None,
-    //    读文件指令帧,
-    //    读文件数据内容帧,
-    //    查询完成状态帧
-    //}
 }

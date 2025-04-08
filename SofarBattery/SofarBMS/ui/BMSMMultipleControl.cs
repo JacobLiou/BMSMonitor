@@ -1,4 +1,5 @@
-﻿using Sofar.ConnectionLibs.CAN;
+﻿using Sofar.BMS.Models;
+using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
 
@@ -96,17 +97,19 @@ namespace SofarBMS.UI
         public BMSMMultipleControl()
         {
             InitializeComponent();
-
-            cts = new CancellationTokenSource();
         }
 
         private void BMSMMultipleControl_Load(object sender, EventArgs e)
         {
-            foreach (Control item in this.Controls)
+            this.Invoke(() =>
             {
-                GetControls(item);
-            }
+                foreach (Control item in this.Controls)
+                {
+                    GetControls(item);
+                }
+            });
 
+            cts = new CancellationTokenSource();
             Task.Run(async delegate
             {
                 while (!cts.IsCancellationRequested)
@@ -132,13 +135,6 @@ namespace SofarBMS.UI
                         ecanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
                                         , new byte[] { 0xE0, FrmMain.BMS_ID, 0x2E, 0x10 });
                     }
-
-                    ////增加信号量状态的检查
-                    //while (!cts.IsCancellationRequested && EcanHelper._task.Count > 0)
-                    //{
-                    //    CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-                    //    analysisData(ch.ID, ch.Data);
-                    //}
                     await Task.Delay(1000);
                 }
             }, cts.Token);
@@ -148,6 +144,12 @@ namespace SofarBMS.UI
 
         private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
         {
+            if (cts.IsCancellationRequested && ecanHelper.IsConnected)
+            {
+                ecanHelper.AnalysisDataInvoked -= ServiceBase_AnalysisDataInvoked;
+                return;
+            }
+
             var frameModel = e as CanFrameModel;
             if (frameModel != null)
             {
@@ -608,11 +610,6 @@ namespace SofarBMS.UI
             }
 
             return (b & _byte) == _byte ? 1 : 0;
-        }
-
-        private void label19_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

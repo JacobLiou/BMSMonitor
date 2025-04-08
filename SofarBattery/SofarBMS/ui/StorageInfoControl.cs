@@ -26,6 +26,7 @@ namespace SofarBMS.UI
 
         // ECAN助手实例
         private EcanHelper ecanHelper = EcanHelper.Instance;
+        private StorageInfo storageInfo = new StorageInfo();
 
         DataRow channelDr = null;
         DataTable channelDt = null;
@@ -38,40 +39,32 @@ namespace SofarBMS.UI
         public StorageInfoControl()
         {
             InitializeComponent();
-
-            cts = new CancellationTokenSource();
         }
 
         private void StorageInfoControl_Load(object sender, EventArgs e)
         {
-            foreach (Control item in this.Controls)
+            this.Invoke(new Action(() =>
             {
-                GetControls(item);
-            }
-            splitContainer1.FixedPanel = FixedPanel.Panel1;
+                foreach (Control item in this.Controls)
+                {
+                    GetControls(item);
+                }
+                splitContainer1.FixedPanel = FixedPanel.Panel1;
+                BindData();
+            }));
 
-            //Task.Run(() =>
-            //{
-            //    while (!cts.IsCancellationRequested)
-            //    {
-            //        lock (EcanHelper._locker)
-            //        {
-            //            while (EcanHelper._task.Count > 0
-            //            && !cts.IsCancellationRequested)
-            //            {
-            //                CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-
-            //                analysisData(ch.ID, ch.Data);
-            //            }
-            //        }
-            //    }
-            //},cts.Token);
-
+            cts = new CancellationTokenSource();
             ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
         }
 
         private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
         {
+            if (cts.IsCancellationRequested && ecanHelper.IsConnected)
+            {
+                ecanHelper.AnalysisDataInvoked -= ServiceBase_AnalysisDataInvoked;
+                return;
+            }
+
             var frameModel = e as CanFrameModel;
             if (frameModel != null)
             {
@@ -121,7 +114,20 @@ namespace SofarBMS.UI
                 return;
             }
 
-            //重置表格数据
+            channelDt = new DataTable();
+            channelDr = channelDt.NewRow();
+            PropertyInfo[] properties = typeof(StorageInfo).GetProperties();
+            foreach (PropertyInfo propertyInfo in properties)
+            {
+                channelDt.Columns.Add(propertyInfo.GetValue(storageInfo, null).ToString(), Nullable.GetUnderlyingType(propertyInfo.PropertyType) ?? propertyInfo.PropertyType);
+            }
+            Invoke((Action)delegate
+            {
+                dgvStorageInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                dgvStorageInfo.DataSource = channelDt;
+            });
+
+            /*//重置表格数据
             channelDt = new DataTable();
             channelDr = channelDt.NewRow();
             channelDt.Columns.Add("发生时间");
@@ -192,7 +198,7 @@ namespace SofarBMS.UI
             {
                 dgvStorageInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                 dgvStorageInfo.DataSource = channelDt;
-            }));
+            }));*/
         }
 
         private void btn_02_Click(object sender, EventArgs e)
@@ -269,7 +275,7 @@ namespace SofarBMS.UI
             switch (canid[2])
             {
                 case 0x2D:
-                    if (channelDr["序列号"].ToString() != "")
+                    if (channelDr[storageInfo.SerialNumber].ToString() != "")
                     {
                         this.Invoke(new Action(() =>
                         {
@@ -310,7 +316,7 @@ namespace SofarBMS.UI
                     date.Append(numbers_bit[4]);
                     date.Append(":");
                     date.Append(numbers_bit[5]);
-                    channelDr["发生时间"] = date;
+                    channelDr[storageInfo.OccurredDate] = date;
                     break;
                 case 0x31:
                     switch (data[0])
@@ -319,7 +325,7 @@ namespace SofarBMS.UI
                         case 0x01: Buffer.BlockCopy(data, 1, bufferCode, 7, 7); break;
                         case 0x02:
                             Buffer.BlockCopy(data, 1, bufferCode, 14, 7);
-                            channelDr["序列号"] = System.Text.Encoding.ASCII.GetString(bufferCode).Trim().Replace("\0", "");
+                            channelDr[storageInfo.SerialNumber] = System.Text.Encoding.ASCII.GetString(bufferCode).Trim().Replace("\0", "");
                             break;
                         default:
                             bufferCode = new byte[21];
@@ -327,96 +333,96 @@ namespace SofarBMS.UI
                     }
                     break;
                 case 0x33:
-                    channelDr["电池状态"] = Convert.ToInt32(data[0].ToString("X2"), 16);
-                    channelDr["充电电流上限(A)"] = (Convert.ToInt32(data[2].ToString("X2") + data[1].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["放电电流上限(A)"] = (Convert.ToInt32(data[4].ToString("X2") + data[3].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["充电MOS"] = GetBit(data[5], 0) == 0 ? "断开" : "闭合";
-                    channelDr["放电MOS"] = GetBit(data[5], 1) == 0 ? "断开" : "闭合";
-                    channelDr["预充MOS"] = GetBit(data[5], 2) == 0 ? "断开" : "闭合";
-                    channelDr["充电急停"] = GetBit(data[5], 3) == 0 ? "断开" : "闭合";
-                    channelDr["加热MOS"] = GetBit(data[5], 4) == 0 ? "断开" : "闭合";
+                    channelDr[storageInfo.BatteryStatus] = Convert.ToInt32(data[0].ToString("X2"), 16);
+                    channelDr[storageInfo.ChargeCurrentLimit] = (Convert.ToInt32(data[2].ToString("X2") + data[1].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.DischargeCurrentLimit] = (Convert.ToInt32(data[4].ToString("X2") + data[3].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.ChargingMOS] = (GetBit(data[5], 0) == 0 ? LanguageHelper.GetString("off") : LanguageHelper.GetString("on"));
+                    channelDr[storageInfo.DischargeMOS] = (GetBit(data[5], 1) == 0 ? LanguageHelper.GetString("off") : LanguageHelper.GetString("on"));
+                    channelDr[storageInfo.PreChargedMOS] = (GetBit(data[5], 2) == 0 ? LanguageHelper.GetString("off") : LanguageHelper.GetString("on"));
+                    channelDr[storageInfo.ChargingEmergencyStop] = (GetBit(data[5], 3) == 0 ? LanguageHelper.GetString("off") : LanguageHelper.GetString("on"));
+                    channelDr[storageInfo.HeatedMOS] = (GetBit(data[5], 4) == 0 ? LanguageHelper.GetString("off") : LanguageHelper.GetString("on"));
                     break;
                 case 0x34:
-                    channelDr["电池电压(V)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["负载电压(V)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["电池电流(A)"] = (Convert.ToInt16(data[5].ToString("x2") + data[4].ToString("x2"), 16) * 0.01).ToString();
-                    channelDr["电池剩余容量(SOC)"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.BatteryVoltage] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.LoadVoltage] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.BatteryCurrent] = (Convert.ToInt16(data[5].ToString("x2") + data[4].ToString("x2"), 16) * 0.01).ToString();
+                    channelDr[storageInfo.SOC] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.1).ToString();
                     break;
                 case 0x35:
-                    channelDr["最高单体电压(mV)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["最高单体电压编号"] = Convert.ToInt32(data[2].ToString("X2"), 16).ToString();
-                    channelDr["最低单体电压(mV)"] = (Convert.ToInt32(data[4].ToString("X2") + data[3].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["最低单体电压编号"] = Convert.ToInt32(data[5].ToString("X2"), 16).ToString();
+                    channelDr[storageInfo.Maximumcellvoltage] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr[storageInfo.Maximumcellvoltagenumber] = Convert.ToInt32(data[2].ToString("X2"), 16).ToString();
+                    channelDr[storageInfo.Minimumcellvoltage] = (Convert.ToInt32(data[4].ToString("X2") + data[3].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr[storageInfo.Minimumcellvoltagenumber] = Convert.ToInt32(data[5].ToString("X2"), 16).ToString();
                     break;
                 case 0x36:
-                    channelDr["最高单体温度(℃)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["最高单体温度编号"] = Convert.ToInt32(data[2].ToString("X2"), 16).ToString();
-                    channelDr["最低单体温度(℃)"] = (Convert.ToInt32(data[4].ToString("X2") + data[3].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["最低单体温度编号"] = Convert.ToInt32(data[5].ToString("X2"), 16).ToString();
+                    channelDr[storageInfo.Maximumcelltemperature] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.Maximumcelltemperaturenumber] = Convert.ToInt32(data[2].ToString("X2"), 16).ToString();
+                    channelDr[storageInfo.Minimumcelltemperature] = (Convert.ToInt32(data[4].ToString("X2") + data[3].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.Minimumcelltemperaturenumber] = Convert.ToInt32(data[5].ToString("X2"), 16).ToString();
                     break;
                 case 0x37:
-                    channelDr["累计充电容量(Ah)"] = (((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] & 0xff)) * 0.001).ToString();
-                    channelDr["累计放电容量(Ah)"] = (((data[7] << 24) + (data[6] << 16) + (data[5] << 8) + (data[4] & 0xff)) * 0.001).ToString();
+                    channelDr[storageInfo.CumulativeChargingCapacity] = (((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] & 0xff)) * 0.001).ToString();
+                    channelDr[storageInfo.Cumulativedischargecapacity] = (((data[7] << 24) + (data[6] << 16) + (data[5] << 8) + (data[4] & 0xff)) * 0.001).ToString();
                     break;
                 case 0x38:
-                    channelDr["故障byte1"] = Convert.ToInt32(data[0].ToString("X2"), 16);
-                    channelDr["故障byte2"] = Convert.ToInt32(data[1].ToString("X2"), 16);
-                    channelDr["故障byte3"] = Convert.ToInt32(data[2].ToString("X2"), 16);
-                    channelDr["故障byte4"] = Convert.ToInt32(data[3].ToString("X2"), 16);
-                    channelDr["故障byte5"] = Convert.ToInt32(data[4].ToString("X2"), 16);
-                    channelDr["故障byte6"] = Convert.ToInt32(data[5].ToString("X2"), 16);
-                    channelDr["故障byte7"] = Convert.ToInt32(data[6].ToString("X2"), 16);
-                    channelDr["故障byte8"] = Convert.ToInt32(data[7].ToString("X2"), 16);
+                    channelDr[storageInfo.FaultByte1] = Convert.ToInt32(data[0].ToString("X2"), 16);
+                    channelDr[storageInfo.FaultByte2] = Convert.ToInt32(data[1].ToString("X2"), 16);
+                    channelDr[storageInfo.FaultByte3] = Convert.ToInt32(data[2].ToString("X2"), 16);
+                    channelDr[storageInfo.FaultByte4] = Convert.ToInt32(data[3].ToString("X2"), 16);
+                    channelDr[storageInfo.FaultByte5] = Convert.ToInt32(data[4].ToString("X2"), 16);
+                    channelDr[storageInfo.FaultByte6] = Convert.ToInt32(data[5].ToString("X2"), 16);
+                    channelDr[storageInfo.FaultByte7] = Convert.ToInt32(data[6].ToString("X2"), 16);
+                    channelDr[storageInfo.FaultByte8] = Convert.ToInt32(data[7].ToString("X2"), 16);
                     break;
                 case 0x39:
-                    channelDr["电压1(mV)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压2(mV)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压3(mV)"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压4(mV)"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr[storageInfo.Voltage1] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr[storageInfo.Voltage2] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr[storageInfo.Voltage3] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr[storageInfo.Voltage4] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.001).ToString();
                     break;
                 case 0x3A:
-                    channelDr["电压5(mV)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压6(mV)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压7(mV)"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压8(mV)"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr[storageInfo.Voltage5] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr[storageInfo.Voltage6] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr[storageInfo.Voltage7] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr[storageInfo.Voltage8] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.001).ToString();
                     break;
                 case 0x3B:
-                    channelDr["电压9(mV)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压10(mV)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压11(mV)"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压12(mV)"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr[storageInfo.Voltage9] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr[storageInfo.Voltage10] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr[storageInfo.Voltage11] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr[storageInfo.Voltage12] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.001).ToString();
                     break;
                 case 0x3C:
-                    channelDr["电压13(mV)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压14(mV)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压15(mV)"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.001).ToString();
-                    channelDr["电压16(mV)"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr[storageInfo.Voltage13] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr[storageInfo.Voltage14] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr[storageInfo.Voltage15] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.001).ToString();
+                    channelDr[storageInfo.Voltage16] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.001).ToString();
                     break;
                 case 0x3D:
-                    channelDr["温度1(℃)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["温度2(℃)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["温度3(℃)"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["温度4(℃)"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.Temperature1] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.Temperature2] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.Temperature3] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.Temperature4] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.1).ToString();
                     break;
                 case 0x3E:
-                    channelDr["Mos温度(℃)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["环境温度(℃)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["电池健康程度(SOH)"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["均衡状态"] = $"[1~16]:{Convert.ToString(data[6], 2).PadLeft(8, '0').Insert(4, " ")},{Convert.ToString(data[7], 2).PadLeft(8, '0').Insert(4, " ")}";
+                    channelDr[storageInfo.MosTemperature] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.AmbientTemperature] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.SOH] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.EquilibriumState] = $"[1~16]:{Convert.ToString(data[6], 2).PadLeft(8, '0').Insert(4, " ")},{Convert.ToString(data[7], 2).PadLeft(8, '0').Insert(4, " ")}";
                     break;
                 case 0x3F:
-                    channelDr["剩余容量(Ah)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["满充容量(Ah)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.RemainingCapacity] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.FullChargeCapacity] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
                     break;
                 case 0x50:
-                    channelDr["温度5(℃)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["温度6(℃)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["温度7(℃)"] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["温度8(℃)"] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.Temperature5] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.Temperature6] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.Temperature7] = (Convert.ToInt32(data[5].ToString("X2") + data[4].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.Temperature8] = (Convert.ToInt32(data[7].ToString("X2") + data[6].ToString("X2"), 16) * 0.1).ToString();
                     break;
                 case 0x51:
-                    channelDr["均衡温度1(℃)"] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
-                    channelDr["均衡温度2(℃)"] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.EquilibriumTemperature1] = (Convert.ToInt32(data[1].ToString("X2") + data[0].ToString("X2"), 16) * 0.1).ToString();
+                    channelDr[storageInfo.EquilibriumTemperature2] = (Convert.ToInt32(data[3].ToString("X2") + data[2].ToString("X2"), 16) * 0.1).ToString();
                     break;
             }
         }

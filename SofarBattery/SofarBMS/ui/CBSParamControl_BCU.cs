@@ -23,18 +23,21 @@ namespace SofarBMS.UI
 
         private void ParamControl_Load(object sender, EventArgs e)
         {
-            foreach (Control item in this.Controls)
+            this.Invoke(() =>
             {
-                GetControls(item);
-            }
+                foreach (Control item in this.Controls)
+                {
+                    GetControls(item);
+                }
+            });
 
             #region 指令集合
             if (keys.Count == 0)
-            {            
+            {
                 keys.Add("txt_1", "总体过充保护(V)");
                 keys.Add("txt_2", "总体过充保护解除(V)");
                 keys.Add("txt_3", "总体过充告警(V)");
-                keys.Add("txt_4", "总体过充告警解除(V)");           
+                keys.Add("txt_4", "总体过充告警解除(V)");
                 keys.Add("txt_5", "总体过放保护(V)");
                 keys.Add("txt_6", "总体过放保护解除(V)");
                 keys.Add("txt_7", "总体过放告警(V)");
@@ -50,13 +53,13 @@ namespace SofarBMS.UI
                 keys.Add("txt_17", "放电过流保护2(A)");
                 keys.Add("txt_18", "放电过流保护解除2(A)");
                 keys.Add("txt_19", "充电过流保护2(A)");
-                keys.Add("txt_20", "充电过流保护解除2(A)");              
+                keys.Add("txt_20", "充电过流保护解除2(A)");
                 keys.Add("txt_21", "低电量告警(%)");
                 keys.Add("txt_22", "低电量告警解除(%)");
                 keys.Add("txt_23", "风扇开启温度(℃)");
                 keys.Add("txt_24", "风扇关闭温度(℃)");
                 keys.Add("txt_25", "满充电压(mV)");
-                keys.Add("txt_26", "单簇PACK个数");              
+                keys.Add("txt_26", "单簇PACK个数");
             }
             #endregion
 
@@ -76,16 +79,6 @@ namespace SofarBMS.UI
                             await Task.Delay(1000);
                         }
                     }
-
-                    //lock (EcanHelper._locker)
-                    //{
-                    //    while (EcanHelper._task.Count > 0 
-                    //        && !cts.IsCancellationRequested)
-                    //    {
-                    //        CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-                    //        this.Invoke(new Action(() => { analysisData(ch.ID, ch.Data); }));
-                    //    }
-                    //}
                 }
             }, cts.Token);
 
@@ -94,6 +87,12 @@ namespace SofarBMS.UI
 
         private void ServiceBase_AnalysisDataInvoked(object? sender, object e)
         {
+            if (cts.IsCancellationRequested && ecanHelper.IsConnected)
+            {
+                ecanHelper.AnalysisDataInvoked -= ServiceBase_AnalysisDataInvoked;
+                return;
+            }
+
             var frameModel = e as CanFrameModel;
             if (frameModel != null)
             {
@@ -135,7 +134,7 @@ namespace SofarBMS.UI
             byte[] canid = new byte[] { 0xE0, FrmMain.BCU_ID, 0xF9, 0x10 };
             byte[] bytes = new byte[8];
             int num = 7;
-           
+
             if (false)
             {
 
@@ -224,7 +223,7 @@ namespace SofarBMS.UI
             Thread.Sleep(1000);
             ecanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }, new byte[] { 0xE0, FrmMain.BCU_ID, 0xF9, 0x10 });
         }
-        
+
         public void AnalysisData(uint canID, byte[] data)
         {
             byte[] canid = BitConverter.GetBytes(canID);
@@ -235,42 +234,42 @@ namespace SofarBMS.UI
             switch (canid[2])
             {
                 case 0xE0://总体过充
-                    txt_1.Text = (numbers[0] * 0.1).ToString();
-                    txt_2.Text = (numbers[1] * 0.1).ToString();
-                    txt_3.Text = (numbers[2] * 0.1).ToString();
-                    txt_4.Text = (numbers[3] * 0.1).ToString();
+                    txt_1.Text = (numbers[0] * 0.1).ToString("0.0");
+                    txt_2.Text = (numbers[1] * 0.1).ToString("0.0");
+                    txt_3.Text = (numbers[2] * 0.1).ToString("0.0");
+                    txt_4.Text = (numbers[3] * 0.1).ToString("0.0");
                     break;
                 case 0xE1://总体过放
-                    txt_5.Text = (numbers[0] * 0.1).ToString();
-                    txt_6.Text = (numbers[1] * 0.1).ToString();
-                    txt_7.Text = (numbers[2] * 0.1).ToString();
-                    txt_8.Text = (numbers[3] * 0.1).ToString();
+                    txt_5.Text = (numbers[0] * 0.1).ToString("0.0");
+                    txt_6.Text = (numbers[1] * 0.1).ToString("0.0");
+                    txt_7.Text = (numbers[2] * 0.1).ToString("0.0");
+                    txt_8.Text = (numbers[3] * 0.1).ToString("0.0");
                     break;
                 case 0xE2://充电过流
-                    txt_9.Text = (numbers[0] * 0.01).ToString();
-                    txt_10.Text = (numbers[1] * 0.01).ToString();
-                    txt_11.Text = (numbers[2] * 0.01).ToString();
-                    txt_12.Text = (numbers[3] * 0.01).ToString();
+                    txt_9.Text = (numbers[0] * 0.01).ToString("0.00");
+                    txt_10.Text = (numbers[1] * 0.01).ToString("0.00");
+                    txt_11.Text = (numbers[2] * 0.01).ToString("0.00");
+                    txt_12.Text = (numbers[3] * 0.01).ToString("0.00");
                     break;
                 case 0xE3://放电过流1
-                    txt_13.Text = (numbers[0] * 0.01).ToString();
-                    txt_14.Text = (numbers[1] * 0.01).ToString();
-                    txt_15.Text = (numbers[2] * 0.01).ToString();
-                    txt_16.Text = (numbers[3] * 0.01).ToString();
+                    txt_13.Text = (numbers[0] * 0.01).ToString("0.00");
+                    txt_14.Text = (numbers[1] * 0.01).ToString("0.00");
+                    txt_15.Text = (numbers[2] * 0.01).ToString("0.00");
+                    txt_16.Text = (numbers[3] * 0.01).ToString("0.00");
                     break;
                 case 0xE4://放电过流2
-                    txt_17.Text = (numbers[0] * 0.01).ToString();
-                    txt_18.Text = (numbers[1] * 0.01).ToString();
-                    txt_19.Text = (numbers[2] * 0.01).ToString();
-                    txt_20.Text = (numbers[3] * 0.01).ToString();
+                    txt_17.Text = (numbers[0] * 0.01).ToString("0.00");
+                    txt_18.Text = (numbers[1] * 0.01).ToString("0.00");
+                    txt_19.Text = (numbers[2] * 0.01).ToString("0.00");
+                    txt_20.Text = (numbers[3] * 0.01).ToString("0.00");
                     break;
                 case 0xE5://低电量
                     txt_21.Text = (numbers[2] * 1).ToString();
                     txt_22.Text = (numbers[3] * 1).ToString();
                     break;
                 case 0xF1://风扇、满充、Pack
-                    txt_23.Text = (MyCustomConverter.ByteArrayToInt16(new byte[] { data[0], data[1] }) * 0.1).ToString();
-                    txt_24.Text = (MyCustomConverter.ByteArrayToInt16(new byte[] { data[2], data[3] }) * 0.1).ToString();
+                    txt_23.Text = (MyCustomConverter.ByteArrayToInt16(new byte[] { data[0], data[1] }) * 0.1).ToString("0.0");
+                    txt_24.Text = (MyCustomConverter.ByteArrayToInt16(new byte[] { data[2], data[3] }) * 0.1).ToString("0.0");
                     txt_25.Text = (numbers[2]).ToString();
                     txt_26.Text = (numbers[3]).ToString();
                     break;

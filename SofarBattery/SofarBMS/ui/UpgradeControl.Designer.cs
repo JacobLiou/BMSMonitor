@@ -28,185 +28,208 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblUpgrade_01 = new Label();
-            lblUpgrade_02 = new Label();
-            txtUpgradeFile = new TextBox();
-            progressBar1 = new ProgressBar();
-            btnUpgrade_03 = new Button();
-            btnUpgrade_04 = new Button();
-            lblUpgrade_05 = new Label();
-            groupBox1 = new GroupBox();
-            listView1 = new ListViewBuff();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
-            cbbChip_role = new ComboBox();
-            txtChip_code = new TextBox();
-            lblUpgradeRole = new Label();
-            groupBox1.SuspendLayout();
-            SuspendLayout();
+            this.lblUpgrade_01 = new System.Windows.Forms.Label();
+            this.lblUpgrade_02 = new System.Windows.Forms.Label();
+            this.txtUpgradeFile = new System.Windows.Forms.TextBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.btnUpgrade_03 = new System.Windows.Forms.Button();
+            this.btnUpgrade_04 = new System.Windows.Forms.Button();
+            this.lblUpgrade_05 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.listView1 = new SofarBMS.ListViewBuff();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            this.cbbChip_role = new System.Windows.Forms.ComboBox();
+            this.txtChip_code = new System.Windows.Forms.TextBox();
+            this.lblUpgradeRole = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.SuspendLayout();
             // 
             // lblUpgrade_01
             // 
-            lblUpgrade_01.AutoSize = true;
-            lblUpgrade_01.Location = new Point(15, 14);
-            lblUpgrade_01.Margin = new Padding(4, 0, 4, 0);
-            lblUpgrade_01.Name = "lblUpgrade_01";
-            lblUpgrade_01.Size = new Size(56, 17);
-            lblUpgrade_01.TabIndex = 0;
-            lblUpgrade_01.Text = "文件路径";
+            this.lblUpgrade_01.AutoSize = true;
+            this.lblUpgrade_01.Location = new System.Drawing.Point(16, 24);
+            this.lblUpgrade_01.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUpgrade_01.Name = "lblUpgrade_01";
+            this.lblUpgrade_01.Size = new System.Drawing.Size(56, 17);
+            this.lblUpgrade_01.TabIndex = 0;
+            this.lblUpgrade_01.Text = "文件路径";
             // 
             // lblUpgrade_02
             // 
-            lblUpgrade_02.AutoSize = true;
-            lblUpgrade_02.Location = new Point(15, 47);
-            lblUpgrade_02.Margin = new Padding(4, 0, 4, 0);
-            lblUpgrade_02.Name = "lblUpgrade_02";
-            lblUpgrade_02.Size = new Size(56, 17);
-            lblUpgrade_02.TabIndex = 1;
-            lblUpgrade_02.Text = "下载进度";
+            this.lblUpgrade_02.AutoSize = true;
+            this.lblUpgrade_02.Location = new System.Drawing.Point(16, 94);
+            this.lblUpgrade_02.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUpgrade_02.Name = "lblUpgrade_02";
+            this.lblUpgrade_02.Size = new System.Drawing.Size(56, 17);
+            this.lblUpgrade_02.TabIndex = 1;
+            this.lblUpgrade_02.Text = "下载进度";
             // 
             // txtUpgradeFile
             // 
-            txtUpgradeFile.Location = new Point(98, 11);
-            txtUpgradeFile.Margin = new Padding(4, 4, 4, 4);
-            txtUpgradeFile.Name = "txtUpgradeFile";
-            txtUpgradeFile.Size = new Size(819, 23);
-            txtUpgradeFile.TabIndex = 2;
+            this.txtUpgradeFile.Location = new System.Drawing.Point(141, 21);
+            this.txtUpgradeFile.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUpgradeFile.Name = "txtUpgradeFile";
+            this.txtUpgradeFile.Size = new System.Drawing.Size(819, 23);
+            this.txtUpgradeFile.TabIndex = 2;
             // 
             // progressBar1
             // 
-            progressBar1.Location = new Point(98, 42);
-            progressBar1.Margin = new Padding(4, 4, 4, 4);
-            progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(820, 33);
-            progressBar1.TabIndex = 3;
+            this.progressBar1.Location = new System.Drawing.Point(139, 89);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(4);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(820, 27);
+            this.progressBar1.TabIndex = 3;
             // 
             // btnUpgrade_03
             // 
-            btnUpgrade_03.AutoSize = true;
-            btnUpgrade_03.Location = new Point(939, 5);
-            btnUpgrade_03.Margin = new Padding(4, 4, 4, 4);
-            btnUpgrade_03.Name = "btnUpgrade_03";
-            btnUpgrade_03.Size = new Size(88, 35);
-            btnUpgrade_03.TabIndex = 4;
-            btnUpgrade_03.Text = "导入文件";
-            btnUpgrade_03.UseVisualStyleBackColor = true;
-            btnUpgrade_03.Click += btnUpgrade_03_Click;
+            this.btnUpgrade_03.AutoSize = true;
+            this.btnUpgrade_03.Location = new System.Drawing.Point(968, 19);
+            this.btnUpgrade_03.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpgrade_03.Name = "btnUpgrade_03";
+            this.btnUpgrade_03.Size = new System.Drawing.Size(99, 27);
+            this.btnUpgrade_03.TabIndex = 4;
+            this.btnUpgrade_03.Text = "导入文件";
+            this.btnUpgrade_03.UseVisualStyleBackColor = true;
+            this.btnUpgrade_03.Click += new System.EventHandler(this.btnUpgrade_03_Click);
             // 
             // btnUpgrade_04
             // 
-            btnUpgrade_04.AutoSize = true;
-            btnUpgrade_04.Location = new Point(939, 42);
-            btnUpgrade_04.Margin = new Padding(4, 4, 4, 4);
-            btnUpgrade_04.Name = "btnUpgrade_04";
-            btnUpgrade_04.Size = new Size(88, 35);
-            btnUpgrade_04.TabIndex = 5;
-            btnUpgrade_04.Text = "启动升级";
-            btnUpgrade_04.UseVisualStyleBackColor = true;
-            btnUpgrade_04.Click += btnUpgrade_04_Click;
+            this.btnUpgrade_04.AutoSize = true;
+            this.btnUpgrade_04.Location = new System.Drawing.Point(967, 85);
+            this.btnUpgrade_04.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpgrade_04.Name = "btnUpgrade_04";
+            this.btnUpgrade_04.Size = new System.Drawing.Size(100, 35);
+            this.btnUpgrade_04.TabIndex = 5;
+            this.btnUpgrade_04.Text = "启动升级";
+            this.btnUpgrade_04.UseVisualStyleBackColor = true;
+            this.btnUpgrade_04.Click += new System.EventHandler(this.btnUpgrade_04_Click);
             // 
             // lblUpgrade_05
             // 
-            lblUpgrade_05.AutoSize = true;
-            lblUpgrade_05.Location = new Point(98, 119);
-            lblUpgrade_05.Margin = new Padding(4, 0, 4, 0);
-            lblUpgrade_05.Name = "lblUpgrade_05";
-            lblUpgrade_05.Size = new Size(32, 17);
-            lblUpgrade_05.TabIndex = 6;
-            lblUpgrade_05.Text = "Tips";
+            this.lblUpgrade_05.AutoSize = true;
+            this.lblUpgrade_05.Location = new System.Drawing.Point(140, 120);
+            this.lblUpgrade_05.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUpgrade_05.Name = "lblUpgrade_05";
+            this.lblUpgrade_05.Size = new System.Drawing.Size(32, 17);
+            this.lblUpgrade_05.TabIndex = 6;
+            this.lblUpgrade_05.Text = "Tips";
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(listView1);
-            groupBox1.Location = new Point(21, 140);
-            groupBox1.Margin = new Padding(4, 4, 4, 4);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4, 4, 4, 4);
-            groupBox1.Size = new Size(1006, 487);
-            groupBox1.TabIndex = 7;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "记录日志";
+            this.groupBox1.Controls.Add(this.listView1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 144);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(1189, 565);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "记录日志";
             // 
             // listView1
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
-            listView1.Dock = DockStyle.Fill;
-            listView1.Location = new Point(4, 20);
-            listView1.Margin = new Padding(4, 4, 4, 4);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(998, 463);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.Location = new System.Drawing.Point(4, 20);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(1181, 541);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
-            columnHeader1.Text = "DateTime";
-            columnHeader1.Width = 200;
+            this.columnHeader1.Text = "DateTime";
+            this.columnHeader1.Width = 200;
             // 
             // columnHeader2
             // 
-            columnHeader2.Text = "ID";
-            columnHeader2.Width = 200;
+            this.columnHeader2.Text = "ID";
+            this.columnHeader2.Width = 200;
             // 
             // columnHeader3
             // 
-            columnHeader3.Text = "Data";
-            columnHeader3.Width = 500;
+            this.columnHeader3.Text = "Data";
+            this.columnHeader3.Width = 500;
             // 
             // cbbChip_role
             // 
-            cbbChip_role.FormattingEnabled = true;
-            cbbChip_role.Items.AddRange(new object[] { "ARM", "PCU", "DSP", "BMS", "BDU" });
-            cbbChip_role.Location = new Point(98, 83);
-            cbbChip_role.Margin = new Padding(4, 4, 4, 4);
-            cbbChip_role.Name = "cbbChip_role";
-            cbbChip_role.Size = new Size(140, 25);
-            cbbChip_role.TabIndex = 8;
-            cbbChip_role.SelectedIndexChanged += cbbChip_role_SelectedIndexChanged;
+            this.cbbChip_role.FormattingEnabled = true;
+            this.cbbChip_role.Items.AddRange(new object[] {
+            "ARM",
+            "PCU",
+            "DSP",
+            "BMS",
+            "BDU"});
+            this.cbbChip_role.Location = new System.Drawing.Point(141, 54);
+            this.cbbChip_role.Margin = new System.Windows.Forms.Padding(4);
+            this.cbbChip_role.Name = "cbbChip_role";
+            this.cbbChip_role.Size = new System.Drawing.Size(100, 25);
+            this.cbbChip_role.TabIndex = 8;
+            this.cbbChip_role.SelectedIndexChanged += new System.EventHandler(this.cbbChip_role_SelectedIndexChanged);
             // 
             // txtChip_code
             // 
-            txtChip_code.Location = new Point(246, 86);
-            txtChip_code.Margin = new Padding(4, 4, 4, 4);
-            txtChip_code.Name = "txtChip_code";
-            txtChip_code.ReadOnly = true;
-            txtChip_code.Size = new Size(116, 23);
-            txtChip_code.TabIndex = 9;
+            this.txtChip_code.Location = new System.Drawing.Point(249, 55);
+            this.txtChip_code.Margin = new System.Windows.Forms.Padding(4);
+            this.txtChip_code.Name = "txtChip_code";
+            this.txtChip_code.ReadOnly = true;
+            this.txtChip_code.Size = new System.Drawing.Size(100, 23);
+            this.txtChip_code.TabIndex = 9;
             // 
             // lblUpgradeRole
             // 
-            lblUpgradeRole.AutoSize = true;
-            lblUpgradeRole.Location = new Point(21, 86);
-            lblUpgradeRole.Margin = new Padding(4, 0, 4, 0);
-            lblUpgradeRole.Name = "lblUpgradeRole";
-            lblUpgradeRole.Size = new Size(56, 17);
-            lblUpgradeRole.TabIndex = 10;
-            lblUpgradeRole.Text = "升级角色";
+            this.lblUpgradeRole.AutoSize = true;
+            this.lblUpgradeRole.Location = new System.Drawing.Point(16, 59);
+            this.lblUpgradeRole.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUpgradeRole.Name = "lblUpgradeRole";
+            this.lblUpgradeRole.Size = new System.Drawing.Size(56, 17);
+            this.lblUpgradeRole.TabIndex = 10;
+            this.lblUpgradeRole.Text = "升级角色";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.txtUpgradeFile);
+            this.panel1.Controls.Add(this.txtChip_code);
+            this.panel1.Controls.Add(this.cbbChip_role);
+            this.panel1.Controls.Add(this.progressBar1);
+            this.panel1.Controls.Add(this.btnUpgrade_03);
+            this.panel1.Controls.Add(this.lblUpgrade_05);
+            this.panel1.Controls.Add(this.btnUpgrade_04);
+            this.panel1.Controls.Add(this.lblUpgrade_01);
+            this.panel1.Controls.Add(this.lblUpgrade_02);
+            this.panel1.Controls.Add(this.lblUpgradeRole);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1189, 144);
+            this.panel1.TabIndex = 11;
             // 
             // UpgradeControl
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
-            AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(lblUpgradeRole);
-            Controls.Add(txtChip_code);
-            Controls.Add(cbbChip_role);
-            Controls.Add(groupBox1);
-            Controls.Add(lblUpgrade_05);
-            Controls.Add(btnUpgrade_04);
-            Controls.Add(btnUpgrade_03);
-            Controls.Add(progressBar1);
-            Controls.Add(txtUpgradeFile);
-            Controls.Add(lblUpgrade_02);
-            Controls.Add(lblUpgrade_01);
-            Margin = new Padding(4, 4, 4, 4);
-            Name = "UpgradeControl";
-            Size = new Size(1205, 692);
-            Load += UpgradeControl_Load;
-            groupBox1.ResumeLayout(false);
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "UpgradeControl";
+            this.Size = new System.Drawing.Size(1189, 709);
+            this.Load += new System.EventHandler(this.UpgradeControl_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -227,5 +250,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Label lblUpgradeRole;
+        private Panel panel1;
     }
 }
