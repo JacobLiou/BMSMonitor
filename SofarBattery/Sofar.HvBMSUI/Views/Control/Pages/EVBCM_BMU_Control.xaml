@@ -1164,76 +1164,25 @@
                                         <ComboBox x:Name="ckbchg_mos_ct" Width="250" Margin="10,10,0,0" BorderThickness="1" ItemsSource="{Binding PackageNumberList}"   SelectedItem="{Binding SelectedPackageNumber,Mode=TwoWay}"/>
                                         <Button x:Name="btnWritePassiveEquilibriumState" Margin="10,10,0,0" Content="写入" Command="{Binding WritePassiveEquilibriumState_Cmd}"/>
                                     </StackPanel>
-
                                     <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="{Binding PassiveEquilibriumState_1_8}" Margin="20,0,0,0" Width="200"     VerticalAlignment="Center" />
-                                        <CheckBox x:Name="ckcell_1" Margin="10,0,0,0" Width="110"  Content="{Binding cell_1}" IsChecked="{Binding IsChecked_cell_1}"/>
-                                        <CheckBox x:Name="ckcell_2" Margin="10,0,0,0" Width="110"  Content="{Binding cell_2}" IsChecked="{Binding IsChecked_cell_2}"/>
-                                        <CheckBox x:Name="ckcell_3" Margin="10,0,0,0" Width="110"  Content="{Binding cell_3}" IsChecked="{Binding IsChecked_cell_3}"/>
-                                        <CheckBox x:Name="ckcell_4" Margin="10,0,0,0" Width="110"  Content="{Binding cell_4}" IsChecked="{Binding IsChecked_cell_4}"/>
-                                        <CheckBox x:Name="ckcell_5" Margin="10,0,0,0" Width="110"  Content="{Binding cell_5}" IsChecked="{Binding IsChecked_cell_5}"/>
-                                        <CheckBox x:Name="ckcell_6" Margin="10,0,0,0" Width="110"  Content="{Binding cell_6}" IsChecked="{Binding IsChecked_cell_6}"/>
-                                        <CheckBox x:Name="ckcell_7" Margin="10,0,0,0" Width="110"  Content="{Binding cell_7}" IsChecked="{Binding IsChecked_cell_7}"/>
-                                        <CheckBox x:Name="ckcell_8" Margin="10,0,0,0" Width="110"  Content="{Binding cell_8}" IsChecked="{Binding IsChecked_cell_8}"/>
+                                        <GroupBox Header="{Binding PassiveEquilibriumState}"  BorderBrush="Gray" BorderThickness="2" Style="{x:Null}" Width="1100" >
+                                            <!-- 使用 ItemsControl 动态生成 CheckBox -->
+                                            <ItemsControl ItemsSource="{Binding PassiveEquilibriumCheckBoxItems}">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <UniformGrid Columns="8" />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <!-- 定义每个 CheckBox 的样式和绑定 -->
+                                                        <CheckBox Content="{Binding Label}" IsChecked="{Binding IsChecked, Mode=TwoWay}" Margin="5" />
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </GroupBox>
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="{Binding PassiveEquilibriumState_9_16}" Margin="20,0,0,0" Width="200"  VerticalAlignment="Center" />
-                                        <CheckBox x:Name="ckcell_9"  Margin="10,0,0,0" Width="110" Content="{Binding cell_9}"  IsChecked="{Binding IsChecked_cell_9}"/>
-                                        <CheckBox x:Name="ckcell_10" Margin="10,0,0,0" Width="110" Content="{Binding cell_10}" IsChecked="{Binding IsChecked_cell_10}"/>
-                                        <CheckBox x:Name="ckcell_11" Margin="10,0,0,0" Width="110" Content="{Binding cell_11}" IsChecked="{Binding IsChecked_cell_11}"/>
-                                        <CheckBox x:Name="ckcell_12" Margin="10,0,0,0" Width="110" Content="{Binding cell_12}" IsChecked="{Binding IsChecked_cell_12}"/>
-                                        <CheckBox x:Name="ckcell_13" Margin="10,0,0,0" Width="110" Content="{Binding cell_13}" IsChecked="{Binding IsChecked_cell_13}"/>
-                                        <CheckBox x:Name="ckcell_14" Margin="10,0,0,0" Width="110" Content="{Binding cell_14}" IsChecked="{Binding IsChecked_cell_14}"/>
-                                        <CheckBox x:Name="ckcell_15" Margin="10,0,0,0" Width="110" Content="{Binding cell_15}" IsChecked="{Binding IsChecked_cell_15}"/>
-                                        <CheckBox x:Name="ckcell_16" Margin="10,0,0,0" Width="110" Content="{Binding cell_16}" IsChecked="{Binding IsChecked_cell_16}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="{Binding PassiveEquilibriumState_17_24}" Margin="20,0,0,0" Width="200"  VerticalAlignment="Center" />
-                                        <CheckBox x:Name="ckcell_17" Margin="10,0,0,0" Width="110" Content="{Binding cell_17}" IsChecked="{Binding IsChecked_cell_17}"/>
-                                        <CheckBox x:Name="ckcell_18" Margin="10,0,0,0" Width="110" Content="{Binding cell_18}" IsChecked="{Binding IsChecked_cell_18}"/>
-                                        <CheckBox x:Name="ckcell_19" Margin="10,0,0,0" Width="110" Content="{Binding cell_19}" IsChecked="{Binding IsChecked_cell_19}"/>
-                                        <CheckBox x:Name="ckcell_20" Margin="10,0,0,0" Width="110" Content="{Binding cell_20}" IsChecked="{Binding IsChecked_cell_20}"/>
-                                        <CheckBox x:Name="ckcell_21" Margin="10,0,0,0" Width="110" Content="{Binding cell_21}" IsChecked="{Binding IsChecked_cell_21}"/>
-                                        <CheckBox x:Name="ckcell_22" Margin="10,0,0,0" Width="110" Content="{Binding cell_22}" IsChecked="{Binding IsChecked_cell_22}"/>
-                                        <CheckBox x:Name="ckcell_23" Margin="10,0,0,0" Width="110" Content="{Binding cell_23}" IsChecked="{Binding IsChecked_cell_23}"/>
-                                        <CheckBox x:Name="ckcell_24" Margin="10,0,0,0" Width="110" Content="{Binding cell_24}" IsChecked="{Binding IsChecked_cell_24}"/>
-                                    </StackPanel>
-
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="{Binding PassiveEquilibriumState_25_32}" Margin="20,0,0,0" Width="200"  VerticalAlignment="Center" />
-                                        <CheckBox x:Name="ckcell_25" Margin="10,0,0,0" Width="110"  Content="{Binding cell_25}" IsChecked="{Binding IsChecked_cell_25}"/>
-                                        <CheckBox x:Name="ckcell_26" Margin="10,0,0,0" Width="110"  Content="{Binding cell_26}" IsChecked="{Binding IsChecked_cell_26}"/>
-                                        <CheckBox x:Name="ckcell_27" Margin="10,0,0,0" Width="110"  Content="{Binding cell_27}" IsChecked="{Binding IsChecked_cell_27}"/>
-                                        <CheckBox x:Name="ckcell_28" Margin="10,0,0,0" Width="110"  Content="{Binding cell_28}" IsChecked="{Binding IsChecked_cell_28}"/>
-                                        <CheckBox x:Name="ckcell_29" Margin="10,0,0,0" Width="110"  Content="{Binding cell_29}" IsChecked="{Binding IsChecked_cell_29}"/>
-                                        <CheckBox x:Name="ckcell_30" Margin="10,0,0,0" Width="110"  Content="{Binding cell_30}" IsChecked="{Binding IsChecked_cell_30}"/>
-                                        <CheckBox x:Name="ckcell_31" Margin="10,0,0,0" Width="110"  Content="{Binding cell_31}" IsChecked="{Binding IsChecked_cell_31}"/>
-                                        <CheckBox x:Name="ckcell_32" Margin="10,0,0,0" Width="110"  Content="{Binding cell_32}" IsChecked="{Binding IsChecked_cell_32}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="{Binding PassiveEquilibriumState_33_40}" Margin="20,0,0,0" Width="200"  VerticalAlignment="Center" />
-                                        <CheckBox x:Name="ckcell_33" Margin="10,0,0,0" Width="110" Content="{Binding cell_33}" IsChecked="{Binding IsChecked_cell_33}"/>
-                                        <CheckBox x:Name="ckcell_34" Margin="10,0,0,0" Width="110"  Content="{Binding cell_34}" IsChecked="{Binding IsChecked_cell_34}"/>
-                                        <CheckBox x:Name="ckcell_35" Margin="10,0,0,0" Width="110"  Content="{Binding cell_35}" IsChecked="{Binding IsChecked_cell_35}"/>
-                                        <CheckBox x:Name="ckcell_36" Margin="10,0,0,0" Width="110"  Content="{Binding cell_36}" IsChecked="{Binding IsChecked_cell_36}"/>
-                                        <CheckBox x:Name="ckcell_37" Margin="10,0,0,0" Width="110"  Content="{Binding cell_37}" IsChecked="{Binding IsChecked_cell_37}"/>
-                                        <CheckBox x:Name="ckcell_38" Margin="10,0,0,0" Width="110"  Content="{Binding cell_38}" IsChecked="{Binding IsChecked_cell_38}"/>
-                                        <CheckBox x:Name="ckcell_39" Margin="10,0,0,0" Width="110"  Content="{Binding cell_39}" IsChecked="{Binding IsChecked_cell_39}"/>
-                                        <CheckBox x:Name="ckcell_40" Margin="10,0,0,0" Width="110"  Content="{Binding cell_40}" IsChecked="{Binding IsChecked_cell_40}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="{Binding PassiveEquilibriumState_41_48}" Margin="20,0,0,0" Width="200"  VerticalAlignment="Center" />
-                                        <CheckBox x:Name="ckcell_41" Margin="10,0,0,0" Width="110" Content="{Binding cell_41}" IsChecked="{Binding IsChecked_cell_41}"/>
-                                        <CheckBox x:Name="ckcell_42" Margin="10,0,0,0" Width="110" Content="{Binding cell_42}" IsChecked="{Binding IsChecked_cell_42}"/>
-                                        <CheckBox x:Name="ckcell_43" Margin="10,0,0,0" Width="110" Content="{Binding cell_43}" IsChecked="{Binding IsChecked_cell_43}"/>
-                                        <CheckBox x:Name="ckcell_44" Margin="10,0,0,0" Width="110" Content="{Binding cell_44}" IsChecked="{Binding IsChecked_cell_44}"/>
-                                        <CheckBox x:Name="ckcell_45" Margin="10,0,0,0" Width="110" Content="{Binding cell_45}" IsChecked="{Binding IsChecked_cell_45}"/>
-                                        <CheckBox x:Name="ckcell_46" Margin="10,0,0,0" Width="110" Content="{Binding cell_46}" IsChecked="{Binding IsChecked_cell_46}"/>
-                                        <CheckBox x:Name="ckcell_47" Margin="10,0,0,0" Width="110" Content="{Binding cell_47}" IsChecked="{Binding IsChecked_cell_47}"/>
-                                        <CheckBox x:Name="ckcell_48" Margin="10,0,0,0" Width="110" Content="{Binding cell_48}" IsChecked="{Binding IsChecked_cell_48}"/>
-                                    </StackPanel>
-
-
+                                   
                                 </StackPanel>
                             </GroupBox>
                         </StackPanel>

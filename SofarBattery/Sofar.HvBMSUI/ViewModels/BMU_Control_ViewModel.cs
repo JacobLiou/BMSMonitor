@@ -4,12 +4,14 @@ using PowerKit.UI.Models;
 using Sofar.BMSLib;
 using Sofar.BMSUI;
 using Sofar.BMSUI.Common;
+using Sofar.HvBMSUI.Models;
 using Sofar.ProtocolLib;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -202,7 +204,7 @@ namespace Sofar.HvBMSUI.ViewModels
             get => _chargeCurrentLimitation;
             set => SetProperty(ref _chargeCurrentLimitation, value);
         }
-       
+
         private string _dischargeCurrentLimitation;
         /// <summary>   
         /// 放电电流上限
@@ -419,7 +421,7 @@ namespace Sofar.HvBMSUI.ViewModels
         /// </summary>
         public string CellVoltage10
         {
-            get => _cellVoltage10;  
+            get => _cellVoltage10;
             set => SetProperty(ref _cellVoltage10, value);
         }
 
@@ -742,7 +744,7 @@ namespace Sofar.HvBMSUI.ViewModels
             get => _batAverageTemp;
             set => SetProperty(ref _batAverageTemp, value);
         }
-      
+
 
         private string _activeBalanceCellSoc;
         /// <summary>
@@ -934,7 +936,7 @@ namespace Sofar.HvBMSUI.ViewModels
             get => _batMaxCellTempNum;
             set => SetProperty(ref _batMaxCellTempNum, value);
         }
-        
+
         private string _batMinCellTemp;
         /// <summary>
         /// 最低单体温度
@@ -1014,8 +1016,8 @@ namespace Sofar.HvBMSUI.ViewModels
         {
             get => _cellTemperature6;
             set => SetProperty(ref _cellTemperature6, value);
-        }       
-        
+        }
+
         private string _cellTemperature7;
         /// <summary>
         /// 温度7
@@ -1136,7 +1138,7 @@ namespace Sofar.HvBMSUI.ViewModels
             get => _flashData;
             set => SetProperty(ref _flashData, value);
         }
-       
+
 
         private bool _ischargeEnable;
         /// <summary>
@@ -1283,10 +1285,10 @@ namespace Sofar.HvBMSUI.ViewModels
             "0x00：查询当前老化模式开启状态",
             "0xAA：开启老化模式",
             "0x55：关闭老化模式"
-           
+
         };
 
-        private string _selectedRequest1;   
+        private string _selectedRequest1;
         /// <summary>
         /// 老化模式请求  
         /// 0x00：查询
@@ -1297,9 +1299,9 @@ namespace Sofar.HvBMSUI.ViewModels
         {
             get { return _selectedRequest1; }
             set
-            {              
+            {
                 _selectedRequest1 = value;
-                OnPropertyChanged(nameof(SelectedRequest1));            
+                OnPropertyChanged(nameof(SelectedRequest1));
             }
         }
 
@@ -1565,7 +1567,7 @@ namespace Sofar.HvBMSUI.ViewModels
 
         // 均衡补电标志列表
         public ObservableCollection<string> RecoverFlagList { get; } = new ObservableCollection<string>
-        {          
+        {
             "0x01：复归"
         };
 
@@ -1836,7 +1838,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 _soc = value;
                 OnPropertyChanged(nameof(soc));
             }
-        }   
+        }
         private string _Full_chg_capacity;
         /// <summary>
         /// 参数标定0x1025XXE0—满充容量
@@ -2129,6 +2131,12 @@ namespace Sofar.HvBMSUI.ViewModels
                 FaultInfo.FaultInfos1.ForEach(x => x.State = 0);
                 FaultInfo.FaultInfos2.ForEach(x => x.State = 0);
                 FaultInfo.FaultInfos3.ForEach(x => x.State = 0);
+                batteryVoltageDataList.Clear();
+                batterySocDataList.Clear();
+                batterySohDataList.Clear();
+                batteryTemperatureDataList.Clear();
+                batteryEquilibriumStateDataList.Clear();
+                batteryEquilibriumTemperatureDataList.Clear();
                 OnPropertyChanged(nameof(SelectedRequest7));
             }
         }
@@ -2757,7 +2765,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 OnPropertyChanged(nameof(SelectedForceCtrlSwitch));
             }
         }
-                        
+
 
         // 被动均衡状态设置-主从控制标志列表
         public ObservableCollection<string> MasterSlaveControlFlagList { get; } = new ObservableCollection<string>
@@ -2801,1533 +2809,20 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-        private bool _isChecked_cell_1;
+        private string _PassiveEquilibriumState = "电芯1~48被动均衡状态";
 
         /// <summary>
-        /// 电芯1
+        /// 电芯1~64被动均衡状态
         /// </summary>
-        public bool IsChecked_cell_1
+        public string PassiveEquilibriumState
         {
-            get { return _isChecked_cell_1; }
+            get { return _PassiveEquilibriumState; }
             set
             {
-                _isChecked_cell_1 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_1));
+                _PassiveEquilibriumState = value;
+                OnPropertyChanged(nameof(PassiveEquilibriumState));
             }
         }
-        private bool _isChecked_cell_2;
-
-        /// <summary>
-        /// 电芯2
-        /// </summary>
-        public bool IsChecked_cell_2
-        {
-            get { return _isChecked_cell_2; }
-            set
-            {
-                _isChecked_cell_2 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_2));
-            }
-        }
-
-        private bool _isChecked_cell_3;
-
-        /// <summary>
-        /// 电芯3
-        /// </summary>
-        public bool IsChecked_cell_3
-        {
-            get { return _isChecked_cell_3; }
-            set
-            {
-                _isChecked_cell_3 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_3));
-            }
-        }
-
-        private bool _isChecked_cell_4;
-
-        /// <summary>
-        /// 电芯4
-        /// </summary>
-        public bool IsChecked_cell_4
-        {
-            get { return _isChecked_cell_4; }
-            set
-            {
-                _isChecked_cell_4 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_4));
-            }
-        }
-
-        private bool _isChecked_cell_5;
-
-        /// <summary>
-        /// 电芯5
-        /// </summary>
-        public bool IsChecked_cell_5
-        {
-            get { return _isChecked_cell_5; }
-            set
-            {
-                _isChecked_cell_5 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_5));
-            }
-        }
-
-        private bool _isChecked_cell_6;
-
-        /// <summary>
-        /// 电芯6
-        /// </summary>
-        public bool IsChecked_cell_6
-        {
-            get { return _isChecked_cell_6; }
-            set
-            {
-                _isChecked_cell_6 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_6));
-            }
-        }
-
-        private bool _isChecked_cell_7;
-
-        /// <summary>
-        /// 电芯7
-        /// </summary>
-        public bool IsChecked_cell_7
-        {
-            get { return _isChecked_cell_7; }
-            set
-            {
-                _isChecked_cell_7 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_7));
-            }
-        }       
-        private bool _isChecked_cell_8;
-
-        /// <summary>
-        /// 电芯8
-        /// </summary>
-        public bool IsChecked_cell_8
-        {
-            get { return _isChecked_cell_8; }
-            set
-            {
-                _isChecked_cell_8 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_8));
-            }
-        }
-
-        private bool _isChecked_cell_9;
-
-        /// <summary>
-        /// 电芯9
-        /// </summary>
-        public bool IsChecked_cell_9
-        {
-            get { return _isChecked_cell_9; }
-            set
-            {
-                _isChecked_cell_9 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_9));
-            }
-        }
-
-        private bool _isChecked_cell_10;
-
-        /// <summary>
-        /// 电芯10
-        /// </summary>
-        public bool IsChecked_cell_10
-        {
-            get { return _isChecked_cell_10; }
-            set
-            {
-                _isChecked_cell_10 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_10));
-            }
-        }
-
-        private bool _isChecked_cell_11;
-
-        /// <summary>
-        /// 电芯11
-        /// </summary>
-        public bool IsChecked_cell_11
-        {
-            get { return _isChecked_cell_11; }
-            set
-            {
-                _isChecked_cell_11 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_11));
-            }
-        }
-
-        private bool _isChecked_cell_12;
-
-        /// <summary>
-        /// 电芯12
-        /// </summary>
-        public bool IsChecked_cell_12
-        {
-            get { return _isChecked_cell_12; }
-            set
-            {
-                _isChecked_cell_12 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_12));
-            }
-        }
-
-        private bool _isChecked_cell_13;
-
-        /// <summary>
-        /// 电芯13
-        /// </summary>
-        public bool IsChecked_cell_13
-        {
-            get { return _isChecked_cell_13; }
-            set
-            {
-                _isChecked_cell_13 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_13));
-            }
-        }
-
-        private bool _isChecked_cell_14;
-
-        /// <summary>
-        /// 电芯14
-        /// </summary>
-        public bool IsChecked_cell_14
-        {
-            get { return _isChecked_cell_14; }
-            set
-            {
-                _isChecked_cell_14 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_14));
-            }
-        }
-
-        private bool _isChecked_cell_15;
-
-        /// <summary>
-        /// 电芯15
-        /// </summary>
-        public bool IsChecked_cell_15
-        {
-            get { return _isChecked_cell_15; }
-            set
-            {
-                _isChecked_cell_15 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_15));
-            }
-        }
-
-        private bool _isChecked_cell_16;
-
-        /// <summary>
-        /// 电芯16
-        /// </summary>
-        public bool IsChecked_cell_16
-        {
-            get { return _isChecked_cell_16; }
-            set
-            {
-                _isChecked_cell_16 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_16));
-            }
-        }
-
-        private bool _isChecked_cell_17;
-
-        /// <summary>
-        /// 电芯17
-        /// </summary>
-        public bool IsChecked_cell_17
-        {
-            get { return _isChecked_cell_17; }
-            set
-            {
-                _isChecked_cell_17 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_17));
-            }
-        }
-
-        private bool _isChecked_cell_18;
-
-        /// <summary>
-        /// 电芯18
-        /// </summary>      
-        /// <summary>
-        /// 电芯18
-        /// </summary>
-        public bool IsChecked_cell_18
-        {
-            get { return _isChecked_cell_18; }
-            set
-            {
-                _isChecked_cell_18 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_18));
-            }
-        }   
-        private bool _isChecked_cell_19;
-
-        /// <summary>
-        /// 电芯19
-        /// </summary>
-        public bool IsChecked_cell_19
-        {
-            get { return _isChecked_cell_19; }
-            set
-            {
-                _isChecked_cell_19 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_19));
-            }
-        }
-
-        private bool _isChecked_cell_20;
-
-        /// <summary>
-        /// 电芯20
-        /// </summary>
-        public bool IsChecked_cell_20
-        {
-            get { return _isChecked_cell_20; }
-            set
-            {
-                _isChecked_cell_20 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_20));
-            }
-        }
-
-        private bool _isChecked_cell_21;
-
-        /// <summary>
-        /// 电芯21
-        /// </summary>
-        public bool IsChecked_cell_21
-        {
-            get { return _isChecked_cell_21; }
-            set
-            {     
-                
-                _isChecked_cell_21 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_21));
-            }
-        }
-
-        private bool _isChecked_cell_22;
-
-        /// <summary>
-        /// 电芯22
-        /// </summary>
-        public bool IsChecked_cell_22
-        {
-            get { return _isChecked_cell_22; }
-            set
-            {
-                _isChecked_cell_22 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_22));
-            }
-        }
-
-        private bool _isChecked_cell_23;
-
-        /// <summary>
-        /// 电芯23
-        /// </summary>
-        public bool IsChecked_cell_23
-        {
-            get { return _isChecked_cell_23; }
-            set
-            {
-                _isChecked_cell_23 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_23));
-            }
-        }
-
-        private bool _isChecked_cell_24;
-
-        /// <summary>
-        /// 电芯24
-        /// </summary>
-        public bool IsChecked_cell_24
-        {
-            get { return _isChecked_cell_24; }
-            set
-            {
-                _isChecked_cell_24 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_24));
-            }
-        }
-
-        private bool _isChecked_cell_25;
-
-        /// <summary>
-        /// 电芯25
-        /// </summary>
-        public bool IsChecked_cell_25
-        {
-            get { return _isChecked_cell_25; }
-            set
-            {
-                _isChecked_cell_25 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_25));
-            }
-        }
-
-        private bool _isChecked_cell_26;
-
-        /// <summary>
-        /// 电芯26
-        /// </summary>
-        public bool IsChecked_cell_26
-        {
-            get { return _isChecked_cell_26; }
-            set
-            {
-                _isChecked_cell_26 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_26));
-            }
-        }
-
-        private bool _isChecked_cell_27;
-
-        /// <summary>
-        /// 电芯27
-        /// </summary>
-        public bool IsChecked_cell_27
-        {
-            get { return _isChecked_cell_27; }
-            set
-            {
-                _isChecked_cell_27 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_27));
-            }
-        }
-
-        private bool _isChecked_cell_28;
-
-        /// <summary>
-        /// 电芯28
-        /// </summary>
-        public bool IsChecked_cell_28
-        {
-            get { return _isChecked_cell_28; }
-            set
-            {
-                _isChecked_cell_28 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_28));
-            }
-        }
-
-        private bool _isChecked_cell_29;
-
-        /// <summary>
-        /// 电芯29
-        /// </summary>
-        public bool IsChecked_cell_29
-        {
-            get { return _isChecked_cell_29; }
-            set
-            {
-                _isChecked_cell_29 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_29));
-            }
-        }
-
-        private bool _isChecked_cell_30;
-
-        /// <summary>
-        /// 电芯30
-        /// </summary>
-        public bool IsChecked_cell_30
-        {
-            get { return _isChecked_cell_30; }
-            set
-            {
-                _isChecked_cell_30 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_30));
-            }
-        }
-
-        private bool _isChecked_cell_31;
-
-        /// <summary>
-        /// 电芯31
-        /// </summary>
-        public bool IsChecked_cell_31
-        {
-            get { return _isChecked_cell_31; }
-            set
-            {
-                _isChecked_cell_31 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_31));
-            }
-        }
-
-        private bool _isChecked_cell_32;
-
-        /// <summary>
-        /// 电芯32
-        /// </summary>
-        public bool IsChecked_cell_32
-        {
-            get { return _isChecked_cell_32; }
-            set
-            {
-                _isChecked_cell_32 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_32));
-            }
-        }
-
-        private bool _isChecked_cell_33;
-
-        /// <summary>
-        /// 电芯33
-        /// </summary>
-        public bool IsChecked_cell_33
-        {
-            get { return _isChecked_cell_33; }
-            set
-            {
-                _isChecked_cell_33 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_33));
-            }
-        }
-
-        private bool _isChecked_cell_34;
-
-        /// <summary>
-        /// 电芯34
-        /// </summary>
-        public bool IsChecked_cell_34
-        {
-            get { return _isChecked_cell_34; }
-            set
-            {
-                _isChecked_cell_34 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_34));
-            }
-        }
-
-        private bool _isChecked_cell_35;
-
-        /// <summary>
-        /// 电芯35
-        /// </summary>
-        public bool IsChecked_cell_35
-        {
-            get { return _isChecked_cell_35; }
-            set
-            {
-                _isChecked_cell_35 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_35));
-            }
-        }
-
-        private bool _isChecked_cell_36;
-
-        /// <summary>
-        /// 电芯36
-        /// </summary>
-        public bool IsChecked_cell_36
-        {
-            get { return _isChecked_cell_36; }
-            set
-            {
-                _isChecked_cell_36 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_36));
-            }
-        }
-
-        private bool _isChecked_cell_37;
-
-        /// <summary>
-        /// 电芯37
-        /// </summary>
-        public bool IsChecked_cell_37
-        {
-            get { return _isChecked_cell_37; }
-            set
-            {
-                _isChecked_cell_37 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_37));
-            }
-        }
-
-        private bool _isChecked_cell_38;
-
-        /// <summary>
-        /// 电芯38
-        /// </summary>
-        public bool IsChecked_cell_38
-        {
-            get { return _isChecked_cell_38; }
-            set
-            {
-                _isChecked_cell_38 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_38));
-            }
-        }
-
-        private bool _isChecked_cell_39;
-
-        /// <summary>
-        /// 电芯39
-        /// </summary>
-        public bool IsChecked_cell_39
-        {
-            get { return _isChecked_cell_39; }
-            set
-            {
-                _isChecked_cell_39 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_39));
-            }
-        }
-
-        private bool _isChecked_cell_40;
-
-        /// <summary>
-        /// 电芯40
-        /// </summary>
-        public bool IsChecked_cell_40
-        {
-            get { return _isChecked_cell_40; }
-            set
-            {
-                _isChecked_cell_40 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_40));
-            }
-        }
-
-        private bool _isChecked_cell_41;
-
-        /// <summary>
-        /// 电芯41
-        /// </summary>
-        public bool IsChecked_cell_41
-        {
-            get { return _isChecked_cell_41; }
-            set
-            {
-                _isChecked_cell_41 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_41));
-            }
-        }
-
-        private bool _isChecked_cell_42;
-
-        /// <summary>
-        /// 电芯42
-        /// </summary>
-        public bool IsChecked_cell_42
-        {
-            get { return _isChecked_cell_42; }
-            set
-            {
-                _isChecked_cell_42 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_42));
-            }
-        }
-
-        private bool _isChecked_cell_43;
-
-        /// <summary>
-        /// 电芯43
-        /// </summary>
-        public bool IsChecked_cell_43
-        {
-            get { return _isChecked_cell_43; }
-            set
-            {
-                _isChecked_cell_43 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_43));
-            }
-        }
-
-        private bool _isChecked_cell_44;
-
-        /// <summary>
-        /// 电芯44
-        /// </summary>
-        public bool IsChecked_cell_44
-        {
-            get { return _isChecked_cell_44; }
-            set
-            {
-                _isChecked_cell_44 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_44));
-            }
-        }
-
-        private bool _isChecked_cell_45;
-
-        /// <summary>
-        /// 电芯45
-        /// </summary>
-        public bool IsChecked_cell_45
-        {
-            get { return _isChecked_cell_45; }
-            set
-            {
-                _isChecked_cell_45 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_45));
-            }
-        }
-
-        private bool _isChecked_cell_46;
-
-        /// <summary>
-        /// 电芯46
-        /// </summary>
-        public bool IsChecked_cell_46
-        {
-            get { return _isChecked_cell_46; }
-            set
-            {
-                _isChecked_cell_46 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_46));
-            }
-        }
-
-        private bool _isChecked_cell_47;
-
-        /// <summary>
-        /// 电芯47
-        /// </summary>
-        public bool IsChecked_cell_47
-        {
-            get { return _isChecked_cell_47; }
-            set
-            {
-                _isChecked_cell_47 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_47));
-            }
-        }
-
-        private bool _isChecked_cell_48;
-
-        /// <summary>
-        /// 电芯48
-        /// </summary>
-        public bool IsChecked_cell_48
-        {
-            get { return _isChecked_cell_48; }
-            set
-            {
-                _isChecked_cell_48 = value;
-                OnPropertyChanged(nameof(IsChecked_cell_48));
-            }
-        }
-        private string _PassiveEquilibriumState_1_8= "电芯1~8被动均衡状态";
-
-        /// <summary>
-        /// 电芯1~8被动均衡状态
-        /// </summary>
-        public string PassiveEquilibriumState_1_8
-        {
-            get { return _PassiveEquilibriumState_1_8; }
-            set
-            {
-                _PassiveEquilibriumState_1_8 = value;
-                OnPropertyChanged(nameof(PassiveEquilibriumState_1_8));
-            }
-        }
-
-        private string _PassiveEquilibriumState_9_16 = "电芯9~16被动均衡状态";
-
-        /// <summary>
-        /// 电芯9~16被动均衡状态
-        /// </summary>
-        public string PassiveEquilibriumState_9_16
-        {
-            get { return _PassiveEquilibriumState_9_16; }
-            set
-            {
-                _PassiveEquilibriumState_9_16 = value;
-                OnPropertyChanged(nameof(PassiveEquilibriumState_9_16));
-            }
-        }
-
-        private string _PassiveEquilibriumState_17_24 = "电芯17~24被动均衡状态";
-
-        /// <summary>
-        /// 电芯17~24被动均衡状态
-        /// </summary>
-        public string PassiveEquilibriumState_17_24
-        {
-            get { return _PassiveEquilibriumState_17_24; }
-            set
-            {
-                _PassiveEquilibriumState_17_24 = value;
-                OnPropertyChanged(nameof(PassiveEquilibriumState_17_24));
-            }
-        }
-
-        private string _PassiveEquilibriumState_25_32 = "电芯25~32被动均衡状态";
-
-        /// <summary>
-        /// 电芯25~32被动均衡状态
-        /// </summary>
-        public string PassiveEquilibriumState_25_32
-        {
-            get { return _PassiveEquilibriumState_25_32; }
-            set
-            {
-                _PassiveEquilibriumState_25_32 = value;
-                OnPropertyChanged(nameof(PassiveEquilibriumState_25_32));
-            }
-        }
-
-        private string _PassiveEquilibriumState_33_40 = "电芯33~40被动均衡状态";
-
-        /// <summary>
-        /// 电芯33~40被动均衡状态
-        /// </summary>
-        public string PassiveEquilibriumState_33_40
-        {
-            get { return _PassiveEquilibriumState_33_40; }
-            set
-            {
-                _PassiveEquilibriumState_33_40 = value;
-                OnPropertyChanged(nameof(PassiveEquilibriumState_33_40));
-            }
-        }
-
-        private string _PassiveEquilibriumState_41_48 = "电芯41~48被动均衡状态";
-
-        /// <summary>
-        /// 电芯41~48被动均衡状态
-        /// </summary>
-        public string PassiveEquilibriumState_41_48
-        {
-            get { return _PassiveEquilibriumState_41_48; }
-            set
-            {
-                _PassiveEquilibriumState_41_48 = value;
-                OnPropertyChanged(nameof(PassiveEquilibriumState_41_48));
-            }
-        }
-
-        private string _cell_1= "电芯1";
-
-        /// <summary>
-        /// 电芯1文本
-        /// </summary>
-        public string cell_1
-        {
-            get { return _cell_1; }
-            set
-            {
-                _cell_1 = value;
-                OnPropertyChanged(nameof(cell_1));
-            }
-        }
-private string _cell_2 = "电芯2";
-
-        /// <summary>
-        /// 电芯2文本
-        /// </summary>
-        public string cell_2
-        {
-            get { return _cell_2; }
-            set
-            {
-                _cell_2 = value;
-                OnPropertyChanged(nameof(cell_2));
-            }
-        }
-
-        private string _cell_3 = "电芯3";
-
-        /// <summary>
-        /// 电芯3文本
-        /// </summary>
-        public string cell_3
-        {
-            get { return _cell_3; }
-            set
-            {
-                _cell_3 = value;
-                OnPropertyChanged(nameof(cell_3));
-            }
-        }
-
-        private string _cell_4 = "电芯4";
-
-        /// <summary>
-        /// 电芯4文本
-        /// </summary>
-        public string cell_4
-        {
-            get { return _cell_4; }
-            set
-            {
-                _cell_4 = value;
-                OnPropertyChanged(nameof(cell_4));
-            }
-        }
-
-        private string _cell_5 = "电芯5";
-
-        /// <summary>
-        /// 电芯5文本
-        /// </summary>
-        public string cell_5
-        {
-            get { return _cell_5; }
-            set
-            {
-                _cell_5 = value;
-                OnPropertyChanged(nameof(cell_5));
-            }
-        }
-
-        private string _cell_6 = "电芯6";
-
-        /// <summary>
-        /// 电芯6文本
-        /// </summary>
-        public string cell_6
-        {
-            get { return _cell_6; }
-            set
-            {
-                _cell_6 = value;
-                OnPropertyChanged(nameof(cell_6));
-            }
-        }
-
-        private string _cell_7 = "电芯7";
-
-        /// <summary>
-        /// 电芯7文本
-        /// </summary>
-        public string cell_7
-        {
-            get { return _cell_7; }
-            set
-            {
-                _cell_7 = value;
-                OnPropertyChanged(nameof(cell_7));
-            }
-        }
-
-        private string _cell_8 = "电芯8";
-
-        /// <summary>
-        /// 电芯8文本
-        /// </summary>
-        public string cell_8
-        {
-            get { return _cell_8; }
-            set
-            {
-                _cell_8 = value;
-                OnPropertyChanged(nameof(cell_8));
-            }
-        }
-
-        private string _cell_9 = "电芯9";     
-/// <summary>
-        /// 电芯9文本
-        /// </summary>
-        public string cell_9
-        {
-            get { return _cell_9; }
-            set
-            {
-                _cell_9 = value;
-                OnPropertyChanged(nameof(cell_9));
-            }
-        }
-
-        private string _cell_10 = "电芯10";
-
-        /// <summary>
-        /// 电芯10文本
-        /// </summary>
-        public string cell_10
-        {
-            get { return _cell_10; }
-            set
-            {
-                _cell_10 = value;
-                OnPropertyChanged(nameof(cell_10));
-            }
-        }
-
-        private string _cell_11 = "电芯11";
-
-        /// <summary>
-        /// 电芯11文本
-        /// </summary>
-        public string cell_11
-        {
-            get { return _cell_11; }
-            set
-            {
-                _cell_11 = value;
-                OnPropertyChanged(nameof(cell_11));
-            }
-        }
-
-        private string _cell_12 = "电芯12";
-
-        /// <summary>
-        /// 电芯12文本
-        /// </summary>
-        public string cell_12
-        {
-            get { return _cell_12; }
-            set
-            {
-                _cell_12 = value;
-                OnPropertyChanged(nameof(cell_12));
-            }
-        }
-
-        private string _cell_13 = "电芯13";
-
-        /// <summary>
-        /// 电芯13文本
-        /// </summary>
-        public string cell_13
-        {
-            get { return _cell_13; }
-            set
-            {
-                _cell_13 = value;
-                OnPropertyChanged(nameof(cell_13));
-            }
-        }
-
-        private string _cell_14 = "电芯14";
-
-        /// <summary>
-        /// 电芯14文本
-        /// </summary>
-        public string cell_14
-        {
-            get { return _cell_14; }
-            set
-            {
-                _cell_14 = value;
-                OnPropertyChanged(nameof(cell_14));
-            }
-        }
-
-        private string _cell_15 = "电芯15";
-
-        /// <summary>
-        /// 电芯15文本
-        /// </summary>
-        public string cell_15
-        {
-            get { return _cell_15; }
-            set
-            {
-                _cell_15 = value;
-                OnPropertyChanged(nameof(cell_15));
-            }
-        }
-private string _cell_16 = "电芯16";
-
-        /// <summary>
-        /// 电芯16文本
-        /// </summary>
-        public string cell_16
-        {
-            get { return _cell_16; }
-            set
-            {
-                _cell_16 = value;
-                OnPropertyChanged(nameof(cell_16));
-            }
-        }
-
-        private string _cell_17 = "电芯17";
-
-        /// <summary>
-        /// 电芯17文本
-        /// </summary>
-        public string cell_17
-        {
-            get { return _cell_17; }
-            set
-            {
-                _cell_17 = value;
-                OnPropertyChanged(nameof(cell_17));
-            }
-        }
-
-        private string _cell_18 = "电芯18";
-
-        /// <summary>
-        /// 电芯18文本
-        /// </summary>
-        public string cell_18
-        {
-            get { return _cell_18; }
-            set
-            {
-                _cell_18 = value;
-                OnPropertyChanged(nameof(cell_18));
-            }
-        }
-
-        private string _cell_19 = "电芯19";
-
-        /// <summary>
-        /// 电芯19文本
-        /// </summary>
-        public string cell_19
-        {
-            get { return _cell_19; }
-            set
-            {
-                _cell_19 = value;
-                OnPropertyChanged(nameof(cell_19));
-            }
-        }
-
-        private string _cell_20 = "电芯20";
-
-        /// <summary>
-        /// 电芯20文本
-        /// </summary>
-        public string cell_20
-        {
-            get { return _cell_20; }
-            set
-            {
-                _cell_20 = value;
-                OnPropertyChanged(nameof(cell_20));
-            }
-        }
-
-        private string _cell_21 = "电芯21";
-
-        /// <summary>
-        /// 电芯21文本
-        /// </summary>
-        public string cell_21
-        {
-            get { return _cell_21; }
-            set
-            {
-                _cell_21 = value;
-                OnPropertyChanged(nameof(cell_21));
-            }
-        }
-
-        private string _cell_22 = "电芯22";
-
-        /// <summary>
-        /// 电芯22文本  
-        /// </summary>
-        public string cell_22
-        {
-            get { return _cell_22; }        
- set
-            {
-                _cell_22 = value;
-                OnPropertyChanged(nameof(cell_22));
-            }
-        }
-
-        private string _cell_23 = "电芯23";
-
-        /// <summary>
-        /// 电芯23文本
-        /// </summary>
-        public string cell_23
-        {
-            get { return _cell_23; }
-            set
-            {
-                _cell_23 = value;
-                OnPropertyChanged(nameof(cell_23));
-            }
-        }
-
-        private string _cell_24 = "电芯24";
-
-        /// <summary>
-        /// 电芯24文本
-        /// </summary>
-        public string cell_24
-        {
-            get { return _cell_24; }
-            set
-            {
-                _cell_24 = value;
-                OnPropertyChanged(nameof(cell_24));
-            }
-        }
-
-        private string _cell_25 = "电芯25";
-
-        /// <summary>
-        /// 电芯25文本
-        /// </summary>
-        public string cell_25
-        {
-            get { return _cell_25; }
-            set
-            {
-                _cell_25 = value;
-                OnPropertyChanged(nameof(cell_25));
-            }
-        }
-
-        private string _cell_26 = "电芯26";
-
-        /// <summary>
-        /// 电芯26文本
-        /// </summary>
-        public string cell_26
-        {
-            get { return _cell_26; }
-            set
-            {
-                _cell_26 = value;
-                OnPropertyChanged(nameof(cell_26));
-            }
-        }
-
-        private string _cell_27 = "电芯27";
-
-        /// <summary>
-        /// 电芯27文本
-        /// </summary>
-        public string cell_27
-        {
-            get { return _cell_27; }
-            set
-            {
-                _cell_27 = value;
-                OnPropertyChanged(nameof(cell_27));
-            }
-        }
-
-        private string _cell_28 = "电芯28";
-
-        /// <summary>
-        /// 电芯28文本
-        /// </summary>
-        public string cell_28
-        {
-            get { return _cell_28; }
-            set
-            {
-                _cell_28 = value;
-                OnPropertyChanged(nameof(cell_28));
-            }
-        }
-
-        private string _cell_29 = "电芯29";
-
-        /// <summary>
-        /// 电芯29文本
-        /// </summary>
-        public string cell_29
-        {
-            get { return _cell_29; }
-            set
-            {
-                _cell_29 = value;
-                OnPropertyChanged(nameof(cell_29));
-            }
-        }
-
-        private string _cell_30 = "电芯30";
-
-        /// <summary>
-        /// 电芯30文本
-        /// </summary>
-        public string cell_30
-        {
-            get { return _cell_30; }
-            set
-            {
-                _cell_30 = value;
-                OnPropertyChanged(nameof(cell_30));
-            }
-        }
-private string _cell_31 = "电芯31";
-
-        /// <summary>   
-        /// 电芯31文本
-        /// </summary>
-        public string cell_31
-        {
-            get { return _cell_31; }
-            set
-            {
-                _cell_31 = value;
-                OnPropertyChanged(nameof(cell_31));
-            }
-        }
-
-        private string _cell_32 = "电芯32";
-
-        /// <summary>
-        /// 电芯32文本
-        /// </summary>
-        public string cell_32
-        {
-            get { return _cell_32; }
-            set
-            {
-                _cell_32 = value;
-                OnPropertyChanged(nameof(cell_32));
-            }
-        }
-
-        private string _cell_33 = "电芯33";
-
-        /// <summary>
-        /// 电芯33文本
-        /// </summary>
-        public string cell_33
-        {
-            get { return _cell_33; }
-            set
-            {
-                _cell_33 = value;
-                OnPropertyChanged(nameof(cell_33));
-            }
-        }
-
-        private string _cell_34 = "电芯34";
-
-        /// <summary>
-        /// 电芯34文本
-        /// </summary>
-        public string cell_34
-        {
-            get { return _cell_34; }
-            set
-            {
-                _cell_34 = value;
-                OnPropertyChanged(nameof(cell_34));
-            }
-        }
-
-        private string _cell_35 = "电芯35";
-
-        /// <summary>
-        /// 电芯35文本
-        /// </summary>
-        public string cell_35
-        {
-            get { return _cell_35; }
-            set
-            {
-                _cell_35 = value;
-                OnPropertyChanged(nameof(cell_35));
-            }
-        }
-
-        private string _cell_36 = "电芯36";
-
-        /// <summary>
-        /// 电芯36文本
-        /// </summary>
-        public string cell_36
-        {
-            get { return _cell_36; }
-            set
-            {
-                _cell_36 = value;
-                OnPropertyChanged(nameof(cell_36));
-            }
-        }
-
-        private string _cell_37 = "电芯37";
-
-        /// <summary>
-        /// 电芯37文本
-        /// </summary>
-        public string cell_37
-        {
-            get { return _cell_37; }
-            set
-            {
-                _cell_37 = value;
-                OnPropertyChanged(nameof(cell_37));
-            }
-        }
-
-        private string _cell_38 = "电芯38";
-
-        /// <summary>
-        /// 电芯38文本
-        /// </summary>          
-        /// </summary>
-        public string cell_38
-        {
-            get { return _cell_38; }
-            set
-            {
-                _cell_38 = value;
-                OnPropertyChanged(nameof(cell_38));
-            }
-        }
-
-        private string _cell_39 = "电芯39";
-
-        /// <summary>
-        /// 电芯39文本
-        /// </summary>
-        public string cell_39
-        {
-            get { return _cell_39; }
-            set
-            {
-                _cell_39 = value;
-                OnPropertyChanged(nameof(cell_39));
-            }
-        }
-
-        private string _cell_40 = "电芯40";
-
-        /// <summary>
-        /// 电芯40文本
-        /// </summary>
-        public string cell_40
-        {
-            get { return _cell_40; }
-            set
-            {
-                _cell_40 = value;
-                OnPropertyChanged(nameof(cell_40));
-            }
-        }
-
-        private string _cell_41 = "电芯41";
-
-        /// <summary>
-        /// 电芯41文本
-        /// </summary>
-        public string cell_41
-        {
-            get { return _cell_41; }
-            set
-            {
-                _cell_41 = value;
-                OnPropertyChanged(nameof(cell_41));
-            }
-        }
-
-        private string _cell_42 = "电芯42";
-
-        /// <summary>
-        /// 电芯42文本
-        /// </summary>
-        public string cell_42
-        {
-            get { return _cell_42; }
-            set
-            {
-                _cell_42 = value;
-                OnPropertyChanged(nameof(cell_42));
-            }
-        }
-
-        private string _cell_43 = "电芯43";
-
-        /// <summary>
-        /// 电芯43文本
-        /// </summary>
-        public string cell_43
-        {
-            get { return _cell_43; }
-            set
-            {
-                _cell_43 = value;
-                OnPropertyChanged(nameof(cell_43));
-            }
-        }
-
-        private string _cell_44 = "电芯44";
-
-        /// <summary>
-        /// 电芯44文本
-        /// </summary>
-        public string cell_44
-        {
-            get { return _cell_44; }
-            set
-            {
-                _cell_44 = value;
-                OnPropertyChanged(nameof(cell_44));
-            }
-        }
-
-        private string _cell_45 = "电芯45";
-
-        /// <summary>
-        /// 电芯45文本
-        /// </summary>
-        public string cell_45
-        {
-            get { return _cell_45; }
-            set
-            {
-                _cell_45 = value;
-                OnPropertyChanged(nameof(cell_45));
-            }
-        }
-
-        private string _cell_46 = "电芯46";
-
-        /// <summary>
-        /// 电芯46文本
-        /// </summary>
-        public string cell_46
-        {
-            get { return _cell_46; }
-            set
-            {
-                _cell_46 = value;
-                OnPropertyChanged(nameof(cell_46));
-            }
-        }
-
-        private string _cell_47 = "电芯47";
-
-        /// <summary>
-        /// 电芯47文本
-        /// </summary>
-        public string cell_47
-        {
-            get { return _cell_47; }
-            set
-            {
-                _cell_47 = value;
-                OnPropertyChanged(nameof(cell_47));
-            }
-        }
-
-        private string _cell_48 = "电芯48";
-
-        /// <summary>
-        /// 电芯48文本
-        /// </summary>
-        public string cell_48
-        {
-            get { return _cell_48; }
-            set
-            {
-                _cell_48 = value;
-                OnPropertyChanged(nameof(cell_48));
-            }
-        }
-   
 
 
         private ObservableCollection<IBatteryData> _batteryData_BMU_List;
@@ -4471,7 +2966,7 @@ private string _cell_31 = "电芯31";
                 {
                     // 更新 DataGrid 数据为电池均衡状态
                     equilibriumStateTimer = new System.Threading.Timer(TimerCallBack_BatteryEquilibriumState, 0, 1000, Convert.ToInt32(DataCollectionInterval));
-                  
+
 
                 }
                 else
@@ -4504,13 +2999,13 @@ private string _cell_31 = "电芯31";
                 }
             }
         }
-     
+
 
         public CancellationTokenSource cts = null;
-       
+
         RealtimeData_BMS1500V_BMU model = new RealtimeData_BMS1500V_BMU();
         int initCount = 0;
-    
+
         string[] packSN = new string[3];
         string[] bcuCode = new string[3];
         string[] boardCode = new string[3];
@@ -4519,7 +3014,7 @@ private string _cell_31 = "电芯31";
         private Timer batteryVoltageTimer = null;
         private Timer batteryTemperatureTimer = null;
         private Timer batterySocTimer = null;
-        private Timer batterySohTimer = null;       
+        private Timer batterySohTimer = null;
         private Timer equilibriumStateTimer = null;
         private Timer equilibriumTemperatureTimer = null;
         BaseCanHelper baseCanHelper = null;
@@ -4551,7 +3046,7 @@ private string _cell_31 = "电芯31";
             IsChecked_BatteryVoltage = true;
 
             //添加电池电压编号
-            for (int i = 1; i <= 64; i++)
+            for (int i = 1; i <= ConstantDef.MaxBatteryCell; i++)
             {
                 batteryVoltageDataList.Add(new RealtimeData_BMS1500V_BMU.batteryVoltageData
                 {
@@ -4560,7 +3055,7 @@ private string _cell_31 = "电芯31";
             }
 
             // 添加SOC编号
-            for (int i = 1; i <= 64; i++)
+            for (int i = 1; i <= ConstantDef.MaxBatteryCell; i++)
             {
                 batterySocDataList.Add(new RealtimeData_BMS1500V_BMU.batterySocData
                 {
@@ -4569,7 +3064,7 @@ private string _cell_31 = "电芯31";
             }
 
             //添加SOH编号
-            for (int i = 1; i <= 64; i++)
+            for (int i = 1; i <= ConstantDef.MaxBatteryCell; i++)
             {
                 batterySohDataList.Add(new RealtimeData_BMS1500V_BMU.batterySohData
                 {
@@ -4578,7 +3073,7 @@ private string _cell_31 = "电芯31";
             }
 
             //添加温度编号
-            for (int i = 1; i <= 28; i++)
+            for (int i = 1; i <= ConstantDef.MaxBatteryCell; i++)
             {
                 batteryTemperatureDataList.Add(new RealtimeData_BMS1500V_BMU.batteryTemperatureData
                 {
@@ -4587,7 +3082,7 @@ private string _cell_31 = "电芯31";
             }
 
             //添加均衡状态编号
-            for (int i = 1; i <= 64; i++)
+            for (int i = 1; i <= ConstantDef.MaxBatteryCell; i++)
             {
                 batteryEquilibriumStateDataList.Add(new RealtimeData_BMS1500V_BMU.batteryEquilibriumStateData
                 {
@@ -4596,17 +3091,47 @@ private string _cell_31 = "电芯31";
             }
 
             //添加均衡温度编号
-            for (int i = 1; i <= 18; i++)
+            for (int i = 1; i <= ConstantDef.MaxBatteryCell; i++)
             {
                 batteryEquilibriumTemperatureDataList.Add(new RealtimeData_BMS1500V_BMU.batteryEquilibriumTemperatureData
                 {
                     CellNumber = i.ToString() + "#",
                 });
             }
+            ChangeEquilibriumList(48, 1);
+
+
+        }
+        private void ChangeEquilibriumList(int batterySeries, int packageNumber)
+        {
+            int offset = 48 * (packageNumber - 1);
+            if (PassiveEquilibriumCheckBoxItems == null)
+            {
+                PassiveEquilibriumCheckBoxItems = new ObservableCollection<CheckBoxItem>();
+            }
+            else
+            {
+                PassiveEquilibriumCheckBoxItems.Clear();
+            }
+
+
+
+            // 一帧只能发送48个bit
+            for (int i = 0; i < 48; i++)
+            {
+                PassiveEquilibriumCheckBoxItems.Add(new CheckBoxItem
+                {
+                    Label = $"电芯 {(i + 1) + offset}",
+                    IsChecked = false // 默认未选中
+                });
+
+            }
+
         }
 
-            
 
+
+        public ObservableCollection<CheckBoxItem> PassiveEquilibriumCheckBoxItems { get; set; }
         public void UpdateTime()
         {
             DateTime now = DateTime.Now;
@@ -4630,7 +3155,7 @@ private string _cell_31 = "电芯31";
                     new[] { "节号", "电压" },
                     data => data.SectionNumber,
                     data => data.Voltage,
-                    64));
+                    ConstantDef.MaxBatteryCell));
             });
         }
 
@@ -4644,10 +3169,10 @@ private string _cell_31 = "电芯31";
             {
                 BatteryData_BMU_List = new ObservableCollection<IBatteryData>(
                     UpdateDataGrid(batteryTemperatureDataList.ToList(),
-                    new[] { "序号", "温度" }, 
-                    data => data.CellNumber, 
+                    new[] { "序号", "温度" },
+                    data => data.CellNumber,
                     data => data.Temperature,
-                    28));
+                    ConstantDef.MaxBatteryCell));
             });
         }
 
@@ -4662,9 +3187,9 @@ private string _cell_31 = "电芯31";
                 BatteryData_BMU_List = new ObservableCollection<IBatteryData>(
                     UpdateDataGrid(batterySocDataList.ToList(),
                     new[] { "节号", "SOC" },
-                    data => data.SectionNumber, 
+                    data => data.SectionNumber,
                     data => data.SOC,
-                    64));
+                    ConstantDef.MaxBatteryCell));
             });
         }
 
@@ -4678,10 +3203,10 @@ private string _cell_31 = "电芯31";
             {
                 BatteryData_BMU_List = new ObservableCollection<IBatteryData>(
                     UpdateDataGrid(batterySohDataList.ToList(),
-                    new[] { "节号", "SOH" }, 
-                    data => data.SectionNumber, 
+                    new[] { "节号", "SOH" },
+                    data => data.SectionNumber,
                     data => data.SOH,
-                    64));
+                    ConstantDef.MaxBatteryCell));
             });
         }
 
@@ -4695,10 +3220,10 @@ private string _cell_31 = "电芯31";
             {
                 BatteryData_BMU_List = new ObservableCollection<IBatteryData>(
                     UpdateDataGrid(batteryEquilibriumStateDataList.ToList(),
-                    new[] { "序号", "均衡状态" }, 
-                    data => data.CellNumber, 
+                    new[] { "序号", "均衡状态" },
+                    data => data.CellNumber,
                     data => data.BatteryEquilibriumState,
-                    64));
+                    ConstantDef.MaxBatteryCell));
             });
         }
 
@@ -4715,7 +3240,7 @@ private string _cell_31 = "电芯31";
                     new[] { "序号", "均衡温度" },
                     data => data.CellNumber,
                     data => data.BatteryEquilibriumTemperature,
-                    18));
+                    ConstantDef.MaxBatteryCell));
             });
         }
 
@@ -4871,8 +3396,19 @@ private string _cell_31 = "电芯31";
                 int rowInGroup = (currentIndex % maxSectionsPerGroup) / totalColumns;
                 int col = (currentIndex % maxSectionsPerGroup) % totalColumns;
 
-                values[col, startingRow + rowInGroup * 2] = getPrimaryValue(data);
-                values[col, startingRow + rowInGroup * 2 + 1] = getSecondaryValue(data);
+                try
+                {
+                    values[col, startingRow + rowInGroup * 2] = getPrimaryValue(data);
+                    values[col, startingRow + rowInGroup * 2 + 1] = getSecondaryValue(data);
+                }
+                catch (Exception ex)
+                {
+
+
+                }
+
+
+
             }
 
             for (int i = 0; i < totalRows; i++)
@@ -4988,9 +3524,9 @@ private string _cell_31 = "电芯31";
             Array.Copy(data1, 0, data, 1, lengthToCopy);
 
             if (baseCanHelper.Send(data, can_id)) MessageBoxHelper.Success("写入成功！", "提示", null, ButtonType.OK);
-            else                               MessageBoxHelper.Warning("写入失败！", "提示", null, ButtonType.OK);
+            else MessageBoxHelper.Warning("写入失败！", "提示", null, ButtonType.OK);
         }
-      
+
         public ICommand WriteRequestDataCmd => new RelayCommand(WriteRequestData);
         /// <summary>
         /// 写入请求数据——0x020:上位机控制
@@ -5013,8 +3549,8 @@ private string _cell_31 = "电芯31";
             data[2] = (byte)(GetValue(Request3_Index) & 0xff);
             data[3] = (byte)(GetValue(Request4_Index) & 0xff);
             data[4] = (byte)(GetValue(Request5_Index) & 0xff);
-            data[5] = (byte)(GetValue(Request6_Index) & 0xff);  
-            
+            data[5] = (byte)(GetValue(Request6_Index) & 0xff);
+
             int GetValue(int index)
             {
                 switch (index)
@@ -5022,7 +3558,7 @@ private string _cell_31 = "电芯31";
                     case 0: return 0x00;
                     case 1: return 0xAA;
                     case 2: return 0x55;
-                    default: return 0x00; 
+                    default: return 0x00;
                 }
             }
 
@@ -5052,8 +3588,8 @@ private string _cell_31 = "电芯31";
             byte[] bal_open_volt = Uint16ToBytes(Convert.ToUInt32(float.Parse(Bal_open_volt)));
             byte[] bal_open_volt_diff = Uint16ToBytes(Convert.ToUInt32(float.Parse(Bal_open_volt_diff)));
             byte[] full_chg_volt = Uint16ToBytes(Convert.ToUInt32(float.Parse(Full_chg_volt)));
-           
-            data[0] = bal_open_volt[0];  
+
+            data[0] = bal_open_volt[0];
             data[1] = bal_open_volt[1];
             data[2] = bal_open_volt_diff[0];
             data[3] = bal_open_volt_diff[1];
@@ -5095,7 +3631,7 @@ private string _cell_31 = "电芯31";
         /// </summary>
         public void Write_0x23()
         {
-            byte[] can_id = new byte[] { 0xE0, Convert.ToByte(SelectedRequest7), 0x23, 0x10 }; 
+            byte[] can_id = new byte[] { 0xE0, Convert.ToByte(SelectedRequest7), 0x23, 0x10 };
             //byte[] can_id = new byte[] { 0xE0, 0x81, 0x23, 0x10 };
             byte[] data = new byte[8];
 
@@ -5130,7 +3666,7 @@ private string _cell_31 = "电芯31";
 
             byte[] data = new byte[] { buf1[0], buf1[1], buf1[2], buf1[3], buf2[0], buf2[1], buf2[2], buf2[3] };
 
-          
+
             if (baseCanHelper.Send(data, can_id)) MessageBoxHelper.Success("写入成功！", "提示", null, ButtonType.OK);
             else MessageBoxHelper.Warning("写入失败！", "提示", null, ButtonType.OK);
         }
@@ -5142,7 +3678,7 @@ private string _cell_31 = "电芯31";
         public void Write_0x25()
         {
             byte[] can_id = new byte[] { 0xE0, Convert.ToByte(SelectedRequest7), 0x25, 0x10 };
-          //byte[] can_id = new byte[] { 0xE0, 0x81, 0x25, 0x10 };
+            //byte[] can_id = new byte[] { 0xE0, 0x81, 0x25, 0x10 };
             byte[] data = new byte[8];
 
             byte[] _soc = Uint16ToBytes(Convert.ToUInt32(float.Parse(soc)));
@@ -5219,7 +3755,7 @@ private string _cell_31 = "电芯31";
             }
 
             // 去掉前导和尾部空白字符，并只保留字母和数字
-            packSn = Regex.Replace(packSn.Trim(), "[^a-zA-Z0-9]", "");          
+            packSn = Regex.Replace(packSn.Trim(), "[^a-zA-Z0-9]", "");
 
             if (packSn.Length != 21)
             {
@@ -5227,7 +3763,7 @@ private string _cell_31 = "电芯31";
                 //MessageBox.Show("SN序列号长度不等于20！输入的序列号长度为" + packSn.Length.ToString() + "位");
                 return;
             }
-         
+
 
             byte[] can_id = new byte[] { 0xE0, Convert.ToByte(SelectedRequest7), 0x27, 0x10 };
             if (identity)
@@ -5261,7 +3797,7 @@ private string _cell_31 = "电芯31";
             }
 
             if (flag_WriteSuccess) MessageBoxHelper.Success("写入成功！", "提示", null, ButtonType.OK);
-            else                   MessageBoxHelper.Warning("写入失败！", "提示", null, ButtonType.OK);          
+            else MessageBoxHelper.Warning("写入失败！", "提示", null, ButtonType.OK);
         }
 
 
@@ -5381,12 +3917,12 @@ private string _cell_31 = "电芯31";
 
             byte data1_BIT_0_1 = (byte)(Clr_system_lockList.IndexOf(SelectedClr_system_lock) & 0x03); // 保留低2位
 
-           
+
             data[0] = (byte)(data0_BIT_0_1 | data0_BIT_2_3 | data0_BIT_4_5 | data0_BIT_6_7);
             data[1] = data1_BIT_0_1; // data[1] 只需要用低2位 data[1] BIT[0:1]
 
-                 if(Force_ctrl_switchList.IndexOf(SelectedForce_ctrl_switch)==0) data[6] = 0x00;
-            else if(Force_ctrl_switchList.IndexOf(SelectedForce_ctrl_switch)==1) data[6] = 0xAA;
+            if (Force_ctrl_switchList.IndexOf(SelectedForce_ctrl_switch) == 0) data[6] = 0x00;
+            else if (Force_ctrl_switchList.IndexOf(SelectedForce_ctrl_switch) == 1) data[6] = 0xAA;
 
             //byte[] crcData = new byte[11] { 0xE0, FrmMain.BMS_ID, 0x2B, 0x10, data[0], data[1], data[2], data[3], data[4], data[5], data[6] };
             byte[] crcData = new byte[11] { 0xE0, 0x01, 0x2B, 0x10, data[0], data[1], data[2], data[3], data[4], data[5], data[6] };
@@ -5460,7 +3996,7 @@ private string _cell_31 = "电芯31";
             byte[] can_id = new byte[] { 0xE0, Convert.ToByte(SelectedRequest7), 0x1E, 0x10 };
             byte[] data = new byte[8];
 
-            if (Selectedllc_force_dsg == null || Selectedllc_force_chg == null || SelectedLED_ctrl == null || Selectedhw_wdg_ctrl == null || SelectedForceCtrlSwitch == null )
+            if (Selectedllc_force_dsg == null || Selectedllc_force_chg == null || SelectedLED_ctrl == null || Selectedhw_wdg_ctrl == null || SelectedForceCtrlSwitch == null)
             {
                 MessageBoxHelper.Warning("选项不能为空", "提示", null, ButtonType.OK);
                 return;
@@ -5472,8 +4008,8 @@ private string _cell_31 = "电芯31";
             byte data0_BIT_6_7 = (byte)((hw_wdg_ctrlList.IndexOf(Selectedhw_wdg_ctrl) & 0x03) << 6); // 保留低2位并左移6位 BIT[6:7]
 
             data[0] = (byte)(data0_BIT_0_1 | data0_BIT_2_3 | data0_BIT_4_5 | data0_BIT_6_7);
-         
-                 if (Force_ctrl_switchList.IndexOf(SelectedForceCtrlSwitch) == 0) data[6] = 0xAA;
+
+            if (Force_ctrl_switchList.IndexOf(SelectedForceCtrlSwitch) == 0) data[6] = 0xAA;
             else if (Force_ctrl_switchList.IndexOf(SelectedForceCtrlSwitch) == 1) data[6] = 0x00;
 
             //byte[] crcData = new byte[11] { 0xE0, FrmMain.BMS_ID, 0x1E, 0x10, data[0], data[1], data[2], data[3], data[4], data[5], data[6] };
@@ -5525,12 +4061,12 @@ private string _cell_31 = "电芯31";
                 {
                     Directory.CreateDirectory(folderPath);
                 }
- 
+
                 // 创建临时电池电压数据列表的副本，重新设置SectionNumber
                 var tempbatteryVoltageDataList = batteryVoltageDataList.Select(b => new batteryVoltageData
                 {
                     Voltage = b.Voltage,
-                    SectionNumber = $"BMU{(SelectedRequest7)}电池电压(V) "+b.SectionNumber
+                    SectionNumber = $"BMU{(SelectedRequest7)}电池电压(V) " + b.SectionNumber
                 }).ToList();
 
 
@@ -5538,7 +4074,7 @@ private string _cell_31 = "电芯31";
                 var tempbatteryTemperatureDataList = batteryTemperatureDataList.Select(b => new batteryTemperatureData
                 {
                     Temperature = b.Temperature,
-                    CellNumber = $"BMU{(SelectedRequest7)}电池温度(℃) " +b.CellNumber
+                    CellNumber = $"BMU{(SelectedRequest7)}电池温度(℃) " + b.CellNumber
                 }).ToList();
 
                 // 创建临时电池温度数据列表的副本，重新设置CellNumber
@@ -5552,21 +4088,52 @@ private string _cell_31 = "电芯31";
                 if (!File.Exists(filePath))
                 {
                     // 写入表头，拼接各部分
-                    string header = model.GetHeader() +  "," +// 分隔符                                 
+                    string header = model.GetHeader() + "," +// 分隔符                                 
                                     string.Join(",", tempbatteryVoltageDataList.Select(b => b.SectionNumber)) + "," + string.Join(",", tempbatteryTemperatureDataList.Select(b => b.CellNumber)) + "," + string.Join(",", tempbatterySocDataList.Select(b => b.SectionNumber)) + "\r\n";
                     File.AppendAllText(filePath, header);
                 }
 
                 // 写入数据
-                var values = model.GetValue() + "," +                           
+                var values = model.GetValue() + "," +
                              string.Join(",", tempbatteryVoltageDataList.Select(b => b.Voltage)) + "," + string.Join(",", tempbatteryTemperatureDataList.Select(b => b.Temperature)) + string.Join(",", tempbatterySocDataList.Select(b => b.SOC)) + "\r\n";
                 File.AppendAllText(filePath, values);
             }
         }
+
+        private void ClearBatteryList()
+        {
+            for (int i = 0; i < batteryVoltageDataList.Count; i++)
+            {
+                batteryVoltageDataList[i].Voltage = "";
+            }
+            for (int i = 0; i < batterySocDataList.Count; i++)
+            {
+                batterySocDataList[i].Voltage = "";
+            }
+            for (int i = 0; i < batterySohDataList.Count; i++)
+            {
+                batterySohDataList[i].Voltage = "";
+            }
+            for (int i = 0; i < batteryTemperatureDataList.Count; i++)
+            {
+                batteryTemperatureDataList[i].Voltage = "";
+            }
+            for (int i = 0; i < batteryEquilibriumStateDataList.Count; i++)
+            {
+                batteryEquilibriumStateDataList[i].Voltage = "";
+            }
+            for (int i = 0; i < batteryEquilibriumTemperatureDataList.Count; i++)
+            {
+                batteryEquilibriumTemperatureDataList[i].Voltage = "";
+            }
+
+        }
+
         private void TimerCallBack(object obj)
         {
             if (baseCanHelper.IsConnection)
-            {              
+            {
+
 
                 //获取实时数据指令       0x072：BMS电池均衡状态 0x0A0：BMS单电芯的SOC 0x0A1：BMS单电芯的SOH
                 baseCanHelper.Send(new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
@@ -5659,7 +4226,7 @@ private string _cell_31 = "电芯31";
         {
             if ((canID & 0xff) != Convert.ToByte(SelectedRequest7))
                 return;
-          
+
             if (model == null) model = new RealtimeData_BMS1500V_BMU();
             string[] strs;
             byte[] canid = BitConverter.GetBytes(canID);
@@ -5943,7 +4510,7 @@ private string _cell_31 = "电芯31";
                         initCount++;
                         AnalysisLog(data, 2);
                         break;
-                    case 0x104BFFFF: 
+                    case 0x104BFFFF:
                     case 0x104BE0FF:
                         initCount++;
                         AnalysisLog(data, 3);
@@ -5960,7 +4527,7 @@ private string _cell_31 = "电芯31";
                         PowerTemperture1 = strs[0];
                         //功率负端子温度
                         PowerTemperture2 = strs[1];
-                       
+
                         //加热膜电流->主动均衡温度1
                         //HeatCur = strs[2];
                         DcdcTemperature1 = strs[2];
@@ -6167,40 +4734,25 @@ private string _cell_31 = "电芯31";
 
                     //0x070:BMS电池单体电压(M - 1)* 30+ (N - 1)*3 ~  17 +(M - 1)* 30+ (N)*3 
                     case 0x1070E0FF:
-                        // Byte 1:帧序号M  1-10    一帧3个电池电压数据，10帧共30个电池电压数据
+                        // Byte 1:帧序号M  0x1-0x16    一帧3个电池电压数据，0x16帧共66个电池电压数据
                         int frameNumber = data[0];
-                        // Byte 2: 包序号N 8包 1包10帧  8包共240个电池电压数据
+                        // Byte 2: 包序号N 8包 1包66个电池电压数据  8包共528个电池电压数据
                         int sequenceNumber = data[1];
 
-                        //if (sequenceNumber >= 0x01 && sequenceNumber <= 0x07)
-                        //{
-                        //    if (frameNumber >= 0x01 && frameNumber <= 0x0A)
-                        //    {
-                        //        int startBatteryIndex = GetBatteryStartIndex(sequenceNumber, frameNumber);
-                        //        ProcessBatteryData(startBatteryIndex, data);
-                        //    }
-                        //}
 
-                        //int GetBatteryStartIndex(int sequenceNumber, int frameNumber)
-                        //{
-                        //    // 每个包有30个电池电压数据，每帧3个电池电压数据                        
-                        //    return (sequenceNumber - 1) * 30 + (frameNumber - 1) * 3;
-                        //}
 
-                        //调试时只有一个模块 共48个电池电压数据
-                        if (sequenceNumber == 0x01)
+                        //调试时只有一个模块 共64个电池电压数据
+                        if (sequenceNumber >= 0x01)
                         {
-                            if (frameNumber >= 0x01 && frameNumber <= 0x10)
-                            {
-                                int startBatteryIndex = GetBatteryStartIndex(sequenceNumber, frameNumber);
-                                ProcessBatteryData(startBatteryIndex, data);
-                            }
+                            int startBatteryIndex = GetBatteryStartIndex(sequenceNumber, frameNumber);
+                            ProcessBatteryData(startBatteryIndex, data);
+
                         }
 
                         int GetBatteryStartIndex(int sequenceNumber, int frameNumber)
                         {
-                            // 每个包有48个电池电压数据，每帧3个电池电压数据                        
-                            return (sequenceNumber - 1) * 48 + (frameNumber - 1) * 3;
+                            // 每帧3个电池电压数据                        
+                            return (frameNumber - 1) * 3;
                         }
 
 
@@ -6211,8 +4763,17 @@ private string _cell_31 = "电芯31";
                             for (int k = 0; k < 3; k++)
                             {
                                 int byteIndex = 2 + k * 2;
-                                double voltageRaw = (data[byteIndex + 1] << 8) | data[byteIndex]; // [3:2] 2:低位，3:高位                                                    
-                                batteryVoltages[startBatteryIndex + k] = (voltageRaw * 0.001).ToString("F3");// 电压数据 0.001V/bit 保留3位小数
+                                double voltageRaw = (data[byteIndex + 1] << 8) | data[byteIndex]; // [3:2] 2:低位，3:高位
+                                if ((startBatteryIndex + k) < ConstantDef.MaxBatteryCell)                                                              //  if (startBatteryIndex + k < ConstantDef.MaxBatteryCell)
+                                {
+                                    batteryVoltages[startBatteryIndex + k] = (voltageRaw * 0.001).ToString("F3");// 电压数据 0.001V/bit 保留3位小数
+                                }
+                                
+                            }
+
+                            for (int i = startBatteryIndex; i < batteryVoltageDataList.Count; i++)
+                            {
+                                batteryVoltageDataList[i].Voltage = "";
                             }
 
                             //batteryVoltageDataList.Clear();
@@ -6227,6 +4788,7 @@ private string _cell_31 = "电芯31";
 
                             for (int i = startBatteryIndex; i < batteryVoltages.Length; i++)
                             {
+
                                 string sectionNumber = (i + 1).ToString() + "#";
 
                                 // 查找是否已存在该编号的记录
@@ -6236,15 +4798,8 @@ private string _cell_31 = "电芯31";
                                     // 更新已有记录的电压值
                                     existingData.Voltage = batteryVoltages[i];
                                 }
-                                else
-                                {
-                                    // 新增记录
-                                    batteryVoltageDataList.Add(new RealtimeData_BMS1500V_BMU.batteryVoltageData
-                                    {
-                                        SectionNumber = (i + 1).ToString() + "#",
-                                        Voltage = batteryVoltages[i]
-                                    });
-                                }
+
+
                             }
                         }
                         initCount++;
@@ -6266,14 +4821,13 @@ private string _cell_31 = "电芯31";
                         //    }
                         //}
                         //实际调试30个电池温度数据
+
                         if (sequenceNumber >= 0x01)
                         {
-                            if (frameNumber >= 0x01 && frameNumber <= 0x0A)
-                            {
-                                int startBatteryIndex = GetbatteryTemperaturesStartIndex(sequenceNumber, frameNumber);
-                                ProcessBatteryTemperature(startBatteryIndex, data);
-                            }
+                            int startBatteryIndex = GetbatteryTemperaturesStartIndex(sequenceNumber, frameNumber);
+                            ProcessBatteryTemperature(startBatteryIndex, data);
                         }
+
                         int GetbatteryTemperaturesStartIndex(int sequenceNumber, int frameNumber)
                         {
                             // 每个包有30个电池温度，每帧 3个电池温度数据                       
@@ -6282,13 +4836,21 @@ private string _cell_31 = "电芯31";
 
                         void ProcessBatteryTemperature(int startBatteryIndex, byte[] data)
                         {
+                            for (int i = startBatteryIndex; i < batteryTemperatureDataList.Count; i++)
+                            {
+                                batteryTemperatureDataList[i].Temperature = "";
+                            }
                             var batteryTemperatures = new string[3 + startBatteryIndex];
                             for (int k = 0; k < 3; k++)
                             {
                                 int byteIndex = 2 + k * 2;
                                 Int16 temperatureRaw = (short)((data[byteIndex + 1] << 8) | data[byteIndex]); // [3:2] 2:低位，3:高位
-                                // 温度数据 0.1/bit 
-                                batteryTemperatures[startBatteryIndex + k] = (temperatureRaw * 0.1).ToString("F1");// 保留1位小数
+                                                                                                              // 温度数据 0.1/bit 
+                                if (startBatteryIndex + k < ConstantDef.MaxBatteryCell)
+                                {
+                                    batteryTemperatures[startBatteryIndex + k] = (temperatureRaw * 0.1).ToString("F1");// 保留1位小数
+                                }
+
                             }
 
                             //for (int k = 0; k < 3; k++)
@@ -6312,8 +4874,9 @@ private string _cell_31 = "电芯31";
 
                             for (int i = startBatteryIndex; i < batteryTemperatures.Length; i++)
                             {
+
                                 // 如果索引为28或29，直接跳过当前循环
-                                if (i == 28 || i == 29) continue;
+                                //if (i == 28 || i == 29) continue;
                                 string cellNumber = (i + 1).ToString() + "#";
 
                                 // 查找是否已存在该编号的记录
@@ -6323,15 +4886,7 @@ private string _cell_31 = "电芯31";
                                     // 更新已有记录的均衡状态值
                                     existingData.Temperature = batteryTemperatures[i];
                                 }
-                                else
-                                {
-                                    // 新增记录
-                                    batteryTemperatureDataList.Add(new RealtimeData_BMS1500V_BMU.batteryTemperatureData
-                                    {
-                                        CellNumber = (i + 1).ToString() + "#",
-                                        Temperature = batteryTemperatures[i]
-                                    });
-                                }
+
                             }
                         }
 
@@ -6342,8 +4897,13 @@ private string _cell_31 = "电芯31";
                         // Byte 1:包序号 1~N  1包56个电池均衡状态数据
                         frameNumber = data[0];
 
+                        var batteryEquilibriumStates = new string[ConstantDef.MaxBatteryCell]; // 创建一个数组来存储当前 frame 的状态
+
                         int startBatteryIndex1 = GetbatteryEquilibriumStateDataStartIndex(frameNumber);
                         ProcessBatteryEquilibriumStateData(startBatteryIndex1, data);
+
+
+
 
                         //// 获取电池均衡状态数据的起始索引
                         //int GetbatteryEquilibriumStateDataStartIndex(int frameNumber)
@@ -6400,17 +4960,29 @@ private string _cell_31 = "电芯31";
                         // 处理电池均衡状态数据
                         void ProcessBatteryEquilibriumStateData(int startBatteryIndex1, byte[] data)
                         {
-                            var batteryEquilibriumStates = new string[48]; // 创建一个数组来存储当前 frame 的状态
 
+                            //清除当前位置后续的数据
+                            for (int i = startBatteryIndex1; i < batteryEquilibriumStateDataList.Count; i++)
+                            {
+                                batteryEquilibriumStateDataList[i].BatteryEquilibriumState = "";
+                            }
+
+                            //解析新数据
                             for (int j = 0; j < 6; j++)
                             {
                                 for (int k = 0; k < 8; k++)
                                 {
-                                    batteryEquilibriumStates[startBatteryIndex1 + k] = GetBit(data[j + 1], (short)k).ToString();
+                                    if (startBatteryIndex1 + k < ConstantDef.MaxBatteryCell)
+                                    {
+                                        batteryEquilibriumStates[startBatteryIndex1 + k] = GetBit(data[j + 1], (short)k).ToString();
+                                    }
+
                                 }
 
                                 for (int i = startBatteryIndex1; i < batteryEquilibriumStates.Length; i++)
                                 {
+
+
                                     string cellNumber = (i + 1).ToString() + "#";
 
                                     // 查找是否已存在该编号的记录
@@ -6420,15 +4992,9 @@ private string _cell_31 = "电芯31";
                                         // 更新已有记录的均衡状态值
                                         existingData.BatteryEquilibriumState = batteryEquilibriumStates[i];
                                     }
-                                    else
-                                    {
-                                        // 新增记录
-                                        batteryEquilibriumStateDataList.Add(new RealtimeData_BMS1500V_BMU.batteryEquilibriumStateData
-                                        {
-                                            CellNumber = (i + 1).ToString() + "#",
-                                            BatteryEquilibriumState = batteryEquilibriumStates[i]
-                                        });
-                                    }
+
+
+
                                 }
                                 startBatteryIndex1 += 8;
                             }
@@ -6442,7 +5008,7 @@ private string _cell_31 = "电芯31";
                         frameNumber = data[0];
                         // Byte 2: 包序号 1~N
                         sequenceNumber = data[1];
-           
+
                         if (sequenceNumber >= 0x01)
                         {
                             if (frameNumber >= 0x01 && frameNumber <= 0x0A)
@@ -6459,18 +5025,28 @@ private string _cell_31 = "电芯31";
 
                         void ProcessEquilibriumTemperature(int startBatteryIndex, byte[] data)
                         {
+                            for (int i = startBatteryIndex; i < batteryEquilibriumTemperatureDataList.Count; i++)
+                            {
+                                batteryEquilibriumTemperatureDataList[i].BatteryEquilibriumTemperature = "";
+                            }
+
                             var batteryEquilibriumTemperatures = new string[3 + startBatteryIndex];
                             for (int k = 0; k < 3; k++)
                             {
                                 int byteIndex = 2 + k * 2;
                                 Int16 equilibriumTemperatureRaw = (short)((data[byteIndex + 1] << 8) | data[byteIndex]); // [3:2] 2:低位，3:高位
                                 // 温度数据 0.1/bit 
-                                batteryEquilibriumTemperatures[startBatteryIndex + k] = (equilibriumTemperatureRaw * 0.1).ToString("F1");// 保留1位小数
+                                if (startBatteryIndex + k < ConstantDef.MaxBatteryCell)
+                                {
+                                    batteryEquilibriumTemperatures[startBatteryIndex + k] = (equilibriumTemperatureRaw * 0.1).ToString("F1");// 保留1位小数
+                                }
+
                             }
 
 
                             for (int i = startBatteryIndex; i < batteryEquilibriumTemperatures.Length; i++)
                             {
+
                                 string cellNumber = (i + 1).ToString() + "#";
 
                                 // 查找是否已存在该编号的记录
@@ -6480,15 +5056,8 @@ private string _cell_31 = "电芯31";
                                     // 更新已有记录的均衡温度值
                                     existingData.BatteryEquilibriumTemperature = batteryEquilibriumTemperatures[i];
                                 }
-                                else
-                                {
-                                    // 新增记录
-                                    batteryEquilibriumTemperatureDataList.Add(new RealtimeData_BMS1500V_BMU.batteryEquilibriumTemperatureData
-                                    {
-                                        CellNumber = (i + 1).ToString() + "#",
-                                        BatteryEquilibriumTemperature = batteryEquilibriumTemperatures[i]
-                                    });
-                                }
+
+
                             }
                         }
 
@@ -6507,55 +5076,44 @@ private string _cell_31 = "电芯31";
                         //    ProcessBatterySOC(startBatteryIndex, data);
                         //}
                         //
-
+                        var batterySocs = new string[ConstantDef.MaxBatteryCell];
                         //调试数据 实际7包共48个电池SOC数据,最后一帧是48 % 7 = 6
-                        if (frameNumber >= 0x00 && frameNumber <= 0x05)
+                        if (frameNumber >= 0x00 && frameNumber <= 0x10)
                         {
                             int startBatteryIndex = GetbatterySOCStartIndex(frameNumber);
                             ProcessBatterySOC(startBatteryIndex, data);
                         }
 
-                        //最后一帧
-                        if (frameNumber == 0x06)
-                        {
-                            int startBatteryIndex = (frameNumber+1) * (48 % 7);
-                            ProcessBatterySOC(startBatteryIndex, data);
-                        }
+
 
                         int GetbatterySOCStartIndex(int frameNumber)
                         {
                             // 每个包有7个电池SOC数据                     
                             return frameNumber * 7;
                         }
-                        var batterySocs = new string[48];
+
                         void ProcessBatterySOC(int startBatteryIndex, byte[] data)
                         {
-                            if (frameNumber == 0x06)
+                            for (int k = 0; k < 7; k++)
                             {
-                                batterySocs = new string[6 + startBatteryIndex];
-                                for (int k = 0; k < 6; k++)
+                                int byteIndex = k + 1;
+                                double SocRaw = data[byteIndex];
+                                // SOC数据 1/bit 范围：0-255
+                                if (startBatteryIndex + k < ConstantDef.MaxBatteryCell)
                                 {
-                                    int byteIndex = k + 1;
-                                    double SocRaw = data[byteIndex];
-                                    // SOC数据 1/bit 范围：0-255
-                                    batterySocs[startBatteryIndex + k] = SocRaw.ToString();
-                                }
-                            }
-                            else
-                            {
-                                batterySocs = new string[7 + startBatteryIndex];
-                                for (int k = 0; k < 7; k++)
-                                {
-                                    int byteIndex = k + 1;
-                                    double SocRaw = data[byteIndex];
-                                    // SOC数据 1/bit 范围：0-255
                                     batterySocs[startBatteryIndex + k] = SocRaw.ToString();
                                 }
 
                             }
+                            for (int i = startBatteryIndex; i < batterySocDataList.Count; i++)
+                            {
+                                batterySocDataList[i].SOC = "";
+                            }
+
 
                             for (int i = startBatteryIndex; i < batterySocs.Length; i++)
                             {
+
                                 string sectionNumber = (i + 1).ToString() + "#";
 
                                 // 查找是否已存在该编号的记录
@@ -6565,19 +5123,11 @@ private string _cell_31 = "电芯31";
                                     // 更新已有记录的SOC值
                                     existingData.SOC = batterySocs[i];
                                 }
-                                else
-                                {
-                                    // 新增记录
-                                    batterySocDataList.Add(new RealtimeData_BMS1500V_BMU.batterySocData
-                                    {
-                                        SectionNumber = (i + 1).ToString() + "#",
-                                        SOC = batterySocs[i]
-                                    });
-                                }
+
                             }
                         }
 
-                        
+
                         initCount++;
                         break;
 
@@ -6586,24 +5136,20 @@ private string _cell_31 = "电芯31";
                     case 0x10A1E0FF:
                         // Byte 1:单电芯数据包组号(0~((PACK电芯个数/7) - 1))  224/7-1=31
                         frameNumber = data[0];
-
+                        var batterySohs = new string[ConstantDef.MaxBatteryCell];
                         //if (frameNumber >= 0x01 && frameNumber <= 0x20)
                         //{
                         //    int startBatteryIndex = GetbatterySOHStartIndex(frameNumber);
                         //    ProcessBatterySOH(startBatteryIndex, data);
                         //}
                         //调试数据 实际7包共48个电池SOH数据,最后一帧是48 % 7 = 6
-                        if (frameNumber >= 0x00 && frameNumber <= 0x05)
+                        if (frameNumber >= 0x00 && frameNumber <= 0x10)
                         {
                             int startBatteryIndex = GetbatterySOHStartIndex(frameNumber);
                             ProcessBatterySOH(startBatteryIndex, data);
                         }
 
-                        if (frameNumber == 0x06)
-                        {
-                            int startBatteryIndex = (frameNumber + 1) * (48 % 7);
-                            ProcessBatterySOH(startBatteryIndex, data);
-                        }
+
                         int GetbatterySOHStartIndex(int frameNumber)
                         {
                             // 每个包有7个电池SOH数据                     
@@ -6612,33 +5158,28 @@ private string _cell_31 = "电芯31";
 
                         void ProcessBatterySOH(int startBatteryIndex, byte[] data)
                         {
-                            var batterySohs = new string[48];
-                            if (frameNumber == 0x06)
-                            {
-                                batterySohs = new string[6 + startBatteryIndex];
-                                for (int k = 0; k < 6; k++)
-                                {
-                                    int byteIndex = k + 1;
-                                    double SohRaw = data[byteIndex];
-                                    // SOH数据 1/bit 范围：0-255
-                                    batterySohs[startBatteryIndex + k] = SohRaw.ToString();
-                                }
-                            }
 
-                            else
+
+
+                            for (int k = 0; k < 7; k++)
                             {
-                                batterySohs = new string[7 + startBatteryIndex];
-                                for (int k = 0; k < 7; k++)
+                                int byteIndex = k + 1;
+                                double SohRaw = data[byteIndex];
+                                // SOH数据 1/bit 范围：0-255
+                                if (startBatteryIndex + k < ConstantDef.MaxBatteryCell)
                                 {
-                                    int byteIndex = k + 1;
-                                    double SohRaw = data[byteIndex];
-                                    // SOH数据 1/bit 范围：0-255
                                     batterySohs[startBatteryIndex + k] = SohRaw.ToString();
                                 }
+
+                            }
+                            for (int i = startBatteryIndex; i < batterySohDataList.Count; i++)
+                            {
+                                batterySohDataList[i].SOC = "";
                             }
 
                             for (int i = startBatteryIndex; i < batterySohs.Length; i++)
                             {
+
                                 string sectionNumber = (i + 1).ToString() + "#";
 
                                 // 查找是否已存在该编号的记录
@@ -6648,15 +5189,7 @@ private string _cell_31 = "电芯31";
                                     // 更新已有记录的SOH值
                                     existingData.SOH = batterySohs[i];
                                 }
-                                else
-                                {
-                                    // 新增记录
-                                    batterySohDataList.Add(new RealtimeData_BMS1500V_BMU.batterySohData
-                                    {
-                                        SectionNumber = (i + 1).ToString() + "#",
-                                        SOH = batterySohs[i]
-                                    });
-                                }
+
                             }
                         }
 
@@ -6667,7 +5200,7 @@ private string _cell_31 = "电芯31";
 
                 int[] numbers_bit = BytesToBit(data);
                 int[] numbers = BytesToUint16(data);
-               
+
                 switch (canid[2])
                 {
                     //Flash数据
@@ -6870,12 +5403,12 @@ private string _cell_31 = "电芯31";
                         else if (data[6] == 0xAA) Selectedforce_ctrl_switch = force_ctrl_switchList[1];
                         break;
                     case 0x1E:
-                        Selectedllc_force_dsg= llc_force_dsgList[data[0] & 0x03];
+                        Selectedllc_force_dsg = llc_force_dsgList[data[0] & 0x03];
                         Selectedllc_force_chg = llc_force_chgList[(data[0] >> 2) & 0x03];
                         SelectedLED_ctrl = LED_ctrlList[(data[0] >> 4) & 0x03];
                         Selectedhw_wdg_ctrl = hw_wdg_ctrlList[(data[0] >> 6) & 0x03];
                         if (data[6] == 0xAA) SelectedForceCtrlSwitch = Force_ctrl_switchList[0];
-                        else                 SelectedForceCtrlSwitch = Force_ctrl_switchList[1];
+                        else SelectedForceCtrlSwitch = Force_ctrl_switchList[1];
                         break;
                 }
             }
@@ -6908,17 +5441,10 @@ private string _cell_31 = "电芯31";
         {
             int offset = 48 * (index - 1);
 
-            PassiveEquilibriumState_1_8   = $"电芯{1  + offset}~{8  + offset}的被动均衡状态";
-            PassiveEquilibriumState_9_16  = $"电芯{9  + offset}~{16 + offset}的被动均衡状态";
-            PassiveEquilibriumState_17_24 = $"电芯{17 + offset}~{24 + offset}的被动均衡状态";
-            PassiveEquilibriumState_25_32 = $"电芯{25 + offset}~{32 + offset}的被动均衡状态";
-            PassiveEquilibriumState_33_40 = $"电芯{33 + offset}~{40 + offset}的被动均衡状态";
-            PassiveEquilibriumState_41_48 = $"电芯{41 + offset}~{48 + offset}的被动均衡状态";
+            PassiveEquilibriumState = $"电芯{1 + offset}~{48 + offset}的被动均衡状态";
 
-            for (int i = 1; i <= 48; i++)
-            {
-                this.GetType().GetProperty($"cell_{i}").SetValue(this, $"电芯{i + offset}");
-            }
+            ChangeEquilibriumList(48, index);
+
         }
 
         public ICommand Write0x060_Cmd => new RelayCommand(Write0x060);
@@ -6955,7 +5481,7 @@ private string _cell_31 = "电芯31";
             //byte[] crcData = new byte[11] { 0xE0, FrmMain.BMS_ID, 0x60, 0x10, data[0], data[1], data[2], data[3], data[4], data[5], data[6] };
             //byte[] crcData = new byte[11] { 0x81, 0x1F, 0x60, 0x10, data[0], data[1], data[2], data[3], data[4], data[5], data[6] };
             byte[] crcData = new byte[11] { 0xE0, Convert.ToByte(SelectedRequest7), 0x60, 0x10, data[0], data[1], data[2], data[3], data[4], data[5], data[6] };
-          
+
             data[7] = (byte)(Crc8_8210_nBytesCalculate(crcData, 11, 0) & 0xff);
 
             if (baseCanHelper.Send(data, can_id)) MessageBoxHelper.Success("写入成功！", "提示", null, ButtonType.OK);
@@ -7029,68 +5555,25 @@ private string _cell_31 = "电芯31";
         {
             //byte[] can_id = new byte[4] { 0x81, 0x1F, 0x63, 0x10 };
             byte[] can_id = new byte[4] { 0xE0, Convert.ToByte(SelectedRequest7), 0x63, 0x10 };
-        
+
             byte[] data = new byte[8];
-           
+
             data[0] = Convert.ToByte(MasterSlaveControlFlagList.IndexOf(SelectedMasterSlaveControlFlag));
             data[1] = Convert.ToByte(SelectedPackageNumber);
-          
-                    if (IsChecked_cell_1 == true) data[2] |= 0x01; // Bit1：电芯1被动均衡状态
-                    if (IsChecked_cell_2 == true) data[2] |= 0x02; // Bit2：电芯2被动均衡状态
-                    if (IsChecked_cell_3 == true) data[2] |= 0x04; // Bit3：电芯3被动均衡状态
-                    if (IsChecked_cell_4 == true) data[2] |= 0x08; // Bit4：电芯4被动均衡状态
-                    if (IsChecked_cell_5 == true) data[2] |= 0x10; // Bit5：电芯5被动均衡状态
-                    if (IsChecked_cell_6 == true) data[2] |= 0x20; // Bit6：电芯6被动均衡状态
-                    if (IsChecked_cell_7 == true) data[2] |= 0x40; // Bit7：电芯7被动均衡状态
-                    if (IsChecked_cell_8 == true) data[2] |= 0x80; // Bit8：电芯8被动均衡状态
 
-                    if (IsChecked_cell_9  == true) data[3] |= 0x01; // Bit9： 电芯9被动均衡状态
-                    if (IsChecked_cell_10 == true) data[3] |= 0x02; // Bit10：电芯10被动均衡状态
-                    if (IsChecked_cell_11 == true) data[3] |= 0x04; // Bit11：电芯11被动均衡状态
-                    if (IsChecked_cell_12 == true) data[3] |= 0x08; // Bit12：电芯12被动均衡状态
-                    if (IsChecked_cell_13 == true) data[3] |= 0x10; // Bit13：电芯13被动均衡状态
-                    if (IsChecked_cell_14 == true) data[3] |= 0x20; // Bit14：电芯14被动均衡状态
-                    if (IsChecked_cell_15 == true) data[3] |= 0x40; // Bit15：电芯15被动均衡状态
-                    if (IsChecked_cell_16 == true) data[3] |= 0x80; // Bit16：电芯16被动均衡状态
+            for (int i = 0; i < PassiveEquilibriumCheckBoxItems.Count; i++)
+            {
+                int index = 2 + (i / 8);
+                int bitIndex = i % 8;
+                if (PassiveEquilibriumCheckBoxItems[i].IsChecked)
+                {
+                    data[index] |= (byte)(1 << bitIndex);
+                }
 
-                    if (IsChecked_cell_17 == true) data[4] |= 0x01; // Bit17：电芯17被动均衡状态
-                    if (IsChecked_cell_18 == true) data[4] |= 0x02; // Bit18：电芯18被动均衡状态
-                    if (IsChecked_cell_19 == true) data[4] |= 0x04; // Bit19：电芯19被动均衡状态
-                    if (IsChecked_cell_20 == true) data[4] |= 0x08; // Bit20：电芯20被动均衡状态
-                    if (IsChecked_cell_21 == true) data[4] |= 0x10; // Bit21：电芯21被动均衡状态
-                    if (IsChecked_cell_22 == true) data[4] |= 0x20; // Bit22：电芯22被动均衡状态
-                    if (IsChecked_cell_23 == true) data[4] |= 0x40; // Bit23：电芯23被动均衡状态
-                    if (IsChecked_cell_24 == true) data[4] |= 0x80; // Bit24：电芯24被动均衡状态
-
-                    if (IsChecked_cell_25 == true) data[5] |= 0x01; // Bit25：电芯25被动均衡状态
-                    if (IsChecked_cell_26 == true) data[5] |= 0x02; // Bit26：电芯26被动均衡状态
-                    if (IsChecked_cell_27 == true) data[5] |= 0x04; // Bit27：电芯27被动均衡状态
-                    if (IsChecked_cell_28 == true) data[5] |= 0x08; // Bit28：电芯28被动均衡状态
-                    if (IsChecked_cell_29 == true) data[5] |= 0x10; // Bit29：电芯29被动均衡状态
-                    if (IsChecked_cell_30 == true) data[5] |= 0x20; // Bit30：电芯30被动均衡状态
-                    if (IsChecked_cell_31 == true) data[5] |= 0x40; // Bit31：电芯31被动均衡状态
-                    if (IsChecked_cell_32 == true) data[5] |= 0x80; // Bit32：电芯32被动均衡状态
-
-                    if (IsChecked_cell_33 == true) data[6] |= 0x01; // Bit33：电芯33被动均衡状态
-                    if (IsChecked_cell_34 == true) data[6] |= 0x02; // Bit34：电芯34被动均衡状态
-                    if (IsChecked_cell_35 == true) data[6] |= 0x04; // Bit35：电芯35被动均衡状态
-                    if (IsChecked_cell_36 == true) data[6] |= 0x08; // Bit36：电芯36被动均衡状态
-                    if (IsChecked_cell_37 == true) data[6] |= 0x10; // Bit37：电芯37被动均衡状态
-                    if (IsChecked_cell_38 == true) data[6] |= 0x20; // Bit38：电芯38被动均衡状态
-                    if (IsChecked_cell_39 == true) data[6] |= 0x40; // Bit39：电芯39被动均衡状态
-                    if (IsChecked_cell_40 == true) data[6] |= 0x80; // Bit40：电芯40被动均衡状态
-
-                    if (IsChecked_cell_41 == true) data[7] |= 0x01; // Bit41：电芯41被动均衡状态
-                    if (IsChecked_cell_42 == true) data[7] |= 0x02; // Bit42：电芯42被动均衡状态
-                    if (IsChecked_cell_43 == true) data[7] |= 0x04; // Bit43：电芯43被动均衡状态
-                    if (IsChecked_cell_44 == true) data[7] |= 0x08; // Bit44：电芯44被动均衡状态
-                    if (IsChecked_cell_45 == true) data[7] |= 0x10; // Bit45：电芯45被动均衡状态
-                    if (IsChecked_cell_46 == true) data[7] |= 0x20; // Bit46：电芯46被动均衡状态
-                    if (IsChecked_cell_47 == true) data[7] |= 0x40; // Bit47：电芯47被动均衡状态
-                    if (IsChecked_cell_48 == true) data[7] |= 0x80; // Bit48：电芯48被动均衡状态
+            }
 
             if (baseCanHelper.Send(data, can_id)) MessageBoxHelper.Success("写入成功！", "提示", null, ButtonType.OK);
-            else                               MessageBoxHelper.Warning("写入失败！", "提示", null, ButtonType.OK);
+            else MessageBoxHelper.Warning("写入失败！", "提示", null, ButtonType.OK);
         }
 
         private string BytesToIntger(byte high, byte low = 0x00, double unit = 1)
@@ -7174,7 +5657,7 @@ private string _cell_31 = "电芯31";
                 return string.Empty;
             }
         }
-    
+
         private void AnalysisLog(byte[] data, int faultNum)
         {
             string[] msg = new string[2];
@@ -7228,7 +5711,7 @@ private string _cell_31 = "电芯31";
                     }
                 }
             }
-           
+
 
             var alarmMessageDataList = AlarmMessageDataList.Where(x => x.AlarmLevel == "告警" ||
                                                                        x.AlarmLevel == "保护" ||
@@ -7274,7 +5757,7 @@ private string _cell_31 = "电芯31";
                     FaultInfos = FaultInfo.FaultInfos3;
                     break;
             }
-            FaultInfo faultInfo = FaultInfos.FirstOrDefault(f => f.Byte == row && f.Bit == column  && f.State == state);
+            FaultInfo faultInfo = FaultInfos.FirstOrDefault(f => f.Byte == row && f.Bit == column && f.State == state);
 
             if (faultInfo != null)
             {
@@ -7282,7 +5765,7 @@ private string _cell_31 = "电芯31";
                 //msg[0] = faultInfo.Content.Trim();  
                 msg[1] = faultInfo.Type.ToString();
                 faultInfo.State = state == 1 ? 0 : 1; // 更新状态
-             
+
             }
 
             return msg;
@@ -7304,7 +5787,7 @@ private string _cell_31 = "电芯31";
             IWDG复位 = 2,
             软件复位 = 3,
             上电或者掉电复位 = 4,
-            Pin引脚复位= 5,
+            Pin引脚复位 = 5,
             MMU复位 = 6
         }
         public enum Alarm_Level
@@ -7312,7 +5795,7 @@ private string _cell_31 = "电芯31";
             告警 = 0,
             保护 = 1,
             故障 = 2,
-            提示=3
+            提示 = 3
         }
     }
 }

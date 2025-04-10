@@ -4,6 +4,7 @@ using PowerKit.UI.Models;
 using Sofar.BMSLib;
 using Sofar.BMSUI;
 using Sofar.BMSUI.Common;
+using Sofar.HvBMSUI.Models;
 using Sofar.ProtocolLib;
 using System;
 using System.Collections.Generic;

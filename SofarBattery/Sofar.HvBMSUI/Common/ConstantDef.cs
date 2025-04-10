@@ -11,5 +11,9 @@ namespace Sofar.BMSUI
       
 
         public static int BCU_ModuleNumber = -1;
+
+
+        public static int MaxBatteryCell = 64;
+
     }
 }
