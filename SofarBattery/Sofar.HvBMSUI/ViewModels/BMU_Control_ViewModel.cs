@@ -3046,7 +3046,7 @@ namespace Sofar.HvBMSUI.ViewModels
             IsChecked_BatteryVoltage = true;
 
             //添加电池电压编号
-            for (int i = 1; i <= ConstantDef.MaxBatteryCell; i++)
+            for (int i = 1; i <= ConstantDef.PageMaxBatteryCellNumber; i++)
             {
                 batteryVoltageDataList.Add(new RealtimeData_BMS1500V_BMU.batteryVoltageData
                 {
@@ -3055,7 +3055,7 @@ namespace Sofar.HvBMSUI.ViewModels
             }
 
             // 添加SOC编号
-            for (int i = 1; i <= ConstantDef.MaxBatteryCell; i++)
+            for (int i = 1; i <= ConstantDef.PageMaxBatteryCellNumber; i++)
             {
                 batterySocDataList.Add(new RealtimeData_BMS1500V_BMU.batterySocData
                 {
@@ -3064,7 +3064,7 @@ namespace Sofar.HvBMSUI.ViewModels
             }
 
             //添加SOH编号
-            for (int i = 1; i <= ConstantDef.MaxBatteryCell; i++)
+            for (int i = 1; i <= ConstantDef.PageMaxBatteryCellNumber; i++)
             {
                 batterySohDataList.Add(new RealtimeData_BMS1500V_BMU.batterySohData
                 {
@@ -3073,7 +3073,7 @@ namespace Sofar.HvBMSUI.ViewModels
             }
 
             //添加温度编号
-            for (int i = 1; i <= ConstantDef.MaxBatteryCell; i++)
+            for (int i = 1; i <= ConstantDef.PageMaxBatteryCellNumber; i++)
             {
                 batteryTemperatureDataList.Add(new RealtimeData_BMS1500V_BMU.batteryTemperatureData
                 {
@@ -3082,7 +3082,7 @@ namespace Sofar.HvBMSUI.ViewModels
             }
 
             //添加均衡状态编号
-            for (int i = 1; i <= ConstantDef.MaxBatteryCell; i++)
+            for (int i = 1; i <= ConstantDef.PageMaxBatteryCellNumber; i++)
             {
                 batteryEquilibriumStateDataList.Add(new RealtimeData_BMS1500V_BMU.batteryEquilibriumStateData
                 {
@@ -3091,7 +3091,7 @@ namespace Sofar.HvBMSUI.ViewModels
             }
 
             //添加均衡温度编号
-            for (int i = 1; i <= ConstantDef.MaxBatteryCell; i++)
+            for (int i = 1; i <= ConstantDef.PageMaxBatteryCellNumber; i++)
             {
                 batteryEquilibriumTemperatureDataList.Add(new RealtimeData_BMS1500V_BMU.batteryEquilibriumTemperatureData
                 {
@@ -3155,7 +3155,7 @@ namespace Sofar.HvBMSUI.ViewModels
                     new[] { "节号", "电压" },
                     data => data.SectionNumber,
                     data => data.Voltage,
-                    ConstantDef.MaxBatteryCell));
+                    ConstantDef.PageMaxBatteryCellNumber));
             });
         }
 
@@ -3172,7 +3172,7 @@ namespace Sofar.HvBMSUI.ViewModels
                     new[] { "序号", "温度" },
                     data => data.CellNumber,
                     data => data.Temperature,
-                    ConstantDef.MaxBatteryCell));
+                    ConstantDef.PageMaxBatteryCellNumber));
             });
         }
 
@@ -3189,7 +3189,7 @@ namespace Sofar.HvBMSUI.ViewModels
                     new[] { "节号", "SOC" },
                     data => data.SectionNumber,
                     data => data.SOC,
-                    ConstantDef.MaxBatteryCell));
+                    ConstantDef.PageMaxBatteryCellNumber));
             });
         }
 
@@ -3206,7 +3206,7 @@ namespace Sofar.HvBMSUI.ViewModels
                     new[] { "节号", "SOH" },
                     data => data.SectionNumber,
                     data => data.SOH,
-                    ConstantDef.MaxBatteryCell));
+                    ConstantDef.PageMaxBatteryCellNumber));
             });
         }
 
@@ -3223,7 +3223,7 @@ namespace Sofar.HvBMSUI.ViewModels
                     new[] { "序号", "均衡状态" },
                     data => data.CellNumber,
                     data => data.BatteryEquilibriumState,
-                    ConstantDef.MaxBatteryCell));
+                    ConstantDef.PageMaxBatteryCellNumber));
             });
         }
 
@@ -3240,7 +3240,7 @@ namespace Sofar.HvBMSUI.ViewModels
                     new[] { "序号", "均衡温度" },
                     data => data.CellNumber,
                     data => data.BatteryEquilibriumTemperature,
-                    ConstantDef.MaxBatteryCell));
+                    ConstantDef.PageMaxBatteryCellNumber));
             });
         }
 
@@ -3368,6 +3368,7 @@ namespace Sofar.HvBMSUI.ViewModels
         /// <returns></returns>
         private List<T> UpdateDataGrid<T>(List<T> dataList, string[] headers, Func<T, string> getPrimaryValue, Func<T, string> getSecondaryValue, int maxSectionsPerGroup = 64) where T : IBatteryData, new()
         {
+
             var tempDataList = new List<T>(dataList);
             dataList.Clear();
 
@@ -4102,29 +4103,33 @@ namespace Sofar.HvBMSUI.ViewModels
 
         private void ClearBatteryList()
         {
-            for (int i = 0; i < batteryVoltageDataList.Count; i++)
+            if (ConstantDef.BatteryCellNumber == 48)
             {
-                batteryVoltageDataList[i].Voltage = "";
-            }
-            for (int i = 0; i < batterySocDataList.Count; i++)
-            {
-                batterySocDataList[i].Voltage = "";
-            }
-            for (int i = 0; i < batterySohDataList.Count; i++)
-            {
-                batterySohDataList[i].Voltage = "";
-            }
-            for (int i = 0; i < batteryTemperatureDataList.Count; i++)
-            {
-                batteryTemperatureDataList[i].Voltage = "";
-            }
-            for (int i = 0; i < batteryEquilibriumStateDataList.Count; i++)
-            {
-                batteryEquilibriumStateDataList[i].Voltage = "";
-            }
-            for (int i = 0; i < batteryEquilibriumTemperatureDataList.Count; i++)
-            {
-                batteryEquilibriumTemperatureDataList[i].Voltage = "";
+
+                for (int i = 48; i < batteryVoltageDataList.Count; i++)
+                {
+                    batteryVoltageDataList[i].Voltage = "";
+                }
+                for (int i = 48; i < batterySocDataList.Count; i++)
+                {
+                    batterySocDataList[i].SOC = "";
+                }
+                for (int i = 48; i < batterySohDataList.Count; i++)
+                {
+                    batterySohDataList[i].SOH = "";
+                }
+                for (int i = 48; i < batteryTemperatureDataList.Count; i++)
+                {
+                    batteryTemperatureDataList[i].Temperature = "";
+                }
+                for (int i = 48; i < batteryEquilibriumStateDataList.Count; i++)
+                {
+                    batteryEquilibriumStateDataList[i].BatteryEquilibriumState = "";
+                }
+                for (int i = 48; i < batteryEquilibriumTemperatureDataList.Count; i++)
+                {
+                    batteryEquilibriumTemperatureDataList[i].BatteryEquilibriumTemperature = "";
+                }
             }
 
         }
@@ -4134,6 +4139,7 @@ namespace Sofar.HvBMSUI.ViewModels
             if (baseCanHelper.IsConnection)
             {
 
+                ClearBatteryList();
 
                 //获取实时数据指令       0x072：BMS电池均衡状态 0x0A0：BMS单电芯的SOC 0x0A1：BMS单电芯的SOH
                 baseCanHelper.Send(new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
@@ -4184,6 +4190,8 @@ namespace Sofar.HvBMSUI.ViewModels
         {
             if (baseCanHelper.IsConnection)
             {
+
+
                 //读取BMU参数 0x01:读取所有参数
                 baseCanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
                                , new byte[] { 0xE0, Convert.ToByte(SelectedRequest7), 0x2E, 0x10 });
@@ -4741,6 +4749,8 @@ namespace Sofar.HvBMSUI.ViewModels
 
 
 
+
+
                         //调试时只有一个模块 共64个电池电压数据
                         if (sequenceNumber >= 0x01)
                         {
@@ -4764,17 +4774,15 @@ namespace Sofar.HvBMSUI.ViewModels
                             {
                                 int byteIndex = 2 + k * 2;
                                 double voltageRaw = (data[byteIndex + 1] << 8) | data[byteIndex]; // [3:2] 2:低位，3:高位
-                                if ((startBatteryIndex + k) < ConstantDef.MaxBatteryCell)                                                              //  if (startBatteryIndex + k < ConstantDef.MaxBatteryCell)
+                                if ((startBatteryIndex + k) < ConstantDef.PageMaxBatteryCellNumber)                                                              //  if (startBatteryIndex + k < ConstantDef.MaxBatteryCell)
                                 {
                                     batteryVoltages[startBatteryIndex + k] = (voltageRaw * 0.001).ToString("F3");// 电压数据 0.001V/bit 保留3位小数
                                 }
-                                
+
                             }
 
-                            for (int i = startBatteryIndex; i < batteryVoltageDataList.Count; i++)
-                            {
-                                batteryVoltageDataList[i].Voltage = "";
-                            }
+
+
 
                             //batteryVoltageDataList.Clear();
                             //for (int i = startBatteryIndex; i < batteryVoltages.Length; i++)
@@ -4836,17 +4844,14 @@ namespace Sofar.HvBMSUI.ViewModels
 
                         void ProcessBatteryTemperature(int startBatteryIndex, byte[] data)
                         {
-                            for (int i = startBatteryIndex; i < batteryTemperatureDataList.Count; i++)
-                            {
-                                batteryTemperatureDataList[i].Temperature = "";
-                            }
+
                             var batteryTemperatures = new string[3 + startBatteryIndex];
                             for (int k = 0; k < 3; k++)
                             {
                                 int byteIndex = 2 + k * 2;
                                 Int16 temperatureRaw = (short)((data[byteIndex + 1] << 8) | data[byteIndex]); // [3:2] 2:低位，3:高位
                                                                                                               // 温度数据 0.1/bit 
-                                if (startBatteryIndex + k < ConstantDef.MaxBatteryCell)
+                                if (startBatteryIndex + k < ConstantDef.PageMaxBatteryCellNumber)
                                 {
                                     batteryTemperatures[startBatteryIndex + k] = (temperatureRaw * 0.1).ToString("F1");// 保留1位小数
                                 }
@@ -4897,7 +4902,7 @@ namespace Sofar.HvBMSUI.ViewModels
                         // Byte 1:包序号 1~N  1包56个电池均衡状态数据
                         frameNumber = data[0];
 
-                        var batteryEquilibriumStates = new string[ConstantDef.MaxBatteryCell]; // 创建一个数组来存储当前 frame 的状态
+                        var batteryEquilibriumStates = new string[ConstantDef.PageMaxBatteryCellNumber]; // 创建一个数组来存储当前 frame 的状态
 
                         int startBatteryIndex1 = GetbatteryEquilibriumStateDataStartIndex(frameNumber);
                         ProcessBatteryEquilibriumStateData(startBatteryIndex1, data);
@@ -4961,18 +4966,14 @@ namespace Sofar.HvBMSUI.ViewModels
                         void ProcessBatteryEquilibriumStateData(int startBatteryIndex1, byte[] data)
                         {
 
-                            //清除当前位置后续的数据
-                            for (int i = startBatteryIndex1; i < batteryEquilibriumStateDataList.Count; i++)
-                            {
-                                batteryEquilibriumStateDataList[i].BatteryEquilibriumState = "";
-                            }
+
 
                             //解析新数据
                             for (int j = 0; j < 6; j++)
                             {
                                 for (int k = 0; k < 8; k++)
                                 {
-                                    if (startBatteryIndex1 + k < ConstantDef.MaxBatteryCell)
+                                    if (startBatteryIndex1 + k < ConstantDef.PageMaxBatteryCellNumber)
                                     {
                                         batteryEquilibriumStates[startBatteryIndex1 + k] = GetBit(data[j + 1], (short)k).ToString();
                                     }
@@ -5025,10 +5026,7 @@ namespace Sofar.HvBMSUI.ViewModels
 
                         void ProcessEquilibriumTemperature(int startBatteryIndex, byte[] data)
                         {
-                            for (int i = startBatteryIndex; i < batteryEquilibriumTemperatureDataList.Count; i++)
-                            {
-                                batteryEquilibriumTemperatureDataList[i].BatteryEquilibriumTemperature = "";
-                            }
+
 
                             var batteryEquilibriumTemperatures = new string[3 + startBatteryIndex];
                             for (int k = 0; k < 3; k++)
@@ -5036,7 +5034,7 @@ namespace Sofar.HvBMSUI.ViewModels
                                 int byteIndex = 2 + k * 2;
                                 Int16 equilibriumTemperatureRaw = (short)((data[byteIndex + 1] << 8) | data[byteIndex]); // [3:2] 2:低位，3:高位
                                 // 温度数据 0.1/bit 
-                                if (startBatteryIndex + k < ConstantDef.MaxBatteryCell)
+                                if (startBatteryIndex + k < ConstantDef.PageMaxBatteryCellNumber)
                                 {
                                     batteryEquilibriumTemperatures[startBatteryIndex + k] = (equilibriumTemperatureRaw * 0.1).ToString("F1");// 保留1位小数
                                 }
@@ -5076,7 +5074,7 @@ namespace Sofar.HvBMSUI.ViewModels
                         //    ProcessBatterySOC(startBatteryIndex, data);
                         //}
                         //
-                        var batterySocs = new string[ConstantDef.MaxBatteryCell];
+                        var batterySocs = new string[ConstantDef.PageMaxBatteryCellNumber];
                         //调试数据 实际7包共48个电池SOC数据,最后一帧是48 % 7 = 6
                         if (frameNumber >= 0x00 && frameNumber <= 0x10)
                         {
@@ -5099,16 +5097,13 @@ namespace Sofar.HvBMSUI.ViewModels
                                 int byteIndex = k + 1;
                                 double SocRaw = data[byteIndex];
                                 // SOC数据 1/bit 范围：0-255
-                                if (startBatteryIndex + k < ConstantDef.MaxBatteryCell)
+                                if (startBatteryIndex + k < ConstantDef.PageMaxBatteryCellNumber)
                                 {
                                     batterySocs[startBatteryIndex + k] = SocRaw.ToString();
                                 }
 
                             }
-                            for (int i = startBatteryIndex; i < batterySocDataList.Count; i++)
-                            {
-                                batterySocDataList[i].SOC = "";
-                            }
+
 
 
                             for (int i = startBatteryIndex; i < batterySocs.Length; i++)
@@ -5136,7 +5131,7 @@ namespace Sofar.HvBMSUI.ViewModels
                     case 0x10A1E0FF:
                         // Byte 1:单电芯数据包组号(0~((PACK电芯个数/7) - 1))  224/7-1=31
                         frameNumber = data[0];
-                        var batterySohs = new string[ConstantDef.MaxBatteryCell];
+                        var batterySohs = new string[ConstantDef.PageMaxBatteryCellNumber];
                         //if (frameNumber >= 0x01 && frameNumber <= 0x20)
                         //{
                         //    int startBatteryIndex = GetbatterySOHStartIndex(frameNumber);
@@ -5166,16 +5161,13 @@ namespace Sofar.HvBMSUI.ViewModels
                                 int byteIndex = k + 1;
                                 double SohRaw = data[byteIndex];
                                 // SOH数据 1/bit 范围：0-255
-                                if (startBatteryIndex + k < ConstantDef.MaxBatteryCell)
+                                if (startBatteryIndex + k < ConstantDef.PageMaxBatteryCellNumber)
                                 {
                                     batterySohs[startBatteryIndex + k] = SohRaw.ToString();
                                 }
 
                             }
-                            for (int i = startBatteryIndex; i < batterySohDataList.Count; i++)
-                            {
-                                batterySohDataList[i].SOC = "";
-                            }
+
 
                             for (int i = startBatteryIndex; i < batterySohs.Length; i++)
                             {

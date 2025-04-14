@@ -46,6 +46,8 @@ namespace Sofar.HvBMSUI.ViewModels
         /// </summary>
         public ObservableCollection<string> SecondList { get; } = new ObservableCollection<string>(Enumerable.Range(0, 60).Select(x => x.ToString("D2")));
 
+        public ObservableCollection<string> ProductNameList { get; } = new ObservableCollection<string>(new[] { "PowerMagic 1.0", "PowerMagic 2.0" });
+
         private DateTime _selectedDate;
         public DateTime SelectedDate
         {
@@ -407,7 +409,19 @@ namespace Sofar.HvBMSUI.ViewModels
                 OnPropertyChanged(nameof(BatteryManufacturer));
             }
         }
-
+        private string _ProductName;
+        /// <summary>
+        /// 硬件版本
+        /// </summary>
+        public string ProductName
+        {
+            get { return _ProductName; }
+            set
+            {
+                _ProductName = value;
+                OnPropertyChanged(nameof(ProductName));
+            }
+        }
         private string _SystemTotalModuleNumber;
         /// <summary>
         /// 系统总模块数
@@ -783,10 +797,20 @@ namespace Sofar.HvBMSUI.ViewModels
                 OnPropertyChanged(nameof(ActiveEquilibriumStatus));
             }
         }
+
+        private ObservableCollection<ActiveEquilibriumCheckBoxGroup> _ActiveEquilibriumCheckBoxItems;
         /// <summary>
         /// 主动均衡显示结构
         /// </summary>
-        public ObservableCollection<ActiveEquilibriumCheckBoxGroup> ActiveEquilibriumCheckBoxItems { get; set; }
+        public ObservableCollection<ActiveEquilibriumCheckBoxGroup> ActiveEquilibriumCheckBoxItems
+        {
+            get { return _ActiveEquilibriumCheckBoxItems; }
+            set
+            {
+                _ActiveEquilibriumCheckBoxItems = value;
+                OnPropertyChanged(nameof(ActiveEquilibriumCheckBoxItems));
+            }
+        }
 
 
         private string _PassiveEquilibriumStatus = "Visible";
@@ -802,10 +826,19 @@ namespace Sofar.HvBMSUI.ViewModels
                 OnPropertyChanged(nameof(PassiveEquilibriumStatus));
             }
         }
+        private ObservableCollection<CheckBoxItem> _PassiveEquilibriumCheckBoxItems;
         /// <summary>
         /// 被动均衡显示结构
         /// </summary>
-        public ObservableCollection<CheckBoxItem> PassiveEquilibriumCheckBoxItems { get; set; }
+        public ObservableCollection<CheckBoxItem> PassiveEquilibriumCheckBoxItems
+        {
+            get { return _PassiveEquilibriumCheckBoxItems; }
+            set
+            {
+                _PassiveEquilibriumCheckBoxItems = value;
+                OnPropertyChanged(nameof(PassiveEquilibriumCheckBoxItems));
+            }
+        }
 
         private string _PassiveEquilibriumState = "电芯1~64被动均衡状态";
 
@@ -822,17 +855,34 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
+        private ObservableCollection<ActiveEquilibriumCheckBoxGroup> _ActiveEquilibriumControlItems;
         /// <summary>
         /// 主动均衡控制结构
         /// </summary>
-        public ObservableCollection<ActiveEquilibriumCheckBoxGroup> ActiveEquilibriumControlItems { get; set; }
+        public ObservableCollection<ActiveEquilibriumCheckBoxGroup> ActiveEquilibriumControlItems
+        {
+            get { return _ActiveEquilibriumControlItems; }
+            set
+            {
+                _ActiveEquilibriumControlItems = value;
+                OnPropertyChanged(nameof(ActiveEquilibriumControlItems));
+            }
+        }
+
+        private ObservableCollection<PassiveEquilibriumCheckBoxGroup> _PassiveEquilibriumControlItems;
+
         /// <summary>
         /// 被动均衡控制结构
         /// </summary>
-        public ObservableCollection<PassiveEquilibriumCheckBoxGroup> PassiveEquilibriumControlItems { get; set; }
-
-
-
+        public ObservableCollection<PassiveEquilibriumCheckBoxGroup> PassiveEquilibriumControlItems
+        {
+            get { return _PassiveEquilibriumControlItems; }
+            set
+            {
+                _PassiveEquilibriumControlItems = value;
+                OnPropertyChanged(nameof(PassiveEquilibriumControlItems));
+            }
+        }
 
         public ObservableCollection<int> PackageNumberList { get; } = new ObservableCollection<int>(Enumerable.Range(1, 60));
         private int _selectedPackageNumber = 1;
@@ -3480,7 +3530,7 @@ namespace Sofar.HvBMSUI.ViewModels
         BaseCanHelper baseCanHelper = null;
         public BCU_Control_ViewModel()
         {
-           
+
             switch (BMSConfig.ConfigManager.CAN_DevType)
             {
                 case "USBCAN-I/I+":
@@ -3497,22 +3547,38 @@ namespace Sofar.HvBMSUI.ViewModels
 
 
             cts = new CancellationTokenSource();
-            if (batteryVoltageDataList == null) batteryVoltageDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.batteryVoltageData>();
-            if (batteryTemperatureDataList == null) batteryTemperatureDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.batteryTemperatureData>();
-            if (batterySocDataList == null) batterySocDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.batterySocData>();
-            if (batterySohDataList == null) batterySohDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.batterySohData>();
-            if (supplyVoltageDataList == null) supplyVoltageDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.supplyVoltageData>();
-            if (poleTemperatureDataList == null) poleTemperatureDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.poleTemperatureData>();
-            if (moduleTotalVoltageDataList == null) moduleTotalVoltageDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.moduleTotalVoltageData>();
-            if (AlarmMessageDataList == null) AlarmMessageDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.AlarmMessageData>();
 
-            ChangeEquilibriumList(48);
+            ChangeEquilibriumList(64);
+
+            ChangeBatteryList(512);
 
             //初始选择更新电池电压数据
             IsChecked_BatteryVoltage = true;
 
+
+           
+        }
+
+        private void ChangeBatteryList(int totalCell)
+        {
+
+            if (batteryVoltageDataList != null && batteryVoltageDataList.Count == totalCell)
+            {
+                return;
+            }
+
+            batteryVoltageDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.batteryVoltageData>();
+            batteryTemperatureDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.batteryTemperatureData>();
+            batterySocDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.batterySocData>();
+            batterySohDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.batterySohData>();
+            supplyVoltageDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.supplyVoltageData>();
+            poleTemperatureDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.poleTemperatureData>();
+            moduleTotalVoltageDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.moduleTotalVoltageData>();
+            AlarmMessageDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.AlarmMessageData>();
+
+
             //添加电池电压编号
-            for (int i = 1; i <= 384; i++)
+            for (int i = 1; i <= totalCell; i++)
             {
                 batteryVoltageDataList.Add(new RealtimeData_BMS1500V_BCU.batteryVoltageData
                 {
@@ -3521,7 +3587,7 @@ namespace Sofar.HvBMSUI.ViewModels
             }
 
             // 添加SOC编号
-            for (int i = 1; i <= 384; i++)
+            for (int i = 1; i <= totalCell; i++)
             {
                 batterySocDataList.Add(new RealtimeData_BMS1500V_BCU.batterySocData
                 {
@@ -3530,7 +3596,7 @@ namespace Sofar.HvBMSUI.ViewModels
             }
 
             //添加SOH编号
-            for (int i = 1; i <= 384; i++)
+            for (int i = 1; i <= totalCell; i++)
             {
                 batterySohDataList.Add(new RealtimeData_BMS1500V_BCU.batterySohData
                 {
@@ -3564,7 +3630,6 @@ namespace Sofar.HvBMSUI.ViewModels
                     CellNumber = i.ToString() + "#"
                 });
             }
-
         }
 
         private void ChangeEquilibriumList(int batterySeries)
@@ -3713,10 +3778,11 @@ namespace Sofar.HvBMSUI.ViewModels
             {
                 return dataList;
             }
+
             //16列
             int totalColumns = 16;
-            //480行
-            int totalRows = 480;
+            //64行
+            int totalRows = 64;
             string[,] values = new string[totalColumns, totalRows];
             string[] dataName = new string[totalRows];
 
@@ -3734,8 +3800,20 @@ namespace Sofar.HvBMSUI.ViewModels
                 int rowInGroup = (currentIndex % maxSectionsPerGroup) / totalColumns;
                 int col = (currentIndex % maxSectionsPerGroup) % totalColumns;
 
-                values[col, startingRow + rowInGroup * 2] = getPrimaryValue(data);
-                values[col, startingRow + rowInGroup * 2 + 1] = getSecondaryValue(data);
+                try
+                {
+                    var setRowIndex = startingRow + rowInGroup * 2;
+                    if (setRowIndex < totalRows)
+                    {
+                        values[col, setRowIndex] = getPrimaryValue(data);
+                        values[col, setRowIndex + 1] = getSecondaryValue(data);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //调试用,正常if (setRowIndex < totalRows)后，不会出现
+                    //throw;
+                }
             }
 
             for (int i = 0; i < totalRows; i++)
@@ -3892,7 +3970,6 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-        public static int BatterySCount = 64;
 
         /// <summary>
         /// 更新电池电压数据
@@ -3907,7 +3984,7 @@ namespace Sofar.HvBMSUI.ViewModels
                             new[] { "节号", "电压" },
                             data => data.SectionNumber,
                             data => data.Voltage,
-                            BatterySCount));
+                            ConstantDef.BatteryCellNumber));
                     });
         }
 
@@ -3924,7 +4001,7 @@ namespace Sofar.HvBMSUI.ViewModels
                     new[] { "序号", "温度" },
                     data => data.CellNumber,
                     data => data.Temperature,
-                    28));
+                   ConstantDef.BatteryTemperatureNumber));
             });
         }
 
@@ -3941,7 +4018,7 @@ namespace Sofar.HvBMSUI.ViewModels
                     new[] { "节号", "SOC" },
                     data => data.SectionNumber,
                     data => data.SOC,
-                    BatterySCount));
+                    ConstantDef.BatteryCellNumber));
             });
         }
 
@@ -3958,7 +4035,7 @@ namespace Sofar.HvBMSUI.ViewModels
                     new[] { "节号", "SOH" },
                     data => data.SectionNumber,
                     data => data.SOH,
-                    BatterySCount));
+                    ConstantDef.BatteryCellNumber));
             });
         }
 
@@ -4095,7 +4172,7 @@ namespace Sofar.HvBMSUI.ViewModels
         /// </summary>
         private void StartEquilibrium(CancellationToken token, byte addressBCU, byte commandCode, bool isActive)
         {
-            if (ConstantDef.BCU_ModuleNumber <= 6 || isActive)
+            if (ConstantDef.BatteryCellNumber <= 48 || isActive)
             {
                 byte[] frameId = { 0xF4, addressBCU, commandCode, 0x18 };
                 byte[] frame = PrepareEquilibriumData(isActive);
@@ -4408,220 +4485,58 @@ namespace Sofar.HvBMSUI.ViewModels
         private static readonly Random random = new Random();
 
         private readonly object lockObject = new object();
+        private void ClearBatteryList()
+        {
+            if (ConstantDef.BatteryCellNumber <= 48)
+            {
 
+                for (int i = 48; i < batteryVoltageDataList.Count; i++)
+                {
+                    if (i % 64 >= 48 && i % 64 <= 64)
+                        batteryVoltageDataList[i].Voltage = "";
+                }
+                for (int i = 48; i < batterySocDataList.Count; i++)
+                {
+                    if (i % 64 >= 48 && i % 64 <= 64)
+                        batterySocDataList[i].SOC = "";
+                }
+                for (int i = 48; i < batterySohDataList.Count; i++)
+                {
+                    if (i % 64 >= 48 && i % 64 <= 64)
+                        batterySohDataList[i].SOH = "";
+                }
+                for (int i = 48; i < batteryTemperatureDataList.Count; i++)
+                {
+                    if (i % 64 >= 48 && i % 64 <= 64)
+                        batteryTemperatureDataList[i].Temperature = "";
+                }
+                for (int i = 48; i < supplyVoltageDataList.Count; i++)
+                {
+                    if (i % 64 >= 48 && i % 64 <= 64)
+                        supplyVoltageDataList[i].SupplyVoltage = "";
+                }
+                for (int i = 48; i < poleTemperatureDataList.Count; i++)
+                {
+                    if (i % 64 >= 48 && i % 64 <= 64)
+                        poleTemperatureDataList[i].PoleTemperature = "";
+                }
+                for (int i = 48; i < moduleTotalVoltageDataList.Count; i++)
+                {
+                    if (i % 64 >= 48 && i % 64 <= 64)
+                        moduleTotalVoltageDataList[i].ModuleTotalVoltage = "";
+                }
+            }
+
+
+
+        }
         private void TimerCallBack(object obj)
         {
-            // # region BMU表格模拟数据
-            //// 每秒生成 384 个随机电压数据
-            //for (int i = 0; i < 384; i++)
-            //{
-            //    double min = 0.0;
-            //    double max = 5.0;
-            //    double scaledRandomDouble = min + (max - min) * random.NextDouble();
-            //    string sectionNumber = (i + 1).ToString() + "#";
-
-            //    //lock (lockObject)
-            //    //{
-            //        // 查找是否已存在该编号的记录
-            //        var existingData = batteryVoltageDataList.FirstOrDefault(data => data.SectionNumber == sectionNumber);
-            //        if (existingData != null)
-            //        {
-            //            // 更新已有记录的电压值
-            //            existingData.Voltage = scaledRandomDouble.ToString("F2");
-            //        }
-            //        else
-            //        {
-            //            // 新增记录
-            //            batteryVoltageDataList.Add(new RealtimeData_BMS1500V_BCU.batteryVoltageData
-            //            {
-            //                SectionNumber = sectionNumber,
-            //                Voltage = scaledRandomDouble.ToString("F2")
-            //            });
-            //        }
-            //    //}
-            //}
-
-            //// 每秒生成 384 个随机SOC数据
-            //for (int i = 0; i < 384; i++)
-            //{
-            //    double min = 1.0;
-            //    double max = 100.0;
-            //    double scaledRandomDouble = min + (max - min) * random.NextDouble();
-            //    string sectionNumber = (i + 1).ToString() + "#";
-
-            //    //lock (lockObject)
-            //    //{
-            //    // 查找是否已存在该编号的记录
-            //    var existingData = batterySocDataList.FirstOrDefault(data => data.SectionNumber == sectionNumber);
-            //    if (existingData != null)
-            //    {
-            //        // 更新已有记录的SOC
-            //        existingData.SOC = scaledRandomDouble.ToString("F2");
-            //    }
-            //    else
-            //    {
-            //        // 新增记录
-            //        batterySocDataList.Add(new RealtimeData_BMS1500V_BCU.batterySocData
-            //        {
-            //            SectionNumber = sectionNumber,
-            //            SOC = scaledRandomDouble.ToString("F2")
-            //        });
-            //    }
-            //    //}
-            //}
-
-            // 每秒生成 384 个随机SOH数据
-            //for (int i = 0; i < 384; i++)
-            //{
-            //    double min = 1.0;
-            //    double max = 100.0;
-            //    double scaledRandomDouble = min + (max - min) * random.NextDouble();
-            //    string sectionNumber = (i + 1).ToString() + "#";
-
-            //    //lock (lockObject)
-            //    //{
-            //    // 查找是否已存在该编号的记录
-            //    var existingData = batterySohDataList.FirstOrDefault(data => data.SectionNumber == sectionNumber);
-            //    if (existingData != null)
-            //    {
-            //        // 更新已有记录的SOH
-            //        existingData.SOH = scaledRandomDouble.ToString("F2");
-            //    }
-            //    else
-            //    {
-            //        // 新增记录
-            //        batterySohDataList.Add(new RealtimeData_BMS1500V_BCU.batterySohData
-            //        {
-            //            SectionNumber = sectionNumber,
-            //            SOH = scaledRandomDouble.ToString("F2")
-            //        });
-            //    }
-            //    //}
-            //}
-
-            //// 每秒生成 224 个随机温度数据
-            //for (int i = 0; i < 224; i++)
-            //{
-            //    double min = 30.0;
-            //    double max = 60.0;
-            //    double scaledRandomDouble = min + (max - min) * random.NextDouble();
-            //    string cellNumber = (i + 1).ToString() + "#";
-
-            //    //lock (lockObject)
-            //    //{
-            //    // 查找是否已存在该编号的记录
-            //    var existingData = batteryTemperatureDataList.FirstOrDefault(data => data.CellNumber == cellNumber);
-            //    if (existingData != null)
-            //    {
-            //        // 更新已有记录的温度数据
-            //        existingData.Temperature = scaledRandomDouble.ToString("F2");
-            //    }
-            //    else
-            //    {
-            //        // 新增记录
-            //        batteryTemperatureDataList.Add(new RealtimeData_BMS1500V_BCU.batteryTemperatureData
-            //        {
-            //            CellNumber = cellNumber,
-            //            Temperature = scaledRandomDouble.ToString("F2")
-            //        });
-            //    }
-            //    //}
-            //}
-
-            //// 每秒生成 16 个随机极柱温度数据
-            //for (int i = 0; i < 16; i++)
-            //{
-            //    double min = 30.0;
-            //    double max = 60.0;
-            //    double scaledRandomDouble = min + (max - min) * random.NextDouble();
-            //    string cellNumber = (i + 1).ToString() + "#";
-
-            //    //lock (lockObject)
-            //    //{
-            //    // 查找是否已存在该编号的记录
-            //    var existingData = poleTemperatureDataList.FirstOrDefault(data => data.CellNumber == cellNumber);
-            //    if (existingData != null)
-            //    {
-            //        // 更新已有记录的极柱温度
-            //        existingData.PoleTemperature = scaledRandomDouble.ToString("F2");
-            //    }
-            //    else
-            //    {
-            //        // 新增记录
-            //        poleTemperatureDataList.Add(new RealtimeData_BMS1500V_BCU.poleTemperatureData
-            //        {
-
-            //            CellNumber = cellNumber,
-            //            PoleTemperature = scaledRandomDouble.ToString("F2")
-            //        });
-            //    }
-            //    //}
-            //}
-
-            //// 每秒生成 8 个随机供电电压数据
-            //for (int i = 0; i < 8; i++)
-            //{
-            //    double min = 0.0;
-            //    double max = 5.0;
-            //    double scaledRandomDouble = min + (max - min) * random.NextDouble();
-            //    string cellNumber = (i + 1).ToString() + "#";
-
-            //    //lock (lockObject)
-            //    //{
-            //    // 查找是否已存在该编号的记录
-            //    var existingData = supplyVoltageDataList.FirstOrDefault(data => data.CellNumber == cellNumber);
-            //    if (existingData != null)
-            //    {
-            //        // 更新已有记录的供电电压
-            //        existingData.SupplyVoltage = scaledRandomDouble.ToString("F2");
-            //    }
-            //    else
-            //    {
-            //        // 新增记录
-            //        supplyVoltageDataList.Add(new RealtimeData_BMS1500V_BCU.supplyVoltageData
-            //        {
-
-            //            CellNumber = cellNumber,
-            //            SupplyVoltage = scaledRandomDouble.ToString("F2")
-            //        });
-            //    }
-            //    //}
-            //}
-
-            //// 每秒生成 8 个随机模块总电压数据
-            //for (int i = 0; i < 8; i++)
-            //{
-            //    double min = 0.0;
-            //    double max = 5.0;
-            //    double scaledRandomDouble = min + (max - min) * random.NextDouble();
-            //    string cellNumber = (i + 1).ToString() + "#";
-
-            //    //lock (lockObject)
-            //    //{
-            //    // 查找是否已存在该编号的记录
-            //    var existingData = moduleTotalVoltageDataList.FirstOrDefault(data => data.CellNumber == cellNumber);
-            //    if (existingData != null)
-            //    {
-            //        // 更新已有记录的模块总电压
-            //        existingData.ModuleTotalVoltage = scaledRandomDouble.ToString("F2");
-            //    }
-            //    else
-            //    {
-            //        // 新增记录
-            //        moduleTotalVoltageDataList.Add(new RealtimeData_BMS1500V_BCU.moduleTotalVoltageData
-            //        {
-
-            //            CellNumber = cellNumber,
-            //            ModuleTotalVoltage = scaledRandomDouble.ToString("F2")
-            //        });
-            //    }
-            //    //}
-            //}
-            //#endregion
 
 
             if (baseCanHelper.IsConnection)
             {
+                //ClearBatteryList();
                 // 主控(BCU)地址
                 byte Address_BCU = Convert.ToByte(Convert.ToInt32(SelectedAddress_BCU, 16));
                 // PC 请求电池采集消息（命令码 0x30）
@@ -4707,6 +4622,9 @@ namespace Sofar.HvBMSUI.ViewModels
                     // 主控(BCU)地址
                     byte Address_BCU = Convert.ToByte(Convert.ToInt32(SelectedAddress_BCU, 16));
 
+                    byte[] bytes0 = new byte[8] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                    baseCanHelper.Send(bytes0, new byte[] { 0xF4, Address_BCU, 0x1F, 0x18 });
+
                     //查询传感器报文（命令码 0x03）
                     byte[] bytes1 = new byte[8] { 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
                     baseCanHelper.Send(bytes1, new byte[] { 0xF4, Address_BCU, 0x1F, 0x18 });
@@ -4721,7 +4639,7 @@ namespace Sofar.HvBMSUI.ViewModels
 
                     //查询SOC 参数（命令码 0x1A）
                     byte[] bytes4 = new byte[8] { 0x1A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-                    baseCanHelper.Send(bytes4, new byte[] { 0xF4, Address_BCU, 0x1A, 0x18 });
+                    baseCanHelper.Send(bytes4, new byte[] { 0xF4, Address_BCU, 0x1F, 0x18 });
 
                     //查询询版本号消息（命令码 0x40）
                     //查询主控版本号
@@ -4853,6 +4771,36 @@ namespace Sofar.HvBMSUI.ViewModels
             {
                 switch (canid[2])
                 {
+
+                    case 0x00:
+                        if (data[0] == 4)
+                        {
+                            ProductName = "PowerMagic " + Encoding.ASCII.GetString(data.Skip(1).Take(1).ToArray())
+                                + "." + Encoding.ASCII.GetString(data.Skip(2).Take(1).ToArray());
+
+                            if (ProductName == "PowerMagic 1.0")
+                            {
+                                ConstantDef.BatteryCellNumber = 48;
+                                ConstantDef.BatteryTemperatureNumber = 28;
+                                ChangeEquilibriumList(48);
+                                ChangeBatteryList(384);
+                            }
+                            else
+                            {
+                                ConstantDef.BatteryCellNumber = 64;
+                                ConstantDef.BatteryTemperatureNumber = 36;
+                                ChangeEquilibriumList(64);
+                                ChangeBatteryList(512);
+                            }
+
+
+                            if (IsShowMessage)
+                            {
+                                MessageBoxHelper.Success("读取成功！", "提示", null, ButtonType.OK);
+                            }
+                            IsShowMessage = true;
+                        }
+                        break;
                     //从控模块基本参数（命令码 0x14）
                     case 0x14:
                         if (data[0] == 1)
@@ -4862,12 +4810,7 @@ namespace Sofar.HvBMSUI.ViewModels
                             SystemTotalTemperaturesNumber = (data[4] << 8 | data[5]).ToString();
 
                             ConstantDef.BCU_ModuleNumber = Convert.ToInt32(SystemTotalModuleNumber);
-                            ChangeEquilibriumList(Convert.ToInt32(SystemTotalbatteryNumber) / ConstantDef.BCU_ModuleNumber);
-                            if (IsShowMessage)
-                            {
-                                MessageBoxHelper.Success("读取成功！", "提示", null, ButtonType.OK);
-                            }
-                            IsShowMessage = true;
+
                         }
                         break;
                     //传感器
@@ -4971,7 +4914,7 @@ namespace Sofar.HvBMSUI.ViewModels
                         {
                             SelectedPackageNumber = PackageNumberList[data[1] - 1];
 
-                            if (ConstantDef.BCU_ModuleNumber <= 6)
+                            if (ConstantDef.BatteryCellNumber <= 48)
                             {
 
                                 if (SelectedModuleNumber == ModuleNumberList[bit3_8 - 1]) //显示手动选择的模块号对应状态
@@ -6136,7 +6079,38 @@ namespace Sofar.HvBMSUI.ViewModels
             if (baseCanHelper.Send(data, can_id)) MessageBoxHelper.Success("写入成功！", "提示", null, ButtonType.OK);
             else MessageBoxHelper.Warning("写入失败！", "提示", null, ButtonType.OK);
         }
+        public ICommand Write_0x00_Cmd => new RelayCommand(Write_0x00);
+        /// <summary>
+        /// 设置RTC 数据（命令码 0x00）
+        /// </summary>
+        public void Write_0x00()
+        {
+            byte Address_BCU = Convert.ToByte(Convert.ToInt32(SelectedAddress_BCU, 16));
+            byte[] can_id = new byte[] { 0xF4, Address_BCU, 0x00, 0x18 };
+            var strArray = Encoding.ASCII.GetBytes(ProductName.Replace("PowerMagic ", ""));
+            byte[] bytes = new byte[] {0x04,
+                                       strArray[0],
+                                       strArray[2],
+                                       0,
+                                       0,
+                                       0,
+                                       0,
+                                       0};
 
+            if (ProductName == "PowerMagic 1.0")
+            {
+                ConstantDef.BatteryCellNumber = 48;
+                ConstantDef.BatteryTemperatureNumber = 28;
+            }
+            else
+            {
+                ConstantDef.BatteryCellNumber = 64;
+                ConstantDef.BatteryTemperatureNumber = 36;
+            }
+
+            if (baseCanHelper.Send(bytes, can_id)) MessageBoxHelper.Success("写入成功！", "提示", null, ButtonType.OK);
+            else MessageBoxHelper.Warning("写入失败！", "提示", null, ButtonType.OK);
+        }
         public ICommand Write_0x12_Cmd => new RelayCommand(Write_0x12);
         /// <summary>
         /// 设置RTC 数据（命令码 0x12）
@@ -6190,7 +6164,7 @@ namespace Sofar.HvBMSUI.ViewModels
         /// </summary>
         public void Write_0x14()
         {
-            ConstantDef.BCU_ModuleNumber = Convert.ToInt32(SystemTotalModuleNumber);
+
             byte Address_BCU = Convert.ToByte(Convert.ToInt32(SelectedAddress_BCU, 16));
             byte[] can_id = new byte[] { 0xF4, Address_BCU, 0x14, 0x18 };
             byte[] data = new byte[8];

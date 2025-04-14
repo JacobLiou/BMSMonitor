@@ -968,6 +968,9 @@ namespace Sofar.HvBMSUI.ViewModels
                     byte Address_BCU = Convert.ToByte(Convert.ToInt32(SelectedAddress_BCU, 16));
                     byte[] bytes7 = new byte[8] { 0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
                     bmsOper.Send(bytes7, new byte[] { 0xF4, Address_BCU, 0x1F, 0x18 });
+
+                    //byte[] bytes0 = new byte[8] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                    //bmsOper.Send(bytes0, new byte[] { 0xF4, Address_BCU, 0x1F, 0x18 });
                     Thread.Sleep(100);
                 }
             }).ContinueWith((obj) =>
@@ -1865,6 +1868,26 @@ namespace Sofar.HvBMSUI.ViewModels
                         ConstantDef.BCU_ModuleNumber = Convert.ToInt32(data[1]);
                     }
                     break;
+                //case 0x00:
+                //    if (data[0] == 4)
+                //    {
+                //        var ProductName = "PowerMagic " + Encoding.ASCII.GetString(data.Skip(1).Take(1).ToArray())
+                //            + "." + Encoding.ASCII.GetString(data.Skip(2).Take(1).ToArray());
+
+                //        if (ProductName == "PowerMagic 1.0")
+                //        {
+                //            ConstantDef.BatteryCellCount = 48;
+                //            ConstantDef.BatteryTemperatureCount = 28;
+
+                //        }
+                //        else
+                //        {
+                //            ConstantDef.BatteryCellCount = 64;
+                //            ConstantDef.BatteryTemperatureCount = 36;
+
+                //        }
+                //    }
+                //    break;
                 case 0x04://组端总电压上限报警值                       
                     AlarmParameter_2_1 = ((data[0] << 8 | data[1]) * 0.1).ToString("F1"); // 组端总电压轻微报警上限值  0.1V/bit 偏移量： 0 范围：0~800V
                     AlarmParameter_2_2 = ((data[2] << 8 | data[3]) * 0.1).ToString("F1"); // 组端总电压一般报警上限值  0.1V/bit 偏移量： 0 范围：0~800V
