@@ -172,7 +172,7 @@ namespace Sofar.BMSLib
                 {
                     //MessageBoxHelper.Warning("打开CAN设备失败!", "警告", null, ButtonType.OK);
                     ECANHelper.CloseDevice(_devType, _devIndex);
-                    throw new Exception("打开CAN设备失败!");
+                    throw new Exception("初始化CAN设备失败!");
                     return;
                 }
 
@@ -180,7 +180,7 @@ namespace Sofar.BMSLib
                 {
                     //MessageBoxHelper.Warning("打开CAN设备失败!", "警告", null, ButtonType.OK);
                     ECANHelper.CloseDevice(_devType, _devIndex);
-                    throw new Exception("打开CAN设备失败!");
+                    throw new Exception("启动CAN设备失败!");
                     return;
                 }
                 IsConnection = true;
