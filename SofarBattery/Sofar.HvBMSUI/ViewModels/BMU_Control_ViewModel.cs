@@ -2131,12 +2131,9 @@ namespace Sofar.HvBMSUI.ViewModels
                 FaultInfo.FaultInfos1.ForEach(x => x.State = 0);
                 FaultInfo.FaultInfos2.ForEach(x => x.State = 0);
                 FaultInfo.FaultInfos3.ForEach(x => x.State = 0);
-                batteryVoltageDataList.Clear();
-                batterySocDataList.Clear();
-                batterySohDataList.Clear();
-                batteryTemperatureDataList.Clear();
-                batteryEquilibriumStateDataList.Clear();
-                batteryEquilibriumTemperatureDataList.Clear();
+
+                ClearBatteryList(0);
+
                 OnPropertyChanged(nameof(SelectedRequest7));
             }
         }
@@ -4101,36 +4098,35 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-        private void ClearBatteryList()
+        private void ClearBatteryList(int startIndex)
         {
-            if (ConstantDef.BatteryCellNumber == 48)
-            {
 
-                for (int i = 48; i < batteryVoltageDataList.Count; i++)
-                {
-                    batteryVoltageDataList[i].Voltage = "";
-                }
-                for (int i = 48; i < batterySocDataList.Count; i++)
-                {
-                    batterySocDataList[i].SOC = "";
-                }
-                for (int i = 48; i < batterySohDataList.Count; i++)
-                {
-                    batterySohDataList[i].SOH = "";
-                }
-                for (int i = 48; i < batteryTemperatureDataList.Count; i++)
-                {
-                    batteryTemperatureDataList[i].Temperature = "";
-                }
-                for (int i = 48; i < batteryEquilibriumStateDataList.Count; i++)
-                {
-                    batteryEquilibriumStateDataList[i].BatteryEquilibriumState = "";
-                }
-                for (int i = 48; i < batteryEquilibriumTemperatureDataList.Count; i++)
-                {
-                    batteryEquilibriumTemperatureDataList[i].BatteryEquilibriumTemperature = "";
-                }
+
+            for (int i = startIndex; i < batteryVoltageDataList.Count; i++)
+            {
+                batteryVoltageDataList[i].Voltage = "";
             }
+            for (int i = startIndex; i < batterySocDataList.Count; i++)
+            {
+                batterySocDataList[i].SOC = "";
+            }
+            for (int i = startIndex; i < batterySohDataList.Count; i++)
+            {
+                batterySohDataList[i].SOH = "";
+            }
+            for (int i = startIndex; i < batteryTemperatureDataList.Count; i++)
+            {
+                batteryTemperatureDataList[i].Temperature = "";
+            }
+            for (int i = startIndex; i < batteryEquilibriumStateDataList.Count; i++)
+            {
+                batteryEquilibriumStateDataList[i].BatteryEquilibriumState = "";
+            }
+            for (int i = startIndex; i < batteryEquilibriumTemperatureDataList.Count; i++)
+            {
+                batteryEquilibriumTemperatureDataList[i].BatteryEquilibriumTemperature = "";
+            }
+
 
         }
 
@@ -4139,7 +4135,10 @@ namespace Sofar.HvBMSUI.ViewModels
             if (baseCanHelper.IsConnection)
             {
 
-                ClearBatteryList();
+                if (ConstantDef.BatteryCellNumber == 48)
+                {
+                    ClearBatteryList(48);
+                }
 
                 //获取实时数据指令       0x072：BMS电池均衡状态 0x0A0：BMS单电芯的SOC 0x0A1：BMS单电芯的SOH
                 baseCanHelper.Send(new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
@@ -4196,48 +4195,25 @@ namespace Sofar.HvBMSUI.ViewModels
                 baseCanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
                                , new byte[] { 0xE0, Convert.ToByte(SelectedRequest7), 0x2E, 0x10 });
 
-                if (baseCanHelper.CommunicationType == "Ecan")
-                {
-                    lock (EcanHelper._locker)
-                    {
-                        while (EcanHelper._task.Count > 0
-                            && !cts.IsCancellationRequested)
-                        {
-                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-
-                            Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
-                            //Log.Info($"{System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")} 接收CAN数据:{BitConverter.ToString(ch.Data).Replace("-", " ")}  帧ID:{ch.ID.ToString("X8")}");
-
-                        }
-                    }
-                }
-                else
-                {
-                    lock (ControlcanHelper._locker)
-                    {
-                        while (ControlcanHelper._task.Count > 0
-                            && !cts.IsCancellationRequested)
-                        {
-                            VCI_CAN_OBJ ch = (VCI_CAN_OBJ)ControlcanHelper._task.Dequeue();
-
-                            Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
-                            //Log.Info($"{System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")} 接收CAN数据:{BitConverter.ToString(ch.Data).Replace("-", " ")}  帧ID:{ch.ID.ToString("X8")}");
-
-                        }
-                    }
-                }
             }
         }
 
 
         public void AnalysisData(uint canID, byte[] data)
         {
-            if ((canID & 0xff) != Convert.ToByte(SelectedRequest7))
+
+            byte Address_BMU = Convert.ToByte(SelectedRequest7);
+
+            byte[] canid = BitConverter.GetBytes(canID);
+
+            if ((canID & 0xff) != Address_BMU)
                 return;
+            //if (canid[0] != Address_BMU || !(canid[0] == Address_BMU && canid[1] == 0x81 /*&& canid[3] == 0x18*/)) 
+            //    return;
+
 
             if (model == null) model = new RealtimeData_BMS1500V_BMU();
             string[] strs;
-            byte[] canid = BitConverter.GetBytes(canID);
 
             //string[] batteryVoltages = new string[3840];
             //string[] batterySocs = new string[3840];
@@ -4324,81 +4300,6 @@ namespace Sofar.HvBMSUI.ViewModels
                         //报警信息                     
                         AnalysisLog(data, 1);
                         break;
-                    //新协议转移至表格显示
-                    //case 0x1009FFFF:
-                    //case 0x1009E0FF:
-                    //    initCount++;
-                    //    strs = new string[4];
-                    //    for (int i = 0; i < strs.Length; i++)
-                    //    {
-                    //        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
-                    //    }
-
-                    //    CellVoltage1 = strs[0];
-                    //    CellVoltage2 = strs[1];
-                    //    CellVoltage3 = strs[2];
-                    //    CellVoltage4 = strs[3];
-
-                    //    model.CellVoltage1 = Convert.ToUInt32(strs[0]);
-                    //    model.CellVoltage2 = Convert.ToUInt32(strs[1]);
-                    //    model.CellVoltage3 = Convert.ToUInt32(strs[2]);
-                    //    model.CellVoltage4 = Convert.ToUInt32(strs[3]);
-                    //    break;
-                    //case 0x100AFFFF:
-                    //case 0x100AE0FF:
-                    //    initCount++;
-                    //    strs = new string[4];
-                    //    for (int i = 0; i < strs.Length; i++)
-                    //    {
-                    //        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
-                    //    }
-
-                    //    CellVoltage5 = strs[0];
-                    //    CellVoltage6 = strs[1];
-                    //    CellVoltage7 = strs[2];
-                    //    CellVoltage8 = strs[3];
-
-                    //    model.CellVoltage5 = Convert.ToUInt32(strs[0]);
-                    //    model.CellVoltage6 = Convert.ToUInt32(strs[1]);
-                    //    model.CellVoltage7 = Convert.ToUInt32(strs[2]);
-                    //    model.CellVoltage8 = Convert.ToUInt32(strs[3]);
-                    //    break;
-                    //case 0x100BFFFF:
-                    //case 0x100BE0FF:
-                    //    initCount++;
-                    //    strs = new string[4];
-                    //    for (int i = 0; i < strs.Length; i++)
-                    //    {
-                    //        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
-                    //    }
-
-                    //    CellVoltage9 = strs[0];
-                    //    CellVoltage10 = strs[1];
-                    //    CellVoltage11 = strs[2];
-                    //    CellVoltage12 = strs[3];
-                    //    model.CellVoltage9 = Convert.ToUInt32(strs[0]);
-                    //    model.CellVoltage10 = Convert.ToUInt32(strs[1]);
-                    //    model.CellVoltage11 = Convert.ToUInt32(strs[2]);
-                    //    model.CellVoltage12 = Convert.ToUInt32(strs[3]);
-                    //    break;
-                    //case 0x100CFFFF:
-                    //case 0x100CE0FF:
-                    //    initCount++;
-                    //    strs = new string[4];
-                    //    for (int i = 0; i < strs.Length; i++)
-                    //    {
-                    //        strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
-                    //    }
-
-                    //    CellVoltage13 = strs[0];
-                    //    CellVoltage14 = strs[1];
-                    //    CellVoltage15 = strs[2];
-                    //    CellVoltage16 = strs[3];
-                    //    model.CellVoltage13 = Convert.ToUInt32(strs[0]);
-                    //    model.CellVoltage14 = Convert.ToUInt32(strs[1]);
-                    //    model.CellVoltage15 = Convert.ToUInt32(strs[2]);
-                    //    model.CellVoltage16 = Convert.ToUInt32(strs[3]);
-                    //    break;
                     case 0x100DFFFF:
                     case 0x100DE0FF:
                         initCount++;
@@ -4556,27 +4457,6 @@ namespace Sofar.HvBMSUI.ViewModels
                         if (!string.IsNullOrEmpty(strSn)) SN = strSn;
 
                         break;
-                    //case 0x102EE0FF:
-                    //    initCount++;
-                    //    //BMS软件版本
-                    //    string[] bsm_soft = new string[3];
-                    //    for (int i = 0; i < 3; i++)
-                    //    {
-                    //        bsm_soft[i] = data[i + 2].ToString().PadLeft(2, '0');
-                    //    }
-                    //    BMSSoftwareVersion = Encoding.ASCII.GetString(new byte[] { data[1] }) + string.Join("", bsm_soft);
-
-                    //    //BMS硬件版本
-                    //    string[] bsm_HW = new string[2];
-                    //    for (int i = 0; i < 2; i++)
-                    //    {
-                    //        bsm_HW[i] = data[i + 5].ToString().PadLeft(2, '0');
-                    //    }
-                    //    BMSHardwareVersion = string.Join("", bsm_HW);
-
-                    //    model.BMSSoftwareVersion = BMSSoftwareVersion;
-                    //    model.BMSHardwareVersion = BMSHardwareVersion;
-                    //    break;
                     case 0x1046FFFF:
                     case 0x1046E0FF:
                         initCount++;
@@ -4739,9 +4619,7 @@ namespace Sofar.HvBMSUI.ViewModels
                         model.ChgCurOffsetVolt = ChgCurOffsetVolt;
                         model.DsgCurOffsetVolt = DsgCurOffsetVolt;
                         break;
-
-                    //0x070:BMS电池单体电压(M - 1)* 30+ (N - 1)*3 ~  17 +(M - 1)* 30+ (N)*3 
-                    case 0x1070E0FF:
+                    case 0x1070E0FF://0x070:BMS电池单体电压(M - 1)* 30+ (N - 1)*3 ~  17 +(M - 1)* 30+ (N)*3 
                         // Byte 1:帧序号M  0x1-0x16    一帧3个电池电压数据，0x16帧共66个电池电压数据
                         int frameNumber = data[0];
                         // Byte 2: 包序号N 8包 1包66个电池电压数据  8包共528个电池电压数据
@@ -4812,9 +4690,7 @@ namespace Sofar.HvBMSUI.ViewModels
                         }
                         initCount++;
                         break;
-
-                    //0x071：BMS电池温度+(M - 1)* 30+ (N - 1)*3 ~ 17+(M - 1)* 30 + (N)*3 
-                    case 0x1071E0FF:
+                    case 0x1071E0FF: //0x071：BMS电池温度+(M - 1)* 30+ (N - 1)*3 ~ 17+(M - 1)* 30 + (N)*3 
                         // Byte 1:帧序号 1~10 10帧 1帧3个电池温度数据
                         frameNumber = data[0];
                         // Byte 2: 包序号 1~N（电压按 30节电池划分的包数） 
@@ -4897,8 +4773,7 @@ namespace Sofar.HvBMSUI.ViewModels
 
                         initCount++;
                         break;
-                    //0x072：BMS电池均衡状态 (电芯id>16)
-                    case 0x1072E0FF:
+                    case 0x1072E0FF://0x072：BMS电池均衡状态 (电芯id>16)
                         // Byte 1:包序号 1~N  1包56个电池均衡状态数据
                         frameNumber = data[0];
 
@@ -5002,9 +4877,7 @@ namespace Sofar.HvBMSUI.ViewModels
                         }
                         initCount++;
                         break;
-
-                    //0x073：BMS均衡温度 N1=1+(N-1)*30+3*(M-1)
-                    case 0x1073E0FF:
+                    case 0x1073E0FF://0x073：BMS均衡温度 N1=1+(N-1)*30+3*(M-1)
                         // Byte 1:帧序号 1~10 10帧 1帧3个电池温度数据
                         frameNumber = data[0];
                         // Byte 2: 包序号 1~N
@@ -5061,9 +4934,7 @@ namespace Sofar.HvBMSUI.ViewModels
 
                         initCount++;
                         break;
-
-                    // 0x0A0：BMS单电芯的SOC
-                    case 0x10A0FFFF:
+                    case 0x10A0FFFF:// 0x0A0：BMS单电芯的SOC
                     case 0x10A0E0FF:
                         // Byte 1:单电芯数据包组号(0~((PACK电芯个数/7) - 1))  224/7-1=31
                         frameNumber = data[0];
@@ -5125,9 +4996,7 @@ namespace Sofar.HvBMSUI.ViewModels
 
                         initCount++;
                         break;
-
-                    // 0x0A0：BMS单电芯的SOH
-                    case 0x10A1FFFF:
+                    case 0x10A1FFFF:// 0x0A0：BMS单电芯的SOH
                     case 0x10A1E0FF:
                         // Byte 1:单电芯数据包组号(0~((PACK电芯个数/7) - 1))  224/7-1=31
                         frameNumber = data[0];
@@ -5195,6 +5064,14 @@ namespace Sofar.HvBMSUI.ViewModels
 
                 switch (canid[2])
                 {
+                    case 0x1E:
+                        Selectedllc_force_dsg = llc_force_dsgList[data[0] & 0x03];
+                        Selectedllc_force_chg = llc_force_chgList[(data[0] >> 2) & 0x03];
+                        SelectedLED_ctrl = LED_ctrlList[(data[0] >> 4) & 0x03];
+                        Selectedhw_wdg_ctrl = hw_wdg_ctrlList[(data[0] >> 6) & 0x03];
+                        if (data[6] == 0xAA) SelectedForceCtrlSwitch = Force_ctrl_switchList[0];
+                        else SelectedForceCtrlSwitch = Force_ctrl_switchList[1];
+                        break;
                     //Flash数据
                     case 0x1F:
                         if (data[0] == 0x00)
@@ -5253,7 +5130,6 @@ namespace Sofar.HvBMSUI.ViewModels
                             return value;
                         }
                         break;
-
                     //参数标定0x1021XXE0 //混合（均衡-满充电压-加热膜）
                     case 0x21:
                         Bal_open_volt = numbers[0].ToString();
@@ -5292,7 +5168,6 @@ namespace Sofar.HvBMSUI.ViewModels
                         SelectedMinute = numbers_bit[4].ToString("D2");
                         SelectedSecond = numbers_bit[5].ToString("D2");
                         break;
-
                     //PACK_SN
                     case 0x27:
                         switch (data[0])
@@ -5363,7 +5238,6 @@ namespace Sofar.HvBMSUI.ViewModels
                                 break;
                         }
                         break;
-
                     case 0x2B:
                         SelectedForce_sleep = Force_sleepList[data[0] & 0x03];
                         SelectedAlarm_protection_beep = Alarm_protection_beepList[(data[0] >> 2) & 0x03];
@@ -5394,14 +5268,7 @@ namespace Sofar.HvBMSUI.ViewModels
                         if (data[6] == 0x00) Selectedforce_ctrl_switch = force_ctrl_switchList[0];
                         else if (data[6] == 0xAA) Selectedforce_ctrl_switch = force_ctrl_switchList[1];
                         break;
-                    case 0x1E:
-                        Selectedllc_force_dsg = llc_force_dsgList[data[0] & 0x03];
-                        Selectedllc_force_chg = llc_force_chgList[(data[0] >> 2) & 0x03];
-                        SelectedLED_ctrl = LED_ctrlList[(data[0] >> 4) & 0x03];
-                        Selectedhw_wdg_ctrl = hw_wdg_ctrlList[(data[0] >> 6) & 0x03];
-                        if (data[6] == 0xAA) SelectedForceCtrlSwitch = Force_ctrl_switchList[0];
-                        else SelectedForceCtrlSwitch = Force_ctrl_switchList[1];
-                        break;
+                    
                 }
             }
             catch (Exception)

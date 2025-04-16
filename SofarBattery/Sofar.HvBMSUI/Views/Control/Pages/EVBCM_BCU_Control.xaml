@@ -2373,7 +2373,7 @@
                 <StackPanel Grid.Row="7">
 
                     <GroupBox Header="报警信息" Margin="0,10,0,10">
-                        <StackPanel Margin="10">
+                        <StackPanel Margin="10" MinHeight="200">
                             <StackPanel Orientation="Horizontal"  Grid.Row="4" Grid.Column="0">
                                 <Button x:Name="txtRefreshAlarmMessage" Content="刷新报警信息" Margin="10" Width="120" Command="{Binding RefreshAlarmMessageCmd}">
                                     <Button.ToolTip>

@@ -7,7 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              xmlns:viewmodels="clr-namespace:Sofar.HvBMSUI.ViewModels" 
              d:DataContext="{d:DesignInstance Type=viewmodels:BMU_ParamControl_ViewModel}" mc:Ignorable="d"  
-             d:DesignHeight="1782" d:DesignWidth="1651">
+             d:DesignHeight="1782" d:DesignWidth="1650">
 
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
         <Grid Background="White">
@@ -74,6 +74,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -89,7 +90,7 @@
                             <CheckBox x:Name="ckbAlarmParameters_1" IsChecked="{Binding IsChecked_AlarmParameter_1}"/>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体过充保护 (mV)" Grid.Column="0" />
@@ -97,7 +98,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体过充解除 (mV)" Grid.Column="0" />
@@ -105,7 +106,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体过充告警 (mV)" Grid.Column="0" />
@@ -113,7 +114,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体过充解除 (mV)" Grid.Column="0" />
@@ -128,7 +129,7 @@
                             <CheckBox x:Name="ckbAlarmParameters_2" IsChecked="{Binding IsChecked_AlarmParameter_2}"/>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="总体过充保护 (V)" Grid.Column="0" />
@@ -136,7 +137,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="总体过充解除 (V)" Grid.Column="0" />
@@ -144,7 +145,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="总体过充告警 (V)" Grid.Column="0" />
@@ -152,7 +153,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="总体过充解除 (V)" Grid.Column="0" />
@@ -167,7 +168,7 @@
                             <CheckBox x:Name="ckbAlarmParameters_3" IsChecked="{Binding IsChecked_AlarmParameter_3}"/>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体过放保护 (V)" Grid.Column="0" />
@@ -175,7 +176,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体过放解除 (V)" Grid.Column="0" />
@@ -183,7 +184,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体过放告警 (V)" Grid.Column="0" />
@@ -191,7 +192,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体过放解除 (V)" Grid.Column="0" />
@@ -206,7 +207,7 @@
                             <CheckBox x:Name="ckbAlarmParameters_4" IsChecked="{Binding IsChecked_AlarmParameter_4}"/>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="总体过放保护 (V)" Grid.Column="0" />
@@ -214,7 +215,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="总体过放解除 (V)" Grid.Column="0" />
@@ -222,7 +223,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="总体过放告警 (V)" Grid.Column="0" />
@@ -230,7 +231,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="总体过放解除 (V)" Grid.Column="0" />
@@ -245,7 +246,7 @@
                             <CheckBox x:Name="ckbAlarmParameters_5" IsChecked="{Binding IsChecked_AlarmParameter_5}"/>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="充电过流保护 (A)" Grid.Column="0" />
@@ -253,7 +254,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="充电过流解除 (A)" Grid.Column="0" />
@@ -261,7 +262,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="充电过流告警 (A)" Grid.Column="0" />
@@ -269,7 +270,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="充电过流解除 (A)" Grid.Column="0" />
@@ -284,7 +285,7 @@
                             <CheckBox x:Name="ckbAlarmParameters_6" IsChecked="{Binding IsChecked_AlarmParameter_6}"/>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="放电过流保护 (A)" Grid.Column="0" />
@@ -292,7 +293,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="放电过流解除 (A)" Grid.Column="0" />
@@ -300,7 +301,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="放电过流告警 (A)" Grid.Column="0" />
@@ -308,7 +309,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Label Content="放电过流解除 (℃)" Grid.Column="0" />
@@ -323,7 +324,7 @@
                             <CheckBox x:Name="ckbAlarmParameters_7" IsChecked="{Binding IsChecked_AlarmParameter_7}"/>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="充电高温保护 (℃)" Grid.Column="0" />
@@ -331,7 +332,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="充电高温解除 (℃)" Grid.Column="0" />
@@ -339,7 +340,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="充电高温告警 (℃)" Grid.Column="0" />
@@ -347,7 +348,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="充电高温解除 (℃)" Grid.Column="0" />
@@ -355,7 +356,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="放电高温保护 (℃)" Grid.Column="0" />
@@ -363,7 +364,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="放电高温解除 (℃)" Grid.Column="0" />
@@ -371,7 +372,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="放电高温告警 (℃)" Grid.Column="0" />
@@ -379,7 +380,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="放电高温解除 (℃)" Grid.Column="0" />
@@ -394,7 +395,7 @@
                             <CheckBox x:Name="ckbAlarmParameters_8" IsChecked="{Binding IsChecked_AlarmParameter_8}"/>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="充电低温保护 (℃)" Grid.Column="0" />
@@ -402,7 +403,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="充电低温解除 (℃)" Grid.Column="0" />
@@ -410,7 +411,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="充电低温告警 (℃)" Grid.Column="0" />
@@ -418,7 +419,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="充电低温解除 (℃)" Grid.Column="0" />
@@ -426,7 +427,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="放电低温保护 (℃)" Grid.Column="0" />
@@ -434,7 +435,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="放电低温解除 (℃)" Grid.Column="0" />
@@ -442,7 +443,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="放电低温告警 (℃)" Grid.Column="0" />
@@ -450,7 +451,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="放电低温解除 (℃)" Grid.Column="0" />
@@ -465,7 +466,7 @@
                             <CheckBox x:Name="ckbAlarmParameters_9" IsChecked="{Binding IsChecked_AlarmParameter_9}"/>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="充电过流二级保护 (A)" Grid.Column="0" />
@@ -473,7 +474,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="充电过流二级保护解除 (A)" Grid.Column="0" />
@@ -481,7 +482,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="放电过流二级保护 (A)" Grid.Column="0" />
@@ -489,7 +490,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="放电过流二级保护解除 (A)" Grid.Column="0" />
@@ -504,7 +505,7 @@
                             <CheckBox x:Name="ckbAlarmParameters_10" IsChecked="{Binding IsChecked_AlarmParameter_10}"/>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体超限产生阈值 (mV)" Grid.Column="0" />
@@ -512,7 +513,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体超限解除阈值 (mV)" Grid.Column="0" />
@@ -520,7 +521,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体超低产生阈值 (mV)" Grid.Column="0" />
@@ -528,7 +529,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体超低解除阈值 (mV)" Grid.Column="0" />
@@ -543,7 +544,7 @@
                             <CheckBox x:Name="ckbAlarmParameters_11" IsChecked="{Binding IsChecked_AlarmParameter_11}"/>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="低电量保护 (%)" Grid.Column="0" />
@@ -551,7 +552,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="低电量解除(%)" Grid.Column="0" />
@@ -559,7 +560,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="低电量告警 (%)" Grid.Column="0" />
@@ -567,7 +568,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="低电量解除 (%)" Grid.Column="0" />
@@ -583,7 +584,7 @@
                         <CheckBox x:Name="ckbAlarmParameters_12" IsChecked="{Binding IsChecked_AlarmParameter_12}"/>
                         <Grid Margin="0,5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="220" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Content="均衡开启电压 (mV)" Grid.Column="0" />
@@ -591,7 +592,7 @@
                         </Grid>
                         <Grid Margin="0,5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="220" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Content="均衡开启压差 (mV)" Grid.Column="0" />
@@ -599,7 +600,7 @@
                         </Grid>
                         <Grid Margin="0,5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="220" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Content="满充电压 (mV)" Grid.Column="0" />
@@ -607,7 +608,7 @@
                         </Grid>
                         <Grid Margin="0,5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="220" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Content="加热膜开启温度 (℃)" Grid.Column="0" />
@@ -615,7 +616,7 @@
                         </Grid>
                         <Grid Margin="0,5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="220" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Content="加热膜关闭温度 (℃)" Grid.Column="0" />
@@ -632,7 +633,7 @@
                         <CheckBox x:Name="ckbAlarmParameters_13" IsChecked="{Binding IsChecked_AlarmParameter_13}"/>
                         <Grid Margin="0,5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="220" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Content="电池包截止电压 (V)" Grid.Column="0" />
@@ -640,7 +641,7 @@
                         </Grid>
                         <Grid Margin="0,5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="220" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Content="电池包截止电流 (A)" Grid.Column="0" />
@@ -655,7 +656,7 @@
                             <CheckBox x:Name="ckbAlarmParameters_12" IsChecked="{Binding IsChecked_AlarmParameter_12}"/>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体过充提示 (mV)" Grid.Column="0" />
@@ -663,7 +664,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体过充提示解除 (mV)" Grid.Column="0" />
@@ -671,7 +672,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体过放提示 (mV)" Grid.Column="0" />
@@ -679,7 +680,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体过放提示解除 (mV)" Grid.Column="0" />
@@ -694,7 +695,7 @@
                             <CheckBox x:Name="ckbAlarmParameters_13" IsChecked="{Binding IsChecked_AlarmParameter_13}"/>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体压差过大提示 (mV)" Grid.Column="0" />
@@ -702,7 +703,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体压差过大提示解除 (mV)" Grid.Column="0" />
@@ -710,7 +711,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体压差过大告警 (mV)" Grid.Column="0" />
@@ -718,7 +719,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体压差过大告警解除 (mV)" Grid.Column="0" />
@@ -733,7 +734,7 @@
                             <CheckBox x:Name="ckbAlarmParameters_14" IsChecked="{Binding IsChecked_AlarmParameter_14}"/>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体压差过大故障 (mV)" Grid.Column="0" />
@@ -741,7 +742,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="单体压差过大故障解除 (mV)" Grid.Column="0" />
@@ -756,7 +757,7 @@
                             <CheckBox x:Name="ckbAlarmParameters_15" IsChecked="{Binding IsChecked_AlarmParameter_15}"/>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="充电高温提示 (℃)" Grid.Column="0" />
@@ -764,7 +765,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="充电高温提示解除 (℃)" Grid.Column="0" />
@@ -772,7 +773,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="充电低温提示 (℃)" Grid.Column="0" />
@@ -780,7 +781,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="充电低温提示解除 (℃)" Grid.Column="0" />
@@ -788,7 +789,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="放电高温提示 (℃)" Grid.Column="0" />
@@ -796,7 +797,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="放电高温提示解除 (℃)" Grid.Column="0" />
@@ -804,7 +805,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="放电低温提示 (℃)" Grid.Column="0" />
@@ -812,7 +813,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="放电低温提示解除 (℃)" Grid.Column="0" />
@@ -827,7 +828,7 @@
                             <CheckBox x:Name="ckbAlarmParameters_16" IsChecked="{Binding IsChecked_AlarmParameter_16}"/>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="电芯温差过大提示 (℃)" Grid.Column="0" />
@@ -835,7 +836,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="电芯温差过大提示解除 (℃)" Grid.Column="0" />
@@ -843,7 +844,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="电芯温差过大告警 (℃)" Grid.Column="0" />
@@ -851,7 +852,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="电芯温差过大告警解除 (℃)" Grid.Column="0" />
@@ -859,7 +860,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="电芯温差过大保护 (℃)" Grid.Column="0" />
@@ -867,7 +868,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="电芯温差过大保护解除 (℃)" Grid.Column="0" />
@@ -877,12 +878,12 @@
                     </GroupBox>
 
                     <!--总体过充过放提示  第 1 行 第 5 列-->
-                    <GroupBox Header="总体过充过放提示" Grid.Row="0" Grid.Column="4" Margin="10">
+                    <GroupBox Header="总体过充过放提示" Grid.Row="5" Grid.Column="0" Margin="10">
                         <StackPanel Margin="10">
                             <CheckBox x:Name="ckbAlarmParameters_17" IsChecked="{Binding IsChecked_AlarmParameter_17}"/>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="总体过充提示 (V)" Grid.Column="0" />
@@ -890,7 +891,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="总体过充提示解除 (V)" Grid.Column="0" />
@@ -898,7 +899,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="总体过放提示 (V)" Grid.Column="0" />
@@ -906,7 +907,7 @@
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="220" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="总体过放提示解除 (V)" Grid.Column="0" />

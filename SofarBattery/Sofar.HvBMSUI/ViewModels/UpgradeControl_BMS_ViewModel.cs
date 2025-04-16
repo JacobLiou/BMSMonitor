@@ -129,10 +129,10 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-      
+
 
         private ObservableCollection<FirmwareModel_BMS1500V> _FirmwareModel_BMS1500V_DataList;
-        
+
         public ObservableCollection<FirmwareModel_BMS1500V> FirmwareModel_BMS1500V_DataList
         {
             get => _FirmwareModel_BMS1500V_DataList;
@@ -360,7 +360,7 @@ namespace Sofar.HvBMSUI.ViewModels
                         }
                     }
                 }
-               else
+                else
                 {
                     while (!cts.IsCancellationRequested)
                     {
@@ -534,7 +534,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 file_data = null;
                 //Firmwares = new List<FirmwareModel>();
                 firmwareModels = new List<FirmwareModel>();
-             
+
 
                 file_name = openFileDialog.FileName;
                 using (FileStream bin_file = new FileStream(file_name, FileMode.Open))
@@ -662,14 +662,14 @@ namespace Sofar.HvBMSUI.ViewModels
                                         {
                                             UpgradeTips = "已启动升级";
                                             UpgradeTipsTextColor = "Green";
-                                        });                                      
+                                        });
                                     }
                                     break;
                                 case StepFlag.FC升级数据块开始帧:
                                 case StepFlag.FD升级数据块数据帧:
                                     startDownloadPack2(GroupIndex, 1024);
                                     Thread.Sleep(TX_INTERVAL_TIME);
-                                    AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FC", "PACK_ID" + GroupIndex);
+                                    AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FC", "PACK_ID" + (GroupIndex + 1));
                                     int offset = GroupIndex * 1024;
                                     for (int i = 0; i < 1024; i += 8)
                                     {
@@ -678,14 +678,8 @@ namespace Sofar.HvBMSUI.ViewModels
                                         startDownloadData3(offset + i);
                                     }
                                     Thread.Sleep(TX_INTERVAL_TIME);
-                                    if (GroupIndex == file_size)
-                                    {
-                                        stepFlag = StepFlag.FE升级文件接收结果查询帧;
-                                    }
-                                    else
-                                    {
-                                        GroupIndex++;
-                                    }
+
+                                    GroupIndex++;
 
                                     Application.Current.Dispatcher.Invoke(() =>
                                     {
@@ -694,7 +688,11 @@ namespace Sofar.HvBMSUI.ViewModels
                                         UpgradeProgressValue = Convert.ToInt32(proVal);
                                         UpgradeProgressBar = GroupIndex;
                                     });
-                                   
+
+                                    if (GroupIndex == file_size)
+                                    {
+                                        stepFlag = StepFlag.FE升级文件接收结果查询帧;
+                                    }
                                     break;
                                 case StepFlag.FE升级文件接收结果查询帧:
                                     do
@@ -723,7 +721,7 @@ namespace Sofar.HvBMSUI.ViewModels
                                             for (int i = 0; i < ErrorList.Count; i++)
                                             {
                                                 AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FC", "PACK_ID" + GroupIndex);
-                                                startDownloadPack2(ErrorList[i] - 1, 1024);                                                
+                                                startDownloadPack2(ErrorList[i] - 1, 1024);
                                                 Thread.Sleep(TX_INTERVAL_TIME);
 
                                                 GroupIndex = ErrorList[i] % 24 == 0 ? ErrorList[i] / 24 - 1 : ErrorList[i] / 24;
@@ -734,7 +732,7 @@ namespace Sofar.HvBMSUI.ViewModels
                                                 {
                                                     Thread.Sleep(TX_INTERVAL_TIME_Data);
                                                     //AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FD", "PACK_ID" + GroupIndex);
-                                                    startDownloadData3(offset + j);                                                  
+                                                    startDownloadData3(offset + j);
                                                 }
                                                 Thread.Sleep(TX_INTERVAL_TIME);
                                             }
@@ -746,7 +744,7 @@ namespace Sofar.HvBMSUI.ViewModels
                                                 AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FE", "PACK_ID" + GroupIndex);
                                                 startDownloadCheck4(chip_role, chip_code, file_data);
                                             });
-                                        
+
                                         }
                                     } while (ErrorList.Count != 0 || ResultList.Count < DeviceList.Count);
 
@@ -757,7 +755,7 @@ namespace Sofar.HvBMSUI.ViewModels
                                         //功能吗03:暂存升级                                       
                                         startDownloadState5(chip_role, chip_code, 03, Convert.ToInt32(firmwareModels_bms[0].FirmwareFileTypeCode));
                                         AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FF", "PACK_ID" + GroupIndex);
-                                        
+
                                         //startDownloadState5(chip_role, chip_code, 03, 0x80);
                                     }
                                     else
@@ -765,7 +763,7 @@ namespace Sofar.HvBMSUI.ViewModels
                                         //功能码02:启动升级                                      
                                         startDownloadState5(chip_role, chip_code, 02, Convert.ToInt32(firmwareModels_bms[0].FirmwareFileTypeCode));
                                         AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FF", "PACK_ID" + GroupIndex);
-                                       
+
                                         //startDownloadState5(chip_role, chip_code, 02, 0x80);
                                     }
 
@@ -812,7 +810,7 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-      
+
         /// <summary>
         /// 导入SOFAR文件处理-2K
         /// </summary>
@@ -862,7 +860,7 @@ namespace Sofar.HvBMSUI.ViewModels
         /// <param name="binchar"></param>
         private void AnalysisBin(byte[] binchar)
         {
-           
+
             //清空旧数据
             firmwareModels_bms.Clear();
             FirmwareModel_BMS1500V_DataList.Clear();
@@ -919,7 +917,7 @@ namespace Sofar.HvBMSUI.ViewModels
 
             //文件类型代号
             string fileType = "0x" + SignatureBytes[(1 + 4 + 4 + 30 + 20 + 20 + 30 + 12 + 4 + 1 + 2)].ToString("X2");
-            firmwareModel.FirmwareFileTypeCode =Convert.ToByte(fileType, 16);
+            firmwareModel.FirmwareFileTypeCode = Convert.ToByte(fileType, 16);
             //文件类型
             firmwareModel.FirmwareFileType = Enum.Parse(typeof(FileType), (Convert.ToInt32(fileType, 16) & 0x0f).ToString()).ToString() + $"({fileType})";
 
@@ -931,10 +929,10 @@ namespace Sofar.HvBMSUI.ViewModels
                           SignatureBytes[SignatureBytes.Length - 3] << 8 |
                           SignatureBytes[SignatureBytes.Length - 2] << 16 |
                           SignatureBytes[SignatureBytes.Length - 1] << 24);
-           
+
             FirmwareModel_BMS1500V_DataList.Add(firmwareModel);
-            SelectedChipcode= FirmwareModel_BMS1500V_DataList[0].ChipMark;
-            SelectedChiprole_val = "0x"+FirmwareModel_BMS1500V_DataList[0].FirmwareChipRoleCode.ToString("X2");
+            SelectedChipcode = FirmwareModel_BMS1500V_DataList[0].ChipMark;
+            SelectedChiprole_val = "0x" + FirmwareModel_BMS1500V_DataList[0].FirmwareChipRoleCode.ToString("X2");
             switch (SelectedChiprole_val)
             {
                 case "0x24":
@@ -1057,7 +1055,7 @@ namespace Sofar.HvBMSUI.ViewModels
             /// <summary>
             /// 文件创建时间
             /// </summary>
-            public  string dateTimeString { get; set; }
+            public string dateTimeString { get; set; }
 
             /// <summary>
             /// 文件类型
@@ -1318,7 +1316,7 @@ namespace Sofar.HvBMSUI.ViewModels
                     default:
                         break;
                 }
-               
+
 
                 //增加判断，确认是否发送成功；
                 bool result = baseCanHelper.Send(data, canid);
@@ -1338,7 +1336,7 @@ namespace Sofar.HvBMSUI.ViewModels
                             UpgradeTipsTextColor = "Red";
                             UpgradeProgressBar = 0;
                         });
-        
+
                         Thread.Sleep(1000 * 10);
                     }
                 }

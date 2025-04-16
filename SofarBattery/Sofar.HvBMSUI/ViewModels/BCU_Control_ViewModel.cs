@@ -3556,7 +3556,7 @@ namespace Sofar.HvBMSUI.ViewModels
             IsChecked_BatteryVoltage = true;
 
 
-           
+
         }
 
         private void ChangeBatteryList(int totalCell)
@@ -5100,7 +5100,11 @@ namespace Sofar.HvBMSUI.ViewModels
                         ProjectNum = Year + Month + Day + "-" + ProjectMajorVersion + "." + ProjectMiniVersion + "-" + ProjectTestVersion;
 
 
-                        if (!string.IsNullOrEmpty(SlaveControlSoftwareVersion_1_6)) SlaveControlSoftwareVersion = SlaveControlSoftwareVersion_1_6;
+                        if (!string.IsNullOrEmpty(SlaveControlSoftwareVersion_1_6))
+                        {
+                            SlaveControlSoftwareVersion = SlaveControlSoftwareVersion_1_6;
+                        }
+
                         if (!string.IsNullOrEmpty(SlaveControlSoftwareVersion_7_10))
                         {
                             SlaveControlSoftwareVersion += (SlaveControlSoftwareVersion == "" ? "" : " - ") + SlaveControlSoftwareVersion_7_10;
@@ -6034,16 +6038,16 @@ namespace Sofar.HvBMSUI.ViewModels
                     switch (alarmMessageData.AlarmLevel)
                     {
                         case "轻微报警":
-                            model.MinorAlarm = alarmMessageData.AlarmMessage;
+                            model.MinorAlarm += alarmMessageData.AlarmMessage + ";";
                             break;
                         case "一般报警":
-                            model.GeneralAlarm = alarmMessageData.AlarmMessage;
+                            model.GeneralAlarm += alarmMessageData.AlarmMessage + ";";
                             break;
                         case "严重报警":
-                            model.SevereAlarm = alarmMessageData.AlarmMessage;
+                            model.SevereAlarm += alarmMessageData.AlarmMessage + ";";
                             break;
                         case "设备硬件故障":
-                            model.EquipmentHardwareFailureAlarm = alarmMessageData.AlarmMessage;
+                            model.EquipmentHardwareFailureAlarm += alarmMessageData.AlarmMessage + ";";
                             break;
                     }
                 }
