@@ -34,7 +34,7 @@
                             <TextBlock  Text="升级进度: " Margin="0,20"  VerticalAlignment="Center" TextAlignment="Center"  />
                              <!--自定义进度条-->
                             <Grid >
-                                <ProgressBar Style="{StaticResource RoundedProgressBar}" Margin="5" HorizontalAlignment="Stretch" Width="1000"  Height="25"  Value="{Binding UpgradeProgressBar}"  Minimum="0" Maximum="{Binding UpgradeProgressMax}"  />
+                                <ProgressBar  Margin="5" HorizontalAlignment="Stretch" Width="1000"  Height="25"  Value="{Binding UpgradeProgressBar}"  Minimum="0" Maximum="{Binding UpgradeProgressMax}"  />
                                 <TextBlock TextAlignment="Center" Foreground="LimeGreen" VerticalAlignment="Center">
                                 <Run Text="{Binding UpgradeProgressValue}"> </Run> 
                                 <Run>%</Run>

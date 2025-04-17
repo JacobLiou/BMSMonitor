@@ -4571,7 +4571,7 @@ namespace Sofar.HvBMSUI.ViewModels
                     {
                         byte[] bytes = new byte[8] { code, subCode, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
                         baseCanHelper.Send(bytes, FrameID_Request);
-                        Thread.Sleep(200);
+                        Thread.Sleep(10);
                     }
 
 

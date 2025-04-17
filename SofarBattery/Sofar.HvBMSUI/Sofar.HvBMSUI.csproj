@@ -41,4 +41,13 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Configuration\BCU主控参数默认值.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Configuration\BMU从控参数默认值.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
