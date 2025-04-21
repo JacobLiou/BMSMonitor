@@ -2857,7 +2857,7 @@
                                     <ComboBox   x:Name="cbbInsulationDetection"    Width="150"  Margin="5,10,0,0"  BorderThickness="1" ItemsSource="{Binding InsulationDetectionList}"   SelectedItem="{Binding SelectedInsulationDetection,Mode=TwoWay}"/>
                                     <Button Margin="10,5,0,0" Content="下发指令" Command="{Binding InsulationDetectionCmd}" Width="90"></Button>
                                     <Label Content="主控绝缘检测状态" Margin="50,10,0,0" Width="110"/>
-                                    <ComboBox   x:Name="cbbInsulationDetectionStatus" IsEnabled="False"   Width="150"  Margin="0,10,0,0"  BorderThickness="1" ItemsSource="{Binding InsulationDetectionStatusList}"   SelectedItem="{Binding SelectedInsulationDetectionStatus,Mode=TwoWay}"/>
+                                    <ComboBox   x:Name="cbbInsulationDetectionStatus" IsEnabled="False"   Width="150"  Margin="0,10,0,0"  BorderThickness="1" ItemsSource="{Binding InsulationDetectionStatusList}"   SelectedItem="{Binding InsulationDetectionStatus,Mode=TwoWay}"/>
                                 </StackPanel>
                             </GroupBox>
 

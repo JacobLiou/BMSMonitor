@@ -342,48 +342,48 @@
                         <!-- 第二行 重复点位暂时隐藏-->
                         <StackPanel Orientation="Horizontal" Visibility="Collapsed" Margin="5,5,0,0">
                             <Label Content="电池1 (mV)"  Width="120"/>
-                            <TextBox x:Name="txtCellvoltage1" Margin="15,0,0,0"    Text="{Binding Cellvoltage1,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCellvoltage1" Margin="15,0,0,0"    Text="{Binding CellVoltage1,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="电池2 (mV)" Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtCellvoltage2" Margin="10,0,0,0"     Text="{Binding Cellvoltage2,UpdateSourceTrigger=PropertyChanged}"     Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCellvoltage2" Margin="10,0,0,0"     Text="{Binding CellVoltage2,UpdateSourceTrigger=PropertyChanged}"     Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="电池3 (mV)" Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtCellvoltage3" Margin="10,0,0,0" Text="{Binding Cellvoltage3,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCellvoltage3" Margin="10,0,0,0" Text="{Binding CellVoltage3,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="电池4 (mV)" Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtCellvoltage4" Margin="10,0,0,0" Text="{Binding Cellvoltage4,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCellvoltage4" Margin="10,0,0,0" Text="{Binding CellVoltage4,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="电池5 (mV)" Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtCellvoltage5" Margin="10,0,0,0" Text="{Binding Cellvoltage5,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCellvoltage5" Margin="10,0,0,0" Text="{Binding CellVoltage5,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                         </StackPanel>
 
                         <!-- 第三行 重复点位暂时隐藏-->
                         <StackPanel Orientation="Horizontal" Visibility="Collapsed" Margin="5,5,0,0">
                             <Label Content="电池6 (mV)"  Width="120"/>
-                            <TextBox x:Name="txtCellvoltage6" Margin="15,0,0,0" Text="{Binding Cellvoltage6,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCellvoltage6" Margin="15,0,0,0" Text="{Binding CellVoltage6,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="电池7 (mV)" Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtCellvoltage7" Margin="10,0,0,0" Text="{Binding Cellvoltage7,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCellvoltage7" Margin="10,0,0,0" Text="{Binding CellVoltage7,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="电池8 (mV)" Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtCellvoltage8" Margin="10,0,0,0" Text="{Binding Cellvoltage8,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCellvoltage8" Margin="10,0,0,0" Text="{Binding CellVoltage8,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="电池9 (mV)" Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtCellvoltage9" Margin="10,0,0,0" Text="{Binding Cellvoltage9,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCellvoltage9" Margin="10,0,0,0" Text="{Binding CellVoltage9,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="电池10 (mV)" Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtCellvoltage10" Margin="10,0,0,0" Text="{Binding Cellvoltage10,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCellvoltage10" Margin="10,0,0,0" Text="{Binding CellVoltage10,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                         </StackPanel>
 
                         <!-- 第四行 重复点位暂时隐藏-->
                         <StackPanel Orientation="Horizontal" Visibility="Collapsed" Margin="5,5,0,0">
                             <Label Content="电池11 (mV)"  Width="120"/>
-                            <TextBox x:Name="txtCellvoltage11" Margin="15,0,0,0" Text="{Binding Cellvoltage11,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCellvoltage11" Margin="15,0,0,0" Text="{Binding CellVoltage11,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="电池12 (mV)" Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtCellvoltage12" Margin="10,0,0,0" Text="{Binding Cellvoltage12,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCellvoltage12" Margin="10,0,0,0" Text="{Binding CellVoltage12,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="电池13 (mV)" Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtCellvoltage13" Margin="10,0,0,0" Text="{Binding Cellvoltage13,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCellvoltage13" Margin="10,0,0,0" Text="{Binding CellVoltage13,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="电池14 (mV)" Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtCellvoltage14" Margin="10,0,0,0" Text="{Binding Cellvoltage14,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCellvoltage14" Margin="10,0,0,0" Text="{Binding CellVoltage14,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="电池15 (mV)" Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtCellvoltage15" Margin="10,0,0,0" Text="{Binding Cellvoltage15,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCellvoltage15" Margin="10,0,0,0" Text="{Binding CellVoltage15,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                         </StackPanel>
                         <!-- 第五行 重复点位暂时隐藏-->
                         <StackPanel Orientation="Horizontal" Visibility="Collapsed" Margin="5,5,0,0">
                             <Label Content="电池16 (mV)"  Width="120"/>
-                            <TextBox x:Name="txtCellvoltage16" Margin="15,0,0,0" Text="{Binding Cellvoltage16,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCellvoltage16" Margin="15,0,0,0" Text="{Binding CellVoltage16,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -409,13 +409,13 @@
                             <Label Content="功率负端子温度 (℃)"  Margin="50,0,0,0" Width="120"/>
                             <TextBox x:Name="txtPowerTemperture2" Margin="15,0,0,0" Text="{Binding PowerTemperture2,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="主动均衡温度1 (℃)" Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtDCDC_temperature1" Margin="10,0,0,0" Text="{Binding DCDC_temperature1,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtDCDC_temperature1" Margin="10,0,0,0" Text="{Binding DcdcTemperature1,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                         </StackPanel>
 
                         <!-- 第二行 -->
                         <StackPanel Orientation="Horizontal" Margin="5">
                             <Label Content="主动均衡温度2 (℃)"  Width="120" />
-                            <TextBox x:Name="txtDCDC_temperature2" Margin="15,0,0,0" Text="{Binding DCDC_temperature2,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtDCDC_temperature2" Margin="15,0,0,0" Text="{Binding DcdcTemperature2,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="最高温度编号" Margin="50,0,0,0" Width="120"/>
                             <TextBox x:Name="txtBatMaxCellTempNum" Margin="10,0,0,0" Text="{Binding BatMaxCellTempNum,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="最高温度 (℃)" Margin="50,0,0,0" Width="120"/>
@@ -433,24 +433,24 @@
                             <Label Content="加热膜电压 (V)" Visibility="Collapsed" Margin="50,0,0,0" Width="120"/>
                             <TextBox x:Name="txtheat_relay_vol" Visibility="Collapsed" Margin="10,0,0,0" Text="{Binding HeatRelayVol,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="温度1 (℃)" Visibility="Collapsed" Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtCelltemperature1" Visibility="Collapsed" Margin="10,0,0,0" Text="{Binding Celltemperature1,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCelltemperature1" Visibility="Collapsed" Margin="10,0,0,0" Text="{Binding CellTemperature1,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="温度2 (℃)" Visibility="Collapsed" Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtCelltemperature2" Visibility="Collapsed" Margin="10,0,0,0" Text="{Binding Celltemperature2,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCelltemperature2" Visibility="Collapsed" Margin="10,0,0,0" Text="{Binding CellTemperature2,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="温度3 (℃)" Visibility="Collapsed" Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtCelltemperature3" Visibility="Collapsed" Margin="10,0,0,0" Text="{Binding Celltemperature3,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCelltemperature3" Visibility="Collapsed" Margin="10,0,0,0" Text="{Binding CellTemperature3,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                         </StackPanel>
                         <!-- 第四行 隐藏温度1-8-->
                         <StackPanel Orientation="Horizontal" Visibility="Collapsed" Margin="5">
                             <Label Content="温度4 (℃)"  Width="120"/>
-                            <TextBox x:Name="txtCelltemperature4" Margin="15,0,0,0" Text="{Binding Celltemperature4,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCelltemperature4" Margin="15,0,0,0" Text="{Binding CellTemperature4,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="温度5 (℃)"  Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtCelltemperature5" Margin="10,0,0,0" Text="{Binding Celltemperature5,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCelltemperature5" Margin="10,0,0,0" Text="{Binding CellTemperature5,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="温度6 (℃)"  Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtCelltemperature6" Margin="10,0,0,0" Text="{Binding Celltemperature6,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCelltemperature6" Margin="10,0,0,0" Text="{Binding CellTemperature6,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="温度7 (℃)"  Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtCelltemperature7" Margin="10,0,0,0" Text="{Binding Celltemperature7,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCelltemperature7" Margin="10,0,0,0" Text="{Binding CellTemperature7,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Label Content="温度8 (℃)"  Margin="50,0,0,0" Width="120"/>
-                            <TextBox x:Name="txtCelltemperature8" Margin="10,0,0,0" Text="{Binding Celltemperature8,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <TextBox x:Name="txtCelltemperature8" Margin="10,0,0,0" Text="{Binding CellTemperature8,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                         </StackPanel>
                         <!-- 第五行 -->
                         <!--<StackPanel Orientation="Horizontal" Margin="5">
@@ -462,8 +462,8 @@
                     </StackPanel>
                 </GroupBox>
 
-                <!--系统状态 第 8 行 第 1 列-->
-                <GroupBox Header="系统状态" Grid.Row="7" Grid.Column="0" Margin="0,0,0,10">
+                <!--BMU状态 第 8 行 第 1 列-->
+                <GroupBox Header="BMU状态" Grid.Row="7" Grid.Column="0" Margin="0,0,0,10">
                     <StackPanel Margin="10">
                         <StackPanel Orientation="Horizontal" >
                             <Ellipse Width="12" Height="12" VerticalAlignment="Center">

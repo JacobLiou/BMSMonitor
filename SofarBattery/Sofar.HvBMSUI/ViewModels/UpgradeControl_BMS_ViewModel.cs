@@ -21,6 +21,7 @@ using Sofar.BMSLib;
 using Sofar.BMSUI.Models;
 using Sofar.BMSUI;
 using Sofar.BMSUI.Common;
+using System.Windows.Media;
 
 namespace Sofar.HvBMSUI.ViewModels
 {
@@ -268,11 +269,11 @@ namespace Sofar.HvBMSUI.ViewModels
             set { _upgradeTips = value; OnPropertyChanged(); }
         }
 
-        private string _upgradeTipsTextColor = "Default";
+        private Brush _upgradeTipsTextColor = Brushes.Black;
         /// <summary>
         /// 升级提示文本颜色
         /// </summary>
-        public string UpgradeTipsTextColor
+        public Brush UpgradeTipsTextColor
         {
             get { return _upgradeTipsTextColor; }
             set { _upgradeTipsTextColor = value; OnPropertyChanged(); }
@@ -480,7 +481,7 @@ namespace Sofar.HvBMSUI.ViewModels
                                                 totalSussces++;
                                         }
                                         UpgradeTips = $"升级结束，成功数量：{totalSussces}";
-                                        UpgradeTipsTextColor = "Green";
+                                        UpgradeTipsTextColor = Brushes.Green;
 
                                         stepFlag = StepFlag.None;
                                         State = false;
@@ -661,7 +662,7 @@ namespace Sofar.HvBMSUI.ViewModels
                                         Application.Current.Dispatcher.Invoke(() =>
                                         {
                                             UpgradeTips = "已启动升级";
-                                            UpgradeTipsTextColor = "Green";
+                                            UpgradeTipsTextColor = Brushes.Green;
                                         });
                                     }
                                     break;
@@ -1333,7 +1334,7 @@ namespace Sofar.HvBMSUI.ViewModels
                         Application.Current.Dispatcher.Invoke(() =>
                         {
                             UpgradeTips = "发送失败，请检查通讯重新连接！";
-                            UpgradeTipsTextColor = "Red";
+                            UpgradeTipsTextColor = Brushes.Red;
                             UpgradeProgressBar = 0;
                         });
 

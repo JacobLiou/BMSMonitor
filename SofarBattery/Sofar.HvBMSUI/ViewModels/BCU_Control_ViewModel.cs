@@ -17,6 +17,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using static PowerKit.UI.Models.RealtimeData_BMS1500V_BCU;
 
 namespace Sofar.HvBMSUI.ViewModels
@@ -2938,11 +2939,11 @@ namespace Sofar.HvBMSUI.ViewModels
             set => SetProperty(ref _dataStorageInterval, value);
         }
 
-        private string _textColor = "Default";
+        private Brush _textColor = Brushes.Black;
         /// <summary>
         /// DI、DO 文字颜色
         /// </summary>
-        public string TextColor
+        public Brush TextColor
         {
             get => _textColor;
             set => SetProperty(ref _textColor, value);

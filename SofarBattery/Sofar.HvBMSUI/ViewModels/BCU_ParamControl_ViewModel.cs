@@ -738,39 +738,19 @@ namespace Sofar.HvBMSUI.ViewModels
                 _isAllChecked = value;
                 if (value)
                 {
-                    IsChecked_AlarmParameter_1 = true;
-                    IsChecked_AlarmParameter_2 = true;
-                    IsChecked_AlarmParameter_3 = true;
-                    IsChecked_AlarmParameter_4 = true;
-                    IsChecked_AlarmParameter_5 = true;
-                    IsChecked_AlarmParameter_6 = true;
-                    IsChecked_AlarmParameter_7 = true;
-                    IsChecked_AlarmParameter_8 = true;
-                    IsChecked_AlarmParameter_9 = true;
-                    IsChecked_AlarmParameter_10 = true;
-                    IsChecked_AlarmParameter_11 = true;
-                    IsChecked_AlarmParameter_12 = true;
-                    IsChecked_AlarmParameter_13 = true;
-                    IsChecked_AlarmParameter_14 = true;
-                    IsChecked_AlarmParameter_15 = true;
+
+                    for (int i = 1; i <= 15; i++)
+                    {
+                        GetType().GetProperty($"IsChecked_AlarmParameter_" + i).SetValue(this, true);
+                    }
+
                 }
                 else
                 {
-                    IsChecked_AlarmParameter_1 = false;
-                    IsChecked_AlarmParameter_2 = false;
-                    IsChecked_AlarmParameter_3 = false;
-                    IsChecked_AlarmParameter_4 = false;
-                    IsChecked_AlarmParameter_5 = false;
-                    IsChecked_AlarmParameter_6 = false;
-                    IsChecked_AlarmParameter_7 = false;
-                    IsChecked_AlarmParameter_8 = false;
-                    IsChecked_AlarmParameter_9 = false;
-                    IsChecked_AlarmParameter_10 = false;
-                    IsChecked_AlarmParameter_11 = false;
-                    IsChecked_AlarmParameter_12 = false;
-                    IsChecked_AlarmParameter_13 = false;
-                    IsChecked_AlarmParameter_14 = false;
-                    IsChecked_AlarmParameter_15 = false;
+                    for (int i = 1; i <= 15; i++)
+                    {
+                        GetType().GetProperty($"IsChecked_AlarmParameter_" + i).SetValue(this, false);
+                    }
                 }
 
                 OnPropertyChanged();
@@ -779,22 +759,158 @@ namespace Sofar.HvBMSUI.ViewModels
 
 
 
+        private bool _IsChecked_AlarmParameter_1;
+        public bool IsChecked_AlarmParameter_1
+        {
+            get { return _IsChecked_AlarmParameter_1; }
+            set
+            {
+                _IsChecked_AlarmParameter_1 = value;
+                OnPropertyChanged(nameof(IsChecked_AlarmParameter_1));
+            }
+        }
+        private bool _IsChecked_AlarmParameter_2;
+        public bool IsChecked_AlarmParameter_2
+        {
+            get { return _IsChecked_AlarmParameter_2; }
+            set
+            {
+                _IsChecked_AlarmParameter_2 = value;
+                OnPropertyChanged(nameof(IsChecked_AlarmParameter_2));
+            }
+        }
+        private bool _IsChecked_AlarmParameter_3;
+        public bool IsChecked_AlarmParameter_3
+        {
+            get { return _IsChecked_AlarmParameter_13; }
+            set
+            {
+                _IsChecked_AlarmParameter_3 = value;
+                OnPropertyChanged(nameof(IsChecked_AlarmParameter_3));
+            }
+        }
+        private bool _IsChecked_AlarmParameter_4;
+        public bool IsChecked_AlarmParameter_4
+        {
+            get { return _IsChecked_AlarmParameter_4; }
+            set
+            {
+                _IsChecked_AlarmParameter_4 = value;
+                OnPropertyChanged(nameof(IsChecked_AlarmParameter_4));
+            }
+        }
+        private bool _IsChecked_AlarmParameter_5;
+        public bool IsChecked_AlarmParameter_5
+        {
+            get { return _IsChecked_AlarmParameter_5; }
+            set
+            {
+                _IsChecked_AlarmParameter_5 = value;
+                OnPropertyChanged(nameof(IsChecked_AlarmParameter_5));
+            }
+        }
+        private bool _IsChecked_AlarmParameter_6;
+        public bool IsChecked_AlarmParameter_6
+        {
+            get { return _IsChecked_AlarmParameter_6; }
+            set
+            {
+                _IsChecked_AlarmParameter_6 = value;
+                OnPropertyChanged(nameof(IsChecked_AlarmParameter_6));
+            }
+        }
+        private bool _IsChecked_AlarmParameter_7;
+        public bool IsChecked_AlarmParameter_7
+        {
+            get { return _IsChecked_AlarmParameter_7; }
+            set
+            {
+                _IsChecked_AlarmParameter_7 = value;
+                OnPropertyChanged(nameof(IsChecked_AlarmParameter_7));
+            }
+        }
+        private bool _IsChecked_AlarmParameter_8;
+        public bool IsChecked_AlarmParameter_8
+        {
+            get { return _IsChecked_AlarmParameter_8; }
+            set
+            {
+                _IsChecked_AlarmParameter_8 = value;
+                OnPropertyChanged(nameof(IsChecked_AlarmParameter_8));
+            }
+        }
+        private bool _IsChecked_AlarmParameter_9;
+        public bool IsChecked_AlarmParameter_9
+        {
+            get { return _IsChecked_AlarmParameter_9; }
+            set
+            {
+                _IsChecked_AlarmParameter_9 = value;
+                OnPropertyChanged(nameof(IsChecked_AlarmParameter_9));
+            }
+        }
+        private bool _IsChecked_AlarmParameter_10;
+        public bool IsChecked_AlarmParameter_10
+        {
+            get { return _IsChecked_AlarmParameter_10; }
+            set
+            {
+                _IsChecked_AlarmParameter_10 = value;
+                OnPropertyChanged(nameof(IsChecked_AlarmParameter_10));
+            }
+        }
+        private bool _IsChecked_AlarmParameter_11;
+        public bool IsChecked_AlarmParameter_11
+        {
+            get { return _IsChecked_AlarmParameter_11; }
+            set
+            {
+                _IsChecked_AlarmParameter_11 = value;
+                OnPropertyChanged(nameof(IsChecked_AlarmParameter_11));
+            }
+        }
+        private bool _IsChecked_AlarmParameter_12;
+        public bool IsChecked_AlarmParameter_12
+        {
+            get { return _IsChecked_AlarmParameter_12; }
+            set
+            {
+                _IsChecked_AlarmParameter_12 = value;
+                OnPropertyChanged(nameof(IsChecked_AlarmParameter_12));
+            }
+        }
+        private bool _IsChecked_AlarmParameter_13;
+        public bool IsChecked_AlarmParameter_13
+        {
+            get { return _IsChecked_AlarmParameter_13; }
+            set
+            {
+                _IsChecked_AlarmParameter_13 = value;
+                OnPropertyChanged(nameof(IsChecked_AlarmParameter_13));
+            }
+        }
+        private bool _IsChecked_AlarmParameter_14;
+        public bool IsChecked_AlarmParameter_14
+        {
+            get { return _IsChecked_AlarmParameter_14; }
+            set
+            {
+                _IsChecked_AlarmParameter_14 = value;
+                OnPropertyChanged(nameof(IsChecked_AlarmParameter_14));
+            }
+        }
+        private bool _IsChecked_AlarmParameter_15;
+        public bool IsChecked_AlarmParameter_15
+        {
+            get { return _IsChecked_AlarmParameter_15; }
+            set
+            {
+                _IsChecked_AlarmParameter_15 = value;
+                OnPropertyChanged(nameof(IsChecked_AlarmParameter_15));
+            }
+        }
 
-        public bool IsChecked_AlarmParameter_1 { get; set; }
-        public bool IsChecked_AlarmParameter_2 { get; set; }
-        public bool IsChecked_AlarmParameter_3 { get; set; }
-        public bool IsChecked_AlarmParameter_4 { get; set; }
-        public bool IsChecked_AlarmParameter_5 { get; set; }
-        public bool IsChecked_AlarmParameter_6 { get; set; }
-        public bool IsChecked_AlarmParameter_7 { get; set; }
-        public bool IsChecked_AlarmParameter_8 { get; set; }
-        public bool IsChecked_AlarmParameter_9 { get; set; }
-        public bool IsChecked_AlarmParameter_10 { get; set; }
-        public bool IsChecked_AlarmParameter_11 { get; set; }
-        public bool IsChecked_AlarmParameter_12 { get; set; }
-        public bool IsChecked_AlarmParameter_13 { get; set; }
-        public bool IsChecked_AlarmParameter_14 { get; set; }
-        public bool IsChecked_AlarmParameter_15 { get; set; }
+
 
 
 
@@ -1373,7 +1489,7 @@ namespace Sofar.HvBMSUI.ViewModels
                     byte[] b2 = Uint16ToBytes(Convert.ToUInt32(double.Parse(parameters[1]) / 0.1));
                     byte[] b3 = Uint16ToBytes(Convert.ToUInt32(double.Parse(parameters[2]) / 0.1));
                     byte byte8 = (byte)(Convert.ToUInt32(double.Parse(parameters[3])) / 0.1);
-                    byte[] bytes = new byte[] { (byte)k, b1[0], b1[1], b2[0], b2[1], b3[0], b3[1], byte8 };
+                    byte[] bytes = new byte[] { (byte)k, b1[1], b1[0], b2[1], b2[0], b3[1], b3[0], byte8 };
                     canidList_11.Add(clonedCanid);
                     byteList_11.Add(bytes);
 

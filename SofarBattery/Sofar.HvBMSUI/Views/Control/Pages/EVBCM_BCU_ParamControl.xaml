@@ -693,7 +693,7 @@
 
 
                     <!--SOC报警值 第 2 行 第 4 列-->
-                    <GroupBox Header="充电电流报警值" Grid.Row="1" Grid.Column="3" Margin="10">
+                    <GroupBox Header="SOC报警值" Grid.Row="1" Grid.Column="3" Margin="10">
                         <StackPanel Margin="10">
                             <CheckBox x:Name="ckbAlarmParameters_14" IsChecked="{Binding IsChecked_AlarmParameter_14}"/>
                             <Grid Margin="0,5">
