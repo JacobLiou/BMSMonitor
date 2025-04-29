@@ -5822,7 +5822,6 @@ namespace Sofar.HvBMSUI.ViewModels
                         //动作节号
                         string BatterySectionNumber = ((data[6] << 8) | data[7]).ToString();
                         if (((data[6] << 8) | data[7]) == 0xFF) BatterySectionNumber = "-";//0xff:无效
-
                         switch (sequenceNumber)
                         {
                             case 0x00: // 报警等级 0：无报警
@@ -5831,6 +5830,11 @@ namespace Sofar.HvBMSUI.ViewModels
                                     // 报警信息为空
                                     break;
                                 }
+                                AlarmMessageDataList.Clear();
+                                model.MinorAlarm = "";
+                                model.GeneralAlarm = "";
+                                model.SevereAlarm = "";
+                                model.EquipmentHardwareFailureAlarm = "";
                                 break;
                             case 0x01: // 报警等级 1：严重报警                             
                             case 0x02: // 报警等级 2：一般报警                               
@@ -6034,6 +6038,10 @@ namespace Sofar.HvBMSUI.ViewModels
                                                                        x.AlarmLevel == "设备硬件故障").ToList();
             if (alarmMessageDataList.Any())
             {
+                model.MinorAlarm = "";
+                model.GeneralAlarm = "";
+                model.SevereAlarm = "";
+                model.EquipmentHardwareFailureAlarm = "";
                 foreach (var alarmMessageData in alarmMessageDataList)
                 {
                     switch (alarmMessageData.AlarmLevel)
@@ -6122,11 +6130,13 @@ namespace Sofar.HvBMSUI.ViewModels
         /// </summary>
         public void Write_0x12()
         {
+           var SelectedDate1 = DateTime.Now;
+
             byte Address_BCU = Convert.ToByte(Convert.ToInt32(SelectedAddress_BCU, 16));
             byte[] can_id = new byte[] { 0xF4, Address_BCU, 0x12, 0x18 };
 
-            DateTime SystemTime = new DateTime(SelectedDate.Year, SelectedDate.Month, SelectedDate.Day,
-                                  int.Parse(SelectedHour), int.Parse(SelectedMinute), int.Parse(SelectedSecond));
+            DateTime SystemTime = new DateTime(SelectedDate1.Year, SelectedDate1.Month, SelectedDate1.Day,
+                                  SelectedDate1.Hour, SelectedDate1.Minute, SelectedDate1.Second);
             string[] date = SystemTime.ToString("yyyy-MM-dd HH:mm:ss").Split(new char[] { ' ', '-', ':' });
 
             byte[] bytes = new byte[] { Convert.ToByte((Convert.ToInt32(date[0]) >> 8) & 0xFF),

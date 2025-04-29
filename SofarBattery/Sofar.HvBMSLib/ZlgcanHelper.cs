@@ -154,6 +154,7 @@ namespace Sofar.HvBMSLib
             can_data.transmit_type = (uint)send_type_index;
             IntPtr ptr = Marshal.AllocHGlobal(Marshal.SizeOf(can_data));
             Marshal.StructureToPtr(can_data, ptr, true);
+            LogAction?.Invoke(1, HexDataHelper.GetDebugByteString(data, "Send：0x" + id.ToString("X")));
             result = Method.ZCAN_Transmit(channel_handle_, ptr, 1);
             Marshal.FreeHGlobal(ptr);
             

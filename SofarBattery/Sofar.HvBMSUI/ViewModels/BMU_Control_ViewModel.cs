@@ -3017,18 +3017,8 @@ namespace Sofar.HvBMSUI.ViewModels
         BaseCanHelper baseCanHelper = null;
         public BMU_Control_ViewModel()
         {
+            baseCanHelper = new CommandOperation(BMSConfig.ConfigManager).baseCanHelper;
 
-            switch (BMSConfig.ConfigManager.CAN_DevType)
-            {
-                case "USBCAN-I/I+":
-                case "USBCAN-II/II+":
-                    baseCanHelper = EcanHelper.Instance();
-                    break;
-                case "USBCAN-E-U":
-                case "USBCAN-2E-U":
-                    baseCanHelper = ControlcanHelper.Instance();
-                    break;
-            }
 
             cts = new CancellationTokenSource();
             if (batteryVoltageDataList == null) batteryVoltageDataList = new ObservableCollection<RealtimeData_BMS1500V_BMU.batteryVoltageData>();
@@ -3704,8 +3694,10 @@ namespace Sofar.HvBMSUI.ViewModels
         {
             byte[] can_id = new byte[] { 0xE0, Convert.ToByte(SelectedRequest7), 0x26, 0x10 };
             //byte[] can_id = new byte[] { 0xE0, 0x81, 0x26, 0x10 };
-            DateTime SystemTime = new DateTime(SelectedDate.Year, SelectedDate.Month, SelectedDate.Day,
-                                 int.Parse(SelectedHour), int.Parse(SelectedMinute), int.Parse(SelectedSecond));
+
+            var SelectedDate1 = DateTime.Now;
+            DateTime SystemTime = new DateTime(SelectedDate1.Year, SelectedDate1.Month, SelectedDate1.Day,
+                                 SelectedDate1.Hour, SelectedDate1.Minute, SelectedDate1.Second);
             string[] date = SystemTime.ToString("yyyy-MM-dd HH:mm:ss").Split(new char[] { ' ', '-', ':' });
             byte[] bytes = new byte[] {
                                     Convert.ToByte(Convert.ToInt32(date[0]) - 2000),
@@ -4189,11 +4181,16 @@ namespace Sofar.HvBMSUI.ViewModels
         {
             if (baseCanHelper.IsConnection)
             {
-
-
                 //读取BMU参数 0x01:读取所有参数
-                baseCanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
-                               , new byte[] { 0xE0, Convert.ToByte(SelectedRequest7), 0x2E, 0x10 });
+                try
+                {
+                    baseCanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                                , new byte[] { 0xE0, Convert.ToByte(SelectedRequest7), 0x2E, 0x10 });
+                }
+                catch (Exception ex)
+                {
+                    MessageBoxHelper.Warning("读取失败！", "警告", null, ButtonType.OK);
+                }
 
             }
         }
@@ -5268,7 +5265,7 @@ namespace Sofar.HvBMSUI.ViewModels
                         if (data[6] == 0x00) Selectedforce_ctrl_switch = force_ctrl_switchList[0];
                         else if (data[6] == 0xAA) Selectedforce_ctrl_switch = force_ctrl_switchList[1];
                         break;
-                    
+
                 }
             }
             catch (Exception)

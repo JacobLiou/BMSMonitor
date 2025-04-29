@@ -866,17 +866,7 @@ namespace Sofar.HvBMSUI.ViewModels
         public BMU_ParamControl_ViewModel()
         {
 
-            switch (BMSConfig.ConfigManager.CAN_DevType)
-            {
-                case "USBCAN-I/I+":
-                case "USBCAN-II/II+":
-                    baseCanHelper = EcanHelper.Instance();
-                    break;
-                case "USBCAN-E-U":
-                case "USBCAN-2E-U":
-                    baseCanHelper = ControlcanHelper.Instance();
-                    break;
-            }
+            baseCanHelper = new CommandOperation(BMSConfig.ConfigManager).baseCanHelper;
 
             cts = new CancellationTokenSource();
             #region 从控报警参数

@@ -514,17 +514,7 @@ RSV6,U32,1,,";
         public FileTransmit_BMS_ViewModel()
         {
 
-            switch (BMSConfig.ConfigManager.CAN_DevType)
-            {
-                case "USBCAN-I/I+":
-                case "USBCAN-II/II+":
-                    baseCanHelper = EcanHelper.Instance();
-                    break;
-                case "USBCAN-E-U":
-                case "USBCAN-2E-U":
-                    baseCanHelper = ControlcanHelper.Instance();
-                    break;
-            }
+            baseCanHelper = new CommandOperation(BMSConfig.ConfigManager).baseCanHelper;
             cts = new CancellationTokenSource();
             if (FileTransmitLogList == null) FileTransmitLogList = new ObservableCollection<FileTransmitLogData>();
         }

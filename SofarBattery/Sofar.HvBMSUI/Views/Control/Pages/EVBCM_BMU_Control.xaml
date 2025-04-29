@@ -723,7 +723,7 @@
                             <ComboBox   x:Name="cbbHour"    Width="50"  Margin="5,0,0,0"  BorderThickness="1" ItemsSource="{Binding HourList}"   SelectedItem="{Binding SelectedHour,   Mode=TwoWay}"/>
                             <ComboBox   x:Name="cbbMinute"  Width="50"  Margin="5,0,0,0"  BorderThickness="1" ItemsSource="{Binding MinuteList}" SelectedItem="{Binding SelectedMinute, Mode=TwoWay}"/>
                             <ComboBox   x:Name="cbbSecond"  Width="50"  Margin="5,0,0,0"  BorderThickness="1" ItemsSource="{Binding SecondList}" SelectedItem="{Binding SelectedSecond, Mode=TwoWay}"/>
-                            <Button x:Name="btnWrite_0x26" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x26_Cmd}"/>
+                            <Button x:Name="btnWrite_0x26" Margin="10,0,0,0" Content="写入当前电脑时间" Command="{Binding Write_0x26_Cmd}"/>
                             <Label Content="PACK条形码: " Margin="5,0,0,0" Width="79"  VerticalAlignment="Center" />
                             <TextBox x:Name="txtPACK_SN" Margin="5,0,0,10"   Text="{Binding PACK_SN,UpdateSourceTrigger=PropertyChanged}" Width="160" TextAlignment="Center"  VerticalContentAlignment="Center" />
                             <Button x:Name="btnWrite_0x27" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x27_Cmd}"/>
@@ -749,7 +749,7 @@
                                 </Grid.ColumnDefinitions>
 
                                 <GroupBox Grid.Row="0"  Grid.Column="0" Margin="10" >
-                                    <StackPanel Width="555">
+                                    <StackPanel Width="500">
                                         <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
                                             <Label Content="老化模式" Margin="20,0,0,0" Width="80"  VerticalAlignment="Center" />
                                             <ComboBox x:Name="ckbRequest1" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Request1List}"   SelectedItem="{Binding SelectedRequest1,Mode=TwoWay}"/>

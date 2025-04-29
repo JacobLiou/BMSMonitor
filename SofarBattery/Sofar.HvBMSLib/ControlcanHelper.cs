@@ -1,4 +1,5 @@
 ﻿using PowerKit.Domain.Enums;
+using Sofar.HvBMSLib;
 using Sofar.ProtocolLib;
 using System;
 using System.Collections.Concurrent;
@@ -287,7 +288,7 @@ namespace Sofar.BMSLib
                 {
                     gSendMsgBufTail = 0;
                 }
-
+                LogAction?.Invoke(1, HexDataHelper.GetDebugByteString(data, "Send：0x" + co.ID.ToString("X")));
                 if (CONTROLCANHelper.VCI_Transmit(_devType, _devIndex, _channel, coMsg, 1) == CONTROLCANSTATUS.STATUS_OK)
                 {
                     VCI_ERR_INFO err_info = new VCI_ERR_INFO();
@@ -566,11 +567,12 @@ namespace Sofar.BMSLib
             return error;
         }
 
-        private void EnqueueTask(VCI_CAN_OBJ VCICANOBJ)
+        private void EnqueueTask(VCI_CAN_OBJ CANOBJ)
         {
             lock (_locker)
             {
-                _task.Enqueue(VCICANOBJ);
+                //LogAction?.Invoke(1, HexDataHelper.GetDebugByteString(CANOBJ.Data, "Recv：0x" + CANOBJ.ID.ToString("X")));
+                _task.Enqueue(CANOBJ);
                 _wh.Set();
             }
         }

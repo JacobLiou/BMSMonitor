@@ -8,7 +8,7 @@ namespace Sofar.BMSLib
 {
     public class CommandOperation
     {
-        BaseCanHelper baseCanHelper = null;
+        public BaseCanHelper baseCanHelper = null;
         public bool IsConnection
         {
             get

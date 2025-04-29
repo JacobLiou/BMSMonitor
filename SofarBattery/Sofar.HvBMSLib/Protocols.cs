@@ -21,14 +21,14 @@ namespace Sofar.BMSLib
         }
 
         public static List<Protocols> protocols = new List<Protocols>() {
-            new Protocols(3,0x1020FFFF),new Protocols(3,0x1020E0FF)
+             new Protocols(3,0x1020FFFF),new Protocols(3,0x1020E0FF)
             ,new Protocols(3,0x07F0E0FF),new Protocols(3,0x07F1E0FF),new Protocols(3,0x07F2E0FF),new Protocols(3,0x07F3E0FF),new Protocols(3,0x07F4E0FF)
 
-            ,new Protocols(3,0x1003E0FF), new Protocols(3,0x1004E0FF),new Protocols(3,0x1005E0FF),new Protocols(3,0x1006E0FF),new Protocols(3,0x1007E0FF),new Protocols(3,0x1008E0FF),new Protocols(3,0x1009E0FF),new Protocols(3,0x100AE0FF),new Protocols(3,0x100BE0FF),new Protocols(3,0x100CE0FF),new Protocols(3,0x100DE0FF),new Protocols(3,0x100EE0FF),new Protocols(3,0x100FE0FF)
-            ,new Protocols(3,0x1040E0FF),new Protocols(3,0x1041E0FF),new Protocols(3,0x1042E0FF), new Protocols(3,0x1043E0FF),new Protocols(3,0x1044E0FF),new Protocols(3,0x104AE0FF),new Protocols(3,0x104EE0FF),new Protocols(3,0x104E0FFF),new Protocols(3,0x1045E0FF),new Protocols(3,0x1046E0FF),new Protocols(3,0x1047E0FF),new Protocols(3,0x1048E0FF),new Protocols(3,0x1049E0FF),new Protocols(3,0x104BE0FF),new Protocols(3,0x104CE0FF)
+            ,new Protocols(3,0x1003E0FF),new Protocols(3,0x1004E0FF),new Protocols(3,0x1005E0FF),new Protocols(3,0x1006E0FF),new Protocols(3,0x1007E0FF),new Protocols(3,0x1008E0FF),new Protocols(3,0x1009E0FF),new Protocols(3,0x100AE0FF),new Protocols(3,0x100BE0FF),new Protocols(3,0x100CE0FF),new Protocols(3,0x100DE0FF),new Protocols(3,0x100EE0FF),new Protocols(3,0x100FE0FF)
+            ,new Protocols(3,0x1040E0FF),new Protocols(3,0x1041E0FF),new Protocols(3,0x1042E0FF),new Protocols(3,0x1043E0FF),new Protocols(3,0x1044E0FF),new Protocols(3,0x104AE0FF),new Protocols(3,0x104EE0FF),new Protocols(3,0x104E0FFF),new Protocols(3,0x1045E0FF),new Protocols(3,0x1046E0FF),new Protocols(3,0x1047E0FF),new Protocols(3,0x1048E0FF),new Protocols(3,0x1049E0FF),new Protocols(3,0x104BE0FF),new Protocols(3,0x104CE0FF)
 
-            ,new Protocols(3,0x1003FFFF), new Protocols(3,0x1004FFFF),new Protocols(3,0x1005FFFF),new Protocols(3,0x1006FFFF),new Protocols(3,0x1007FFFF),new Protocols(3,0x1008FFFF),new Protocols(3,0x1009FFFF),new Protocols(3,0x100AFFFF),new Protocols(3,0x100BFFFF),new Protocols(3,0x100CFFFF),new Protocols(3,0x100DFFFF),new Protocols(3,0x100EFFFF),new Protocols(3,0x100FFFFF)
-            ,new Protocols(3,0x1040FFFF),new Protocols(3,0x1041FFFF),new Protocols(3,0x1042FFFF), new Protocols(3,0x1043FFFF),new Protocols(3,0x1044FFFF),new Protocols(3,0x104AFFFF),new Protocols(3,0x104EFFFF),new Protocols(3,0x104FFFFF),new Protocols(3,0x1045FFFF),new Protocols(3,0x1046FFFF),new Protocols(3,0x1047FFFF),new Protocols(3,0x1048FFFF),new Protocols(3,0x1049FFFF),new Protocols(3,0x104BFFFF),new Protocols(3,0x104CFFFF)
+            ,new Protocols(3,0x1003FFFF),new Protocols(3,0x1004FFFF),new Protocols(3,0x1005FFFF),new Protocols(3,0x1006FFFF),new Protocols(3,0x1007FFFF),new Protocols(3,0x1008FFFF),new Protocols(3,0x1009FFFF),new Protocols(3,0x100AFFFF),new Protocols(3,0x100BFFFF),new Protocols(3,0x100CFFFF),new Protocols(3,0x100DFFFF),new Protocols(3,0x100EFFFF),new Protocols(3,0x100FFFFF)
+            ,new Protocols(3,0x1040FFFF),new Protocols(3,0x1041FFFF),new Protocols(3,0x1042FFFF),new Protocols(3,0x1043FFFF),new Protocols(3,0x1044FFFF),new Protocols(3,0x104AFFFF),new Protocols(3,0x104EFFFF),new Protocols(3,0x104FFFFF),new Protocols(3,0x1045FFFF),new Protocols(3,0x1046FFFF),new Protocols(3,0x1047FFFF),new Protocols(3,0x1048FFFF),new Protocols(3,0x1049FFFF),new Protocols(3,0x104BFFFF),new Protocols(3,0x104CFFFF)
 
             ,new Protocols(3,0x106AE0FF),new Protocols(3,0x106BE0FF),new Protocols(3,0x106CE0FF),new Protocols(3,0x106DE0FF)
             ,new Protocols(3,0x106AFFFF),new Protocols(3,0x106BFFFF),new Protocols(3,0x106CFFFF),new Protocols(3,0x106DFFFF)
@@ -37,8 +37,8 @@ namespace Sofar.BMSLib
             ,new Protocols(3,0x1030E0FF),new Protocols(3,0x1031E0FF),new Protocols(3,0x1033E0FF),new Protocols(3,0x1034E0FF),new Protocols(3,0x1035E0FF),new Protocols(3,0x1036E0FF),new Protocols(3,0x1037E0FF),new Protocols(3,0x1038E0FF),new Protocols(3,0x1039E0FF),new Protocols(3,0x103AE0FF),new Protocols(3,0x103BE0FF),new Protocols(3,0x103CE0FF),new Protocols(3,0x103DE0FF),new Protocols(3,0x103EE0FF),new Protocols(3,0x103FE0FF),new Protocols(3,0x1050E0FF),new Protocols(3,0x1051E0FF),new Protocols(3,0x102DE0FF)
 
              //BCU 电芯电压                 电芯温度                      电芯均衡状态                  电芯均衡温度                  电芯SOC                       电芯SOH
-             ,new Protocols(3,0x1070E0FF),  new Protocols(3,0x1071E0FF),  new Protocols(3,0x1072E0FF)  ,new Protocols(3,0x1073E0FF)  ,new Protocols(3,0x10A0E0FF)   ,new Protocols(3,0x10A1E0FF)
-             ,new Protocols(3,0x107081FF),  new Protocols(3,0x107181FF),  new Protocols(3,0x1072FFFF)  ,new Protocols(3,0x1073FFFF)  ,new Protocols(3,0x10A0FFFF)   ,new Protocols(3,0x10A1FFFF)
+            ,new Protocols(3,0x1070E0FF),new Protocols(3,0x1071E0FF),new Protocols(3,0x1072E0FF),new Protocols(3,0x1073E0FF),new Protocols(3,0x10A0E0FF)   ,new Protocols(3,0x10A1E0FF)
+            ,new Protocols(3,0x107081FF),new Protocols(3,0x107181FF),new Protocols(3,0x1072FFFF),new Protocols(3,0x1073FFFF),new Protocols(3,0x10A0FFFF)   ,new Protocols(3,0x10A1FFFF)
 
 
             //,new Protocols(3,0x1080FFFF)
@@ -69,16 +69,16 @@ namespace Sofar.BMSLib
             //BMU升级
             ,new Protocols(3,0x07FAE0FF),new Protocols(3,0x07FBE0FF),new Protocols(3,0x07FCE0FF),new Protocols(3,0x07FDE0FF),new Protocols(3,0x07FEE0FF),new Protocols(3,0x07FFE0FF)
             ,new Protocols(3,0x07FB41FF),new Protocols(3,0x07FC41FF),new Protocols(3,0x07FD41FF),new Protocols(3,0x07FE41FF),new Protocols(3,0x07FF41FF),new Protocols(3,0x07FF5FFF)
-            ,new Protocols(3,0xB605FFF),new Protocols(3,0xB615FFF),new Protocols(3,0xB625FFF),new Protocols(3,0xB635FFF),new Protocols(3,0xB665FFF),new Protocols(3,0x0B70E0FF),new Protocols(3,0x0B71E0FF),new Protocols(3,0x0B72E0FF),new Protocols(3,0x0B73E0FF),new Protocols(3,0x0B74E0FF),new Protocols(3,0x0B75E0FF),new Protocols(3,0x0B76E0FF),new Protocols(3,0x0B77E0FF),new Protocols(3,0x0B78E0FF),new Protocols(3,0x0B6A5FFF)
-            ,new Protocols(3,0xB70E0FF),new Protocols(3,0xB71E0FF),new Protocols(3,0xB72E0FF),new Protocols(3,0xB73E0FF),new Protocols(3,0xB74E0FF),new Protocols(3,0xB76E0FF),new Protocols(3,0xB77E0FF),new Protocols(3,0x0B78E0FF),new Protocols(3,0x0B6A5FFF)
+            ,new Protocols(3,0x0B605FFF),new Protocols(3,0x0B615FFF),new Protocols(3,0x0B625FFF),new Protocols(3,0x0B635FFF),new Protocols(3,0x0B665FFF),new Protocols(3,0x0B70E0FF),new Protocols(3,0x0B71E0FF),new Protocols(3,0x0B72E0FF),new Protocols(3,0x0B73E0FF),new Protocols(3,0x0B74E0FF),new Protocols(3,0x0B75E0FF),new Protocols(3,0x0B76E0FF),new Protocols(3,0x0B77E0FF),new Protocols(3,0x0B78E0FF),new Protocols(3,0x0B6A5FFF)
+            ,new Protocols(3,0x0B70E0FF),new Protocols(3,0x0B71E0FF),new Protocols(3,0x0B72E0FF),new Protocols(3,0x0B73E0FF),new Protocols(3,0x0B74E0FF),new Protocols(3,0x0B76E0FF),new Protocols(3,0x0B77E0FF),new Protocols(3,0x0B78E0FF),new Protocols(3,0x0B6A5FFF)
             ,new Protocols(3,0x1403FFFF),new Protocols(3,0x1400E0FF)
-            ,new Protocols(3,0x1060FFFF),new Protocols(3,0x1060FF1F),new Protocols(3, 0x1061FFFF),new Protocols(3,0x1061FF1F)
+            ,new Protocols(3,0x1060FFFF),new Protocols(3,0x1060FF1F),new Protocols(3,0x1061FFFF),new Protocols(3,0x1061FF1F)
             ,new Protocols(3,0x10B6E0FF),new Protocols(3,0x10B7E0FF),new Protocols(3,0x10B8E0FF),new Protocols(3,0x10B9E0FF),new Protocols(3,0x10BAE0FF),new Protocols(3,0x10BBE0FF),new Protocols(3,0x10BCE0FF),new Protocols(3,0x10BDE0FF),new Protocols(3,0x10BEE0FF),new Protocols(3,0x10BFE0FF),new Protocols(3,0x10C0E0FF),new Protocols(3,0x10C1E0FF),new Protocols(3,0x10C2E0FF),new Protocols(3,0x10C3E0FF),new Protocols(3,0x10C4E0FF),new Protocols(3,0x10C5E0FF),new Protocols(3,0x10C6E0FF)
             ,new Protocols(3,0x10E0E0FF),new Protocols(3,0x10E1E0FF),new Protocols(3,0x10E2E0FF),new Protocols(3,0x10E3E0FF),new Protocols(3,0x10E4E0FF),new Protocols(3,0x10E5E0FF),new Protocols(3,0x10EFE0FF),new Protocols(3,0x10F0E0FF),new Protocols(3,0x10F1E0FF),new Protocols(3,0x10F2E0FF),new Protocols(3,0x10F3E0FF),new Protocols(3,0x10F4E0FF),new Protocols(3,0x10F5E0FF),new Protocols(3,0x10F6E0FF),new Protocols(3,0x10F7E0FF),new Protocols(3,0x10F8E0FF),new Protocols(3,0x10F9E0FF),new Protocols(3,0x10FAE0FF)
             
             //EVBCM
             ,new Protocols(3,0x1800F4FF),new Protocols(3,0x1803F4FF),new Protocols(3,0x1812F4FF),new Protocols(3,0x1816F4FF),new Protocols(3,0x181AF4FF),new Protocols(3,0x1840F4FF),new Protocols(3,0x1841F4FF),new Protocols(3,0x1804F4FF),new Protocols(3,0x1805F4FF),new Protocols(3,0x1806F4FF),new Protocols(3,0x1807F4FF),new Protocols(3,0x1808F4FF),new Protocols(3,0x1809F4FF),new Protocols(3,0x180AF4FF),new Protocols(3,0x180BF4FF),new Protocols(3,0x180CF4FF),new Protocols(3,0x180DF4FF),new Protocols(3,0x180EF4FF),new Protocols(3,0x180FF4FF),new Protocols(3,0x181CF4FF),new Protocols(3,0x182BF4FF),new Protocols(3,0x182CF4FF)
-            ,new Protocols(3,0x181EF4FF), new Protocols(3,0x1831F4FF),new Protocols(3,0x1832F4FF),new Protocols(3,0x1832F4FF),new Protocols(3,0x18B2F4FF),new Protocols(3,0x1833F4FF),new Protocols(3,0x1834F4FF),new Protocols(3,0x1835F4FF),new Protocols(3,0x1836F4FF),new Protocols(3,0x1837F4FF),new Protocols(3,0x1838F4FF),new Protocols(3,0x1839F4FF),new Protocols(3,0x183AF4FF),new Protocols(3,0x183BF4FF),new Protocols(3,0x183CF4FF),new Protocols(3,0x183DF4FF)
+            ,new Protocols(3,0x181EF4FF),new Protocols(3,0x1831F4FF),new Protocols(3,0x1832F4FF),new Protocols(3,0x1832F4FF),new Protocols(3,0x18B2F4FF),new Protocols(3,0x1833F4FF),new Protocols(3,0x1834F4FF),new Protocols(3,0x1835F4FF),new Protocols(3,0x1836F4FF),new Protocols(3,0x1837F4FF),new Protocols(3,0x1838F4FF),new Protocols(3,0x1839F4FF),new Protocols(3,0x183AF4FF),new Protocols(3,0x183BF4FF),new Protocols(3,0x183CF4FF),new Protocols(3,0x183DF4FF)
             ,new Protocols(3,0x1814F4FF),
         };
     }

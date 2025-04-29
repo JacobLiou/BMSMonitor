@@ -2531,7 +2531,7 @@
                                     <ComboBox   x:Name="cbbHour"    Width="50"  Margin="5,0,0,0"  BorderThickness="1" ItemsSource="{Binding HourList}"   SelectedItem="{Binding SelectedHour,   Mode=TwoWay}"/>
                                     <ComboBox   x:Name="cbbMinute"  Width="50"  Margin="5,0,0,0"  BorderThickness="1" ItemsSource="{Binding MinuteList}" SelectedItem="{Binding SelectedMinute, Mode=TwoWay}"/>
                                     <ComboBox   x:Name="cbbSecond"  Width="50"  Margin="5,0,0,0"  BorderThickness="1" ItemsSource="{Binding SecondList}" SelectedItem="{Binding SelectedSecond, Mode=TwoWay}"/>
-                                    <Button x:Name="btnWrite_0x12" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x12_Cmd}"/>
+                                    <Button x:Name="btnWrite_0x12" Margin="10,0,0,0" Content="写入当前电脑时间" Command="{Binding Write_0x12_Cmd}"/>
                                 </StackPanel>
                             </GroupBox>
 

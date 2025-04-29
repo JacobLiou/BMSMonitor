@@ -321,20 +321,8 @@ namespace Sofar.HvBMSUI.ViewModels
         public int sendErrorCount { get; set; } = 0;
         public UpgradeControl_BMS_ViewModel()
         {
+            baseCanHelper = new CommandOperation(BMSConfig.ConfigManager).baseCanHelper;
 
-            switch (BMSConfig.ConfigManager.CAN_DevType)
-            {
-                case "USBCAN-I/I+":
-                case "USBCAN-II/II+":
-                    baseCanHelper = EcanHelper.Instance();
-                    break;
-                case "USBCAN-E-U":
-                case "USBCAN-2E-U":
-                    baseCanHelper = ControlcanHelper.Instance();
-                    break;
-                default:
-                    throw new ArgumentException($"不支持的CAN设备类型: {BMSConfig.ConfigManager.CAN_DevType}");
-            }
             cts = new CancellationTokenSource();
             if (UpgradeLogList == null) UpgradeLogList = new ObservableCollection<UpgradeLogData>();
             if (FirmwareModel_BMS1500V_DataList == null) FirmwareModel_BMS1500V_DataList = new ObservableCollection<FirmwareModel_BMS1500V>();
@@ -674,7 +662,7 @@ namespace Sofar.HvBMSUI.ViewModels
                                     int offset = GroupIndex * 1024;
                                     for (int i = 0; i < 1024; i += 8)
                                     {
-                                        Thread.Sleep(TX_INTERVAL_TIME_Data);
+                                        Thread.Sleep(Math.Max(TX_INTERVAL_TIME_Data, 0));
                                         //AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FD", "PACK_ID" + GroupIndex);
                                         startDownloadData3(offset + i);
                                     }
@@ -731,7 +719,7 @@ namespace Sofar.HvBMSUI.ViewModels
 
                                                 for (int j = 0; j < 1024; j += 8)
                                                 {
-                                                    Thread.Sleep(TX_INTERVAL_TIME_Data);
+                                                    Thread.Sleep(Math.Max(TX_INTERVAL_TIME_Data, 0));
                                                     //AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FD", "PACK_ID" + GroupIndex);
                                                     startDownloadData3(offset + j);
                                                 }

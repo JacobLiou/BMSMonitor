@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using PowerKit.Domain.Enums;
+using Sofar.HvBMSLib;
 
 namespace Sofar.BMSLib
 {
@@ -62,9 +63,9 @@ namespace Sofar.BMSLib
 
         public const int SEND_MSG_BUF_MAX = 0x2710;
 
-        public CAN_OBJ[] gSendMsgBuf;
-        public uint gSendMsgBufHead;
-        public uint gSendMsgBufTail;
+        public CAN_OBJ[] gSendMsgBuf = new CAN_OBJ[SEND_MSG_BUF_MAX];
+        public uint gSendMsgBufHead = 0;
+        public uint gSendMsgBufTail = 0;
 
         /*创建一个更新收发数据显示的线程*/
         public readonly static object _locker = new object();
@@ -191,9 +192,7 @@ namespace Sofar.BMSLib
         }
         public override bool Send(Byte[] data, byte[] canid)
         {
-            gSendMsgBuf = new CAN_OBJ[SEND_MSG_BUF_MAX];
-            gSendMsgBufHead = 0;
-            gSendMsgBufTail = 0;
+
 
             CAN_OBJ co = new CAN_OBJ();
             co.SendType = 0;
@@ -212,19 +211,18 @@ namespace Sofar.BMSLib
                 gSendMsgBufHead = 0;
             }
 
-            CAN_OBJ[] coMsg = new CAN_OBJ[2];
+            CAN_OBJ[] coMsg = new CAN_OBJ[1];
 
             if (gSendMsgBufHead != gSendMsgBufTail)
             {
                 coMsg[0] = gSendMsgBuf[gSendMsgBufTail];
-                coMsg[1] = gSendMsgBuf[gSendMsgBufTail];
                 gSendMsgBufTail++;
 
                 if (gSendMsgBufTail >= SEND_MSG_BUF_MAX)
                 {
                     gSendMsgBufTail = 0;
                 }
-
+                LogAction?.Invoke(1, HexDataHelper.GetDebugByteString(data, "Send：0x" + co.ID.ToString("X")));
                 if (ECANHelper.Transmit(_devType, _devIndex, _channel, coMsg, 1) == ECANStatus.STATUS_OK)
                 {
                     CAN_ERR_INFO err_info = new CAN_ERR_INFO();
@@ -366,8 +364,8 @@ namespace Sofar.BMSLib
             lock (_locker)
             {
                 //测试打印接收报文
-                Debug.WriteLine($"{System.DateTime.Now.ToString("hh:mm:ss:fff")} 入队数据   帧ID:{CANOBJ.ID.ToString("X8")}");
-
+                //Debug.WriteLine($"{System.DateTime.Now.ToString("hh:mm:ss:fff")} 入队数据   帧ID:{CANOBJ.ID.ToString("X8")}");
+                //LogAction?.Invoke(1, HexDataHelper.GetDebugByteString(CANOBJ.Data, "Recv：0x" + CANOBJ.ID.ToString("X")));
                 _task.Enqueue(CANOBJ);
                 _wh.Set();
             }
