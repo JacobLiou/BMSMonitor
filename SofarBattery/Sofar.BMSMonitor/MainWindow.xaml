@@ -1,0 +1,41 @@
+﻿<Window x:Class="Sofar.BMSMonitor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sofar.BMSMonitor" 
+        xmlns:viewModels="clr-namespace:Sofar.BMSMonitor.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <viewModels:MainViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <DockPanel>
+            <!-- 菜单栏 -->
+            <Menu DockPanel.Dock="Top">
+                <!-- 第一个一级菜单 -->
+                <MenuItem Header="PowerMagic电池">
+                    <!-- 可以在这里添加二级菜单 -->
+                    <MenuItem Header="BCU运行信息" Command="{Binding NavigateCommand}" CommandParameter="EVBCM_BCU_Control"/>
+                    <MenuItem Header="BCU报警设置" Command="{Binding NavigateCommand}" CommandParameter="EVBCM_BCU_ParamControl"/>
+                    
+                    <MenuItem Header="BMU运行信息" Command="{Binding NavigateCommand}" CommandParameter="EVBCM_BMU_Control"/>
+                    <MenuItem Header="BMU报警设置" Command="{Binding NavigateCommand}" CommandParameter="EVBCM_BMU_ParamControl"/>
+
+                    <MenuItem Header="固件升级" Command="{Binding NavigateCommand}" CommandParameter="UpgradeControl_BMS"/>
+                    <MenuItem Header="文件传输" Command="{Binding NavigateCommand}" CommandParameter="FileTransmit_BMS"/>
+                </MenuItem>
+                <!-- 第三个一级菜单 -->
+                <MenuItem Header="帮助(_H)">
+                    <MenuItem Header="查看帮助"/>
+                    <MenuItem Header="关于"/>
+                </MenuItem>
+            </Menu>
+
+            <!-- 主内容区域 -->
+            <ContentControl Content="{Binding CurrentView}"/>
+        </DockPanel>
+
+    </Grid>
+</Window>

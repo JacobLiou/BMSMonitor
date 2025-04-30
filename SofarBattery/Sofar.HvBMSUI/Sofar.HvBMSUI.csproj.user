@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Control\Pages\EVBCM_BCU_Control.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Control\Pages\EVBCM_BCU_ParamControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Control\Pages\EVBCM_BMU_Control.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Control\Pages\EVBCM_BMU_ParamControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Control\Pages\FileTransmit_BMS.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Control\Pages\UpgradeControl_BMS.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MessageView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
