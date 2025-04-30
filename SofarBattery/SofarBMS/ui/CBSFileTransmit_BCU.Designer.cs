@@ -85,7 +85,7 @@
             // txtSlaveAddress
             // 
             this.txtSlaveAddress.Location = new System.Drawing.Point(108, 37);
-            this.txtSlaveAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSlaveAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtSlaveAddress.Name = "txtSlaveAddress";
             this.txtSlaveAddress.Size = new System.Drawing.Size(140, 23);
             this.txtSlaveAddress.TabIndex = 3;
@@ -102,7 +102,7 @@
             "4：运行日志文件\t    ",
             "5：历史事件文件"});
             this.cbbFileNumber.Location = new System.Drawing.Point(108, 82);
-            this.cbbFileNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbbFileNumber.Margin = new System.Windows.Forms.Padding(4);
             this.cbbFileNumber.Name = "cbbFileNumber";
             this.cbbFileNumber.Size = new System.Drawing.Size(140, 25);
             this.cbbFileNumber.TabIndex = 4;
@@ -114,7 +114,7 @@
             "BCU",
             "BMU"});
             this.cbbModeName.Location = new System.Drawing.Point(108, 125);
-            this.cbbModeName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbbModeName.Margin = new System.Windows.Forms.Padding(4);
             this.cbbModeName.Name = "cbbModeName";
             this.cbbModeName.Size = new System.Drawing.Size(140, 25);
             this.cbbModeName.TabIndex = 5;
@@ -122,7 +122,7 @@
             // btnFileTransmit
             // 
             this.btnFileTransmit.Location = new System.Drawing.Point(727, 75);
-            this.btnFileTransmit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFileTransmit.Margin = new System.Windows.Forms.Padding(4);
             this.btnFileTransmit.Name = "btnFileTransmit";
             this.btnFileTransmit.Size = new System.Drawing.Size(88, 72);
             this.btnFileTransmit.TabIndex = 6;
@@ -134,7 +134,7 @@
             // 
             this.ckReadAll.AutoSize = true;
             this.ckReadAll.Location = new System.Drawing.Point(265, 85);
-            this.ckReadAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ckReadAll.Margin = new System.Windows.Forms.Padding(4);
             this.ckReadAll.Name = "ckReadAll";
             this.ckReadAll.Size = new System.Drawing.Size(99, 21);
             this.ckReadAll.TabIndex = 7;
@@ -166,7 +166,7 @@
             // txtStartLocal
             // 
             this.txtStartLocal.Location = new System.Drawing.Point(449, 125);
-            this.txtStartLocal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtStartLocal.Margin = new System.Windows.Forms.Padding(4);
             this.txtStartLocal.Name = "txtStartLocal";
             this.txtStartLocal.Size = new System.Drawing.Size(116, 23);
             this.txtStartLocal.TabIndex = 10;
@@ -175,7 +175,7 @@
             // txtReadCount
             // 
             this.txtReadCount.Location = new System.Drawing.Point(449, 82);
-            this.txtReadCount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtReadCount.Margin = new System.Windows.Forms.Padding(4);
             this.txtReadCount.Name = "txtReadCount";
             this.txtReadCount.Size = new System.Drawing.Size(116, 23);
             this.txtReadCount.TabIndex = 11;
@@ -199,9 +199,9 @@
             this.groupBox1.Controls.Add(this.btnFileTransmit);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1477, 184);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
@@ -219,7 +219,7 @@
             // txtSubDeviceAddress
             // 
             this.txtSubDeviceAddress.Location = new System.Drawing.Point(365, 37);
-            this.txtSubDeviceAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSubDeviceAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtSubDeviceAddress.Name = "txtSubDeviceAddress";
             this.txtSubDeviceAddress.Size = new System.Drawing.Size(140, 23);
             this.txtSubDeviceAddress.TabIndex = 13;
@@ -230,9 +230,9 @@
             this.groupBox2.Controls.Add(this.lvPrintBlock);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 184);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(1477, 833);
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
@@ -245,7 +245,7 @@
             this.columnHeader3});
             this.lvPrintBlock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvPrintBlock.Location = new System.Drawing.Point(4, 20);
-            this.lvPrintBlock.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lvPrintBlock.Margin = new System.Windows.Forms.Padding(4);
             this.lvPrintBlock.Name = "lvPrintBlock";
             this.lvPrintBlock.Size = new System.Drawing.Size(1469, 809);
             this.lvPrintBlock.TabIndex = 0;
@@ -273,7 +273,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CBSFileTransmit_BCU";
             this.Size = new System.Drawing.Size(1477, 1017);
             this.Load += new System.EventHandler(this.CBSFileTransmit_Load);

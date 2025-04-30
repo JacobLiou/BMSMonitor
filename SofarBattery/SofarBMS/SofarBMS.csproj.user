@@ -7,6 +7,9 @@
     <Compile Update="ui\CBSControl_BMU.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="ui\CBSFileTransmit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="ui\CBSFileTransmit_BCU.cs">
       <SubType>UserControl</SubType>
     </Compile>

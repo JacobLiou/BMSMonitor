@@ -8,6 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>SofarBMS</RootNamespace>
     <AssemblyName>SofarBMS</AssemblyName>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Icon.ico" />
     <Content Include="images\ball.png" />
     <Content Include="images\chushihua.png" />
     <Content Include="images\daoru.png" />

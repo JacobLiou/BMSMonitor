@@ -18,6 +18,7 @@ namespace SofarBMS.UI
         //定义固件升级工步枚举对象
         public StepFlag stepFlag = StepFlag.None;
         //定义芯片角色和固件编码
+        private byte file_type = 0x0;
         private string chip_role = "";
         private string chip_code = "0xE0";
         private string slaveAddress = "0x1F";//常规0x1F，BCU为0x9F
@@ -123,7 +124,7 @@ namespace SofarBMS.UI
                 upgradeTime = null;
                 stepFlag = 0;
                 GroupIndex = 0;
-                file_size = 0;
+                file_size = 0; 
                 file_length = -1;
                 file_name = string.Empty;
                 file_data = null;
@@ -347,11 +348,11 @@ namespace SofarBMS.UI
                                         startDownloadFlag6(upgradeTime);
                                         Thread.Sleep(TX_INTERVAL_TIME);
 
-                                        startDownloadState5(chip_role, chip_code, 03, 0x80);
+                                        startDownloadState5(chip_role, chip_code, 03);
                                     }
                                     else
                                     {
-                                        startDownloadState5(chip_role, chip_code, 02, 0x80);
+                                        startDownloadState5(chip_role, chip_code, 02);
                                     }
 
                                     stepFlag = StepFlag.FF升级完成状态查询帧;
@@ -455,7 +456,6 @@ namespace SofarBMS.UI
             firmwareModel.FirmwareFileTypeCode = Convert.ToByte(fileType, 16);
             //文件类型
             firmwareModel.FirmwareFileType = Enum.Parse(typeof(FileType), (Convert.ToInt32(fileType, 16) & 0x0f).ToString()).ToString() + $"({fileType})";
-
             //芯片代号
             firmwareModel.ChipMark = Encoding.ASCII.GetString(SignatureBytes, (1 + 4 + 4 + 30 + 20 + 20 + 30 + 12 + 4 + 1), 2).Trim('\0');
 
@@ -465,6 +465,7 @@ namespace SofarBMS.UI
                           SignatureBytes[SignatureBytes.Length - 2] << 16 |
                           SignatureBytes[SignatureBytes.Length - 1] << 24);
 
+            file_type = firmwareModel.FirmwareFileTypeCode;
             txtChipcode.Text = firmwareModel.ChipMark;
             txtChiprole_val.Text = "0x" + firmwareModel.FirmwareChipRoleCode.ToString("X2");
             switch (txtChiprole_val.Text.Trim())
@@ -758,7 +759,7 @@ namespace SofarBMS.UI
         /// <param name="function_code">01:查询 02:启动升级 03:暂存升级</param>
         /// <param name="file_type">00:APP 01:CORE</param>
         /// <exception cref="Exception"></exception>
-        public void startDownloadState5(string chip_role, string chip_code, int function_code, int file_type = 0x00)
+        public void startDownloadState5(string chip_role, string chip_code, int function_code)
         {
             int i = 0;
             byte[] data = new byte[8];

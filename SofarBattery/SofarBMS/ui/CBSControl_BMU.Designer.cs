@@ -75,6 +75,7 @@
             this.txtSOC6 = new System.Windows.Forms.TextBox();
             this.txtSOC1 = new System.Windows.Forms.TextBox();
             this.gbRealtimeData_109 = new System.Windows.Forms.GroupBox();
+            this.txtBmuHardwareVersion = new System.Windows.Forms.TextBox();
             this.lblRealtimeData_72 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblRealtimeData_161 = new System.Windows.Forms.Label();
@@ -151,7 +152,7 @@
             this.lblRealtimeData_147 = new System.Windows.Forms.Label();
             this.pbDischargeStatus = new System.Windows.Forms.PictureBox();
             this.lblRealtimeData_127 = new System.Windows.Forms.Label();
-            this.pbChagreStatus = new System.Windows.Forms.PictureBox();
+            this.pbChargeStatus = new System.Windows.Forms.PictureBox();
             this.lblRealtimeData_126 = new System.Windows.Forms.Label();
             this.pbChargeEnable = new System.Windows.Forms.PictureBox();
             this.lblRealtimeData_149 = new System.Windows.Forms.Label();
@@ -267,7 +268,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbChargeIO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDiIO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDischargeStatus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbChagreStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbChargeStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbChargeEnable)).BeginInit();
             this.gbRealtimeData_164.SuspendLayout();
             this.gbRealtimeData_105.SuspendLayout();
@@ -280,7 +281,7 @@
             // 
             // txtBmuCanVersion
             // 
-            this.txtBmuCanVersion.Location = new System.Drawing.Point(451, 23);
+            this.txtBmuCanVersion.Location = new System.Drawing.Point(261, 49);
             this.txtBmuCanVersion.Margin = new System.Windows.Forms.Padding(4);
             this.txtBmuCanVersion.Name = "txtBmuCanVersion";
             this.txtBmuCanVersion.ReadOnly = true;
@@ -289,7 +290,7 @@
             // 
             // txtBmuSaftwareVersion
             // 
-            this.txtBmuSaftwareVersion.Location = new System.Drawing.Point(353, 23);
+            this.txtBmuSaftwareVersion.Location = new System.Drawing.Point(107, 49);
             this.txtBmuSaftwareVersion.Margin = new System.Windows.Forms.Padding(4);
             this.txtBmuSaftwareVersion.Name = "txtBmuSaftwareVersion";
             this.txtBmuSaftwareVersion.ReadOnly = true;
@@ -309,7 +310,7 @@
             // lblRealtimeData_145
             // 
             this.lblRealtimeData_145.AutoSize = true;
-            this.lblRealtimeData_145.Location = new System.Drawing.Point(257, 26);
+            this.lblRealtimeData_145.Location = new System.Drawing.Point(11, 52);
             this.lblRealtimeData_145.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_145.Name = "lblRealtimeData_145";
             this.lblRealtimeData_145.Size = new System.Drawing.Size(91, 17);
@@ -337,7 +338,7 @@
             // 
             // txtBatNominalCapacity
             // 
-            this.txtBatNominalCapacity.Location = new System.Drawing.Point(159, 441);
+            this.txtBatNominalCapacity.Location = new System.Drawing.Point(159, 443);
             this.txtBatNominalCapacity.Margin = new System.Windows.Forms.Padding(4);
             this.txtBatNominalCapacity.Name = "txtBatNominalCapacity";
             this.txtBatNominalCapacity.ReadOnly = true;
@@ -357,7 +358,7 @@
             // lblRealtimeData_142
             // 
             this.lblRealtimeData_142.AutoSize = true;
-            this.lblRealtimeData_142.Location = new System.Drawing.Point(6, 445);
+            this.lblRealtimeData_142.Location = new System.Drawing.Point(6, 447);
             this.lblRealtimeData_142.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_142.Name = "lblRealtimeData_142";
             this.lblRealtimeData_142.Size = new System.Drawing.Size(56, 17);
@@ -744,6 +745,7 @@
             // 
             // gbRealtimeData_109
             // 
+            this.gbRealtimeData_109.Controls.Add(this.txtBmuHardwareVersion);
             this.gbRealtimeData_109.Controls.Add(this.txtBmuCanVersion);
             this.gbRealtimeData_109.Controls.Add(this.txtManufacturerName);
             this.gbRealtimeData_109.Controls.Add(this.txtBmuSaftwareVersion);
@@ -755,15 +757,24 @@
             this.gbRealtimeData_109.Margin = new System.Windows.Forms.Padding(4);
             this.gbRealtimeData_109.Name = "gbRealtimeData_109";
             this.gbRealtimeData_109.Padding = new System.Windows.Forms.Padding(4);
-            this.gbRealtimeData_109.Size = new System.Drawing.Size(694, 63);
+            this.gbRealtimeData_109.Size = new System.Drawing.Size(694, 80);
             this.gbRealtimeData_109.TabIndex = 64;
             this.gbRealtimeData_109.TabStop = false;
             this.gbRealtimeData_109.Text = "版本号";
             // 
+            // txtBmuHardwareVersion
+            // 
+            this.txtBmuHardwareVersion.Location = new System.Drawing.Point(205, 49);
+            this.txtBmuHardwareVersion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBmuHardwareVersion.Name = "txtBmuHardwareVersion";
+            this.txtBmuHardwareVersion.ReadOnly = true;
+            this.txtBmuHardwareVersion.Size = new System.Drawing.Size(53, 23);
+            this.txtBmuHardwareVersion.TabIndex = 73;
+            // 
             // lblRealtimeData_72
             // 
             this.lblRealtimeData_72.AutoSize = true;
-            this.lblRealtimeData_72.Location = new System.Drawing.Point(6, 26);
+            this.lblRealtimeData_72.Location = new System.Drawing.Point(11, 27);
             this.lblRealtimeData_72.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_72.Name = "lblRealtimeData_72";
             this.lblRealtimeData_72.Size = new System.Drawing.Size(44, 17);
@@ -818,7 +829,7 @@
             // lblRealtimeData_161
             // 
             this.lblRealtimeData_161.AutoSize = true;
-            this.lblRealtimeData_161.Location = new System.Drawing.Point(6, 476);
+            this.lblRealtimeData_161.Location = new System.Drawing.Point(6, 479);
             this.lblRealtimeData_161.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_161.Name = "lblRealtimeData_161";
             this.lblRealtimeData_161.Size = new System.Drawing.Size(97, 17);
@@ -827,7 +838,7 @@
             // 
             // txtRegisterName
             // 
-            this.txtRegisterName.Location = new System.Drawing.Point(159, 473);
+            this.txtRegisterName.Location = new System.Drawing.Point(159, 476);
             this.txtRegisterName.Margin = new System.Windows.Forms.Padding(4);
             this.txtRegisterName.Name = "txtRegisterName";
             this.txtRegisterName.ReadOnly = true;
@@ -836,7 +847,7 @@
             // 
             // txtActiveBalanceStatus
             // 
-            this.txtActiveBalanceStatus.Location = new System.Drawing.Point(159, 409);
+            this.txtActiveBalanceStatus.Location = new System.Drawing.Point(159, 411);
             this.txtActiveBalanceStatus.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtActiveBalanceStatus.Name = "txtActiveBalanceStatus";
             this.txtActiveBalanceStatus.ReadOnly = true;
@@ -846,7 +857,7 @@
             // lblRealtimeData_141
             // 
             this.lblRealtimeData_141.AutoSize = true;
-            this.lblRealtimeData_141.Location = new System.Drawing.Point(6, 413);
+            this.lblRealtimeData_141.Location = new System.Drawing.Point(6, 415);
             this.lblRealtimeData_141.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_141.Name = "lblRealtimeData_141";
             this.lblRealtimeData_141.Size = new System.Drawing.Size(80, 17);
@@ -893,7 +904,7 @@
             // 
             // txtSyncFallSoc
             // 
-            this.txtSyncFallSoc.Location = new System.Drawing.Point(159, 377);
+            this.txtSyncFallSoc.Location = new System.Drawing.Point(159, 379);
             this.txtSyncFallSoc.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtSyncFallSoc.Name = "txtSyncFallSoc";
             this.txtSyncFallSoc.ReadOnly = true;
@@ -902,7 +913,7 @@
             // 
             // txtResetMode
             // 
-            this.txtResetMode.Location = new System.Drawing.Point(159, 345);
+            this.txtResetMode.Location = new System.Drawing.Point(159, 347);
             this.txtResetMode.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtResetMode.Name = "txtResetMode";
             this.txtResetMode.ReadOnly = true;
@@ -912,7 +923,7 @@
             // lblRealtimeData_140
             // 
             this.lblRealtimeData_140.AutoSize = true;
-            this.lblRealtimeData_140.Location = new System.Drawing.Point(6, 381);
+            this.lblRealtimeData_140.Location = new System.Drawing.Point(6, 383);
             this.lblRealtimeData_140.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_140.Name = "lblRealtimeData_140";
             this.lblRealtimeData_140.Size = new System.Drawing.Size(100, 17);
@@ -922,7 +933,7 @@
             // lblRealtimeData_138
             // 
             this.lblRealtimeData_138.AutoSize = true;
-            this.lblRealtimeData_138.Location = new System.Drawing.Point(6, 349);
+            this.lblRealtimeData_138.Location = new System.Drawing.Point(6, 351);
             this.lblRealtimeData_138.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_138.Name = "lblRealtimeData_138";
             this.lblRealtimeData_138.Size = new System.Drawing.Size(56, 17);
@@ -931,7 +942,7 @@
             // 
             // txtDsgCurOffsetVolt
             // 
-            this.txtDsgCurOffsetVolt.Location = new System.Drawing.Point(159, 313);
+            this.txtDsgCurOffsetVolt.Location = new System.Drawing.Point(159, 315);
             this.txtDsgCurOffsetVolt.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtDsgCurOffsetVolt.Name = "txtDsgCurOffsetVolt";
             this.txtDsgCurOffsetVolt.ReadOnly = true;
@@ -941,7 +952,7 @@
             // lblRealtimeData_137
             // 
             this.lblRealtimeData_137.AutoSize = true;
-            this.lblRealtimeData_137.Location = new System.Drawing.Point(6, 317);
+            this.lblRealtimeData_137.Location = new System.Drawing.Point(6, 319);
             this.lblRealtimeData_137.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_137.Name = "lblRealtimeData_137";
             this.lblRealtimeData_137.Size = new System.Drawing.Size(96, 17);
@@ -950,7 +961,7 @@
             // 
             // txtChgCurOffsetVolt
             // 
-            this.txtChgCurOffsetVolt.Location = new System.Drawing.Point(159, 281);
+            this.txtChgCurOffsetVolt.Location = new System.Drawing.Point(159, 283);
             this.txtChgCurOffsetVolt.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtChgCurOffsetVolt.Name = "txtChgCurOffsetVolt";
             this.txtChgCurOffsetVolt.ReadOnly = true;
@@ -960,7 +971,7 @@
             // lblRealtimeData_136
             // 
             this.lblRealtimeData_136.AutoSize = true;
-            this.lblRealtimeData_136.Location = new System.Drawing.Point(6, 285);
+            this.lblRealtimeData_136.Location = new System.Drawing.Point(6, 287);
             this.lblRealtimeData_136.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_136.Name = "lblRealtimeData_136";
             this.lblRealtimeData_136.Size = new System.Drawing.Size(96, 17);
@@ -969,7 +980,7 @@
             // 
             // txtActiveBalanceCellSoc
             // 
-            this.txtActiveBalanceCellSoc.Location = new System.Drawing.Point(159, 153);
+            this.txtActiveBalanceCellSoc.Location = new System.Drawing.Point(159, 155);
             this.txtActiveBalanceCellSoc.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtActiveBalanceCellSoc.Name = "txtActiveBalanceCellSoc";
             this.txtActiveBalanceCellSoc.ReadOnly = true;
@@ -979,7 +990,7 @@
             // lblRealtimeData_128
             // 
             this.lblRealtimeData_128.AutoSize = true;
-            this.lblRealtimeData_128.Location = new System.Drawing.Point(6, 29);
+            this.lblRealtimeData_128.Location = new System.Drawing.Point(6, 31);
             this.lblRealtimeData_128.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRealtimeData_128.Name = "lblRealtimeData_128";
             this.lblRealtimeData_128.Size = new System.Drawing.Size(96, 17);
@@ -988,7 +999,7 @@
             // 
             // txtBatAverageTemp
             // 
-            this.txtBatAverageTemp.Location = new System.Drawing.Point(159, 121);
+            this.txtBatAverageTemp.Location = new System.Drawing.Point(159, 123);
             this.txtBatAverageTemp.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtBatAverageTemp.Name = "txtBatAverageTemp";
             this.txtBatAverageTemp.ReadOnly = true;
@@ -998,7 +1009,7 @@
             // lblRealtimeData_129
             // 
             this.lblRealtimeData_129.AutoSize = true;
-            this.lblRealtimeData_129.Location = new System.Drawing.Point(6, 61);
+            this.lblRealtimeData_129.Location = new System.Drawing.Point(6, 63);
             this.lblRealtimeData_129.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRealtimeData_129.Name = "lblRealtimeData_129";
             this.lblRealtimeData_129.Size = new System.Drawing.Size(72, 17);
@@ -1007,7 +1018,7 @@
             // 
             // txtActiveBalanceRemainCap
             // 
-            this.txtActiveBalanceRemainCap.Location = new System.Drawing.Point(159, 217);
+            this.txtActiveBalanceRemainCap.Location = new System.Drawing.Point(159, 219);
             this.txtActiveBalanceRemainCap.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtActiveBalanceRemainCap.Name = "txtActiveBalanceRemainCap";
             this.txtActiveBalanceRemainCap.ReadOnly = true;
@@ -1016,7 +1027,7 @@
             // 
             // txtActiveBalanceMaxCellVolt
             // 
-            this.txtActiveBalanceMaxCellVolt.Location = new System.Drawing.Point(159, 89);
+            this.txtActiveBalanceMaxCellVolt.Location = new System.Drawing.Point(159, 91);
             this.txtActiveBalanceMaxCellVolt.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtActiveBalanceMaxCellVolt.Name = "txtActiveBalanceMaxCellVolt";
             this.txtActiveBalanceMaxCellVolt.ReadOnly = true;
@@ -1025,7 +1036,7 @@
             // 
             // txtActiveBalanceAccCap
             // 
-            this.txtActiveBalanceAccCap.Location = new System.Drawing.Point(159, 185);
+            this.txtActiveBalanceAccCap.Location = new System.Drawing.Point(159, 187);
             this.txtActiveBalanceAccCap.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtActiveBalanceAccCap.Name = "txtActiveBalanceAccCap";
             this.txtActiveBalanceAccCap.ReadOnly = true;
@@ -1035,7 +1046,7 @@
             // lblRealtimeData_130
             // 
             this.lblRealtimeData_130.AutoSize = true;
-            this.lblRealtimeData_130.Location = new System.Drawing.Point(6, 93);
+            this.lblRealtimeData_130.Location = new System.Drawing.Point(6, 95);
             this.lblRealtimeData_130.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRealtimeData_130.Name = "lblRealtimeData_130";
             this.lblRealtimeData_130.Size = new System.Drawing.Size(155, 17);
@@ -1044,7 +1055,7 @@
             // 
             // txtAuxVolt
             // 
-            this.txtAuxVolt.Location = new System.Drawing.Point(159, 249);
+            this.txtAuxVolt.Location = new System.Drawing.Point(159, 251);
             this.txtAuxVolt.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtAuxVolt.Name = "txtAuxVolt";
             this.txtAuxVolt.ReadOnly = true;
@@ -1054,7 +1065,7 @@
             // lblRealtimeData_131
             // 
             this.lblRealtimeData_131.AutoSize = true;
-            this.lblRealtimeData_131.Location = new System.Drawing.Point(6, 125);
+            this.lblRealtimeData_131.Location = new System.Drawing.Point(6, 127);
             this.lblRealtimeData_131.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRealtimeData_131.Name = "lblRealtimeData_131";
             this.lblRealtimeData_131.Size = new System.Drawing.Size(100, 17);
@@ -1064,7 +1075,7 @@
             // lblRealtimeData_132
             // 
             this.lblRealtimeData_132.AutoSize = true;
-            this.lblRealtimeData_132.Location = new System.Drawing.Point(6, 157);
+            this.lblRealtimeData_132.Location = new System.Drawing.Point(6, 159);
             this.lblRealtimeData_132.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_132.Name = "lblRealtimeData_132";
             this.lblRealtimeData_132.Size = new System.Drawing.Size(124, 17);
@@ -1073,7 +1084,7 @@
             // 
             // txtBalanceBusVoltage
             // 
-            this.txtBalanceBusVoltage.Location = new System.Drawing.Point(159, 25);
+            this.txtBalanceBusVoltage.Location = new System.Drawing.Point(159, 27);
             this.txtBalanceBusVoltage.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtBalanceBusVoltage.Name = "txtBalanceBusVoltage";
             this.txtBalanceBusVoltage.ReadOnly = true;
@@ -1083,7 +1094,7 @@
             // lblRealtimeData_134
             // 
             this.lblRealtimeData_134.AutoSize = true;
-            this.lblRealtimeData_134.Location = new System.Drawing.Point(6, 221);
+            this.lblRealtimeData_134.Location = new System.Drawing.Point(6, 223);
             this.lblRealtimeData_134.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_134.Name = "lblRealtimeData_134";
             this.lblRealtimeData_134.Size = new System.Drawing.Size(104, 17);
@@ -1092,7 +1103,7 @@
             // 
             // txtBalanceCurrent
             // 
-            this.txtBalanceCurrent.Location = new System.Drawing.Point(159, 57);
+            this.txtBalanceCurrent.Location = new System.Drawing.Point(159, 59);
             this.txtBalanceCurrent.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtBalanceCurrent.Name = "txtBalanceCurrent";
             this.txtBalanceCurrent.ReadOnly = true;
@@ -1102,7 +1113,7 @@
             // lblRealtimeData_135
             // 
             this.lblRealtimeData_135.AutoSize = true;
-            this.lblRealtimeData_135.Location = new System.Drawing.Point(6, 253);
+            this.lblRealtimeData_135.Location = new System.Drawing.Point(6, 255);
             this.lblRealtimeData_135.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_135.Name = "lblRealtimeData_135";
             this.lblRealtimeData_135.Size = new System.Drawing.Size(72, 17);
@@ -1112,7 +1123,7 @@
             // lblRealtimeData_133
             // 
             this.lblRealtimeData_133.AutoSize = true;
-            this.lblRealtimeData_133.Location = new System.Drawing.Point(6, 189);
+            this.lblRealtimeData_133.Location = new System.Drawing.Point(6, 191);
             this.lblRealtimeData_133.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_133.Name = "lblRealtimeData_133";
             this.lblRealtimeData_133.Size = new System.Drawing.Size(104, 17);
@@ -1457,7 +1468,7 @@
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_147);
             this.gbRealtimeData_108.Controls.Add(this.pbDischargeStatus);
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_127);
-            this.gbRealtimeData_108.Controls.Add(this.pbChagreStatus);
+            this.gbRealtimeData_108.Controls.Add(this.pbChargeStatus);
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_126);
             this.gbRealtimeData_108.Controls.Add(this.pbForceChrgRequest);
             this.gbRealtimeData_108.Controls.Add(this.pbBmuPowOffRequest);
@@ -1469,11 +1480,11 @@
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_151);
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_152);
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_153);
-            this.gbRealtimeData_108.Location = new System.Drawing.Point(455, 441);
+            this.gbRealtimeData_108.Location = new System.Drawing.Point(455, 448);
             this.gbRealtimeData_108.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.gbRealtimeData_108.Name = "gbRealtimeData_108";
             this.gbRealtimeData_108.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.gbRealtimeData_108.Size = new System.Drawing.Size(698, 76);
+            this.gbRealtimeData_108.Size = new System.Drawing.Size(698, 69);
             this.gbRealtimeData_108.TabIndex = 39;
             this.gbRealtimeData_108.TabStop = false;
             this.gbRealtimeData_108.Text = "系统状态";
@@ -1578,15 +1589,15 @@
             this.lblRealtimeData_127.TabIndex = 14;
             this.lblRealtimeData_127.Text = "放空";
             // 
-            // pbChagreStatus
+            // pbChargeStatus
             // 
-            this.pbChagreStatus.BackColor = System.Drawing.Color.Green;
-            this.pbChagreStatus.Location = new System.Drawing.Point(403, 24);
-            this.pbChagreStatus.Margin = new System.Windows.Forms.Padding(4);
-            this.pbChagreStatus.Name = "pbChagreStatus";
-            this.pbChagreStatus.Size = new System.Drawing.Size(12, 13);
-            this.pbChagreStatus.TabIndex = 13;
-            this.pbChagreStatus.TabStop = false;
+            this.pbChargeStatus.BackColor = System.Drawing.Color.Green;
+            this.pbChargeStatus.Location = new System.Drawing.Point(403, 24);
+            this.pbChargeStatus.Margin = new System.Windows.Forms.Padding(4);
+            this.pbChargeStatus.Name = "pbChargeStatus";
+            this.pbChargeStatus.Size = new System.Drawing.Size(12, 13);
+            this.pbChargeStatus.TabIndex = 13;
+            this.pbChargeStatus.TabStop = false;
             // 
             // lblRealtimeData_126
             // 
@@ -1809,7 +1820,7 @@
             this.gbRealtimeData_101.Controls.Add(this.lblRealtimeData_20);
             this.gbRealtimeData_101.Controls.Add(this.lblRealtimeData_19);
             this.gbRealtimeData_101.Controls.Add(this.lblRealtimeData_18);
-            this.gbRealtimeData_101.Location = new System.Drawing.Point(455, 75);
+            this.gbRealtimeData_101.Location = new System.Drawing.Point(455, 88);
             this.gbRealtimeData_101.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.gbRealtimeData_101.Name = "gbRealtimeData_101";
             this.gbRealtimeData_101.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
@@ -2264,7 +2275,7 @@
             this.gbRealtimeData_102.Controls.Add(this.lblRealtimeData_49);
             this.gbRealtimeData_102.Controls.Add(this.lblRealtimeData_76);
             this.gbRealtimeData_102.Controls.Add(this.lblRealtimeData_50);
-            this.gbRealtimeData_102.Location = new System.Drawing.Point(455, 256);
+            this.gbRealtimeData_102.Location = new System.Drawing.Point(455, 263);
             this.gbRealtimeData_102.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.gbRealtimeData_102.Name = "gbRealtimeData_102";
             this.gbRealtimeData_102.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
@@ -2682,7 +2693,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbChargeIO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDiIO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDischargeStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbChagreStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbChargeStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbChargeEnable)).EndInit();
             this.gbRealtimeData_164.ResumeLayout(false);
             this.gbRealtimeData_105.ResumeLayout(false);
@@ -2783,7 +2794,7 @@
         private Label lblRealtimeData_147;
         private PictureBox pbDischargeStatus;
         private Label lblRealtimeData_127;
-        private PictureBox pbChagreStatus;
+        private PictureBox pbChargeStatus;
         private Label lblRealtimeData_126;
         private PictureBox pbChargeEnable;
         private Label lblRealtimeData_149;
@@ -2923,5 +2934,6 @@
         private RichTextBox richTextBox1;
         private GroupBox gbRealtimeData_103;
         private RichTextBox richTextBox2;
+        private TextBox txtBmuHardwareVersion;
     }
 }
