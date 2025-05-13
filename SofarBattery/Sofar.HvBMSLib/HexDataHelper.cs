@@ -199,7 +199,7 @@ namespace Sofar.HvBMSLib
         {
             if (data == null) return "";
             StringBuilder sb = new StringBuilder();//清除字符串构造器的内容  
-            sb.AppendFormat("{0} {1} ", DateTime.Now.ToString("yyyy/MM/ss HH:mm:ss.fff"), title);
+            sb.AppendFormat("{0} {1} ", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss.fff"), title);
 
             foreach (byte b in data)
             {

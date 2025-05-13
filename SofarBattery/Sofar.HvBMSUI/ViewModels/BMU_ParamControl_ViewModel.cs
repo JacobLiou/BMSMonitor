@@ -707,7 +707,7 @@ namespace Sofar.HvBMSUI.ViewModels
         private bool _IsChecked_AlarmParameter_3;
         public bool IsChecked_AlarmParameter_3
         {
-            get { return _IsChecked_AlarmParameter_13; }
+            get { return _IsChecked_AlarmParameter_3; }
             set
             {
                 _IsChecked_AlarmParameter_3 = value;
