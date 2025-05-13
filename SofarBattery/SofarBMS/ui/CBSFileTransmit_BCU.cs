@@ -60,8 +60,8 @@ BMU告警信息2,U16,1,,
 电池簇放电电流上限,U16,1,0.1,A
 电池簇的放电截止电压,U16,1,0.1,V
 电池包均衡状态,U16,1,,
-最高功率端子温度,I8,1,0.1,℃
-环境温度,I8,1,0.1,℃
+最高功率端子温度,I8,1,1,℃
+环境温度,I8,1,1,℃
 保留,U8,1,1,
 保留,U8,1,1,
 累计放电安时,U32,1,1,Ah
@@ -160,7 +160,7 @@ BMU故障信息2,U16,1,,";
         }
 
         StepRemark stepFlag;
-        bool isResponse;
+        private bool isResponse { get; set; }= false;
 
         int slaveAddress = -1;
         int subDeviceAddress = -1;
@@ -170,7 +170,7 @@ BMU故障信息2,U16,1,,";
         int questCycle = 0;
         int fileOffset = 200;
         int dataLength = 200;
-        int fileOffset_BCU = 200;
+        int fileOffset_BCU = 0;//默认从0开始
         int readCount = 0;
         int readIndex = 0;
 
@@ -298,7 +298,7 @@ BMU故障信息2,U16,1,,";
 
                                 if (readType == 0)
                                 {
-                                    fileOffset_BCU = fileOffset;
+                                    fileOffset_BCU = 0;//fileOffset;
                                     questCycle = fileSize % fileOffset == 0 ? fileSize / fileOffset + 1 : (fileSize / fileOffset);//一般结果为true
                                 }
                                 else
@@ -366,8 +366,20 @@ BMU故障信息2,U16,1,,";
                                     sbContent += asciiStr;
                                 }
 
-                                TxtHelper.FileWrite(filePath, sbContent);
-                                Debug.WriteLine(sbContent);
+                                if (!File.Exists(filePath))
+                                {
+                                    using (StreamWriter sw = new StreamWriter(filePath, true, Encoding.UTF8))
+                                    {
+                                        sw.Write(sbContent);
+                                    }
+                                }
+                                else
+                                {
+                                    FileStream fs = new FileStream(filePath, FileMode.Append);
+                                    StreamWriter sw1 = new StreamWriter(fs, Encoding.UTF8);
+                                    sw1.Write(sbContent);
+                                    sw1.Close();
+                                }
                             }
                         }
                     }

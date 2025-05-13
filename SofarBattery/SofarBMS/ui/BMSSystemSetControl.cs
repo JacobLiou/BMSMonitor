@@ -1240,7 +1240,7 @@ namespace SofarBMS.UI
                     byte[] data = new byte[bufferSN.Length + 1];
 
                     Array.Copy(bufferSN, 0, data, 1, bufferSN.Length);
-                    data[0] = 0x01;
+                    data[0] = FrmMain.BMS_ID;
                     if (ecanHelper.Send(data, can_id))
                     {
                         // 设置写入成功标志

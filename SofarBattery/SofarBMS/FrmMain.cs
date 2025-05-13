@@ -73,9 +73,8 @@ StartListen,启动总线监听,Start bus listen";
             InitializeComponent();
 
             // 单机运行
-            if (!LicenseIntegration.LicenseManager.VerifyDialog(out var licStr))
+            if (!LicenseIntegration.LicenseManager.In(@"Software\Sofar\SofarBMS\License"))
                 Environment.Exit(0);
-            this.Text = this.Text + licStr;
         }
         public FrmMain(ref bool IsConnection) : this()
         {
@@ -85,7 +84,6 @@ StartListen,启动总线监听,Start bus listen";
         }
         private void FrmMain_Load(object sender, EventArgs e)
         {
-
             //canHelper = DeviceService.baseCanHelper;
 
             //程序确保Log文件的存在性
@@ -108,33 +106,6 @@ StartListen,启动总线监听,Start bus listen";
                         string errorCode = rawError.Replace("当前错误码：", "");
                         string displayText;
 
-                        if (errorCode != "00")
-                        {
-                            // 错误状态：快速重试（每2秒）
-                            await Task.Delay(1000, token);
-
-                            // 带UI线程安全的复位操作
-                            //this.Invoke((MethodInvoker)delegate
-                            //{
-                            //    btnResetCAN_Click(sender, e);
-                            //});
-                            //或者
-                            //if (ecanHelper.IsConnected)
-                            //{
-                            //    ECanDriver.ResetCAN(1, 0, 0);//复位CAN
-                            //    ECanDriver.StartCAN(1, 0, 0);//启动CAN
-                            //}
-
-                            // 复位后立即检查状态
-                            rawError = ecanHelper.ReadError();
-                            errorCode = rawError.Replace("当前错误码：", "");
-                        }
-                        else
-                        {
-                            // 正常状态：慢速轮询（10秒）
-                            await Task.Delay(5000, token);
-                        }
-
                         // 统一构建显示文本
                         displayText = errorCode == "00"
                             ? $"当前状态码：{errorCode}"
@@ -149,15 +120,15 @@ StartListen,启动总线监听,Start bus listen";
                                 : Color.Red;
                         }));
                     }
-                    catch (OperationCanceledException)
-                    {
-                        break; // 正常退出
-                    }
                     catch (Exception ex)
                     {
                         // 异常处理：记录日志并暂停30秒
                         //Log.Error("CAN监控异常", ex);
                         await Task.Delay(30000, token);
+                    }
+                    finally
+                    {
+                        await Task.Delay(3000, token);
                     }
                 }
             }, _canMonitorCts.Token);
@@ -585,43 +556,40 @@ StartListen,启动总线监听,Start bus listen";
         /// </summary>
         private void InitMenuStrip()
         {
-            //LanguageHelper.LanaguageIndex = Convert.ToInt32(ConfigurationManager.AppSettings["LanaguageIndex"]);
             LanguageHelper.LanaguageIndex = Convert.ToInt32(ConfigHelper.GetHeper().ReadConfig("AppSetting:LanaguageIndex"));
+
             //MenuStrip控件声明
             ToolStripMenuItem tsmiMenu;
 
             //添加“BTS 5K堆叠项目”菜单
-            tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_1"), Menu.Items, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_11"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_12"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_13"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_14"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_15"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_1"), Menu.Items, new EventHandler(MenuClicked));     //BTS 5K堆叠一体机
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_11"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //运行信息
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_12"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //系统设置
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_13"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //参数信息
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_14"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //历史事件
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_15"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //固件升级
 
             //添加“BMS低压储能项目”菜单
-            tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_2"), Menu.Items, null);
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_21"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_22"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_23"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            //AddContextMenu(LanguageHelper.GetLanguage("tsmi_13"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_2"), Menu.Items, null);                              //BMS低压储能电池
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_21"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //运行信息
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_22"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //并机信息
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_13"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //参数信息
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_23"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //固件升级
 
             //添加“CBS高压储能项目”菜单
-            tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_5"), Menu.Items, null);
-            //BCU模块
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_55"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_56"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_57"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            //BMU模块
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_58"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_59"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_54"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_53"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_12"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_5"), Menu.Items, null);                              //CBS高压储能电池
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_55"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //运行信息(BCU)
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_56"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //参数信息(BCU)
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_58"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //运行信息(BMU)
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_59"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //参数信息(BMU)
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_12"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //系统设置
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_53"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //固件升级
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_54"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //文件传输
 
             //添加“语言”菜单
             tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_4"), Menu.Items, null);
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_41"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_42"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_41"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //中文
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_42"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //英文
         }
 
         /// <summary>
@@ -651,20 +619,19 @@ StartListen,启动总线监听,Start bus listen";
             Dictionary<string, UserControl> MenuAndControl3 = new Dictionary<string, UserControl>()
             {
                 { LanguageHelper.GetLanguage("tsmi_51"), new CBSControl() },
-                { LanguageHelper.GetLanguage("tsmi_54"), new CBSFileTransmit_BMU() },
                 { LanguageHelper.GetLanguage("tsmi_52"), new CBSParamControl() },
                 { LanguageHelper.GetLanguage("tsmi_55"), new CBSControl_BCU() },
                 { LanguageHelper.GetLanguage("tsmi_56"), new CBSParamControl_BCU() },
-                { LanguageHelper.GetLanguage("tsmi_57"), new CBSFileTransmit_BCU() },
                 { LanguageHelper.GetLanguage("tsmi_58"), new CBSControl_BMU() },
                 { LanguageHelper.GetLanguage("tsmi_59"), new CBSParamControl_BMU() },
+                { LanguageHelper.GetLanguage("tsmi_54"), new CBSFileTransmit() },
                 { LanguageHelper.GetLanguage("tsmi_53"), new CBSUpgradeControl() },
                 { LanguageHelper.GetLanguage("tsmi_12"), new CBSSystemSetControl() },
             };
 
             bool isUserControl = false;
 
-            string parentTitle = ((System.Windows.Forms.ToolStripItem)sender).OwnerItem?.ToString();
+            string parentTitle = ((ToolStripItem)sender).OwnerItem?.ToString();
 
             if (parentTitle == null) return;
 
@@ -781,10 +748,6 @@ StartListen,启动总线监听,Start bus listen";
             {
                 CBSUpgradeControl.cts?.Cancel();
             }
-            if (bc.Name != "CBSFileTransmit_BMU")
-            {
-                CBSFileTransmit_BMU.cts?.Cancel();
-            }
             if (bc.Name != "CBSControl_BCU")
             {
                 CBSControl_BCU.cts?.Cancel();
@@ -793,9 +756,9 @@ StartListen,启动总线监听,Start bus listen";
             {
                 CBSParamControl_BCU.cts?.Cancel();
             }
-            if (bc.Name != "CBSFileTransmit_BCU")
+            if (bc.Name != "CBSFileTransmit")
             {
-                CBSFileTransmit_BCU.cts?.Cancel();
+                CBSFileTransmit.cts?.Cancel();
             }
             if (bc.Name != "CBSControl_BMU")
             {
@@ -849,8 +812,6 @@ StartListen,启动总线监听,Start bus listen";
 
             try
             {
-                await Task.Delay(TimeSpan.FromSeconds(3));
-
                 if (ecanHelper.IsConnected)
                 {
                     //_canMonitorCts?.Cancel();
@@ -866,8 +827,10 @@ StartListen,启动总线监听,Start bus listen";
                         btnConnectionCAN.Text = LanguageHelper.GetLanguage("CanState_DisConn");
                     }
                 }
+
+                await Task.Delay(TimeSpan.FromSeconds(3));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

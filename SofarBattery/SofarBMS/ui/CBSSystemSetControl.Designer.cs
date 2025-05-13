@@ -212,20 +212,20 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ckSystemset_33 = new System.Windows.Forms.CheckBox();
-            this.ckSystemset_30 = new System.Windows.Forms.CheckBox();
-            this.ckSystemset_32 = new System.Windows.Forms.CheckBox();
-            this.ckSystemset_31 = new System.Windows.Forms.CheckBox();
-            this.lblSystemset_BMU_09 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.ckSystemset_BMU_62 = new System.Windows.Forms.CheckBox();
+            this.ckSystemset_BMU_63 = new System.Windows.Forms.CheckBox();
+            this.ckSystemset_BMU_61 = new System.Windows.Forms.CheckBox();
+            this.ckSystemset_BMU_60 = new System.Windows.Forms.CheckBox();
+            this.lblSystemset_BMU_26 = new System.Windows.Forms.Label();
+            this.cbbRequest20_4 = new System.Windows.Forms.ComboBox();
+            this.cbbRequest20_2 = new System.Windows.Forms.ComboBox();
+            this.cbbRequest20_1 = new System.Windows.Forms.ComboBox();
             this.btnSet0F0_2 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.lblSystemset_76 = new System.Windows.Forms.Label();
-            this.lblParameter_06 = new System.Windows.Forms.Label();
-            this.lblParameter_05 = new System.Windows.Forms.Label();
-            this.lblParameter_07 = new System.Windows.Forms.Label();
+            this.cbbRequest20_0 = new System.Windows.Forms.ComboBox();
+            this.lblSystemset_BMU_25 = new System.Windows.Forms.Label();
+            this.lblSystemset_BMU_23 = new System.Windows.Forms.Label();
+            this.lblSystemset_BMU_22 = new System.Windows.Forms.Label();
+            this.lblSystemset_BMU_24 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.btnSetSN_Board = new System.Windows.Forms.Button();
             this.lblSystemset_BMU_05 = new System.Windows.Forms.Label();
@@ -236,7 +236,7 @@
             this.btnSetSN_Pack = new System.Windows.Forms.Button();
             this.lblSystemset_03 = new System.Windows.Forms.Label();
             this.txtPackSN_BMU = new System.Windows.Forms.TextBox();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lblSystemset_BMU_07 = new System.Windows.Forms.Label();
             this.btnSetDatetime = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -254,9 +254,9 @@
             this.txtPackActiveBalanceCap = new System.Windows.Forms.TextBox();
             this.txtPackActiveBalanceCur = new System.Windows.Forms.TextBox();
             this.cbbActiveBalanceCtrl = new System.Windows.Forms.ComboBox();
-            this.lblSystemset_74 = new System.Windows.Forms.Label();
-            this.lblSystemset_73 = new System.Windows.Forms.Label();
-            this.lblSystemset_72 = new System.Windows.Forms.Label();
+            this.lblSystemset_BMU_12 = new System.Windows.Forms.Label();
+            this.lblSystemset_BMU_11 = new System.Windows.Forms.Label();
+            this.lblSystemset_BMU_10 = new System.Windows.Forms.Label();
             this.btnSetStateParam = new System.Windows.Forms.Button();
             this.txtSyncFallSoc = new System.Windows.Forms.TextBox();
             this.cbbState = new System.Windows.Forms.ComboBox();
@@ -267,11 +267,11 @@
             this.lblSystemset_70 = new System.Windows.Forms.Label();
             this.lblSystemset_66 = new System.Windows.Forms.Label();
             this.lblSystemset_65 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnSet_0x22 = new System.Windows.Forms.Button();
             this.btnSet_0x21 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtPackStopCurrent = new System.Windows.Forms.TextBox();
             this.txtHeatFilmCloseTemp = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtPackStopVolt = new System.Windows.Forms.TextBox();
             this.lblParameter_61 = new System.Windows.Forms.Label();
             this.lblSystemset_23 = new System.Windows.Forms.Label();
             this.lblParameter_63 = new System.Windows.Forms.Label();
@@ -288,22 +288,22 @@
             this.lblSystemset_21 = new System.Windows.Forms.Label();
             this.lblSystemset_26 = new System.Windows.Forms.Label();
             this.lblParameter_57 = new System.Windows.Forms.Label();
-            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.txtCellVoltNum = new System.Windows.Forms.TextBox();
             this.lblParameter_59 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
-            this.textBox18 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.btnSet_0x25 = new System.Windows.Forms.Button();
+            this.txtRetedCapacity = new System.Windows.Forms.TextBox();
+            this.txtSOC = new System.Windows.Forms.TextBox();
             this.lblSystemset_83 = new System.Windows.Forms.Label();
             this.lblSystemset_101 = new System.Windows.Forms.Label();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.button9 = new System.Windows.Forms.Button();
+            this.txtCellTempNum = new System.Windows.Forms.TextBox();
+            this.btnSet_0x24 = new System.Windows.Forms.Button();
             this.lblSystemset_82 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button10 = new System.Windows.Forms.Button();
+            this.txtFullChgCapacity = new System.Windows.Forms.TextBox();
+            this.txtCumulativeChgCapacity = new System.Windows.Forms.TextBox();
+            this.txtCumulativeDsgCapactiy = new System.Windows.Forms.TextBox();
+            this.txtSOH = new System.Windows.Forms.TextBox();
+            this.txtSurplusCapacity = new System.Windows.Forms.TextBox();
+            this.btnSet_0x23 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnSetCalibration_BMU_06 = new System.Windows.Forms.Button();
             this.btnSetCalibration_BMU_05 = new System.Windows.Forms.Button();
@@ -324,43 +324,44 @@
             this.txtBMU_Calibration01 = new System.Windows.Forms.TextBox();
             this.txtBMU_Calibration03 = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblSystemset_09 = new System.Windows.Forms.Label();
             this.btnSystemset_45_BMU_Lifted8 = new System.Windows.Forms.Button();
+            this.lblSystemset_BMU_03 = new System.Windows.Forms.Label();
             this.btnSystemset_45_BMU_Lifted4 = new System.Windows.Forms.Button();
+            this.lblSystemset_61 = new System.Windows.Forms.Label();
             this.btnSystemset_43_BMU_Close8 = new System.Windows.Forms.Button();
+            this.btnSystemset_44_BMU_Open6 = new System.Windows.Forms.Button();
             this.btnSystemset_43_BMU_Close4 = new System.Windows.Forms.Button();
+            this.btnSystemset_44_BMU_Open5 = new System.Windows.Forms.Button();
             this.btnSystemset_44_BMU_Open8 = new System.Windows.Forms.Button();
+            this.btnSystemset_43_BMU_Close6 = new System.Windows.Forms.Button();
             this.btnSystemset_44_BMU_Open4 = new System.Windows.Forms.Button();
+            this.btnSystemset_43_BMU_Close5 = new System.Windows.Forms.Button();
             this.lblSystemset_63 = new System.Windows.Forms.Label();
+            this.btnSystemset_45_BMU_Lifted6 = new System.Windows.Forms.Button();
             this.lblSystemset_BMU_02 = new System.Windows.Forms.Label();
-            this.btnSystemset_debug2 = new System.Windows.Forms.Button();
+            this.btnSystemset_45_BMU_Lifted5 = new System.Windows.Forms.Button();
+            this.lblSystemset_BMU_04 = new System.Windows.Forms.Label();
             this.btnSystemset_45_BMU_Lifted3 = new System.Windows.Forms.Button();
+            this.lblSystemset_62 = new System.Windows.Forms.Label();
             this.btnSystemset_43_BMU_Close3 = new System.Windows.Forms.Button();
+            this.btnSystemset_44_BMU_Open1 = new System.Windows.Forms.Button();
             this.btnSystemset_45_BMU_Lifted9 = new System.Windows.Forms.Button();
+            this.btnSystemset_44_BMU_Open7 = new System.Windows.Forms.Button();
             this.btnSystemset_44_BMU_Open3 = new System.Windows.Forms.Button();
+            this.btnSystemset_43_BMU_Close1 = new System.Windows.Forms.Button();
             this.btnSystemset_45_BMU_Lifted7 = new System.Windows.Forms.Button();
+            this.btnSystemset_44_BMU_Open9 = new System.Windows.Forms.Button();
             this.lblSystemset_BMU_01 = new System.Windows.Forms.Label();
+            this.btnSystemset_45_BMU_Lifted1 = new System.Windows.Forms.Button();
             this.btnSystemset_45_BMU_Lifted2 = new System.Windows.Forms.Button();
+            this.btnSystemset_43_BMU_Close7 = new System.Windows.Forms.Button();
             this.btnSystemset_43_BMU_Close2 = new System.Windows.Forms.Button();
+            this.lblSystemset_10 = new System.Windows.Forms.Label();
             this.btnSystemset_43_BMU_Close9 = new System.Windows.Forms.Button();
             this.btnSystemset_44_BMU_Open2 = new System.Windows.Forms.Button();
-            this.lblSystemset_10 = new System.Windows.Forms.Label();
-            this.btnSystemset_43_BMU_Close7 = new System.Windows.Forms.Button();
-            this.btnSystemset_45_BMU_Lifted1 = new System.Windows.Forms.Button();
-            this.btnSystemset_44_BMU_Open9 = new System.Windows.Forms.Button();
-            this.lblSystemset_09 = new System.Windows.Forms.Label();
-            this.btnSystemset_43_BMU_Close1 = new System.Windows.Forms.Button();
-            this.btnSystemset_44_BMU_Open7 = new System.Windows.Forms.Button();
-            this.btnSystemset_44_BMU_Open1 = new System.Windows.Forms.Button();
-            this.lblSystemset_62 = new System.Windows.Forms.Label();
-            this.lblSystemset_BMU_04 = new System.Windows.Forms.Label();
-            this.btnSystemset_45_BMU_Lifted5 = new System.Windows.Forms.Button();
-            this.btnSystemset_45_BMU_Lifted6 = new System.Windows.Forms.Button();
-            this.btnSystemset_43_BMU_Close5 = new System.Windows.Forms.Button();
-            this.btnSystemset_43_BMU_Close6 = new System.Windows.Forms.Button();
-            this.btnSystemset_44_BMU_Open5 = new System.Windows.Forms.Button();
-            this.btnSystemset_44_BMU_Open6 = new System.Windows.Forms.Button();
-            this.lblSystemset_61 = new System.Windows.Forms.Label();
-            this.lblSystemset_BMU_03 = new System.Windows.Forms.Label();
+            this.btnSystemset_debug2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabPage5.SuspendLayout();
@@ -379,6 +380,7 @@
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -2676,158 +2678,174 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.ckSystemset_33);
-            this.groupBox1.Controls.Add(this.ckSystemset_30);
-            this.groupBox1.Controls.Add(this.ckSystemset_32);
-            this.groupBox1.Controls.Add(this.ckSystemset_31);
-            this.groupBox1.Controls.Add(this.lblSystemset_BMU_09);
-            this.groupBox1.Controls.Add(this.comboBox5);
-            this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.ckSystemset_BMU_62);
+            this.groupBox1.Controls.Add(this.ckSystemset_BMU_63);
+            this.groupBox1.Controls.Add(this.ckSystemset_BMU_61);
+            this.groupBox1.Controls.Add(this.ckSystemset_BMU_60);
+            this.groupBox1.Controls.Add(this.lblSystemset_BMU_26);
+            this.groupBox1.Controls.Add(this.cbbRequest20_4);
+            this.groupBox1.Controls.Add(this.cbbRequest20_2);
+            this.groupBox1.Controls.Add(this.cbbRequest20_1);
             this.groupBox1.Controls.Add(this.btnSet0F0_2);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.lblSystemset_76);
-            this.groupBox1.Controls.Add(this.lblParameter_06);
-            this.groupBox1.Controls.Add(this.lblParameter_05);
-            this.groupBox1.Controls.Add(this.lblParameter_07);
+            this.groupBox1.Controls.Add(this.cbbRequest20_0);
+            this.groupBox1.Controls.Add(this.lblSystemset_BMU_25);
+            this.groupBox1.Controls.Add(this.lblSystemset_BMU_23);
+            this.groupBox1.Controls.Add(this.lblSystemset_BMU_22);
+            this.groupBox1.Controls.Add(this.lblSystemset_BMU_24);
             this.groupBox1.Location = new System.Drawing.Point(3, 179);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(337, 252);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             // 
-            // ckSystemset_33
+            // ckSystemset_BMU_62
             // 
-            this.ckSystemset_33.AutoSize = true;
-            this.ckSystemset_33.Location = new System.Drawing.Point(131, 199);
-            this.ckSystemset_33.Name = "ckSystemset_33";
-            this.ckSystemset_33.Size = new System.Drawing.Size(75, 21);
-            this.ckSystemset_33.TabIndex = 72;
-            this.ckSystemset_33.Text = "Bit0：T2";
-            this.ckSystemset_33.UseVisualStyleBackColor = true;
+            this.ckSystemset_BMU_62.AutoSize = true;
+            this.ckSystemset_BMU_62.Location = new System.Drawing.Point(131, 199);
+            this.ckSystemset_BMU_62.Name = "ckSystemset_BMU_62";
+            this.ckSystemset_BMU_62.Size = new System.Drawing.Size(75, 21);
+            this.ckSystemset_BMU_62.TabIndex = 72;
+            this.ckSystemset_BMU_62.Text = "Bit0：T2";
+            this.ckSystemset_BMU_62.UseVisualStyleBackColor = true;
             // 
-            // ckSystemset_30
+            // ckSystemset_BMU_63
             // 
-            this.ckSystemset_30.AutoSize = true;
-            this.ckSystemset_30.Location = new System.Drawing.Point(131, 224);
-            this.ckSystemset_30.Name = "ckSystemset_30";
-            this.ckSystemset_30.Size = new System.Drawing.Size(85, 21);
-            this.ckSystemset_30.TabIndex = 71;
-            this.ckSystemset_30.Text = "Bit0：包装";
-            this.ckSystemset_30.UseVisualStyleBackColor = true;
+            this.ckSystemset_BMU_63.AutoSize = true;
+            this.ckSystemset_BMU_63.Location = new System.Drawing.Point(131, 224);
+            this.ckSystemset_BMU_63.Name = "ckSystemset_BMU_63";
+            this.ckSystemset_BMU_63.Size = new System.Drawing.Size(85, 21);
+            this.ckSystemset_BMU_63.TabIndex = 71;
+            this.ckSystemset_BMU_63.Text = "Bit0：包装";
+            this.ckSystemset_BMU_63.UseVisualStyleBackColor = true;
             // 
-            // ckSystemset_32
+            // ckSystemset_BMU_61
             // 
-            this.ckSystemset_32.AutoSize = true;
-            this.ckSystemset_32.Location = new System.Drawing.Point(131, 174);
-            this.ckSystemset_32.Name = "ckSystemset_32";
-            this.ckSystemset_32.Size = new System.Drawing.Size(85, 21);
-            this.ckSystemset_32.TabIndex = 70;
-            this.ckSystemset_32.Text = "Bit0：老化";
-            this.ckSystemset_32.UseVisualStyleBackColor = true;
+            this.ckSystemset_BMU_61.AutoSize = true;
+            this.ckSystemset_BMU_61.Location = new System.Drawing.Point(131, 174);
+            this.ckSystemset_BMU_61.Name = "ckSystemset_BMU_61";
+            this.ckSystemset_BMU_61.Size = new System.Drawing.Size(85, 21);
+            this.ckSystemset_BMU_61.TabIndex = 70;
+            this.ckSystemset_BMU_61.Text = "Bit0：老化";
+            this.ckSystemset_BMU_61.UseVisualStyleBackColor = true;
             // 
-            // ckSystemset_31
+            // ckSystemset_BMU_60
             // 
-            this.ckSystemset_31.AutoSize = true;
-            this.ckSystemset_31.Location = new System.Drawing.Point(131, 149);
-            this.ckSystemset_31.Name = "ckSystemset_31";
-            this.ckSystemset_31.Size = new System.Drawing.Size(75, 21);
-            this.ckSystemset_31.TabIndex = 69;
-            this.ckSystemset_31.Text = "Bit0：T1";
-            this.ckSystemset_31.UseVisualStyleBackColor = true;
+            this.ckSystemset_BMU_60.AutoSize = true;
+            this.ckSystemset_BMU_60.Location = new System.Drawing.Point(131, 149);
+            this.ckSystemset_BMU_60.Name = "ckSystemset_BMU_60";
+            this.ckSystemset_BMU_60.Size = new System.Drawing.Size(75, 21);
+            this.ckSystemset_BMU_60.TabIndex = 69;
+            this.ckSystemset_BMU_60.Text = "Bit0：T1";
+            this.ckSystemset_BMU_60.UseVisualStyleBackColor = true;
             // 
-            // lblSystemset_BMU_09
+            // lblSystemset_BMU_26
             // 
-            this.lblSystemset_BMU_09.AutoSize = true;
-            this.lblSystemset_BMU_09.Location = new System.Drawing.Point(7, 151);
-            this.lblSystemset_BMU_09.Name = "lblSystemset_BMU_09";
-            this.lblSystemset_BMU_09.Size = new System.Drawing.Size(132, 17);
-            this.lblSystemset_BMU_09.TabIndex = 68;
-            this.lblSystemset_BMU_09.Text = "产测步骤设置请求-new";
+            this.lblSystemset_BMU_26.AutoSize = true;
+            this.lblSystemset_BMU_26.Location = new System.Drawing.Point(7, 151);
+            this.lblSystemset_BMU_26.Name = "lblSystemset_BMU_26";
+            this.lblSystemset_BMU_26.Size = new System.Drawing.Size(132, 17);
+            this.lblSystemset_BMU_26.TabIndex = 68;
+            this.lblSystemset_BMU_26.Text = "产测步骤设置请求-new";
             // 
-            // comboBox5
+            // cbbRequest20_4
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(131, 118);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(95, 25);
-            this.comboBox5.TabIndex = 33;
+            this.cbbRequest20_4.FormattingEnabled = true;
+            this.cbbRequest20_4.Items.AddRange(new object[] {
+            "0x00：查询",
+            "0xAA：开启",
+            "0x55：关闭"});
+            this.cbbRequest20_4.Location = new System.Drawing.Point(131, 118);
+            this.cbbRequest20_4.Name = "cbbRequest20_4";
+            this.cbbRequest20_4.Size = new System.Drawing.Size(95, 25);
+            this.cbbRequest20_4.TabIndex = 33;
             // 
-            // comboBox3
+            // cbbRequest20_2
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(131, 84);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(95, 25);
-            this.comboBox3.TabIndex = 31;
+            this.cbbRequest20_2.FormattingEnabled = true;
+            this.cbbRequest20_2.Items.AddRange(new object[] {
+            "0x00：查询",
+            "0xAA：开启",
+            "0x55：关闭"});
+            this.cbbRequest20_2.Location = new System.Drawing.Point(131, 84);
+            this.cbbRequest20_2.Name = "cbbRequest20_2";
+            this.cbbRequest20_2.Size = new System.Drawing.Size(95, 25);
+            this.cbbRequest20_2.TabIndex = 31;
             // 
-            // comboBox2
+            // cbbRequest20_1
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(131, 51);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(95, 25);
-            this.comboBox2.TabIndex = 30;
+            this.cbbRequest20_1.FormattingEnabled = true;
+            this.cbbRequest20_1.Items.AddRange(new object[] {
+            "0x00：查询",
+            "0xAA：开启",
+            "0x55：关闭"});
+            this.cbbRequest20_1.Location = new System.Drawing.Point(131, 51);
+            this.cbbRequest20_1.Name = "cbbRequest20_1";
+            this.cbbRequest20_1.Size = new System.Drawing.Size(95, 25);
+            this.cbbRequest20_1.TabIndex = 30;
             // 
             // btnSet0F0_2
             // 
-            this.btnSet0F0_2.AutoSize = true;
-            this.btnSet0F0_2.Location = new System.Drawing.Point(258, 18);
+            this.btnSet0F0_2.Location = new System.Drawing.Point(258, 16);
             this.btnSet0F0_2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSet0F0_2.Name = "btnSet0F0_2";
             this.btnSet0F0_2.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSet0F0_2.Size = new System.Drawing.Size(75, 29);
+            this.btnSet0F0_2.Size = new System.Drawing.Size(75, 27);
             this.btnSet0F0_2.TabIndex = 55;
             this.btnSet0F0_2.Text = "写入";
             this.btnSet0F0_2.UseVisualStyleBackColor = true;
+            this.btnSet0F0_2.Click += new System.EventHandler(this.btnSet0F0_2_Click);
             // 
-            // comboBox1
+            // cbbRequest20_0
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(131, 18);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(95, 25);
-            this.comboBox1.TabIndex = 29;
+            this.cbbRequest20_0.FormattingEnabled = true;
+            this.cbbRequest20_0.Items.AddRange(new object[] {
+            "0x00：查询",
+            "0xAA：开启",
+            "0x55：关闭"});
+            this.cbbRequest20_0.Location = new System.Drawing.Point(131, 18);
+            this.cbbRequest20_0.Name = "cbbRequest20_0";
+            this.cbbRequest20_0.Size = new System.Drawing.Size(95, 25);
+            this.cbbRequest20_0.TabIndex = 29;
             // 
-            // lblSystemset_76
+            // lblSystemset_BMU_25
             // 
-            this.lblSystemset_76.AutoSize = true;
-            this.lblSystemset_76.Location = new System.Drawing.Point(7, 120);
-            this.lblSystemset_76.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSystemset_76.Name = "lblSystemset_76";
-            this.lblSystemset_76.Size = new System.Drawing.Size(80, 17);
-            this.lblSystemset_76.TabIndex = 27;
-            this.lblSystemset_76.Text = "强制控制开关";
+            this.lblSystemset_BMU_25.AutoSize = true;
+            this.lblSystemset_BMU_25.Location = new System.Drawing.Point(7, 120);
+            this.lblSystemset_BMU_25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_BMU_25.Name = "lblSystemset_BMU_25";
+            this.lblSystemset_BMU_25.Size = new System.Drawing.Size(80, 17);
+            this.lblSystemset_BMU_25.TabIndex = 27;
+            this.lblSystemset_BMU_25.Text = "强制控制开关";
             // 
-            // lblParameter_06
+            // lblSystemset_BMU_23
             // 
-            this.lblParameter_06.AutoSize = true;
-            this.lblParameter_06.Location = new System.Drawing.Point(7, 53);
-            this.lblParameter_06.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblParameter_06.Name = "lblParameter_06";
-            this.lblParameter_06.Size = new System.Drawing.Size(56, 17);
-            this.lblParameter_06.TabIndex = 20;
-            this.lblParameter_06.Text = "标定模式";
+            this.lblSystemset_BMU_23.AutoSize = true;
+            this.lblSystemset_BMU_23.Location = new System.Drawing.Point(7, 53);
+            this.lblSystemset_BMU_23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_BMU_23.Name = "lblSystemset_BMU_23";
+            this.lblSystemset_BMU_23.Size = new System.Drawing.Size(56, 17);
+            this.lblSystemset_BMU_23.TabIndex = 20;
+            this.lblSystemset_BMU_23.Text = "标定模式";
             // 
-            // lblParameter_05
+            // lblSystemset_BMU_22
             // 
-            this.lblParameter_05.AutoSize = true;
-            this.lblParameter_05.Location = new System.Drawing.Point(7, 21);
-            this.lblParameter_05.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblParameter_05.Name = "lblParameter_05";
-            this.lblParameter_05.Size = new System.Drawing.Size(56, 17);
-            this.lblParameter_05.TabIndex = 19;
-            this.lblParameter_05.Text = "老化模式";
+            this.lblSystemset_BMU_22.AutoSize = true;
+            this.lblSystemset_BMU_22.Location = new System.Drawing.Point(7, 21);
+            this.lblSystemset_BMU_22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_BMU_22.Name = "lblSystemset_BMU_22";
+            this.lblSystemset_BMU_22.Size = new System.Drawing.Size(56, 17);
+            this.lblSystemset_BMU_22.TabIndex = 19;
+            this.lblSystemset_BMU_22.Text = "老化模式";
             // 
-            // lblParameter_07
+            // lblSystemset_BMU_24
             // 
-            this.lblParameter_07.AutoSize = true;
-            this.lblParameter_07.Location = new System.Drawing.Point(7, 86);
-            this.lblParameter_07.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblParameter_07.Name = "lblParameter_07";
-            this.lblParameter_07.Size = new System.Drawing.Size(78, 17);
-            this.lblParameter_07.TabIndex = 18;
-            this.lblParameter_07.Text = "ATE测试模式";
+            this.lblSystemset_BMU_24.AutoSize = true;
+            this.lblSystemset_BMU_24.Location = new System.Drawing.Point(7, 86);
+            this.lblSystemset_BMU_24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSystemset_BMU_24.Name = "lblSystemset_BMU_24";
+            this.lblSystemset_BMU_24.Size = new System.Drawing.Size(78, 17);
+            this.lblSystemset_BMU_24.TabIndex = 18;
+            this.lblSystemset_BMU_24.Text = "ATE测试模式";
             // 
             // groupBox7
             // 
@@ -2840,7 +2858,7 @@
             this.groupBox7.Controls.Add(this.btnSetSN_Pack);
             this.groupBox7.Controls.Add(this.lblSystemset_03);
             this.groupBox7.Controls.Add(this.txtPackSN_BMU);
-            this.groupBox7.Controls.Add(this.dateTimePicker3);
+            this.groupBox7.Controls.Add(this.dateTimePicker1);
             this.groupBox7.Controls.Add(this.lblSystemset_BMU_07);
             this.groupBox7.Controls.Add(this.btnSetDatetime);
             this.groupBox7.Location = new System.Drawing.Point(3, 6);
@@ -2853,7 +2871,7 @@
             // 
             this.btnSetSN_Board.Location = new System.Drawing.Point(258, 121);
             this.btnSetSN_Board.Name = "btnSetSN_Board";
-            this.btnSetSN_Board.Size = new System.Drawing.Size(75, 29);
+            this.btnSetSN_Board.Size = new System.Drawing.Size(75, 27);
             this.btnSetSN_Board.TabIndex = 11;
             this.btnSetSN_Board.Text = "写入";
             this.btnSetSN_Board.UseVisualStyleBackColor = true;
@@ -2895,7 +2913,7 @@
             // 
             this.btnSetAteFlash.Location = new System.Drawing.Point(258, 16);
             this.btnSetAteFlash.Name = "btnSetAteFlash";
-            this.btnSetAteFlash.Size = new System.Drawing.Size(75, 29);
+            this.btnSetAteFlash.Size = new System.Drawing.Size(75, 27);
             this.btnSetAteFlash.TabIndex = 2;
             this.btnSetAteFlash.Text = "写入";
             this.btnSetAteFlash.UseVisualStyleBackColor = true;
@@ -2905,7 +2923,7 @@
             // 
             this.btnSetSN_Pack.Location = new System.Drawing.Point(258, 86);
             this.btnSetSN_Pack.Name = "btnSetSN_Pack";
-            this.btnSetSN_Pack.Size = new System.Drawing.Size(75, 29);
+            this.btnSetSN_Pack.Size = new System.Drawing.Size(75, 27);
             this.btnSetSN_Pack.TabIndex = 8;
             this.btnSetSN_Pack.Text = "写入";
             this.btnSetSN_Pack.UseVisualStyleBackColor = true;
@@ -2927,15 +2945,15 @@
             this.txtPackSN_BMU.Size = new System.Drawing.Size(150, 23);
             this.txtPackSN_BMU.TabIndex = 7;
             // 
-            // dateTimePicker3
+            // dateTimePicker1
             // 
-            this.dateTimePicker3.CustomFormat = "yyyy/MM/dd HH:mm:ss";
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker3.Location = new System.Drawing.Point(102, 54);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(150, 23);
-            this.dateTimePicker3.TabIndex = 4;
-            this.dateTimePicker3.Value = new System.DateTime(2025, 2, 7, 8, 53, 0, 0);
+            this.dateTimePicker1.CustomFormat = "yyyy/MM/dd HH:mm:ss";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(102, 54);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(150, 23);
+            this.dateTimePicker1.TabIndex = 4;
+            this.dateTimePicker1.Value = new System.DateTime(2025, 2, 7, 8, 53, 0, 0);
             // 
             // lblSystemset_BMU_07
             // 
@@ -2950,10 +2968,11 @@
             // 
             this.btnSetDatetime.Location = new System.Drawing.Point(258, 51);
             this.btnSetDatetime.Name = "btnSetDatetime";
-            this.btnSetDatetime.Size = new System.Drawing.Size(75, 29);
+            this.btnSetDatetime.Size = new System.Drawing.Size(75, 27);
             this.btnSetDatetime.TabIndex = 5;
             this.btnSetDatetime.Text = "写入";
             this.btnSetDatetime.UseVisualStyleBackColor = true;
+            this.btnSetDatetime.Click += new System.EventHandler(this.btnSetDatetime_Click);
             // 
             // groupBox2
             // 
@@ -2971,9 +2990,9 @@
             this.groupBox2.Controls.Add(this.txtPackActiveBalanceCap);
             this.groupBox2.Controls.Add(this.txtPackActiveBalanceCur);
             this.groupBox2.Controls.Add(this.cbbActiveBalanceCtrl);
-            this.groupBox2.Controls.Add(this.lblSystemset_74);
-            this.groupBox2.Controls.Add(this.lblSystemset_73);
-            this.groupBox2.Controls.Add(this.lblSystemset_72);
+            this.groupBox2.Controls.Add(this.lblSystemset_BMU_12);
+            this.groupBox2.Controls.Add(this.lblSystemset_BMU_11);
+            this.groupBox2.Controls.Add(this.lblSystemset_BMU_10);
             this.groupBox2.Controls.Add(this.btnSetStateParam);
             this.groupBox2.Controls.Add(this.txtSyncFallSoc);
             this.groupBox2.Controls.Add(this.cbbState);
@@ -2984,11 +3003,11 @@
             this.groupBox2.Controls.Add(this.lblSystemset_70);
             this.groupBox2.Controls.Add(this.lblSystemset_66);
             this.groupBox2.Controls.Add(this.lblSystemset_65);
-            this.groupBox2.Controls.Add(this.button7);
+            this.groupBox2.Controls.Add(this.btnSet_0x22);
             this.groupBox2.Controls.Add(this.btnSet_0x21);
-            this.groupBox2.Controls.Add(this.textBox7);
+            this.groupBox2.Controls.Add(this.txtPackStopCurrent);
             this.groupBox2.Controls.Add(this.txtHeatFilmCloseTemp);
-            this.groupBox2.Controls.Add(this.textBox8);
+            this.groupBox2.Controls.Add(this.txtPackStopVolt);
             this.groupBox2.Controls.Add(this.lblParameter_61);
             this.groupBox2.Controls.Add(this.lblSystemset_23);
             this.groupBox2.Controls.Add(this.lblParameter_63);
@@ -3005,22 +3024,22 @@
             this.groupBox2.Controls.Add(this.lblSystemset_21);
             this.groupBox2.Controls.Add(this.lblSystemset_26);
             this.groupBox2.Controls.Add(this.lblParameter_57);
-            this.groupBox2.Controls.Add(this.textBox19);
+            this.groupBox2.Controls.Add(this.txtCellVoltNum);
             this.groupBox2.Controls.Add(this.lblParameter_59);
-            this.groupBox2.Controls.Add(this.button8);
-            this.groupBox2.Controls.Add(this.textBox18);
-            this.groupBox2.Controls.Add(this.textBox14);
+            this.groupBox2.Controls.Add(this.btnSet_0x25);
+            this.groupBox2.Controls.Add(this.txtRetedCapacity);
+            this.groupBox2.Controls.Add(this.txtSOC);
             this.groupBox2.Controls.Add(this.lblSystemset_83);
             this.groupBox2.Controls.Add(this.lblSystemset_101);
-            this.groupBox2.Controls.Add(this.textBox17);
-            this.groupBox2.Controls.Add(this.button9);
+            this.groupBox2.Controls.Add(this.txtCellTempNum);
+            this.groupBox2.Controls.Add(this.btnSet_0x24);
             this.groupBox2.Controls.Add(this.lblSystemset_82);
-            this.groupBox2.Controls.Add(this.textBox6);
-            this.groupBox2.Controls.Add(this.textBox16);
-            this.groupBox2.Controls.Add(this.textBox15);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.button10);
+            this.groupBox2.Controls.Add(this.txtFullChgCapacity);
+            this.groupBox2.Controls.Add(this.txtCumulativeChgCapacity);
+            this.groupBox2.Controls.Add(this.txtCumulativeDsgCapactiy);
+            this.groupBox2.Controls.Add(this.txtSOH);
+            this.groupBox2.Controls.Add(this.txtSurplusCapacity);
+            this.groupBox2.Controls.Add(this.btnSet_0x23);
             this.groupBox2.Location = new System.Drawing.Point(346, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(692, 757);
@@ -3063,9 +3082,11 @@
             // 
             this.cbb_103.FormattingEnabled = true;
             this.cbb_103.Items.AddRange(new object[] {
+            "0：其他",
             "1：宁德时代",
             "2：亿纬锂能",
-            "3：其他"});
+            "3：鹏辉",
+            "4：豪鹏"});
             this.cbb_103.Location = new System.Drawing.Point(466, 389);
             this.cbb_103.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbb_103.Name = "cbb_103";
@@ -3107,7 +3128,7 @@
             this.btnSetBatteryinfo.Padding = new System.Windows.Forms.Padding(1);
             this.btnSetBatteryinfo.Size = new System.Drawing.Size(68, 29);
             this.btnSetBatteryinfo.TabIndex = 123;
-            this.btnSetBatteryinfo.Text = "设置";
+            this.btnSetBatteryinfo.Text = "写入";
             this.btnSetBatteryinfo.UseVisualStyleBackColor = true;
             this.btnSetBatteryinfo.Click += new System.EventHandler(this.btnSetBatteryinfo_Click);
             // 
@@ -3172,35 +3193,35 @@
             this.cbbActiveBalanceCtrl.Size = new System.Drawing.Size(140, 25);
             this.cbbActiveBalanceCtrl.TabIndex = 117;
             // 
-            // lblSystemset_74
+            // lblSystemset_BMU_12
             // 
-            this.lblSystemset_74.AutoSize = true;
-            this.lblSystemset_74.Location = new System.Drawing.Point(341, 326);
-            this.lblSystemset_74.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSystemset_74.Name = "lblSystemset_74";
-            this.lblSystemset_74.Size = new System.Drawing.Size(104, 17);
-            this.lblSystemset_74.TabIndex = 116;
-            this.lblSystemset_74.Text = "设置主动均衡容量";
+            this.lblSystemset_BMU_12.AutoSize = true;
+            this.lblSystemset_BMU_12.Location = new System.Drawing.Point(341, 326);
+            this.lblSystemset_BMU_12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_BMU_12.Name = "lblSystemset_BMU_12";
+            this.lblSystemset_BMU_12.Size = new System.Drawing.Size(114, 17);
+            this.lblSystemset_BMU_12.TabIndex = 116;
+            this.lblSystemset_BMU_12.Text = "主动均衡容量(mAh)";
             // 
-            // lblSystemset_73
+            // lblSystemset_BMU_11
             // 
-            this.lblSystemset_73.AutoSize = true;
-            this.lblSystemset_73.Location = new System.Drawing.Point(341, 293);
-            this.lblSystemset_73.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSystemset_73.Name = "lblSystemset_73";
-            this.lblSystemset_73.Size = new System.Drawing.Size(104, 17);
-            this.lblSystemset_73.TabIndex = 115;
-            this.lblSystemset_73.Text = "设置主动均衡电流";
+            this.lblSystemset_BMU_11.AutoSize = true;
+            this.lblSystemset_BMU_11.Location = new System.Drawing.Point(341, 293);
+            this.lblSystemset_BMU_11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_BMU_11.Name = "lblSystemset_BMU_11";
+            this.lblSystemset_BMU_11.Size = new System.Drawing.Size(100, 17);
+            this.lblSystemset_BMU_11.TabIndex = 115;
+            this.lblSystemset_BMU_11.Text = "主动均衡功率(W)";
             // 
-            // lblSystemset_72
+            // lblSystemset_BMU_10
             // 
-            this.lblSystemset_72.AutoSize = true;
-            this.lblSystemset_72.Location = new System.Drawing.Point(341, 259);
-            this.lblSystemset_72.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSystemset_72.Name = "lblSystemset_72";
-            this.lblSystemset_72.Size = new System.Drawing.Size(104, 17);
-            this.lblSystemset_72.TabIndex = 114;
-            this.lblSystemset_72.Text = "主动均衡充电使能";
+            this.lblSystemset_BMU_10.AutoSize = true;
+            this.lblSystemset_BMU_10.Location = new System.Drawing.Point(341, 259);
+            this.lblSystemset_BMU_10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSystemset_BMU_10.Name = "lblSystemset_BMU_10";
+            this.lblSystemset_BMU_10.Size = new System.Drawing.Size(104, 17);
+            this.lblSystemset_BMU_10.TabIndex = 114;
+            this.lblSystemset_BMU_10.Text = "主动均衡充电使能";
             // 
             // btnSetStateParam
             // 
@@ -3307,54 +3328,53 @@
             this.lblSystemset_65.TabIndex = 104;
             this.lblSystemset_65.Text = "电池包电流";
             // 
-            // button7
+            // btnSet_0x22
             // 
-            this.button7.AutoSize = true;
-            this.button7.Location = new System.Drawing.Point(258, 183);
-            this.button7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button7.Name = "button7";
-            this.button7.Padding = new System.Windows.Forms.Padding(1);
-            this.button7.Size = new System.Drawing.Size(75, 29);
-            this.button7.TabIndex = 57;
-            this.button7.Text = "写入";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnSet_0x22.Location = new System.Drawing.Point(239, 184);
+            this.btnSet_0x22.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSet_0x22.Name = "btnSet_0x22";
+            this.btnSet_0x22.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSet_0x22.Size = new System.Drawing.Size(75, 27);
+            this.btnSet_0x22.TabIndex = 57;
+            this.btnSet_0x22.Text = "写入";
+            this.btnSet_0x22.UseVisualStyleBackColor = true;
+            this.btnSet_0x22.Click += new System.EventHandler(this.btnSet_0x22_Click);
             // 
             // btnSet_0x21
             // 
-            this.btnSet_0x21.AutoSize = true;
-            this.btnSet_0x21.Location = new System.Drawing.Point(258, 16);
+            this.btnSet_0x21.Location = new System.Drawing.Point(239, 13);
             this.btnSet_0x21.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSet_0x21.Name = "btnSet_0x21";
             this.btnSet_0x21.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSet_0x21.Size = new System.Drawing.Size(75, 29);
+            this.btnSet_0x21.Size = new System.Drawing.Size(75, 27);
             this.btnSet_0x21.TabIndex = 56;
             this.btnSet_0x21.Text = "写入";
             this.btnSet_0x21.UseVisualStyleBackColor = true;
             this.btnSet_0x21.Click += new System.EventHandler(this.btnSet_0x21_Click);
             // 
-            // textBox7
+            // txtPackStopCurrent
             // 
-            this.textBox7.Location = new System.Drawing.Point(156, 216);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(87, 23);
-            this.textBox7.TabIndex = 23;
+            this.txtPackStopCurrent.Location = new System.Drawing.Point(156, 216);
+            this.txtPackStopCurrent.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPackStopCurrent.Name = "txtPackStopCurrent";
+            this.txtPackStopCurrent.Size = new System.Drawing.Size(75, 23);
+            this.txtPackStopCurrent.TabIndex = 23;
             // 
             // txtHeatFilmCloseTemp
             // 
             this.txtHeatFilmCloseTemp.Location = new System.Drawing.Point(156, 139);
             this.txtHeatFilmCloseTemp.Margin = new System.Windows.Forms.Padding(4);
             this.txtHeatFilmCloseTemp.Name = "txtHeatFilmCloseTemp";
-            this.txtHeatFilmCloseTemp.Size = new System.Drawing.Size(87, 23);
+            this.txtHeatFilmCloseTemp.Size = new System.Drawing.Size(75, 23);
             this.txtHeatFilmCloseTemp.TabIndex = 29;
             // 
-            // textBox8
+            // txtPackStopVolt
             // 
-            this.textBox8.Location = new System.Drawing.Point(156, 186);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(87, 23);
-            this.textBox8.TabIndex = 22;
+            this.txtPackStopVolt.Location = new System.Drawing.Point(156, 186);
+            this.txtPackStopVolt.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPackStopVolt.Name = "txtPackStopVolt";
+            this.txtPackStopVolt.Size = new System.Drawing.Size(75, 23);
+            this.txtPackStopVolt.TabIndex = 22;
             // 
             // lblParameter_61
             // 
@@ -3390,7 +3410,7 @@
             this.txtHeatFilmOpenTemp.Location = new System.Drawing.Point(156, 108);
             this.txtHeatFilmOpenTemp.Margin = new System.Windows.Forms.Padding(4);
             this.txtHeatFilmOpenTemp.Name = "txtHeatFilmOpenTemp";
-            this.txtHeatFilmOpenTemp.Size = new System.Drawing.Size(87, 23);
+            this.txtHeatFilmOpenTemp.Size = new System.Drawing.Size(75, 23);
             this.txtHeatFilmOpenTemp.TabIndex = 25;
             // 
             // lblSystemset_24
@@ -3417,7 +3437,7 @@
             this.txtFullChgVolt.Location = new System.Drawing.Point(156, 77);
             this.txtFullChgVolt.Margin = new System.Windows.Forms.Padding(4);
             this.txtFullChgVolt.Name = "txtFullChgVolt";
-            this.txtFullChgVolt.Size = new System.Drawing.Size(87, 23);
+            this.txtFullChgVolt.Size = new System.Drawing.Size(75, 23);
             this.txtFullChgVolt.TabIndex = 24;
             // 
             // lblSystemset_22
@@ -3434,7 +3454,7 @@
             this.txtBalOpenVoltDiff.Location = new System.Drawing.Point(156, 46);
             this.txtBalOpenVoltDiff.Margin = new System.Windows.Forms.Padding(4);
             this.txtBalOpenVoltDiff.Name = "txtBalOpenVoltDiff";
-            this.txtBalOpenVoltDiff.Size = new System.Drawing.Size(87, 23);
+            this.txtBalOpenVoltDiff.Size = new System.Drawing.Size(75, 23);
             this.txtBalOpenVoltDiff.TabIndex = 23;
             // 
             // lblParameter_60
@@ -3461,7 +3481,7 @@
             this.txtBalOpenVolt.Location = new System.Drawing.Point(156, 16);
             this.txtBalOpenVolt.Margin = new System.Windows.Forms.Padding(4);
             this.txtBalOpenVolt.Name = "txtBalOpenVolt";
-            this.txtBalOpenVolt.Size = new System.Drawing.Size(87, 23);
+            this.txtBalOpenVolt.Size = new System.Drawing.Size(75, 23);
             this.txtBalOpenVolt.TabIndex = 22;
             // 
             // lblParameter_58
@@ -3502,13 +3522,13 @@
             this.lblParameter_57.TabIndex = 19;
             this.lblParameter_57.Text = "均衡开启电压(mV)";
             // 
-            // textBox19
+            // txtCellVoltNum
             // 
-            this.textBox19.Location = new System.Drawing.Point(156, 288);
-            this.textBox19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(81, 23);
-            this.textBox19.TabIndex = 70;
+            this.txtCellVoltNum.Location = new System.Drawing.Point(156, 288);
+            this.txtCellVoltNum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCellVoltNum.Name = "txtCellVoltNum";
+            this.txtCellVoltNum.Size = new System.Drawing.Size(75, 23);
+            this.txtCellVoltNum.TabIndex = 70;
             // 
             // lblParameter_59
             // 
@@ -3520,33 +3540,33 @@
             this.lblParameter_59.TabIndex = 18;
             this.lblParameter_59.Text = "满充电压(mV)";
             // 
-            // button8
+            // btnSet_0x25
             // 
-            this.button8.AutoSize = true;
-            this.button8.Location = new System.Drawing.Point(258, 424);
-            this.button8.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button8.Name = "button8";
-            this.button8.Padding = new System.Windows.Forms.Padding(1);
-            this.button8.Size = new System.Drawing.Size(75, 29);
-            this.button8.TabIndex = 75;
-            this.button8.Text = "设置";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnSet_0x25.Location = new System.Drawing.Point(239, 425);
+            this.btnSet_0x25.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSet_0x25.Name = "btnSet_0x25";
+            this.btnSet_0x25.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSet_0x25.Size = new System.Drawing.Size(75, 27);
+            this.btnSet_0x25.TabIndex = 75;
+            this.btnSet_0x25.Text = "写入";
+            this.btnSet_0x25.UseVisualStyleBackColor = true;
+            this.btnSet_0x25.Click += new System.EventHandler(this.btnSet_0x25_Click);
             // 
-            // textBox18
+            // txtRetedCapacity
             // 
-            this.textBox18.Location = new System.Drawing.Point(156, 257);
-            this.textBox18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(81, 23);
-            this.textBox18.TabIndex = 67;
+            this.txtRetedCapacity.Location = new System.Drawing.Point(156, 257);
+            this.txtRetedCapacity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRetedCapacity.Name = "txtRetedCapacity";
+            this.txtRetedCapacity.Size = new System.Drawing.Size(75, 23);
+            this.txtRetedCapacity.TabIndex = 67;
             // 
-            // textBox14
+            // txtSOC
             // 
-            this.textBox14.Location = new System.Drawing.Point(156, 427);
-            this.textBox14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(81, 23);
-            this.textBox14.TabIndex = 68;
+            this.txtSOC.Location = new System.Drawing.Point(156, 427);
+            this.txtSOC.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSOC.Name = "txtSOC";
+            this.txtSOC.Size = new System.Drawing.Size(75, 23);
+            this.txtSOC.TabIndex = 68;
             // 
             // lblSystemset_83
             // 
@@ -3560,94 +3580,94 @@
             // lblSystemset_101
             // 
             this.lblSystemset_101.AutoSize = true;
-            this.lblSystemset_101.Location = new System.Drawing.Point(15, 461);
+            this.lblSystemset_101.Location = new System.Drawing.Point(15, 492);
             this.lblSystemset_101.Name = "lblSystemset_101";
             this.lblSystemset_101.Size = new System.Drawing.Size(112, 17);
             this.lblSystemset_101.TabIndex = 77;
             this.lblSystemset_101.Text = "剩余容量(0~110%)";
             // 
-            // textBox17
+            // txtCellTempNum
             // 
-            this.textBox17.Location = new System.Drawing.Point(156, 319);
-            this.textBox17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(81, 23);
-            this.textBox17.TabIndex = 73;
+            this.txtCellTempNum.Location = new System.Drawing.Point(156, 319);
+            this.txtCellTempNum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCellTempNum.Name = "txtCellTempNum";
+            this.txtCellTempNum.Size = new System.Drawing.Size(75, 23);
+            this.txtCellTempNum.TabIndex = 73;
             // 
-            // button9
+            // btnSet_0x24
             // 
-            this.button9.AutoSize = true;
-            this.button9.Location = new System.Drawing.Point(258, 355);
-            this.button9.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button9.Name = "button9";
-            this.button9.Padding = new System.Windows.Forms.Padding(1);
-            this.button9.Size = new System.Drawing.Size(75, 29);
-            this.button9.TabIndex = 76;
-            this.button9.Text = "设置";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btnSet_0x24.Location = new System.Drawing.Point(239, 356);
+            this.btnSet_0x24.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSet_0x24.Name = "btnSet_0x24";
+            this.btnSet_0x24.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSet_0x24.Size = new System.Drawing.Size(75, 27);
+            this.btnSet_0x24.TabIndex = 76;
+            this.btnSet_0x24.Text = "写入";
+            this.btnSet_0x24.UseVisualStyleBackColor = true;
+            this.btnSet_0x24.Click += new System.EventHandler(this.btnSet_0x24_Click);
             // 
             // lblSystemset_82
             // 
             this.lblSystemset_82.AutoSize = true;
-            this.lblSystemset_82.Location = new System.Drawing.Point(15, 492);
+            this.lblSystemset_82.Location = new System.Drawing.Point(15, 461);
             this.lblSystemset_82.Name = "lblSystemset_82";
             this.lblSystemset_82.Size = new System.Drawing.Size(112, 17);
             this.lblSystemset_82.TabIndex = 81;
             this.lblSystemset_82.Text = "满充容量(0~110%)";
             // 
-            // textBox6
+            // txtFullChgCapacity
             // 
-            this.textBox6.Location = new System.Drawing.Point(156, 458);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(81, 23);
-            this.textBox6.TabIndex = 78;
+            this.txtFullChgCapacity.Location = new System.Drawing.Point(156, 458);
+            this.txtFullChgCapacity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFullChgCapacity.Name = "txtFullChgCapacity";
+            this.txtFullChgCapacity.Size = new System.Drawing.Size(75, 23);
+            this.txtFullChgCapacity.TabIndex = 78;
             // 
-            // textBox16
+            // txtCumulativeChgCapacity
             // 
-            this.textBox16.Location = new System.Drawing.Point(156, 358);
-            this.textBox16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(81, 23);
-            this.textBox16.TabIndex = 69;
+            this.txtCumulativeChgCapacity.Location = new System.Drawing.Point(156, 358);
+            this.txtCumulativeChgCapacity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCumulativeChgCapacity.Name = "txtCumulativeChgCapacity";
+            this.txtCumulativeChgCapacity.Size = new System.Drawing.Size(75, 23);
+            this.txtCumulativeChgCapacity.TabIndex = 69;
             // 
-            // textBox15
+            // txtCumulativeDsgCapactiy
             // 
-            this.textBox15.Location = new System.Drawing.Point(156, 389);
-            this.textBox15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(81, 23);
-            this.textBox15.TabIndex = 71;
+            this.txtCumulativeDsgCapactiy.Location = new System.Drawing.Point(156, 389);
+            this.txtCumulativeDsgCapactiy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCumulativeDsgCapactiy.Name = "txtCumulativeDsgCapactiy";
+            this.txtCumulativeDsgCapactiy.Size = new System.Drawing.Size(75, 23);
+            this.txtCumulativeDsgCapactiy.TabIndex = 71;
             // 
-            // textBox4
+            // txtSOH
             // 
-            this.textBox4.Location = new System.Drawing.Point(156, 520);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(81, 23);
-            this.textBox4.TabIndex = 80;
-            this.textBox4.Text = "0";
+            this.txtSOH.Location = new System.Drawing.Point(156, 520);
+            this.txtSOH.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtSOH.Name = "txtSOH";
+            this.txtSOH.Size = new System.Drawing.Size(75, 23);
+            this.txtSOH.TabIndex = 80;
+            this.txtSOH.Text = "0";
             // 
-            // textBox5
+            // txtSurplusCapacity
             // 
-            this.textBox5.Location = new System.Drawing.Point(156, 489);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(81, 23);
-            this.textBox5.TabIndex = 79;
-            this.textBox5.Text = "0";
+            this.txtSurplusCapacity.Location = new System.Drawing.Point(156, 489);
+            this.txtSurplusCapacity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtSurplusCapacity.Name = "txtSurplusCapacity";
+            this.txtSurplusCapacity.Size = new System.Drawing.Size(75, 23);
+            this.txtSurplusCapacity.TabIndex = 79;
+            this.txtSurplusCapacity.Text = "0";
             // 
-            // button10
+            // btnSet_0x23
             // 
-            this.button10.AutoSize = true;
-            this.button10.Location = new System.Drawing.Point(258, 254);
-            this.button10.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button10.Name = "button10";
-            this.button10.Padding = new System.Windows.Forms.Padding(1);
-            this.button10.Size = new System.Drawing.Size(75, 29);
-            this.button10.TabIndex = 74;
-            this.button10.Text = "设置";
-            this.button10.UseVisualStyleBackColor = true;
+            this.btnSet_0x23.Location = new System.Drawing.Point(239, 257);
+            this.btnSet_0x23.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSet_0x23.Name = "btnSet_0x23";
+            this.btnSet_0x23.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSet_0x23.Size = new System.Drawing.Size(75, 27);
+            this.btnSet_0x23.TabIndex = 74;
+            this.btnSet_0x23.Text = "写入";
+            this.btnSet_0x23.UseVisualStyleBackColor = true;
+            this.btnSet_0x23.Click += new System.EventHandler(this.btnSet_0x23_Click);
             // 
             // groupBox4
             // 
@@ -3680,12 +3700,11 @@
             // 
             // btnSetCalibration_BMU_06
             // 
-            this.btnSetCalibration_BMU_06.AutoSize = true;
             this.btnSetCalibration_BMU_06.Location = new System.Drawing.Point(258, 187);
             this.btnSetCalibration_BMU_06.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSetCalibration_BMU_06.Name = "btnSetCalibration_BMU_06";
             this.btnSetCalibration_BMU_06.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_BMU_06.Size = new System.Drawing.Size(75, 29);
+            this.btnSetCalibration_BMU_06.Size = new System.Drawing.Size(75, 27);
             this.btnSetCalibration_BMU_06.TabIndex = 68;
             this.btnSetCalibration_BMU_06.Text = "写入";
             this.btnSetCalibration_BMU_06.UseVisualStyleBackColor = true;
@@ -3693,12 +3712,11 @@
             // 
             // btnSetCalibration_BMU_05
             // 
-            this.btnSetCalibration_BMU_05.AutoSize = true;
             this.btnSetCalibration_BMU_05.Location = new System.Drawing.Point(258, 153);
             this.btnSetCalibration_BMU_05.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSetCalibration_BMU_05.Name = "btnSetCalibration_BMU_05";
             this.btnSetCalibration_BMU_05.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_BMU_05.Size = new System.Drawing.Size(75, 29);
+            this.btnSetCalibration_BMU_05.Size = new System.Drawing.Size(75, 27);
             this.btnSetCalibration_BMU_05.TabIndex = 67;
             this.btnSetCalibration_BMU_05.Text = "写入";
             this.btnSetCalibration_BMU_05.UseVisualStyleBackColor = true;
@@ -3706,12 +3724,11 @@
             // 
             // btnSetCalibration_BMU_04
             // 
-            this.btnSetCalibration_BMU_04.AutoSize = true;
             this.btnSetCalibration_BMU_04.Location = new System.Drawing.Point(258, 119);
             this.btnSetCalibration_BMU_04.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSetCalibration_BMU_04.Name = "btnSetCalibration_BMU_04";
             this.btnSetCalibration_BMU_04.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_BMU_04.Size = new System.Drawing.Size(75, 29);
+            this.btnSetCalibration_BMU_04.Size = new System.Drawing.Size(75, 27);
             this.btnSetCalibration_BMU_04.TabIndex = 66;
             this.btnSetCalibration_BMU_04.Text = "写入";
             this.btnSetCalibration_BMU_04.UseVisualStyleBackColor = true;
@@ -3719,12 +3736,11 @@
             // 
             // btnSetCalibration_BMU_03
             // 
-            this.btnSetCalibration_BMU_03.AutoSize = true;
             this.btnSetCalibration_BMU_03.Location = new System.Drawing.Point(258, 85);
             this.btnSetCalibration_BMU_03.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSetCalibration_BMU_03.Name = "btnSetCalibration_BMU_03";
             this.btnSetCalibration_BMU_03.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_BMU_03.Size = new System.Drawing.Size(75, 29);
+            this.btnSetCalibration_BMU_03.Size = new System.Drawing.Size(75, 27);
             this.btnSetCalibration_BMU_03.TabIndex = 65;
             this.btnSetCalibration_BMU_03.Text = "写入";
             this.btnSetCalibration_BMU_03.UseVisualStyleBackColor = true;
@@ -3732,12 +3748,11 @@
             // 
             // btnSetCalibration_BMU_02
             // 
-            this.btnSetCalibration_BMU_02.AutoSize = true;
             this.btnSetCalibration_BMU_02.Location = new System.Drawing.Point(258, 51);
             this.btnSetCalibration_BMU_02.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSetCalibration_BMU_02.Name = "btnSetCalibration_BMU_02";
             this.btnSetCalibration_BMU_02.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_BMU_02.Size = new System.Drawing.Size(75, 29);
+            this.btnSetCalibration_BMU_02.Size = new System.Drawing.Size(75, 27);
             this.btnSetCalibration_BMU_02.TabIndex = 64;
             this.btnSetCalibration_BMU_02.Text = "写入";
             this.btnSetCalibration_BMU_02.UseVisualStyleBackColor = true;
@@ -3745,12 +3760,11 @@
             // 
             // btnSetCalibration_BMU_01
             // 
-            this.btnSetCalibration_BMU_01.AutoSize = true;
             this.btnSetCalibration_BMU_01.Location = new System.Drawing.Point(258, 17);
             this.btnSetCalibration_BMU_01.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSetCalibration_BMU_01.Name = "btnSetCalibration_BMU_01";
             this.btnSetCalibration_BMU_01.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSetCalibration_BMU_01.Size = new System.Drawing.Size(75, 29);
+            this.btnSetCalibration_BMU_01.Size = new System.Drawing.Size(75, 27);
             this.btnSetCalibration_BMU_01.TabIndex = 51;
             this.btnSetCalibration_BMU_01.Text = "写入";
             this.btnSetCalibration_BMU_01.UseVisualStyleBackColor = true;
@@ -3771,7 +3785,7 @@
             this.txtBMU_Calibration06.Location = new System.Drawing.Point(178, 190);
             this.txtBMU_Calibration06.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBMU_Calibration06.Name = "txtBMU_Calibration06";
-            this.txtBMU_Calibration06.Size = new System.Drawing.Size(70, 23);
+            this.txtBMU_Calibration06.Size = new System.Drawing.Size(75, 23);
             this.txtBMU_Calibration06.TabIndex = 31;
             // 
             // lblSystemset_19
@@ -3789,7 +3803,7 @@
             this.txtBMU_Calibration05.Location = new System.Drawing.Point(178, 156);
             this.txtBMU_Calibration05.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBMU_Calibration05.Name = "txtBMU_Calibration05";
-            this.txtBMU_Calibration05.Size = new System.Drawing.Size(70, 23);
+            this.txtBMU_Calibration05.Size = new System.Drawing.Size(75, 23);
             this.txtBMU_Calibration05.TabIndex = 29;
             // 
             // lblSystemset_18
@@ -3807,7 +3821,7 @@
             this.txtBMU_Calibration04.Location = new System.Drawing.Point(178, 122);
             this.txtBMU_Calibration04.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBMU_Calibration04.Name = "txtBMU_Calibration04";
-            this.txtBMU_Calibration04.Size = new System.Drawing.Size(70, 23);
+            this.txtBMU_Calibration04.Size = new System.Drawing.Size(75, 23);
             this.txtBMU_Calibration04.TabIndex = 27;
             // 
             // lblSystemset_16
@@ -3835,7 +3849,7 @@
             this.txtBMU_Calibration02.Location = new System.Drawing.Point(178, 54);
             this.txtBMU_Calibration02.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBMU_Calibration02.Name = "txtBMU_Calibration02";
-            this.txtBMU_Calibration02.Size = new System.Drawing.Size(70, 23);
+            this.txtBMU_Calibration02.Size = new System.Drawing.Size(75, 23);
             this.txtBMU_Calibration02.TabIndex = 22;
             // 
             // lblSystemset_17
@@ -3853,7 +3867,7 @@
             this.txtBMU_Calibration01.Location = new System.Drawing.Point(178, 20);
             this.txtBMU_Calibration01.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBMU_Calibration01.Name = "txtBMU_Calibration01";
-            this.txtBMU_Calibration01.Size = new System.Drawing.Size(70, 23);
+            this.txtBMU_Calibration01.Size = new System.Drawing.Size(75, 23);
             this.txtBMU_Calibration01.TabIndex = 6;
             // 
             // txtBMU_Calibration03
@@ -3861,48 +3875,13 @@
             this.txtBMU_Calibration03.Location = new System.Drawing.Point(178, 88);
             this.txtBMU_Calibration03.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBMU_Calibration03.Name = "txtBMU_Calibration03";
-            this.txtBMU_Calibration03.Size = new System.Drawing.Size(70, 23);
+            this.txtBMU_Calibration03.Size = new System.Drawing.Size(75, 23);
             this.txtBMU_Calibration03.TabIndex = 25;
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.btnSystemset_45_BMU_Lifted8);
-            this.groupBox6.Controls.Add(this.btnSystemset_45_BMU_Lifted4);
-            this.groupBox6.Controls.Add(this.btnSystemset_43_BMU_Close8);
-            this.groupBox6.Controls.Add(this.btnSystemset_43_BMU_Close4);
-            this.groupBox6.Controls.Add(this.btnSystemset_44_BMU_Open8);
-            this.groupBox6.Controls.Add(this.btnSystemset_44_BMU_Open4);
-            this.groupBox6.Controls.Add(this.lblSystemset_63);
-            this.groupBox6.Controls.Add(this.lblSystemset_BMU_02);
+            this.groupBox6.Controls.Add(this.panel2);
             this.groupBox6.Controls.Add(this.btnSystemset_debug2);
-            this.groupBox6.Controls.Add(this.btnSystemset_45_BMU_Lifted3);
-            this.groupBox6.Controls.Add(this.btnSystemset_43_BMU_Close3);
-            this.groupBox6.Controls.Add(this.btnSystemset_45_BMU_Lifted9);
-            this.groupBox6.Controls.Add(this.btnSystemset_44_BMU_Open3);
-            this.groupBox6.Controls.Add(this.btnSystemset_45_BMU_Lifted7);
-            this.groupBox6.Controls.Add(this.lblSystemset_BMU_01);
-            this.groupBox6.Controls.Add(this.btnSystemset_45_BMU_Lifted2);
-            this.groupBox6.Controls.Add(this.btnSystemset_43_BMU_Close2);
-            this.groupBox6.Controls.Add(this.btnSystemset_43_BMU_Close9);
-            this.groupBox6.Controls.Add(this.btnSystemset_44_BMU_Open2);
-            this.groupBox6.Controls.Add(this.lblSystemset_10);
-            this.groupBox6.Controls.Add(this.btnSystemset_43_BMU_Close7);
-            this.groupBox6.Controls.Add(this.btnSystemset_45_BMU_Lifted1);
-            this.groupBox6.Controls.Add(this.btnSystemset_44_BMU_Open9);
-            this.groupBox6.Controls.Add(this.lblSystemset_09);
-            this.groupBox6.Controls.Add(this.btnSystemset_43_BMU_Close1);
-            this.groupBox6.Controls.Add(this.btnSystemset_44_BMU_Open7);
-            this.groupBox6.Controls.Add(this.btnSystemset_44_BMU_Open1);
-            this.groupBox6.Controls.Add(this.lblSystemset_62);
-            this.groupBox6.Controls.Add(this.lblSystemset_BMU_04);
-            this.groupBox6.Controls.Add(this.btnSystemset_45_BMU_Lifted5);
-            this.groupBox6.Controls.Add(this.btnSystemset_45_BMU_Lifted6);
-            this.groupBox6.Controls.Add(this.btnSystemset_43_BMU_Close5);
-            this.groupBox6.Controls.Add(this.btnSystemset_43_BMU_Close6);
-            this.groupBox6.Controls.Add(this.btnSystemset_44_BMU_Open5);
-            this.groupBox6.Controls.Add(this.btnSystemset_44_BMU_Open6);
-            this.groupBox6.Controls.Add(this.lblSystemset_61);
-            this.groupBox6.Controls.Add(this.lblSystemset_BMU_03);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox6.Location = new System.Drawing.Point(3, 3);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(11, 14, 11, 14);
@@ -3913,11 +3892,64 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "开关控制-0x02B";
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lblSystemset_09);
+            this.panel2.Controls.Add(this.btnSystemset_45_BMU_Lifted8);
+            this.panel2.Controls.Add(this.lblSystemset_BMU_03);
+            this.panel2.Controls.Add(this.btnSystemset_45_BMU_Lifted4);
+            this.panel2.Controls.Add(this.lblSystemset_61);
+            this.panel2.Controls.Add(this.btnSystemset_43_BMU_Close8);
+            this.panel2.Controls.Add(this.btnSystemset_44_BMU_Open6);
+            this.panel2.Controls.Add(this.btnSystemset_43_BMU_Close4);
+            this.panel2.Controls.Add(this.btnSystemset_44_BMU_Open5);
+            this.panel2.Controls.Add(this.btnSystemset_44_BMU_Open8);
+            this.panel2.Controls.Add(this.btnSystemset_43_BMU_Close6);
+            this.panel2.Controls.Add(this.btnSystemset_44_BMU_Open4);
+            this.panel2.Controls.Add(this.btnSystemset_43_BMU_Close5);
+            this.panel2.Controls.Add(this.lblSystemset_63);
+            this.panel2.Controls.Add(this.btnSystemset_45_BMU_Lifted6);
+            this.panel2.Controls.Add(this.lblSystemset_BMU_02);
+            this.panel2.Controls.Add(this.btnSystemset_45_BMU_Lifted5);
+            this.panel2.Controls.Add(this.lblSystemset_BMU_04);
+            this.panel2.Controls.Add(this.btnSystemset_45_BMU_Lifted3);
+            this.panel2.Controls.Add(this.lblSystemset_62);
+            this.panel2.Controls.Add(this.btnSystemset_43_BMU_Close3);
+            this.panel2.Controls.Add(this.btnSystemset_44_BMU_Open1);
+            this.panel2.Controls.Add(this.btnSystemset_45_BMU_Lifted9);
+            this.panel2.Controls.Add(this.btnSystemset_44_BMU_Open7);
+            this.panel2.Controls.Add(this.btnSystemset_44_BMU_Open3);
+            this.panel2.Controls.Add(this.btnSystemset_43_BMU_Close1);
+            this.panel2.Controls.Add(this.btnSystemset_45_BMU_Lifted7);
+            this.panel2.Controls.Add(this.btnSystemset_44_BMU_Open9);
+            this.panel2.Controls.Add(this.lblSystemset_BMU_01);
+            this.panel2.Controls.Add(this.btnSystemset_45_BMU_Lifted1);
+            this.panel2.Controls.Add(this.btnSystemset_45_BMU_Lifted2);
+            this.panel2.Controls.Add(this.btnSystemset_43_BMU_Close7);
+            this.panel2.Controls.Add(this.btnSystemset_43_BMU_Close2);
+            this.panel2.Controls.Add(this.lblSystemset_10);
+            this.panel2.Controls.Add(this.btnSystemset_43_BMU_Close9);
+            this.panel2.Controls.Add(this.btnSystemset_44_BMU_Open2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(6, 52);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(344, 711);
+            this.panel2.TabIndex = 75;
+            // 
+            // lblSystemset_09
+            // 
+            this.lblSystemset_09.AutoSize = true;
+            this.lblSystemset_09.Location = new System.Drawing.Point(6, 11);
+            this.lblSystemset_09.Name = "lblSystemset_09";
+            this.lblSystemset_09.Size = new System.Drawing.Size(56, 17);
+            this.lblSystemset_09.TabIndex = 59;
+            this.lblSystemset_09.Text = "强制休眠";
+            // 
             // btnSystemset_45_BMU_Lifted8
             // 
             this.btnSystemset_45_BMU_Lifted8.AutoSize = true;
             this.btnSystemset_45_BMU_Lifted8.Enabled = false;
-            this.btnSystemset_45_BMU_Lifted8.Location = new System.Drawing.Point(282, 302);
+            this.btnSystemset_45_BMU_Lifted8.Location = new System.Drawing.Point(275, 250);
             this.btnSystemset_45_BMU_Lifted8.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BMU_Lifted8.Name = "btnSystemset_45_BMU_Lifted8";
             this.btnSystemset_45_BMU_Lifted8.Padding = new System.Windows.Forms.Padding(1);
@@ -3927,11 +3959,20 @@
             this.btnSystemset_45_BMU_Lifted8.UseVisualStyleBackColor = true;
             this.btnSystemset_45_BMU_Lifted8.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
+            // lblSystemset_BMU_03
+            // 
+            this.lblSystemset_BMU_03.AutoSize = true;
+            this.lblSystemset_BMU_03.Location = new System.Drawing.Point(6, 151);
+            this.lblSystemset_BMU_03.Name = "lblSystemset_BMU_03";
+            this.lblSystemset_BMU_03.Size = new System.Drawing.Size(68, 17);
+            this.lblSystemset_BMU_03.TabIndex = 5;
+            this.lblSystemset_BMU_03.Text = "清除系统锁";
+            // 
             // btnSystemset_45_BMU_Lifted4
             // 
             this.btnSystemset_45_BMU_Lifted4.AutoSize = true;
             this.btnSystemset_45_BMU_Lifted4.Enabled = false;
-            this.btnSystemset_45_BMU_Lifted4.Location = new System.Drawing.Point(282, 162);
+            this.btnSystemset_45_BMU_Lifted4.Location = new System.Drawing.Point(275, 110);
             this.btnSystemset_45_BMU_Lifted4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_45_BMU_Lifted4.Name = "btnSystemset_45_BMU_Lifted4";
             this.btnSystemset_45_BMU_Lifted4.Padding = new System.Windows.Forms.Padding(1);
@@ -3941,11 +3982,20 @@
             this.btnSystemset_45_BMU_Lifted4.UseVisualStyleBackColor = true;
             this.btnSystemset_45_BMU_Lifted4.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
+            // lblSystemset_61
+            // 
+            this.lblSystemset_61.AutoSize = true;
+            this.lblSystemset_61.Location = new System.Drawing.Point(6, 186);
+            this.lblSystemset_61.Name = "lblSystemset_61";
+            this.lblSystemset_61.Size = new System.Drawing.Size(76, 17);
+            this.lblSystemset_61.TabIndex = 3;
+            this.lblSystemset_61.Text = "LLC强制放电";
+            // 
             // btnSystemset_43_BMU_Close8
             // 
             this.btnSystemset_43_BMU_Close8.AutoSize = true;
             this.btnSystemset_43_BMU_Close8.Enabled = false;
-            this.btnSystemset_43_BMU_Close8.Location = new System.Drawing.Point(214, 302);
+            this.btnSystemset_43_BMU_Close8.Location = new System.Drawing.Point(207, 250);
             this.btnSystemset_43_BMU_Close8.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BMU_Close8.Name = "btnSystemset_43_BMU_Close8";
             this.btnSystemset_43_BMU_Close8.Padding = new System.Windows.Forms.Padding(1);
@@ -3955,11 +4005,25 @@
             this.btnSystemset_43_BMU_Close8.UseVisualStyleBackColor = true;
             this.btnSystemset_43_BMU_Close8.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
+            // btnSystemset_44_BMU_Open6
+            // 
+            this.btnSystemset_44_BMU_Open6.AutoSize = true;
+            this.btnSystemset_44_BMU_Open6.Enabled = false;
+            this.btnSystemset_44_BMU_Open6.Location = new System.Drawing.Point(139, 181);
+            this.btnSystemset_44_BMU_Open6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_44_BMU_Open6.Name = "btnSystemset_44_BMU_Open6";
+            this.btnSystemset_44_BMU_Open6.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_44_BMU_Open6.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_44_BMU_Open6.TabIndex = 14;
+            this.btnSystemset_44_BMU_Open6.Text = "打开";
+            this.btnSystemset_44_BMU_Open6.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open6.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
             // btnSystemset_43_BMU_Close4
             // 
             this.btnSystemset_43_BMU_Close4.AutoSize = true;
             this.btnSystemset_43_BMU_Close4.Enabled = false;
-            this.btnSystemset_43_BMU_Close4.Location = new System.Drawing.Point(214, 162);
+            this.btnSystemset_43_BMU_Close4.Location = new System.Drawing.Point(207, 110);
             this.btnSystemset_43_BMU_Close4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_43_BMU_Close4.Name = "btnSystemset_43_BMU_Close4";
             this.btnSystemset_43_BMU_Close4.Padding = new System.Windows.Forms.Padding(1);
@@ -3969,11 +4033,25 @@
             this.btnSystemset_43_BMU_Close4.UseVisualStyleBackColor = true;
             this.btnSystemset_43_BMU_Close4.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
+            // btnSystemset_44_BMU_Open5
+            // 
+            this.btnSystemset_44_BMU_Open5.AutoSize = true;
+            this.btnSystemset_44_BMU_Open5.Enabled = false;
+            this.btnSystemset_44_BMU_Open5.Location = new System.Drawing.Point(139, 146);
+            this.btnSystemset_44_BMU_Open5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_44_BMU_Open5.Name = "btnSystemset_44_BMU_Open5";
+            this.btnSystemset_44_BMU_Open5.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_44_BMU_Open5.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_44_BMU_Open5.TabIndex = 16;
+            this.btnSystemset_44_BMU_Open5.Text = "打开";
+            this.btnSystemset_44_BMU_Open5.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open5.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
             // btnSystemset_44_BMU_Open8
             // 
             this.btnSystemset_44_BMU_Open8.AutoSize = true;
             this.btnSystemset_44_BMU_Open8.Enabled = false;
-            this.btnSystemset_44_BMU_Open8.Location = new System.Drawing.Point(146, 303);
+            this.btnSystemset_44_BMU_Open8.Location = new System.Drawing.Point(139, 251);
             this.btnSystemset_44_BMU_Open8.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BMU_Open8.Name = "btnSystemset_44_BMU_Open8";
             this.btnSystemset_44_BMU_Open8.Padding = new System.Windows.Forms.Padding(1);
@@ -3983,11 +4061,25 @@
             this.btnSystemset_44_BMU_Open8.UseVisualStyleBackColor = true;
             this.btnSystemset_44_BMU_Open8.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
+            // btnSystemset_43_BMU_Close6
+            // 
+            this.btnSystemset_43_BMU_Close6.AutoSize = true;
+            this.btnSystemset_43_BMU_Close6.Enabled = false;
+            this.btnSystemset_43_BMU_Close6.Location = new System.Drawing.Point(207, 180);
+            this.btnSystemset_43_BMU_Close6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_43_BMU_Close6.Name = "btnSystemset_43_BMU_Close6";
+            this.btnSystemset_43_BMU_Close6.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_43_BMU_Close6.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_43_BMU_Close6.TabIndex = 15;
+            this.btnSystemset_43_BMU_Close6.Text = "关闭";
+            this.btnSystemset_43_BMU_Close6.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close6.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
             // btnSystemset_44_BMU_Open4
             // 
             this.btnSystemset_44_BMU_Open4.AutoSize = true;
             this.btnSystemset_44_BMU_Open4.Enabled = false;
-            this.btnSystemset_44_BMU_Open4.Location = new System.Drawing.Point(146, 163);
+            this.btnSystemset_44_BMU_Open4.Location = new System.Drawing.Point(139, 111);
             this.btnSystemset_44_BMU_Open4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnSystemset_44_BMU_Open4.Name = "btnSystemset_44_BMU_Open4";
             this.btnSystemset_44_BMU_Open4.Padding = new System.Windows.Forms.Padding(1);
@@ -3997,24 +4089,312 @@
             this.btnSystemset_44_BMU_Open4.UseVisualStyleBackColor = true;
             this.btnSystemset_44_BMU_Open4.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
+            // btnSystemset_43_BMU_Close5
+            // 
+            this.btnSystemset_43_BMU_Close5.AutoSize = true;
+            this.btnSystemset_43_BMU_Close5.Enabled = false;
+            this.btnSystemset_43_BMU_Close5.Location = new System.Drawing.Point(207, 145);
+            this.btnSystemset_43_BMU_Close5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_43_BMU_Close5.Name = "btnSystemset_43_BMU_Close5";
+            this.btnSystemset_43_BMU_Close5.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_43_BMU_Close5.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_43_BMU_Close5.TabIndex = 18;
+            this.btnSystemset_43_BMU_Close5.Text = "关闭";
+            this.btnSystemset_43_BMU_Close5.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close5.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
             // lblSystemset_63
             // 
             this.lblSystemset_63.AutoSize = true;
-            this.lblSystemset_63.Location = new System.Drawing.Point(13, 308);
+            this.lblSystemset_63.Location = new System.Drawing.Point(6, 256);
             this.lblSystemset_63.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSystemset_63.Name = "lblSystemset_63";
             this.lblSystemset_63.Size = new System.Drawing.Size(66, 17);
             this.lblSystemset_63.TabIndex = 43;
             this.lblSystemset_63.Text = "LED灯控制";
             // 
+            // btnSystemset_45_BMU_Lifted6
+            // 
+            this.btnSystemset_45_BMU_Lifted6.AutoSize = true;
+            this.btnSystemset_45_BMU_Lifted6.Enabled = false;
+            this.btnSystemset_45_BMU_Lifted6.Location = new System.Drawing.Point(275, 180);
+            this.btnSystemset_45_BMU_Lifted6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_45_BMU_Lifted6.Name = "btnSystemset_45_BMU_Lifted6";
+            this.btnSystemset_45_BMU_Lifted6.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_45_BMU_Lifted6.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_45_BMU_Lifted6.TabIndex = 24;
+            this.btnSystemset_45_BMU_Lifted6.Text = "解除";
+            this.btnSystemset_45_BMU_Lifted6.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted6.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
             // lblSystemset_BMU_02
             // 
             this.lblSystemset_BMU_02.AutoSize = true;
-            this.lblSystemset_BMU_02.Location = new System.Drawing.Point(13, 168);
+            this.lblSystemset_BMU_02.Location = new System.Drawing.Point(6, 116);
             this.lblSystemset_BMU_02.Name = "lblSystemset_BMU_02";
             this.lblSystemset_BMU_02.Size = new System.Drawing.Size(56, 17);
             this.lblSystemset_BMU_02.TabIndex = 71;
             this.lblSystemset_BMU_02.Text = "加热功能";
+            // 
+            // btnSystemset_45_BMU_Lifted5
+            // 
+            this.btnSystemset_45_BMU_Lifted5.AutoSize = true;
+            this.btnSystemset_45_BMU_Lifted5.Enabled = false;
+            this.btnSystemset_45_BMU_Lifted5.Location = new System.Drawing.Point(275, 145);
+            this.btnSystemset_45_BMU_Lifted5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_45_BMU_Lifted5.Name = "btnSystemset_45_BMU_Lifted5";
+            this.btnSystemset_45_BMU_Lifted5.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_45_BMU_Lifted5.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_45_BMU_Lifted5.TabIndex = 25;
+            this.btnSystemset_45_BMU_Lifted5.Text = "解除";
+            this.btnSystemset_45_BMU_Lifted5.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted5.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
+            // lblSystemset_BMU_04
+            // 
+            this.lblSystemset_BMU_04.AutoSize = true;
+            this.lblSystemset_BMU_04.Location = new System.Drawing.Point(6, 291);
+            this.lblSystemset_BMU_04.Name = "lblSystemset_BMU_04";
+            this.lblSystemset_BMU_04.Size = new System.Drawing.Size(116, 17);
+            this.lblSystemset_BMU_04.TabIndex = 29;
+            this.lblSystemset_BMU_04.Text = "硬件看门狗失能控制";
+            // 
+            // btnSystemset_45_BMU_Lifted3
+            // 
+            this.btnSystemset_45_BMU_Lifted3.AutoSize = true;
+            this.btnSystemset_45_BMU_Lifted3.Enabled = false;
+            this.btnSystemset_45_BMU_Lifted3.Location = new System.Drawing.Point(275, 75);
+            this.btnSystemset_45_BMU_Lifted3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_45_BMU_Lifted3.Name = "btnSystemset_45_BMU_Lifted3";
+            this.btnSystemset_45_BMU_Lifted3.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_45_BMU_Lifted3.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_45_BMU_Lifted3.TabIndex = 70;
+            this.btnSystemset_45_BMU_Lifted3.Text = "解除";
+            this.btnSystemset_45_BMU_Lifted3.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted3.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
+            // lblSystemset_62
+            // 
+            this.lblSystemset_62.AutoSize = true;
+            this.lblSystemset_62.Location = new System.Drawing.Point(6, 221);
+            this.lblSystemset_62.Name = "lblSystemset_62";
+            this.lblSystemset_62.Size = new System.Drawing.Size(76, 17);
+            this.lblSystemset_62.TabIndex = 27;
+            this.lblSystemset_62.Text = "LLC强制充电";
+            // 
+            // btnSystemset_43_BMU_Close3
+            // 
+            this.btnSystemset_43_BMU_Close3.AutoSize = true;
+            this.btnSystemset_43_BMU_Close3.Enabled = false;
+            this.btnSystemset_43_BMU_Close3.Location = new System.Drawing.Point(207, 75);
+            this.btnSystemset_43_BMU_Close3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_43_BMU_Close3.Name = "btnSystemset_43_BMU_Close3";
+            this.btnSystemset_43_BMU_Close3.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_43_BMU_Close3.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_43_BMU_Close3.TabIndex = 69;
+            this.btnSystemset_43_BMU_Close3.Text = "关闭";
+            this.btnSystemset_43_BMU_Close3.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close3.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
+            // btnSystemset_44_BMU_Open1
+            // 
+            this.btnSystemset_44_BMU_Open1.AutoSize = true;
+            this.btnSystemset_44_BMU_Open1.Enabled = false;
+            this.btnSystemset_44_BMU_Open1.Location = new System.Drawing.Point(139, 6);
+            this.btnSystemset_44_BMU_Open1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_44_BMU_Open1.Name = "btnSystemset_44_BMU_Open1";
+            this.btnSystemset_44_BMU_Open1.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_44_BMU_Open1.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_44_BMU_Open1.TabIndex = 60;
+            this.btnSystemset_44_BMU_Open1.Text = "打开";
+            this.btnSystemset_44_BMU_Open1.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open1.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
+            // btnSystemset_45_BMU_Lifted9
+            // 
+            this.btnSystemset_45_BMU_Lifted9.AutoSize = true;
+            this.btnSystemset_45_BMU_Lifted9.Enabled = false;
+            this.btnSystemset_45_BMU_Lifted9.Location = new System.Drawing.Point(275, 285);
+            this.btnSystemset_45_BMU_Lifted9.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_45_BMU_Lifted9.Name = "btnSystemset_45_BMU_Lifted9";
+            this.btnSystemset_45_BMU_Lifted9.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_45_BMU_Lifted9.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_45_BMU_Lifted9.TabIndex = 37;
+            this.btnSystemset_45_BMU_Lifted9.Text = "解除";
+            this.btnSystemset_45_BMU_Lifted9.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted9.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
+            // btnSystemset_44_BMU_Open7
+            // 
+            this.btnSystemset_44_BMU_Open7.AutoSize = true;
+            this.btnSystemset_44_BMU_Open7.Enabled = false;
+            this.btnSystemset_44_BMU_Open7.Location = new System.Drawing.Point(139, 216);
+            this.btnSystemset_44_BMU_Open7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_44_BMU_Open7.Name = "btnSystemset_44_BMU_Open7";
+            this.btnSystemset_44_BMU_Open7.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_44_BMU_Open7.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_44_BMU_Open7.TabIndex = 30;
+            this.btnSystemset_44_BMU_Open7.Text = "打开";
+            this.btnSystemset_44_BMU_Open7.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open7.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
+            // btnSystemset_44_BMU_Open3
+            // 
+            this.btnSystemset_44_BMU_Open3.AutoSize = true;
+            this.btnSystemset_44_BMU_Open3.Enabled = false;
+            this.btnSystemset_44_BMU_Open3.Location = new System.Drawing.Point(139, 76);
+            this.btnSystemset_44_BMU_Open3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_44_BMU_Open3.Name = "btnSystemset_44_BMU_Open3";
+            this.btnSystemset_44_BMU_Open3.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_44_BMU_Open3.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_44_BMU_Open3.TabIndex = 68;
+            this.btnSystemset_44_BMU_Open3.Text = "打开";
+            this.btnSystemset_44_BMU_Open3.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open3.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
+            // btnSystemset_43_BMU_Close1
+            // 
+            this.btnSystemset_43_BMU_Close1.AutoSize = true;
+            this.btnSystemset_43_BMU_Close1.Enabled = false;
+            this.btnSystemset_43_BMU_Close1.Location = new System.Drawing.Point(207, 5);
+            this.btnSystemset_43_BMU_Close1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_43_BMU_Close1.Name = "btnSystemset_43_BMU_Close1";
+            this.btnSystemset_43_BMU_Close1.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_43_BMU_Close1.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_43_BMU_Close1.TabIndex = 61;
+            this.btnSystemset_43_BMU_Close1.Text = "关闭";
+            this.btnSystemset_43_BMU_Close1.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close1.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
+            // btnSystemset_45_BMU_Lifted7
+            // 
+            this.btnSystemset_45_BMU_Lifted7.AutoSize = true;
+            this.btnSystemset_45_BMU_Lifted7.Enabled = false;
+            this.btnSystemset_45_BMU_Lifted7.Location = new System.Drawing.Point(275, 215);
+            this.btnSystemset_45_BMU_Lifted7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_45_BMU_Lifted7.Name = "btnSystemset_45_BMU_Lifted7";
+            this.btnSystemset_45_BMU_Lifted7.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_45_BMU_Lifted7.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_45_BMU_Lifted7.TabIndex = 36;
+            this.btnSystemset_45_BMU_Lifted7.Text = "解除";
+            this.btnSystemset_45_BMU_Lifted7.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted7.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
+            // btnSystemset_44_BMU_Open9
+            // 
+            this.btnSystemset_44_BMU_Open9.AutoSize = true;
+            this.btnSystemset_44_BMU_Open9.Enabled = false;
+            this.btnSystemset_44_BMU_Open9.Location = new System.Drawing.Point(139, 286);
+            this.btnSystemset_44_BMU_Open9.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_44_BMU_Open9.Name = "btnSystemset_44_BMU_Open9";
+            this.btnSystemset_44_BMU_Open9.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_44_BMU_Open9.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_44_BMU_Open9.TabIndex = 32;
+            this.btnSystemset_44_BMU_Open9.Text = "打开";
+            this.btnSystemset_44_BMU_Open9.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open9.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
+            // lblSystemset_BMU_01
+            // 
+            this.lblSystemset_BMU_01.AutoSize = true;
+            this.lblSystemset_BMU_01.Location = new System.Drawing.Point(6, 81);
+            this.lblSystemset_BMU_01.Name = "lblSystemset_BMU_01";
+            this.lblSystemset_BMU_01.Size = new System.Drawing.Size(92, 17);
+            this.lblSystemset_BMU_01.TabIndex = 67;
+            this.lblSystemset_BMU_01.Text = "告警保护指示灯";
+            // 
+            // btnSystemset_45_BMU_Lifted1
+            // 
+            this.btnSystemset_45_BMU_Lifted1.AutoSize = true;
+            this.btnSystemset_45_BMU_Lifted1.Enabled = false;
+            this.btnSystemset_45_BMU_Lifted1.Location = new System.Drawing.Point(275, 5);
+            this.btnSystemset_45_BMU_Lifted1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_45_BMU_Lifted1.Name = "btnSystemset_45_BMU_Lifted1";
+            this.btnSystemset_45_BMU_Lifted1.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_45_BMU_Lifted1.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_45_BMU_Lifted1.TabIndex = 62;
+            this.btnSystemset_45_BMU_Lifted1.Text = "解除";
+            this.btnSystemset_45_BMU_Lifted1.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted1.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
+            // btnSystemset_45_BMU_Lifted2
+            // 
+            this.btnSystemset_45_BMU_Lifted2.AutoSize = true;
+            this.btnSystemset_45_BMU_Lifted2.Enabled = false;
+            this.btnSystemset_45_BMU_Lifted2.Location = new System.Drawing.Point(275, 40);
+            this.btnSystemset_45_BMU_Lifted2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_45_BMU_Lifted2.Name = "btnSystemset_45_BMU_Lifted2";
+            this.btnSystemset_45_BMU_Lifted2.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_45_BMU_Lifted2.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_45_BMU_Lifted2.TabIndex = 66;
+            this.btnSystemset_45_BMU_Lifted2.Text = "解除";
+            this.btnSystemset_45_BMU_Lifted2.UseVisualStyleBackColor = true;
+            this.btnSystemset_45_BMU_Lifted2.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
+            // btnSystemset_43_BMU_Close7
+            // 
+            this.btnSystemset_43_BMU_Close7.AutoSize = true;
+            this.btnSystemset_43_BMU_Close7.Enabled = false;
+            this.btnSystemset_43_BMU_Close7.Location = new System.Drawing.Point(207, 215);
+            this.btnSystemset_43_BMU_Close7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_43_BMU_Close7.Name = "btnSystemset_43_BMU_Close7";
+            this.btnSystemset_43_BMU_Close7.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_43_BMU_Close7.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_43_BMU_Close7.TabIndex = 31;
+            this.btnSystemset_43_BMU_Close7.Text = "关闭";
+            this.btnSystemset_43_BMU_Close7.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close7.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
+            // btnSystemset_43_BMU_Close2
+            // 
+            this.btnSystemset_43_BMU_Close2.AutoSize = true;
+            this.btnSystemset_43_BMU_Close2.Enabled = false;
+            this.btnSystemset_43_BMU_Close2.Location = new System.Drawing.Point(207, 40);
+            this.btnSystemset_43_BMU_Close2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_43_BMU_Close2.Name = "btnSystemset_43_BMU_Close2";
+            this.btnSystemset_43_BMU_Close2.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_43_BMU_Close2.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_43_BMU_Close2.TabIndex = 65;
+            this.btnSystemset_43_BMU_Close2.Text = "关闭";
+            this.btnSystemset_43_BMU_Close2.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close2.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
+            // lblSystemset_10
+            // 
+            this.lblSystemset_10.AutoSize = true;
+            this.lblSystemset_10.Location = new System.Drawing.Point(6, 46);
+            this.lblSystemset_10.Name = "lblSystemset_10";
+            this.lblSystemset_10.Size = new System.Drawing.Size(92, 17);
+            this.lblSystemset_10.TabIndex = 63;
+            this.lblSystemset_10.Text = "告警保护蜂鸣器";
+            // 
+            // btnSystemset_43_BMU_Close9
+            // 
+            this.btnSystemset_43_BMU_Close9.AutoSize = true;
+            this.btnSystemset_43_BMU_Close9.Enabled = false;
+            this.btnSystemset_43_BMU_Close9.Location = new System.Drawing.Point(207, 285);
+            this.btnSystemset_43_BMU_Close9.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_43_BMU_Close9.Name = "btnSystemset_43_BMU_Close9";
+            this.btnSystemset_43_BMU_Close9.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_43_BMU_Close9.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_43_BMU_Close9.TabIndex = 33;
+            this.btnSystemset_43_BMU_Close9.Text = "关闭";
+            this.btnSystemset_43_BMU_Close9.UseVisualStyleBackColor = true;
+            this.btnSystemset_43_BMU_Close9.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
+            // 
+            // btnSystemset_44_BMU_Open2
+            // 
+            this.btnSystemset_44_BMU_Open2.AutoSize = true;
+            this.btnSystemset_44_BMU_Open2.Enabled = false;
+            this.btnSystemset_44_BMU_Open2.Location = new System.Drawing.Point(139, 41);
+            this.btnSystemset_44_BMU_Open2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSystemset_44_BMU_Open2.Name = "btnSystemset_44_BMU_Open2";
+            this.btnSystemset_44_BMU_Open2.Padding = new System.Windows.Forms.Padding(1);
+            this.btnSystemset_44_BMU_Open2.Size = new System.Drawing.Size(65, 29);
+            this.btnSystemset_44_BMU_Open2.TabIndex = 64;
+            this.btnSystemset_44_BMU_Open2.Text = "打开";
+            this.btnSystemset_44_BMU_Open2.UseVisualStyleBackColor = true;
+            this.btnSystemset_44_BMU_Open2.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
             // 
             // btnSystemset_debug2
             // 
@@ -4033,363 +4413,6 @@
             this.btnSystemset_debug2.Text = "开始调试";
             this.btnSystemset_debug2.UseVisualStyleBackColor = false;
             this.btnSystemset_debug2.Click += new System.EventHandler(this.btnSystemset_debug2_Click);
-            // 
-            // btnSystemset_45_BMU_Lifted3
-            // 
-            this.btnSystemset_45_BMU_Lifted3.AutoSize = true;
-            this.btnSystemset_45_BMU_Lifted3.Enabled = false;
-            this.btnSystemset_45_BMU_Lifted3.Location = new System.Drawing.Point(282, 127);
-            this.btnSystemset_45_BMU_Lifted3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_45_BMU_Lifted3.Name = "btnSystemset_45_BMU_Lifted3";
-            this.btnSystemset_45_BMU_Lifted3.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BMU_Lifted3.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_45_BMU_Lifted3.TabIndex = 70;
-            this.btnSystemset_45_BMU_Lifted3.Text = "解除";
-            this.btnSystemset_45_BMU_Lifted3.UseVisualStyleBackColor = true;
-            this.btnSystemset_45_BMU_Lifted3.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // btnSystemset_43_BMU_Close3
-            // 
-            this.btnSystemset_43_BMU_Close3.AutoSize = true;
-            this.btnSystemset_43_BMU_Close3.Enabled = false;
-            this.btnSystemset_43_BMU_Close3.Location = new System.Drawing.Point(214, 127);
-            this.btnSystemset_43_BMU_Close3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_43_BMU_Close3.Name = "btnSystemset_43_BMU_Close3";
-            this.btnSystemset_43_BMU_Close3.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BMU_Close3.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_43_BMU_Close3.TabIndex = 69;
-            this.btnSystemset_43_BMU_Close3.Text = "关闭";
-            this.btnSystemset_43_BMU_Close3.UseVisualStyleBackColor = true;
-            this.btnSystemset_43_BMU_Close3.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // btnSystemset_45_BMU_Lifted9
-            // 
-            this.btnSystemset_45_BMU_Lifted9.AutoSize = true;
-            this.btnSystemset_45_BMU_Lifted9.Enabled = false;
-            this.btnSystemset_45_BMU_Lifted9.Location = new System.Drawing.Point(282, 337);
-            this.btnSystemset_45_BMU_Lifted9.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_45_BMU_Lifted9.Name = "btnSystemset_45_BMU_Lifted9";
-            this.btnSystemset_45_BMU_Lifted9.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BMU_Lifted9.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_45_BMU_Lifted9.TabIndex = 37;
-            this.btnSystemset_45_BMU_Lifted9.Text = "解除";
-            this.btnSystemset_45_BMU_Lifted9.UseVisualStyleBackColor = true;
-            this.btnSystemset_45_BMU_Lifted9.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // btnSystemset_44_BMU_Open3
-            // 
-            this.btnSystemset_44_BMU_Open3.AutoSize = true;
-            this.btnSystemset_44_BMU_Open3.Enabled = false;
-            this.btnSystemset_44_BMU_Open3.Location = new System.Drawing.Point(146, 128);
-            this.btnSystemset_44_BMU_Open3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_44_BMU_Open3.Name = "btnSystemset_44_BMU_Open3";
-            this.btnSystemset_44_BMU_Open3.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BMU_Open3.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_44_BMU_Open3.TabIndex = 68;
-            this.btnSystemset_44_BMU_Open3.Text = "打开";
-            this.btnSystemset_44_BMU_Open3.UseVisualStyleBackColor = true;
-            this.btnSystemset_44_BMU_Open3.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // btnSystemset_45_BMU_Lifted7
-            // 
-            this.btnSystemset_45_BMU_Lifted7.AutoSize = true;
-            this.btnSystemset_45_BMU_Lifted7.Enabled = false;
-            this.btnSystemset_45_BMU_Lifted7.Location = new System.Drawing.Point(282, 267);
-            this.btnSystemset_45_BMU_Lifted7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_45_BMU_Lifted7.Name = "btnSystemset_45_BMU_Lifted7";
-            this.btnSystemset_45_BMU_Lifted7.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BMU_Lifted7.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_45_BMU_Lifted7.TabIndex = 36;
-            this.btnSystemset_45_BMU_Lifted7.Text = "解除";
-            this.btnSystemset_45_BMU_Lifted7.UseVisualStyleBackColor = true;
-            this.btnSystemset_45_BMU_Lifted7.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // lblSystemset_BMU_01
-            // 
-            this.lblSystemset_BMU_01.AutoSize = true;
-            this.lblSystemset_BMU_01.Location = new System.Drawing.Point(13, 133);
-            this.lblSystemset_BMU_01.Name = "lblSystemset_BMU_01";
-            this.lblSystemset_BMU_01.Size = new System.Drawing.Size(92, 17);
-            this.lblSystemset_BMU_01.TabIndex = 67;
-            this.lblSystemset_BMU_01.Text = "告警保护指示灯";
-            // 
-            // btnSystemset_45_BMU_Lifted2
-            // 
-            this.btnSystemset_45_BMU_Lifted2.AutoSize = true;
-            this.btnSystemset_45_BMU_Lifted2.Enabled = false;
-            this.btnSystemset_45_BMU_Lifted2.Location = new System.Drawing.Point(282, 92);
-            this.btnSystemset_45_BMU_Lifted2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_45_BMU_Lifted2.Name = "btnSystemset_45_BMU_Lifted2";
-            this.btnSystemset_45_BMU_Lifted2.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BMU_Lifted2.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_45_BMU_Lifted2.TabIndex = 66;
-            this.btnSystemset_45_BMU_Lifted2.Text = "解除";
-            this.btnSystemset_45_BMU_Lifted2.UseVisualStyleBackColor = true;
-            this.btnSystemset_45_BMU_Lifted2.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // btnSystemset_43_BMU_Close2
-            // 
-            this.btnSystemset_43_BMU_Close2.AutoSize = true;
-            this.btnSystemset_43_BMU_Close2.Enabled = false;
-            this.btnSystemset_43_BMU_Close2.Location = new System.Drawing.Point(214, 92);
-            this.btnSystemset_43_BMU_Close2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_43_BMU_Close2.Name = "btnSystemset_43_BMU_Close2";
-            this.btnSystemset_43_BMU_Close2.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BMU_Close2.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_43_BMU_Close2.TabIndex = 65;
-            this.btnSystemset_43_BMU_Close2.Text = "关闭";
-            this.btnSystemset_43_BMU_Close2.UseVisualStyleBackColor = true;
-            this.btnSystemset_43_BMU_Close2.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // btnSystemset_43_BMU_Close9
-            // 
-            this.btnSystemset_43_BMU_Close9.AutoSize = true;
-            this.btnSystemset_43_BMU_Close9.Enabled = false;
-            this.btnSystemset_43_BMU_Close9.Location = new System.Drawing.Point(214, 337);
-            this.btnSystemset_43_BMU_Close9.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_43_BMU_Close9.Name = "btnSystemset_43_BMU_Close9";
-            this.btnSystemset_43_BMU_Close9.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BMU_Close9.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_43_BMU_Close9.TabIndex = 33;
-            this.btnSystemset_43_BMU_Close9.Text = "关闭";
-            this.btnSystemset_43_BMU_Close9.UseVisualStyleBackColor = true;
-            this.btnSystemset_43_BMU_Close9.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // btnSystemset_44_BMU_Open2
-            // 
-            this.btnSystemset_44_BMU_Open2.AutoSize = true;
-            this.btnSystemset_44_BMU_Open2.Enabled = false;
-            this.btnSystemset_44_BMU_Open2.Location = new System.Drawing.Point(146, 93);
-            this.btnSystemset_44_BMU_Open2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_44_BMU_Open2.Name = "btnSystemset_44_BMU_Open2";
-            this.btnSystemset_44_BMU_Open2.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BMU_Open2.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_44_BMU_Open2.TabIndex = 64;
-            this.btnSystemset_44_BMU_Open2.Text = "打开";
-            this.btnSystemset_44_BMU_Open2.UseVisualStyleBackColor = true;
-            this.btnSystemset_44_BMU_Open2.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // lblSystemset_10
-            // 
-            this.lblSystemset_10.AutoSize = true;
-            this.lblSystemset_10.Location = new System.Drawing.Point(13, 98);
-            this.lblSystemset_10.Name = "lblSystemset_10";
-            this.lblSystemset_10.Size = new System.Drawing.Size(92, 17);
-            this.lblSystemset_10.TabIndex = 63;
-            this.lblSystemset_10.Text = "告警保护蜂鸣器";
-            // 
-            // btnSystemset_43_BMU_Close7
-            // 
-            this.btnSystemset_43_BMU_Close7.AutoSize = true;
-            this.btnSystemset_43_BMU_Close7.Enabled = false;
-            this.btnSystemset_43_BMU_Close7.Location = new System.Drawing.Point(214, 267);
-            this.btnSystemset_43_BMU_Close7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_43_BMU_Close7.Name = "btnSystemset_43_BMU_Close7";
-            this.btnSystemset_43_BMU_Close7.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BMU_Close7.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_43_BMU_Close7.TabIndex = 31;
-            this.btnSystemset_43_BMU_Close7.Text = "关闭";
-            this.btnSystemset_43_BMU_Close7.UseVisualStyleBackColor = true;
-            this.btnSystemset_43_BMU_Close7.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // btnSystemset_45_BMU_Lifted1
-            // 
-            this.btnSystemset_45_BMU_Lifted1.AutoSize = true;
-            this.btnSystemset_45_BMU_Lifted1.Enabled = false;
-            this.btnSystemset_45_BMU_Lifted1.Location = new System.Drawing.Point(282, 57);
-            this.btnSystemset_45_BMU_Lifted1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_45_BMU_Lifted1.Name = "btnSystemset_45_BMU_Lifted1";
-            this.btnSystemset_45_BMU_Lifted1.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BMU_Lifted1.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_45_BMU_Lifted1.TabIndex = 62;
-            this.btnSystemset_45_BMU_Lifted1.Text = "解除";
-            this.btnSystemset_45_BMU_Lifted1.UseVisualStyleBackColor = true;
-            this.btnSystemset_45_BMU_Lifted1.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // btnSystemset_44_BMU_Open9
-            // 
-            this.btnSystemset_44_BMU_Open9.AutoSize = true;
-            this.btnSystemset_44_BMU_Open9.Enabled = false;
-            this.btnSystemset_44_BMU_Open9.Location = new System.Drawing.Point(146, 338);
-            this.btnSystemset_44_BMU_Open9.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_44_BMU_Open9.Name = "btnSystemset_44_BMU_Open9";
-            this.btnSystemset_44_BMU_Open9.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BMU_Open9.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_44_BMU_Open9.TabIndex = 32;
-            this.btnSystemset_44_BMU_Open9.Text = "打开";
-            this.btnSystemset_44_BMU_Open9.UseVisualStyleBackColor = true;
-            this.btnSystemset_44_BMU_Open9.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // lblSystemset_09
-            // 
-            this.lblSystemset_09.AutoSize = true;
-            this.lblSystemset_09.Location = new System.Drawing.Point(13, 63);
-            this.lblSystemset_09.Name = "lblSystemset_09";
-            this.lblSystemset_09.Size = new System.Drawing.Size(56, 17);
-            this.lblSystemset_09.TabIndex = 59;
-            this.lblSystemset_09.Text = "强制休眠";
-            // 
-            // btnSystemset_43_BMU_Close1
-            // 
-            this.btnSystemset_43_BMU_Close1.AutoSize = true;
-            this.btnSystemset_43_BMU_Close1.Enabled = false;
-            this.btnSystemset_43_BMU_Close1.Location = new System.Drawing.Point(214, 57);
-            this.btnSystemset_43_BMU_Close1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_43_BMU_Close1.Name = "btnSystemset_43_BMU_Close1";
-            this.btnSystemset_43_BMU_Close1.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BMU_Close1.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_43_BMU_Close1.TabIndex = 61;
-            this.btnSystemset_43_BMU_Close1.Text = "关闭";
-            this.btnSystemset_43_BMU_Close1.UseVisualStyleBackColor = true;
-            this.btnSystemset_43_BMU_Close1.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // btnSystemset_44_BMU_Open7
-            // 
-            this.btnSystemset_44_BMU_Open7.AutoSize = true;
-            this.btnSystemset_44_BMU_Open7.Enabled = false;
-            this.btnSystemset_44_BMU_Open7.Location = new System.Drawing.Point(146, 268);
-            this.btnSystemset_44_BMU_Open7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_44_BMU_Open7.Name = "btnSystemset_44_BMU_Open7";
-            this.btnSystemset_44_BMU_Open7.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BMU_Open7.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_44_BMU_Open7.TabIndex = 30;
-            this.btnSystemset_44_BMU_Open7.Text = "打开";
-            this.btnSystemset_44_BMU_Open7.UseVisualStyleBackColor = true;
-            this.btnSystemset_44_BMU_Open7.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // btnSystemset_44_BMU_Open1
-            // 
-            this.btnSystemset_44_BMU_Open1.AutoSize = true;
-            this.btnSystemset_44_BMU_Open1.Enabled = false;
-            this.btnSystemset_44_BMU_Open1.Location = new System.Drawing.Point(146, 58);
-            this.btnSystemset_44_BMU_Open1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_44_BMU_Open1.Name = "btnSystemset_44_BMU_Open1";
-            this.btnSystemset_44_BMU_Open1.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BMU_Open1.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_44_BMU_Open1.TabIndex = 60;
-            this.btnSystemset_44_BMU_Open1.Text = "打开";
-            this.btnSystemset_44_BMU_Open1.UseVisualStyleBackColor = true;
-            this.btnSystemset_44_BMU_Open1.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // lblSystemset_62
-            // 
-            this.lblSystemset_62.AutoSize = true;
-            this.lblSystemset_62.Location = new System.Drawing.Point(13, 273);
-            this.lblSystemset_62.Name = "lblSystemset_62";
-            this.lblSystemset_62.Size = new System.Drawing.Size(76, 17);
-            this.lblSystemset_62.TabIndex = 27;
-            this.lblSystemset_62.Text = "LLC强制充电";
-            // 
-            // lblSystemset_BMU_04
-            // 
-            this.lblSystemset_BMU_04.AutoSize = true;
-            this.lblSystemset_BMU_04.Location = new System.Drawing.Point(13, 343);
-            this.lblSystemset_BMU_04.Name = "lblSystemset_BMU_04";
-            this.lblSystemset_BMU_04.Size = new System.Drawing.Size(116, 17);
-            this.lblSystemset_BMU_04.TabIndex = 29;
-            this.lblSystemset_BMU_04.Text = "硬件看门狗失能控制";
-            // 
-            // btnSystemset_45_BMU_Lifted5
-            // 
-            this.btnSystemset_45_BMU_Lifted5.AutoSize = true;
-            this.btnSystemset_45_BMU_Lifted5.Enabled = false;
-            this.btnSystemset_45_BMU_Lifted5.Location = new System.Drawing.Point(282, 197);
-            this.btnSystemset_45_BMU_Lifted5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_45_BMU_Lifted5.Name = "btnSystemset_45_BMU_Lifted5";
-            this.btnSystemset_45_BMU_Lifted5.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BMU_Lifted5.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_45_BMU_Lifted5.TabIndex = 25;
-            this.btnSystemset_45_BMU_Lifted5.Text = "解除";
-            this.btnSystemset_45_BMU_Lifted5.UseVisualStyleBackColor = true;
-            this.btnSystemset_45_BMU_Lifted5.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // btnSystemset_45_BMU_Lifted6
-            // 
-            this.btnSystemset_45_BMU_Lifted6.AutoSize = true;
-            this.btnSystemset_45_BMU_Lifted6.Enabled = false;
-            this.btnSystemset_45_BMU_Lifted6.Location = new System.Drawing.Point(282, 232);
-            this.btnSystemset_45_BMU_Lifted6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_45_BMU_Lifted6.Name = "btnSystemset_45_BMU_Lifted6";
-            this.btnSystemset_45_BMU_Lifted6.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_45_BMU_Lifted6.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_45_BMU_Lifted6.TabIndex = 24;
-            this.btnSystemset_45_BMU_Lifted6.Text = "解除";
-            this.btnSystemset_45_BMU_Lifted6.UseVisualStyleBackColor = true;
-            this.btnSystemset_45_BMU_Lifted6.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // btnSystemset_43_BMU_Close5
-            // 
-            this.btnSystemset_43_BMU_Close5.AutoSize = true;
-            this.btnSystemset_43_BMU_Close5.Enabled = false;
-            this.btnSystemset_43_BMU_Close5.Location = new System.Drawing.Point(214, 197);
-            this.btnSystemset_43_BMU_Close5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_43_BMU_Close5.Name = "btnSystemset_43_BMU_Close5";
-            this.btnSystemset_43_BMU_Close5.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BMU_Close5.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_43_BMU_Close5.TabIndex = 18;
-            this.btnSystemset_43_BMU_Close5.Text = "关闭";
-            this.btnSystemset_43_BMU_Close5.UseVisualStyleBackColor = true;
-            this.btnSystemset_43_BMU_Close5.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // btnSystemset_43_BMU_Close6
-            // 
-            this.btnSystemset_43_BMU_Close6.AutoSize = true;
-            this.btnSystemset_43_BMU_Close6.Enabled = false;
-            this.btnSystemset_43_BMU_Close6.Location = new System.Drawing.Point(214, 232);
-            this.btnSystemset_43_BMU_Close6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_43_BMU_Close6.Name = "btnSystemset_43_BMU_Close6";
-            this.btnSystemset_43_BMU_Close6.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_43_BMU_Close6.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_43_BMU_Close6.TabIndex = 15;
-            this.btnSystemset_43_BMU_Close6.Text = "关闭";
-            this.btnSystemset_43_BMU_Close6.UseVisualStyleBackColor = true;
-            this.btnSystemset_43_BMU_Close6.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // btnSystemset_44_BMU_Open5
-            // 
-            this.btnSystemset_44_BMU_Open5.AutoSize = true;
-            this.btnSystemset_44_BMU_Open5.Enabled = false;
-            this.btnSystemset_44_BMU_Open5.Location = new System.Drawing.Point(146, 198);
-            this.btnSystemset_44_BMU_Open5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_44_BMU_Open5.Name = "btnSystemset_44_BMU_Open5";
-            this.btnSystemset_44_BMU_Open5.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BMU_Open5.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_44_BMU_Open5.TabIndex = 16;
-            this.btnSystemset_44_BMU_Open5.Text = "打开";
-            this.btnSystemset_44_BMU_Open5.UseVisualStyleBackColor = true;
-            this.btnSystemset_44_BMU_Open5.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // btnSystemset_44_BMU_Open6
-            // 
-            this.btnSystemset_44_BMU_Open6.AutoSize = true;
-            this.btnSystemset_44_BMU_Open6.Enabled = false;
-            this.btnSystemset_44_BMU_Open6.Location = new System.Drawing.Point(146, 233);
-            this.btnSystemset_44_BMU_Open6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnSystemset_44_BMU_Open6.Name = "btnSystemset_44_BMU_Open6";
-            this.btnSystemset_44_BMU_Open6.Padding = new System.Windows.Forms.Padding(1);
-            this.btnSystemset_44_BMU_Open6.Size = new System.Drawing.Size(65, 29);
-            this.btnSystemset_44_BMU_Open6.TabIndex = 14;
-            this.btnSystemset_44_BMU_Open6.Text = "打开";
-            this.btnSystemset_44_BMU_Open6.UseVisualStyleBackColor = true;
-            this.btnSystemset_44_BMU_Open6.Click += new System.EventHandler(this.btnDebugCommandBMU_Click);
-            // 
-            // lblSystemset_61
-            // 
-            this.lblSystemset_61.AutoSize = true;
-            this.lblSystemset_61.Location = new System.Drawing.Point(13, 238);
-            this.lblSystemset_61.Name = "lblSystemset_61";
-            this.lblSystemset_61.Size = new System.Drawing.Size(76, 17);
-            this.lblSystemset_61.TabIndex = 3;
-            this.lblSystemset_61.Text = "LLC强制放电";
-            // 
-            // lblSystemset_BMU_03
-            // 
-            this.lblSystemset_BMU_03.AutoSize = true;
-            this.lblSystemset_BMU_03.Location = new System.Drawing.Point(13, 203);
-            this.lblSystemset_BMU_03.Name = "lblSystemset_BMU_03";
-            this.lblSystemset_BMU_03.Size = new System.Drawing.Size(68, 17);
-            this.lblSystemset_BMU_03.TabIndex = 5;
-            this.lblSystemset_BMU_03.Text = "清除系统锁";
             // 
             // panel1
             // 
@@ -4441,6 +4464,8 @@
             this.groupBox4.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -4582,15 +4607,15 @@
         private TabPage tabPage6;
         private Panel panel5;
         private GroupBox groupBox1;
-        private ComboBox comboBox5;
-        private ComboBox comboBox3;
-        private ComboBox comboBox2;
+        private ComboBox cbbRequest20_4;
+        private ComboBox cbbRequest20_2;
+        private ComboBox cbbRequest20_1;
         private Button btnSet0F0_2;
-        private ComboBox comboBox1;
-        private Label lblSystemset_76;
-        private Label lblParameter_06;
-        private Label lblParameter_05;
-        private Label lblParameter_07;
+        private ComboBox cbbRequest20_0;
+        private Label lblSystemset_BMU_25;
+        private Label lblSystemset_BMU_23;
+        private Label lblSystemset_BMU_22;
+        private Label lblSystemset_BMU_24;
         private GroupBox groupBox7;
         private Button btnSetSN_Board;
         private Label lblSystemset_BMU_05;
@@ -4601,15 +4626,15 @@
         private Button btnSetSN_Pack;
         private Label lblSystemset_03;
         private TextBox txtPackSN_BMU;
-        private DateTimePicker dateTimePicker3;
+        private DateTimePicker dateTimePicker1;
         private Label lblSystemset_BMU_07;
         private Button btnSetDatetime;
         private GroupBox groupBox2;
-        private Button button7;
+        private Button btnSet_0x22;
         private Button btnSet_0x21;
-        private TextBox textBox7;
+        private TextBox txtPackStopCurrent;
         private TextBox txtHeatFilmCloseTemp;
-        private TextBox textBox8;
+        private TextBox txtPackStopVolt;
         private Label lblParameter_61;
         private Label lblSystemset_23;
         private Label lblParameter_63;
@@ -4626,22 +4651,22 @@
         private Label lblSystemset_21;
         private Label lblSystemset_26;
         private Label lblParameter_57;
-        private TextBox textBox19;
+        private TextBox txtCellVoltNum;
         private Label lblParameter_59;
-        private Button button8;
-        private TextBox textBox18;
-        private TextBox textBox14;
+        private Button btnSet_0x25;
+        private TextBox txtRetedCapacity;
+        private TextBox txtSOC;
         private Label lblSystemset_83;
         private Label lblSystemset_101;
-        private TextBox textBox17;
-        private Button button9;
+        private TextBox txtCellTempNum;
+        private Button btnSet_0x24;
         private Label lblSystemset_82;
-        private TextBox textBox6;
-        private TextBox textBox16;
-        private TextBox textBox15;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private Button button10;
+        private TextBox txtFullChgCapacity;
+        private TextBox txtCumulativeChgCapacity;
+        private TextBox txtCumulativeDsgCapactiy;
+        private TextBox txtSOH;
+        private TextBox txtSurplusCapacity;
+        private Button btnSet_0x23;
         private GroupBox groupBox4;
         private Button btnSetCalibration_BMU_06;
         private Button btnSetCalibration_BMU_05;
@@ -4712,11 +4737,11 @@
         private Button btnSystemset_45_BCU1_Lifted2;
         private Button btnSystemset_43_BCU1_Close2;
         private Button btnSystemset_44_BCU1_Open2;
-        private CheckBox ckSystemset_33;
-        private CheckBox ckSystemset_30;
-        private CheckBox ckSystemset_32;
-        private CheckBox ckSystemset_31;
-        private Label lblSystemset_BMU_09;
+        private CheckBox ckSystemset_BMU_62;
+        private CheckBox ckSystemset_BMU_63;
+        private CheckBox ckSystemset_BMU_61;
+        private CheckBox ckSystemset_BMU_60;
+        private Label lblSystemset_BMU_26;
         private GroupBox groupBox6;
         private Button btnSystemset_45_BMU_Lifted8;
         private Button btnSystemset_45_BMU_Lifted4;
@@ -4769,9 +4794,9 @@
         private TextBox txtPackActiveBalanceCap;
         private TextBox txtPackActiveBalanceCur;
         private ComboBox cbbActiveBalanceCtrl;
-        private Label lblSystemset_74;
-        private Label lblSystemset_73;
-        private Label lblSystemset_72;
+        private Label lblSystemset_BMU_12;
+        private Label lblSystemset_BMU_11;
+        private Label lblSystemset_BMU_10;
         private ComboBox cbb_106;
         private TextBox txtFlag;
         private ComboBox cbb_105;
@@ -4782,5 +4807,6 @@
         private Button btnSetBatteryinfo;
         private Label lblSystemset_103;
         private Label lblSystemset_104;
+        private Panel panel2;
     }
 }

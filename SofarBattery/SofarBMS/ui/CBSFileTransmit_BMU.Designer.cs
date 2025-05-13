@@ -94,8 +94,8 @@
             this.cbbFileNumber.FormattingEnabled = true;
             this.cbbFileNumber.Items.AddRange(new object[] {
             "0：故障录波文件1\t",
-            "1：故障录波文件2\t",
-            "2：故障录波文件3\t",
+            "1：保留",
+            "2：保留",
             "3：5min特性数据文件\t",
             "4：运行日志文件\t    ",
             "5：历史事件文件"});
@@ -138,7 +138,7 @@
             this.ckReadAll.TabIndex = 7;
             this.ckReadAll.Text = "是否读取全部";
             this.ckReadAll.UseVisualStyleBackColor = true;
-            this.ckReadAll.TextChanged += new System.EventHandler(this.ckReadAll_CheckedChanged);
+            this.ckReadAll.CheckedChanged += new System.EventHandler(this.ckReadAll_CheckedChanged);
             // 
             // label4
             // 
@@ -149,7 +149,6 @@
             this.label4.Size = new System.Drawing.Size(56, 17);
             this.label4.TabIndex = 8;
             this.label4.Text = "起始位置";
-            this.label4.Visible = false;
             // 
             // label5
             // 
@@ -160,7 +159,6 @@
             this.label5.Size = new System.Drawing.Size(56, 17);
             this.label5.TabIndex = 9;
             this.label5.Text = "读取条数";
-            this.label5.Visible = false;
             // 
             // txtStartLocal
             // 
@@ -169,7 +167,6 @@
             this.txtStartLocal.Name = "txtStartLocal";
             this.txtStartLocal.Size = new System.Drawing.Size(116, 23);
             this.txtStartLocal.TabIndex = 10;
-            this.txtStartLocal.Visible = false;
             // 
             // txtReadCount
             // 
@@ -178,7 +175,7 @@
             this.txtReadCount.Name = "txtReadCount";
             this.txtReadCount.Size = new System.Drawing.Size(116, 23);
             this.txtReadCount.TabIndex = 11;
-            this.txtReadCount.Visible = false;
+            this.txtReadCount.TextChanged += new System.EventHandler(this.txtReadCount_TextChanged);
             // 
             // groupBox1
             // 
@@ -245,14 +242,14 @@
             this.columnHeader3.Text = "Data";
             this.columnHeader3.Width = 500;
             // 
-            // CBSFileTransmit
+            // CBSFileTransmit_BMU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "CBSFileTransmit";
+            this.Name = "CBSFileTransmit_BMU";
             this.Size = new System.Drawing.Size(1277, 700);
             this.Load += new System.EventHandler(this.CBSFileTransmit_Load);
             this.groupBox1.ResumeLayout(false);

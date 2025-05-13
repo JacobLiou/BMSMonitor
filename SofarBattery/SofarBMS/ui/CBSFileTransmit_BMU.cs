@@ -27,8 +27,8 @@ namespace SofarBMS.UI
 
 
         //变量定义
-        private readonly string FiveMinHeadStr = "时间年,月,日,时,分,秒,电池采集电压(mV),电池累计电压(mV),SOC显示值(%),SOH显示值(%),SOC计算值,SOH计算值,电池电流(A),最高单体电压(mV),最低单体电压(mV),最高单体电压序号,最低单体电压序号,最高单体温度(℃),最低单体温度(℃),最高单体温度序号,最低单体温度序号,BMU编号,系统状态,充放电使能,切断请求,关机请求,充电电流上限(A),放电电流上限(A),保护1,保护2,告警1,告警2,故障1,故障2,故障1,故障2,故障3,故障4,主动均衡状态,均衡母线电压(mV),均衡母线电流(mA),辅助供电电压(mV),满充容量(Ah),循环次数,累计放电安时(Ah),累计充电安时(Ah),累计放电瓦时(Wh),累计充电瓦时(Wh),环境温度(℃),DCDC温度1(℃),均衡温度1(℃),均衡温度2(℃),功率端子温度1(℃),功率端子温度2(℃),其他温度1(℃),其他温度2(℃),其他温度3(℃),其他温度4(℃),1-16串均衡状态,单体电压1(mV),单体电压2(mV),单体电压3(mV),单体电压4(mV),单体电压5(mV),单体电压6(mV),单体电压7(mV),单体电压8(mV),单体电压9(mV),单体电压10(mV),单体电压11(mV),单体电压12(mV),单体电压13(mV),单体电压14(mV),单体电压15(mV),单体电压16(mV),单体温度1(℃),单体温度2(℃),单体温度3(℃),单体温度4(℃),单体温度5(℃),单体温度6(℃),单体温度7(℃),单体温度8(℃),单体温度9(℃),单体温度10(℃),单体温度11(℃),单体温度12(℃),单体温度13(℃),单体温度14(℃),单体温度15(℃),单体温度16(℃),RSV1,RSV2,RSV3,RSV4,RSV5,RSV6\r\n";
-        private readonly string FaultRecordStr = "电流(A),最大电压(mV),最小电压(mV),最大温度(℃),最小温度(℃)\r\n";
+        private readonly string FiveMinHeadStr = "时间年,月,日,时,分,秒,电池采集电压(mV),电池累计电压(mV),SOC显示值(%),SOH显示值(%),SOC计算值,SOH计算值,电池电流(A),最高单体电压(mV),最低单体电压(mV),最高单体电压序号,最低单体电压序号,最高单体温度(℃),最低单体温度(℃),最高单体温度序号,最低单体温度序号,BMU编号,系统状态,充放电使能,切断请求,关机请求,充电电流上限(A),放电电流上限(A),保护1,保护2,告警1,告警2,故障1,故障2,故障1,故障2,故障3,故障4,主动均衡状态,均衡母线电压(mV),均衡电池电流(mA),辅助供电电压(mV),满充容量(Ah),循环次数,累计放电安时(Ah),累计充电安时(Ah),累计放电瓦时(Wh),累计充电瓦时(Wh),环境温度(℃),DCDC温度1(℃),均衡温度1(℃),均衡温度2(℃),功率端子温度1(℃),功率端子温度2(℃),其他温度1(℃),其他温度2(℃),其他温度3(℃),其他温度4(℃),1-16串均衡状态,单体电压1(mV),单体电压2(mV),单体电压3(mV),单体电压4(mV),单体电压5(mV),单体电压6(mV),单体电压7(mV),单体电压8(mV),单体电压9(mV),单体电压10(mV),单体电压11(mV),单体电压12(mV),单体电压13(mV),单体电压14(mV),单体电压15(mV),单体电压16(mV),单体温度1(℃),单体温度2(℃),单体温度3(℃),单体温度4(℃),单体温度5(℃),单体温度6(℃),单体温度7(℃),单体温度8(℃),单体温度9(℃),单体温度10(℃),单体温度11(℃),单体温度12(℃),单体温度13(℃),单体温度14(℃),单体温度15(℃),单体温度16(℃),RSV1,RSV2,RSV3,RSV4,RSV5,RSV6\r\n";
+        //private readonly string FaultRecordStr = "电流(A),最大电压(mV),最小电压(mV),最大温度(℃),最小温度(℃)\r\n";
         private readonly string HistoryEventStr = "时间年,月,日,时,分,秒,事件类型\r\n";
 
         //代号,数据类型,数据长度,精度,单位
@@ -189,6 +189,8 @@ RSV6,U32,1,,";
 
         private void CBSFileTransmit_Load(object sender, EventArgs e)
         {
+            cts = new CancellationTokenSource();
+
             this.Invoke(() =>
             {
                 //foreach (Control item in this.Controls)
@@ -203,7 +205,6 @@ RSV6,U32,1,,";
                 this.ckReadAll.Checked = true;
             });
 
-            cts = new CancellationTokenSource();
             ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
         }
 
@@ -249,9 +250,9 @@ RSV6,U32,1,,";
                             isResponse = true;
                             string headName = "";
 
-                            if (fileNumber == 0 || fileNumber == 1 || fileNumber == 2)
+                            if (fileNumber == 0)//保留: || fileNumber == 1 || fileNumber == 2 
                             {
-                                headStr = FaultRecordStr;
+                                headStr = FiveMinHeadStr;
                                 headName = "故障录波";
                             }
                             else if (fileNumber == 3)
@@ -277,12 +278,12 @@ RSV6,U32,1,,";
                                 fileName = string.Format("{0}_{1}_{2}_{3}", headName, cbbModeName.Text.Trim(), slaveAddress, System.DateTime.Now.ToString("yy-MM-dd-HH-mm-ss"));
                                 filePath = $"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}//Log//{fileName}.csv";
 
-                                if ((fileNumber < 3 && fileNumber >= 0) || fileNumber == 5)
+                                if (fileNumber == 5)//(fileNumber < 3 && fileNumber >= 0) || 
                                 {
                                     fileOffset = 8;
                                     dataLength = 8;
                                 }
-                                else if (fileNumber == 3 || fileNumber == 4)
+                                else if (fileNumber == 0 || fileNumber == 3 || fileNumber == 4)
                                 {
                                     if (fileNumber == 4)
                                     {
@@ -308,14 +309,15 @@ RSV6,U32,1,,";
                     {
                         dataBuffer.AddRange(data);
 
-                        if (fileNumber == 0 || fileNumber == 1 || fileNumber == 2)
-                        {
-                            if (dataBuffer.Count == 8)
-                            {
-                                textStr = FaultRecordText;
-                            }
-                        }
-                        else if (fileNumber == 3)
+                        //if (fileNumber == 1 || fileNumber == 2)
+                        //{
+                        //    if (dataBuffer.Count == 8)
+                        //    {
+                        //        textStr = FaultRecordText;
+                        //    }
+                        //}
+                        //else 
+                        if (fileNumber == 0 || fileNumber == 3)
                         {
                             if (dataBuffer.Count == 200)
                             {
@@ -324,6 +326,10 @@ RSV6,U32,1,,";
                                 //测试打印
                                 Debug.WriteLine(byteToHexString(dataBuffer.ToArray()));
                             }
+                        }
+                        else if (fileNumber == 4)
+                        {
+
                         }
                         else if (fileNumber == 5)
                         {
@@ -335,6 +341,7 @@ RSV6,U32,1,,";
                         isResponse = true;
                         AddLog(System.DateTime.Now.ToString("HH:mm:ss:fff"), id.ToString("X8"), byteToHexString(data));
 
+                        ushort crc = Crc16Ccitt(dataBuffer.ToArray());
                         if (!string.IsNullOrEmpty(textStr))
                         {
                             string getValue = ToAnalysis(textStr, dataBuffer.ToArray());
@@ -349,11 +356,26 @@ RSV6,U32,1,,";
                                 string sbContent = "";
                                 for (int i = 0; i < dataBuffer.Count; i++)
                                 {
+                                    Debug.Write(dataBuffer[i].ToString("X2")+" ");
                                     String asciiStr = ((char)dataBuffer[i]).ToString();//十六进制转ASCII码
                                     sbContent += asciiStr;
                                 }
-                                TxtHelper.FileWrite(filePath, sbContent);
-                                Debug.WriteLine(sbContent);
+
+                                dataBuffer.Clear();//存入文件后清除
+                                if (!File.Exists(filePath))
+                                {
+                                    using (StreamWriter sw = new StreamWriter(filePath, true, Encoding.UTF8))
+                                    {
+                                        sw.Write(sbContent);
+                                    }
+                                }
+                                else
+                                {
+                                    FileStream fs = new FileStream(filePath, FileMode.Append);
+                                    StreamWriter sw1 = new StreamWriter(fs, Encoding.UTF8);
+                                    sw1.Write(sbContent);
+                                    sw1.Close();
+                                }
                             }
                         }
                     }
@@ -388,6 +410,10 @@ RSV6,U32,1,,";
                 ProtocolModel model = _protocols[i];
                 object val = null;
 
+                if (_protocols[i].Name.StartsWith("系统状态"))
+                {
+
+                }
                 if (toHex)
                 {
                     switch (model.DataType)
@@ -405,13 +431,15 @@ RSV6,U32,1,,";
                         default:
                             break;
                     }
+
+                    model.Value = val;
                 }
                 else
                 {
                     switch (model.DataType)
                     {
                         case "U8":
-                            val = Convert.ToByte(dataBuffer[index++]);
+                            val = (short)dataBuffer[index++];
                             break;
                         case "U16":
                             byte[] bytes = new byte[2];
@@ -490,6 +518,7 @@ RSV6,U32,1,,";
             return protocols;
         }
 
+        private int readCount = 0;
         private void StartTransmit()
         {
             int recount = 0;
@@ -515,7 +544,21 @@ RSV6,U32,1,,";
                                 }
                                 break;
                             case StepRemark.读文件数据内容帧:
-                                if (questCycle > 1)
+                                if (!ckReadAll.Checked && readCount >= 1)
+                                {
+                                    Thread.Sleep(100);
+                                    if (!ReadFileDataContent())
+                                    {
+                                        recount++;
+                                        Debug.WriteLine("Read file data content:fail!");
+                                    }
+                                    else
+                                    {
+                                        readCount--;
+                                        fileOffset += dataLength;
+                                    }
+                                }
+                                else if (ckReadAll.Checked && questCycle > 1)
                                 {
                                     Thread.Sleep(100);
                                     if (!ReadFileDataContent())
@@ -629,7 +672,7 @@ RSV6,U32,1,,";
             data[3] = (byte)readType;
 
             ecanHelper.Send(data, canid);
-            AddLog(System.DateTime.Now.ToString("HH:mm:ss:fff"), "F0", byteToHexString(data));
+            AddLog(System.DateTime.Now.ToString("HH:mm:ss:fff"), BitConverter.ToUInt32(canid, 0).ToString("X8"), byteToHexString(data));
             return CheckResponse();
         }
 
@@ -648,7 +691,9 @@ RSV6,U32,1,,";
             data[7] = (byte)(dataLength >> 8);
 
             ecanHelper.Send(data, canid);
-            AddLog(System.DateTime.Now.ToString("HH:mm:ss:fff"), "F1", byteToHexString(data));
+
+            //AddLog(System.DateTime.Now.ToString("HH:mm:ss:fff"), BitConverter.ToUInt32(canid, 0).ToString("X8"), $"请求偏移地址{fileOffset},长度为{dataLength}");
+            AddLog(System.DateTime.Now.ToString("HH:mm:ss:fff"), BitConverter.ToUInt32(canid, 0).ToString("X8"), byteToHexString(data));
             return CheckResponse();
         }
 
@@ -842,6 +887,69 @@ RSV6,U32,1,,";
             }
         }
         #endregion
+
+        private void txtReadCount_TextChanged(object sender, EventArgs e)
+        {
+            int.TryParse(txtReadCount.Text.Trim(), out readCount);
+        }
+
+
+
+        // CRC16-CCITT 校验函数
+        public static ushort Crc16Ccitt(byte[] data)
+        {
+            ushort crc = 0x0000;
+            const ushort polynomial = 0x1021;
+
+            foreach (byte b in data)
+            {
+                // 反转字节位序 (MSB->LSB to LSB->MSB)
+                byte reversedByte = ReverseBits(b);
+
+                crc ^= (ushort)(reversedByte << 8);
+
+                for (int i = 0; i < 8; i++)
+                {
+                    if ((crc & 0x8000) != 0)
+                    {
+                        crc = (ushort)((crc << 1) ^ polynomial);
+                    }
+                    else
+                    {
+                        crc <<= 1;
+                    }
+                }
+            }
+
+            // 反转16位CRC结果的位序
+            return ReverseUInt16Bits(crc);
+        }
+
+        // 反转字节位序 (8位)
+        private static byte ReverseBits(byte value)
+        {
+            byte result = 0;
+            for (int i = 0; i < 8; i++)
+            {
+                result <<= 1;
+                result |= (byte)(value & 1);
+                value >>= 1;
+            }
+            return result;
+        }
+
+        // 反转ushort位序 (16位)
+        private static ushort ReverseUInt16Bits(ushort value)
+        {
+            ushort result = 0;
+            for (int i = 0; i < 16; i++)
+            {
+                result <<= 1;
+                result |= (ushort)(value & 1);
+                value >>= 1;
+            }
+            return result;
+        }
     }
 
     class ProtocolModel

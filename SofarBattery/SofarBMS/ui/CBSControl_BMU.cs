@@ -1,14 +1,11 @@
-﻿using Org.BouncyCastle.Asn1.Crmf;
-using Sofar.BMS;
+﻿using Sofar.BMS;
 using Sofar.BMS.Common;
 using Sofar.BMS.Models;
 using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
-using static System.Windows.Forms.AxHost;
 
 namespace SofarBMS.ui
 {
@@ -51,6 +48,7 @@ namespace SofarBMS.ui
                 {
                     if (ecanHelper.IsConnected)
                     {
+                        RealDataVM.SelectedRequest7 = FrmMain.BMS_ID;// 切换ID时，需同步更新
                         RealDataVM.ReadAllParameter();
                         await Task.Delay(1000);
                     }
@@ -301,7 +299,7 @@ namespace SofarBMS.ui
                         pbBmuCutOffRequest.BackColor = MyCustomConverter.GetBit(data[0], 2) == 1 ? Color.Red : Color.Green;
                         pbBmuPowOffRequest.BackColor = MyCustomConverter.GetBit(data[0], 3) == 1 ? Color.Red : Color.Green;
                         pbForceChrgRequest.BackColor = MyCustomConverter.GetBit(data[0], 4) == 1 ? Color.Red : Color.Green;
-                        //pbChargeStatus.BackColor = MyCustomConverter.GetBit(data[2], 0) == 1 ? Color.Red : Color.Green;
+                        pbChargeStatus.BackColor = MyCustomConverter.GetBit(data[2], 0) == 1 ? Color.Red : Color.Green;
                         pbDischargeStatus.BackColor = MyCustomConverter.GetBit(data[2], 1) == 1 ? Color.Red : Color.Green;
                         pbDiIO.BackColor = MyCustomConverter.GetBit(data[6], 0) == 1 ? Color.Red : Color.Green;
                         pbChargeIO.BackColor = MyCustomConverter.GetBit(data[6], 1) == 1 ? Color.Red : Color.Green;
@@ -361,6 +359,7 @@ namespace SofarBMS.ui
                         }
 
                         txtBmuSaftwareVersion.Text = Encoding.ASCII.GetString(new byte[] { data[0] }) + string.Join("", softwareVersion);
+                        txtBmuHardwareVersion.Text = $"{(short)data[4]}";
                         txtBmuCanVersion.Text = Encoding.ASCII.GetString(new byte[] { data[5], data[6] });
                         break;
                     case 0x106BFFFF:
@@ -510,10 +509,10 @@ namespace SofarBMS.ui
                             {
                                 // 如果索引为28或29，直接跳过当前循环
                                 if (i == 28 || i == 29) continue;
-                                string cellNumber = (i + 1).ToString() + "#";
+                                string sectionNumber = (i + 1).ToString() + "#";
 
                                 // 查找是否已存在该编号的记录
-                                var existingData = batteryTemperatureDataList.FirstOrDefault(data => data.CellNumber == cellNumber);
+                                var existingData = batteryTemperatureDataList.FirstOrDefault(data => data.SectionNumber == sectionNumber);
                                 if (existingData != null)
                                 {
                                     // 更新已有记录的均衡状态值
@@ -524,7 +523,7 @@ namespace SofarBMS.ui
                                     // 新增记录
                                     batteryTemperatureDataList.Add(new batteryTemperatureData
                                     {
-                                        CellNumber = (i + 1).ToString() + "#",
+                                        SectionNumber = (i + 1).ToString() + "#",
                                         Temperature = batteryTemperatures[i]
                                     });
                                 }
@@ -561,10 +560,10 @@ namespace SofarBMS.ui
 
                                 for (int i = startBatteryIndex1; i < batteryEquilibriumStates.Length; i++)
                                 {
-                                    string cellNumber = (i + 1).ToString() + "#";
+                                    string sectionNumber = (i + 1).ToString() + "#";
 
                                     // 查找是否已存在该编号的记录
-                                    var existingData = batteryEquilibriumStateDataList.FirstOrDefault(data => data.CellNumber == cellNumber);
+                                    var existingData = batteryEquilibriumStateDataList.FirstOrDefault(data => data.SectionNumber == sectionNumber);
                                     if (existingData != null)
                                     {
                                         // 更新已有记录的均衡状态值
@@ -575,7 +574,7 @@ namespace SofarBMS.ui
                                         // 新增记录
                                         batteryEquilibriumStateDataList.Add(new batteryEquilibriumStateData
                                         {
-                                            CellNumber = (i + 1).ToString() + "#",
+                                            SectionNumber = (i + 1).ToString() + "#",
                                             BatteryEquilibriumState = batteryEquilibriumStates[i]
                                         });
                                     }
@@ -994,8 +993,11 @@ namespace SofarBMS.ui
                 faultInfo.State = state == 1 ? 0 : 1; // 更新状态
             }*/
             FaultInfo faultInfo = FaultInfos.FirstOrDefault(f => f.Byte == row && f.Bit == column);
-            msg[0] = $"{faultInfo.Content.Split(',')[0]}({faultInfo.Content.Split(',')[1]})";//中文(英文或者代码) //msg[0] = faultInfo.Content.Trim();  
-            msg[1] = faultInfo.Type.ToString();
+            if (faultInfo != null)
+            {
+                msg[0] = $"{faultInfo.Content.Split(',')[0]}({faultInfo.Content.Split(',')[1]})";//中文(英文或者代码) //msg[0] = faultInfo.Content.Trim();  
+                msg[1] = faultInfo.Type.ToString();
+            }
 
             return msg;
         }

@@ -375,13 +375,17 @@ namespace SofarBMS.ui
                     checkList.Add(false);
                 }
             }
-            if (paramVM.Write(checkList.ToArray(), paramList))
+
+            if (checkList.Any(t => t))
             {
-                MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
-            }
-            else
-            {
-                MessageBox.Show(FrmMain.GetString("keyWriteFail"));
+                if (paramVM.Write(checkList.ToArray(), paramList))
+                {
+                    MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
+                }
+                else
+                {
+                    MessageBox.Show(FrmMain.GetString("keyWriteFail"));
+                }
             }
         }
 
