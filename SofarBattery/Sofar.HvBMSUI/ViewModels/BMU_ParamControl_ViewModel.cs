@@ -1164,6 +1164,7 @@ namespace Sofar.HvBMSUI.ViewModels
                     HardwareVersion = string.Join("", bsm_HW);
                     if (IsShowMessage)
                     {
+                        IsShowMessage = false; //防止重复提示
                         MessageBoxHelper.Success("读取成功", "提示", null, ButtonType.OK);
                     }
                     IsShowMessage = true;
