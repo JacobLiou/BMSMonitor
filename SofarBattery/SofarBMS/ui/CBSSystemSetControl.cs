@@ -1353,6 +1353,10 @@ namespace SofarBMS.UI
             {
                 value = value | 0x10;
             }
+            if (ckSystemset_60.Checked)
+            {
+                value = value | 0x80;
+            }
 
             int current = Convert.ToInt32(txtPackCurrent.Text.Trim());
             data[0] = (byte)(current & 0xff);

@@ -240,6 +240,7 @@
             this.lblSystemset_BMU_07 = new System.Windows.Forms.Label();
             this.btnSetDatetime = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ckSystemset_60 = new System.Windows.Forms.CheckBox();
             this.cbb_106 = new System.Windows.Forms.ComboBox();
             this.txtFlag = new System.Windows.Forms.TextBox();
             this.cbb_105 = new System.Windows.Forms.ComboBox();
@@ -2976,6 +2977,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.ckSystemset_60);
             this.groupBox2.Controls.Add(this.cbb_106);
             this.groupBox2.Controls.Add(this.txtFlag);
             this.groupBox2.Controls.Add(this.cbb_105);
@@ -3045,6 +3047,17 @@
             this.groupBox2.Size = new System.Drawing.Size(692, 757);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
+            // 
+            // ckSystemset_60
+            // 
+            this.ckSystemset_60.AutoSize = true;
+            this.ckSystemset_60.Location = new System.Drawing.Point(466, 150);
+            this.ckSystemset_60.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ckSystemset_60.Name = "ckSystemset_60";
+            this.ckSystemset_60.Size = new System.Drawing.Size(51, 21);
+            this.ckSystemset_60.TabIndex = 131;
+            this.ckSystemset_60.Text = "存储";
+            this.ckSystemset_60.UseVisualStyleBackColor = true;
             // 
             // cbb_106
             // 
@@ -3268,7 +3281,7 @@
             // ckSystemset_69
             // 
             this.ckSystemset_69.AutoSize = true;
-            this.ckSystemset_69.Location = new System.Drawing.Point(466, 155);
+            this.ckSystemset_69.Location = new System.Drawing.Point(466, 129);
             this.ckSystemset_69.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ckSystemset_69.Name = "ckSystemset_69";
             this.ckSystemset_69.Size = new System.Drawing.Size(51, 21);
@@ -3279,7 +3292,7 @@
             // ckSystemset_68
             // 
             this.ckSystemset_68.AutoSize = true;
-            this.ckSystemset_68.Location = new System.Drawing.Point(466, 125);
+            this.ckSystemset_68.Location = new System.Drawing.Point(466, 108);
             this.ckSystemset_68.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ckSystemset_68.Name = "ckSystemset_68";
             this.ckSystemset_68.Size = new System.Drawing.Size(51, 21);
@@ -3290,7 +3303,7 @@
             // ckSystemset_67
             // 
             this.ckSystemset_67.AutoSize = true;
-            this.ckSystemset_67.Location = new System.Drawing.Point(466, 95);
+            this.ckSystemset_67.Location = new System.Drawing.Point(466, 87);
             this.ckSystemset_67.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ckSystemset_67.Name = "ckSystemset_67";
             this.ckSystemset_67.Size = new System.Drawing.Size(51, 21);
@@ -4808,5 +4821,6 @@
         private Label lblSystemset_103;
         private Label lblSystemset_104;
         private Panel panel2;
+        private CheckBox ckSystemset_60;
     }
 }

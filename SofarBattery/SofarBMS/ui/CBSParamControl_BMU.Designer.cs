@@ -122,12 +122,10 @@
             this.lblParameter_39 = new System.Windows.Forms.Label();
             this.lblParameter_35 = new System.Windows.Forms.Label();
             this.lblParameter_37 = new System.Windows.Forms.Label();
-            this.lblParameter_30 = new System.Windows.Forms.Label();
             this.lblParameter_31 = new System.Windows.Forms.Label();
-            this.lblParameter_26 = new System.Windows.Forms.Label();
-            this.lblParameter_29 = new System.Windows.Forms.Label();
+            this.lblParameter_69 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblParameter_25 = new System.Windows.Forms.Label();
+            this.lblParameter_68 = new System.Windows.Forms.Label();
             this.lblParameter_27 = new System.Windows.Forms.Label();
             this.lblParameter_60 = new System.Windows.Forms.Label();
             this.lblParameter_59 = new System.Windows.Forms.Label();
@@ -174,14 +172,14 @@
             this.txt_65 = new System.Windows.Forms.TextBox();
             this.txt_64 = new System.Windows.Forms.TextBox();
             this.txt_63 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lblParameter_98 = new System.Windows.Forms.Label();
+            this.lblParameter_94 = new System.Windows.Forms.Label();
+            this.lblParameter_96 = new System.Windows.Forms.Label();
+            this.lblParameter_95 = new System.Windows.Forms.Label();
+            this.lblParameter_97 = new System.Windows.Forms.Label();
+            this.lblParameter_92 = new System.Windows.Forms.Label();
+            this.lblParameter_91 = new System.Windows.Forms.Label();
+            this.lblParameter_93 = new System.Windows.Forms.Label();
             this.ckb_15 = new System.Windows.Forms.CheckBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.txt_62 = new System.Windows.Forms.TextBox();
@@ -210,6 +208,8 @@
             this.txt_25 = new System.Windows.Forms.TextBox();
             this.lblParameter_32 = new System.Windows.Forms.Label();
             this.lblParameter_28 = new System.Windows.Forms.Label();
+            this.lblParameter_30 = new System.Windows.Forms.Label();
+            this.lblParameter_29 = new System.Windows.Forms.Label();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.txt_52 = new System.Windows.Forms.TextBox();
             this.txt_51 = new System.Windows.Forms.TextBox();
@@ -362,7 +362,7 @@
             this.groupBox16.Controls.Add(this.lblParameter_49);
             this.groupBox16.Controls.Add(this.lblParameter_51);
             this.groupBox16.Controls.Add(this.ckb_9);
-            this.groupBox16.Location = new System.Drawing.Point(260, 583);
+            this.groupBox16.Location = new System.Drawing.Point(6, 583);
             this.groupBox16.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox16.Name = "groupBox16";
             this.groupBox16.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -714,13 +714,14 @@
             this.groupBox5.Controls.Add(this.lblParameter_17);
             this.groupBox5.Controls.Add(this.lblParameter_19);
             this.groupBox5.Controls.Add(this.ckb_5);
-            this.groupBox5.Location = new System.Drawing.Point(6, 583);
+            this.groupBox5.Location = new System.Drawing.Point(768, 3);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox5.Size = new System.Drawing.Size(250, 145);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
+            this.groupBox5.Visible = false;
             // 
             // txt_20
             // 
@@ -932,13 +933,14 @@
             this.groupBox6.Controls.Add(this.lblParameter_21);
             this.groupBox6.Controls.Add(this.lblParameter_23);
             this.groupBox6.Controls.Add(this.ckb_6);
-            this.groupBox6.Location = new System.Drawing.Point(6, 728);
+            this.groupBox6.Location = new System.Drawing.Point(768, 148);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox6.Size = new System.Drawing.Size(250, 145);
             this.groupBox6.TabIndex = 5;
             this.groupBox6.TabStop = false;
+            this.groupBox6.Visible = false;
             // 
             // lblParameter_24
             // 
@@ -1023,13 +1025,13 @@
             this.groupBox8.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.groupBox8.Size = new System.Drawing.Size(250, 290);
+            this.groupBox8.Size = new System.Drawing.Size(250, 145);
             this.groupBox8.TabIndex = 7;
             this.groupBox8.TabStop = false;
             // 
             // txt_40
             // 
-            this.txt_40.Location = new System.Drawing.Point(148, 257);
+            this.txt_40.Location = new System.Drawing.Point(151, 112);
             this.txt_40.Margin = new System.Windows.Forms.Padding(4);
             this.txt_40.Name = "txt_40";
             this.txt_40.Size = new System.Drawing.Size(87, 23);
@@ -1037,7 +1039,7 @@
             // 
             // txt_39
             // 
-            this.txt_39.Location = new System.Drawing.Point(148, 225);
+            this.txt_39.Location = new System.Drawing.Point(151, 80);
             this.txt_39.Margin = new System.Windows.Forms.Padding(4);
             this.txt_39.Name = "txt_39";
             this.txt_39.Size = new System.Drawing.Size(87, 23);
@@ -1045,23 +1047,25 @@
             // 
             // txt_38
             // 
-            this.txt_38.Location = new System.Drawing.Point(148, 193);
+            this.txt_38.Location = new System.Drawing.Point(153, 253);
             this.txt_38.Margin = new System.Windows.Forms.Padding(4);
             this.txt_38.Name = "txt_38";
             this.txt_38.Size = new System.Drawing.Size(87, 23);
             this.txt_38.TabIndex = 42;
+            this.txt_38.Visible = false;
             // 
             // txt_37
             // 
-            this.txt_37.Location = new System.Drawing.Point(148, 161);
+            this.txt_37.Location = new System.Drawing.Point(153, 221);
             this.txt_37.Margin = new System.Windows.Forms.Padding(4);
             this.txt_37.Name = "txt_37";
             this.txt_37.Size = new System.Drawing.Size(87, 23);
             this.txt_37.TabIndex = 41;
+            this.txt_37.Visible = false;
             // 
             // txt_36
             // 
-            this.txt_36.Location = new System.Drawing.Point(148, 112);
+            this.txt_36.Location = new System.Drawing.Point(151, 48);
             this.txt_36.Margin = new System.Windows.Forms.Padding(4);
             this.txt_36.Name = "txt_36";
             this.txt_36.Size = new System.Drawing.Size(87, 23);
@@ -1069,7 +1073,7 @@
             // 
             // txt_35
             // 
-            this.txt_35.Location = new System.Drawing.Point(148, 80);
+            this.txt_35.Location = new System.Drawing.Point(151, 16);
             this.txt_35.Margin = new System.Windows.Forms.Padding(4);
             this.txt_35.Name = "txt_35";
             this.txt_35.Size = new System.Drawing.Size(87, 23);
@@ -1077,24 +1081,26 @@
             // 
             // txt_34
             // 
-            this.txt_34.Location = new System.Drawing.Point(148, 48);
+            this.txt_34.Location = new System.Drawing.Point(154, 192);
             this.txt_34.Margin = new System.Windows.Forms.Padding(4);
             this.txt_34.Name = "txt_34";
             this.txt_34.Size = new System.Drawing.Size(87, 23);
             this.txt_34.TabIndex = 38;
+            this.txt_34.Visible = false;
             // 
             // txt_33
             // 
-            this.txt_33.Location = new System.Drawing.Point(148, 16);
+            this.txt_33.Location = new System.Drawing.Point(154, 160);
             this.txt_33.Margin = new System.Windows.Forms.Padding(4);
             this.txt_33.Name = "txt_33";
             this.txt_33.Size = new System.Drawing.Size(87, 23);
             this.txt_33.TabIndex = 37;
+            this.txt_33.Visible = false;
             // 
             // lblParameter_36
             // 
             this.lblParameter_36.AutoSize = true;
-            this.lblParameter_36.Location = new System.Drawing.Point(30, 114);
+            this.lblParameter_36.Location = new System.Drawing.Point(36, 50);
             this.lblParameter_36.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblParameter_36.Name = "lblParameter_36";
             this.lblParameter_36.Size = new System.Drawing.Size(100, 17);
@@ -1104,7 +1110,7 @@
             // lblParameter_40
             // 
             this.lblParameter_40.AutoSize = true;
-            this.lblParameter_40.Location = new System.Drawing.Point(30, 259);
+            this.lblParameter_40.Location = new System.Drawing.Point(36, 114);
             this.lblParameter_40.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblParameter_40.Name = "lblParameter_40";
             this.lblParameter_40.Size = new System.Drawing.Size(100, 17);
@@ -1114,7 +1120,7 @@
             // ckb_8
             // 
             this.ckb_8.AutoSize = true;
-            this.ckb_8.Location = new System.Drawing.Point(17, 20);
+            this.ckb_8.Location = new System.Drawing.Point(17, 19);
             this.ckb_8.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ckb_8.Name = "ckb_8";
             this.ckb_8.Size = new System.Drawing.Size(15, 14);
@@ -1124,37 +1130,40 @@
             // lblParameter_33
             // 
             this.lblParameter_33.AutoSize = true;
-            this.lblParameter_33.Location = new System.Drawing.Point(30, 18);
+            this.lblParameter_33.Location = new System.Drawing.Point(36, 162);
             this.lblParameter_33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblParameter_33.Name = "lblParameter_33";
             this.lblParameter_33.Size = new System.Drawing.Size(100, 17);
             this.lblParameter_33.TabIndex = 2;
             this.lblParameter_33.Text = "充电低温保护(℃)";
+            this.lblParameter_33.Visible = false;
             // 
             // lblParameter_38
             // 
             this.lblParameter_38.AutoSize = true;
-            this.lblParameter_38.Location = new System.Drawing.Point(30, 194);
+            this.lblParameter_38.Location = new System.Drawing.Point(35, 254);
             this.lblParameter_38.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblParameter_38.Name = "lblParameter_38";
             this.lblParameter_38.Size = new System.Drawing.Size(100, 17);
             this.lblParameter_38.TabIndex = 10;
             this.lblParameter_38.Text = "放电低温解除(℃)";
+            this.lblParameter_38.Visible = false;
             // 
             // lblParameter_34
             // 
             this.lblParameter_34.AutoSize = true;
-            this.lblParameter_34.Location = new System.Drawing.Point(30, 50);
+            this.lblParameter_34.Location = new System.Drawing.Point(36, 194);
             this.lblParameter_34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblParameter_34.Name = "lblParameter_34";
             this.lblParameter_34.Size = new System.Drawing.Size(100, 17);
             this.lblParameter_34.TabIndex = 3;
             this.lblParameter_34.Text = "充电低温解除(℃)";
+            this.lblParameter_34.Visible = false;
             // 
             // lblParameter_39
             // 
             this.lblParameter_39.AutoSize = true;
-            this.lblParameter_39.Location = new System.Drawing.Point(30, 226);
+            this.lblParameter_39.Location = new System.Drawing.Point(36, 82);
             this.lblParameter_39.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblParameter_39.Name = "lblParameter_39";
             this.lblParameter_39.Size = new System.Drawing.Size(100, 17);
@@ -1164,7 +1173,7 @@
             // lblParameter_35
             // 
             this.lblParameter_35.AutoSize = true;
-            this.lblParameter_35.Location = new System.Drawing.Point(30, 82);
+            this.lblParameter_35.Location = new System.Drawing.Point(36, 18);
             this.lblParameter_35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblParameter_35.Name = "lblParameter_35";
             this.lblParameter_35.Size = new System.Drawing.Size(100, 17);
@@ -1174,52 +1183,33 @@
             // lblParameter_37
             // 
             this.lblParameter_37.AutoSize = true;
-            this.lblParameter_37.Location = new System.Drawing.Point(30, 162);
+            this.lblParameter_37.Location = new System.Drawing.Point(35, 222);
             this.lblParameter_37.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblParameter_37.Name = "lblParameter_37";
             this.lblParameter_37.Size = new System.Drawing.Size(100, 17);
             this.lblParameter_37.TabIndex = 9;
             this.lblParameter_37.Text = "放电低温保护(℃)";
-            // 
-            // lblParameter_30
-            // 
-            this.lblParameter_30.AutoSize = true;
-            this.lblParameter_30.Location = new System.Drawing.Point(34, 195);
-            this.lblParameter_30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblParameter_30.Name = "lblParameter_30";
-            this.lblParameter_30.Size = new System.Drawing.Size(100, 17);
-            this.lblParameter_30.TabIndex = 10;
-            this.lblParameter_30.Text = "放电高温解除(℃)";
+            this.lblParameter_37.Visible = false;
             // 
             // lblParameter_31
             // 
             this.lblParameter_31.AutoSize = true;
-            this.lblParameter_31.Location = new System.Drawing.Point(34, 227);
+            this.lblParameter_31.Location = new System.Drawing.Point(36, 148);
             this.lblParameter_31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblParameter_31.Name = "lblParameter_31";
             this.lblParameter_31.Size = new System.Drawing.Size(100, 17);
             this.lblParameter_31.TabIndex = 8;
             this.lblParameter_31.Text = "放电高温告警(℃)";
             // 
-            // lblParameter_26
+            // lblParameter_69
             // 
-            this.lblParameter_26.AutoSize = true;
-            this.lblParameter_26.Location = new System.Drawing.Point(34, 51);
-            this.lblParameter_26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblParameter_26.Name = "lblParameter_26";
-            this.lblParameter_26.Size = new System.Drawing.Size(100, 17);
-            this.lblParameter_26.TabIndex = 3;
-            this.lblParameter_26.Text = "充电高温解除(℃)";
-            // 
-            // lblParameter_29
-            // 
-            this.lblParameter_29.AutoSize = true;
-            this.lblParameter_29.Location = new System.Drawing.Point(34, 163);
-            this.lblParameter_29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblParameter_29.Name = "lblParameter_29";
-            this.lblParameter_29.Size = new System.Drawing.Size(100, 17);
-            this.lblParameter_29.TabIndex = 9;
-            this.lblParameter_29.Text = "放电高温保护(℃)";
+            this.lblParameter_69.AutoSize = true;
+            this.lblParameter_69.Location = new System.Drawing.Point(36, 52);
+            this.lblParameter_69.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblParameter_69.Name = "lblParameter_69";
+            this.lblParameter_69.Size = new System.Drawing.Size(100, 17);
+            this.lblParameter_69.TabIndex = 3;
+            this.lblParameter_69.Text = "充电高温解除(℃)";
             // 
             // groupBox1
             // 
@@ -1240,20 +1230,20 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // lblParameter_25
+            // lblParameter_68
             // 
-            this.lblParameter_25.AutoSize = true;
-            this.lblParameter_25.Location = new System.Drawing.Point(34, 19);
-            this.lblParameter_25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblParameter_25.Name = "lblParameter_25";
-            this.lblParameter_25.Size = new System.Drawing.Size(100, 17);
-            this.lblParameter_25.TabIndex = 2;
-            this.lblParameter_25.Text = "充电高温保护(℃)";
+            this.lblParameter_68.AutoSize = true;
+            this.lblParameter_68.Location = new System.Drawing.Point(36, 20);
+            this.lblParameter_68.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblParameter_68.Name = "lblParameter_68";
+            this.lblParameter_68.Size = new System.Drawing.Size(100, 17);
+            this.lblParameter_68.TabIndex = 2;
+            this.lblParameter_68.Text = "充电高温保护(℃)";
             // 
             // lblParameter_27
             // 
             this.lblParameter_27.AutoSize = true;
-            this.lblParameter_27.Location = new System.Drawing.Point(34, 83);
+            this.lblParameter_27.Location = new System.Drawing.Point(36, 84);
             this.lblParameter_27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblParameter_27.Name = "lblParameter_27";
             this.lblParameter_27.Size = new System.Drawing.Size(100, 17);
@@ -1311,7 +1301,7 @@
             this.groupBox10.Controls.Add(this.lblParameter_59);
             this.groupBox10.Controls.Add(this.lblParameter_58);
             this.groupBox10.Controls.Add(this.lblParameter_57);
-            this.groupBox10.Location = new System.Drawing.Point(514, 148);
+            this.groupBox10.Location = new System.Drawing.Point(514, 438);
             this.groupBox10.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -1365,7 +1355,7 @@
             // ckb_7
             // 
             this.ckb_7.AutoSize = true;
-            this.ckb_7.Location = new System.Drawing.Point(15, 20);
+            this.ckb_7.Location = new System.Drawing.Point(17, 21);
             this.ckb_7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ckb_7.Name = "ckb_7";
             this.ckb_7.Size = new System.Drawing.Size(15, 14);
@@ -1397,7 +1387,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1050, 734);
+            this.panel1.Size = new System.Drawing.Size(1039, 764);
             this.panel1.TabIndex = 2;
             // 
             // groupBox17
@@ -1411,7 +1401,7 @@
             this.groupBox17.Controls.Add(this.label23);
             this.groupBox17.Controls.Add(this.label24);
             this.groupBox17.Controls.Add(this.ckb_17);
-            this.groupBox17.Location = new System.Drawing.Point(768, 293);
+            this.groupBox17.Location = new System.Drawing.Point(514, 293);
             this.groupBox17.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -1475,7 +1465,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(36, 20);
+            this.label23.Location = new System.Drawing.Point(36, 21);
             this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(96, 17);
@@ -1495,7 +1485,7 @@
             // ckb_17
             // 
             this.ckb_17.AutoSize = true;
-            this.ckb_17.Location = new System.Drawing.Point(17, 21);
+            this.ckb_17.Location = new System.Drawing.Point(17, 22);
             this.ckb_17.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ckb_17.Name = "ckb_17";
             this.ckb_17.Size = new System.Drawing.Size(15, 14);
@@ -1517,7 +1507,7 @@
             this.groupBox15.Controls.Add(this.label21);
             this.groupBox15.Controls.Add(this.label22);
             this.groupBox15.Controls.Add(this.ckb_16);
-            this.groupBox15.Location = new System.Drawing.Point(768, 3);
+            this.groupBox15.Location = new System.Drawing.Point(768, 438);
             this.groupBox15.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -1654,167 +1644,166 @@
             this.groupBox12.Controls.Add(this.txt_65);
             this.groupBox12.Controls.Add(this.txt_64);
             this.groupBox12.Controls.Add(this.txt_63);
-            this.groupBox12.Controls.Add(this.label5);
-            this.groupBox12.Controls.Add(this.label6);
-            this.groupBox12.Controls.Add(this.label9);
-            this.groupBox12.Controls.Add(this.label10);
-            this.groupBox12.Controls.Add(this.label11);
-            this.groupBox12.Controls.Add(this.label12);
-            this.groupBox12.Controls.Add(this.label13);
-            this.groupBox12.Controls.Add(this.label14);
+            this.groupBox12.Controls.Add(this.lblParameter_98);
+            this.groupBox12.Controls.Add(this.lblParameter_94);
+            this.groupBox12.Controls.Add(this.lblParameter_96);
+            this.groupBox12.Controls.Add(this.lblParameter_95);
+            this.groupBox12.Controls.Add(this.lblParameter_97);
+            this.groupBox12.Controls.Add(this.lblParameter_92);
+            this.groupBox12.Controls.Add(this.lblParameter_91);
+            this.groupBox12.Controls.Add(this.lblParameter_93);
             this.groupBox12.Controls.Add(this.ckb_15);
-            this.groupBox12.Location = new System.Drawing.Point(514, 582);
+            this.groupBox12.Location = new System.Drawing.Point(260, 438);
             this.groupBox12.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox12.Size = new System.Drawing.Size(250, 290);
             this.groupBox12.TabIndex = 34;
             this.groupBox12.TabStop = false;
-            this.groupBox12.Visible = false;
             // 
             // txt_70
             // 
-            this.txt_70.Location = new System.Drawing.Point(175, 255);
+            this.txt_70.Location = new System.Drawing.Point(157, 255);
             this.txt_70.Margin = new System.Windows.Forms.Padding(4);
             this.txt_70.Name = "txt_70";
-            this.txt_70.Size = new System.Drawing.Size(65, 23);
+            this.txt_70.Size = new System.Drawing.Size(87, 23);
             this.txt_70.TabIndex = 28;
             // 
             // txt_69
             // 
-            this.txt_69.Location = new System.Drawing.Point(175, 223);
+            this.txt_69.Location = new System.Drawing.Point(157, 223);
             this.txt_69.Margin = new System.Windows.Forms.Padding(4);
             this.txt_69.Name = "txt_69";
-            this.txt_69.Size = new System.Drawing.Size(65, 23);
+            this.txt_69.Size = new System.Drawing.Size(87, 23);
             this.txt_69.TabIndex = 27;
             // 
             // txt_68
             // 
-            this.txt_68.Location = new System.Drawing.Point(175, 191);
+            this.txt_68.Location = new System.Drawing.Point(157, 191);
             this.txt_68.Margin = new System.Windows.Forms.Padding(4);
             this.txt_68.Name = "txt_68";
-            this.txt_68.Size = new System.Drawing.Size(65, 23);
+            this.txt_68.Size = new System.Drawing.Size(87, 23);
             this.txt_68.TabIndex = 26;
             // 
             // txt_67
             // 
-            this.txt_67.Location = new System.Drawing.Point(175, 159);
+            this.txt_67.Location = new System.Drawing.Point(157, 159);
             this.txt_67.Margin = new System.Windows.Forms.Padding(4);
             this.txt_67.Name = "txt_67";
-            this.txt_67.Size = new System.Drawing.Size(65, 23);
+            this.txt_67.Size = new System.Drawing.Size(87, 23);
             this.txt_67.TabIndex = 25;
             // 
             // txt_66
             // 
-            this.txt_66.Location = new System.Drawing.Point(175, 111);
+            this.txt_66.Location = new System.Drawing.Point(157, 111);
             this.txt_66.Margin = new System.Windows.Forms.Padding(4);
             this.txt_66.Name = "txt_66";
-            this.txt_66.Size = new System.Drawing.Size(65, 23);
+            this.txt_66.Size = new System.Drawing.Size(87, 23);
             this.txt_66.TabIndex = 24;
             // 
             // txt_65
             // 
-            this.txt_65.Location = new System.Drawing.Point(175, 79);
+            this.txt_65.Location = new System.Drawing.Point(157, 79);
             this.txt_65.Margin = new System.Windows.Forms.Padding(4);
             this.txt_65.Name = "txt_65";
-            this.txt_65.Size = new System.Drawing.Size(65, 23);
+            this.txt_65.Size = new System.Drawing.Size(87, 23);
             this.txt_65.TabIndex = 23;
             // 
             // txt_64
             // 
-            this.txt_64.Location = new System.Drawing.Point(175, 47);
+            this.txt_64.Location = new System.Drawing.Point(157, 47);
             this.txt_64.Margin = new System.Windows.Forms.Padding(4);
             this.txt_64.Name = "txt_64";
-            this.txt_64.Size = new System.Drawing.Size(65, 23);
+            this.txt_64.Size = new System.Drawing.Size(87, 23);
             this.txt_64.TabIndex = 22;
             // 
             // txt_63
             // 
-            this.txt_63.Location = new System.Drawing.Point(175, 15);
+            this.txt_63.Location = new System.Drawing.Point(157, 15);
             this.txt_63.Margin = new System.Windows.Forms.Padding(4);
             this.txt_63.Name = "txt_63";
-            this.txt_63.Size = new System.Drawing.Size(65, 23);
+            this.txt_63.Size = new System.Drawing.Size(87, 23);
             this.txt_63.TabIndex = 21;
             // 
-            // label5
+            // lblParameter_98
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(33, 259);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(124, 17);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "放电低温提示解除(℃)";
+            this.lblParameter_98.AutoSize = true;
+            this.lblParameter_98.Location = new System.Drawing.Point(33, 259);
+            this.lblParameter_98.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblParameter_98.Name = "lblParameter_98";
+            this.lblParameter_98.Size = new System.Drawing.Size(124, 17);
+            this.lblParameter_98.TabIndex = 15;
+            this.lblParameter_98.Text = "放电低温提示解除(℃)";
             // 
-            // label6
+            // lblParameter_94
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(33, 115);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(124, 17);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "充电低温提示解除(℃)";
+            this.lblParameter_94.AutoSize = true;
+            this.lblParameter_94.Location = new System.Drawing.Point(33, 115);
+            this.lblParameter_94.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblParameter_94.Name = "lblParameter_94";
+            this.lblParameter_94.Size = new System.Drawing.Size(124, 17);
+            this.lblParameter_94.TabIndex = 14;
+            this.lblParameter_94.Text = "充电低温提示解除(℃)";
             // 
-            // label9
+            // lblParameter_96
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(33, 195);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(124, 17);
-            this.label9.TabIndex = 10;
-            this.label9.Text = "放电高温提示解除(℃)";
+            this.lblParameter_96.AutoSize = true;
+            this.lblParameter_96.Location = new System.Drawing.Point(33, 195);
+            this.lblParameter_96.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblParameter_96.Name = "lblParameter_96";
+            this.lblParameter_96.Size = new System.Drawing.Size(124, 17);
+            this.lblParameter_96.TabIndex = 10;
+            this.lblParameter_96.Text = "放电高温提示解除(℃)";
             // 
-            // label10
+            // lblParameter_95
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(33, 163);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(100, 17);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "放电高温提示(℃)";
+            this.lblParameter_95.AutoSize = true;
+            this.lblParameter_95.Location = new System.Drawing.Point(33, 163);
+            this.lblParameter_95.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblParameter_95.Name = "lblParameter_95";
+            this.lblParameter_95.Size = new System.Drawing.Size(100, 17);
+            this.lblParameter_95.TabIndex = 9;
+            this.lblParameter_95.Text = "放电高温提示(℃)";
             // 
-            // label11
+            // lblParameter_97
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(33, 227);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(100, 17);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "放电低温提示(℃)";
+            this.lblParameter_97.AutoSize = true;
+            this.lblParameter_97.Location = new System.Drawing.Point(33, 227);
+            this.lblParameter_97.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblParameter_97.Name = "lblParameter_97";
+            this.lblParameter_97.Size = new System.Drawing.Size(100, 17);
+            this.lblParameter_97.TabIndex = 8;
+            this.lblParameter_97.Text = "放电低温提示(℃)";
             // 
-            // label12
+            // lblParameter_92
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(33, 51);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(124, 17);
-            this.label12.TabIndex = 3;
-            this.label12.Text = "充电高温提示解除(℃)";
+            this.lblParameter_92.AutoSize = true;
+            this.lblParameter_92.Location = new System.Drawing.Point(33, 51);
+            this.lblParameter_92.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblParameter_92.Name = "lblParameter_92";
+            this.lblParameter_92.Size = new System.Drawing.Size(124, 17);
+            this.lblParameter_92.TabIndex = 3;
+            this.lblParameter_92.Text = "充电高温提示解除(℃)";
             // 
-            // label13
+            // lblParameter_91
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(33, 19);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(100, 17);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "充电高温提示(℃)";
+            this.lblParameter_91.AutoSize = true;
+            this.lblParameter_91.Location = new System.Drawing.Point(33, 19);
+            this.lblParameter_91.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblParameter_91.Name = "lblParameter_91";
+            this.lblParameter_91.Size = new System.Drawing.Size(100, 17);
+            this.lblParameter_91.TabIndex = 2;
+            this.lblParameter_91.Text = "充电高温提示(℃)";
             // 
-            // label14
+            // lblParameter_93
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(33, 83);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(100, 17);
-            this.label14.TabIndex = 1;
-            this.label14.Text = "充电低温提示(℃)";
+            this.lblParameter_93.AutoSize = true;
+            this.lblParameter_93.Location = new System.Drawing.Point(33, 83);
+            this.lblParameter_93.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblParameter_93.Name = "lblParameter_93";
+            this.lblParameter_93.Size = new System.Drawing.Size(100, 17);
+            this.lblParameter_93.TabIndex = 1;
+            this.lblParameter_93.Text = "充电低温提示(℃)";
             // 
             // ckb_15
             // 
@@ -1833,7 +1822,7 @@
             this.groupBox11.Controls.Add(this.ckb_14);
             this.groupBox11.Controls.Add(this.label7);
             this.groupBox11.Controls.Add(this.label8);
-            this.groupBox11.Location = new System.Drawing.Point(514, 438);
+            this.groupBox11.Location = new System.Drawing.Point(514, 148);
             this.groupBox11.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -1871,7 +1860,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(32, 51);
+            this.label7.Location = new System.Drawing.Point(31, 51);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(143, 17);
@@ -1881,7 +1870,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(32, 20);
+            this.label8.Location = new System.Drawing.Point(31, 20);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(119, 17);
@@ -1899,7 +1888,7 @@
             this.groupBox9.Controls.Add(this.label2);
             this.groupBox9.Controls.Add(this.label3);
             this.groupBox9.Controls.Add(this.label4);
-            this.groupBox9.Location = new System.Drawing.Point(514, 293);
+            this.groupBox9.Location = new System.Drawing.Point(514, 583);
             this.groupBox9.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -2005,8 +1994,8 @@
             this.groupBox7.Controls.Add(this.lblParameter_30);
             this.groupBox7.Controls.Add(this.lblParameter_29);
             this.groupBox7.Controls.Add(this.lblParameter_31);
-            this.groupBox7.Controls.Add(this.lblParameter_26);
-            this.groupBox7.Controls.Add(this.lblParameter_25);
+            this.groupBox7.Controls.Add(this.lblParameter_69);
+            this.groupBox7.Controls.Add(this.lblParameter_68);
             this.groupBox7.Controls.Add(this.lblParameter_27);
             this.groupBox7.Controls.Add(this.ckb_7);
             this.groupBox7.Location = new System.Drawing.Point(260, 3);
@@ -2019,7 +2008,7 @@
             // 
             // txt_32
             // 
-            this.txt_32.Location = new System.Drawing.Point(149, 256);
+            this.txt_32.Location = new System.Drawing.Point(151, 177);
             this.txt_32.Margin = new System.Windows.Forms.Padding(4);
             this.txt_32.Name = "txt_32";
             this.txt_32.Size = new System.Drawing.Size(87, 23);
@@ -2027,7 +2016,7 @@
             // 
             // txt_31
             // 
-            this.txt_31.Location = new System.Drawing.Point(149, 224);
+            this.txt_31.Location = new System.Drawing.Point(151, 145);
             this.txt_31.Margin = new System.Windows.Forms.Padding(4);
             this.txt_31.Name = "txt_31";
             this.txt_31.Size = new System.Drawing.Size(87, 23);
@@ -2035,23 +2024,25 @@
             // 
             // txt_30
             // 
-            this.txt_30.Location = new System.Drawing.Point(149, 192);
+            this.txt_30.Location = new System.Drawing.Point(151, 263);
             this.txt_30.Margin = new System.Windows.Forms.Padding(4);
             this.txt_30.Name = "txt_30";
             this.txt_30.Size = new System.Drawing.Size(87, 23);
             this.txt_30.TabIndex = 26;
+            this.txt_30.Visible = false;
             // 
             // txt_29
             // 
-            this.txt_29.Location = new System.Drawing.Point(149, 160);
+            this.txt_29.Location = new System.Drawing.Point(151, 231);
             this.txt_29.Margin = new System.Windows.Forms.Padding(4);
             this.txt_29.Name = "txt_29";
             this.txt_29.Size = new System.Drawing.Size(87, 23);
             this.txt_29.TabIndex = 25;
+            this.txt_29.Visible = false;
             // 
             // txt_28
             // 
-            this.txt_28.Location = new System.Drawing.Point(149, 112);
+            this.txt_28.Location = new System.Drawing.Point(151, 113);
             this.txt_28.Margin = new System.Windows.Forms.Padding(4);
             this.txt_28.Name = "txt_28";
             this.txt_28.Size = new System.Drawing.Size(87, 23);
@@ -2059,7 +2050,7 @@
             // 
             // txt_27
             // 
-            this.txt_27.Location = new System.Drawing.Point(149, 80);
+            this.txt_27.Location = new System.Drawing.Point(151, 81);
             this.txt_27.Margin = new System.Windows.Forms.Padding(4);
             this.txt_27.Name = "txt_27";
             this.txt_27.Size = new System.Drawing.Size(87, 23);
@@ -2067,7 +2058,7 @@
             // 
             // txt_26
             // 
-            this.txt_26.Location = new System.Drawing.Point(149, 48);
+            this.txt_26.Location = new System.Drawing.Point(151, 49);
             this.txt_26.Margin = new System.Windows.Forms.Padding(4);
             this.txt_26.Name = "txt_26";
             this.txt_26.Size = new System.Drawing.Size(87, 23);
@@ -2075,7 +2066,7 @@
             // 
             // txt_25
             // 
-            this.txt_25.Location = new System.Drawing.Point(149, 16);
+            this.txt_25.Location = new System.Drawing.Point(151, 17);
             this.txt_25.Margin = new System.Windows.Forms.Padding(4);
             this.txt_25.Name = "txt_25";
             this.txt_25.Size = new System.Drawing.Size(87, 23);
@@ -2084,7 +2075,7 @@
             // lblParameter_32
             // 
             this.lblParameter_32.AutoSize = true;
-            this.lblParameter_32.Location = new System.Drawing.Point(34, 259);
+            this.lblParameter_32.Location = new System.Drawing.Point(36, 180);
             this.lblParameter_32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblParameter_32.Name = "lblParameter_32";
             this.lblParameter_32.Size = new System.Drawing.Size(100, 17);
@@ -2094,12 +2085,34 @@
             // lblParameter_28
             // 
             this.lblParameter_28.AutoSize = true;
-            this.lblParameter_28.Location = new System.Drawing.Point(34, 115);
+            this.lblParameter_28.Location = new System.Drawing.Point(36, 116);
             this.lblParameter_28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblParameter_28.Name = "lblParameter_28";
             this.lblParameter_28.Size = new System.Drawing.Size(100, 17);
             this.lblParameter_28.TabIndex = 14;
             this.lblParameter_28.Text = "充电高温解除(℃)";
+            // 
+            // lblParameter_30
+            // 
+            this.lblParameter_30.AutoSize = true;
+            this.lblParameter_30.Location = new System.Drawing.Point(36, 266);
+            this.lblParameter_30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblParameter_30.Name = "lblParameter_30";
+            this.lblParameter_30.Size = new System.Drawing.Size(100, 17);
+            this.lblParameter_30.TabIndex = 10;
+            this.lblParameter_30.Text = "放电高温解除(℃)";
+            this.lblParameter_30.Visible = false;
+            // 
+            // lblParameter_29
+            // 
+            this.lblParameter_29.AutoSize = true;
+            this.lblParameter_29.Location = new System.Drawing.Point(36, 234);
+            this.lblParameter_29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblParameter_29.Name = "lblParameter_29";
+            this.lblParameter_29.Size = new System.Drawing.Size(100, 17);
+            this.lblParameter_29.TabIndex = 9;
+            this.lblParameter_29.Text = "放电高温保护(℃)";
+            this.lblParameter_29.Visible = false;
             // 
             // groupBox14
             // 
@@ -2213,13 +2226,14 @@
             this.groupBox13.Controls.Add(this.lblParameter_64);
             this.groupBox13.Controls.Add(this.lblParameter_66);
             this.groupBox13.Controls.Add(this.ckb_10);
-            this.groupBox13.Location = new System.Drawing.Point(260, 728);
+            this.groupBox13.Location = new System.Drawing.Point(768, 292);
             this.groupBox13.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox13.Size = new System.Drawing.Size(250, 145);
             this.groupBox13.TabIndex = 30;
             this.groupBox13.TabStop = false;
+            this.groupBox13.Visible = false;
             // 
             // lblParameter_66
             // 
@@ -2249,10 +2263,10 @@
             this.panel2.Controls.Add(this.btnParameter_70);
             this.panel2.Controls.Add(this.btnParameter_71);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(1050, 0);
+            this.panel2.Location = new System.Drawing.Point(1039, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(190, 734);
+            this.panel2.Size = new System.Drawing.Size(201, 764);
             this.panel2.TabIndex = 30;
             // 
             // btnParameter_74
@@ -2342,7 +2356,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "CBSParamControl_BMU";
-            this.Size = new System.Drawing.Size(1240, 734);
+            this.Size = new System.Drawing.Size(1240, 764);
             this.Load += new System.EventHandler(this.CBSParamControl_BMU_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -2480,12 +2494,10 @@
         private Label lblParameter_39;
         private Label lblParameter_35;
         private Label lblParameter_37;
-        private Label lblParameter_30;
         private Label lblParameter_31;
-        private Label lblParameter_26;
-        private Label lblParameter_29;
+        private Label lblParameter_69;
         private GroupBox groupBox1;
-        private Label lblParameter_25;
+        private Label lblParameter_68;
         private Label lblParameter_27;
         private Label lblParameter_60;
         private Label lblParameter_59;
@@ -2502,8 +2514,6 @@
         private GroupBox groupBox7;
         private TextBox txt_32;
         private TextBox txt_31;
-        private TextBox txt_30;
-        private TextBox txt_29;
         private TextBox txt_28;
         private TextBox txt_27;
         private TextBox txt_26;
@@ -2548,14 +2558,14 @@
         private TextBox txt_65;
         private TextBox txt_64;
         private TextBox txt_63;
-        private Label label5;
-        private Label label6;
-        private Label label9;
-        private Label label10;
-        private Label label11;
-        private Label label12;
-        private Label label13;
-        private Label label14;
+        private Label lblParameter_98;
+        private Label lblParameter_94;
+        private Label lblParameter_96;
+        private Label lblParameter_95;
+        private Label lblParameter_97;
+        private Label lblParameter_92;
+        private Label lblParameter_91;
+        private Label lblParameter_93;
         private CheckBox ckb_15;
         private GroupBox groupBox15;
         private TextBox txt_76;
@@ -2587,5 +2597,9 @@
         private Button btnParameter_72;
         private Button btnParameter_70;
         private Button btnParameter_71;
+        private TextBox txt_30;
+        private TextBox txt_29;
+        private Label lblParameter_30;
+        private Label lblParameter_29;
     }
 }

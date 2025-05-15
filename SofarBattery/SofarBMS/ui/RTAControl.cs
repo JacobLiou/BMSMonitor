@@ -146,7 +146,7 @@ Can通信故障,Can1CommFault
                                 }
 
                                 initCount = 0;
-                                model = null;
+                                model = new RealtimeData_BTS5K();
                             }
 
                             SendEcanCommands(); // 发送指令集

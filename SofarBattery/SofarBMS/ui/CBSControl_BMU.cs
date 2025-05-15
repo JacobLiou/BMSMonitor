@@ -878,11 +878,11 @@ namespace SofarBMS.ui
                         switch (msg[1])
                         {
                             case "1":
-                                if (richTextBox1.Text.Contains(msg[0]))
+                                if (richTextBox3.Text.Contains(msg[0]))
                                     continue;
 
-                                richTextBox1.AppendText(msg[0] + "\r");
-                                type = "故障";
+                                richTextBox3.AppendText(msg[0] + "\r");
+                                type = "告警";
                                 break;
                             case "2":
                                 if (richTextBox2.Text.Contains(msg[0]))
@@ -892,11 +892,11 @@ namespace SofarBMS.ui
                                 type = "保护";
                                 break;
                             case "3":
-                                if (richTextBox3.Text.Contains(msg[0]))
+                                if (richTextBox1.Text.Contains(msg[0]))
                                     continue;
 
-                                richTextBox3.AppendText(msg[0] + "\r");
-                                type = "告警";
+                                richTextBox1.AppendText(msg[0] + "\r");
+                                type = "故障";
                                 break;
                             case "4":
                                 if (richTextBox4.Text.Contains(msg[0]))
@@ -915,6 +915,7 @@ namespace SofarBMS.ui
                                 DataTime = DateTime.Now.ToString("yy-MM-dd HH:mm:ss"),
                                 Id = FrmMain.BMS_ID,
                                 Type = type,
+                                State = 0,
                                 Content = $"BMU:{msg[0]}"
                             });
                         }
@@ -927,13 +928,13 @@ namespace SofarBMS.ui
                         switch (msg[1])
                         {
                             case "1":
-                                type = "故障";
+                                type = "告警";
                                 break;
                             case "2":
                                 type = "保护";
                                 break;
                             case "3":
-                                type = "告警";
+                                type = "故障";
                                 break;
                             case "4":
                                 type = "提示";
@@ -942,6 +943,11 @@ namespace SofarBMS.ui
 
                         // 查找激活报警记录以确认解除
                         var query = FrmMain.AlarmList.FirstOrDefault(t => t.Id == FrmMain.BMS_ID && t.Type == type && t.Content == "BMU:" + msg[0] && t.State == 0);
+                        if (type=="故障" && msg[0].StartsWith("功率端子温度采样"))
+                        {
+
+                        }
+
                         if (query != null)
                         {
                             query.State = 1;
