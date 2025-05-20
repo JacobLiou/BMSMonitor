@@ -64,6 +64,7 @@ StartListen,启动总线监听,Start bus listen";
         public TransactEventHandler _transaction;
 
         public bool isStartReceiving = false;
+        public bool isShowLanagugeMenu = true;
 
         // 添加CancellationToken用于可控停止
         private CancellationTokenSource _canMonitorCts = new();
@@ -89,7 +90,7 @@ StartListen,启动总线监听,Start bus listen";
             //程序确保Log文件的存在性
             if (!Directory.Exists("Log"))
                 Directory.CreateDirectory("Log");
-            
+
             //使用多线程实时获取接收数据
             if (isStartReceiving)
                 ecanHelper.StartReceiving();
@@ -587,9 +588,13 @@ StartListen,启动总线监听,Start bus listen";
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_54"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //文件传输
 
             //添加“语言”菜单
-            tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_4"), Menu.Items, null);
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_41"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //中文
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_42"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //英文
+            if (isShowLanagugeMenu)
+            {
+                tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_4"), Menu.Items, null);
+                AddContextMenu(LanguageHelper.GetLanguage("tsmi_41"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //中文
+                AddContextMenu(LanguageHelper.GetLanguage("tsmi_42"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //英文
+
+            }
         }
 
         /// <summary>
@@ -838,7 +843,7 @@ StartListen,启动总线监听,Start bus listen";
             {
                 btnConnectionCAN.Enabled = true; //无论成功与否都恢复按钮
             }
-            
+
         }
 
         private void btnResetCAN_Click(object sender, EventArgs e)
@@ -966,7 +971,8 @@ StartListen,启动总线监听,Start bus listen";
             {
                 //导出Excel文件
                 workbook.Write(url);
-            };
+            }
+            ;
         }
         #endregion
 
