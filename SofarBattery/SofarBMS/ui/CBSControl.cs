@@ -170,7 +170,7 @@ namespace SofarBMS.UI
 
                         model.TotalChgCap = Convert.ToDouble(txtTotalChgCap.Text);
                         model.TotalDsgCap = Convert.ToDouble(txtTotalDsgCap.Text);
-                        break;
+                        break;                    
                     case 0x1008FFFF:
                     case 0x1008E0FF:
                         initCount++;

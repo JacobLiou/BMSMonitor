@@ -1,18 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Win32;
-using PowerKit.UI.Common;
 using Sofar.BMSLib;
 using Sofar.BMSUI;
 using Sofar.BMSUI.Common;
 using Sofar.ProtocolLib;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Xml;
@@ -21,12 +15,8 @@ namespace Sofar.HvBMSUI.ViewModels
 {
     public partial class BMU_ParamControl_ViewModel : ObservableObject
     {
-
-        public CancellationTokenSource cts = null;
         BaseCanHelper baseCanHelper = null;
-        XmlDocument mDocument;
-        public bool flag = true;
-        public static int index = 1;
+        public CancellationTokenSource cts = null;
         public static Dictionary<string, string> keys = new Dictionary<string, string>();
 
         public ObservableCollection<int> Address_BMU_List { get; } = new ObservableCollection<int>(Enumerable.Range(1, 255));
@@ -463,7 +453,6 @@ namespace Sofar.HvBMSUI.ViewModels
         //    set => SetProperty(ref _alarmParameter_12_5, value);
         //}
 
-
         private string _alarmParameter_13_1;
         public string AlarmParameter_13_1
         {
@@ -855,24 +844,16 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-
         public ObservableCollection<ParamViewModel> Parameters { get; set; } = new ObservableCollection<ParamViewModel>();
-        public class ParamViewModel : ObservableObject
-        {
-            public string ControlName { get; set; }
-            public string Value { get; set; }
-        }
 
         public BMU_ParamControl_ViewModel()
         {
-
             baseCanHelper = new CommandOperation(BMSConfig.ConfigManager).baseCanHelper;
 
             cts = new CancellationTokenSource();
-            #region 从控报警参数
             if (keys.Count == 0)
             {
-                //添加界面TextBox控件名称对应控件文本
+                //从控报警参数，添加界面TextBox控件名称对应控件文本
                 keys.Add("txtAlarmParameters_1_1", "单体过充保护(mV)");
                 keys.Add("txtAlarmParameters_1_2", "单体过充解除(mV)");
                 keys.Add("txtAlarmParameters_1_3", "单体过充告警(mV)");
@@ -959,12 +940,10 @@ namespace Sofar.HvBMSUI.ViewModels
                 keys.Add("txtAlarmParameters_17_3", "总体过放提示(V)");
                 keys.Add("txtAlarmParameters_17_4", "总体过放提示解除(V)");
             }
-            #endregion
         }
         public static bool IsShowMessage = true;
         public void Load()
         {
-
             if (baseCanHelper.IsConnection)
             {
                 IsShowMessage = false;
@@ -1009,15 +988,12 @@ namespace Sofar.HvBMSUI.ViewModels
                 //0x23: 0x084 回复单体电压过充、过放提示标定      ✅️
                 //0x24: 0x085 回复总压过压欠压提示标定            ✅️
                 baseCanHelper.Send(bytes, new byte[] { 0xE0, Address_BMU, 0x2E, 0x10 });
-
-
             }
 
             Task.Run(delegate
             {
                 while (!cts.IsCancellationRequested)
                 {
-
                     if (baseCanHelper.CommunicationType == "Ecan")
                     {
                         lock (EcanHelper._locker)
@@ -1026,10 +1002,7 @@ namespace Sofar.HvBMSUI.ViewModels
                                 && !cts.IsCancellationRequested)
                             {
                                 CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-
                                 Application.Current.Dispatcher.Invoke(() => { analysisData(ch.ID, ch.Data); });
-                                //Log.Info($"{System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")} 接收CAN数据:{BitConverter.ToString(ch.Data).Replace("-", " ")}  帧ID:{ch.ID.ToString("X8")}");
-
                             }
                         }
                     }
@@ -1041,10 +1014,7 @@ namespace Sofar.HvBMSUI.ViewModels
                                 && !cts.IsCancellationRequested)
                             {
                                 VCI_CAN_OBJ ch = (VCI_CAN_OBJ)ControlcanHelper._task.Dequeue();
-
                                 Application.Current.Dispatcher.Invoke(() => { analysisData(ch.ID, ch.Data); });
-                                //Log.Info($"{System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")} 接收CAN数据:{BitConverter.ToString(ch.Data).Replace("-", " ")}  帧ID:{ch.ID.ToString("X8")}");
-
                             }
                         }
                     }
@@ -1303,7 +1273,14 @@ namespace Sofar.HvBMSUI.ViewModels
                     break;
             }
         }
+
+
         public ICommand InitCmd => new RelayCommand<Window>(Init);
+        public ICommand ReadCmd => new RelayCommand<Window>(Read);
+        public ICommand WriteCmd => new RelayCommand<Window>(Write);
+        public ICommand ImportCmd => new RelayCommand<Window>(Import);
+        public ICommand ExportCmd => new RelayCommand<Window>(Export);
+
         /// <summary>
         /// 恢复主控报警参数默认值
         /// </summary>
@@ -1326,8 +1303,6 @@ namespace Sofar.HvBMSUI.ViewModels
             //baseCanHelper.Send(new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }, new byte[] { 0xE0, Address_BMU, 0x2E, 0x10 });
         }
 
-        public ICommand ReadCmd => new RelayCommand<Window>(Read);
-
         /// <summary>
         /// 读取从控报警参数
         /// </summary>
@@ -1339,7 +1314,6 @@ namespace Sofar.HvBMSUI.ViewModels
                 return;
             }
 
-            flag = true;
             byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
             byte Address_BMU = Convert.ToByte(SelectedAddress_BMU);
             if (baseCanHelper.Send(bytes, new byte[] { 0xE0, Address_BMU, 0x2E, 0x10 }))
@@ -1350,9 +1324,8 @@ namespace Sofar.HvBMSUI.ViewModels
             {
                 MessageBoxHelper.Success("读取失败", "提示", null, ButtonType.OK);
             }
-
         }
-        public ICommand WriteCmd => new RelayCommand<Window>(Write);
+
         /// <summary>
         /// 下设主控报警参数   
         /// </summary>
@@ -1659,7 +1632,6 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-        public ICommand ImportCmd => new RelayCommand<Window>(Import);
         public void Import(Window window)
         {
             try
@@ -1810,7 +1782,6 @@ namespace Sofar.HvBMSUI.ViewModels
             return true;
         }
 
-        public ICommand ExportCmd => new RelayCommand<Window>(Export);
         public void Export(Window window)
         {
             try
@@ -1948,8 +1919,6 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-
-
         public void CancelOperation()
         {
             if (cts != null)
@@ -1959,10 +1928,7 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-
-        private byte[] Uint16ToBytes_8_Offset(string t1, string t2, string t3, string t4, string t5, string t6, string t7, string t8,
-         double scaling1, double scaling2, double scaling3, double scaling4, double scaling5, double scaling6, double scaling7, double scaling8,
-         int offset1, int offset2, int offset3, int offset4, int offset5, int offset6, int offset7, int offset8)
+        private byte[] Uint16ToBytes_8_Offset(string t1, string t2, string t3, string t4, string t5, string t6, string t7, string t8, double scaling1, double scaling2, double scaling3, double scaling4, double scaling5, double scaling6, double scaling7, double scaling8,int offset1, int offset2, int offset3, int offset4, int offset5, int offset6, int offset7, int offset8)
         {
             byte byte1 = (byte)(Convert.ToUInt32(float.Parse(t1) / scaling1 - offset1));
             byte byte2 = (byte)(Convert.ToUInt32(float.Parse(t2) / scaling2 - offset2));
@@ -1981,9 +1947,7 @@ namespace Sofar.HvBMSUI.ViewModels
             data[0] = (byte)(ivalue & 0xff);
             return data;
         }
-
-        private byte[] Uint16ToBytes(string t1, string t2, string t3, string t4,
-          double scaling1, double scaling2, double scaling3, double scaling4)
+        private byte[] Uint16ToBytes(string t1, string t2, string t3, string t4, double scaling1, double scaling2, double scaling3, double scaling4)
         {
             byte[] b1 = Uint16ToBytes(Convert.ToUInt32(float.Parse(t1) / scaling1));
             byte[] b2 = Uint16ToBytes(Convert.ToUInt32(float.Parse(t2) / scaling2));
@@ -1992,8 +1956,6 @@ namespace Sofar.HvBMSUI.ViewModels
 
             return new byte[] { b1[0], b1[1], b2[0], b2[1], b3[0], b3[1], b4[0], b4[1] };
         }
-
-
         private int[] BytesToUint16(byte[] data)
         {
             int[] numbers = new int[4];
@@ -2003,7 +1965,6 @@ namespace Sofar.HvBMSUI.ViewModels
             }
             return numbers;
         }
-
         private int[] BytesToBit(byte[] data)
         {
             int[] numbers = new int[8];

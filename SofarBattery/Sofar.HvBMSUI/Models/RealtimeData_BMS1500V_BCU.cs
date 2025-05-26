@@ -1,13 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Documents;
-using System.Windows.Input;
 
 namespace PowerKit.UI.Models
 {
@@ -43,189 +34,37 @@ namespace PowerKit.UI.Models
             public string Value15 { get; set; }
             public string Value16 { get; set; }
         }
-
-
         public class batteryVoltageData : IBatteryData { }
-
         public class batterySocData : IBatteryData { }
-
         public class batteryTemperatureData : IBatteryData { }
-
         public class batterySohData : IBatteryData { }
-
         public class poleTemperatureData : IBatteryData { }
-
         public class supplyVoltageData : IBatteryData { }
-
         public class moduleTotalVoltageData : IBatteryData { }
 
+        #region 定义属性
+        public string BCU_ID { get; set; }
+        public string CreateDate { get; set; }
 
-        
-        /// <summary>
-        /// 报警信息表格数据
-        /// </summary>
-        public class AlarmMessageData : ObservableObject
-        {
-
-            private string _alarmNumber;
-            private string _isEnd;
-            private string _alarmStartTime;
-            private string _alarmStopTime;
-            private string _alarmLevel;
-            private string _alarmMessage;
-            private string _id;
-            private string _batterySectionNumber;
-
-            /// <summary>
-            /// 报警序号
-            /// </summary>
-            public string AlarmNumber
-            {
-                get { return _alarmNumber; }
-                set
-                {
-                    if (_alarmNumber != value)
-                    {
-                        _alarmNumber = value;
-                        OnPropertyChanged(nameof(AlarmNumber));
-                    }
-                }
-            }
-
-            /// <summary>
-            /// 是否结束
-            /// </summary>
-            public string isEnd
-            {
-                get { return _isEnd; }
-                set
-                {
-                    if (_isEnd != value)
-                    {
-                        _isEnd = value;
-                        OnPropertyChanged(nameof(isEnd));
-                    }
-                }
-            }
-
-            /// <summary>
-            /// 报警开始时间
-            /// </summary>
-            public string AlarmStartTime
-            {
-                get { return _alarmStartTime; }
-                set
-                {
-                    if (_alarmStartTime != value)
-                    {
-                        _alarmStartTime = value;
-                        OnPropertyChanged(nameof(AlarmStartTime));
-                    }
-                }
-            }
-
-            /// <summary>
-            /// 报警结束时间
-            /// </summary>
-            public string AlarmStopTime
-            {
-                get { return _alarmStopTime; }
-                set
-                {
-                    if (_alarmStopTime != value)
-                    {
-                        _alarmStopTime = value;
-                        OnPropertyChanged(nameof(AlarmStopTime));
-                    }
-                }
-            }
-
-            /// <summary>
-            /// 报警等级
-            /// </summary>
-            public string AlarmLevel
-            {
-                get { return _alarmLevel; }
-                set
-                {
-                    if (_alarmLevel != value)
-                    {
-                        _alarmLevel = value;
-                        OnPropertyChanged(nameof(AlarmLevel));
-                    }
-                }
-            }
-
-            /// <summary>
-            /// 报警信息描述
-            /// </summary>
-            public string AlarmMessage
-            {
-                get { return _alarmMessage; }
-                set
-                {
-                    if (_alarmMessage != value)
-                    {
-                        _alarmMessage = value;
-                        OnPropertyChanged(nameof(AlarmMessage));
-                    }
-                }
-            }
-
-            /// <summary>
-            /// 设备ID
-            /// </summary>
-            public string ID
-            {
-                get { return _id; }
-                set
-                {
-                    if (_id != value)
-                    {
-                        _id = value;
-                        OnPropertyChanged(nameof(ID));
-                    }
-                }
-            }
-
-            /// <summary>
-            /// 电池节号
-            /// </summary>
-            public string BatterySectionNumber
-            {
-                get { return _batterySectionNumber; }
-                set
-                {
-                    if (_batterySectionNumber != value)
-                    {
-                        _batterySectionNumber = value;
-                        OnPropertyChanged(nameof(BatterySectionNumber));
-                    }
-                }
-            }
-
-        }
-
-        public String BCU_ID { get; set; }
-        public String CreateDate { get; set; }
         /// <summary>
         /// 轻微报警信息
         /// </summary>
-        public String MinorAlarm { get; set; }
+        public string MinorAlarm { get; set; }
+
         /// <summary>
         /// 一般报警信息
         /// </summary>
-        public String GeneralAlarm { get; set; }
+        public string GeneralAlarm { get; set; }
+
         /// <summary>
         /// 严重报警信息
         /// </summary>
-        public String SevereAlarm { get; set; }
+        public string SevereAlarm { get; set; }
+
         /// <summary>
         /// 设备硬件故障报警信息
         /// </summary>
-        public String EquipmentHardwareFailureAlarm { get; set; }
-
-
+        public string EquipmentHardwareFailureAlarm { get; set; }
 
         /// <summary>
         /// 模块温度 分辨率 1℃/bit
@@ -297,7 +136,6 @@ namespace PowerKit.UI.Models
         /// </summary>
         public string InsulationResistance_R_Negative { get; set; }
 
-
         /// <summary>
         /// 电压最大值（前一）    
         /// </summary>
@@ -318,15 +156,16 @@ namespace PowerKit.UI.Models
         /// </summary>  
         public string BeforeTheMinimumValue_Voltage { get; set; }
 
-
         /// <summary>
         /// 电压最小值（前二）     
         /// </summary>  
+        /// 
         public string TopTwoMinimumValue_Voltage { get; set; }
 
         /// <summary>
         /// 电压最小值（前三）     
         /// </summary>  
+        /// 
         public string TopThreeMinimumValue_Voltage { get; set; }
 
         /// <summary>
@@ -519,7 +358,9 @@ namespace PowerKit.UI.Models
         /// </summary>
         public string PoleNumber { get; set; }
 
-        public String GetHeader()
+        #endregion
+
+        public string GetHeader()
         {
             return @"记录时间,BCU地址,轻微报警信息,一般报警信息,严重报警信息,设备硬件故障信息," +
                    @"组端电压(V),组端电流1(A),组端电流2(A),组端电流3(A),预充电压(V),绝缘电阻R+(KΩ)," +
@@ -533,7 +374,6 @@ namespace PowerKit.UI.Models
                    @"SOC最小值节号,SOH最大值前一(%),SOH最大值前二(%),SOH最大值前三(%),SOH最小值前一(%),SOH最小值前二(%)," +
                    @"SOH最小值前三(%),SOH平均值(%),SOH极差值(%),SOH最大值节号,SOH最小值节号,模块总数,电池节数,温度总数,极柱个数";
         }
-
         public string GetValue()
         {
             return $"{this.CreateDate},{this.BCU_ID},{this.MinorAlarm},{this.GeneralAlarm},{this.SevereAlarm},{this.EquipmentHardwareFailureAlarm},{this.GroupTerminalVoltage},{this.GroupEndCurrent_1},{this.GroupEndCurrent_2}," +
@@ -548,5 +388,128 @@ namespace PowerKit.UI.Models
                    $"{this.TopTwoMaximumValue_SOH},{this.TopThreeMaximumValue_SOH},{this.BeforeTheMinimumValue_SOH},{this.TopTwoMinimumValue_SOH},{this.TopThreeMinimumValue_SOH},{this.AverageValue_SOH}," +
                    $"{this.RangeValue_SOH},{this.SOHMaxNum},{this.SOHMinNum},{this.ModuleNumber},{this.BatteryCellsNumber},{this.TemperatureNumber},{this.PoleNumber}";
         }
+
+    }
+
+    /// <summary>
+    /// 报警信息表格数据
+    /// </summary>
+    public class AlarmMessageData : ObservableObject
+    {
+        private string _alarmNumber;    //报警序号
+        private string _isEnd;          //是否结束
+        private string _alarmStartTime; //报警开始时间
+        private string _alarmStopTime;  //报警结束时间
+        private string _alarmLevel;     //报警等级
+        private string _alarmMessage;   //报警信息描述
+        private string _id;             //设备ID
+                                        //private string _batterySectionNumber;
+
+        public string AlarmNumber
+        {
+            get { return _alarmNumber; }
+            set
+            {
+                if (_alarmNumber != value)
+                {
+                    _alarmNumber = value;
+                    OnPropertyChanged(nameof(AlarmNumber));
+                }
+            }
+        }
+
+        public string isEnd
+        {
+            get { return _isEnd; }
+            set
+            {
+                if (_isEnd != value)
+                {
+                    _isEnd = value;
+                    OnPropertyChanged(nameof(isEnd));
+                }
+            }
+        }
+
+        public string AlarmStartTime
+        {
+            get { return _alarmStartTime; }
+            set
+            {
+                if (_alarmStartTime != value)
+                {
+                    _alarmStartTime = value;
+                    OnPropertyChanged(nameof(AlarmStartTime));
+                }
+            }
+        }
+
+        public string AlarmStopTime
+        {
+            get { return _alarmStopTime; }
+            set
+            {
+                if (_alarmStopTime != value)
+                {
+                    _alarmStopTime = value;
+                    OnPropertyChanged(nameof(AlarmStopTime));
+                }
+            }
+        }
+
+        public string AlarmLevel
+        {
+            get { return _alarmLevel; }
+            set
+            {
+                if (_alarmLevel != value)
+                {
+                    _alarmLevel = value;
+                    OnPropertyChanged(nameof(AlarmLevel));
+                }
+            }
+        }
+
+        public string AlarmMessage
+        {
+            get { return _alarmMessage; }
+            set
+            {
+                if (_alarmMessage != value)
+                {
+                    _alarmMessage = value;
+                    OnPropertyChanged(nameof(AlarmMessage));
+                }
+            }
+        }
+
+        public string ID
+        {
+            get { return _id; }
+            set
+            {
+                if (_id != value)
+                {
+                    _id = value;
+                    OnPropertyChanged(nameof(ID));
+                }
+            }
+        }
+
+        ///// <summary>
+        ///// 电池节号
+        ///// </summary>
+        //public string BatterySectionNumber
+        //{
+        //    get { return _batterySectionNumber; }
+        //    set
+        //    {
+        //        if (_batterySectionNumber != value)
+        //        {
+        //            _batterySectionNumber = value;
+        //            OnPropertyChanged(nameof(BatterySectionNumber));
+        //        }
+        //    }
+        //}
     }
 }

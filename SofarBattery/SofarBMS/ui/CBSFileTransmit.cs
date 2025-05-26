@@ -327,7 +327,6 @@ RSV6,U32,1,,";
                 { 3, new FileTypeConfig() { HeadName = "5min特性数据文件", Extension = ".csv", DefaultOffset = 200, DefaultLength = 200, HeadStr = BmuFiveMinHeadStr, Content = BmuFiveMinText }},
                 { 4, new FileTypeConfig() { HeadName = "运行日志文件", Extension = ".txt", DefaultOffset = 200, DefaultLength = 200, HeadStr = null, Content = null }},
                 { 5, new FileTypeConfig() { HeadName = "历史事件文件", Extension = ".csv", DefaultOffset = 8, DefaultLength = 8, HeadStr = HistoryEventStr, Content = HistoryEventText }}
-
             };
 
             // 控件初始化

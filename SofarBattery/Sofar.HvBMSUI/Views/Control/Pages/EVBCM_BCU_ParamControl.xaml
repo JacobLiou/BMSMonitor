@@ -7,865 +7,657 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              xmlns:viewmodels="clr-namespace:Sofar.HvBMSUI.ViewModels" 
              d:DataContext="{d:DesignInstance Type=viewmodels:BCU_ParamControl_ViewModel}" mc:Ignorable="d" 
-             d:DesignHeight="3000" d:DesignWidth="1650" >
+             d:DesignHeight="1782" d:DesignWidth="2100">
 
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-        <Grid Background="White" >
-            <Grid Margin="0,10,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <!-- 分隔线 -->
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
+        <Grid Margin="0,10,0,0" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
 
-                <!-- 左侧 GroupBox 区域 -->
+            </Grid.ColumnDefinitions>
 
-                <GroupBox Grid.Row="0" Header="报警参数设置" FontSize="15"  Margin="10,0,0,0">
-                    <StackPanel>
-                        <StackPanel Orientation="Horizontal" >
-
-                            <Label Content="BCU设备地址" FontSize="16" Foreground="OrangeRed"   Margin="0,0,10,0"  VerticalAlignment="Center" />
-                            <ComboBox x:Name="ckbAddress_BCU"  FontSize="16" BorderBrush="OrangeRed" Foreground="OrangeRed" Width="100"  Margin="0,0,10,0"   BorderThickness="1" 
-                                      ItemsSource="{Binding Address_BCU_List}"   SelectedItem="{Binding SelectedAddress_BCU,Mode=TwoWay}">
-                                <ComboBox.ToolTip>
-                                    <ToolTip Background="LightGreen" Placement="MousePoint"  Foreground="Black">
-                                        切换此地址再点击读取按钮，可获取对应BCU设备的报警参数
-                                    </ToolTip>
-                                </ComboBox.ToolTip>
-                            </ComboBox>
-
-
-                            <Label Content="新设备地址" FontSize="16" Foreground="SeaGreen"   Margin="0,0,10,0"  VerticalAlignment="Center" />
-                            <ComboBox x:Name="ckbAddess_BCU"  FontSize="16" BorderBrush="SeaGreen" Foreground="SeaGreen" Width="100" Margin="0,0,10,0"    BorderThickness="1" ItemsSource="{Binding NewAddress_BCU_List}"   SelectedItem="{Binding SelectedNewAddress_BCU,Mode=TwoWay}">
-                            </ComboBox>
-                            <Button x:Name="btnWritBCUAddress"  FontSize="16" BorderBrush="SeaGreen" Background="SeaGreen" Foreground="Yellow" Margin="0,0,10,0" Content="设置" Command="{Binding WriteBCUAddressCmd}" Grid.Column="1">
-                                <Button.ToolTip>
-                                    <ToolTip Background="LightGreen" Placement="MousePoint"  Foreground="Black">
-                                        点击此按钮可写入新的设备地址
-                                    </ToolTip>
-                                </Button.ToolTip>
-                            </Button>
-                            <Button x:Name="btnAlarmParametersSetting_3" Width="200" Content="恢复主控报警参数默认值" Margin="0 0 10 0" Command="{Binding InitCmd}"/>
-
-                            <Button x:Name="btnAlarmParametersSetting_4" Width="200" Content="导入主控报警参数配置"   Margin="0 0 10 0" Command="{Binding ImportCmd}"/>
-
-                            <Button x:Name="btnAlarmParametersSetting_5" Width="200" Content="导出主控报警参数配置"   Margin="0 0 10 0" Command="{Binding ExportCmd}"/>
+            <!-- 左侧 GroupBox 区域 -->
+            <StackPanel Grid.Column="0" >
+                <GroupBox Header="报警参数设置" FontSize="15"  Margin="5,10,0,0">
+                    <StackPanel >
+                        <StackPanel  Margin="10,0,0,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200" />
+                                    <ColumnDefinition Width="100" />
+                                </Grid.ColumnDefinitions>
+                                <Label Content="BCU设备地址" FontSize="16" Foreground="OrangeRed"   Margin="0,0,85,0"  VerticalAlignment="Center" />
+                                <ComboBox x:Name="ckbAddress_BCU"  FontSize="16" BorderBrush="OrangeRed" Foreground="OrangeRed" Margin="120,0,0,0" BorderThickness="1" ItemsSource="{Binding Address_BCU_List}"   SelectedItem="{Binding SelectedAddress_BCU,Mode=TwoWay}">
+                                    <ComboBox.ToolTip>
+                                        <ToolTip Background="LightGreen" Placement="MousePoint"  Foreground="Black">
+                                            切换此地址再点击读取按钮，可获取对应BCU设备的报警参数
+                                        </ToolTip>
+                                    </ComboBox.ToolTip>
+                                </ComboBox>
+                            </Grid>
                         </StackPanel>
-                        <StackPanel  Orientation="Horizontal">
-                            <Button x:Name="btnAlarmParametersSetting_1"     Width="200" Content="读取主控报警参数"     Margin="0 0 10 0"   Command="{Binding ReadCmd}"/>
-
-                            <Button x:Name="btnAlarmParametersSetting_2" Width="200" Grid.Column="0" Content="下设主控报警参数" Margin="0 0 10 0" Command="{Binding WriteCmd}"/>
-                            <CheckBox x:Name="ckbSelectAll"  Margin="20,0,0,0" Grid.Column="1" IsChecked="{Binding IsAllChecked}"/>
-                            <Label Content="全选"  Margin="0,0,0,0" Grid.Column="2" VerticalContentAlignment="Center"/>
-
-
-                            
+                        <StackPanel  Margin="10,10,0,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200" />
+                                    <ColumnDefinition Width="80" />
+                                </Grid.ColumnDefinitions>
+                                <Label Content="新设备地址" FontSize="16" Foreground="SeaGreen"   Margin="0,0,85,0"  VerticalAlignment="Center" />
+                                <ComboBox x:Name="ckbAddess_BCU"  FontSize="16" BorderBrush="SeaGreen" Foreground="SeaGreen" Margin="120,0,0,0" BorderThickness="1" ItemsSource="{Binding NewAddress_BCU_List}"   SelectedItem="{Binding SelectedNewAddress_BCU,Mode=TwoWay}">
+                                </ComboBox>
+                                <Button x:Name="btnWritBCUAddress"  FontSize="16" BorderBrush="SeaGreen" Background="SeaGreen" Foreground="Yellow" Margin="10,0,0,0" Content="设置" Command="{Binding WriteBCUAddressCmd}" Grid.Column="1">
+                                    <Button.ToolTip>
+                                        <ToolTip Background="LightGreen" Placement="MousePoint"  Foreground="Black">
+                                            点击此按钮可写入新的设备地址
+                                        </ToolTip>
+                                    </Button.ToolTip>
+                                </Button>
+                            </Grid>
                         </StackPanel>
-
+                        <StackPanel Margin="10,0,0,0">
+                            <Button x:Name="btnAlarmParametersSetting_1"     Width="200" Content="读取主控报警参数"       Margin="-100,20,0,20" Command="{Binding ReadCmd}"/>
+                        </StackPanel>
+                        <StackPanel  Margin="10,0,0,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200" />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="50" />
+                                </Grid.ColumnDefinitions>
+                                <Button x:Name="btnAlarmParametersSetting_2" Width="200" Grid.Column="0" Content="下设主控报警参数" Margin="0,0,0,20" Command="{Binding WriteCmd}"/>
+                                <CheckBox x:Name="ckbSelectAll"  Margin="20,-20,0,0" Grid.Column="1" IsChecked="{Binding IsAllChecked}"/>
+                                <Label Content="全选"  Margin="0,-20,0,0" Grid.Column="2" VerticalContentAlignment="Center"/>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Margin="10,0,0,0" >
+                            <Button x:Name="btnAlarmParametersSetting_3" Width="200" Content="恢复主控报警参数默认值" Margin="-100,0,0,20" Command="{Binding InitCmd}"/>
+                        </StackPanel>
+                        <StackPanel Margin="10,0,0,0" >
+                            <Button x:Name="btnAlarmParametersSetting_4" Width="200" Content="导入主控报警参数配置"   Margin="-100,0,0,20" Command="{Binding ImportCmd}"/>
+                        </StackPanel>
+                        <StackPanel Margin="10,0,0,0" >
+                            <Button x:Name="btnAlarmParametersSetting_5" Width="200" Content="导出主控报警参数配置"   Margin="-100,0,0,20" Command="{Binding ExportCmd}"/>
+                        </StackPanel>
                     </StackPanel>
                 </GroupBox>
+            </StackPanel>
 
+            <!-- 分隔线 -->
+            <Border Grid.Column="1" Background="Gray" Width="2" Margin="10,0,0,0" Grid.RowSpan="2"/>
 
-                <!-- 分隔线 -->
-               
+            <!-- 右侧 4 行 5 列 GroupBox 布局 -->
+            <Grid Grid.Column="2" Margin="10,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-                <!-- 右侧 4 行 4 列 GroupBox 布局 -->
-                <Grid Grid.Row="2" Margin="0,0,0,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
+                <!--组端总电压下限报警值 第 1 行 第 1 列-->
+                <GroupBox Header="组端总电压下限报警值" Grid.Row="0" Grid.Column="0" Margin="5 10">
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                        </Grid.RowDefinitions>
 
-                    <!--组端总电压下限报警值 第 1 行 第 1 列-->
-                    <GroupBox Header="组端总电压下限报警值" Grid.Row="0" Grid.Column="0" Margin="10">
-                        <StackPanel Margin="10">
-                            <CheckBox x:Name="ckbAlarmParameters_1" IsChecked="{Binding IsChecked_AlarmParameter_1}"/>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="组端总电压轻微报警下限值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_1_1" Text="{Binding AlarmParameter_1_1,UpdateSourceTrigger=PropertyChanged}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="组端总电压一般报警下限值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_1_2" Text="{Binding AlarmParameter_1_2}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="组端总电压严重报警下限值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_1_3" Text="{Binding AlarmParameter_1_3}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="组端总电压报警下限回差值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_1_4" Text="{Binding AlarmParameter_1_4}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                        </StackPanel>
-                    </GroupBox>
+                        <CheckBox x:Name="ckbAlarmParameters_1" IsChecked="{Binding IsChecked_AlarmParameter_1}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0"/>
 
-                    <!--组端总电压上限报警值 第 2 行 第 1 列-->
-                    <GroupBox Header="组端总电压上限报警值" Grid.Row="1" Grid.Column="0" Margin="10">
-                        <StackPanel Margin="10">
-                            <CheckBox x:Name="ckbAlarmParameters_2" IsChecked="{Binding IsChecked_AlarmParameter_2}"/>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="组端总电压轻微报警上限值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_2_1" Text="{Binding AlarmParameter_2_1}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="组端总电压一般报警上限值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_2_2" Text="{Binding AlarmParameter_2_2}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="组端总电压严重报警上限值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_2_3" Text="{Binding AlarmParameter_2_3}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="组端总电压报警上限回差值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_2_4" Text="{Binding AlarmParameter_2_4}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                        </StackPanel>
-                    </GroupBox>
+                        <Label Content="组端总电压轻微报警下限值 (V)" Grid.Column="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_1_1" Text="{Binding AlarmParameter_1_1,UpdateSourceTrigger=PropertyChanged}" Width="80" Margin="10 0" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center"/>
 
-                    <!--电池单体电压下限报警值 第 3 行 第 1 列-->
-                    <GroupBox Header="电池单体电压下限报警值" Grid.Row="2" Grid.Column="0" Margin="10">
-                        <StackPanel Margin="10">
-                            <CheckBox x:Name="ckbAlarmParameters_3" IsChecked="{Binding IsChecked_AlarmParameter_3}"/>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池单体电压轻微报警下限值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_3_1" Text="{Binding AlarmParameter_3_1}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池单体电压一般报警下限值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_3_2" Text="{Binding AlarmParameter_3_2}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池单体电压严重报警下限值( (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_3_3" Text="{Binding AlarmParameter_3_3}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池单体电压报警下限回差值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_3_4" Text="{Binding AlarmParameter_3_4}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                        </StackPanel>
-                    </GroupBox>
+                        <Label Content="组端总电压一般报警下限值 (V)" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_1_2" Text="{Binding AlarmParameter_1_2}" Width="80" Margin="10 0" Grid.Row="1" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center"/>
 
-                    <!--电池单体电压上限报警值 第 4 行 第 1 列-->
-                    <GroupBox Header="电池单体电压上限报警值" Grid.Row="3" Grid.Column="0" Margin="10">
-                        <StackPanel Margin="10">
-                            <CheckBox x:Name="ckbAlarmParameters_4" IsChecked="{Binding IsChecked_AlarmParameter_4}"/>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池单体电压轻微报警上限值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_4_1" Text="{Binding AlarmParameter_4_1}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池单体电压一般报警上限值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_4_2" Text="{Binding AlarmParameter_4_2}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池单体电压严重报警上限值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_4_3" Text="{Binding AlarmParameter_4_3}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池单体电压报警上限回差值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_4_4" Text="{Binding AlarmParameter_4_4}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                        </StackPanel>
-                    </GroupBox>
+                        <Label Content="组端总电压严重报警下限值 (V)" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_1_3" Text="{Binding AlarmParameter_1_3}" Width="80" Margin="10 0" Grid.Row="2" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center"/>
 
-                    <!--电池单体电压压差报警值 第 1 行 第2 列-->
-                    <GroupBox Header="电池单体电压压差报警值" Grid.Row="0" Grid.Column="1" Margin="10">
-                        <StackPanel Margin="10">
-                            <CheckBox x:Name="ckbAlarmParameters_5" IsChecked="{Binding IsChecked_AlarmParameter_5}"/>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池单体电压压差轻微报警值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_5_1" Text="{Binding AlarmParameter_5_1}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池单体电压压差一般报警值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_5_2" Text="{Binding AlarmParameter_5_2}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池单体电压压差严重报警值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_5_3" Text="{Binding AlarmParameter_5_3}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池单体电压压差报警回差值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_5_4" Text="{Binding AlarmParameter_5_4}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                        </StackPanel>
-                    </GroupBox>
+                        <Label Content="组端总电压报警下限回差值 (V)" Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_1_4" Text="{Binding AlarmParameter_1_4}" Width="80" Margin="10 0" Grid.Row="3" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
 
-                    <!--单体电池温差报警值 第 2 行 第 2 列-->
-                    <GroupBox Header="单体电池温差报警值" Grid.Row="1" Grid.Column="1" Margin="10">
-                        <StackPanel Margin="10">
-                            <CheckBox x:Name="ckbAlarmParameters_6" IsChecked="{Binding IsChecked_AlarmParameter_6}"/>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="单体电池温差轻微报警下限值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_6_1" Text="{Binding AlarmParameter_6_1}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="单体电池温差一般报警下限值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_6_2" Text="{Binding AlarmParameter_6_2}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="单体电池温差严重报警下限值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_6_3" Text="{Binding AlarmParameter_6_3}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Content="单体电池温差报警回差值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_6_4" Text="{Binding AlarmParameter_6_4}"  Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                        </StackPanel>
-                    </GroupBox>
+                <!--组端总电压上限报警值 第 2 行 第 1 列-->
+                <GroupBox Header="组端总电压上限报警值" Grid.Row="1" Grid.Column="0" Margin="10">
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                        </Grid.RowDefinitions>
+                        <CheckBox x:Name="ckbAlarmParameters_2" IsChecked="{Binding IsChecked_AlarmParameter_2}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0"/>
 
-                    <!--绝缘电阻报警值 第 3 行 第 2 列-->
-                    <GroupBox Header="绝缘电阻报警值" Grid.Row="2" Grid.Column="1" Margin="10">
-                        <StackPanel Margin="10">
-                            <CheckBox x:Name="ckbAlarmParameters_7" IsChecked="{Binding IsChecked_AlarmParameter_7}"/>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="绝缘电阻正负对地电阻轻微报警值 (KΩ)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_7_1" Text="{Binding AlarmParameter_7_1}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="绝缘电阻正负对地电阻一般报警值 (KΩ)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_7_2" Text="{Binding AlarmParameter_7_2}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="绝缘电阻正负对地电阻严重报警值 (KΩ)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_7_3" Text="{Binding AlarmParameter_7_3}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="绝缘电阻正负对地电阻回差值 (KΩ)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_7_4" Text="{Binding AlarmParameter_7_4}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                        </StackPanel>
-                    </GroupBox>
+                        <Label Content="组端总电压轻微报警上限值 (V)" Grid.Column="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_2_1" Text="{Binding AlarmParameter_2_1}" Width="80" Margin="10 0" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center"/>
 
-                    <!--电池模组电压下限报警值 第 4 行 第 2 列-->
-                    <GroupBox Header="电池模组电压下限报警值" Grid.Row="3" Grid.Column="1" Margin="10">
-                        <StackPanel Margin="10">
-                            <CheckBox x:Name="ckbAlarmParameters_8" IsChecked="{Binding IsChecked_AlarmParameter_8}"/>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池模组电压轻微报警下限值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_8_1" Text="{Binding AlarmParameter_8_1}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池模组电压一般报警下限值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_8_2" Text="{Binding AlarmParameter_8_2}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池模组电压严重报警下限值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_8_3" Text="{Binding AlarmParameter_8_3}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池模组电压报警下限回差值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_8_4" Text="{Binding AlarmParameter_8_4}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                        </StackPanel>
-                    </GroupBox>
+                        <Label Content="组端总电压一般报警上限值 (V)" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_2_2" Text="{Binding AlarmParameter_2_2}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center"/>
 
-                    <!--电池模组电压上限报警值 第 1 行 第 3 列-->
-                    <GroupBox Header="电池模组电压上限报警值" Grid.Row="0" Grid.Column="2" Margin="10">
-                        <StackPanel Margin="10">
-                            <CheckBox x:Name="ckbAlarmParameters_9" IsChecked="{Binding IsChecked_AlarmParameter_9}"/>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池模组电压轻微报警上限值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_9_1" Text="{Binding AlarmParameter_9_1}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池模组电压一般报警上限值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_9_2" Text="{Binding AlarmParameter_9_2}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池模组电压严重报警上限值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_9_3" Text="{Binding AlarmParameter_9_3}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="电池模组电压报警上限回差值 (V)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_9_4" Text="{Binding AlarmParameter_9_4}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                        </StackPanel>
-                    </GroupBox>
+                        <Label Content="组端总电压严重报警上限值 (V)" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_2_3" Text="{Binding AlarmParameter_2_3}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center"/>
 
-                    <!--放电电流报警值 第 2 行 第 3 列-->
-                    <GroupBox Header="放电电流报警值" Grid.Row="1" Grid.Column="2" Margin="10">
-                        <StackPanel Margin="10">
-                            <CheckBox x:Name="ckbAlarmParameters_10" IsChecked="{Binding IsChecked_AlarmParameter_10}"/>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="放电电流过流轻微报警值 (A)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_10_1" Text="{Binding AlarmParameter_10_1}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="放电电流过流一般报警值 (A)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_10_2" Text="{Binding AlarmParameter_10_2}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="放电电流过流严重报警值 (A)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_10_3" Text="{Binding AlarmParameter_10_3}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="放电电流过流报警回差值 (A)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_10_4" Text="{Binding AlarmParameter_10_4}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                        </StackPanel>
-                    </GroupBox>
+                        <Label Content="组端总电压报警上限回差值 (V)" Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_2_4" Text="{Binding AlarmParameter_2_4}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
 
-                    <!--充电电流报警值 第 3 行 第 3 列-->
-                    <GroupBox Header="充电电流报警值" Grid.Row="2" Grid.Column="2" Margin="10">
-                        <StackPanel Margin="10">
-                            <CheckBox x:Name="ckbAlarmParameters_11" IsChecked="{Binding IsChecked_AlarmParameter_11}"/>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="充电电流过流轻微报警值 (A)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_11_1" Text="{Binding AlarmParameter_11_1}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="充电电流过流一般报警值 (A)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_11_2" Text="{Binding AlarmParameter_11_2}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="充电电流过流严重报警值 (A)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_11_3" Text="{Binding AlarmParameter_11_3}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="充电电流过流报警回差值 (A)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_11_4" Text="{Binding AlarmParameter_11_4}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="功率端子过温轻微报警值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_11_5" Text="{Binding AlarmParameter_11_5}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="功率端子过温一般报警值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_11_6" Text="{Binding AlarmParameter_11_6}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="功率端子过温严重报警值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_11_7" Text="{Binding AlarmParameter_11_7}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="功率端子过温报警回差值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_11_8" Text="{Binding AlarmParameter_11_8}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="馈电充电电流过流轻微报警值 (A)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_11_9" Text="{Binding AlarmParameter_11_9}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="馈电充电电流过流一般报警值 (A)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_11_10" Text="{Binding AlarmParameter_11_10}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="馈电充电电流过流严重报警值 (A)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_11_11" Text="{Binding AlarmParameter_11_11}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="馈电充电电流过流报警回差值 (A)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_11_12" Text="{Binding AlarmParameter_11_12}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                        </StackPanel>
-                    </GroupBox>
+                <!--电池单体电压下限报警值 第 3 行 第 1 列-->
+                <GroupBox Header="电池单体电压下限报警值" Grid.Row="2" Grid.Column="0" Margin="10">
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                        </Grid.RowDefinitions>
+                        <CheckBox x:Name="ckbAlarmParameters_3" IsChecked="{Binding IsChecked_AlarmParameter_3}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0"/>
 
-                    <!--充电单体电池温度报警值 第 4行 第 3 列-->
-                    <GroupBox Header="充电单体电池温度报警值" Grid.Row="3" Grid.Column="2" Margin="10">
-                        <StackPanel Margin="10">
-                            <CheckBox x:Name="ckbAlarmParameters_12" IsChecked="{Binding IsChecked_AlarmParameter_12}"/>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="充电单体电池温度轻微报警上限值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_12_1" Text="{Binding AlarmParameter_12_1}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="充电单体电池温度一般报警上限值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_12_2" Text="{Binding AlarmParameter_12_2}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="充电单体电池温度严重报警上限值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_12_3" Text="{Binding AlarmParameter_12_3}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="充电单体电池温度报警上限回差值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_12_4" Text="{Binding AlarmParameter_12_4}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="充电单体电池温度轻微报警下限值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_12_5" Text="{Binding AlarmParameter_12_5}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="充电单体电池温度一般报警下限值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_12_6" Text="{Binding AlarmParameter_12_6}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="充电单体电池温度严重报警下限值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_12_7" Text="{Binding AlarmParameter_12_7}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="充电单体电池温度报警下限回差值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_12_8" Text="{Binding AlarmParameter_12_8}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                        </StackPanel>
-                    </GroupBox>
+                        <Label Content="电池单体电压轻微报警下限值 (V)" Grid.Column="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_3_1" Text="{Binding AlarmParameter_3_1}" Width="80" Margin="10 0" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center"/>
 
-                    <!--模块温度上限报警值( 第 1 行 第 4 列-->
-                    <GroupBox Header="模块温度上限报警值" Grid.Row="0" Grid.Column="3" Margin="10">
-                        <StackPanel Margin="10">
-                            <CheckBox x:Name="ckbAlarmParameters_13" IsChecked="{Binding IsChecked_AlarmParameter_13}"/>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="模块温度轻微报警上限值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_13_1" Text="{Binding AlarmParameter_13_1}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="模块温度一般报警上限值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_13_2" Text="{Binding AlarmParameter_13_2}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="模块温度严重报警上限值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_13_3" Text="{Binding AlarmParameter_13_3}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="模块温度报警回差值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_13_4" Text="{Binding AlarmParameter_13_4}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                        </StackPanel>
-                    </GroupBox>
+                        <Label Content="电池单体电压一般报警下限值 (V)" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_3_2" Text="{Binding AlarmParameter_3_2}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center"/>
 
+                        <Label Content="电池单体电压严重报警下限值( (V)" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_3_3" Text="{Binding AlarmParameter_3_3}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center"/>
 
-                    <!--SOC报警值 第 2 行 第 4 列-->
-                    <GroupBox Header="SOC报警值" Grid.Row="1" Grid.Column="3" Margin="10">
-                        <StackPanel Margin="10">
-                            <CheckBox x:Name="ckbAlarmParameters_14" IsChecked="{Binding IsChecked_AlarmParameter_14}"/>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="SOC轻微报警下限值 (%)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_14_1" Text="{Binding AlarmParameter_14_1}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="SOC一般报警下限值 (%)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_14_2" Text="{Binding AlarmParameter_14_2}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="SOC严重报警下限值 (%)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_14_3" Text="{Binding AlarmParameter_14_3}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="SOC报警下限回差值 (%)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_14_4" Text="{Binding AlarmParameter_14_4}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="SOC轻微报警上限值 (%)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_14_5" Text="{Binding AlarmParameter_14_5}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="SOC一般报警上限值 (%)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_14_6" Text="{Binding AlarmParameter_14_6}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="SOC严重报警上限值 (%)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_14_7" Text="{Binding AlarmParameter_14_7}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="SOC报警上限回差值 (%)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_14_8" Text="{Binding AlarmParameter_14_8}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="SOC差异轻微报警值 (%)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_14_9" Text="{Binding AlarmParameter_14_9}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="SOC差异一般报警值 (%)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_14_10" Text="{Binding AlarmParameter_14_10}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="SOC差异严重报警值 (%)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_14_11" Text="{Binding AlarmParameter_14_11}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="SOC差异报警回差值 (%)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_14_12" Text="{Binding AlarmParameter_14_12}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                        </StackPanel>
-                    </GroupBox>
-                    <!--放电单体电池温度报警值 第 3 行 第 4 列-->
-                    <GroupBox Header="放电单体电池温度报警值" Grid.Row="2" Grid.Column="3" Margin="10">
-                        <StackPanel Margin="10">
-                            <CheckBox x:Name="ckbAlarmParameters_15" IsChecked="{Binding IsChecked_AlarmParameter_15}"/>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="放电单体电池温度轻微报警上限值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_15_1" Text="{Binding AlarmParameter_15_1}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="放电单体电池温度一般报警上限值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_15_2" Text="{Binding AlarmParameter_15_2}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="放电单体电池温度严重报警上限值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_15_3" Text="{Binding AlarmParameter_15_3}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="放电单体电池温度上限回差值(℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_15_4" Text="{Binding AlarmParameter_15_4}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="放电单体电池温度轻微报警下限值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_15_5" Text="{Binding AlarmParameter_15_5}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="放电单体电池温度一般报警下限值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_15_6" Text="{Binding AlarmParameter_15_6}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="放电单体电池温度严重报警下限值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_15_7" Text="{Binding AlarmParameter_15_7}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                            <Grid Margin="0,5">
-                                <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="220" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Content="放电单体电池温度下限回差值 (℃)" Grid.Column="0" />
-                                <TextBox x:Name="txtAlarmParameters_15_8" Text="{Binding AlarmParameter_15_8}" Width="100" Grid.Column="1" TextAlignment="Center"/>
-                            </Grid>
-                        </StackPanel>
-                    </GroupBox>
+                        <Label Content="电池单体电压报警下限回差值 (V)" Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_3_4" Text="{Binding AlarmParameter_3_4}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
 
-                </Grid>
+                <!--电池单体电压上限报警值 第 4 行 第 1 列-->
+                <GroupBox Header="电池单体电压上限报警值" Grid.Row="3" Grid.Column="0" Margin="10">
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                        </Grid.RowDefinitions>
+
+                        <CheckBox x:Name="ckbAlarmParameters_4" IsChecked="{Binding IsChecked_AlarmParameter_4}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0"/>
+
+                        <Label Content="电池单体电压轻微报警上限值 (V)" Grid.Column="1" VerticalAlignment="Bottom" />
+                        <TextBox x:Name="txtAlarmParameters_4_1" Text="{Binding AlarmParameter_4_1}" Width="80" Margin="10 0" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="电池单体电压一般报警上限值 (V)" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_4_2" Text="{Binding AlarmParameter_4_2}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="电池单体电压严重报警上限值 (V)" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_4_3" Text="{Binding AlarmParameter_4_3}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="电池单体电压报警上限回差值 (V)" Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_4_4" Text="{Binding AlarmParameter_4_4}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
+
+                <!--电池单体电压压差报警值 第 5 行 第 1 列-->
+                <GroupBox Header="电池单体电压压差报警值" Grid.Row="4" Grid.Column="0" Margin="10">
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                        </Grid.RowDefinitions>
+                        <CheckBox x:Name="ckbAlarmParameters_5" IsChecked="{Binding IsChecked_AlarmParameter_5}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0"/>
+
+                        <Label Content="电池单体电压压差轻微报警值 (V)" Grid.Column="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_5_1" Text="{Binding AlarmParameter_5_1}" Width="80" Margin="10 0" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="电池单体电压压差一般报警值 (V)" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_5_2" Text="{Binding AlarmParameter_5_2}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="电池单体电压压差严重报警值 (V)" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_5_3" Text="{Binding AlarmParameter_5_3}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="电池单体电压压差报警回差值 (V)" Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_5_4" Text="{Binding AlarmParameter_5_4}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
+
+                <!--单体电池温差报警值 第 1 行 第 2 列-->
+                <GroupBox Header="单体电池温差报警值" Grid.Row="0" Grid.Column="1" Margin="10">
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                        </Grid.RowDefinitions>
+                        <CheckBox x:Name="ckbAlarmParameters_6" IsChecked="{Binding IsChecked_AlarmParameter_6}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0"/>
+
+                        <Label Content="单体电池温差轻微报警下限值 (℃)" Grid.Column="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_6_1" Text="{Binding AlarmParameter_6_1}" Width="80" Margin="10 0" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="单体电池温差一般报警下限值 (℃)" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_6_2" Text="{Binding AlarmParameter_6_2}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="单体电池温差严重报警下限值 (℃)" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_6_3" Text="{Binding AlarmParameter_6_3}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="单体电池温差报警回差值 (℃)" Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_6_4" Text="{Binding AlarmParameter_6_4}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
+
+                <!--绝缘电阻报警值 第 2 行 第 2 列-->
+                <GroupBox Header="绝缘电阻报警值" Grid.Row="1" Grid.Column="1" Margin="10">
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                        </Grid.RowDefinitions>
+                        <CheckBox x:Name="ckbAlarmParameters_7" IsChecked="{Binding IsChecked_AlarmParameter_7}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0"/>
+
+                        <Label Content="绝缘电阻正负对地电阻轻微报警值 (KΩ)" Grid.Column="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_7_1" Text="{Binding AlarmParameter_7_1}" Width="80" Margin="10 0" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="绝缘电阻正负对地电阻一般报警值 (KΩ)" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_7_2" Text="{Binding AlarmParameter_7_2}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="绝缘电阻正负对地电阻严重报警值 (KΩ)" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_7_3" Text="{Binding AlarmParameter_7_3}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="绝缘电阻正负对地电阻回差值 (KΩ)" Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_7_4" Text="{Binding AlarmParameter_7_4}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
+
+                <!--电池模组电压下限报警值 第 3 行 第 2 列-->
+                <GroupBox Header="电池模组电压下限报警值" Grid.Row="2" Grid.Column="1" Margin="10">
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                        </Grid.RowDefinitions>
+                        <CheckBox x:Name="ckbAlarmParameters_8" IsChecked="{Binding IsChecked_AlarmParameter_8}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0"/>
+
+                        <Label Content="电池模组电压轻微报警下限值 (V)" Grid.Column="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_8_1" Text="{Binding AlarmParameter_8_1}" Width="80" Margin="10 0" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="电池模组电压一般报警下限值 (V)" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" />
+                        <TextBox x:Name="txtAlarmParameters_8_2" Text="{Binding AlarmParameter_8_2}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="电池模组电压严重报警下限值 (V)" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_8_3" Text="{Binding AlarmParameter_8_3}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="电池模组电压报警下限回差值 (V)" Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_8_4" Text="{Binding AlarmParameter_8_4}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
+
+                <!--电池模组电压上限报警值 第 4 行 第 2 列-->
+                <GroupBox Header="电池模组电压上限报警值" Grid.Row="3" Grid.Column="1" Margin="10">
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                        </Grid.RowDefinitions>
+
+                        <CheckBox x:Name="ckbAlarmParameters_9" IsChecked="{Binding IsChecked_AlarmParameter_9}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0"/>
+
+                        <Label Content="电池模组电压轻微报警上限值 (V)" Grid.Column="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_9_1" Text="{Binding AlarmParameter_9_1}" Width="80" Margin="10 0" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="电池模组电压一般报警上限值 (V)" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_9_2" Text="{Binding AlarmParameter_9_2}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="电池模组电压严重报警上限值 (V)" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_9_3" Text="{Binding AlarmParameter_9_3}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="电池模组电压报警上限回差值 (V)" Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_9_4" Text="{Binding AlarmParameter_9_4}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
+
+                <!--放电电流报警值 第 5 行 第 2 列-->
+                <GroupBox Header="放电电流报警值" Grid.Row="4" Grid.Column="1" Margin="10">
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                        </Grid.RowDefinitions>
+
+                        <CheckBox x:Name="ckbAlarmParameters_10" IsChecked="{Binding IsChecked_AlarmParameter_10}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0"/>
+
+                        <Label Content="放电电流过流轻微报警值 (A)" Grid.Column="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_10_1" Text="{Binding AlarmParameter_10_1}" Width="80" Margin="10 0" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="放电电流过流一般报警值 (A)" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_10_2" Text="{Binding AlarmParameter_10_2}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="放电电流过流严重报警值 (A)" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_10_3" Text="{Binding AlarmParameter_10_3}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="放电电流过流报警回差值 (A)" Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_10_4" Text="{Binding AlarmParameter_10_4}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
+
+                <!--充电电流报警值 第 1 行 第 3 列-->
+                <GroupBox Header="充电电流报警值" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Margin="10">
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="106"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <CheckBox x:Name="ckbAlarmParameters_11" IsChecked="{Binding IsChecked_AlarmParameter_11}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0"/>
+
+                        <Label Content="充电电流过流轻微报警值 (A)" Grid.Column="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_11_1" Text="{Binding AlarmParameter_11_1}" Width="80" Margin="10 0" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="充电电流过流一般报警值 (A)" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_11_2" Text="{Binding AlarmParameter_11_2}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="充电电流过流严重报警值 (A)" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_11_3" Text="{Binding AlarmParameter_11_3}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="充电电流过流报警回差值 (A)" Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_11_4" Text="{Binding AlarmParameter_11_4}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="功率端子过温轻微报警值 (℃)" Grid.Column="1" Grid.Row="4" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_11_5" Text="{Binding AlarmParameter_11_5}" Width="80" Margin="10 5" Grid.Column="2" Grid.Row="4" TextAlignment="Center" VerticalAlignment="Bottom"/>
+
+                        <Label Content="功率端子过温一般报警值 (℃)" Grid.Column="1" Grid.Row="5" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_11_6" Text="{Binding AlarmParameter_11_6}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="5" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="功率端子过温严重报警值 (℃)" Grid.Column="1" Grid.Row="6" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_11_7" Text="{Binding AlarmParameter_11_7}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="6" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="功率端子过温报警回差值 (℃)" Grid.Column="1" Grid.Row="7" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_11_8" Text="{Binding AlarmParameter_11_8}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="7" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="馈电充电电流过流轻微报警值 (A)" Grid.Column="1" Grid.Row="8" VerticalAlignment="Bottom" Visibility="Collapsed"/>
+                        <TextBox x:Name="txtAlarmParameters_11_9" Text="{Binding AlarmParameter_11_9}" Width="80" Margin="10 5" Grid.Column="2" Grid.Row="8" TextAlignment="Center" VerticalAlignment="Bottom" Visibility="Collapsed"/>
+
+                        <Label Content="馈电充电电流过流一般报警值 (A)" Grid.Column="1" Grid.Row="9" VerticalAlignment="Bottom" Visibility="Collapsed"/>
+                        <TextBox x:Name="txtAlarmParameters_11_10" Text="{Binding AlarmParameter_11_10}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="9" TextAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
+
+                        <Label Content="馈电充电电流过流严重报警值 (A)" Grid.Column="1" Grid.Row="10" VerticalAlignment="Bottom" Visibility="Collapsed"/>
+                        <TextBox x:Name="txtAlarmParameters_11_11" Text="{Binding AlarmParameter_11_11}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="10" TextAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
+
+                        <Label Content="馈电充电电流过流报警回差值 (A)" Grid.Column="1" Grid.Row="11" VerticalAlignment="Bottom" Visibility="Collapsed"/>
+                        <TextBox x:Name="txtAlarmParameters_11_12" Text="{Binding AlarmParameter_11_12}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="11" TextAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
+                    </Grid>
+                </GroupBox>
+
+                <!--充电单体电池温度报警值 第 2 行 第 3 列-->
+                <GroupBox Header="充电单体电池温度报警值" Grid.Row="3" Grid.RowSpan="2" Grid.Column="2" Margin="10">
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="106"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                        </Grid.RowDefinitions>
+                        <CheckBox x:Name="ckbAlarmParameters_12" IsChecked="{Binding IsChecked_AlarmParameter_12}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0"/>
+
+                        <Label Content="充电单体电池温度轻微报警上限值 (℃)" Grid.Column="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_12_1" Text="{Binding AlarmParameter_12_1}" Width="80" Margin="10 0" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="充电单体电池温度一般报警上限值 (℃)" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_12_2" Text="{Binding AlarmParameter_12_2}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="充电单体电池温度严重报警上限值 (℃)" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_12_3" Text="{Binding AlarmParameter_12_3}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="充电单体电池温度报警上限回差值 (℃)" Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_12_4" Text="{Binding AlarmParameter_12_4}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="充电单体电池温度轻微报警下限值 (℃)" Grid.Column="1" Grid.Row="4" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_12_5" Text="{Binding AlarmParameter_12_5}" Width="80" Margin="10 5" Grid.Column="2" Grid.Row="4" TextAlignment="Center" VerticalAlignment="Bottom"/>
+
+                        <Label Content="充电单体电池温度一般报警下限值 (℃)" Grid.Column="1" Grid.Row="5" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_12_6" Text="{Binding AlarmParameter_12_6}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="5" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="充电单体电池温度严重报警下限值 (℃)" Grid.Column="1" Grid.Row="6" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_12_7" Text="{Binding AlarmParameter_12_7}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="6" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="充电单体电池温度报警下限回差值 (℃)" Grid.Column="1" Grid.Row="7" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_12_8" Text="{Binding AlarmParameter_12_8}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="7" TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
+
+                <!--模块温度上限报警值( 第 1 行 第 5 列）-->
+                <GroupBox Header="模块温度上限报警值" Grid.Row="2" Grid.Column="2" Margin="10">
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                        </Grid.RowDefinitions>
+                        <CheckBox x:Name="ckbAlarmParameters_13" IsChecked="{Binding IsChecked_AlarmParameter_13}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0"/>
+
+                        <Label Content="模块温度轻微报警上限值 (℃)" Grid.Column="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_13_1" Text="{Binding AlarmParameter_13_1}" Width="80" Margin="10 0" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="模块温度一般报警上限值 (℃)" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_13_2" Text="{Binding AlarmParameter_13_2}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="模块温度严重报警上限值 (℃)" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_13_3" Text="{Binding AlarmParameter_13_3}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="模块温度报警回差值 (℃)" Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_13_4" Text="{Binding AlarmParameter_13_4}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
+
+                <!--SOC报警值 第 1 行 第 4 列-->
+                <GroupBox Header="充电电流报警值" Grid.RowSpan="3" Grid.Column="3" Margin="10">
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="106"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="106"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                        </Grid.RowDefinitions>
+                        <CheckBox x:Name="ckbAlarmParameters_14" IsChecked="{Binding IsChecked_AlarmParameter_14}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0"/>
+
+                        <Label Content="SOC轻微报警下限值 (%)" Grid.Column="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_14_1" Text="{Binding AlarmParameter_14_1}" Width="80" Margin="10 0" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="SOC一般报警下限值 (%)" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_14_2" Text="{Binding AlarmParameter_14_2}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="SOC严重报警下限值 (%)" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_14_3" Text="{Binding AlarmParameter_14_3}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="SOC报警下限回差值 (%)" Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_14_4" Text="{Binding AlarmParameter_14_4}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="SOC轻微报警上限值 (%)" Grid.Column="1" Grid.Row="4" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_14_5" Text="{Binding AlarmParameter_14_5}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="4" TextAlignment="Center" VerticalAlignment="Bottom"/>
+
+                        <Label Content="SOC一般报警上限值 (%)" Grid.Column="1" Grid.Row="5" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_14_6" Text="{Binding AlarmParameter_14_6}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="5" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="SOC严重报警上限值 (%)" Grid.Column="1" Grid.Row="6" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_14_7" Text="{Binding AlarmParameter_14_7}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="6" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="SOC报警上限回差值 (%)" Grid.Column="1" Grid.Row="7" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_14_8" Text="{Binding AlarmParameter_14_8}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="7" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="SOC差异轻微报警值 (%)" Grid.Column="1" Grid.Row="8" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_14_9" Text="{Binding AlarmParameter_14_9}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="8" TextAlignment="Center" VerticalAlignment="Bottom"/>
+
+                        <Label Content="SOC差异一般报警值 (%)" Grid.Column="1" Grid.Row="9" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_14_10" Text="{Binding AlarmParameter_14_10}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="9" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="SOC差异严重报警值 (%)" Grid.Column="1" Grid.Row="10" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_14_11" Text="{Binding AlarmParameter_14_11}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="10" TextAlignment="Center" VerticalAlignment="Center"/>
+
+                        <Label Content="SOC差异报警回差值 (%)" Grid.Column="1" Grid.Row="11" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_14_12" Text="{Binding AlarmParameter_14_12}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="11" TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
+                
+                <!--放电单体电池温度报警值 第 3 行 第 4 列-->
+                <GroupBox Header="放电单体电池温度报警值" Grid.Row="3" Grid.RowSpan="2" Grid.Column="3" Margin="10">
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="106"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                        </Grid.RowDefinitions>
+                        <CheckBox x:Name="ckbAlarmParameters_15" IsChecked="{Binding IsChecked_AlarmParameter_15}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0"/>
+
+                        <Label Content="放电单体电池温度轻微报警上限值 (℃)" Grid.Column="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_15_1" Text="{Binding AlarmParameter_15_1}" Width="80" Margin="10 0" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center"/>
+                        
+                        <Label Content="放电单体电池温度一般报警上限值 (℃)" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_15_2" Text="{Binding AlarmParameter_15_2}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center"/>
+                        
+                        <Label Content="放电单体电池温度严重报警上限值 (℃)" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_15_3" Text="{Binding AlarmParameter_15_3}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center"/>
+                        
+                        <Label Content="放电单体电池温度上限回差值(℃)" Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_15_4" Text="{Binding AlarmParameter_15_4}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center"/>
+                        
+                        <Label Content="放电单体电池温度轻微报警下限值 (℃)" Grid.Column="1" Grid.Row="4" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_15_5" Text="{Binding AlarmParameter_15_5}" Width="80" Margin="10 5" Grid.Column="2" Grid.Row="4" TextAlignment="Center" VerticalAlignment="Bottom"/>
+                        
+                        <Label Content="放电单体电池温度一般报警下限值 (℃)" Grid.Column="1" Grid.Row="5" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_15_6" Text="{Binding AlarmParameter_15_6}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="5" TextAlignment="Center" VerticalAlignment="Center"/>
+                        
+                        <Label Content="放电单体电池温度严重报警下限值 (℃)" Grid.Column="1" Grid.Row="6" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_15_7" Text="{Binding AlarmParameter_15_7}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="6" TextAlignment="Center" VerticalAlignment="Center"/>
+                        
+                        <Label Content="放电单体电池温度下限回差值 (℃)" Grid.Column="1" Grid.Row="7" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txtAlarmParameters_15_8" Text="{Binding AlarmParameter_15_8}" Width="80" Margin="10 0" Grid.Column="2" Grid.Row="7" TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
+
             </Grid>
         </Grid>
     </ScrollViewer>

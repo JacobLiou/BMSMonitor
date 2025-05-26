@@ -4,16 +4,10 @@ using Sofar.BMSLib;
 using Sofar.BMSUI;
 using Sofar.BMSUI.Common;
 using Sofar.ProtocolLib;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Xml;
 
@@ -21,10 +15,8 @@ namespace Sofar.HvBMSUI.ViewModels
 {
     public partial class BCU_ParamControl_ViewModel : ObservableObject
     {
-
         public CancellationTokenSource cts = null;
         CommandOperation bmsOper = null;
-        XmlDocument mDocument;
         public bool flag = true;
         public static int index = 1;
         public static Dictionary<string, string> keys = new Dictionary<string, string>();
@@ -480,28 +472,28 @@ namespace Sofar.HvBMSUI.ViewModels
             set => SetProperty(ref _alarmParameter_11_8, value);
         }
 
-        private string _alarmParameter_11_9;
+        private string _alarmParameter_11_9 = "0";//9~11暂时不使用
         public string AlarmParameter_11_9
         {
             get => _alarmParameter_11_9;
             set => SetProperty(ref _alarmParameter_11_9, value);
         }
 
-        private string _alarmParameter_11_10;
+        private string _alarmParameter_11_10 = "0";
         public string AlarmParameter_11_10
         {
             get => _alarmParameter_11_10;
             set => SetProperty(ref _alarmParameter_11_10, value);
         }
 
-        private string _alarmParameter_11_11;
+        private string _alarmParameter_11_11 = "0";
         public string AlarmParameter_11_11
         {
             get => _alarmParameter_11_11;
             set => SetProperty(ref _alarmParameter_11_11, value);
         }
 
-        private string _alarmParameter_11_12;
+        private string _alarmParameter_11_12 = "0";
         public string AlarmParameter_11_12
         {
             get => _alarmParameter_11_12;
@@ -605,6 +597,7 @@ namespace Sofar.HvBMSUI.ViewModels
             get => _alarmParameter_14_2;
             set => SetProperty(ref _alarmParameter_14_2, value);
         }
+
         private string _alarmParameter_14_3;
         public string AlarmParameter_14_3
         {
@@ -683,6 +676,7 @@ namespace Sofar.HvBMSUI.ViewModels
             set => SetProperty(ref _alarmParameter_15_1, value);
 
         }
+
         private string _alarmParameter_15_2;
         public string AlarmParameter_15_2
         {
@@ -690,6 +684,7 @@ namespace Sofar.HvBMSUI.ViewModels
             set => SetProperty(ref _alarmParameter_15_2, value);
 
         }
+
         private string _alarmParameter_15_3;
         public string AlarmParameter_15_3
         {
@@ -697,6 +692,7 @@ namespace Sofar.HvBMSUI.ViewModels
             set => SetProperty(ref _alarmParameter_15_3, value);
 
         }
+
         private string _alarmParameter_15_4;
         public string AlarmParameter_15_4
         {
@@ -704,24 +700,28 @@ namespace Sofar.HvBMSUI.ViewModels
             set => SetProperty(ref _alarmParameter_15_4, value);
 
         }
+
         private string _alarmParameter_15_5;
         public string AlarmParameter_15_5
         {
             get => _alarmParameter_15_5;
             set => SetProperty(ref _alarmParameter_15_5, value);
         }
+
         private string _alarmParameter_15_6;
         public string AlarmParameter_15_6
         {
             get => _alarmParameter_15_6;
             set => SetProperty(ref _alarmParameter_15_6, value);
         }
+
         private string _alarmParameter_15_7;
         public string AlarmParameter_15_7
         {
             get => _alarmParameter_15_7;
             set => SetProperty(ref _alarmParameter_15_7, value);
         }
+
         private string _alarmParameter_15_8;
         public string AlarmParameter_15_8
         {
@@ -757,8 +757,6 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-
-
         private bool _IsChecked_AlarmParameter_1;
         public bool IsChecked_AlarmParameter_1
         {
@@ -769,6 +767,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 OnPropertyChanged(nameof(IsChecked_AlarmParameter_1));
             }
         }
+
         private bool _IsChecked_AlarmParameter_2;
         public bool IsChecked_AlarmParameter_2
         {
@@ -779,6 +778,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 OnPropertyChanged(nameof(IsChecked_AlarmParameter_2));
             }
         }
+
         private bool _IsChecked_AlarmParameter_3;
         public bool IsChecked_AlarmParameter_3
         {
@@ -789,6 +789,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 OnPropertyChanged(nameof(IsChecked_AlarmParameter_3));
             }
         }
+
         private bool _IsChecked_AlarmParameter_4;
         public bool IsChecked_AlarmParameter_4
         {
@@ -799,6 +800,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 OnPropertyChanged(nameof(IsChecked_AlarmParameter_4));
             }
         }
+
         private bool _IsChecked_AlarmParameter_5;
         public bool IsChecked_AlarmParameter_5
         {
@@ -809,6 +811,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 OnPropertyChanged(nameof(IsChecked_AlarmParameter_5));
             }
         }
+
         private bool _IsChecked_AlarmParameter_6;
         public bool IsChecked_AlarmParameter_6
         {
@@ -819,6 +822,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 OnPropertyChanged(nameof(IsChecked_AlarmParameter_6));
             }
         }
+
         private bool _IsChecked_AlarmParameter_7;
         public bool IsChecked_AlarmParameter_7
         {
@@ -829,6 +833,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 OnPropertyChanged(nameof(IsChecked_AlarmParameter_7));
             }
         }
+
         private bool _IsChecked_AlarmParameter_8;
         public bool IsChecked_AlarmParameter_8
         {
@@ -839,6 +844,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 OnPropertyChanged(nameof(IsChecked_AlarmParameter_8));
             }
         }
+
         private bool _IsChecked_AlarmParameter_9;
         public bool IsChecked_AlarmParameter_9
         {
@@ -849,6 +855,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 OnPropertyChanged(nameof(IsChecked_AlarmParameter_9));
             }
         }
+
         private bool _IsChecked_AlarmParameter_10;
         public bool IsChecked_AlarmParameter_10
         {
@@ -859,6 +866,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 OnPropertyChanged(nameof(IsChecked_AlarmParameter_10));
             }
         }
+
         private bool _IsChecked_AlarmParameter_11;
         public bool IsChecked_AlarmParameter_11
         {
@@ -869,6 +877,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 OnPropertyChanged(nameof(IsChecked_AlarmParameter_11));
             }
         }
+
         private bool _IsChecked_AlarmParameter_12;
         public bool IsChecked_AlarmParameter_12
         {
@@ -879,6 +888,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 OnPropertyChanged(nameof(IsChecked_AlarmParameter_12));
             }
         }
+
         private bool _IsChecked_AlarmParameter_13;
         public bool IsChecked_AlarmParameter_13
         {
@@ -889,6 +899,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 OnPropertyChanged(nameof(IsChecked_AlarmParameter_13));
             }
         }
+
         private bool _IsChecked_AlarmParameter_14;
         public bool IsChecked_AlarmParameter_14
         {
@@ -899,6 +910,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 OnPropertyChanged(nameof(IsChecked_AlarmParameter_14));
             }
         }
+
         private bool _IsChecked_AlarmParameter_15;
         public bool IsChecked_AlarmParameter_15
         {
@@ -910,17 +922,7 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-
-
-
-
         public ObservableCollection<ParamViewModel> Parameters { get; set; } = new ObservableCollection<ParamViewModel>();
-        public class ParamViewModel : ObservableObject
-        {
-            public string ControlName { get; set; }
-            public string Value { get; set; }
-        }
-
 
         public ICommand ImportCmd => new RelayCommand<Window>(Import);
         public void Import(Window window)
@@ -1674,9 +1676,6 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-
-
-
         byte[] Uint16ToBytes_4(string t1, string t2, string t3, string t4,
          double scaling1, double scaling2, double scaling3, double scaling4)
         {
@@ -1687,7 +1686,6 @@ namespace Sofar.HvBMSUI.ViewModels
             byte byte7 = (byte)(Convert.ToUInt32(float.Parse(t4) / scaling4));
             return new byte[] { b1[1], b1[0], b2[1], b2[0], b3[1], b3[0], byte7, 0xFF };//高字节在前
         }
-
         byte[] Uint16ToBytes_4_Offset(string t1, string t2, string t3, string t4,
          double scaling1, double scaling2, double scaling3, double scaling4, int offset1, int offset2, int offset3, int offset4)
         {
@@ -1721,16 +1719,12 @@ namespace Sofar.HvBMSUI.ViewModels
 
         public BCU_ParamControl_ViewModel()
         {
-
-
             bmsOper = new CommandOperation(BMSConfig.ConfigManager);
 
-
             cts = new CancellationTokenSource();
-            #region 主控报警参数
             if (keys.Count == 0)
             {
-                //添加界面TextBox控件名称对应控件文本
+                //主控报警参数，添加界面TextBox控件名称对应控件文本
                 keys.Add("txtAlarmParameters_1_1", "组端总电压轻微报警下限值(V)");
                 keys.Add("txtAlarmParameters_1_2", "组端总电压一般报警下限值(V)");
                 keys.Add("txtAlarmParameters_1_3", "组端总电压严重报警下限值(V)");
@@ -1816,26 +1810,20 @@ namespace Sofar.HvBMSUI.ViewModels
                 keys.Add("txtAlarmParameters_15_7", "放电单体电池温度严重报警下限值(℃)");
                 keys.Add("txtAlarmParameters_15_8", "放电单体电池温度下限回差值(℃)");
             }
-            #endregion
-
-
         }
         public static bool IsShowMessage = true;
         public void Load()
         {
-
             if (bmsOper.IsConnection)
             {
                 IsShowMessage = false;
                 bmsOper.ReadBCUParam(Convert.ToInt32(SelectedAddress_BCU, 16));
             }
 
-
             Task.Run(async delegate
             {
                 while (!cts.IsCancellationRequested)
                 {
-
                     if (bmsOper.CommunicationType == "Ecan")
                     {
                         lock (EcanHelper._locker)
@@ -1844,10 +1832,7 @@ namespace Sofar.HvBMSUI.ViewModels
                                 && !cts.IsCancellationRequested)
                             {
                                 CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-
-                                Application.Current.Dispatcher.Invoke(() => { analysisData(ch.ID, ch.Data); });
-                                //Log.Info($"{System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")} 接收CAN数据:{BitConverter.ToString(ch.Data).Replace("-", " ")}  帧ID:{ch.ID.ToString("X8")}");
-
+                                Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
                             }
                         }
                     }
@@ -1859,14 +1844,10 @@ namespace Sofar.HvBMSUI.ViewModels
                                 && !cts.IsCancellationRequested)
                             {
                                 VCI_CAN_OBJ ch = (VCI_CAN_OBJ)ControlcanHelper._task.Dequeue();
-
-                                Application.Current.Dispatcher.Invoke(() => { analysisData(ch.ID, ch.Data); });
-                                //Log.Info($"{System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")} 接收CAN数据:{BitConverter.ToString(ch.Data).Replace("-", " ")}  帧ID:{ch.ID.ToString("X8")}");
-
+                                Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
                             }
                         }
                     }
-
 
                     await Task.Delay(500);
                 }
@@ -1880,7 +1861,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 cts.Dispose();
             }
         }
-        public void analysisData(uint canID, byte[] data)
+        public void AnalysisData(uint canID, byte[] data)
         {
             byte Address_BCU = Convert.ToByte(Convert.ToInt32(SelectedAddress_BCU, 16));
             //例如 查询组端电压上限告警值
@@ -2148,6 +2129,11 @@ namespace Sofar.HvBMSUI.ViewModels
                     break;
             }
         }
+    }
 
+    public class ParamViewModel : ObservableObject
+    {
+        public string ControlName { get; set; }
+        public string Value { get; set; }
     }
 }

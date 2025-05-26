@@ -1,48 +1,26 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Win32;
-using PowerKit.UI.Common;
-using System;
-using System.Collections.Generic;
+using Sofar.BMSLib;
+using Sofar.BMSUI;
+using Sofar.BMSUI.Common;
+using Sofar.BMSUI.Models;
+using Sofar.ProtocolLib;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Input;
-using PowerKit.UI.Models;
-using Sofar.ProtocolLib;
-using System.Globalization;
-using System.Collections;
-using Sofar.BMSLib;
-using Sofar.BMSUI.Models;
-using Sofar.BMSUI;
-using Sofar.BMSUI.Common;
 using System.Windows.Media;
 
 namespace Sofar.HvBMSUI.ViewModels
 {
     public class UpgradeControl_BMS_ViewModel : ObservableObject
     {
-
-        /// <summary>
-        /// 时
-        /// </summary>
+        // 时间参数列表
         public ObservableCollection<string> HourList { get; } = new ObservableCollection<string>(Enumerable.Range(0, 24).Select(x => x.ToString("D2")));
-
-        /// <summary>
-        /// 分
-        /// </summary>
         public ObservableCollection<string> MinuteList { get; } = new ObservableCollection<string>(Enumerable.Range(0, 60).Select(x => x.ToString("D2")));
-
-        /// <summary>
-        /// 秒
-        /// </summary>
         public ObservableCollection<string> SecondList { get; } = new ObservableCollection<string>(Enumerable.Range(0, 60).Select(x => x.ToString("D2")));
-
 
         // 升级日志数据列表
         private ObservableCollection<UpgradeLogData> _upgradeLogList;
@@ -78,6 +56,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 }
             }
         }
+
         // 芯片角色编码列表
         public ObservableCollection<string> Chiprole_val_List { get; } = new ObservableCollection<string>
         {
@@ -130,10 +109,7 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-
-
         private ObservableCollection<FirmwareModel_BMS1500V> _FirmwareModel_BMS1500V_DataList;
-
         public ObservableCollection<FirmwareModel_BMS1500V> FirmwareModel_BMS1500V_DataList
         {
             get => _FirmwareModel_BMS1500V_DataList;
@@ -257,8 +233,6 @@ namespace Sofar.HvBMSUI.ViewModels
             set { _upgradeProgressMax = value; OnPropertyChanged(); }
         }
 
-
-
         private string _upgradeTips = "提示:";
         /// <summary>
         /// 升级提示
@@ -278,7 +252,6 @@ namespace Sofar.HvBMSUI.ViewModels
             get { return _upgradeTipsTextColor; }
             set { _upgradeTipsTextColor = value; OnPropertyChanged(); }
         }
-
 
         private bool _isStartScheduledUpgrade_Checked;
         public bool IsStartScheduledUpgrade_Checked
@@ -315,7 +288,6 @@ namespace Sofar.HvBMSUI.ViewModels
         int file_length = -1;
         string file_name = string.Empty;
         byte[] file_data;
-        //List<FirmwareModel> firmwares = new List<FirmwareModel>();
         List<FirmwareModel> firmwareModels = new List<FirmwareModel>();
         List<FirmwareModel_BMS1500V> firmwareModels_bms = new List<FirmwareModel_BMS1500V>();
         public int sendErrorCount { get; set; } = 0;
@@ -329,7 +301,7 @@ namespace Sofar.HvBMSUI.ViewModels
         }
         public void Load()
         {
-            Task.Run(() =>
+            Task.Factory.StartNew(() =>
             {
                 if (baseCanHelper.CommunicationType == "Ecan")
                 {
@@ -340,10 +312,7 @@ namespace Sofar.HvBMSUI.ViewModels
                             while (EcanHelper._task.Count > 0
                                 && !_token.IsCancellationRequested)
                             {
-                                //出队
                                 CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-
-                                //解析
                                 Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
                             }
                         }
@@ -358,10 +327,7 @@ namespace Sofar.HvBMSUI.ViewModels
                             while (ControlcanHelper._task.Count > 0
                                 && !_token.IsCancellationRequested)
                             {
-                                //出队
                                 VCI_CAN_OBJ ch = (VCI_CAN_OBJ)ControlcanHelper._task.Dequeue();
-
-                                //解析
                                 Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
                             }
                         }
@@ -375,11 +341,9 @@ namespace Sofar.HvBMSUI.ViewModels
             switch (ChipRole)
             {
                 case "BCU":
-                    //SelectedChiprole_val = "0x24";
                     SlaveAddress = slaveAddress = "0xFF";
                     break;
                 case "BMU":
-                    //SelectedChiprole_val = "0x2D";
                     SlaveAddress = slaveAddress = "0x1F";
                     break;
                 default:
@@ -390,19 +354,6 @@ namespace Sofar.HvBMSUI.ViewModels
         public void Chiprole_val_SelectedIndexChanged(string Chiprole_val)
         {
             chip_role = SelectedChiprole_val;
-            //switch (Chiprole_val)
-            //{
-            //    case "0x24":
-            //        SelectedChiprole = "BCU";
-            //        SlaveAddress = slaveAddress = "0xFF";
-            //        break;
-            //    case "0x2D":
-            //        SelectedChiprole = "BMU";
-            //        SlaveAddress = slaveAddress = "0x1F";
-            //        break;
-            //    default:
-            //        break;
-            //}
         }
 
         public void Chipcode_SelectedIndexChanged(string Chipcode)
@@ -494,7 +445,6 @@ namespace Sofar.HvBMSUI.ViewModels
                     break;
             }
         }
-
 
         public ICommand ImportFirmwareCmd => new RelayCommand(ImportFirmware);
         /// <summary>
@@ -799,7 +749,6 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-
         /// <summary>
         /// 导入SOFAR文件处理-2K
         /// </summary>
@@ -849,7 +798,6 @@ namespace Sofar.HvBMSUI.ViewModels
         /// <param name="binchar"></param>
         private void AnalysisBin(byte[] binchar)
         {
-
             //清空旧数据
             firmwareModels_bms.Clear();
             FirmwareModel_BMS1500V_DataList.Clear();
@@ -966,129 +914,6 @@ namespace Sofar.HvBMSUI.ViewModels
                 MessageBoxHelper.Info($"文件创建时间解析失败: {ex.Message}", "提示", null, ButtonType.OK);
                 return "";
             }
-        }
-        public enum FileType : byte
-        {
-            app = 0x00,
-            core = 0x01,
-            kernel = 0x02,
-            rootfs = 0x03,
-            safety = 0x04,
-            pack = 0x80,
-        }
-
-        public enum ChipRole : byte
-        {
-            ARM = 0x21,
-            DSPM = 0x22,
-            DSPS = 0x23,
-            BMS_BCU = 0x24,
-            PCU = 0x25,
-            BDU = 0x26,
-            DCDC = 0x27,
-            DCDC_ARM = 0x28,
-            DCDC_DSP = 0x29,
-            BMU = 0x2D,
-            PCS_M = 0x30,
-            PCS_S = 0x31,
-            PCS_CPLD = 0x32,
-            CSU_MCU1 = 0x33,
-            CSU_MCU2 = 0x34,
-            DCDC_M = 0x38,
-            DCDC_S = 0x39,
-            DCDC_CPLD = 0x3A,
-            CMU_MCU1 = 0x3B,
-            CMU_MCU2 = 0x3C,
-            FUSE = 0x41,
-            AFCI = 0x42,
-            MPPT = 0x43,
-            PID = 0x44,
-            WIFI = 0x61,
-            BLE = 0x62,
-            PLC_CCO = 0x63,
-            PLC_STA = 0x64,
-            SUB1G_GW = 0x65,
-            SUB1G_STA = 0x66,
-            HUB_MCU1 = 0x67,
-            HUB_MCU2 = 0x68,
-            CSU = 0x80,
-            TFC = 0x81,
-            SSMGFD = 0x82,
-            COM = 0x88,
-            D2D = 0x90,
-            PFC = 0x91,
-        }
-
-        public enum BmsCanChipRole
-        {
-            ARM = 0x00,
-            DSPM = 0x01,
-            DSPS = 0x02,
-            PCU = 0x01,
-            BMS = 0x03,
-            BDU = 0x04,
-        }
-
-        public class FirmwareModel_BMS1500V : ObservableObject
-        {
-            /// <summary>
-            /// 工程名称
-            /// </summary>
-            public string ProjectName { get; set; }
-
-            /// <summary>
-            /// 文件大小
-            /// </summary>
-            public uint FirmwareSize { get; set; }
-
-            /// <summary>
-            /// 文件创建时间
-            /// </summary>
-            public string dateTimeString { get; set; }
-
-            /// <summary>
-            /// 文件类型
-            /// </summary>
-            public string FirmwareFileType { get; set; }
-
-            /// <summary>
-            /// 文件类型代号
-            /// </summary>
-            public byte FirmwareFileTypeCode { get; set; }
-
-            /// <summary>
-            /// 芯片角色
-            /// </summary>
-            public string FirmwareChipRole { get; set; }
-
-            /// <summary>
-            /// 芯片角色代号
-            /// </summary>
-            public byte FirmwareChipRoleCode { get; set; }
-
-            /// <summary>
-            /// 芯片代号
-            /// </summary>
-            public string ChipModel { get; set; }
-
-            /// <summary>
-            /// 芯片型号
-            /// </summary>
-            public string ChipMark { get; set; }
-
-
-            /// <summary>
-            ///软件版本号
-            /// </summary>
-            public string SoftwareVersion { get; set; }
-
-            /// <summary>
-            /// 硬件版本号
-            /// </summary>
-            public string HardwareVersion { get; set; }
-
-
-
         }
 
         /// <summary>
@@ -1261,7 +1086,6 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-
         /// <summary>
         /// 获取Bin文件数据
         /// </summary>
@@ -1338,7 +1162,6 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-
         /// <summary>
         /// 检查Bit为1的错误数据
         /// </summary>
@@ -1403,85 +1226,146 @@ namespace Sofar.HvBMSUI.ViewModels
             SelectedMinute = now.Minute.ToString("D2");
             SelectedSecond = now.Second.ToString("D2");
         }
+    }
 
-        public enum StepFlag
-        {
-            None = 0,
-            FB升级文件传输开始帧 = 1,
-            FC升级数据块开始帧 = 2,
-            FD升级数据块数据帧 = 3,
-            FE升级文件接收结果查询帧 = 4,
-            FF升级完成状态查询帧 = 5
-        }
+    public enum StepFlag
+    {
+        None = 0,
+        FB升级文件传输开始帧 = 1,
+        FC升级数据块开始帧 = 2,
+        FD升级数据块数据帧 = 3,
+        FE升级文件接收结果查询帧 = 4,
+        FF升级完成状态查询帧 = 5
+    }
+
+    public enum FileType : byte
+    {
+        app = 0x00,
+        core = 0x01,
+        kernel = 0x02,
+        rootfs = 0x03,
+        safety = 0x04,
+        pack = 0x80,
+    }
+
+    public enum ChipRole : byte
+    {
+        ARM = 0x21,
+        DSPM = 0x22,
+        DSPS = 0x23,
+        BMS_BCU = 0x24,
+        PCU = 0x25,
+        BDU = 0x26,
+        DCDC = 0x27,
+        DCDC_ARM = 0x28,
+        DCDC_DSP = 0x29,
+        BMU = 0x2D,
+        PCS_M = 0x30,
+        PCS_S = 0x31,
+        PCS_CPLD = 0x32,
+        CSU_MCU1 = 0x33,
+        CSU_MCU2 = 0x34,
+        DCDC_M = 0x38,
+        DCDC_S = 0x39,
+        DCDC_CPLD = 0x3A,
+        CMU_MCU1 = 0x3B,
+        CMU_MCU2 = 0x3C,
+        FUSE = 0x41,
+        AFCI = 0x42,
+        MPPT = 0x43,
+        PID = 0x44,
+        WIFI = 0x61,
+        BLE = 0x62,
+        PLC_CCO = 0x63,
+        PLC_STA = 0x64,
+        SUB1G_GW = 0x65,
+        SUB1G_STA = 0x66,
+        HUB_MCU1 = 0x67,
+        HUB_MCU2 = 0x68,
+        CSU = 0x80,
+        TFC = 0x81,
+        SSMGFD = 0x82,
+        COM = 0x88,
+        D2D = 0x90,
+        PFC = 0x91,
+    }
+
+    public enum BmsCanChipRole
+    {
+        ARM = 0x00,
+        DSPM = 0x01,
+        DSPS = 0x02,
+        PCU = 0x01,
+        BMS = 0x03,
+        BDU = 0x04,
+    }
+
+    public class FirmwareModel_BMS1500V : ObservableObject
+    {
+        /// <summary>
+        /// 工程名称
+        /// </summary>
+        public string ProjectName { get; set; }
 
         /// <summary>
-        /// 升级日志数据
+        /// 文件大小
         /// </summary>
-        public class UpgradeLogData
-        {
-            public string LogTime { get; set; }  // 日志记录时间         
-            public string FrameID { get; set; }  // 帧ID
-            public string LogData { get; set; }  // 日志数据      
-        }
+        public uint FirmwareSize { get; set; }
 
-        //public class FirmwareModel
-        //{
-        //    public FirmwareModel()
-        //    {
+        /// <summary>
+        /// 文件创建时间
+        /// </summary>
+        public string dateTimeString { get; set; }
 
-        //    }
-        //    public FirmwareModel(string firmwareName, string firmwareType, int startAddress, string firmwareVersion, int length)
-        //    {
-        //        this.FirmwareName = firmwareName;
-        //        this.FirmwareType = firmwareType;
-        //        this.StartAddress = startAddress;
-        //        this.FirmwareVersion = firmwareVersion;
-        //        this.Length = length;
-        //    }
+        /// <summary>
+        /// 文件类型
+        /// </summary>
+        public string FirmwareFileType { get; set; }
 
-        //    public string FirmwareName { get; set; }
-        //    public string FirmwareType { get; set; }
-        //    public int StartAddress { get; set; }
-        //    public string FirmwareVersion { get; set; }
-        //    public int Length { get; set; }
-        //    public bool CheckFlg { get; set; }
-        //}
+        /// <summary>
+        /// 文件类型代号
+        /// </summary>
+        public byte FirmwareFileTypeCode { get; set; }
 
-        //public class FirmwareModel
-        //{
-        //    public FirmwareModel()
-        //    {
+        /// <summary>
+        /// 芯片角色
+        /// </summary>
+        public string FirmwareChipRole { get; set; }
 
-        //    }
-        //    public FirmwareModel(string firmwareName, byte firmwareFileType, byte firmwareChipRole, int firmwareStartAddress, string firmwareVersion, int firmwareLength)
-        //    {
-        //        this.FirmwareName = firmwareName;
-        //        this.FirmwareFileType = firmwareFileType;
-        //        this.FirmwareChipRole = firmwareChipRole;
-        //        this.FirmwareStartAddress = firmwareStartAddress;
-        //        this.FirmwareVersion = firmwareVersion;
-        //        this.FirmwareLength = firmwareLength;
-        //    }
+        /// <summary>
+        /// 芯片角色代号
+        /// </summary>
+        public byte FirmwareChipRoleCode { get; set; }
 
-        //    //名称
-        //    public string FirmwareName { get; set; }
+        /// <summary>
+        /// 芯片代号
+        /// </summary>
+        public string ChipModel { get; set; }
 
-        //    //文件类型
-        //    public byte FirmwareFileType { get; set; }
+        /// <summary>
+        /// 芯片型号
+        /// </summary>
+        public string ChipMark { get; set; }
 
-        //    //芯片角色
-        //    public byte FirmwareChipRole { get; set; }
 
-        //    //起始偏移地址
-        //    public long FirmwareStartAddress { get; set; }
+        /// <summary>
+        ///软件版本号
+        /// </summary>
+        public string SoftwareVersion { get; set; }
 
-        //    //版本号
-        //    public string FirmwareVersion { get; set; }
+        /// <summary>
+        /// 硬件版本号
+        /// </summary>
+        public string HardwareVersion { get; set; }
 
-        //    //长度
-        //    public long FirmwareLength { get; set; }
-
-        //}
     }
+
+    public class UpgradeLogData
+    {
+        public string LogTime { get; set; }  // 日志记录时间         
+        public string FrameID { get; set; }  // 帧ID
+        public string LogData { get; set; }  // 日志数据      
+    }
+
 }
 

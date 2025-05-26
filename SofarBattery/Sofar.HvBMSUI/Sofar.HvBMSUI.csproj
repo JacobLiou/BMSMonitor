@@ -18,24 +18,24 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\Control\Pages\EVBCM_BCU_Control.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\Control\Pages\EVBCM_BCU_ParamControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\Control\Pages\EVBCM_BMU_Control.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\Control\Pages\EVBCM_BMU_ParamControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\Control\Pages\FileTransmit_BMS.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\Control\Pages\UpgradeControl_BMS.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
+	  <Compile Update="Views\Control\Pages\EVBCM_BCU_Control.xaml.cs">
+		  <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Update="Views\Control\Pages\EVBCM_BCU_ParamControl.xaml.cs">
+		  <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Update="Views\Control\Pages\EVBCM_BMU_Control.xaml.cs">
+		  <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Update="Views\Control\Pages\EVBCM_BMU_ParamControl.xaml.cs">
+		  <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Update="Views\Control\Pages\FileTransmit_BMS.xaml.cs">
+		  <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Update="Views\Control\Pages\UpgradeControl_BMS.xaml.cs">
+		  <SubType>Code</SubType>
+	  </Compile>
     <Compile Update="Views\MessageView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

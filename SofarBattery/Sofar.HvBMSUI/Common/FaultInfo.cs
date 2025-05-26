@@ -68,8 +68,8 @@ namespace PowerKit.UI.Common
                     new FaultInfo("电池满充,FLT_CHG_FULL",4,0,0,0,1),
                     new FaultInfo("短路保护,FLT_SHORT_CIRCUIT",4,1,0,0,2),
                     new FaultInfo("EEPROM异常,FLT_EEPROM_ERROR",4,2,0,0,3),
-                    new FaultInfo("电芯电压故障,FLT_CELL_VOLT_FAULT",4,3,0,0,3),
-                    new FaultInfo("环境NTC异常,FLT_NTC_INVALID",4,4,0,0,1),
+                    new FaultInfo("电芯故障,FLT_CELL_VOLT_FAULT",4,3,0,0,3),
+                    new FaultInfo("NTC异常(板温),FLT_NTC_INVALID",4,4,0,0,1),
                     new FaultInfo("充电MOS异常,FLT_CHG_MOS_INVALID",4,5,0,0,3),
                     new FaultInfo("放电MOS异常,FLT_DSG_MOS_INVALID",4,6,0,0,3),
                     new FaultInfo("AFE异常,FLT_SAMP_INVALID",4,7,0,0,3),
@@ -164,9 +164,9 @@ namespace PowerKit.UI.Common
                     new FaultInfo("SOC过低提示,TIP_SOC_L",0,7,0,0,4),
                     new FaultInfo("充电过流提示,TIP_CHG_CUR_H",1,0,0,0,4),
                     new FaultInfo("放电过流提示,TIP_DSG_CUR_H",1,1,0,0,4),
-                    new FaultInfo("保留,Res",1,2,0,0,4),
-                    new FaultInfo("保留,Res",1,3,0,0,4),
-                    new FaultInfo("保留,Res",1,4,0,0,4),
+                    new FaultInfo("AFE断链,AFE_CHAIN_BREAK",1,2,0,0,4),
+                    new FaultInfo("电解液检测传感器异常提示,ELECTROLYTE_MON_SEN_TIPS",1,3,0,0,4),
+                    new FaultInfo("电芯温度采样线提示,CELL_TEMP_WIRE_ABNORMAL_TIPS",1,4,0,0,4),
                     new FaultInfo("保留,Res",1,5,0,0,4),
                     new FaultInfo("保留,Res",1,6,0,0,4),
                     new FaultInfo("保留,Res",1,7,0,0,4),
@@ -179,7 +179,6 @@ namespace PowerKit.UI.Common
                     new FaultInfo("保留,Res",2,6,0,0,1),
                     new FaultInfo("保留,Res",2,7,0,0,1),
                     new FaultInfo("电池极限故障,FLT_CELL_VOLT_LIMIT",4,0,0,0,3),
-                    
         };
 
         //BCU报警信息应答消息（命令码 0x38）
@@ -187,7 +186,7 @@ namespace PowerKit.UI.Common
         {
             //type--类型1：无报警(data[0]=0)、严重报警(data[0]=1)、一般报警(data[0]=2)、轻微报警(data[0]=3)
             //type--类型2：设备硬件故障(data[0]=4)
-
+ 
                     new FaultInfo("供电电压欠压报警     ",1,0,0,0,1),
                     new FaultInfo("供电电压过压报警     ",1,1,0,0,1),
                     new FaultInfo("模块温度过温报警     ",1,2,0,0,1),
@@ -321,6 +320,55 @@ namespace PowerKit.UI.Common
                     new FaultInfo("DBC 使能已开启       ",4,5,4,0,2),
                     new FaultInfo("正常下电失败         ",4,6,4,0,2),
                     new FaultInfo("接收到所有簇故障下电 ",4,7,4,0,2),
+        };
+
+        //BCU报警信息应答消息（命令码 0xE1）
+        public static List<FaultInfo> FaultInfos4_new = new List<FaultInfo>()
+        {
+            new FaultInfo("高压采样故障,board_ext_adc_fault",1,0,0,0,4),
+            new FaultInfo("内网编址异常,board_inner_can_addr_repeat_fault",1,1,0,0,4),
+            new FaultInfo("afe异常故障,samp_invalid",1,2,0,0,4),
+            new FaultInfo("存储异常故障,flash_err",1,3,0,0,4),
+            new FaultInfo("严重过流锁死故障,Over_Curr_Lock",1,4,0,0,4),
+            new FaultInfo("电芯严重过压锁死故障,BAT_CELL_VOLT_HIGH_SERIOUS_LOCK",1,5,0,0,4),
+            new FaultInfo("保留,Res",1,6,0,0,4),
+            new FaultInfo("保留,Res",1,7,0,0,4),
+        };
+
+        public static List<FaultInfo> FaultInfos1_new = new List<FaultInfo>()
+        {
+            new FaultInfo("电池簇内总压压差过大保护,bat_cluster_total_volt_diff_over_fault",1,0,0,0,1),
+            new FaultInfo("过流失能,BAT_CURR_DISABLE",1,1,0,0,1),
+            new FaultInfo("电池过压失能,BAT_VOLT_HIGH_DISABLE",1,2,0,0,1),
+            new FaultInfo("电池欠压失能,BAT_VOLT_LOW_DISABLE",1,3,0,0,1),
+            new FaultInfo("电池高低温失能,BAT_CELL_TEMP_OVER_OR_LOW_LOCK",1,4,0,0,1),
+            new FaultInfo("保留,Res",1,5,0,0,1),
+            new FaultInfo("保留,Res",1,6,0,0,1),
+            new FaultInfo("保留,Res",1,7,0,0,1),
+        };
+
+        public static List<FaultInfo> FaultInfos2_new = new List<FaultInfo>()
+        {
+            new FaultInfo("地址冲突",1,0,0,0,2),
+            new FaultInfo("保留,Res",1,1,0,0,2),
+            new FaultInfo("保留,Res",1,2,0,0,2),
+            new FaultInfo("保留,Res",1,3,0,0,2),
+            new FaultInfo("保留,Res",1,4,0,0,2),
+            new FaultInfo("保留,Res",1,5,0,0,2),
+            new FaultInfo("保留,Res",1,6,0,0,2),
+            new FaultInfo("保留,Res",1,7,0,0,2),
+        };
+
+        public static List<FaultInfo> FaultInfos3_new = new List<FaultInfo>()
+        {
+            new FaultInfo("afe断链,afe_chain_break",1,0,0,0,2),
+            new FaultInfo("霍尔电流差异过大提示,board_hall_curr_diff_over_tip",1,1,0,0,2),
+            new FaultInfo("环境温度采集失效提示,env_ntc_invalid",1,2,0,0,2),
+            new FaultInfo("电解液漏液检测传感器异常提示,electrolyte_mon_sen_err_tip",1,3,0,0,2),
+            new FaultInfo("保留,Res",1,4,0,0,2),
+            new FaultInfo("保留,Res",1,5,0,0,2),
+            new FaultInfo("保留,Res",1,6,0,0,2),
+            new FaultInfo("保留,Res",1,7,0,0,2),
         };
     }
 }

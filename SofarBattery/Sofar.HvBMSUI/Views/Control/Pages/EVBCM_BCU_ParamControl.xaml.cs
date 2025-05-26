@@ -44,7 +44,7 @@ namespace Sofar.HvBMSUI.Control.Pages
         {
             if (DataContext is BCU_ParamControl_ViewModel viewModel)
             {
-                viewModel.CancelOperation();
+                viewModel.CancelOperation();              
             }
         }
     }

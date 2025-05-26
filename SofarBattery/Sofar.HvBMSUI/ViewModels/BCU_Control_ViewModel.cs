@@ -508,7 +508,6 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-
         public ObservableCollection<int> BatteryNumber_SOC_List { get; } = new ObservableCollection<int>(Enumerable.Range(1, 3480));
         private int _SelectedBatteryNumber_SOC;
         /// <summary>
@@ -567,17 +566,6 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-
-        /// <summary>
-        /// 当选择的 BCU 地址改变时触发的操作
-        /// </summary>
-        private void OnSelectedAddressChanged()
-        {
-            // 执行跟选择的地址相关的操作
-            // 例如更新显示或配置
-        }
-
-
         private ObservableCollection<IBatteryData> _batteryDataList;
         // 通用电池数据
         public ObservableCollection<IBatteryData> BatteryDataList
@@ -614,7 +602,6 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-
         private bool _isChecked_DO2_Close = true;
         public bool IsChecked_DO2_Close
         {
@@ -639,7 +626,6 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-
         private bool _isChecked_DO3_Close = true;
         public bool IsChecked_DO3_Close
         {
@@ -663,7 +649,6 @@ namespace Sofar.HvBMSUI.ViewModels
                 if (value) IsChecked_DO3_Close = false; // 开关互斥
             }
         }
-
 
         private bool _isChecked_DO4_Close = true;
         public bool IsChecked_DO4_Close
@@ -813,7 +798,6 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-
         private string _PassiveEquilibriumStatus = "Visible";
         /// <summary>
         /// 被动均衡状态
@@ -903,8 +887,6 @@ namespace Sofar.HvBMSUI.ViewModels
                 }
             }
         }
-
-
 
         public ObservableCollection<string> EquilibriumTypeList { get; } = new ObservableCollection<string>
         {
@@ -997,11 +979,6 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-
-
-
-
-
         public ObservableCollection<int> ModuleNumberList { get; } = new ObservableCollection<int>(Enumerable.Range(1, 60));
         private int _selectedModuleNumber = 1;
         /// <summary>
@@ -1046,7 +1023,6 @@ namespace Sofar.HvBMSUI.ViewModels
                 OnPropertyChanged(nameof(ChannelName));
             }
         }
-
 
         private bool _isOutOfContact_ControlModule_1 = true;
         /// <summary>
@@ -2407,9 +2383,6 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-
-
-
         public ObservableCollection<string> PowerOnAndOffList { get; } = new ObservableCollection<string>
         {
              "1：上电",
@@ -2620,6 +2593,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 if (value) _isChecked_Hall3_invalid = false; // 开关互斥
             }
         }
+
         private bool _isChecked_Hall3_invalid;
         /// <summary>
         /// 霍尔3无效
@@ -2665,7 +2639,6 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-
         private bool _isBatteryVoltageChecked;
         /// <summary>
         /// 电池电压
@@ -2688,10 +2661,7 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-
-
         private bool _isBatterySOCChecked;
-
         /// <summary>
         /// 电池SOC
         /// </summary>
@@ -2713,8 +2683,6 @@ namespace Sofar.HvBMSUI.ViewModels
 
             }
         }
-
-
 
         private bool _isBatterySOHChecked;
         /// <summary>
@@ -2838,7 +2806,6 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
         RealtimeData_BMS1500V_BCU model = new RealtimeData_BMS1500V_BCU();
-
 
         private string _dataName;
         /// <summary>
@@ -3009,7 +2976,6 @@ namespace Sofar.HvBMSUI.ViewModels
             set => SetProperty(ref _insulationResistance_R_Positive, value);
         }
 
-
         private string _insulationResistance_R_Negative;
         /// <summary>
         /// 绝缘电阻R-(KΩ)
@@ -3019,7 +2985,6 @@ namespace Sofar.HvBMSUI.ViewModels
             get => _insulationResistance_R_Negative;
             set => SetProperty(ref _insulationResistance_R_Negative, value);
         }
-
 
         private string _moduleTemperature;
         /// <summary>
@@ -3091,7 +3056,51 @@ namespace Sofar.HvBMSUI.ViewModels
             set => SetProperty(ref _groupEndTemperature_4, value);
         }
 
-
+        /// <summary>
+        /// 循环次数
+        /// </summary>
+        private string _cycleCount;
+        public string CycleCount
+        {
+            get { return _cycleCount; }
+            set { _cycleCount = value; }
+        }
+        /// <summary>
+        /// 累计充电容量
+        /// </summary>
+        private string _cumulativeChargeCapacity;
+        public string CumulativeChargeCapacity
+        {
+            get { return _cumulativeChargeCapacity; }
+            set { _cumulativeChargeCapacity = value; }
+        }
+        /// <summary>
+        /// 累计放电容量
+        /// </summary>
+        private string _cumulativeDischargeCapacity;
+        public string CumulativeDischargeCapacity
+        {
+            get { return _cumulativeDischargeCapacity; }
+            set { _cumulativeDischargeCapacity = value; }
+        }
+        /// <summary>
+        /// 累计充电能量
+        /// </summary>
+        private string _cumulativeChargeEnergy;
+        public string CumulativeChargeEnergy
+        {
+            get { return _cumulativeChargeEnergy; }
+            set { _cumulativeChargeEnergy = value; }
+        }
+        /// <summary>
+        /// 累计放电能量
+        /// </summary>
+        private string _cumulativeDischargeEnergy;
+        public string CumulativeDischargeEnergy
+        {
+            get { return _cumulativeDischargeEnergy; }
+            set { _cumulativeDischargeEnergy = value; }
+        }
 
         private string _beforeTheMaximumValue;
         /// <summary>
@@ -3112,7 +3121,6 @@ namespace Sofar.HvBMSUI.ViewModels
             get => _topTwoMaximumValue;
             set => SetProperty(ref _topTwoMaximumValue, value);
         }
-
 
         private string _topThreeMaximumValue;
         /// <summary>
@@ -3143,7 +3151,6 @@ namespace Sofar.HvBMSUI.ViewModels
             get => _averageValue;
             set => SetProperty(ref _averageValue, value);
         }
-
 
         private string _chargingBalance;
         /// <summary>
@@ -3244,7 +3251,6 @@ namespace Sofar.HvBMSUI.ViewModels
             get => _dIStatus_DI1;
             set => SetProperty(ref _dIStatus_DI1, value);
         }
-
 
         private string _dIStatus_DI2;
         /// <summary>
@@ -3518,7 +3524,6 @@ namespace Sofar.HvBMSUI.ViewModels
         private CancellationTokenSource cancellationTokenSource;
         public CancellationTokenSource cts = null;
 
-        int initCount = 0;
         private Timer timer = null;
         private Timer DataSavingTimer = null;
         private Timer batteryVoltageTimer = null;
@@ -3575,7 +3580,7 @@ namespace Sofar.HvBMSUI.ViewModels
             supplyVoltageDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.supplyVoltageData>();
             poleTemperatureDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.poleTemperatureData>();
             moduleTotalVoltageDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.moduleTotalVoltageData>();
-            AlarmMessageDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.AlarmMessageData>();
+            AlarmMessageDataList = new ObservableCollection<AlarmMessageData>();
 
 
             //添加电池电压编号
@@ -3851,7 +3856,6 @@ namespace Sofar.HvBMSUI.ViewModels
         /// <param name="obj"></param>
         private void TimerCallBack_DataSaving(object obj)
         {
-
             model.BCU_ID = SelectedAddress_BCU;
             model.CreateDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
@@ -3966,11 +3970,8 @@ namespace Sofar.HvBMSUI.ViewModels
                 var values = model.GetValue() + "," +
                              string.Join(",", tempbatteryVoltageDataList.Select(b => b.Voltage)) + "," + string.Join(",", tempbatteryTemperatureDataList.Select(b => b.Temperature)) + "," + string.Join(",", tempbatterySocDataList.Select(b => b.SOC)) + "\r\n";//测试版本增加SOH存储
                 File.AppendAllText(filePath, values, Encoding.UTF8);
-
-
             }
         }
-
 
         /// <summary>
         /// 更新电池电压数据
@@ -4090,7 +4091,6 @@ namespace Sofar.HvBMSUI.ViewModels
                     1));
             });
         }
-
 
         public ICommand StartDataCollectionCmd => new RelayCommand(StartDataCollection);
         /// <summary>
@@ -4227,7 +4227,6 @@ namespace Sofar.HvBMSUI.ViewModels
             return data;
         }
 
-
         /// <summary>
         /// 启动倒计时线程并发送数据
         /// </summary>
@@ -4293,7 +4292,6 @@ namespace Sofar.HvBMSUI.ViewModels
 
         }
 
-
         /// <summary>
         /// 准备均衡data数据
         /// </summary>
@@ -4341,7 +4339,6 @@ namespace Sofar.HvBMSUI.ViewModels
             return data;
         }
 
-
         /// <summary>
         /// 更新剩余均衡时间
         /// </summary>
@@ -4367,8 +4364,6 @@ namespace Sofar.HvBMSUI.ViewModels
             });
             return isOk;
         }
-
-
 
         /// <summary>
         /// 设置主动均衡数据
@@ -4432,7 +4427,6 @@ namespace Sofar.HvBMSUI.ViewModels
             cancellationTokenSource?.Cancel();
         }
 
-
         public ICommand PowerOnAndOffControlCmd => new RelayCommand(PowerOnAndOffControl);
         /// <summary>
         /// 控制主控上下电指令（ID: 0x0880FFF4）
@@ -4482,7 +4476,6 @@ namespace Sofar.HvBMSUI.ViewModels
             else MessageBoxHelper.Warning("地址分配失败！", "提示", null, ButtonType.OK);
         }
 
-
         private static readonly Random random = new Random();
 
         private readonly object lockObject = new object();
@@ -4531,6 +4524,7 @@ namespace Sofar.HvBMSUI.ViewModels
 
 
         }
+
         private void TimerCallBack(object obj)
         {
 
@@ -4552,14 +4546,12 @@ namespace Sofar.HvBMSUI.ViewModels
                         case 0x01:
                             // 电池单体电压
                             subCommandCodes = new byte[] { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07 };//恢复从1开始
-                            //subCommandCodes = new byte[] { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06 };//修改从0开始
                             break;
                         case 0x02:
                         case 0x03:
                         case 0x04:
                             // 电池单体温度/极柱温度、电池单体SOC、电池单体SOH
-                            subCommandCodes = new byte[] { 0x01, 0x02, 0x03, 0x04 };//恢复从1开始
-                            //subCommandCodes = new byte[] { 0x00, 0x01, 0x02, 0x03 };//修改从0开始
+                            subCommandCodes = new byte[] { 0x01, 0x02, 0x03, 0x04, 0x05 };//恢复从1开始
                             break;
                         default:
                             // 其他—主控采集信息、系统概要信息、模块电池节数、组端报警信息、DI/DO 状态信息、模块温度个数、均衡状态、从控失联状态、NC(未定义)
@@ -4657,8 +4649,6 @@ namespace Sofar.HvBMSUI.ViewModels
                     //查询从控模块基本参数(Byte1: 包序号0x01, 包序号0x02 - 0xFF暂时全部预留)                  
                     byte[] bytes7 = new byte[8] { 0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
                     baseCanHelper.Send(bytes7, new byte[] { 0xF4, Address_BCU, 0x1F, 0x18 });
-
-
                 }
                 catch
                 {
@@ -4666,8 +4656,6 @@ namespace Sofar.HvBMSUI.ViewModels
                 }
             }
         }
-
-
 
         public void CancelOperation()
         {
@@ -5121,12 +5109,10 @@ namespace Sofar.HvBMSUI.ViewModels
                     //  EVBCM 应答 PC 请求电池单体电压消息（命令码 0x31）
                     //case 0x1831F4E8:
                     case 0x31:
-
                         // Byte 1:帧序号（n） 20帧 一帧3个电池数据 20帧共60个电池数据
                         int frameNumber = data[0];
                         // Byte 2: 包序号（N） 7包 1包20帧    420-384=36
                         int sequenceNumber = data[1];
-
 
                         //实际调试384个电池电压数据
                         if (sequenceNumber >= 0x01 && sequenceNumber <= 0x06)
@@ -5155,7 +5141,6 @@ namespace Sofar.HvBMSUI.ViewModels
                             return (sequenceNumber - 1) * 60 + (frameNumber - 1) * 3;
                             //return sequenceNumber * 60 + (frameNumber - 1) * 3;
                         }
-
 
                         void ProcessBatteryData(int startBatteryIndex, byte[] data)
                         {
@@ -5194,9 +5179,6 @@ namespace Sofar.HvBMSUI.ViewModels
                                 }
                             }
                         }
-
-                        //batteryVoltageDataList.Clear();
-                        initCount++;
                         break;
 
                     //  EVBCM 应答 PC 请求电池单体温度消息（命令码 0x32）
@@ -5271,7 +5253,6 @@ namespace Sofar.HvBMSUI.ViewModels
                             }
 
                         }
-                        initCount++;
                         break;
                     //EVBCM 应答 PC 请求极柱温度消息（命令码（ 0x32+0x80））
                     //case 0x18B2F4E8:
@@ -5324,7 +5305,6 @@ namespace Sofar.HvBMSUI.ViewModels
                             }
 
                         }
-                        initCount++;
                         break;
                     // EVBCM 应答 PC 请求电池单体 SOC 消息（命令码 0x33）
                     //case 0x1833F4E8:
@@ -5352,6 +5332,46 @@ namespace Sofar.HvBMSUI.ViewModels
                             {
                                 int startBatteryIndex = GetbatterySOCStartIndex(sequenceNumber, frameNumber);
                                 ProcessBatterySOC(startBatteryIndex, data);
+                            }
+                        }
+
+                        if (sequenceNumber == 0x05)
+                        {
+                            switch (frameNumber)
+                            {
+                                case 0x01:
+                                    //累计充电容量，0.1/AH，U32
+                                    CumulativeChargeCapacity = (Convert.ToDouble(((data[5] << 24) + (data[4] << 16) + (data[3] << 8) + (data[2] & 0xff)) * 0.1)).ToString();
+                                    //循环次数，0.1/次，U16
+                                    CycleCount = (((data[6] << 8) | data[7]) * 0.1).ToString("F2");
+                                    break;
+                                case 0x02:
+                                    //累计放电容量，0.1AH U32
+                                    CumulativeDischargeCapacity = (Convert.ToDouble(((data[6] << 24) + (data[5] << 16) + (data[4] << 8) + (data[3] & 0xff)) * 0.1)).ToString();
+                                    //SOH修正次数，0.1/次，U16
+                                    //(((data[6] << 8) | data[7]) * 0.1).ToString();
+                                    break;
+                                case 0x03:
+                                    //累计充电能量，0.01/KW，U32
+                                    CumulativeChargeEnergy = (Convert.ToDouble(((data[5] << 24) + (data[4] << 16) + (data[3] << 8) + (data[2] & 0xff)) * 0.001)).ToString();
+                                    break;
+                                case 0x04:
+                                    //累计放电能量，0.01/KW，U32
+                                    CumulativeDischargeEnergy = (Convert.ToDouble(((data[5] << 24) + (data[4] << 16) + (data[3] << 8) + (data[2] & 0xff)) * 0.001)).ToString(); break;
+                                case 0x05:
+                                    //单次充电容量，0.1/AH，U16
+                                    (((data[3] << 8) | data[4]) * 0.1).ToString();
+                                    //单次充电能量，0.1/KW，U16
+                                    (((data[5] << 8) | data[6]) * 0.01).ToString();
+                                    break;
+                                case 0x06:
+                                    //单次放电容量，0.1/AH，U16
+                                    (((data[3] << 8) | data[4]) * 0.1).ToString();
+                                    //单次放电能量，0.1/KW，U16
+                                    (((data[5] << 8) | data[6]) * 0.01).ToString();
+                                    break;
+                                default:
+                                    break;
                             }
                         }
 
@@ -5405,7 +5425,6 @@ namespace Sofar.HvBMSUI.ViewModels
                                 }
                             }
                         }
-                        initCount++;
                         break;
                     // EVBCM 应答 PC 请求电池单体 SOH 消息（命令码 0x34）
                     //case 0x1834F4E8:
@@ -5486,13 +5505,11 @@ namespace Sofar.HvBMSUI.ViewModels
 
 
                         }
-                        initCount++;
                         break;
 
                     // EVBCM 应答 PC 请求主控采集信息消息（命令码 0x35）
                     //case 0x1835F4E8:
                     case 0x35:
-
                         // Byte 1:包序号 1~2
                         sequenceNumber = data[0];
                         switch (sequenceNumber)
@@ -5584,10 +5601,6 @@ namespace Sofar.HvBMSUI.ViewModels
                                 GroupEndCurrent_3 = model.GroupEndCurrent_3;
                                 break;
                         }
-
-
-
-                        initCount++;
                         break;
 
                     // EVBCM 应答 PC 请求系统概要信息消息（命令码 0x36）
@@ -5750,7 +5763,6 @@ namespace Sofar.HvBMSUI.ViewModels
                             AverageValue = model.AverageValue_Voltage;
                             RangeValue = model.RangeValue_Voltage;
                         }
-
                         else if (IsChecked_BatteryTemperature)
                         {
                             BeforeTheMaximumValue = model.BeforeTheMaximumValue_Temperature + " " + model.TemperatureMaxNum + "#";
@@ -5762,7 +5774,6 @@ namespace Sofar.HvBMSUI.ViewModels
                             AverageValue = model.AverageValue_Temperature;
                             RangeValue = model.RangeValue_Temperature;
                         }
-
                         else if (IsChecked_BatterySOH)
                         {
                             BeforeTheMaximumValue = model.BeforeTheMaximumValue_SOH + " " + model.SOHMaxNum + "#";
@@ -5774,7 +5785,6 @@ namespace Sofar.HvBMSUI.ViewModels
                             AverageValue = model.AverageValue_SOH;
                             RangeValue = model.RangeValue_SOH;
                         }
-
                         else if (IsChecked_BatterySOC)
                         {
                             BeforeTheMaximumValue = model.BeforeTheMaximumValue_SOC + " " + model.SOCMaxNum + "#";
@@ -5786,7 +5796,6 @@ namespace Sofar.HvBMSUI.ViewModels
                             AverageValue = model.AverageValue_SOC;
                             RangeValue = model.RangeValue_SOC;
                         }
-                        initCount++;
                         break;
 
                     // EVBCM 应答 PC 请求模块电池节数信息消息（命令码 0x37）
@@ -5806,7 +5815,6 @@ namespace Sofar.HvBMSUI.ViewModels
                                 BatteryCellsNumber = model.BatteryCellsNumber;
                                 break;
                         }
-                        initCount++;
                         break;
 
                     // EVBCM 应答 PC 请求报警信息应答消息（命令码 0x38）
@@ -5839,18 +5847,17 @@ namespace Sofar.HvBMSUI.ViewModels
                             case 0x01: // 报警等级 1：严重报警                             
                             case 0x02: // 报警等级 2：一般报警                               
                             case 0x03: // 报警等级 3：轻微报警
-                                AnalyzeAlarm(4, sequenceNumber, data, msg, AlarmLevel, BatterySectionNumber);
+                                AnalyzeAlarm(4, sequenceNumber, data, msg, AlarmLevel);
                                 break;
                             case 0x04: // 报警等级 4：设备硬件故障
-                                AnalyzeAlarm(5, sequenceNumber, data, msg, AlarmLevel, BatterySectionNumber);
+                                AnalyzeAlarm(5, sequenceNumber, data, msg, AlarmLevel);
                                 break;
                         }
-                        initCount++;
                         break;
+
                     // EVBCM 应答 PC 请求 DI/DO 信息应答消息（命令码 0x39）
                     //case 0x1839F4E8:
                     case 0x39:
-
                         // Byte 1 序号                    
                         sequenceNumber = data[0];
 
@@ -5859,8 +5866,7 @@ namespace Sofar.HvBMSUI.ViewModels
                                                      "高压箱断路器反馈-有效","DI7-有效"             ,"DI8-有效"           ,"DI9-有效"         ,"DI10-有效"            };
                         string[] DOStatusMessages = {"主正接触器-吸合"      ,"环流接触器-吸合"      ,"主负接触器-吸合"    ,"DO4-吸合"         ,
                                                      "指示灯-绿-吸合"       ,"指示灯-红-吸合"       ,"辅助接触器-吸合"    ,"DO8-吸合"         };
-
-                        // 解析 DI
+                        
                         if (sequenceNumber == 0x00)
                         {
                             // BYTE2-DI1~DI8
@@ -5891,8 +5897,6 @@ namespace Sofar.HvBMSUI.ViewModels
                                 }
                             }
                         }
-
-                        // 解析 DO
                         else if (sequenceNumber == 0x01)
                         {
                             // BYTE2-DO1~DO8
@@ -5951,9 +5955,7 @@ namespace Sofar.HvBMSUI.ViewModels
                             SeriousFaultStatus = GetBit(data[2], 2).ToString() == "1" ? "有(1)" : "无(0)";
                             ClusterMode = GetBit(data[2], 3).ToString() == "1" ? "使能(1)" : "失能(0)";
                             SingleClusterMode = GetBit(data[2], 4).ToString() == "1" ? "使能(1)" : "失能(0)";
-
                         }
-                        initCount++;
                         break;
 
                     // EVBCM 应答 PC 请求模块温度个数信息消息（命令码 0x3A）
@@ -5961,19 +5963,40 @@ namespace Sofar.HvBMSUI.ViewModels
                     case 0x3A:
                         // Byte 1 0~N/7
                         sequenceNumber = data[0];
+                        if (sequenceNumber == 0x00)
+                        {
+                            //温度总数 ( 0 ~ 400 )节
+                            model.TemperatureNumber = (data[2] << 8 | data[3]).ToString();
+                            TemperatureNumber = model.TemperatureNumber;
+                        }
+                        break;
+                    case 0x3E:
+                        // Byte 1 0~N/7                       
+                        sequenceNumber = data[0];
+                        string[] msg2 = new string[2];//报警信息、中文/英文（英文暂为null）
+                        //报警等级/类型
+                        string AlarmType = GetAlarmLevelDescription(sequenceNumber.ToString());
+                        //故障来源
+                        byte highNibble = (byte)((data[7] >> 4) & 0x0F);
+                        int faultTagSource = highNibble; // 自动转换为十进制
                         switch (sequenceNumber)
                         {
-                            case 0x00:
-                                ////模块总数 N ( 0 ~ 60 )个
-                                //model.ModuleNumber = data[1].ToString();
-                                //ModuleNumber = model.ModuleNumber;
-
-                                //温度总数 ( 0 ~ 400 )节
-                                model.TemperatureNumber = (data[2] << 8 | data[3]).ToString();
-                                TemperatureNumber = model.TemperatureNumber;
+                            case 0x00: // 报警等级 0：无报警
+                                if (data[1] == 0x00 && data[2] == 0x00 && data[3] == 0x00 && data[4] == 0x00)
+                                {
+                                    // 报警信息为空
+                                    break;
+                                }
+                                break;
+                            case 0x01: // 报警等级 1：严重报警                             
+                            case 0x02: // 报警等级 2：一般报警                               
+                            case 0x03: // 报警等级 3：轻微报警
+                            case 0x04: // 报警等级 4：设备硬件故障
+                                AnalyzeAlarm2(2, sequenceNumber, data, msg2, AlarmType, faultTagSource.ToString());
                                 break;
                         }
-                        initCount++;
+                        break;
+                    default:
                         break;
                 }
             }
@@ -5982,7 +6005,7 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-        public void AnalyzeAlarm(int ByteNum, int sequenceNumber, byte[] data, string[] msg, string alarmLevel, string BatterySectionNumber)
+        public void AnalyzeAlarm(int ByteNum, int sequenceNumber, byte[] data, string[] msg, string alarmLevel)
         {
             for (int i = 1; i < ByteNum; i++)
             {
@@ -5999,12 +6022,12 @@ namespace Sofar.HvBMSUI.ViewModels
                         {
                             if (!AlarmMessageDataList.Any(x => x.AlarmMessage.Contains(msg[0]) && x.isEnd == "否" && x.AlarmLevel == alarmLevel))
                             {
-                                AlarmMessageDataList.Add(new RealtimeData_BMS1500V_BCU.AlarmMessageData
+                                AlarmMessageDataList.Add(new AlarmMessageData
                                 {
                                     AlarmNumber = (AlarmMessageDataList.Count + 1).ToString(),
                                     AlarmStartTime = StartTime,
                                     AlarmLevel = alarmLevel,
-                                    BatterySectionNumber = BatterySectionNumber,
+                                    //BatterySectionNumber = BatterySectionNumber,
                                     AlarmMessage = $"【异常报警🚨】 {msg[0]}",
                                     isEnd = "否"
                                 });
@@ -6063,6 +6086,83 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
+        private void AnalyzeAlarm2(int ByteNum, int sequenceNumber, byte[] data, string[] msg, string alarmLevel, string faultTagSource)
+        {
+            for (int i = 1; i < ByteNum; i++)
+            {
+                for (short j = 0; j < 8; j++)
+                {
+                    int alarmType = sequenceNumber;
+                    if (GetBit(data[i], j) == 1)
+                    {
+                        // 报警状态为激活
+                        UpdateAlarmState2(out msg, i, j, alarmType, 0);//state=0 未激活
+                        string StartTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                        // 检查是否已有激活报警记录
+                        if (msg[0] != null)
+                        {
+                            if (!AlarmMessageDataList.Any(x => x.AlarmMessage.Contains(msg[0]) && x.isEnd == "否" && x.AlarmLevel == alarmLevel))
+                            {
+                                AlarmMessageDataList.Add(new AlarmMessageData
+                                {
+                                    AlarmNumber = (AlarmMessageDataList.Count + 1).ToString(),
+                                    AlarmStartTime = StartTime,
+                                    AlarmLevel = alarmLevel,
+                                    //BatterySectionNumber = faultTagSource,
+                                    AlarmMessage = $"【异常报警🚨】 {msg[0]}",
+                                    isEnd = "否"
+                                });
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // 解除报警状态
+                        UpdateAlarmState2(out msg, i, j, alarmType, 1);//state=1 可解除
+
+                        string StopTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                        // 查找激活报警记录以确认解除
+                        if (msg[0] != null)
+                        {
+                            var activeAlarm = AlarmMessageDataList.FirstOrDefault(x => x.AlarmMessage.Contains(msg[0]) && x.isEnd == "否" && x.AlarmLevel == alarmLevel);
+                            if (activeAlarm != null)
+                            {
+                                activeAlarm.AlarmStopTime = StopTime;
+                                activeAlarm.AlarmMessage = $"【报警解除🆗】 {msg[0]}";
+                                activeAlarm.isEnd = "是";
+                            }
+                        }
+                    }
+                }
+            }
+
+            var alarmMessageDataList = AlarmMessageDataList.Where(x => x.AlarmLevel == "一般报警" ||
+                                                                       x.AlarmLevel == "轻微报警" ||
+                                                                       x.AlarmLevel == "严重报警" ||
+                                                                       x.AlarmLevel == "设备硬件故障").ToList();
+            if (alarmMessageDataList.Any())
+            {
+                foreach (var alarmMessageData in alarmMessageDataList)
+                {
+                    switch (alarmMessageData.AlarmLevel)
+                    {
+                        case "轻微报警":
+                            model.MinorAlarm = alarmMessageData.AlarmMessage;
+                            break;
+                        case "一般报警":
+                            model.GeneralAlarm = alarmMessageData.AlarmMessage;
+                            break;
+                        case "严重报警":
+                            model.SevereAlarm = alarmMessageData.AlarmMessage;
+                            break;
+                        case "设备硬件故障":
+                            model.EquipmentHardwareFailureAlarm = alarmMessageData.AlarmMessage;
+                            break;
+                    }
+                }
+            }
+        }
+
         public ICommand Write_0x26_Cmd => new RelayCommand(Write_0x26);
         /// <summary>
         /// 设置传感器报文（命令码 0x03）
@@ -6092,6 +6192,7 @@ namespace Sofar.HvBMSUI.ViewModels
             if (baseCanHelper.Send(data, can_id)) MessageBoxHelper.Success("写入成功！", "提示", null, ButtonType.OK);
             else MessageBoxHelper.Warning("写入失败！", "提示", null, ButtonType.OK);
         }
+
         public ICommand Write_0x00_Cmd => new RelayCommand(Write_0x00);
         /// <summary>
         /// 设置RTC 数据（命令码 0x00）
@@ -6124,6 +6225,7 @@ namespace Sofar.HvBMSUI.ViewModels
             if (baseCanHelper.Send(bytes, can_id)) MessageBoxHelper.Success("写入成功！", "提示", null, ButtonType.OK);
             else MessageBoxHelper.Warning("写入失败！", "提示", null, ButtonType.OK);
         }
+
         public ICommand Write_0x12_Cmd => new RelayCommand(Write_0x12);
         /// <summary>
         /// 设置RTC 数据（命令码 0x12）
@@ -6151,7 +6253,6 @@ namespace Sofar.HvBMSUI.ViewModels
             if (baseCanHelper.Send(bytes, can_id)) MessageBoxHelper.Success("写入成功！", "提示", null, ButtonType.OK);
             else MessageBoxHelper.Warning("写入失败！", "提示", null, ButtonType.OK);
         }
-
 
         public ICommand Write_0x16_Cmd => new RelayCommand(Write_0x16);
         /// <summary>
@@ -6247,6 +6348,35 @@ namespace Sofar.HvBMSUI.ViewModels
         {
             msg = new string[2];
             FaultInfo faultInfo = FaultInfo.FaultInfos4.FirstOrDefault(f => f.Byte == row && f.Bit == column && f.Type == type && f.State == state && f.Value == alarmLevel);
+
+            if (faultInfo != null)
+            {
+                msg[0] = faultInfo.Content.Trim();
+                faultInfo.State = state == 0 ? 1 : 0; // 更新报警状态
+            }
+
+            return msg;
+        }
+        private string[] UpdateAlarmState2(out string[] msg, int row, int column, int type, int state)
+        {
+            msg = new string[2];
+            FaultInfo faultInfo = null;
+            if (type == 1)
+            {
+                faultInfo = FaultInfo.FaultInfos1_new.FirstOrDefault(f => f.Byte == row && f.Bit == column && f.Type == type && f.State == state);//&& f.Value == alarmLevel
+            }
+            else if (type == 2)
+            {
+                faultInfo = FaultInfo.FaultInfos2_new.FirstOrDefault(f => f.Byte == row && f.Bit == column && f.Type == type && f.State == state);
+            }
+            else if (type == 3)
+            {
+                faultInfo = FaultInfo.FaultInfos3_new.FirstOrDefault(f => f.Byte == row && f.Bit == column && f.Type == type && f.State == state);
+            }
+            else if (type == 4)
+            {
+                faultInfo = FaultInfo.FaultInfos4_new.FirstOrDefault(f => f.Byte == row && f.Bit == column && f.Type == type && f.State == state);
+            }
 
             if (faultInfo != null)
             {

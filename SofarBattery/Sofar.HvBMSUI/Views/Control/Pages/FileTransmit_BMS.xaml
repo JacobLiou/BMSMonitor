@@ -9,48 +9,51 @@
              mc:Ignorable="d" 
              d:DesignHeight="1000" d:DesignWidth="1280">
 
-
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-        <Grid>
-            <!-- 2行 1 列 GroupBox 布局 -->
+        <Grid Margin="0 10 0 0" Background="White">
             <Grid Grid.Column="1" Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
 
-                <GroupBox   Grid.Row="0" Grid.Column="0" Header="文件传输" FontSize="14" Margin="10,0,0,10"  Style="{x:Null}">
-                    <StackPanel Margin="20" >
-                        <StackPanel Orientation="Horizontal" Margin="5,0,0,0">
-                            <TextBlock  Margin="0,0,0,0" Text="BCU设备地址: "   VerticalAlignment="Center" TextAlignment="Center" />
-                            <TextBox    Margin="8,0,0,0" Height="30" Width="170"  Text="{Binding slaveAddress, Mode=TwoWay}" />
-                            <TextBlock  Text="BMU设备地址: "   Margin="25,0,0,0"  VerticalAlignment="Center" TextAlignment="Center" />
-                            <TextBox    Margin="8,0,0,0" Height="30" Width="170"  Text="{Binding subDeviceAddress, Mode=TwoWay}" />
+                <GroupBox Header="文件传输" FontSize="14" Padding="10" Style="{x:Null}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="3.5*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="模块名称" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="ckbModeName" Grid.Column="1" Width="170" BorderThickness="1" IsEnabled="{Binding IsModeNameEnable}" ItemsSource="{Binding ModeNameList}" SelectedItem="{Binding SelectedModeName,Mode=TwoWay}"/>
+                        <TextBlock Text="文件编号" Grid.Column="2" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="ckbFileNumber" Grid.Column="3" Width="170" BorderThickness="1" ItemsSource="{Binding FileNumberList}" SelectedItem="{Binding SelectedFileNumber,Mode=TwoWay}"/>
+                        <StackPanel Orientation="Horizontal" Grid.Column="4">
+                            <CheckBox x:Name="ckReadAll" Content="是否读取全部" IsChecked="{Binding IsReadAll_Checked}" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                            <Button Content="{Binding FileTransmitStatus, Mode=TwoWay}" IsEnabled="{Binding IsTransmitEnable}"  VerticalAlignment="Center" Margin="10 0 0 0" Command="{Binding FileTransmitCmd}" />
                         </StackPanel>
 
-                        <StackPanel Orientation="Horizontal" Margin="5,10,0,0">
-                            <TextBlock Grid.Column="1" Grid.Row="2" Width="100" VerticalAlignment="Center"  Text="文件编号: " />
-                            <ComboBox x:Name="ckbFileNumber" Width="170" Margin="0,10,0,0" BorderThickness="1" ItemsSource="{Binding FileNumberList}"   SelectedItem="{Binding SelectedFileNumber,Mode=TwoWay}"/>
-                            <CheckBox x:Name="ckReadAll" Content="是否读取全部文件" IsChecked="{Binding IsReadAll_Checked}" Margin="20,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"  />
-                            <TextBlock  Text="读取文件条数: "  Margin="50,0,0,0"  VerticalAlignment="Center" TextAlignment="Center" Visibility="{Binding VisibleAttributes}"/>
-                            <TextBox    Margin="5,0,0,0" Height="30" Width="50"  Text="{Binding readCount, Mode=TwoWay}"  Visibility="{Binding VisibleAttributes}"/>
-                            <TextBlock  Margin="20,0,0,0" Text="文件起始位置: "   VerticalAlignment="Center"   TextAlignment="Center" Visibility="{Binding VisibleAttributes}"/>
-                            <TextBox    Margin="5,0,0,0" Height="30" Width="50"  Text="{Binding StartLocal, Mode=TwoWay}" Visibility="{Binding VisibleAttributes}"  />
-                        </StackPanel>
+                        <TextBlock Text="BCU设备地址 " Grid.Row="1" VerticalAlignment="Center"/>
+                        <TextBox Text="{Binding slaveAddress, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Width="170"/>
+                        <TextBlock Text="BMU设备地址 " Grid.Row="2" VerticalAlignment="Center"/>
+                        <TextBox Text="{Binding subDeviceAddress, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" Width="170"/>
 
-                        <StackPanel Orientation="Horizontal" Margin="5,10,0,0">
-                            <TextBlock Grid.Column="1" Grid.Row="2" Width="100" VerticalAlignment="Center"  Text="模块名称: " />
-                            <ComboBox x:Name="ckbModeName" Width="170" Margin="0,10,0,0" BorderThickness="1" IsEnabled="{Binding IsModeNameEnable}" ItemsSource="{Binding ModeNameList}"  SelectedItem="{Binding SelectedModeName,Mode=TwoWay}"/>
-                            <Button  Width="120" Margin="405,0,0,0" Content="{Binding FileTransmitStatus, Mode=TwoWay}" IsEnabled="{Binding IsTransmitEnable}"  VerticalAlignment="Center" Command="{Binding FileTransmitCmd}" />
-                        </StackPanel>
-                    </StackPanel>
+                        <TextBlock Text="读取条数" Grid.Row="1" Grid.Column="2"  VerticalAlignment="Center" TextAlignment="Center" Visibility="{Binding VisibleAttributes}"/>
+                        <TextBox Text="{Binding readCount, Mode=TwoWay}" Width="170" Grid.Row="1" Grid.Column="3" Visibility="{Binding VisibleAttributes}"/>
+                        <TextBlock Text="起始位置 " Grid.Row="2" Grid.Column="2" VerticalAlignment="Center"   TextAlignment="Center" Visibility="{Binding VisibleAttributes}"/>
+                        <TextBox Text="{Binding StartLocal, Mode=TwoWay}" Width="170" Grid.Row="2" Grid.Column="3" Visibility="{Binding VisibleAttributes}"  />
+                    </Grid>
                 </GroupBox>
 
-
-                <ListView Name="lvUpgradeLog" Grid.Row="1" Grid.Column="0" Margin="10,30,0,0" ItemsSource="{Binding FileTransmitLogList}">
+                <ListView Name="lvUpgradeLog" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding FileTransmitLogList}">
                     <ListView.Resources>
                         <!-- 自定义样式 -->
                         <Style TargetType="ListViewItem">
@@ -94,9 +97,6 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-
-
-
             </Grid>
         </Grid>
     </ScrollViewer>

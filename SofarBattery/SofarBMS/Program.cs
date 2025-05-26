@@ -12,9 +12,13 @@ namespace SofarBMS
         /// 应用程序的主入口点。
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
-
+            if (args.Length != 1 || args[0] != "Sofar.MonitorPlatformUI")
+            {
+                Application.Exit();
+                return;
+            }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

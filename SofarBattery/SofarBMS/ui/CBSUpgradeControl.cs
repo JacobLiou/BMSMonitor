@@ -15,6 +15,7 @@ namespace SofarBMS.UI
         //定义固件升级任务信号源对象
         public static CancellationTokenSource cts = new CancellationTokenSource();
         private CancellationTokenSource _token = new CancellationTokenSource();
+        private readonly object _lockObject = new object();
         //定义固件升级工步枚举对象
         public StepFlag stepFlag = StepFlag.None;
         //定义芯片角色和固件编码
@@ -124,7 +125,7 @@ namespace SofarBMS.UI
                 upgradeTime = null;
                 stepFlag = 0;
                 GroupIndex = 0;
-                file_size = 0; 
+                file_size = 0;
                 file_length = -1;
                 file_name = string.Empty;
                 file_data = null;
@@ -197,15 +198,17 @@ namespace SofarBMS.UI
                 //3.判断当前升级状态
                 if (State == false)
                 {
-                    _token = new CancellationTokenSource();
-                    stepFlag = StepFlag.FB升级文件传输开始帧;
-                    GroupIndex = 0;
-                    DevState.Clear();
-                    DeviceList.Clear();
-                    State = true;
+                    lock (_lockObject)
+                    {
+                        _token = new CancellationTokenSource();
+                        stepFlag = StepFlag.FB升级文件传输开始帧;
+                        GroupIndex = 0;
+                        DevState.Clear();
+                        DeviceList.Clear();
+                        State = true;
+                    }
                     int.TryParse(txtFC.Text.Trim(), out TX_INTERVAL_TIME);
                     int.TryParse(txtFD.Text.Trim(), out TX_INTERVAL_TIME_Data);
-
 
                     var progress = new Progress<int>(percent =>
                                     {
@@ -213,6 +216,7 @@ namespace SofarBMS.UI
                                         progressBar1.Text = $"{percent}%";
                                     });
 
+                    // 升级流程控制（异步任务）
                     Task.Run(() =>
                     {
                         int retryCount = 0;
@@ -363,7 +367,7 @@ namespace SofarBMS.UI
                                 default:
                                     break;
                             }
-                        } while (stepFlag != StepFlag.FF升级完成状态查询帧);
+                        } while (!_token.IsCancellationRequested);//stepFlag != StepFlag.FF升级完成状态查询帧
 
                     }, _token.Token);
 
@@ -632,6 +636,10 @@ namespace SofarBMS.UI
                     }
                     break;
                 default:
+                    ////状态异常
+                    //stepFlag = StepFlag.None;
+                    //State = false;
+                    //_token.Cancel();
                     break;
             }
         }
