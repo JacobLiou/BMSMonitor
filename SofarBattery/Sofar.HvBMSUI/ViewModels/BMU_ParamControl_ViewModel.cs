@@ -946,7 +946,7 @@ namespace Sofar.HvBMSUI.ViewModels
         {
             if (baseCanHelper.IsConnection)
             {
-                IsShowMessage = false;
+                IsShowMessage = true;
                 byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
                 byte Address_BMU = Convert.ToByte(SelectedAddress_BMU);
                 // 17个故障报警参数
@@ -1116,7 +1116,6 @@ namespace Sofar.HvBMSUI.ViewModels
             switch (canid[2])
             {
                 case 0x2E:
-
                     //BMS软件版本
                     string[] bsm_soft = new string[3];
                     for (int i = 0; i < 3; i++)
@@ -1137,7 +1136,6 @@ namespace Sofar.HvBMSUI.ViewModels
                         IsShowMessage = false; //防止重复提示
                         MessageBoxHelper.Success("读取成功", "提示", null, ButtonType.OK);
                     }
-                    IsShowMessage = true;
 
                     break;
                 case 0x10://单体过充                      
@@ -1316,11 +1314,9 @@ namespace Sofar.HvBMSUI.ViewModels
 
             byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
             byte Address_BMU = Convert.ToByte(SelectedAddress_BMU);
-            if (baseCanHelper.Send(bytes, new byte[] { 0xE0, Address_BMU, 0x2E, 0x10 }))
-            {
-
-            }
-            else
+            
+            IsShowMessage = true;
+            if (!baseCanHelper.Send(bytes, new byte[] { 0xE0, Address_BMU, 0x2E, 0x10 }))
             {
                 MessageBoxHelper.Success("读取失败", "提示", null, ButtonType.OK);
             }

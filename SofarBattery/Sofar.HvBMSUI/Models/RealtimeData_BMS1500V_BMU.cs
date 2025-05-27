@@ -290,7 +290,6 @@ namespace PowerKit.UI.Models
                     }
                 }
             }
-
         }
 
         /// <summary>

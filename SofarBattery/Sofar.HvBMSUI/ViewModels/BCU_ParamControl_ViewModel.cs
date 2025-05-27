@@ -1302,7 +1302,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 return;
             }
 
-
+            IsShowMessage = true;
             bmsOper.ReadBCUParam(Convert.ToInt32(SelectedAddress_BCU, 16));
 
         }
@@ -1816,7 +1816,7 @@ namespace Sofar.HvBMSUI.ViewModels
         {
             if (bmsOper.IsConnection)
             {
-                IsShowMessage = false;
+                IsShowMessage = true;
                 bmsOper.ReadBCUParam(Convert.ToInt32(SelectedAddress_BCU, 16));
             }
 
@@ -2125,7 +2125,6 @@ namespace Sofar.HvBMSUI.ViewModels
                         IsShowMessage = false; //防止重复提示
                         MessageBoxHelper.Success("读取成功！", "提示", null, ButtonType.OK);
                     }
-                    IsShowMessage = true;
                     break;
             }
         }

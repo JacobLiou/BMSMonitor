@@ -3062,8 +3062,8 @@ namespace Sofar.HvBMSUI.ViewModels
         private string _cycleCount;
         public string CycleCount
         {
-            get { return _cycleCount; }
-            set { _cycleCount = value; }
+            get => _cycleCount;
+            set => SetProperty(ref _cycleCount, value);
         }
         /// <summary>
         /// 累计充电容量
@@ -3071,8 +3071,8 @@ namespace Sofar.HvBMSUI.ViewModels
         private string _cumulativeChargeCapacity;
         public string CumulativeChargeCapacity
         {
-            get { return _cumulativeChargeCapacity; }
-            set { _cumulativeChargeCapacity = value; }
+            get => _cumulativeChargeCapacity;
+            set => SetProperty(ref _cumulativeChargeCapacity, value);
         }
         /// <summary>
         /// 累计放电容量
@@ -3080,8 +3080,8 @@ namespace Sofar.HvBMSUI.ViewModels
         private string _cumulativeDischargeCapacity;
         public string CumulativeDischargeCapacity
         {
-            get { return _cumulativeDischargeCapacity; }
-            set { _cumulativeDischargeCapacity = value; }
+            get => _cumulativeDischargeCapacity;
+            set => SetProperty(ref _cumulativeDischargeCapacity, value);
         }
         /// <summary>
         /// 累计充电能量
@@ -3089,8 +3089,8 @@ namespace Sofar.HvBMSUI.ViewModels
         private string _cumulativeChargeEnergy;
         public string CumulativeChargeEnergy
         {
-            get { return _cumulativeChargeEnergy; }
-            set { _cumulativeChargeEnergy = value; }
+            get => _cumulativeChargeEnergy;
+            set => SetProperty(ref _cumulativeChargeEnergy, value);
         }
         /// <summary>
         /// 累计放电能量
@@ -3098,8 +3098,8 @@ namespace Sofar.HvBMSUI.ViewModels
         private string _cumulativeDischargeEnergy;
         public string CumulativeDischargeEnergy
         {
-            get { return _cumulativeDischargeEnergy; }
-            set { _cumulativeDischargeEnergy = value; }
+            get => _cumulativeDischargeEnergy;
+            set => SetProperty(ref _cumulativeDischargeEnergy, value);
         }
 
         private string _beforeTheMaximumValue;
@@ -3202,7 +3202,7 @@ namespace Sofar.HvBMSUI.ViewModels
             set => SetProperty(ref _topThreeMinimumValue, value);
         }
 
-        private string _moduleNumber = "8";
+        private string _moduleNumber;//取消以下连续4个默认值
         /// <summary>
         /// 模块个数
         /// </summary>
@@ -3212,7 +3212,7 @@ namespace Sofar.HvBMSUI.ViewModels
             set => SetProperty(ref _moduleNumber, value);
         }
 
-        private string _batteryCellsNumber = "384";
+        private string _batteryCellsNumber;
         /// <summary>
         /// 电池节数
         /// </summary>
@@ -3222,7 +3222,7 @@ namespace Sofar.HvBMSUI.ViewModels
             set => SetProperty(ref _batteryCellsNumber, value);
         }
 
-        private string _temperatureNumber = "224";
+        private string _temperatureNumber;
         /// <summary>
         /// 温度个数
         /// </summary>
@@ -3232,7 +3232,7 @@ namespace Sofar.HvBMSUI.ViewModels
             set => SetProperty(ref _temperatureNumber, value);
         }
 
-        private string _poleNumber = "16";
+        private string _poleNumber;
         /// <summary>
         /// 极柱个数
         /// </summary>
@@ -3567,11 +3567,9 @@ namespace Sofar.HvBMSUI.ViewModels
 
         private void ChangeBatteryList(int totalCell)
         {
-
-            if (batteryVoltageDataList != null && batteryVoltageDataList.Count == totalCell)
-            {
+            if (batteryVoltageDataList != null 
+                && batteryVoltageDataList.Count == totalCell)
                 return;
-            }
 
             batteryVoltageDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.batteryVoltageData>();
             batteryTemperatureDataList = new ObservableCollection<RealtimeData_BMS1500V_BCU.batteryTemperatureData>();
@@ -3640,10 +3638,9 @@ namespace Sofar.HvBMSUI.ViewModels
 
         private void ChangeEquilibriumList(int batterySeries)
         {
-            if (PassiveEquilibriumCheckBoxItems != null && PassiveEquilibriumCheckBoxItems.Count == batterySeries)
-            {
+            if (PassiveEquilibriumCheckBoxItems != null 
+                && PassiveEquilibriumCheckBoxItems.Count == batterySeries)
                 return;
-            }
 
             PassiveEquilibriumCheckBoxItems = new ObservableCollection<CheckBoxItem>();
             ActiveEquilibriumCheckBoxItems = new ObservableCollection<ActiveEquilibriumCheckBoxGroup>();
@@ -3659,9 +3656,7 @@ namespace Sofar.HvBMSUI.ViewModels
                     Label = $"电芯 {i + 1}",
                     IsChecked = false // 默认未选中
                 });
-
             }
-
 
             PassiveEquilibriumCheckBoxGroup currentSingleGroup = null;
             for (int i = 0; i < batterySeries; i++)
@@ -3760,9 +3755,7 @@ namespace Sofar.HvBMSUI.ViewModels
                     A = A,
                     B = B
                 });
-
             }
-
         }
 
         /// <summary>
@@ -5866,7 +5859,7 @@ namespace Sofar.HvBMSUI.ViewModels
                                                      "高压箱断路器反馈-有效","DI7-有效"             ,"DI8-有效"           ,"DI9-有效"         ,"DI10-有效"            };
                         string[] DOStatusMessages = {"主正接触器-吸合"      ,"环流接触器-吸合"      ,"主负接触器-吸合"    ,"DO4-吸合"         ,
                                                      "指示灯-绿-吸合"       ,"指示灯-红-吸合"       ,"辅助接触器-吸合"    ,"DO8-吸合"         };
-                        
+
                         if (sequenceNumber == 0x00)
                         {
                             // BYTE2-DI1~DI8
@@ -6232,7 +6225,7 @@ namespace Sofar.HvBMSUI.ViewModels
         /// </summary>
         public void Write_0x12()
         {
-           var SelectedDate1 = DateTime.Now;
+            var SelectedDate1 = DateTime.Now;
 
             byte Address_BCU = Convert.ToByte(Convert.ToInt32(SelectedAddress_BCU, 16));
             byte[] can_id = new byte[] { 0xF4, Address_BCU, 0x12, 0x18 };
@@ -6417,14 +6410,20 @@ namespace Sofar.HvBMSUI.ViewModels
         }
         public void PackageNumber_SelectedIndexChanged(int index)
         {
-            int offset = 64 * (index - 1);
-
-            PassiveEquilibriumState = $"电芯{1 + offset}~{64 + offset}的被动均衡状态";
-
-            for (int i = 1; i <= 64; i++)
+            try
             {
-                PassiveEquilibriumCheckBoxItems[i - 1].Label = $"电芯{i + offset}";
+                int offset = 64 * (index - 1);
 
+                PassiveEquilibriumState = $"电芯{1 + offset}~{64 + offset}的被动均衡状态";
+
+                for (int i = 1; i <= 64; i++)
+                {
+                    PassiveEquilibriumCheckBoxItems[i - 1].Label = $"电芯{i + offset}";
+                }
+            }
+            catch (Exception)
+            {
+                //存在数据超出的情况，防止程序崩溃。
             }
         }
     }

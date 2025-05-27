@@ -342,16 +342,16 @@ namespace PowerKit.UI.Common
             new FaultInfo("电池过压失能,BAT_VOLT_HIGH_DISABLE",1,2,0,0,1),
             new FaultInfo("电池欠压失能,BAT_VOLT_LOW_DISABLE",1,3,0,0,1),
             new FaultInfo("电池高低温失能,BAT_CELL_TEMP_OVER_OR_LOW_LOCK",1,4,0,0,1),
-            new FaultInfo("保留,Res",1,5,0,0,1),
-            new FaultInfo("保留,Res",1,6,0,0,1),
+            new FaultInfo("放电电流超限保护,BAT_DISCHG_CURR_OVER_LIMIT_PROTECT",1,5,0,0,1),
+            new FaultInfo("充电电流超限保护,BAT_CHARGE_CURR_OVER_LIMIT_PROTECT",1,6,0,0,1),
             new FaultInfo("保留,Res",1,7,0,0,1),
         };
 
         public static List<FaultInfo> FaultInfos2_new = new List<FaultInfo>()
         {
-            new FaultInfo("地址冲突",1,0,0,0,2),
-            new FaultInfo("保留,Res",1,1,0,0,2),
-            new FaultInfo("保留,Res",1,2,0,0,2),
+            new FaultInfo("地址冲突,board_can_addr_conflict",1,0,0,0,2),
+            new FaultInfo("放电电流超限告警,BAT_DISCHG_CURR_OVER_LIMIT_ALARM",1,1,0,0,2),
+            new FaultInfo("充电电流超限告警,BAT_DISCHG_CURR_OVER_LIMIT_PROTECT",1,2,0,0,2),
             new FaultInfo("保留,Res",1,3,0,0,2),
             new FaultInfo("保留,Res",1,4,0,0,2),
             new FaultInfo("保留,Res",1,5,0,0,2),
@@ -365,7 +365,7 @@ namespace PowerKit.UI.Common
             new FaultInfo("霍尔电流差异过大提示,board_hall_curr_diff_over_tip",1,1,0,0,2),
             new FaultInfo("环境温度采集失效提示,env_ntc_invalid",1,2,0,0,2),
             new FaultInfo("电解液漏液检测传感器异常提示,electrolyte_mon_sen_err_tip",1,3,0,0,2),
-            new FaultInfo("保留,Res",1,4,0,0,2),
+            new FaultInfo("单体温度采集异常提示,cell_temp_wire_abnormal_tip",1,4,0,0,2),
             new FaultInfo("保留,Res",1,5,0,0,2),
             new FaultInfo("保留,Res",1,6,0,0,2),
             new FaultInfo("保留,Res",1,7,0,0,2),

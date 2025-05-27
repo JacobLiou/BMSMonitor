@@ -118,7 +118,7 @@
                         </Button>
                     </StackPanel>
                     <StackPanel Margin="10">
-                        <DataGrid Grid.Row="5" Grid.Column="0"  MaxHeight="400" BorderBrush="Gray" BorderThickness="1.5" Name="BatteryDataGrid1"  IsReadOnly="True"  ScrollViewer.VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False"  HeadersVisibility="All"  GridLinesVisibility="All" Margin="0,0,0,10"
+                        <DataGrid Name="BatteryDataGrid1" Grid.Row="5" Grid.Column="0" MaxHeight="400" BorderBrush="Gray" BorderThickness="1.5" IsReadOnly="True"  ScrollViewer.VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False"  HeadersVisibility="All"  GridLinesVisibility="All" Margin="0,0,0,10"
                            ItemsSource="{Binding AlarmMessageDataList}">
                             <DataGrid.Resources>
                                 <Style TargetType="DataGridColumnHeader">
@@ -127,7 +127,7 @@
                                 </Style>
                             </DataGrid.Resources>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="序号"       Width="75" Binding="{Binding AlarmNumber}" >
+                                <DataGridTextColumn Header="序号" Width="75" Binding="{Binding AlarmNumber}">
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
                                             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -141,35 +141,35 @@
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Header="报警类型"     Width="150" Binding="{Binding AlarmLevel}" >
+                                <DataGridTextColumn Header="报警类型" Width="150" Binding="{Binding AlarmLevel}" >
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
                                             <Setter Property="HorizontalAlignment" Value="Center"/>
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Header="电池节号"     Width="100" Binding="{Binding BatterySectionNumber}" >
+                                <!--<DataGridTextColumn Header="电池节号" Width="100" Binding="{Binding BatterySectionNumber}" >
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>-->
+                                <DataGridTextColumn Header="报警描述" Width="550" Binding="{Binding AlarmMessage}" >
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
                                             <Setter Property="HorizontalAlignment" Value="Center"/>
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Header="报警描述"     Width="550" Binding="{Binding AlarmMessage}" >
+                                <DataGridTextColumn Header="是否结束" Width="125" Binding="{Binding isEnd}" >
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
                                             <Setter Property="HorizontalAlignment" Value="Center"/>
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Header="是否结束"     Width="125" Binding="{Binding isEnd}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="结束时间"     Width="180" Binding="{Binding AlarmStopTime}" >
+                                <DataGridTextColumn Header="结束时间" Width="180" Binding="{Binding AlarmStopTime}" >
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
                                             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -512,561 +512,87 @@
                         <Label Content="单簇模式:" Margin="30,0,0,0" Width="60"/>
                         <TextBox  Margin="10,0,0,0" Text="{Binding SingleClusterMode,UpdateSourceTrigger=PropertyChanged}" Width="150" TextAlignment="Center"  VerticalContentAlignment="Center"/>
                     </StackPanel>
-                    <!-- 第七行 -->
-                    <!--<StackPanel Orientation="Horizontal" Margin="100,0,0,0">
-                            <GroupBox Header="主控DO控制" Margin="10,20,0,0" Width="750" BorderBrush="PaleVioletRed" BorderThickness="1" Style="{x:Null}" >
-                                -->
-                    <!-- 4 行 3列 GroupBox 布局 -->
-                    <!--
-                                <Grid Margin="10">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-
-                                  
-                                    -->
-                    <!-- 主正接触器 -->
-                    <!--
-                                    <GroupBox  Header="主正接触器" Width="250" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0" BorderBrush="BlueViolet" Style="{x:Null}">
-                                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                            <RadioButton Margin="50,0,0,0" Content="关" Background="Green"  IsChecked="{Binding IsChecked_DO1_Close}">
-                                            </RadioButton>
-                                            <RadioButton Margin="50,0,0,0" Content="开" Background="Red" IsChecked="{Binding IsChecked_DO1_Open}"/>
-                                        </StackPanel>
-                                    </GroupBox>
-
-
-                                    -->
-                    <!-- 环流接触器 -->
-                    <!--
-                                    <GroupBox Header="环流接触器" Width="250" Grid.Row="0" Grid.Column="1" Margin="50,0,0,0" BorderBrush="BlueViolet" Style="{x:Null}">
-                                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                            <RadioButton Margin="50,0,0,0" Content="关" Background="Green" IsChecked="{Binding IsChecked_DO2_Close}">
-                                            </RadioButton>
-                                            <RadioButton Margin="50,0,0,0" Content="开" Background="Red" IsChecked="{Binding IsChecked_DO2_Open}"/>
-                                        </StackPanel>
-                                    </GroupBox>
-
-                                    -->
-                    <!-- 主负接触器 -->
-                    <!--
-                                    <GroupBox Header="主负接触器" Width="250" Grid.Row="1" Grid.Column="0" Margin="10,10,0,0" BorderBrush="BlueViolet" Style="{x:Null}">
-                                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                            <RadioButton Margin="50,0,0,0" Content="关" Background="Green"  IsChecked="{Binding IsChecked_DO3_Close}">
-                                            </RadioButton>
-                                            <RadioButton Margin="50,0,0,0" Content="开" Background="Red" IsChecked="{Binding IsChecked_DO3_Open}"/>
-                                        </StackPanel>
-                                    </GroupBox>
-
-                                    -->
-                    <!-- DO4 -->
-                    <!--
-                                    <GroupBox Header="DO4" Width="250" Grid.Row="1" Grid.Column="1" Margin="50,10,0,0"  BorderBrush="BlueViolet" Style="{x:Null}">
-                                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                            <RadioButton Margin="50,0,0,0" Content="关" Background="Green" IsChecked="{Binding IsChecked_DO4_Close}">
-                                            </RadioButton>
-                                            <RadioButton Margin="50,0,0,0" Content="开" Background="Red"  IsChecked="{Binding IsChecked_DO4_Open}"/>
-                                        </StackPanel>
-                                    </GroupBox>
-
-                                    -->
-                    <!-- 指示灯-绿 -->
-                    <!--
-                                    <GroupBox Header="指示灯-绿" Width="250" Grid.Row="2" Grid.Column="0" Margin="10,10,0,0" BorderBrush="BlueViolet" Style="{x:Null}">
-                                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                            <RadioButton Margin="50,0,0,0" Content="关" Background="Green" IsChecked="{Binding IsChecked_DO5_Close}">
-                                            </RadioButton>
-                                            <RadioButton Margin="50,0,0,0" Content="开" Background="Red" IsChecked="{Binding IsChecked_DO5_Open}"/>
-                                        </StackPanel>
-                                    </GroupBox>
-
-                                    -->
-                    <!-- 指示灯-红 -->
-                    <!--
-                                    <GroupBox Header="指示灯-红" Width="250" Grid.Row="2" Grid.Column="1" Margin="50,10,0,0" BorderBrush="BlueViolet" Style="{x:Null}">
-                                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                            <RadioButton Margin="50,0,0,0" Content="关" Background="Green" IsChecked="{Binding IsChecked_DO6_Close}">
-                                            </RadioButton>
-                                            <RadioButton Margin="50,0,0,0" Content="开" Background="Red" IsChecked="{Binding IsChecked_DO6_Open}"/>
-                                        </StackPanel>
-                                    </GroupBox>
-
-                                    -->
-                    <!-- 辅助接触器 -->
-                    <!--
-                                    <GroupBox Header="辅助接触器" Width="250" Grid.Row="3" Grid.Column="0" Margin="10,10,0,0" BorderBrush="BlueViolet" Style="{x:Null}">
-                                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                            <RadioButton Margin="50,0,0,0" Content="关" Background="Green" IsChecked="{Binding IsChecked_DO7_Close}">
-                                            </RadioButton>
-                                            <RadioButton Margin="50,0,0,0" Content="开" Background="Red" IsChecked="{Binding IsChecked_DO7_Open}"/>
-                                        </StackPanel>
-                                    </GroupBox>
-
-                                    -->
-                    <!-- DO8 -->
-                    <!--
-                                    <GroupBox Header="DO8" Width="250" Grid.Row="3" Grid.Column="1" Margin="50,10,0,0" BorderBrush="BlueViolet" Style="{x:Null}">
-                                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                            <RadioButton Margin="50,0,0,0" Content="关" Background="Green" IsChecked="{Binding IsChecked_DO8_Close}">
-                                                -->
-                    <!--<RadioButton.Style>
-                                                    <Style TargetType="RadioButton">
-                                                        <Setter Property="Foreground" Value="Black"/>
-                                                        <Style.Triggers>
-                                                            <Trigger Property="IsChecked" Value="True">
-                                                                <Setter Property="Foreground" Value="Purple"/>
-                                                            </Trigger>
-                                                            <Trigger Property="IsChecked" Value="False">
-                                                                <Setter Property="Foreground" Value="Gray"/>
-                                                            </Trigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </RadioButton.Style>-->
-                    <!--
-                                            </RadioButton>
-                                            <RadioButton Margin="50,0,0,0" Content="开" Background="Red" IsChecked="{Binding IsChecked_DO8_Open}"/>
-                                        </StackPanel>
-                                    </GroupBox>
-
-                                    -->
-                    <!-- 控制 -->
-                    <!--
-                                    <StackPanel  Grid.Row="0" Grid.Column="2"  Orientation="Horizontal" Margin="0,10,0,0">
-                                        <Button Margin="50,25,0,0" Content="DO全开" Command="{Binding FullyOpen_DO_Cmd}">
-                                        </Button>
-                                    </StackPanel>
-                                    <StackPanel  Grid.Row="1" Grid.Column="2"  Orientation="Horizontal" Margin="0,10,0,0">
-                                        <Button Margin="50,25,0,0" Content="DO全关" Command="{Binding FullyClose_DO_Cmd}">
-                                        </Button>
-                                    </StackPanel>
-                                    <StackPanel  Grid.Row="2" Grid.Column="2"  Orientation="Horizontal" Margin="0,10,0,0">
-                                        <Button Margin="50,25,0,0" Content="下发控制" Command="{Binding DistributeControlCmd}">
-                                        </Button>
-                                    </StackPanel>
-
-                                </Grid>
-                            </GroupBox>
-                        </StackPanel>-->
-
                 </StackPanel>
             </GroupBox>
 
             <!-- 均衡状态 -->
             <GroupBox Header="均衡状态" Grid.Row="6" Grid.Column="0" Margin="0,10,0,10">
-                <StackPanel Margin="10">
+                <StackPanel Margin="10" MinHeight="200">
                     <StackPanel Orientation="Horizontal" Margin="5,0,0,0">
                         <Label Content="均衡类型:" Margin="5" Width="100"/>
-                        <ComboBox   x:Name="cbbEquilibriumType"    Width="150"  Margin="5,0,0,0"  BorderThickness="1" ItemsSource="{Binding EquilibriumTypeList}"   SelectedItem="{Binding SelectedEquilibriumType,   Mode=TwoWay}"/>
-
+                        <ComboBox x:Name="cbbEquilibriumType" Width="150" Margin="5,0,0,0" BorderThickness="1" IsReadOnly="True"
+                                  ItemsSource="{Binding EquilibriumTypeList}" SelectedItem="{Binding SelectedEquilibriumType,Mode=TwoWay}"/>
+                        
                         <Label Content="模块号:" Margin="5" Width="100"/>
-                        <ComboBox   x:Name="cbModuleNumber"    Width="150"  Margin="5,0,0,0"  BorderThickness="1" ItemsSource="{Binding ModuleNumberList}"   SelectedItem="{Binding SelectedModuleNumber,   Mode=TwoWay}"/>
+                        <ComboBox x:Name="cbModuleNumber" Width="150" Margin="5,0,0,0" BorderThickness="1" IsReadOnly="True"
+                                  ItemsSource="{Binding ModuleNumberList}" SelectedItem="{Binding SelectedModuleNumber,Mode=TwoWay}"/>
+                        
+                        <StackPanel Orientation="Horizontal" Visibility="{Binding PassiveEquilibriumStatus}">
+                            <Label Content="帧号:" Margin="5" Width="100"  />
+                            <ComboBox x:Name="ckbchg_mos_ct" Width="150" Margin="5,0,0,0" BorderThickness="1" ItemsSource="{Binding PackageNumberList}"   SelectedItem="{Binding SelectedPackageNumber,Mode=TwoWay}"/>
+                        </StackPanel>
                     </StackPanel>
-
+                    
                     <StackPanel Visibility="{Binding ActiveEquilibriumStatus}">
-                        <GroupBox Header="均衡通道1" BorderBrush="Gray" BorderThickness="1" Style="{x:Null}" Margin="5">
-                            <StackPanel>
-                                <WrapPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="1#充电均衡" GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_1_chgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="2#充电均衡" GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_2_chgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="3#充电均衡" GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_3_chgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="4#充电均衡" GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_4_chgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="5#充电均衡" GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_5_chgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="6#充电均衡" GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_6_chgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="7#充电均衡"  GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_7_chgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="8#充电均衡"  GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_8_chgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="9#充电均衡"  GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_9_chgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="10#充电均衡" GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_10_chgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="11#充电均衡" GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_11_chgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="12#充电均衡" GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_12_chgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="均衡关闭"   GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_AllCellEquilibriumClose_Channel_1}"/>
-                                </WrapPanel>
-
-                                <WrapPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="1#放电均衡" GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_1_dsgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="2#放电均衡" GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_2_dsgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="3#放电均衡" GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_3_dsgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="4#放电均衡" GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_4_dsgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="5#放电均衡" GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_5_dsgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="6#放电均衡" GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_6_dsgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="7#放电均衡"  GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_7_dsgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="8#放电均衡"  GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_8_dsgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="9#放电均衡"  GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_9_dsgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="10#放电均衡" GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_10_dsgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="11#放电均衡" GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_11_dsgEquilibrium_Channel_1}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="12#放电均衡" GroupName="ChannelGroup_1" IsChecked="{Binding IsChecked_cell_12_dsgEquilibrium_Channel_1}"/>
-                                </WrapPanel>
-
-                            </StackPanel>
-
-                        </GroupBox>
-
-                        <GroupBox Header="均衡通道2" BorderBrush="Gray" BorderThickness="1" Style="{x:Null}" Margin="5">
-                            <StackPanel>
-                                <WrapPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="1#充电均衡" GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_1_chgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="2#充电均衡" GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_2_chgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="3#充电均衡" GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_3_chgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="4#充电均衡" GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_4_chgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="5#充电均衡" GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_5_chgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="6#充电均衡" GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_6_chgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="7#充电均衡"  GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_7_chgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="8#充电均衡"  GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_8_chgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="9#充电均衡"  GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_9_chgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="10#充电均衡" GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_10_chgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="11#充电均衡" GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_11_chgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="12#充电均衡" GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_12_chgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="均衡关闭"   GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_AllCellEquilibriumClose_Channel_2}"/>
-                                </WrapPanel>
-
-                                <WrapPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="1#放电均衡" GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_1_dsgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="2#放电均衡" GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_2_dsgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="3#放电均衡" GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_3_dsgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="4#放电均衡" GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_4_dsgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="5#放电均衡" GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_5_dsgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="6#放电均衡" GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_6_dsgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="7#放电均衡"  GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_7_dsgEquilibrium_Channel_2 }"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="8#放电均衡"  GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_8_dsgEquilibrium_Channel_2 }"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="9#放电均衡"  GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_9_dsgEquilibrium_Channel_2 }"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="10#放电均衡" GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_10_dsgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="11#放电均衡" GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_11_dsgEquilibrium_Channel_2}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="12#放电均衡" GroupName="ChannelGroup_2" IsChecked="{Binding IsChecked_cell_12_dsgEquilibrium_Channel_2}"/>
-                                </WrapPanel>
-                            </StackPanel>
-                        </GroupBox>
-
-                        <GroupBox Header="均衡通道3" BorderBrush="Gray" BorderThickness="1" Style="{x:Null}" Margin="5">
-                            <StackPanel>
-                                <WrapPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="1#充电均衡" GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_1_chgEquilibriumChannel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="2#充电均衡" GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_2_chgEquilibriumChannel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="3#充电均衡" GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_3_chgEquilibriumChannel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="4#充电均衡" GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_4_chgEquilibriumChannel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="5#充电均衡" GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_5_chgEquilibriumChannel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="6#充电均衡" GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_6_chgEquilibriumChannel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="7#充电均衡"  GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_cell_7_chgEquilibrium_Channel_3 }"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="8#充电均衡"  GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_cell_8_chgEquilibrium_Channel_3 }"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="9#充电均衡"  GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_cell_9_chgEquilibrium_Channel_3 }"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="10#充电均衡" GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_cell_10_chgEquilibrium_Channel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="11#充电均衡" GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_cell_11_chgEquilibrium_Channel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="12#充电均衡" GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_cell_12_chgEquilibrium_Channel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="均衡关闭"   GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_AllCellEquilibriumClose_Channel_3}"/>
-                                </WrapPanel>
-
-                                <WrapPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="1#放电均衡" GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_1_dsgEquilibriumChannel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="2#放电均衡" GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_2_dsgEquilibriumChannel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="3#放电均衡" GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_3_dsgEquilibriumChannel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="4#放电均衡" GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_4_dsgEquilibriumChannel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="5#放电均衡" GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_5_dsgEquilibriumChannel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="6#放电均衡" GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_6_dsgEquilibriumChannel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="7#放电均衡"  GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_cell_7_dsgEquilibrium_Channel_3 }"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="8#放电均衡"  GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_cell_8_dsgEquilibrium_Channel_3 }"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="9#放电均衡"  GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_cell_9_dsgEquilibrium_Channel_3 }"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="10#放电均衡" GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_cell_10_dsgEquilibrium_Channel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="11#放电均衡" GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_cell_11_dsgEquilibrium_Channel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="12#放电均衡" GroupName="ChannelGroup_3" IsChecked="{Binding IsChecked_cell_12_dsgEquilibrium_Channel_3}"/>
-                                </WrapPanel>
-                            </StackPanel>
-                        </GroupBox>
-
-                        <GroupBox Header="均衡通道4" BorderBrush="Gray" BorderThickness="1" Style="{x:Null}" Margin="5">
-                            <StackPanel>
-                                <WrapPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="1#充电均衡" GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_1_chgEquilibriumChannel_4}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="2#充电均衡" GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_2_chgEquilibriumChannel_4}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="3#充电均衡" GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_3_chgEquilibriumChannel_4}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="4#充电均衡" GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_4_chgEquilibriumChannel_4}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="5#充电均衡" GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_5_chgEquilibriumChannel_4}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="6#充电均衡" GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_6_chgEquilibriumChannel_4}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="7#充电均衡"  GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_cell_7_chgEquilibrium_Channel_4 }"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="8#充电均衡"  GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_cell_8_chgEquilibrium_Channel_4 }"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="9#充电均衡"  GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_cell_9_chgEquilibrium_Channel_4 }"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="10#充电均衡" GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_cell_10_chgEquilibrium_Channel_4}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="11#充电均衡" GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_cell_11_chgEquilibrium_Channel_4}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="12#充电均衡" GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_cell_12_chgEquilibrium_Channel_4}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="均衡关闭"   GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_AllCellEquilibriumClose_Channel_4}"/>
-                                </WrapPanel>
-
-                                <WrapPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="1#放电均衡" GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_1_chgEquilibriumChannel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="2#放电均衡" GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_2_chgEquilibriumChannel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="3#放电均衡" GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_3_chgEquilibriumChannel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="4#放电均衡" GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_4_chgEquilibriumChannel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="5#放电均衡" GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_5_chgEquilibriumChannel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="6#放电均衡" GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_6_chgEquilibriumChannel_3}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="7#放电均衡"  GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_cell_7_dsgEquilibrium_Channel_4 }"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="8#放电均衡"  GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_cell_8_dsgEquilibrium_Channel_4 }"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="9#放电均衡"  GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_cell_9_dsgEquilibrium_Channel_4 }"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="10#放电均衡" GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_cell_10_dsgEquilibrium_Channel_4}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="11#放电均衡" GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_cell_11_dsgEquilibrium_Channel_4}"/>
-                                    <RadioButton  Margin="5,0,0,0" Width="100"  Content="12#放电均衡" GroupName="ChannelGroup_4" IsChecked="{Binding IsChecked_cell_12_dsgEquilibrium_Channel_4}"/>
-                                </WrapPanel>
-                            </StackPanel>
-                        </GroupBox>
-                    </StackPanel>
-
-
-                    <StackPanel Margin="0,10,0,0" Visibility="{Binding PassiveEquilibriumStatus}" >
-                        <StackPanel Orientation="Horizontal" >
-                            <Label Content="帧号:" Margin="10,0,0,10" Width="100" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="ckbchg_mos_ct" Width="150" Margin="10,0,0,10" BorderThickness="1" ItemsSource="{Binding PackageNumberList}" SelectedItem="{Binding SelectedPackageNumber,Mode=TwoWay}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal"  Margin="0,5,0,0" >
-                            <Label Content="{Binding PassiveEquilibriumState_1_8}" Margin="10,0,0,0" Width="200"     VerticalAlignment="Center" />
-                            <CheckBox x:Name="ckcell_1" Margin="10,0,0,0" Width="110"  Content="{Binding cell_1}" IsChecked="{Binding IsChecked_cell_1}"/>
-                            <CheckBox x:Name="ckcell_2" Margin="10,0,0,0" Width="110"  Content="{Binding cell_2}" IsChecked="{Binding IsChecked_cell_2}"/>
-                            <CheckBox x:Name="ckcell_3" Margin="10,0,0,0" Width="110"  Content="{Binding cell_3}" IsChecked="{Binding IsChecked_cell_3}"/>
-                            <CheckBox x:Name="ckcell_4" Margin="10,0,0,0" Width="110"  Content="{Binding cell_4}" IsChecked="{Binding IsChecked_cell_4}"/>
-                            <CheckBox x:Name="ckcell_5" Margin="10,0,0,0" Width="110"  Content="{Binding cell_5}" IsChecked="{Binding IsChecked_cell_5}"/>
-                            <CheckBox x:Name="ckcell_6" Margin="10,0,0,0" Width="110"  Content="{Binding cell_6}" IsChecked="{Binding IsChecked_cell_6}"/>
-                            <CheckBox x:Name="ckcell_7" Margin="10,0,0,0" Width="110"  Content="{Binding cell_7}" IsChecked="{Binding IsChecked_cell_7}"/>
-                            <CheckBox x:Name="ckcell_8" Margin="10,0,0,0" Width="110"  Content="{Binding cell_8}" IsChecked="{Binding IsChecked_cell_8}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal"  Margin="0,5,0,0" >
-                            <Label Content="{Binding PassiveEquilibriumState_9_16}" Margin="10,0,0,0" Width="200"  VerticalAlignment="Center" />
-                            <CheckBox x:Name="ckcell_9"  Margin="10,0,0,0" Width="110" Content="{Binding cell_9}"  IsChecked="{Binding IsChecked_cell_9}"/>
-                            <CheckBox x:Name="ckcell_10" Margin="10,0,0,0" Width="110" Content="{Binding cell_10}" IsChecked="{Binding IsChecked_cell_10}"/>
-                            <CheckBox x:Name="ckcell_11" Margin="10,0,0,0" Width="110" Content="{Binding cell_11}" IsChecked="{Binding IsChecked_cell_11}"/>
-                            <CheckBox x:Name="ckcell_12" Margin="10,0,0,0" Width="110" Content="{Binding cell_12}" IsChecked="{Binding IsChecked_cell_12}"/>
-                            <CheckBox x:Name="ckcell_13" Margin="10,0,0,0" Width="110" Content="{Binding cell_13}" IsChecked="{Binding IsChecked_cell_13}"/>
-                            <CheckBox x:Name="ckcell_14" Margin="10,0,0,0" Width="110" Content="{Binding cell_14}" IsChecked="{Binding IsChecked_cell_14}"/>
-                            <CheckBox x:Name="ckcell_15" Margin="10,0,0,0" Width="110" Content="{Binding cell_15}" IsChecked="{Binding IsChecked_cell_15}"/>
-                            <CheckBox x:Name="ckcell_16" Margin="10,0,0,0" Width="110" Content="{Binding cell_16}" IsChecked="{Binding IsChecked_cell_16}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal"  Margin="0,5,0,0" >
-                            <Label Content="{Binding PassiveEquilibriumState_17_24}" Margin="10,0,0,0" Width="200"  VerticalAlignment="Center" />
-                            <CheckBox x:Name="ckcell_17" Margin="10,0,0,0" Width="110" Content="{Binding cell_17}" IsChecked="{Binding IsChecked_cell_17}"/>
-                            <CheckBox x:Name="ckcell_18" Margin="10,0,0,0" Width="110" Content="{Binding cell_18}" IsChecked="{Binding IsChecked_cell_18}"/>
-                            <CheckBox x:Name="ckcell_19" Margin="10,0,0,0" Width="110" Content="{Binding cell_19}" IsChecked="{Binding IsChecked_cell_19}"/>
-                            <CheckBox x:Name="ckcell_20" Margin="10,0,0,0" Width="110" Content="{Binding cell_20}" IsChecked="{Binding IsChecked_cell_20}"/>
-                            <CheckBox x:Name="ckcell_21" Margin="10,0,0,0" Width="110" Content="{Binding cell_21}" IsChecked="{Binding IsChecked_cell_21}"/>
-                            <CheckBox x:Name="ckcell_22" Margin="10,0,0,0" Width="110" Content="{Binding cell_22}" IsChecked="{Binding IsChecked_cell_22}"/>
-                            <CheckBox x:Name="ckcell_23" Margin="10,0,0,0" Width="110" Content="{Binding cell_23}" IsChecked="{Binding IsChecked_cell_23}"/>
-                            <CheckBox x:Name="ckcell_24" Margin="10,0,0,0" Width="110" Content="{Binding cell_24}" IsChecked="{Binding IsChecked_cell_24}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal"  Margin="0,5,0,0" >
-                            <Label Content="{Binding PassiveEquilibriumState_25_32}" Margin="10,0,0,0" Width="200"  VerticalAlignment="Center" />
-                            <CheckBox x:Name="ckcell_25" Margin="10,0,0,0" Width="110"  Content="{Binding cell_25}" IsChecked="{Binding IsChecked_cell_25}"/>
-                            <CheckBox x:Name="ckcell_26" Margin="10,0,0,0" Width="110"  Content="{Binding cell_26}" IsChecked="{Binding IsChecked_cell_26}"/>
-                            <CheckBox x:Name="ckcell_27" Margin="10,0,0,0" Width="110"  Content="{Binding cell_27}" IsChecked="{Binding IsChecked_cell_27}"/>
-                            <CheckBox x:Name="ckcell_28" Margin="10,0,0,0" Width="110"  Content="{Binding cell_28}" IsChecked="{Binding IsChecked_cell_28}"/>
-                            <CheckBox x:Name="ckcell_29" Margin="10,0,0,0" Width="110"  Content="{Binding cell_29}" IsChecked="{Binding IsChecked_cell_29}"/>
-                            <CheckBox x:Name="ckcell_30" Margin="10,0,0,0" Width="110"  Content="{Binding cell_30}" IsChecked="{Binding IsChecked_cell_30}"/>
-                            <CheckBox x:Name="ckcell_31" Margin="10,0,0,0" Width="110"  Content="{Binding cell_31}" IsChecked="{Binding IsChecked_cell_31}"/>
-                            <CheckBox x:Name="ckcell_32" Margin="10,0,0,0" Width="110"  Content="{Binding cell_32}" IsChecked="{Binding IsChecked_cell_32}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal"  Margin="0,5,0,0" >
-                            <Label Content="{Binding PassiveEquilibriumState_33_40}" Margin="10,0,0,0" Width="200"  VerticalAlignment="Center" />
-                            <CheckBox x:Name="ckcell_33" Margin="10,0,0,0" Width="110" Content="{Binding cell_33}" IsChecked="{Binding IsChecked_cell_33}"/>
-                            <CheckBox x:Name="ckcell_34" Margin="10,0,0,0" Width="110"  Content="{Binding cell_34}" IsChecked="{Binding IsChecked_cell_34}"/>
-                            <CheckBox x:Name="ckcell_35" Margin="10,0,0,0" Width="110"  Content="{Binding cell_35}" IsChecked="{Binding IsChecked_cell_35}"/>
-                            <CheckBox x:Name="ckcell_36" Margin="10,0,0,0" Width="110"  Content="{Binding cell_36}" IsChecked="{Binding IsChecked_cell_36}"/>
-                            <CheckBox x:Name="ckcell_37" Margin="10,0,0,0" Width="110"  Content="{Binding cell_37}" IsChecked="{Binding IsChecked_cell_37}"/>
-                            <CheckBox x:Name="ckcell_38" Margin="10,0,0,0" Width="110"  Content="{Binding cell_38}" IsChecked="{Binding IsChecked_cell_38}"/>
-                            <CheckBox x:Name="ckcell_39" Margin="10,0,0,0" Width="110"  Content="{Binding cell_39}" IsChecked="{Binding IsChecked_cell_39}"/>
-                            <CheckBox x:Name="ckcell_40" Margin="10,0,0,0" Width="110"  Content="{Binding cell_40}" IsChecked="{Binding IsChecked_cell_40}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal"  Margin="0,5,0,0" >
-                            <Label Content="{Binding PassiveEquilibriumState_41_48}" Margin="10,0,0,0" Width="200"  VerticalAlignment="Center" />
-                            <CheckBox x:Name="ckcell_41" Margin="10,0,0,0" Width="110" Content="{Binding cell_41}" IsChecked="{Binding IsChecked_cell_41}"/>
-                            <CheckBox x:Name="ckcell_42" Margin="10,0,0,0" Width="110" Content="{Binding cell_42}" IsChecked="{Binding IsChecked_cell_42}"/>
-                            <CheckBox x:Name="ckcell_43" Margin="10,0,0,0" Width="110" Content="{Binding cell_43}" IsChecked="{Binding IsChecked_cell_43}"/>
-                            <CheckBox x:Name="ckcell_44" Margin="10,0,0,0" Width="110" Content="{Binding cell_44}" IsChecked="{Binding IsChecked_cell_44}"/>
-                            <CheckBox x:Name="ckcell_45" Margin="10,0,0,0" Width="110" Content="{Binding cell_45}" IsChecked="{Binding IsChecked_cell_45}"/>
-                            <CheckBox x:Name="ckcell_46" Margin="10,0,0,0" Width="110" Content="{Binding cell_46}" IsChecked="{Binding IsChecked_cell_46}"/>
-                            <CheckBox x:Name="ckcell_47" Margin="10,0,0,0" Width="110" Content="{Binding cell_47}" IsChecked="{Binding IsChecked_cell_47}"/>
-                            <CheckBox x:Name="ckcell_48" Margin="10,0,0,0" Width="110" Content="{Binding cell_48}" IsChecked="{Binding IsChecked_cell_48}"/>
+                        <StackPanel Orientation="Horizontal" Margin="5,0,0,10">
+                            <ItemsControl ItemsSource="{Binding ActiveEquilibriumCheckBoxItems}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <!-- 使用 GroupBox 包裹每组 CheckBox -->
+                                        <GroupBox Header="{Binding Label}"  Margin="0,0,0,0" BorderBrush="Gray" BorderThickness="2" Style="{x:Null}" Width="1100">
+                                            <!-- 内层 ItemsControl：用于显示每组的 CheckBox -->
+                                            <Grid Tag="{Binding Label}">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="7*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <ItemsControl ItemsSource="{Binding Items}" Grid.Column="0">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <!-- 使用 UniformGrid 实现每行 8 列 -->
+                                                            <UniformGrid Columns="6" />
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel>
+                                                                <RadioButton  Margin="5" Width="150"  Content="{Binding A.Label}"  GroupName="{Binding Path=Tag, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Grid}}"  IsChecked="{Binding A.IsChecked, Mode=TwoWay}"  />
+                                                                <RadioButton  Margin="5" Width="150"  Content="{Binding B.Label}"  GroupName="{Binding Path=Tag, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Grid}}"  IsChecked="{Binding B.IsChecked, Mode=TwoWay}" />
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                                <RadioButton  Grid.Column="1" Margin="5"  Width="150"  Content="{Binding ALL.Label}"  GroupName="{Binding Label}"  IsChecked="{Binding ALL.IsChecked, Mode=TwoWay}" />
+                                            </Grid>
+                                        </GroupBox>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
                         </StackPanel>
                     </StackPanel>
 
 
-                    <!--<StackPanel  >-->
-
-                    <!--<StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯1#充电均衡" IsChecked="{Binding IsChecked_cell_1_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯2#充电均衡" IsChecked="{Binding IsChecked_cell_2_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯3#充电均衡" IsChecked="{Binding IsChecked_cell_3_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯4#充电均衡" IsChecked="{Binding IsChecked_cell_4_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯5#充电均衡" IsChecked="{Binding IsChecked_cell_5_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯6#充电均衡" IsChecked="{Binding IsChecked_cell_6_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯7#充电均衡" IsChecked="{Binding IsChecked_cell_7_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯8#充电均衡" IsChecked="{Binding IsChecked_cell_8_chgEquilibrium}"/>
-                            <CheckBox  Margin="20,0,0,0" Width="150"  Content="均衡关闭"       IsChecked="{Binding IsChecked_AllCellEquilibriumClose}"/>
+                    <StackPanel Margin="0,0,0,0" Visibility="{Binding PassiveEquilibriumStatus}" >
+                        <StackPanel Orientation="Horizontal" Margin="5,0,0,10">
+                            <GroupBox Header="{Binding PassiveEquilibriumState}"  BorderBrush="Gray" BorderThickness="2" Style="{x:Null}" Width="1100" >
+                                <!-- 使用 ItemsControl 动态生成 CheckBox -->
+                                <ItemsControl ItemsSource="{Binding PassiveEquilibriumCheckBoxItems}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="8" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <!-- 定义每个 CheckBox 的样式和绑定 -->
+                                            <CheckBox Content="{Binding Label}" IsChecked="{Binding IsChecked, Mode=TwoWay}" Margin="5" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </GroupBox>
                         </StackPanel>
-                                
-                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯1#放电均衡" IsChecked="{Binding IsChecked_cell_1_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯2#放电均衡" IsChecked="{Binding IsChecked_cell_2_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯3#放电均衡" IsChecked="{Binding IsChecked_cell_3_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯4#放电均衡" IsChecked="{Binding IsChecked_cell_4_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯5#放电均衡" IsChecked="{Binding IsChecked_cell_5_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯6#放电均衡" IsChecked="{Binding IsChecked_cell_6_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯7#放电均衡" IsChecked="{Binding IsChecked_cell_7_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯8#放电均衡" IsChecked="{Binding IsChecked_cell_8_dsgEquilibrium}"/>
-                        </StackPanel>
-                 
-
-                    <StackPanel Orientation="Horizontal"  Margin="0,20,0,0" >
-                        <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯9#充电均衡"  IsChecked="{Binding IsChecked_cell_9_chgEquilibrium}"/>
-                        <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯10#充电均衡" IsChecked="{Binding IsChecked_cell_10_chgEquilibrium}"/>
-                        <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯11#充电均衡" IsChecked="{Binding IsChecked_cell_11_chgEquilibrium}"/>
-                        <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯12#充电均衡" IsChecked="{Binding IsChecked_cell_12_chgEquilibrium}"/>
-                        <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯13#充电均衡" IsChecked="{Binding IsChecked_cell_13_chgEquilibrium}"/>
-                        <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯14#充电均衡" IsChecked="{Binding IsChecked_cell_14_chgEquilibrium}"/>
-                        <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯15#充电均衡" IsChecked="{Binding IsChecked_cell_15_chgEquilibrium}"/>
-                        <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯16#充电均衡" IsChecked="{Binding IsChecked_cell_16_chgEquilibrium}"/>
                     </StackPanel>
-                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                        <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯9#放电均衡"  IsChecked="{Binding IsChecked_cell_9_dsgEquilibrium}"/>
-                        <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯10#放电均衡" IsChecked="{Binding IsChecked_cell_10_dsgEquilibrium}"/>
-                        <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯11#放电均衡" IsChecked="{Binding IsChecked_cell_11_dsgEquilibrium}"/>
-                        <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯12#放电均衡" IsChecked="{Binding IsChecked_cell_12_dsgEquilibrium}"/>
-                        <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯13#放电均衡" IsChecked="{Binding IsChecked_cell_13_dsgEquilibrium}"/>
-                        <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯14#放电均衡" IsChecked="{Binding IsChecked_cell_14_dsgEquilibrium}"/>
-                        <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯15#放电均衡" IsChecked="{Binding IsChecked_cell_15_dsgEquilibrium}"/>
-                        <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯16#放电均衡" IsChecked="{Binding IsChecked_cell_16_dsgEquilibrium}"/>
-                    </StackPanel>
-
-                        <StackPanel Orientation="Horizontal"  Margin="0,20,0,0" >
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯17#充电均衡" IsChecked="{Binding IsChecked_cell_17_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯18#充电均衡" IsChecked="{Binding IsChecked_cell_18_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯19#充电均衡" IsChecked="{Binding IsChecked_cell_19_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯20#充电均衡" IsChecked="{Binding IsChecked_cell_20_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯21#充电均衡" IsChecked="{Binding IsChecked_cell_21_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯22#充电均衡" IsChecked="{Binding IsChecked_cell_22_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯23#充电均衡" IsChecked="{Binding IsChecked_cell_23_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯24#充电均衡" IsChecked="{Binding IsChecked_cell_24_chgEquilibrium}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯17#放电均衡" IsChecked="{Binding IsChecked_cell_17_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯18#放电均衡" IsChecked="{Binding IsChecked_cell_18_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯19#放电均衡" IsChecked="{Binding IsChecked_cell_19_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯20#放电均衡" IsChecked="{Binding IsChecked_cell_20_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯21#放电均衡" IsChecked="{Binding IsChecked_cell_21_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯22#放电均衡" IsChecked="{Binding IsChecked_cell_22_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯23#放电均衡" IsChecked="{Binding IsChecked_cell_23_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯24#放电均衡" IsChecked="{Binding IsChecked_cell_24_dsgEquilibrium}"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal"  Margin="0,20,0,0" >
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯25#充电均衡" IsChecked="{Binding IsChecked_cell_25_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯26#充电均衡" IsChecked="{Binding IsChecked_cell_26_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯27#充电均衡" IsChecked="{Binding IsChecked_cell_27_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯28#充电均衡" IsChecked="{Binding IsChecked_cell_28_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯29#充电均衡" IsChecked="{Binding IsChecked_cell_29_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯30#充电均衡" IsChecked="{Binding IsChecked_cell_30_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯31#充电均衡" IsChecked="{Binding IsChecked_cell_31_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯32#充电均衡" IsChecked="{Binding IsChecked_cell_32_chgEquilibrium}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯25#放电均衡" IsChecked="{Binding IsChecked_cell_25_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯26#放电均衡" IsChecked="{Binding IsChecked_cell_26_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯27#放电均衡" IsChecked="{Binding IsChecked_cell_27_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯28#放电均衡" IsChecked="{Binding IsChecked_cell_28_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯29#放电均衡" IsChecked="{Binding IsChecked_cell_29_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯30#放电均衡" IsChecked="{Binding IsChecked_cell_30_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯31#放电均衡" IsChecked="{Binding IsChecked_cell_31_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯32#放电均衡" IsChecked="{Binding IsChecked_cell_32_dsgEquilibrium}"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal"  Margin="0,20,0,0" >
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯33#充电均衡" IsChecked="{Binding IsChecked_cell_33_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯34#充电均衡" IsChecked="{Binding IsChecked_cell_34_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯35#充电均衡" IsChecked="{Binding IsChecked_cell_35_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯36#充电均衡" IsChecked="{Binding IsChecked_cell_36_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯37#充电均衡" IsChecked="{Binding IsChecked_cell_37_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯38#充电均衡" IsChecked="{Binding IsChecked_cell_38_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯39#充电均衡" IsChecked="{Binding IsChecked_cell_39_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯40#充电均衡" IsChecked="{Binding IsChecked_cell_40_chgEquilibrium}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯33#放电均衡" IsChecked="{Binding IsChecked_cell_33_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯34#放电均衡" IsChecked="{Binding IsChecked_cell_34_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯35#放电均衡" IsChecked="{Binding IsChecked_cell_35_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯36#放电均衡" IsChecked="{Binding IsChecked_cell_36_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯37#放电均衡" IsChecked="{Binding IsChecked_cell_37_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯38#放电均衡" IsChecked="{Binding IsChecked_cell_38_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯39#放电均衡" IsChecked="{Binding IsChecked_cell_39_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯40#放电均衡" IsChecked="{Binding IsChecked_cell_40_dsgEquilibrium}"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal"  Margin="0,20,0,0" >
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯41#充电均衡" IsChecked="{Binding IsChecked_cell_41_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯42#充电均衡" IsChecked="{Binding IsChecked_cell_42_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯43#充电均衡" IsChecked="{Binding IsChecked_cell_43_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯44#充电均衡" IsChecked="{Binding IsChecked_cell_44_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯45#充电均衡" IsChecked="{Binding IsChecked_cell_45_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯46#充电均衡" IsChecked="{Binding IsChecked_cell_46_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯47#充电均衡" IsChecked="{Binding IsChecked_cell_47_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯48#充电均衡" IsChecked="{Binding IsChecked_cell_48_chgEquilibrium}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯41#放电均衡" IsChecked="{Binding IsChecked_cell_41_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯42#放电均衡" IsChecked="{Binding IsChecked_cell_42_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯43#放电均衡" IsChecked="{Binding IsChecked_cell_43_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯44#放电均衡" IsChecked="{Binding IsChecked_cell_44_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯45#放电均衡" IsChecked="{Binding IsChecked_cell_45_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯46#放电均衡" IsChecked="{Binding IsChecked_cell_46_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯47#放电均衡" IsChecked="{Binding IsChecked_cell_47_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯48#放电均衡" IsChecked="{Binding IsChecked_cell_48_dsgEquilibrium}"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal"  Margin="0,20,0,0" >
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯49#充电均衡" IsChecked="{Binding IsChecked_cell_49_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯50#充电均衡" IsChecked="{Binding IsChecked_cell_50_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯51#充电均衡" IsChecked="{Binding IsChecked_cell_51_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯52#充电均衡" IsChecked="{Binding IsChecked_cell_52_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯53#充电均衡" IsChecked="{Binding IsChecked_cell_53_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯54#充电均衡" IsChecked="{Binding IsChecked_cell_54_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯55#充电均衡" IsChecked="{Binding IsChecked_cell_55_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯56#充电均衡" IsChecked="{Binding IsChecked_cell_56_chgEquilibrium}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯49#放电均衡" IsChecked="{Binding IsChecked_cell_49_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯50#放电均衡" IsChecked="{Binding IsChecked_cell_50_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯51#放电均衡" IsChecked="{Binding IsChecked_cell_51_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯52#放电均衡" IsChecked="{Binding IsChecked_cell_52_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯53#放电均衡" IsChecked="{Binding IsChecked_cell_53_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯54#放电均衡" IsChecked="{Binding IsChecked_cell_54_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯55#放电均衡" IsChecked="{Binding IsChecked_cell_55_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯56#放电均衡" IsChecked="{Binding IsChecked_cell_56_dsgEquilibrium}"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal"  Margin="0,20,0,0" >
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯57#充电均衡" IsChecked="{Binding IsChecked_cell_57_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯58#充电均衡" IsChecked="{Binding IsChecked_cell_58_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯59#充电均衡" IsChecked="{Binding IsChecked_cell_59_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯60#充电均衡" IsChecked="{Binding IsChecked_cell_60_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯61#充电均衡" IsChecked="{Binding IsChecked_cell_61_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯62#充电均衡" IsChecked="{Binding IsChecked_cell_62_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯63#充电均衡" IsChecked="{Binding IsChecked_cell_63_chgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯64#充电均衡" IsChecked="{Binding IsChecked_cell_64_chgEquilibrium}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯57#放电均衡" IsChecked="{Binding IsChecked_cell_57_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯58#放电均衡" IsChecked="{Binding IsChecked_cell_58_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯59#放电均衡" IsChecked="{Binding IsChecked_cell_59_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯60#放电均衡" IsChecked="{Binding IsChecked_cell_60_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯61#放电均衡" IsChecked="{Binding IsChecked_cell_61_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯62#放电均衡" IsChecked="{Binding IsChecked_cell_62_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯63#放电均衡" IsChecked="{Binding IsChecked_cell_63_dsgEquilibrium}"/>
-                            <CheckBox  Margin="10,0,0,0" Width="150"  Content="电芯64#放电均衡" IsChecked="{Binding IsChecked_cell_64_dsgEquilibrium}"/>
-                        </StackPanel>
-                    </StackPanel>-->
-
                 </StackPanel>
-
-
             </GroupBox>
 
             <!-- 从控模块失联状态 -->
@@ -2786,46 +2312,47 @@
 
                     <!-- 只读信息 -->
                     <GroupBox Header="版本号" BorderBrush="Gray" BorderThickness="1" Style="{x:Null}" Grid.Row="1"  Grid.ColumnSpan="2">
-                        <StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="5,0">
-                                <!--<Label Content="主控编号:" Margin="15,5,0,0" Width="100"/>
-                                <ComboBox   Width="150"  Margin="5,0,0,0"  BorderThickness="1" ItemsSource="{Binding BatteryTypeList}"   SelectedItem="{Binding SelectedBatteryType,   Mode=TwoWay}"/>-->
-                                <Label Content="主控软件版本:" Margin="15,5,0,0" Width="100"/>
-                                <TextBox Margin="5" Text="{Binding MainControlSoftwareVersion,UpdateSourceTrigger=PropertyChanged}" Width="150" TextAlignment="Center"  VerticalContentAlignment="Center"/>
-                                <!--<Label Content="从控模块号:" Margin="15,5,0,0" Width="100"/>
-                                <ComboBox   Width="150"  Margin="5,0,0,0"  BorderThickness="1" ItemsSource="{Binding SlaveControlNumList}"   SelectedItem="{Binding SelectedSlaveControlNum,   Mode=TwoWay}"/>-->
-                                <!--<Label Content="从控软件版本:" Margin="15,5,0,0" Width="100"/>
-                                <TextBox Margin="5,0,0,5" Text="{Binding SlaveControlSoftwareVersion,UpdateSourceTrigger=PropertyChanged}" Width="150" TextAlignment="Center"  VerticalContentAlignment="Center"/>-->
-                                <Label Content="通讯协议版本:" Margin="10,5,0,0" Width="100"/>
-                                <TextBox Margin="5,0,0,5" Text="{Binding CommunicationProtocolVersion,UpdateSourceTrigger=PropertyChanged}" Width="150" TextAlignment="Center"  VerticalContentAlignment="Center"/>
-                                <Label Content="项目编号:" Margin="15,5,0,0" Width="100"/>
-                                <TextBox Margin="5,0,0,5" Text="{Binding ProjectNum,UpdateSourceTrigger=PropertyChanged}" Width="150" TextAlignment="Center"  VerticalContentAlignment="Center"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="5,0">
-                                <Label Content="BMU1软件版本:" Margin="15,5,0,0" Width="100"/>
-                                <TextBox Margin="5,0,0,5" Text="{Binding SlaveControlSoftwareVersion_1,UpdateSourceTrigger=PropertyChanged}" Width="150" TextAlignment="Center"  VerticalContentAlignment="Center"/>
-                                <Label Content="BMU2软件版本:" Margin="15,5,0,0" Width="100"/>
-                                <TextBox Margin="5,0,0,5" Text="{Binding SlaveControlSoftwareVersion_2,UpdateSourceTrigger=PropertyChanged}" Width="150" TextAlignment="Center"  VerticalContentAlignment="Center"/>
-                                <Label Content="BMU3软件版本:" Margin="15,5,0,0" Width="100"/>
-                                <TextBox Margin="5,0,0,5" Text="{Binding SlaveControlSoftwareVersion_3,UpdateSourceTrigger=PropertyChanged}" Width="150" TextAlignment="Center"  VerticalContentAlignment="Center"/>
-                                <Label Content="BMU4软件版本:" Margin="15,5,0,0" Width="100"/>
-                                <TextBox Margin="5,0,0,5" Text="{Binding SlaveControlSoftwareVersion_4,UpdateSourceTrigger=PropertyChanged}" Width="150" TextAlignment="Center"  VerticalContentAlignment="Center"/>
-                                <Label Content="BMU5软件版本:" Margin="15,5,0,0" Width="100"/>
-                                <TextBox Margin="5,0,0,5" Text="{Binding SlaveControlSoftwareVersion_5,UpdateSourceTrigger=PropertyChanged}" Width="150" TextAlignment="Center"  VerticalContentAlignment="Center"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="5,0,5,5">
-                                <Label Content="BMU6软件版本:" Margin="15,5,0,0" Width="100"/>
-                                <TextBox Margin="5,0,0,5" Text="{Binding SlaveControlSoftwareVersion_6,UpdateSourceTrigger=PropertyChanged}" Width="150" TextAlignment="Center"  VerticalContentAlignment="Center"/>
-                                <Label Content="BMU7软件版本:" Margin="15,5,0,0" Width="100"/>
-                                <TextBox Margin="5,0,0,5" Text="{Binding SlaveControlSoftwareVersion_7,UpdateSourceTrigger=PropertyChanged}" Width="150" TextAlignment="Center"  VerticalContentAlignment="Center"/>
-                                <Label Content="BMU8软件版本:" Margin="15,5,0,0" Width="100"/>
-                                <TextBox Margin="5,0,0,5" Text="{Binding SlaveControlSoftwareVersion_8,UpdateSourceTrigger=PropertyChanged}" Width="150" TextAlignment="Center"  VerticalContentAlignment="Center"/>
-                                <Label Content="BMU9软件版本:" Margin="15,5,0,0" Width="100"/>
-                                <TextBox Margin="5,0,0,5" Text="{Binding SlaveControlSoftwareVersion_9,UpdateSourceTrigger=PropertyChanged}" Width="150" TextAlignment="Center"  VerticalContentAlignment="Center"/>
-                                <Label Content="BMU10软件版本:" Margin="15,5,0,0" Width="100"/>
-                                <TextBox Margin="5,0,0,5" Text="{Binding SlaveControlSoftwareVersion_10,UpdateSourceTrigger=PropertyChanged}" Width="150" TextAlignment="Center"  VerticalContentAlignment="Center"/>
-                            </StackPanel>
-                        </StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="主控软件版本:" VerticalAlignment="Center"/>
+                            <TextBox Text="{Binding MainControlSoftwareVersion,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" TextAlignment="Center"  VerticalContentAlignment="Center"/>
+                            <Label Content="通讯协议版本:" Grid.Column="2" VerticalAlignment="Center"/>
+                            <TextBox Text="{Binding CommunicationProtocolVersion,UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" TextAlignment="Center"  VerticalContentAlignment="Center"/>
+                            <Label Content="项目编号:" Grid.Column="4" VerticalAlignment="Center"/>
+                            <TextBox Text="{Binding ProjectNum,UpdateSourceTrigger=PropertyChanged}" Grid.Column="5" TextAlignment="Center"  VerticalContentAlignment="Center"/>
+
+                            <Label Content="BMU1软件版本:" Grid.Row="1" VerticalAlignment="Center"/>
+                            <TextBox Margin="5,0,0,5" Text="{Binding SlaveControlSoftwareVersion_1,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" TextAlignment="Center"  VerticalContentAlignment="Center"/>
+                            <Label Content="BMU2软件版本:" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center"/>
+                            <TextBox Margin="5,0,0,5" Text="{Binding SlaveControlSoftwareVersion_2,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="3" TextAlignment="Center"  VerticalContentAlignment="Center"/>
+                            <Label Content="BMU3软件版本:" Grid.Row="1" Grid.Column="4" VerticalAlignment="Center"/>
+                            <TextBox Margin="5,0,0,5" Text="{Binding SlaveControlSoftwareVersion_3,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="5" TextAlignment="Center"  VerticalContentAlignment="Center"/>
+                            <Label Content="BMU4软件版本:" Grid.Row="1" Grid.Column="6" VerticalAlignment="Center"/>
+                            <TextBox Margin="5,0,0,5" Text="{Binding SlaveControlSoftwareVersion_4,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="7" TextAlignment="Center"  VerticalContentAlignment="Center"/>
+                            <Label Content="BMU5软件版本:" Grid.Row="2" VerticalAlignment="Center"/>
+                            <TextBox Margin="5,0,0,5" Text="{Binding SlaveControlSoftwareVersion_5,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" TextAlignment="Center"  VerticalContentAlignment="Center"/>
+                            <Label Content="BMU6软件版本:" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center"/>
+                            <TextBox Margin="5,0,0,5" Text="{Binding SlaveControlSoftwareVersion_6,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="3" TextAlignment="Center"  VerticalContentAlignment="Center"/>
+                            <Label Content="BMU7软件版本:" Grid.Row="2" Grid.Column="4" VerticalAlignment="Center"/>
+                            <TextBox Margin="5,0,0,5" Text="{Binding SlaveControlSoftwareVersion_7,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="5" TextAlignment="Center"  VerticalContentAlignment="Center"/>
+                            <Label Content="BMU8软件版本:" Grid.Row="2" Grid.Column="6" VerticalAlignment="Center"/>
+                            <TextBox Margin="5,0,0,5" Text="{Binding SlaveControlSoftwareVersion_8,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="7" TextAlignment="Center"  VerticalContentAlignment="Center"/>
+                        </Grid>
                     </GroupBox>
 
                     <!-- 读写参数 -->
@@ -2942,12 +2469,7 @@
                     </GroupBox>
 
                     <GroupBox Header="强制均衡命令" BorderBrush="Gray" BorderThickness="1" Style="{x:Null}" Grid.Row="7" Grid.ColumnSpan="2">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-
+                        <StackPanel Margin="10" MinHeight="200">
                             <StackPanel Orientation="Horizontal" Margin="5,0,0,0">
                                 <Label Content="均衡类型:" Margin="5" Width="60"/>
                                 <ComboBox   Width="100"  BorderThickness="1" ItemsSource="{Binding EquilibriumType_WriteList}"   SelectedItem="{Binding SelectedEquilibriumType_Write,Mode=TwoWay}"/>
@@ -2961,76 +2483,89 @@
                                 <Button Margin="20,0,0,0" Content="停止均衡" Command="{Binding StopBalance_Cmd}" Width="90"></Button>
                             </StackPanel>
 
-                            <StackPanel Grid.Row="1" Visibility="{Binding PassiveEquilibriumControl}">
-                                <GroupBox Header="均衡通道1" BorderBrush="Gray" BorderThickness="1" Style="{x:Null}" Margin="3 0">
-                                    <WrapPanel Orientation="Horizontal" Margin="0,10">
-                                        <CheckBox Margin="5,0,0,0" Width="75" Content="全选" IsChecked="{Binding IsAllChecked_Channel_1}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75" Content="1#" IsChecked="{Binding IsChecked_1_PassiveEquilibrium_Channel_1}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75" Content="2#" IsChecked="{Binding IsChecked_2_PassiveEquilibrium_Channel_1}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75" Content="3#" IsChecked="{Binding IsChecked_3_PassiveEquilibrium_Channel_1}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75" Content="4#" IsChecked="{Binding IsChecked_4_PassiveEquilibrium_Channel_1}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75" Content="5#" IsChecked="{Binding IsChecked_5_PassiveEquilibrium_Channel_1}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75" Content="6#" IsChecked="{Binding IsChecked_6_PassiveEquilibrium_Channel_1}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75" Content="7#" IsChecked="{Binding IsChecked_7_PassiveEquilibrium_Channel_1}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75" Content="8#" IsChecked="{Binding IsChecked_8_PassiveEquilibrium_Channel_1}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75" Content="9#"  IsChecked="{Binding IsChecked_9_PassiveEquilibrium_Channel_1}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75" Content="10#" IsChecked="{Binding IsChecked_10_PassiveEquilibrium_Channel_1}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75" Content="11#" IsChecked="{Binding IsChecked_11_PassiveEquilibrium_Channel_1}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75" Content="12#" IsChecked="{Binding IsChecked_12_PassiveEquilibrium_Channel_1}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75" Content="13#" IsChecked="{Binding IsChecked_13_PassiveEquilibrium_Channel_1}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75" Content="14#" IsChecked="{Binding IsChecked_14_PassiveEquilibrium_Channel_1}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75" Content="15#" IsChecked="{Binding IsChecked_15_PassiveEquilibrium_Channel_1}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75" Content="16#" IsChecked="{Binding IsChecked_16_PassiveEquilibrium_Channel_1}"/>
-                                    </WrapPanel>
-                                </GroupBox>
+                            <StackPanel Visibility="{Binding ActiveEquilibriumControl}">
+                                <StackPanel Orientation="Horizontal" Margin="5,0,0,10">
+                                    <!-- 外层 ItemsControl：用于显示分组 -->
+                                    <ItemsControl ItemsSource="{Binding ActiveEquilibriumControlItems}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <!-- 使用 GroupBox 包裹每组 CheckBox -->
+                                                <GroupBox Header="{Binding Label}"  Margin="0,0,0,0" BorderBrush="Gray" BorderThickness="2" Style="{x:Null}" Width="1100">
+                                                    <!-- 内层 ItemsControl：用于显示每组的 CheckBox -->
+                                                    <Grid Tag="{Binding Label}">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="7*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <ItemsControl ItemsSource="{Binding Items}" Grid.Column="0">
+                                                            <ItemsControl.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <!-- 使用 UniformGrid 实现每行 8 列 -->
+                                                                    <UniformGrid Columns="6" />
+                                                                </ItemsPanelTemplate>
+                                                            </ItemsControl.ItemsPanel>
+                                                            <ItemsControl.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <StackPanel>
+                                                                        <RadioButton  Margin="5" Width="150"  Content="{Binding A.Label}"  GroupName="{Binding Path=Tag, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Grid}}"  IsChecked="{Binding A.IsChecked, Mode=TwoWay}"  />
+                                                                        <RadioButton  Margin="5" Width="150"  Content="{Binding B.Label}"  GroupName="{Binding Path=Tag, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Grid}}"  IsChecked="{Binding B.IsChecked, Mode=TwoWay}" />
+                                                                    </StackPanel>
+                                                                </DataTemplate>
+                                                            </ItemsControl.ItemTemplate>
+                                                        </ItemsControl>
+                                                        <RadioButton  Grid.Column="1" Margin="5"  Width="150"  Content="{Binding ALL.Label}"  GroupName="{Binding Label}"  IsChecked="{Binding ALL.IsChecked, Mode=TwoWay}" />
+                                                    </Grid>
+                                                </GroupBox>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
 
-                                <GroupBox Header="均衡通道2" BorderBrush="Gray" BorderThickness="1" Style="{x:Null}" Margin="3 0">
-                                    <WrapPanel Orientation="Horizontal"  Margin="0,10" >
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="全选" IsChecked="{Binding IsAllChecked_Channel_2}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="17#" IsChecked="{Binding IsChecked_17_PassiveEquilibrium_Channel_2}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="18#" IsChecked="{Binding IsChecked_18_PassiveEquilibrium_Channel_2}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="19#" IsChecked="{Binding IsChecked_19_PassiveEquilibrium_Channel_2}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="20#" IsChecked="{Binding IsChecked_20_PassiveEquilibrium_Channel_2}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="21#" IsChecked="{Binding IsChecked_21_PassiveEquilibrium_Channel_2}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="22#" IsChecked="{Binding IsChecked_22_PassiveEquilibrium_Channel_2}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="23#" IsChecked="{Binding IsChecked_23_PassiveEquilibrium_Channel_2}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="24#" IsChecked="{Binding IsChecked_24_PassiveEquilibrium_Channel_2}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="25#" IsChecked="{Binding IsChecked_25_PassiveEquilibrium_Channel_2}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="26#" IsChecked="{Binding IsChecked_26_PassiveEquilibrium_Channel_2}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="27#" IsChecked="{Binding IsChecked_27_PassiveEquilibrium_Channel_2}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="28#" IsChecked="{Binding IsChecked_28_PassiveEquilibrium_Channel_2}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="29#" IsChecked="{Binding IsChecked_29_PassiveEquilibrium_Channel_2}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="30#" IsChecked="{Binding IsChecked_30_PassiveEquilibrium_Channel_2}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="31#" IsChecked="{Binding IsChecked_31_PassiveEquilibrium_Channel_2}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="32#" IsChecked="{Binding IsChecked_32_PassiveEquilibrium_Channel_2}"/>
-                                    </WrapPanel>
-                                </GroupBox>
-
-                                <GroupBox Header="均衡通道3"  BorderBrush="Gray" BorderThickness="1" Style="{x:Null}" Margin="3 0">
-                                    <WrapPanel Orientation="Horizontal"  Margin="0,10" >
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="全选" IsChecked="{Binding IsAllChecked_Channel_3}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="33#" IsChecked="{Binding IsChecked_33_PassiveEquilibrium_Channel_3}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="34#" IsChecked="{Binding IsChecked_34_PassiveEquilibrium_Channel_3}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="35#" IsChecked="{Binding IsChecked_35_PassiveEquilibrium_Channel_3}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="36#" IsChecked="{Binding IsChecked_36_PassiveEquilibrium_Channel_3}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="37#" IsChecked="{Binding IsChecked_37_PassiveEquilibrium_Channel_3}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="38#" IsChecked="{Binding IsChecked_38_PassiveEquilibrium_Channel_3}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="39#" IsChecked="{Binding IsChecked_39_PassiveEquilibrium_Channel_3}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="40#" IsChecked="{Binding IsChecked_40_PassiveEquilibrium_Channel_3}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="41#" IsChecked="{Binding IsChecked_41_PassiveEquilibrium_Channel_3}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="42#" IsChecked="{Binding IsChecked_42_PassiveEquilibrium_Channel_3}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="43#" IsChecked="{Binding IsChecked_43_PassiveEquilibrium_Channel_3}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="44#" IsChecked="{Binding IsChecked_44_PassiveEquilibrium_Channel_3}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="45#" IsChecked="{Binding IsChecked_45_PassiveEquilibrium_Channel_3}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="46#" IsChecked="{Binding IsChecked_46_PassiveEquilibrium_Channel_3}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="47#" IsChecked="{Binding IsChecked_47_PassiveEquilibrium_Channel_3}"/>
-                                        <CheckBox Margin="5,0,0,0" Width="75"  Content="48#" IsChecked="{Binding IsChecked_48_PassiveEquilibrium_Channel_3}"/>
-                                    </WrapPanel>
-                                </GroupBox>
                             </StackPanel>
-                        </Grid>
-                    </GroupBox>
 
+                            <StackPanel Visibility="{Binding PassiveEquilibriumControl}">
+                                <StackPanel Orientation="Horizontal" Margin="5,0,0,10"  >
+                                    <!-- 外层 ItemsControl：用于显示分组 -->
+                                    <ItemsControl ItemsSource="{Binding PassiveEquilibriumControlItems}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <!-- 使用 GroupBox 包裹每组 CheckBox -->
+                                                <GroupBox Header="{Binding Label}"  Margin="0,0,0,0" BorderBrush="Gray" BorderThickness="2" Style="{x:Null}" Width="1100" >
+                                                    <!-- 内层 ItemsControl：用于显示每组的 CheckBox -->
+                                                    <Grid Tag="{Binding Label}">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="9*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <ItemsControl ItemsSource="{Binding Items}" Grid.Column="0">
+                                                            <ItemsControl.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <!-- 使用 UniformGrid 实现每行 8 列 -->
+                                                                    <UniformGrid Columns="8" />
+                                                                </ItemsPanelTemplate>
+                                                            </ItemsControl.ItemsPanel>
+                                                            <ItemsControl.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <StackPanel>
+                                                                        <CheckBox Margin="5" Width="150" Content="{Binding Label}" IsChecked="{Binding IsChecked, Mode=TwoWay}" />
+                                                                    </StackPanel>
+                                                                </DataTemplate>
+                                                            </ItemsControl.ItemTemplate>
+                                                        </ItemsControl>
+                                                        <CheckBox Grid.Column="1" Margin="5"  Width="150"  Content="{Binding ALL.Label}"  IsChecked="{Binding ALL.IsChecked, Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged}" 
+                                                                  Command="{Binding SelectCommand }" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" >
+                                                        </CheckBox>
+                                                    </Grid>
+                                                </GroupBox>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    
                     <GroupBox Header="主控DO控制" Margin="0,10,0,5" Padding="0,5" BorderBrush="Gray" BorderThickness="1" Style="{x:Null}" Grid.Row="6" Grid.ColumnSpan="2">
                         <!-- 3 行 4列  -->
                         <Grid>
