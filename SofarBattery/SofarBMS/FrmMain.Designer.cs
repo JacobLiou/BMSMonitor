@@ -188,12 +188,12 @@ namespace SofarBMS
             // cbbIDP
             // 
             this.cbbIDP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbIDP.Font = new System.Drawing.Font("宋体", 11.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbbIDP.Font = new System.Drawing.Font("宋体", 11.5F);
             this.cbbIDP.FormattingEnabled = true;
             this.cbbIDP.Items.AddRange(new object[] {
             "1",
             "2"});
-            this.cbbIDP.Location = new System.Drawing.Point(73, 6);
+            this.cbbIDP.Location = new System.Drawing.Point(66, 6);
             this.cbbIDP.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.cbbIDP.Name = "cbbIDP";
             this.cbbIDP.Size = new System.Drawing.Size(85, 23);
@@ -203,10 +203,10 @@ namespace SofarBMS
             // btnResetCAN
             // 
             this.btnResetCAN.AutoSize = true;
-            this.btnResetCAN.Location = new System.Drawing.Point(556, 3);
+            this.btnResetCAN.Location = new System.Drawing.Point(600, 3);
             this.btnResetCAN.Margin = new System.Windows.Forms.Padding(4);
             this.btnResetCAN.Name = "btnResetCAN";
-            this.btnResetCAN.Size = new System.Drawing.Size(75, 28);
+            this.btnResetCAN.Size = new System.Drawing.Size(100, 28);
             this.btnResetCAN.TabIndex = 50;
             this.btnResetCAN.Text = "重连";
             this.btnResetCAN.UseVisualStyleBackColor = true;
@@ -217,19 +217,12 @@ namespace SofarBMS
             // 
             this.cbbBaud.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbBaud.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cbbBaud.Font = new System.Drawing.Font("宋体", 11.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbbBaud.Font = new System.Drawing.Font("宋体", 11.5F);
             this.cbbBaud.FormattingEnabled = true;
             this.cbbBaud.Items.AddRange(new object[] {
-            "100Kbps",
-            "125Kbps",
-            "200Kbps",
             "250Kbps",
-            "400Kbps",
-            "500Kbps",
-            "666Kbps",
-            "800Kbps",
-            "1000Kbps"});
-            this.cbbBaud.Location = new System.Drawing.Point(380, 6);
+            "500Kbps"});
+            this.cbbBaud.Location = new System.Drawing.Point(377, 6);
             this.cbbBaud.Margin = new System.Windows.Forms.Padding(4);
             this.cbbBaud.Name = "cbbBaud";
             this.cbbBaud.Size = new System.Drawing.Size(85, 23);
@@ -238,7 +231,7 @@ namespace SofarBMS
             // cbbID
             // 
             this.cbbID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbID.Font = new System.Drawing.Font("宋体", 11.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbbID.Font = new System.Drawing.Font("宋体", 11.5F);
             this.cbbID.FormattingEnabled = true;
             this.cbbID.Items.AddRange(new object[] {
             "1",
@@ -257,7 +250,7 @@ namespace SofarBMS
             "14",
             "15",
             "16"});
-            this.cbbID.Location = new System.Drawing.Point(215, 6);
+            this.cbbID.Location = new System.Drawing.Point(210, 6);
             this.cbbID.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.cbbID.Name = "cbbID";
             this.cbbID.Size = new System.Drawing.Size(85, 23);
@@ -279,7 +272,7 @@ namespace SofarBMS
             // 
             this.lblSp_03.AutoSize = true;
             this.lblSp_03.ForeColor = System.Drawing.Color.Black;
-            this.lblSp_03.Location = new System.Drawing.Point(176, 9);
+            this.lblSp_03.Location = new System.Drawing.Point(170, 9);
             this.lblSp_03.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSp_03.Name = "lblSp_03";
             this.lblSp_03.Size = new System.Drawing.Size(21, 17);
@@ -289,10 +282,10 @@ namespace SofarBMS
             // btnConnectionCAN
             // 
             this.btnConnectionCAN.AutoSize = true;
-            this.btnConnectionCAN.Location = new System.Drawing.Point(473, 3);
+            this.btnConnectionCAN.Location = new System.Drawing.Point(481, 3);
             this.btnConnectionCAN.Margin = new System.Windows.Forms.Padding(4);
             this.btnConnectionCAN.Name = "btnConnectionCAN";
-            this.btnConnectionCAN.Size = new System.Drawing.Size(75, 28);
+            this.btnConnectionCAN.Size = new System.Drawing.Size(100, 28);
             this.btnConnectionCAN.TabIndex = 43;
             this.btnConnectionCAN.Text = "连接";
             this.btnConnectionCAN.UseVisualStyleBackColor = true;
@@ -302,7 +295,7 @@ namespace SofarBMS
             // 
             this.lblSp_02.AutoSize = true;
             this.lblSp_02.ForeColor = System.Drawing.Color.Black;
-            this.lblSp_02.Location = new System.Drawing.Point(11, 9);
+            this.lblSp_02.Location = new System.Drawing.Point(3, 9);
             this.lblSp_02.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSp_02.Name = "lblSp_02";
             this.lblSp_02.Size = new System.Drawing.Size(44, 17);

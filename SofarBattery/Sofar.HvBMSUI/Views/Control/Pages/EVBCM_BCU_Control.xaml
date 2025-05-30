@@ -2294,7 +2294,7 @@
             <GroupBox Header="参数设置" Grid.Row="8" Grid.Column="0" Margin="0,0,0,10">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition/>
                         <RowDefinition/>
@@ -2308,10 +2308,18 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <Button Content="读取主控所有参数" Command="{Binding ReadAllCmd}" Width="200" HorizontalAlignment="Left"/>
+                    <Button Content="读取主控所有参数" Grid.Row="1" Grid.Column="1" Command="{Binding ReadAllCmd}" HorizontalAlignment="Right" Margin="0 0 5 0"/>
 
+                    <GroupBox Header="主控硬件信息" Grid.Row="1" BorderBrush="Gray" BorderThickness="2" Style="{x:Null}">
+                        <StackPanel Orientation="Horizontal" Margin="5,10,0,10">
+                            <Label Content="产品名称:" Margin="15,5,0,0" Width="100"/>
+                            <ComboBox Margin="5,0,0,5" Width="150" BorderThickness="1" SelectedItem="{Binding ProductName,Mode=TwoWay}" ItemsSource="{Binding ProductNameList}" ></ComboBox>
+                            <Button Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x00_Cmd}" />
+                        </StackPanel>
+                    </GroupBox>
+                    
                     <!-- 只读信息 -->
-                    <GroupBox Header="版本号" BorderBrush="Gray" BorderThickness="1" Style="{x:Null}" Grid.Row="1"  Grid.ColumnSpan="2">
+                    <GroupBox Header="版本号" BorderBrush="Gray" BorderThickness="1" Style="{x:Null}" Grid.Row="0"  Grid.ColumnSpan="2">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
@@ -2362,6 +2370,7 @@
                             <TextBox Text="{Binding TotalNumberofSystemModules,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center" VerticalContentAlignment="Center"/>
                             <Button Content="自动分配地址" Command="{Binding AutomaticAllocationAddrCmd}" Margin="15 0"/>
                         </StackPanel>
+                        
                     </GroupBox>
 
                     <GroupBox Header="从控模块基本参数" BorderBrush="Gray" BorderThickness="1" Style="{x:Null}" Grid.Row="2" Grid.Column="1">

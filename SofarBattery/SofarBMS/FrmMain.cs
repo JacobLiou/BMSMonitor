@@ -179,7 +179,7 @@ StartListen,启动总线监听,Start bus listen";
 
             cbbID.SelectedIndex = 0;
             cbbIDP.SelectedIndex = 0;
-            cbbBaud.SelectedIndex = 5;
+            cbbBaud.SelectedIndex = 1;
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -593,7 +593,7 @@ StartListen,启动总线监听,Start bus listen";
                 tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_4"), Menu.Items, null);
                 AddContextMenu(LanguageHelper.GetLanguage("tsmi_41"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //中文
                 AddContextMenu(LanguageHelper.GetLanguage("tsmi_42"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //英文
-
+                AddContextMenu(LanguageHelper.GetLanguage("tsmi_43"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //意大利语
             }
         }
 
@@ -693,6 +693,12 @@ StartListen,启动总线监听,Start bus listen";
                 else if (title == LanguageHelper.GetLanguage("tsmi_42"))
                 {
                     ConfigHelper.GetHeper().SaveConfig("AppSetting:LanaguageIndex", "2");
+                    Process.Start(Application.StartupPath + "\\SofarBMS.exe");
+                    Process.GetCurrentProcess().Kill();
+                }
+                else if (title == LanguageHelper.GetLanguage("tsmi_43"))
+                {
+                    ConfigHelper.GetHeper().SaveConfig("AppSetting:LanaguageIndex", "3");
                     Process.Start(Application.StartupPath + "\\SofarBMS.exe");
                     Process.GetCurrentProcess().Kill();
                 }

@@ -325,33 +325,33 @@ namespace PowerKit.UI.Common
         //BCU报警信息应答消息（命令码 0xE1）
         public static List<FaultInfo> FaultInfos4_new = new List<FaultInfo>()
         {
-            new FaultInfo("高压采样故障,board_ext_adc_fault",1,0,0,0,4),
-            new FaultInfo("内网编址异常,board_inner_can_addr_repeat_fault",1,1,0,0,4),
-            new FaultInfo("afe异常故障,samp_invalid",1,2,0,0,4),
-            new FaultInfo("存储异常故障,flash_err",1,3,0,0,4),
-            new FaultInfo("严重过流锁死故障,Over_Curr_Lock",1,4,0,0,4),
-            new FaultInfo("电芯严重过压锁死故障,BAT_CELL_VOLT_HIGH_SERIOUS_LOCK",1,5,0,0,4),
+            new FaultInfo("高压采样故障",1,0,0,0,4),
+            new FaultInfo("内网编址异常",1,1,0,0,4),
+            new FaultInfo("afe异常故障",1,2,0,0,4),
+            new FaultInfo("存储异常故障",1,3,0,0,4),
+            new FaultInfo("严重过流锁死故障",1,4,0,0,4),
+            new FaultInfo("电芯严重过压锁死故障",1,5,0,0,4),
             new FaultInfo("保留,Res",1,6,0,0,4),
             new FaultInfo("保留,Res",1,7,0,0,4),
         };
 
         public static List<FaultInfo> FaultInfos1_new = new List<FaultInfo>()
         {
-            new FaultInfo("电池簇内总压压差过大保护,bat_cluster_total_volt_diff_over_fault",1,0,0,0,1),
-            new FaultInfo("过流失能,BAT_CURR_DISABLE",1,1,0,0,1),
-            new FaultInfo("电池过压失能,BAT_VOLT_HIGH_DISABLE",1,2,0,0,1),
-            new FaultInfo("电池欠压失能,BAT_VOLT_LOW_DISABLE",1,3,0,0,1),
-            new FaultInfo("电池高低温失能,BAT_CELL_TEMP_OVER_OR_LOW_LOCK",1,4,0,0,1),
-            new FaultInfo("放电电流超限保护,BAT_DISCHG_CURR_OVER_LIMIT_PROTECT",1,5,0,0,1),
-            new FaultInfo("充电电流超限保护,BAT_CHARGE_CURR_OVER_LIMIT_PROTECT",1,6,0,0,1),
+            new FaultInfo("电池簇内总压压差过大保护",1,0,0,0,1),
+            new FaultInfo("电池过流保护失能",1,1,0,0,1),
+            new FaultInfo("电池过压保护失能",1,2,0,0,1),
+            new FaultInfo("电池欠压保护失能",1,3,0,0,1),
+            new FaultInfo("电池高低温保护失能",1,4,0,0,1),
+            new FaultInfo("放电电流超限保护",1,5,0,0,1),
+            new FaultInfo("充电电流超限保护",1,6,0,0,1),
             new FaultInfo("保留,Res",1,7,0,0,1),
         };
 
         public static List<FaultInfo> FaultInfos2_new = new List<FaultInfo>()
         {
-            new FaultInfo("地址冲突,board_can_addr_conflict",1,0,0,0,2),
-            new FaultInfo("放电电流超限告警,BAT_DISCHG_CURR_OVER_LIMIT_ALARM",1,1,0,0,2),
-            new FaultInfo("充电电流超限告警,BAT_DISCHG_CURR_OVER_LIMIT_PROTECT",1,2,0,0,2),
+            new FaultInfo("地址冲突",1,0,0,0,2),
+            new FaultInfo("放电电流超限告警",1,1,0,0,2),
+            new FaultInfo("充电电流超限告警",1,2,0,0,2),
             new FaultInfo("保留,Res",1,3,0,0,2),
             new FaultInfo("保留,Res",1,4,0,0,2),
             new FaultInfo("保留,Res",1,5,0,0,2),
@@ -361,11 +361,11 @@ namespace PowerKit.UI.Common
 
         public static List<FaultInfo> FaultInfos3_new = new List<FaultInfo>()
         {
-            new FaultInfo("afe断链,afe_chain_break",1,0,0,0,2),
-            new FaultInfo("霍尔电流差异过大提示,board_hall_curr_diff_over_tip",1,1,0,0,2),
-            new FaultInfo("环境温度采集失效提示,env_ntc_invalid",1,2,0,0,2),
-            new FaultInfo("电解液漏液检测传感器异常提示,electrolyte_mon_sen_err_tip",1,3,0,0,2),
-            new FaultInfo("单体温度采集异常提示,cell_temp_wire_abnormal_tip",1,4,0,0,2),
+            new FaultInfo("afe断链",1,0,0,0,2),
+            new FaultInfo("霍尔电流差异过大提示",1,1,0,0,2),
+            new FaultInfo("环境温度采集失效提示",1,2,0,0,2),
+            new FaultInfo("电解液漏液检测传感器异常提示",1,3,0,0,2),
+            new FaultInfo("单体温度采集异常提示",1,4,0,0,2),
             new FaultInfo("保留,Res",1,5,0,0,2),
             new FaultInfo("保留,Res",1,6,0,0,2),
             new FaultInfo("保留,Res",1,7,0,0,2),

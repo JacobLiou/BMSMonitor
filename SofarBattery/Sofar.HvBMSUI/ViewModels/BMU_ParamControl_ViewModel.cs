@@ -1157,22 +1157,22 @@ namespace Sofar.HvBMSUI.ViewModels
                     AlarmParameter_3_4 = numbers[3].ToString();
                     break;
                 case 0x13://总体过放                                                                                    
-                    AlarmParameter_4_1 = (numbers[0] * 0.1).ToString();
-                    AlarmParameter_4_2 = (numbers[1] * 0.1).ToString();
-                    AlarmParameter_4_3 = (numbers[2] * 0.1).ToString();
-                    AlarmParameter_4_4 = (numbers[3] * 0.1).ToString();
+                    AlarmParameter_4_1 = (numbers[0] * 0.1).ToString("F1");
+                    AlarmParameter_4_2 = (numbers[1] * 0.1).ToString("F1");
+                    AlarmParameter_4_3 = (numbers[2] * 0.1).ToString("F1");
+                    AlarmParameter_4_4 = (numbers[3] * 0.1).ToString("F1");
                     break;
                 case 0x14://充电过流                                                                                
-                    AlarmParameter_5_1 = (numbers[0] * 0.01).ToString();
-                    AlarmParameter_5_2 = (numbers[1] * 0.01).ToString();
-                    AlarmParameter_5_3 = (numbers[2] * 0.01).ToString();
-                    AlarmParameter_5_4 = (numbers[3] * 0.01).ToString();
+                    AlarmParameter_5_1 = (numbers[0] * 0.01).ToString("F2");
+                    AlarmParameter_5_2 = (numbers[1] * 0.01).ToString("F2");
+                    AlarmParameter_5_3 = (numbers[2] * 0.01).ToString("F2");
+                    AlarmParameter_5_4 = (numbers[3] * 0.01).ToString("F2");
                     break;
                 case 0x15://放电过流                                                                             
-                    AlarmParameter_6_1 = (numbers[0] * 0.01).ToString();
-                    AlarmParameter_6_2 = (numbers[1] * 0.01).ToString();
-                    AlarmParameter_6_3 = (numbers[2] * 0.01).ToString();
-                    AlarmParameter_6_4 = (numbers[3] * 0.01).ToString();
+                    AlarmParameter_6_1 = (numbers[0] * 0.01).ToString("F2");
+                    AlarmParameter_6_2 = (numbers[1] * 0.01).ToString("F2");
+                    AlarmParameter_6_3 = (numbers[2] * 0.01).ToString("F2");
+                    AlarmParameter_6_4 = (numbers[3] * 0.01).ToString("F2");
                     break;
                 case 0x16://充电、放电高温                                                                        
                     AlarmParameter_7_1 = (numbers_bit[0] - 40).ToString();
@@ -1264,10 +1264,10 @@ namespace Sofar.HvBMSUI.ViewModels
                     break;
                 //总体过充、过放提示
                 case 0x85:
-                    AlarmParameter_17_1 = (numbers[0] * 0.1).ToString();
-                    AlarmParameter_17_2 = (numbers[1] * 0.1).ToString();
-                    AlarmParameter_17_3 = (numbers[2] * 0.1).ToString();
-                    AlarmParameter_17_4 = (numbers[3] * 0.1).ToString();
+                    AlarmParameter_17_1 = (numbers[0] * 0.1).ToString("F1");
+                    AlarmParameter_17_2 = (numbers[1] * 0.1).ToString("F1");
+                    AlarmParameter_17_3 = (numbers[2] * 0.1).ToString("F1");
+                    AlarmParameter_17_4 = (numbers[3] * 0.1).ToString("F1");
                     break;
             }
         }

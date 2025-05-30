@@ -2069,56 +2069,56 @@ namespace Sofar.HvBMSUI.ViewModels
                     }
                     break;
                 case 0x0B:// 绝缘电阻报警值
-                    AlarmParameter_7_1 = ((data[0] << 8 | data[1])).ToString(); // 绝缘电阻正负对地电阻轻微报警值 1KΩ/bit 范围：0--FFFFH
-                    AlarmParameter_7_2 = ((data[2] << 8 | data[3])).ToString(); // 绝缘电阻正负对地电阻一般报警值 1KΩ/bit 范围：0--FFFFH
-                    AlarmParameter_7_3 = ((data[4] << 8 | data[5])).ToString(); // 绝缘电阻正负对地电阻严重报警值 1KΩ/bit 范围：0--FFFFH
-                    AlarmParameter_7_4 = (data[6]).ToString();                  // 绝缘电阻正负对地电阻回差值     1KΩ/bit 范围：0--FFFFH
+                    AlarmParameter_7_1 = ((data[0] << 8 | data[1])).ToString();                 // 绝缘电阻正负对地电阻轻微报警值 1KΩ/bit 范围：0--FFFFH
+                    AlarmParameter_7_2 = ((data[2] << 8 | data[3])).ToString();                 // 绝缘电阻正负对地电阻一般报警值 1KΩ/bit 范围：0--FFFFH
+                    AlarmParameter_7_3 = ((data[4] << 8 | data[5])).ToString();                 // 绝缘电阻正负对地电阻严重报警值 1KΩ/bit 范围：0--FFFFH
+                    AlarmParameter_7_4 = (data[6]).ToString();                                  // 绝缘电阻正负对地电阻回差值     1KΩ/bit 范围：0--FFFFH
                     break;
                 case 0x0C:// 电池单体电压上限报警值
-                    AlarmParameter_4_1 = ((data[0] << 8 | data[1]) * 0.001).ToString("F3"); // 电池单体电压轻微报警上限值 0.001V/bit 偏移量：0
-                    AlarmParameter_4_2 = ((data[2] << 8 | data[3]) * 0.001).ToString("F3"); // 电池单体电压一般报警上限值 0.001V/bit 偏移量：0
-                    AlarmParameter_4_3 = ((data[4] << 8 | data[5]) * 0.001).ToString("F3"); // 电池单体电压严重报警上限值 0.001V/bit 偏移量：0
-                    AlarmParameter_4_4 = (data[6] * 0.001).ToString("F3");                  // 电池单体电压报警上限回差值 0.001V/bit 偏移量：0
+                    AlarmParameter_4_1 = ((data[0] << 8 | data[1]) * 0.001).ToString("F3");     // 电池单体电压轻微报警上限值 0.001V/bit 偏移量：0
+                    AlarmParameter_4_2 = ((data[2] << 8 | data[3]) * 0.001).ToString("F3");     // 电池单体电压一般报警上限值 0.001V/bit 偏移量：0
+                    AlarmParameter_4_3 = ((data[4] << 8 | data[5]) * 0.001).ToString("F3");     // 电池单体电压严重报警上限值 0.001V/bit 偏移量：0
+                    AlarmParameter_4_4 = (data[6] * 0.001).ToString("F3");                      // 电池单体电压报警上限回差值 0.001V/bit 偏移量：0
                     break;
                 case 0x0D:// 电池单体电压下限报警值
-                    AlarmParameter_3_1 = ((data[0] << 8 | data[1]) * 0.001).ToString("F3"); // 电池单体电压轻微报警下限值 0.001V/bit 偏移量：0
-                    AlarmParameter_3_2 = ((data[2] << 8 | data[3]) * 0.001).ToString("F3"); // 电池单体电压一般报警下限值 0.001V/bit 偏移量：0
-                    AlarmParameter_3_3 = ((data[4] << 8 | data[5]) * 0.001).ToString("F3"); // 电池单体电压严重报警下限值 0.001V/bit 偏移量：0
-                    AlarmParameter_3_4 = (data[6] * 0.001).ToString("F3");                  // 电池单体电压报警下限回差值 0.001V/bit 偏移量：0
+                    AlarmParameter_3_1 = ((data[0] << 8 | data[1]) * 0.001).ToString("F3");     // 电池单体电压轻微报警下限值 0.001V/bit 偏移量：0
+                    AlarmParameter_3_2 = ((data[2] << 8 | data[3]) * 0.001).ToString("F3");     // 电池单体电压一般报警下限值 0.001V/bit 偏移量：0
+                    AlarmParameter_3_3 = ((data[4] << 8 | data[5]) * 0.001).ToString("F3");     // 电池单体电压严重报警下限值 0.001V/bit 偏移量：0
+                    AlarmParameter_3_4 = (data[6] * 0.001).ToString("F3");                      // 电池单体电压报警下限回差值 0.001V/bit 偏移量：0
                     break;
                 case 0x0E:// 电池单体电压压差报警值
-                    AlarmParameter_5_1 = ((data[0] << 8 | data[1]) * 0.001).ToString("F3"); // 电池单体电压压差轻微报警值 0.001V/bit 偏移量：0
-                    AlarmParameter_5_2 = ((data[2] << 8 | data[3]) * 0.001).ToString("F3"); // 电池单体电压压差一般报警值 0.001V/bit 偏移量：0
-                    AlarmParameter_5_3 = ((data[4] << 8 | data[5]) * 0.001).ToString("F3"); // 电池单体电压压差严重报警值 0.001V/bit 偏移量：0
-                    AlarmParameter_5_4 = (data[6] * 0.001).ToString("F3");                  // 电池单体电压压差报警回差值 0.001V/bit 偏移量：0
+                    AlarmParameter_5_1 = ((data[0] << 8 | data[1]) * 0.001).ToString("F3");     // 电池单体电压压差轻微报警值 0.001V/bit 偏移量：0
+                    AlarmParameter_5_2 = ((data[2] << 8 | data[3]) * 0.001).ToString("F3");     // 电池单体电压压差一般报警值 0.001V/bit 偏移量：0
+                    AlarmParameter_5_3 = ((data[4] << 8 | data[5]) * 0.001).ToString("F3");     // 电池单体电压压差严重报警值 0.001V/bit 偏移量：0
+                    AlarmParameter_5_4 = (data[6] * 0.001).ToString("F3");                      // 电池单体电压压差报警回差值 0.001V/bit 偏移量：0
                     break;
                 case 0x0F:// 模块温度上限报警值
-                    AlarmParameter_13_1 = (data[0] - 40).ToString(); // 模块温度轻微报警上限值  1℃/bit 范围：0℃~140℃(-40~100) 偏移量： -40 
-                    AlarmParameter_13_2 = (data[1] - 40).ToString(); // 模块温度一般报警上限值  1℃/bit 范围：0℃~140℃(-40~100) 偏移量： -40 
-                    AlarmParameter_13_3 = (data[2] - 40).ToString(); // 模块温度严重报警上限值  1℃/bit 范围：0℃~140℃(-40~100) 偏移量： -40 
-                    AlarmParameter_13_4 = data[3].ToString();      // 模块温度报警回差值      1℃/bit 无偏差
+                    AlarmParameter_13_1 = (data[0] - 40).ToString();                            // 模块温度轻微报警上限值  1℃/bit 范围：0℃~140℃(-40~100) 偏移量： -40 
+                    AlarmParameter_13_2 = (data[1] - 40).ToString();                            // 模块温度一般报警上限值  1℃/bit 范围：0℃~140℃(-40~100) 偏移量： -40 
+                    AlarmParameter_13_3 = (data[2] - 40).ToString();                            // 模块温度严重报警上限值  1℃/bit 范围：0℃~140℃(-40~100) 偏移量： -40 
+                    AlarmParameter_13_4 = data[3].ToString();                                   // 模块温度报警回差值      1℃/bit 无偏差
                     break;
                 case 0x1C:// 放电单体电池温度报警值
-                    AlarmParameter_15_1 = (data[0] - 40).ToString(); // 放电单体电池温度轻微报警上限值  1℃/bit 范围：0℃~140℃(-40~100) 偏移量： -40
-                    AlarmParameter_15_2 = (data[1] - 40).ToString(); // 放电单体电池温度一般报警上限值  1℃/bit 范围：0℃~140℃(-40~100) 偏移量： -40
-                    AlarmParameter_15_3 = (data[2] - 40).ToString(); // 放电单体电池温度严重报警上限值  1℃/bit 范围：0℃~140℃(-40~100) 偏移量： -40
-                    AlarmParameter_15_4 = data[3].ToString();        // 放电单体电池温度上限报警回差值  1℃/bit 无偏差
-                    AlarmParameter_15_5 = (data[4] - 40).ToString(); // 放电单体电池温度轻微报警下限值  1℃/bit 范围：0℃~140℃(-40~100) 偏移量： -40
-                    AlarmParameter_15_6 = (data[5] - 40).ToString(); // 放电单体电池温度一般报警下限值  1℃/bit 范围：0℃~140℃(-40~100) 偏移量： -40
-                    AlarmParameter_15_7 = (data[6] - 40).ToString(); // 放电单体电池温度严重报警下限值  1℃/bit 范围：0℃~140℃(-40~100) 偏移量： -40
-                    AlarmParameter_15_8 = data[7].ToString();        // 放电单体电池温度下限报警回差值  1℃/bit 无偏差
+                    AlarmParameter_15_1 = (data[0] - 40).ToString();                            // 放电单体电池温度轻微报警上限值  1℃/bit 范围：0℃~140℃(-40~100) 偏移量： -40
+                    AlarmParameter_15_2 = (data[1] - 40).ToString();                            // 放电单体电池温度一般报警上限值  1℃/bit 范围：0℃~140℃(-40~100) 偏移量： -40
+                    AlarmParameter_15_3 = (data[2] - 40).ToString();                            // 放电单体电池温度严重报警上限值  1℃/bit 范围：0℃~140℃(-40~100) 偏移量： -40
+                    AlarmParameter_15_4 = data[3].ToString();                                   // 放电单体电池温度上限报警回差值  1℃/bit 无偏差
+                    AlarmParameter_15_5 = (data[4] - 40).ToString();                            // 放电单体电池温度轻微报警下限值  1℃/bit 范围：0℃~140℃(-40~100) 偏移量： -40
+                    AlarmParameter_15_6 = (data[5] - 40).ToString();                            // 放电单体电池温度一般报警下限值  1℃/bit 范围：0℃~140℃(-40~100) 偏移量： -40
+                    AlarmParameter_15_7 = (data[6] - 40).ToString();                            // 放电单体电池温度严重报警下限值  1℃/bit 范围：0℃~140℃(-40~100) 偏移量： -40
+                    AlarmParameter_15_8 = data[7].ToString();                                   // 放电单体电池温度下限报警回差值  1℃/bit 无偏差
                     break;
                 case 0x2B:// 电池模组电压上限报警值
-                    AlarmParameter_9_1 = ((data[0] << 8 | data[1]) * 0.1).ToString("F1"); // 电池模组电压轻微报警上限值 0.1V/bit 偏移量：0
-                    AlarmParameter_9_2 = ((data[2] << 8 | data[3]) * 0.1).ToString("F1"); // 电池模组电压一般报警上限值 0.1V/bit 偏移量：0
-                    AlarmParameter_9_3 = ((data[4] << 8 | data[5]) * 0.1).ToString("F1"); // 电池模组电压严重报警上限值 0.1V/bit 偏移量：0
-                    AlarmParameter_9_4 = (data[6] * 0.1).ToString();                      // 电池模组电压报警上限回差值 0.1V/bit 偏移量：0
+                    AlarmParameter_9_1 = ((data[0] << 8 | data[1]) * 0.1).ToString("F1");       // 电池模组电压轻微报警上限值 0.1V/bit 偏移量：0
+                    AlarmParameter_9_2 = ((data[2] << 8 | data[3]) * 0.1).ToString("F1");       // 电池模组电压一般报警上限值 0.1V/bit 偏移量：0
+                    AlarmParameter_9_3 = ((data[4] << 8 | data[5]) * 0.1).ToString("F1");       // 电池模组电压严重报警上限值 0.1V/bit 偏移量：0
+                    AlarmParameter_9_4 = (data[6] * 0.1).ToString("F1");                        // 电池模组电压报警上限回差值 0.1V/bit 偏移量：0
                     break;
                 case 0x2C:// 电池模组电压下限报警值
-                    AlarmParameter_8_1 = ((data[0] << 8 | data[1]) * 0.1).ToString("F1"); // 电池模组电压轻微报警下限值 0.1V/bit 偏移量：0
-                    AlarmParameter_8_2 = ((data[2] << 8 | data[3]) * 0.1).ToString("F1"); // 电池模组电压一般报警下限值 0.1V/bit 偏移量：0
-                    AlarmParameter_8_3 = ((data[4] << 8 | data[5]) * 0.1).ToString("F1"); // 电池模组电压严重报警下限值 0.1V/bit 偏移量：0
-                    AlarmParameter_8_4 = (data[6] * 0.1).ToString();                      // 电池模组电压报警下限回差值 0.1V/bit 偏移量：0
+                    AlarmParameter_8_1 = ((data[0] << 8 | data[1]) * 0.1).ToString("F1");       // 电池模组电压轻微报警下限值 0.1V/bit 偏移量：0
+                    AlarmParameter_8_2 = ((data[2] << 8 | data[3]) * 0.1).ToString("F1");       // 电池模组电压一般报警下限值 0.1V/bit 偏移量：0
+                    AlarmParameter_8_3 = ((data[4] << 8 | data[5]) * 0.1).ToString("F1");       // 电池模组电压严重报警下限值 0.1V/bit 偏移量：0
+                    AlarmParameter_8_4 = (data[6] * 0.1).ToString("F1");                        // 电池模组电压报警下限回差值 0.1V/bit 偏移量：0
 
                     if (IsShowMessage)
                     {

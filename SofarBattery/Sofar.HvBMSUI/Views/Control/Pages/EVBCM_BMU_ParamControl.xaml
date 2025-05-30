@@ -7,7 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              xmlns:viewmodels="clr-namespace:Sofar.HvBMSUI.ViewModels" 
              d:DataContext="{d:DesignInstance Type=viewmodels:BMU_ParamControl_ViewModel}" mc:Ignorable="d"  
-             d:DesignHeight="1782" d:DesignWidth="2010">
+             d:DesignHeight="1082" d:DesignWidth="2010">
 
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
         <Grid Margin="0,10,0,0" Background="White">
@@ -64,7 +64,7 @@
 
                         <Button x:Name="btnAlarmParametersSetting_1" Width="200" Content="读取从控报警参数" Grid.Row="3" Grid.ColumnSpan="2" Command="{Binding ReadCmd}"/>
 
-                        <Button x:Name="btnAlarmParametersSetting_2" Grid.Column="0" Content="下设从控报警参数" Grid.Row="4" Grid.ColumnSpan="2" Command="{Binding WriteCmd}"/>
+                        <Button x:Name="btnAlarmParametersSetting_2" Width="200" Grid.Column="0" Content="下设从控报警参数" Grid.Row="4" Grid.ColumnSpan="2" Command="{Binding WriteCmd}"/>
                         <CheckBox x:Name="ckbSelectAll" Content="全选"  Grid.Row="4" Grid.Column="2" IsChecked="{Binding IsAllChecked}" VerticalAlignment="Center"/>
 
                         <Button x:Name="btnAlarmParametersSetting_3" Width="200" Content="恢复从控报警参数默认值" Grid.Row="5" Grid.ColumnSpan="2" Command="{Binding InitCmd}"/>
