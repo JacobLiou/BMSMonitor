@@ -45,7 +45,7 @@
     <PackageReference Include="MySql.Data" Version="8.0.31" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="NPOI" Version="2.7.2" />
-    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
   </ItemGroup>
 
   <ItemGroup>
