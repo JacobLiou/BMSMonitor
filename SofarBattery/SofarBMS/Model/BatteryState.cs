@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SofarBMS.Model
+﻿namespace SofarBMS.Model
 {
     public enum BatteryState
     {
@@ -56,7 +50,7 @@ namespace SofarBMS.Model
         等待唤醒 = 0,
         开机自检 = 1,
         运行 = 2,
-        永久性故障 = 3,
+        故障 = 3,
         升级 = 4,
     }
 

@@ -111,6 +111,18 @@
             this.pbDischargeStatus = new System.Windows.Forms.PictureBox();
             this.pbChagreStatus = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -267,12 +279,14 @@
             this.gbRealtimeData_103 = new System.Windows.Forms.GroupBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.gbOperationInformation.SuspendLayout();
             this.gbRealtimeData_102.SuspendLayout();
             this.gbSystemInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDischargeStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbChagreStatus)).BeginInit();
             this.panel5.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.gbRealtimeData_94.SuspendLayout();
@@ -844,7 +858,7 @@
             this.gbRealtimeData_102.Controls.Add(this.lblBat_Min_Cell_Temp);
             this.gbRealtimeData_102.Controls.Add(this.txtBat_Max_Cell_Temp_Num);
             this.gbRealtimeData_102.Controls.Add(this.lblBat_Max_Cell_Temp_Pack);
-            this.gbRealtimeData_102.Location = new System.Drawing.Point(242, 169);
+            this.gbRealtimeData_102.Location = new System.Drawing.Point(397, 167);
             this.gbRealtimeData_102.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.gbRealtimeData_102.Name = "gbRealtimeData_102";
             this.gbRealtimeData_102.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
@@ -976,7 +990,7 @@
             this.gbSystemInformation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbSystemInformation.Name = "gbSystemInformation";
             this.gbSystemInformation.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gbSystemInformation.Size = new System.Drawing.Size(1023, 60);
+            this.gbSystemInformation.Size = new System.Drawing.Size(1177, 60);
             this.gbSystemInformation.TabIndex = 64;
             this.gbSystemInformation.TabStop = false;
             this.gbSystemInformation.Text = "系统信息";
@@ -1139,6 +1153,7 @@
             this.panel5.AutoScroll = true;
             this.panel5.AutoSize = true;
             this.panel5.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel5.Controls.Add(this.groupBox2);
             this.panel5.Controls.Add(this.groupBox1);
             this.panel5.Controls.Add(this.gbRealtimeData_94);
             this.panel5.Controls.Add(this.gbRealtimeData_93);
@@ -1159,8 +1174,130 @@
             this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.panel5.Size = new System.Drawing.Size(1280, 861);
+            this.panel5.Size = new System.Drawing.Size(1452, 861);
             this.panel5.TabIndex = 60;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.checkBox5);
+            this.groupBox2.Controls.Add(this.checkBox4);
+            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.checkBox3);
+            this.groupBox2.Controls.Add(this.checkBox2);
+            this.groupBox2.Controls.Add(this.checkBox1);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Location = new System.Drawing.Point(242, 73);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(153, 347);
+            this.groupBox2.TabIndex = 69;
+            this.groupBox2.TabStop = false;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(6, 111);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(75, 21);
+            this.checkBox4.TabIndex = 21;
+            this.checkBox4.Text = "降损模式";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(85, 51);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(65, 23);
+            this.textBox3.TabIndex = 19;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(85, 21);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(65, 23);
+            this.textBox2.TabIndex = 18;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(5, 279);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(145, 23);
+            this.textBox1.TabIndex = 9;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(5, 259);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(114, 17);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "pack1~16锁死标识";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 145);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 17);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "编址状态";
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(6, 223);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(100, 21);
+            this.checkBox3.TabIndex = 4;
+            this.checkBox3.Text = "Mac地址冲突";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(6, 196);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(95, 21);
+            this.checkBox2.TabIndex = 3;
+            this.checkBox2.Text = "can冲突标识";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 170);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(75, 21);
+            this.checkBox1.TabIndex = 2;
+            this.checkBox1.Text = "编码完成";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 55);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 17);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "绝缘阻抗状态";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "绝缘阻抗(KΩ)";
             // 
             // groupBox1
             // 
@@ -1171,7 +1308,7 @@
             this.groupBox1.Controls.Add(this.rbBatteryVoltage);
             this.groupBox1.Location = new System.Drawing.Point(242, 428);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(785, 242);
+            this.groupBox1.Size = new System.Drawing.Size(942, 242);
             this.groupBox1.TabIndex = 68;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "系统概要信息（电压:V SOC:% 温度:°）";
@@ -1207,7 +1344,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(779, 187);
+            this.dataGridView1.Size = new System.Drawing.Size(936, 187);
             this.dataGridView1.TabIndex = 4;
             // 
             // Column1
@@ -1380,7 +1517,7 @@
             // gbRealtimeData_94
             // 
             this.gbRealtimeData_94.Controls.Add(this.richTextBox5);
-            this.gbRealtimeData_94.Location = new System.Drawing.Point(1035, 675);
+            this.gbRealtimeData_94.Location = new System.Drawing.Point(1186, 675);
             this.gbRealtimeData_94.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbRealtimeData_94.Name = "gbRealtimeData_94";
             this.gbRealtimeData_94.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1403,11 +1540,11 @@
             // gbRealtimeData_93
             // 
             this.gbRealtimeData_93.Controls.Add(this.richTextBox3);
-            this.gbRealtimeData_93.Location = new System.Drawing.Point(638, 675);
+            this.gbRealtimeData_93.Location = new System.Drawing.Point(714, 675);
             this.gbRealtimeData_93.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbRealtimeData_93.Name = "gbRealtimeData_93";
             this.gbRealtimeData_93.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbRealtimeData_93.Size = new System.Drawing.Size(190, 179);
+            this.gbRealtimeData_93.Size = new System.Drawing.Size(234, 179);
             this.gbRealtimeData_93.TabIndex = 66;
             this.gbRealtimeData_93.TabStop = false;
             this.gbRealtimeData_93.Text = "告警状态-new";
@@ -1419,18 +1556,18 @@
             this.richTextBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.ReadOnly = true;
-            this.richTextBox3.Size = new System.Drawing.Size(180, 148);
+            this.richTextBox3.Size = new System.Drawing.Size(218, 149);
             this.richTextBox3.TabIndex = 1;
             this.richTextBox3.Text = "";
             // 
             // gbRealtimeData_105
             // 
             this.gbRealtimeData_105.Controls.Add(this.richTextBox4);
-            this.gbRealtimeData_105.Location = new System.Drawing.Point(836, 675);
+            this.gbRealtimeData_105.Location = new System.Drawing.Point(950, 675);
             this.gbRealtimeData_105.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbRealtimeData_105.Name = "gbRealtimeData_105";
             this.gbRealtimeData_105.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbRealtimeData_105.Size = new System.Drawing.Size(190, 179);
+            this.gbRealtimeData_105.Size = new System.Drawing.Size(234, 179);
             this.gbRealtimeData_105.TabIndex = 50;
             this.gbRealtimeData_105.TabStop = false;
             this.gbRealtimeData_105.Text = "提示状态";
@@ -1441,7 +1578,7 @@
             this.richTextBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox4.Name = "richTextBox4";
             this.richTextBox4.ReadOnly = true;
-            this.richTextBox4.Size = new System.Drawing.Size(180, 148);
+            this.richTextBox4.Size = new System.Drawing.Size(218, 149);
             this.richTextBox4.TabIndex = 0;
             this.richTextBox4.Text = "";
             // 
@@ -1459,11 +1596,11 @@
             this.gbDi_Status_Get.Controls.Add(this.pbExternalCANAddressingInputIOStatus);
             this.gbDi_Status_Get.Controls.Add(this.lblContactorPositiveSwitchDetectionHighLevelClosure);
             this.gbDi_Status_Get.Controls.Add(this.lblExternalCANAddressingInputIOStatus);
-            this.gbDi_Status_Get.Location = new System.Drawing.Point(242, 256);
+            this.gbDi_Status_Get.Location = new System.Drawing.Point(398, 254);
             this.gbDi_Status_Get.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.gbDi_Status_Get.Name = "gbDi_Status_Get";
             this.gbDi_Status_Get.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.gbDi_Status_Get.Size = new System.Drawing.Size(785, 50);
+            this.gbDi_Status_Get.Size = new System.Drawing.Size(781, 50);
             this.gbDi_Status_Get.TabIndex = 41;
             this.gbDi_Status_Get.TabStop = false;
             this.gbDi_Status_Get.Text = "DI状态";
@@ -1614,11 +1751,11 @@
             this.gbBalanceDchgStatus.Controls.Add(this.pbBatteryPackBalancedState_1);
             this.gbBalanceDchgStatus.Controls.Add(this.lblBatteryPackBalancedState_2);
             this.gbBalanceDchgStatus.Controls.Add(this.lblBatteryPackBalancedState_1);
-            this.gbBalanceDchgStatus.Location = new System.Drawing.Point(242, 372);
+            this.gbBalanceDchgStatus.Location = new System.Drawing.Point(398, 370);
             this.gbBalanceDchgStatus.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.gbBalanceDchgStatus.Name = "gbBalanceDchgStatus";
             this.gbBalanceDchgStatus.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.gbBalanceDchgStatus.Size = new System.Drawing.Size(785, 50);
+            this.gbBalanceDchgStatus.Size = new System.Drawing.Size(781, 50);
             this.gbBalanceDchgStatus.TabIndex = 42;
             this.gbBalanceDchgStatus.TabStop = false;
             this.gbBalanceDchgStatus.Text = "电池包放均衡状态";
@@ -1889,11 +2026,11 @@
             this.gbBalanceChgStatus.Controls.Add(this.pbBatteryPack_1_BalancedState);
             this.gbBalanceChgStatus.Controls.Add(this.lblBatteryPack_2_BalancedState);
             this.gbBalanceChgStatus.Controls.Add(this.lblBatteryPack_1_BalancedState);
-            this.gbBalanceChgStatus.Location = new System.Drawing.Point(242, 314);
+            this.gbBalanceChgStatus.Location = new System.Drawing.Point(398, 312);
             this.gbBalanceChgStatus.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.gbBalanceChgStatus.Name = "gbBalanceChgStatus";
             this.gbBalanceChgStatus.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.gbBalanceChgStatus.Size = new System.Drawing.Size(785, 50);
+            this.gbBalanceChgStatus.Size = new System.Drawing.Size(781, 50);
             this.gbBalanceChgStatus.TabIndex = 41;
             this.gbBalanceChgStatus.TabStop = false;
             this.gbBalanceChgStatus.Text = "电池包充均衡状态";
@@ -2186,7 +2323,7 @@
             this.gbBatteryInformation.Controls.Add(this.lblInductive_current_sampling3);
             this.gbBatteryInformation.Controls.Add(this.lblInductive_current_sampling2);
             this.gbBatteryInformation.Controls.Add(this.lblInductive_current_sampling1);
-            this.gbBatteryInformation.Location = new System.Drawing.Point(1035, 5);
+            this.gbBatteryInformation.Location = new System.Drawing.Point(1186, 2);
             this.gbBatteryInformation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbBatteryInformation.Name = "gbBatteryInformation";
             this.gbBatteryInformation.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -2551,7 +2688,7 @@
             this.gbOther_Dev_Staus.Controls.Add(this.pbChagreStatus);
             this.gbOther_Dev_Staus.Controls.Add(this.lblDischargeStatus);
             this.gbOther_Dev_Staus.Controls.Add(this.lblChagreStatus);
-            this.gbOther_Dev_Staus.Location = new System.Drawing.Point(913, 78);
+            this.gbOther_Dev_Staus.Location = new System.Drawing.Point(1065, 76);
             this.gbOther_Dev_Staus.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.gbOther_Dev_Staus.Name = "gbOther_Dev_Staus";
             this.gbOther_Dev_Staus.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
@@ -2652,7 +2789,7 @@
             this.gbRealtimeData_101.Controls.Add(this.lblBat_Max_Cell_VoltPack);
             this.gbRealtimeData_101.Controls.Add(this.txtBat_Max_Cell_Volt);
             this.gbRealtimeData_101.Controls.Add(this.lblBat_Max_Cell_Volt);
-            this.gbRealtimeData_101.Location = new System.Drawing.Point(242, 76);
+            this.gbRealtimeData_101.Location = new System.Drawing.Point(397, 74);
             this.gbRealtimeData_101.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.gbRealtimeData_101.Name = "gbRealtimeData_101";
             this.gbRealtimeData_101.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
@@ -2758,7 +2895,7 @@
             this.gbRealtimeData_104.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbRealtimeData_104.Name = "gbRealtimeData_104";
             this.gbRealtimeData_104.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbRealtimeData_104.Size = new System.Drawing.Size(190, 179);
+            this.gbRealtimeData_104.Size = new System.Drawing.Size(234, 179);
             this.gbRealtimeData_104.TabIndex = 52;
             this.gbRealtimeData_104.TabStop = false;
             this.gbRealtimeData_104.Text = "故障状态";
@@ -2770,18 +2907,18 @@
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(180, 146);
+            this.richTextBox1.Size = new System.Drawing.Size(218, 149);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
             // gbRealtimeData_103
             // 
             this.gbRealtimeData_103.Controls.Add(this.richTextBox2);
-            this.gbRealtimeData_103.Location = new System.Drawing.Point(440, 675);
+            this.gbRealtimeData_103.Location = new System.Drawing.Point(478, 675);
             this.gbRealtimeData_103.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbRealtimeData_103.Name = "gbRealtimeData_103";
             this.gbRealtimeData_103.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbRealtimeData_103.Size = new System.Drawing.Size(190, 179);
+            this.gbRealtimeData_103.Size = new System.Drawing.Size(234, 179);
             this.gbRealtimeData_103.TabIndex = 51;
             this.gbRealtimeData_103.TabStop = false;
             this.gbRealtimeData_103.Text = "保护状态";
@@ -2793,7 +2930,7 @@
             this.richTextBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.ReadOnly = true;
-            this.richTextBox2.Size = new System.Drawing.Size(180, 146);
+            this.richTextBox2.Size = new System.Drawing.Size(218, 149);
             this.richTextBox2.TabIndex = 1;
             this.richTextBox2.Text = "";
             // 
@@ -2803,6 +2940,16 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(6, 84);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(75, 21);
+            this.checkBox5.TabIndex = 22;
+            this.checkBox5.Text = "系统接入";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
             // CBSControl_BCU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -2810,7 +2957,7 @@
             this.Controls.Add(this.panel5);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CBSControl_BCU";
-            this.Size = new System.Drawing.Size(1280, 861);
+            this.Size = new System.Drawing.Size(1452, 861);
             this.Load += new System.EventHandler(this.RTAControl_Load);
             this.gbOperationInformation.ResumeLayout(false);
             this.gbOperationInformation.PerformLayout();
@@ -2821,6 +2968,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbDischargeStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbChagreStatus)).EndInit();
             this.panel5.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -3118,5 +3267,18 @@
         private Label lblBatteryPackBalancedState_12;
         private PictureBox pbBatteryPackBalancedState_11;
         private Label lblBatteryPackBalancedState_11;
+        private GroupBox groupBox2;
+        private Label label1;
+        private Label label2;
+        private CheckBox checkBox3;
+        private CheckBox checkBox2;
+        private CheckBox checkBox1;
+        private Label label4;
+        private Label label6;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private TextBox textBox3;
+        private CheckBox checkBox4;
+        private CheckBox checkBox5;
     }
 }

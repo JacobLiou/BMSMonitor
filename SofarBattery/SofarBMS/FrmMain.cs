@@ -831,6 +831,9 @@ StartListen,启动总线监听,Start bus listen";
                 }
                 else
                 {
+                    //配置初始参数
+                    UsbCanBaudrate baudrate = cbbBaud.SelectedIndex == 0 ? UsbCanBaudrate._250kbps : UsbCanBaudrate._500kbps;
+                    ecanHelper.Init(UsbCanType.ECAN, baudrate);
                     bool result = ecanHelper.Connect();
                     if (result)
                     {

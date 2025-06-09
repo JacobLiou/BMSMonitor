@@ -42,7 +42,7 @@ namespace SofarBMS.UI
                     new FaultInfo("MOS温度过高告警",3,1,0,0,1),
                     new FaultInfo("SOC过低保护",3,2,0,0,2),
                     new FaultInfo("SOC过低告警",3,3,0,0,1),
-                    new FaultInfo("总压采样异常",3,4,0,0,0),
+                    new FaultInfo("总压采样异常",3,4,0,0,3),
                     new FaultInfo("总压过大硬件保护",3,5,0,0,2),
                     new FaultInfo("充电过流硬件保护",3,6,0,0,2),
                     new FaultInfo("放电过流硬件保护",3,7,0,0,2),

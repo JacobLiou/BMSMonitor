@@ -1118,21 +1118,22 @@ Can通信故障,Can1CommFault
                     if (GetBit(data[i], j) == 1)
                     {
                         getLog(out msg, i, j, faultNum);
+                        //1故障 2保护 3告警
                         if (faultNum == 1)
                         {
                             switch (msg[1])
                             {
                                 case "1":
-                                    richTextBox3_45.AppendText(msg[0] + "\r");
-                                    model.Warning2 = richTextBox3_45.Text.Replace("\n", "，").Replace("\r", "，");
+                                    richTextBox1_45.AppendText(msg[0] + "\r");
+                                    model.Fault2 = richTextBox1_45.Text.Replace("\n", "，").Replace("\r", "，");
                                     break;
                                 case "2":
                                     richTextBox2_45.AppendText(msg[0] + "\r");
                                     model.Protection2 = richTextBox2_45.Text.Replace("\n", "，").Replace("\r", "，");
                                     break;
                                 case "3":
-                                    richTextBox1_45.AppendText(msg[0] + "\r");
-                                    model.Fault2 = richTextBox1_45.Text.Replace("\n", "，").Replace("\r", "，");
+                                    richTextBox3_45.AppendText(msg[0] + "\r");
+                                    model.Warning2 = richTextBox3_45.Text.Replace("\n", "，").Replace("\r", "，");
                                     break;
                             }
                         }
@@ -1141,16 +1142,16 @@ Can通信故障,Can1CommFault
                             switch (msg[1])
                             {
                                 case "1":
-                                    richTextBox3.AppendText(msg[0] + "\r\n");
-                                    model.Warning = richTextBox3.Text.Replace("\n", "，").Replace("\r", "，");
+                                    richTextBox1.AppendText(msg[0] + "\r\n");
+                                    model.Fault = richTextBox1.Text.Replace("\n", "，").Replace("\r", "，");
                                     break;
                                 case "2":
                                     richTextBox2.AppendText(msg[0] + "\r\n");
                                     model.Protection = richTextBox2.Text.Replace("\n", "，").Replace("\r", "，");
                                     break;
                                 case "3":
-                                    richTextBox1.AppendText(msg[0] + "\r\n");
-                                    model.Fault = richTextBox1.Text.Replace("\n", "，").Replace("\r", "，");
+                                    richTextBox3.AppendText(msg[0] + "\r\n");
+                                    model.Warning = richTextBox3.Text.Replace("\n", "，").Replace("\r", "，");
                                     break;
                             }
                         }

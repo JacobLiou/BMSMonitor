@@ -1734,7 +1734,7 @@ namespace SofarBMS.UI
                 {
                     ComboBox cbb = item as ComboBox;
                     int index = 0;
-                    int.TryParse(cbb.Name.Replace("cbbRequest20_", ""), out index);
+                    int.TryParse(cbb.Name.Replace("cbbRequestF0_", ""), out index);
                     int value = 0;
                     switch (cbb.SelectedIndex)
                     {

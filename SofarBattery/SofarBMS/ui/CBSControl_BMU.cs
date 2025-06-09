@@ -41,11 +41,18 @@ namespace SofarBMS.ui
                 }
             });
 
+            int p = -1;
             cts = new CancellationTokenSource();
             Task.Run(async delegate
             {
                 while (!cts.IsCancellationRequested)
                 {
+                    if (p == -1 || p != FrmMain.BMS_ID)
+                    {
+                        p = FrmMain.BMS_ID;
+                        this.Invoke(() => { ClearInputControls(this); });
+                    }
+
                     if (ecanHelper.IsConnected)
                     {
                         RealDataVM.SelectedRequest7 = FrmMain.BMS_ID;// 切换ID时，需同步更新
@@ -73,7 +80,21 @@ namespace SofarBMS.ui
             }
         }
 
+        public void ClearInputControls(Control control)
+        {
+            foreach (Control ctrl in control.Controls)
+            {
+                // 清空当前控件（如果是文本框或富文本框）
+                if (ctrl is TextBox)
+                    ((TextBox)ctrl).Clear();
+                else if (ctrl is RichTextBox)
+                    ((RichTextBox)ctrl).Clear();
 
+                // 递归处理容器控件
+                if (ctrl.HasChildren)
+                    ClearInputControls(ctrl);
+            }
+        }
         #region 帧数据解析
         /// <summary>
         /// 一级数据

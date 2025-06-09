@@ -152,7 +152,6 @@ namespace SofarBMS
             this.btnAlarmInfo.TabIndex = 56;
             this.btnAlarmInfo.Text = "报警记录";
             this.btnAlarmInfo.UseVisualStyleBackColor = false;
-            this.btnAlarmInfo.Visible = false;
             this.btnAlarmInfo.Click += new System.EventHandler(this.btnAlarmInfo_Click);
             // 
             // btnStratListen
@@ -319,7 +318,7 @@ namespace SofarBMS
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BMS电池上位机V1.0.2.7.20250514";
+            this.Text = "BMS电池上位机V1.0.2.8.20250609";
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();

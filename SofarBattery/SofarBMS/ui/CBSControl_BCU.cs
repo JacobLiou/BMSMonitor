@@ -113,13 +113,18 @@ namespace SofarBMS.UI
 
             // 初始化取消令牌
             cts = new CancellationTokenSource();
-
+            int p = -1;
             // 优化后的CAN通信任务
             Task.Run(async () =>
             {
                 const int MAX_RETRY = 3;
                 while (!cts.IsCancellationRequested)
                 {
+                    if (p == -1 || p != FrmMain.BCU_ID)
+                    {
+                        p = FrmMain.BCU_ID;
+                        this.Invoke(() => { ClearInputControls(this); });
+                    }
                     try
                     {
                         if (!ecanHelper.IsConnected)
@@ -146,7 +151,7 @@ namespace SofarBMS.UI
                         ));
 
                         // 多簇实时数据（并行发送）
-                        var clusterTasks = Enumerable.Range(1, 8)
+                        var clusterTasks = Enumerable.Range(1, 12)
                             .Select(bIndex => SendCommandWithRetry(
                                 new byte[] { (byte)bIndex, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 },
                                 new byte[] { 0xE0, FrmMain.BCU_ID, 0x05, 0x16 },
@@ -175,7 +180,7 @@ namespace SofarBMS.UI
                     }
                     finally
                     {
-                        Debug.WriteLine("Model初始化时间"+DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff"));
+                        Debug.WriteLine("Model初始化时间" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff"));
                         model = null;
                     }
                 }
@@ -662,10 +667,32 @@ namespace SofarBMS.UI
                         switch (data[0])
                         {
                             case 0x01:
-                                strs = new string[1];
-                                strs[0] = BytesToIntger(data[2], data[1]);
-
                                 //绝缘阻抗（1KΩ）
+                                textBox2.Text = BytesToIntger(data[2], data[1]);
+
+                                //绝缘检测状态，系统接入状态，编址状态
+                                string status = "";
+                                switch (data[3])
+                                {
+                                    case 0x00: status = "初始状态"; break;
+                                    case 0x01: status = "检测中"; break;
+                                    case 0x02: status = "异常"; break;
+                                    case 0x03: status = "正常"; break;
+                                    default:
+                                        break;
+                                }
+                                textBox3.Text = status;
+
+                                checkBox5.Checked = data[4] == 1 ? true : false;
+
+                                checkBox1.Checked = (data[5] & 0x01) == 0x01 ? true : false;
+                                checkBox2.Checked = (data[5] & 0x02) == 0x02 ? true : false;
+                                checkBox3.Checked = (data[5] & 0x04) == 0x04 ? true : false;
+
+                                checkBox4.Checked = data[6] == 1 ? true : false;
+                                break;
+                            case 0x02:
+                                textBox1.Text = $"0x{data[2].ToString("X2")}{data[1].ToString("X2")}";
                                 break;
                             default:
                                 break;
@@ -725,9 +752,9 @@ namespace SofarBMS.UI
                                     (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
                                 }
 
-                                model.Inductive_Current_Sampling1 = Convert.ToDouble(strs[0]);
-                                model.Inductive_Current_Sampling2 = Convert.ToDouble(strs[1]);
-                                model.Inductive_Current_Sampling3 = Convert.ToDouble(strs[2]);
+                                //model.Inductive_Current_Sampling1 = Convert.ToDouble(strs[0]);
+                                //model.Inductive_Current_Sampling2 = Convert.ToDouble(strs[1]);
+                                //model.Inductive_Current_Sampling3 = Convert.ToDouble(strs[2]);
                                 break;
                             case 0x02:
                                 strs = new string[3];
@@ -850,8 +877,8 @@ namespace SofarBMS.UI
                                 break;
                             case 0x04:
                                 //遥信数据：充电限载电流值，放电限载电流值
-                                double val1 = (data[2] << 8) | data[1];
-                                double val2 = (data[4] << 8) | data[3];
+                                double val1 = (short)((data[2] << 8) | data[1]);
+                                double val2 = (short)((data[4] << 8) | data[3]);
                                 txtChargeLimitCurrentValue.Text = (val1 * 0.01).ToString("F2");
                                 txtDischargeLimitCurrentValue.Text = (val2 * 0.01).ToString("F2");
 
@@ -1462,6 +1489,23 @@ namespace SofarBMS.UI
             return value;
         }
 
+
+        public void ClearInputControls(Control control)
+        {
+            foreach (Control ctrl in control.Controls)
+            {
+                // 清空当前控件（如果是文本框或富文本框）
+                if (ctrl is TextBox)
+                    ((TextBox)ctrl).Clear();
+                else if (ctrl is RichTextBox)
+                    ((RichTextBox)ctrl).Clear();
+
+                // 递归处理容器控件
+                if (ctrl.HasChildren)
+                    ClearInputControls(ctrl);
+            }
+        }
+
         #region 翻译所用得函数
         private void GetControls(Control c)
         {
@@ -1593,28 +1637,28 @@ namespace SofarBMS.UI
                         switch (msg[1])
                         {
                             case "1":
-                                if (richTextBox1.Text.Contains(msg[0]))
+                                if (msg[0].StartsWith("预留") || richTextBox1.Text.Contains(msg[0]))
                                     continue;
 
                                 richTextBox1.AppendText(msg[0] + "\r");
                                 type = "故障";
                                 break;
                             case "2":
-                                if (richTextBox2.Text.Contains(msg[0]))
+                                if (msg[0].StartsWith("预留") || richTextBox2.Text.Contains(msg[0]))
                                     continue;
 
                                 richTextBox2.AppendText(msg[0] + "\r");
                                 type = "保护";
                                 break;
                             case "3":
-                                if (richTextBox3.Text.Contains(msg[0]))
+                                if (msg[0].StartsWith("预留") || richTextBox3.Text.Contains(msg[0]))
                                     continue;
 
                                 richTextBox3.AppendText(msg[0] + "\r");
                                 type = "告警";
                                 break;
                             case "4":
-                                if (richTextBox4.Text.Contains(msg[0]))
+                                if (msg[0].StartsWith("预留") || richTextBox4.Text.Contains(msg[0]))
                                     continue;
 
                                 richTextBox4.AppendText(msg[0] + "\r");
@@ -1622,7 +1666,7 @@ namespace SofarBMS.UI
                                 break;
                         }
 
-                        var query = FrmMain.AlarmList.FirstOrDefault(t => t.Id == FrmMain.BMS_ID && t.Content == "BCU:" + msg[0]);
+                        var query = FrmMain.AlarmList.FirstOrDefault(t => t.Id == FrmMain.BMS_ID && t.Content == msg[0]);
                         if (query == null)
                         {
                             FrmMain.AlarmList.Add(new AlarmInfo()
@@ -1630,7 +1674,7 @@ namespace SofarBMS.UI
                                 DataTime = DateTime.Now.ToString("yy-MM-dd HH:mm:ss"),
                                 Id = FrmMain.BMS_ID,
                                 Type = type,
-                                Content = $"BCU:{msg[0]}"
+                                Content = $"{msg[0]}"
                             });
                         }
                     }
@@ -1654,7 +1698,7 @@ namespace SofarBMS.UI
                                 break;
                         }
 
-                        var query = FrmMain.AlarmList.FirstOrDefault(t => t.Id == FrmMain.BMS_ID && t.Type == type && t.Content == "BMU:" + msg[0] && t.State == 0);
+                        var query = FrmMain.AlarmList.FirstOrDefault(t => t.Id == FrmMain.BMS_ID && t.Type == type && t.Content == msg[0] && t.State == 0);
                         if (query != null)
                         {
                             query.State = 1;
@@ -1664,7 +1708,7 @@ namespace SofarBMS.UI
                                 State = 1,
                                 Id = FrmMain.BMS_ID,
                                 Type = type,
-                                Content = $"[解除]BCU:{msg[0]}"
+                                Content = $"[解除]{msg[0]}"
                             });
 
                             if (type == "故障")
@@ -1672,9 +1716,9 @@ namespace SofarBMS.UI
                             else if (type == "保护")
                                 richTextBox2.Text = richTextBox2.Text.Replace($"{msg[0]}\n", "");
                             else if (type == "告警")
-                                richTextBox3.Text = richTextBox4.Text.Replace($"{msg[0]}\n", "");
+                                richTextBox3.Text = richTextBox3.Text.Replace($"{msg[0]}\n", "");
                             else if (type == "提示")
-                                richTextBox4.Text = richTextBox1.Text.Replace($"{msg[0]}\n", "");
+                                richTextBox4.Text = richTextBox4.Text.Replace($"{msg[0]}\n", "");
 
                         }
                     }
@@ -1728,14 +1772,14 @@ namespace SofarBMS.UI
                             case 1:
                                 if (devType == "CBS5000")
                                 {
-                                    if (richTextBox1.Text.Contains(msg[0]))
+                                    if (msg[0].StartsWith("预留") || richTextBox1.Text.Contains(msg[0]))
                                         continue;
 
                                     richTextBox1.AppendText(msg[0] + "\r");
                                 }
                                 else
                                 {
-                                    if (richTextBox5.Text.Contains(msg[0]))
+                                    if (msg[0].StartsWith("预留") || richTextBox5.Text.Contains(msg[0]))
                                         continue;
 
                                     richTextBox5.AppendText(msg[0] + "\r");
@@ -1743,21 +1787,21 @@ namespace SofarBMS.UI
                                 type = "故障";
                                 break;
                             case 2:
-                                if (richTextBox2.Text.Contains(msg[0]))
+                                if (msg[0].StartsWith("预留") || richTextBox2.Text.Contains(msg[0]))
                                     continue;
 
                                 richTextBox2.AppendText(msg[0] + "\r");
                                 type = "保护";
                                 break;
                             case 3:
-                                if (richTextBox3.Text.Contains(msg[0]))
+                                if (msg[0].StartsWith("预留") || richTextBox3.Text.Contains(msg[0]))
                                     continue;
 
                                 richTextBox3.AppendText(msg[0] + "\r");
                                 type = "告警";
                                 break;
                             case 4:
-                                if (richTextBox4.Text.Contains(msg[0]))
+                                if (msg[0].StartsWith("预留") || richTextBox4.Text.Contains(msg[0]))
                                     continue;
 
                                 richTextBox4.AppendText(msg[0] + "\r");
@@ -1767,7 +1811,7 @@ namespace SofarBMS.UI
                                 break;
                         }
 
-                        var query = FrmMain.AlarmList.FirstOrDefault(t => t.Id == FrmMain.BMS_ID && t.Content == "BCU:" + msg[0]);
+                        var query = FrmMain.AlarmList.FirstOrDefault(t => t.Id == FrmMain.BMS_ID && t.Content == msg[0]);
                         if (query == null)
                         {
                             FrmMain.AlarmList.Add(new AlarmInfo()
@@ -1775,7 +1819,7 @@ namespace SofarBMS.UI
                                 DataTime = DateTime.Now.ToString("yy-MM-dd HH:mm:ss"),
                                 Id = FrmMain.BMS_ID,
                                 Type = type,
-                                Content = $"BCU:{msg[0]}"
+                                Content = msg[0]
                             });
                         }
                     }
@@ -1799,7 +1843,7 @@ namespace SofarBMS.UI
                                 break;
                         }
 
-                        var query = FrmMain.AlarmList.FirstOrDefault(t => t.Id == FrmMain.BMS_ID && t.Type == type && t.Content == "BMU:" + msg[0] && t.State == 0);
+                        var query = FrmMain.AlarmList.FirstOrDefault(t => t.Id == FrmMain.BMS_ID && t.Type == type && t.Content == msg[0] && t.State == 0);
                         if (query != null)
                         {
                             query.State = 1;
@@ -1809,7 +1853,7 @@ namespace SofarBMS.UI
                                 State = 1,
                                 Id = FrmMain.BMS_ID,
                                 Type = type,
-                                Content = $"[解除]BCU:{msg[0]}"
+                                Content = $"[解除]{msg[0]}"
                             });
                         }
 
@@ -1879,15 +1923,15 @@ namespace SofarBMS.UI
                     new FaultInfo("过流失能,Clu Over_Curr_Disable",1,0,0,0,1),
                     new FaultInfo("充电严重过流锁死(BCU),Chg_Over_Curr_Lock",1,1,0,0,1),
                     new FaultInfo("放电严重过流锁死(BCU),Dsg_Over_Curr_Lock",1,2,0,0,1),
-                    new FaultInfo("保留,resBit3",1,3,0,0,1),
+                    new FaultInfo("预留,resBit3",1,3,0,0,1),
                     new FaultInfo("电流大环零点不良(BCU),BOARD_CURR_BIG_RING_BADNESS",1,4,0,0,1),
                     new FaultInfo("电流小环零点不良(BCU),BOARD_CURR_LITTLE_RING_BADNESS",1,5,0,0,1),
-                    new FaultInfo("BMU连接器温度采样异常(BCU),BMU_Connect_Temp_Abnormal_Fault",1,6,0,0,1),
-                    new FaultInfo("BCU连接器温度采样异常(BCU),BCU_Connect_Temp_Abnormal_Fault",1,7,0,0,1),
+                    new FaultInfo("BMU连接器温度采样异常,BMU_Connect_Temp_Abnormal_Fault",1,6,0,0,1),//(BCU)
+                    new FaultInfo("BCU连接器温度采样异常,BCU_Connect_Temp_Abnormal_Fault",1,7,0,0,1),//(BCU)
                     new FaultInfo("簇电压压差过大(BCU),BOARD_TOTAL_VOLT_DIFF_OVER",2,0,0,0,1),
                     new FaultInfo("辅源异常(BCU),BOARD_VOLT_9V_ERR",2,1,0,0,1),
                     new FaultInfo("flash存储错误(BCU),BOARD_FLASH_ERR",2,2,0,0,1),
-                    new FaultInfo("保留,resBit3",2,3,0,0,1),
+                    new FaultInfo("预留,resBit3",2,3,0,0,1),
                     new FaultInfo("主回路保险丝熔断(BCU),BOARD_MAIN_CIRCUIT_BLOWN_FUSE",2,4,0,0,1),
                     new FaultInfo("正继电器粘连(BCU),BOARD_POSITIVE_RELAY_ADHESION",2,5,0,0,1),
                     new FaultInfo("负继电器粘连(BCU),BOARD_NEGATIVE_RELAY_ADHESION",2,6,0,0,1),
@@ -1903,11 +1947,11 @@ namespace SofarBMS.UI
                     new FaultInfo("BCU功率模块通讯故障,BCU-PWR_Com_Fault",4,0,0,0,1),
                     new FaultInfo("接触器故障,Contactor_Fault",4,1,0,0,1),
                     new FaultInfo("断路器故障,Breaker_Fault",4,2,0,0,1),
-                    new FaultInfo("保留,resBit3",4,3,0,0,1),
-                    new FaultInfo("保留,resBit4",4,4,0,0,1),
-                    new FaultInfo("保留,resBit5",4,5,0,0,1),
-                    new FaultInfo("保留,resBit6",4,6,0,0,1),
-                    new FaultInfo("保留,resBit7",4,7,0,0,1)
+                    new FaultInfo("预留,resBit3",4,3,0,0,1),
+                    new FaultInfo("预留,resBit4",4,4,0,0,1),
+                    new FaultInfo("预留,resBit5",4,5,0,0,1),
+                    new FaultInfo("预留,resBit6",4,6,0,0,1),
+                    new FaultInfo("预留,resBit7",4,7,0,0,1)
         };
         public List<FaultInfo> ProtectNotify = new List<FaultInfo>()
         {
@@ -1915,18 +1959,18 @@ namespace SofarBMS.UI
                     new FaultInfo("电池簇电压过高保护(BCU),Clu_High_Voltage_Protect",1,1,0,0,2),
                     new FaultInfo("电池簇充电过流保护(BCU),Clu_Chg_Over_Currr_Prot",1,2,0,0,2),
                     new FaultInfo("电池簇放电过流保护(BCU),Clu_Dsg_Over_Currr_Prot",1,3,0,0,2),
-                    new FaultInfo("保留,resBit4",1,4,0,0,2),
-                    new FaultInfo("保留,resBit5",1,5,0,0,2),
-                    new FaultInfo("保留,resBit6",1,6,0,0,2),
-                    new FaultInfo("保留,resBit7",1,7,0,0,2),
+                    new FaultInfo("预留,resBit4",1,4,0,0,2),
+                    new FaultInfo("预留,resBit5",1,5,0,0,2),
+                    new FaultInfo("预留,resBit6",1,6,0,0,2),
+                    new FaultInfo("预留,resBit7",1,7,0,0,2),
                     new FaultInfo("BCU连接器过温保护(BCU),BCU_CONNECT_TEMP_OVER_PROTECT",2,0,0,0,2),
                     new FaultInfo("充电电流超限保护,Charge Current Over Limit Pro",2,1,0,0,2),
                     new FaultInfo("放电电流超限保护,BMU_Connect_Temp_Over_Pro",2,2,0,0,2),
                     new FaultInfo("BMU连接器过温保护(BCU),BMU_Connect_Temp_Over_Pro",2,3,0,0,2),
                     new FaultInfo("BCU-PWR 心跳IO异常,BCU-PWR_Heart_Abnormal",2,4,0,0,2),
                     new FaultInfo("断路器开路,Breaker_Open_Pro",2,5,0,0,2),
-                    new FaultInfo("保留,resBit6",2,6,0,0,2),
-                    new FaultInfo("保留,resBit7",2,7,0,0,2)
+                    new FaultInfo("预留,resBit6",2,6,0,0,2),
+                    new FaultInfo("预留,resBit7",2,7,0,0,2)
         };
         public List<FaultInfo> WarningNotify = new List<FaultInfo>()
         {
@@ -1936,16 +1980,16 @@ namespace SofarBMS.UI
                     new FaultInfo("电池簇放电过流告警1(BCU),Clu_Dsg_Over_Currr Alm1",1,3,0,0,3),
                     new FaultInfo("SOC过低告警(BCU),Soc_low_Alm",1,4,0,0,3),
                     new FaultInfo("电池簇放电过流告警2(BCU),Clu_Dsg_Over_Currr Alm2",1,5,0,0,3),
-                    new FaultInfo("保留,resBit6",1,6,0,0,3),
-                    new FaultInfo("保留,resBit7",1,7,0,0,3),
-                    new FaultInfo("保留,resBit0",2,0,0,0,3),
-                    new FaultInfo("保留,resBit1",2,1,0,0,3),
-                    new FaultInfo("保留,resBit2",2,2,0,0,3),
-                    new FaultInfo("保留,resBit3",2,3,0,0,3),
-                    new FaultInfo("保留,resBit4",2,4,0,0,3),
+                    new FaultInfo("预留,resBit6",1,6,0,0,3),
+                    new FaultInfo("预留,resBit7",1,7,0,0,3),
+                    new FaultInfo("预留,resBit0",2,0,0,0,3),
+                    new FaultInfo("BCU与BMU 内CAN通讯告警,BMU_BCU_Com_Alm",2,1,0,0,3),
+                    new FaultInfo("预留,resBit2",2,2,0,0,3),
+                    new FaultInfo("预留,resBit3",2,3,0,0,3),
+                    new FaultInfo("预留,resBit4",2,4,0,0,3),
                     new FaultInfo("充电电流超限告警,Charge Current Over Limit Alm",2,5,0,0,3),
                     new FaultInfo("放电电流超限告警,Discharge Current Over Limit Alm",2,6,0,0,3),
-                    new FaultInfo("保留,resBit7",2,7,0,0,3)
+                    new FaultInfo("预留,resBit7",2,7,0,0,3)
         };
         public List<FaultInfo> PromptNotify = new List<FaultInfo>()
         {
@@ -1956,75 +2000,75 @@ namespace SofarBMS.UI
                     new FaultInfo("加热膜阻值异常(BCU),BOARD_HEAT_RES_ERR",1,4,0,0,4),
                     new FaultInfo("加热MOS异常,BOARD_HEAT_MOS_ERR",1,5,0,0,4),
                     new FaultInfo("加热保险丝异常,BOARD_HEAT_FUSE_ERR",1,6,0,0,4),
-                    new FaultInfo("保留,Res bit7",1,7,0,0,4),
+                    new FaultInfo("预留,Res bit7",1,7,0,0,4),
                     new FaultInfo("单板过温告警,BOARD_BCU_TEMP_OVER_ALM",2,0,0,0,4),
                     new FaultInfo("单板低温告警,BOARD_BCU_TEMP_UNDER_ALM",2,1,0,0,4),
-                    new FaultInfo("BMU异常关机告警(BCU),BOARD_BMU_ABNORMAL_SLEEP_ALARM",2,2,0,0,4),
+                    new FaultInfo("预留,Res bit2",2,2,0,0,4),
                     new FaultInfo("BCU与逆变器通讯提示,BCU_PCS_Com_Tip",2,3,0,0,4),
-                    new FaultInfo("保留,Res bit4",2,4,0,0,4),
-                    new FaultInfo("保留,Res bit5",2,5,0,0,4),
-                    new FaultInfo("保留,Res bit6",2,6,0,0,4),
-                    new FaultInfo("保留,Res bit7",2,7,0,0,4)
+                    new FaultInfo("预留,Res bit4",2,4,0,0,4),
+                    new FaultInfo("预留,Res bit5",2,5,0,0,4),
+                    new FaultInfo("预留,Res bit6",2,6,0,0,4),
+                    new FaultInfo("预留,Res bit7",2,7,0,0,4)
         };
 
         //PCU
         public List<FaultInfo> FaultNotify_DCDC = new List<FaultInfo>() {
-                    new FaultInfo("电感电流瞬时过流保护(PCU),bcu_dcdc_ocp_instant",1,0,0,0,1),
-                    new FaultInfo("电感电流CBC过流保护(PCU),bcu_dcdc_cbc_ocp",1,1,0,0,1),
-                    new FaultInfo("放电电流瞬时过流保护(PCU),bcu_dchg_ocp_instant",1,2,0,0,1),
-                    new FaultInfo("充电电流瞬时过流保护(PCU),bcu_chg_ocp_instant",1,3,0,0,1),
-                    new FaultInfo("电池电压瞬时过压保护(PCU),bcu_bat_ovp_instant",1,4,0,0,1),
-                    new FaultInfo("母线电压瞬时过压保护(PCU),bcu_bus_ovp_instant",1,5,0,0,1),
-                    new FaultInfo("母线短路保护(PCU),bcu_bus_scp",1,6,0,0,1),
-                    new FaultInfo("母线反接故障(PCU),bcu_bus_rpp",1,7,0,0,1),
-                    new FaultInfo("BCU-COM过压过流故障(PCU),bcu_com_ovpocp",2,0,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE2>>bit1",2,1,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE2>>bit2",2,2,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE2>>bit3",2,3,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE2>>bit4",2,4,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE2>>bit5",2,5,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE2>>bit6",2,6,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE2>>bit7",2,7,0,0,1),
-                    new FaultInfo("电流采样一致性故障(PCU),bcu_current_consistency",3,0,0,0,1),
-                    new FaultInfo("电感电流平均值过载保护1(PCU),bcu_dcdc_avg_opp1",3,1,0,0,1),
-                    new FaultInfo("电感电流平均值过载保护2(PCU),bcu_dcdc_avg_opp2",3,2,0,0,1),
-                    new FaultInfo("母线电压平均值过压保护(PCU),bcu_bus_avg_ovp",3,3,0,0,1),
-                    new FaultInfo("环境温度过温保护(PCU),bcu_env_otp",3,4,0,0,1),
-                    new FaultInfo("环境温度采样异常(PCU),bcu_env_sa",3,5,0,0,1),
-                    new FaultInfo("散热器温度过温保护(PCU),bcu_hs_otp",3,6,0,0,1),
-                    new FaultInfo("散热器温度采样异常(PCU),bcu_hs_sa",3,7,0,0,1),
-                    new FaultInfo("Can通信故障(PCU),bcu_can_comm_fault",4,0,0,0,1),
-                    new FaultInfo("BCU-COM心跳检测(PCU),bcu_com_heartbeat_fault",4,1,0,0,1),
-                    new FaultInfo("加热膜故障(PCU),bcu_heating_film_fault",4,2,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE4>>bit3",4,3,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE4>>bit4",4,4,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE4>>bit5",4,5,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE4>>bit6",4,6,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE4>>bit7",4,7,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE5>>bit0",5,0,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE5>>bit1",5,1,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE5>>bit2",5,2,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE5>>bit3",5,3,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE5>>bit4",5,4,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE5>>bit5",5,5,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE5>>bit6",5,6,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE5>>bit7",5,7,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE6>>bit0",6,0,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE6>>bit1",6,1,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE6>>bit2",6,2,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE6>>bit3",6,3,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE6>>bit4",6,4,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE6>>bit5",6,5,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE6>>bit6",6,6,0,0,1),
-                    new FaultInfo("预留(PCU),BYTE6>>bit7",6,7,0,0,1),
-                    new FaultInfo("充电大电流零偏校准错误(PCU),bcu_ichg_calibrate_fault_unrecover",7,0,0,0,1),
-                    new FaultInfo("放电大电流零偏校准错误(PCU),bcu_idchg_calibrate_fault_unrecover",7,1,0,0,1),
-                    new FaultInfo("电感电流零偏校准错误(PCU)bcu_dcdc_calibrate_fault_unrecover",6,2,0,0,1),
-                    new FaultInfo("继电器故障(PCU),bcu_relay_fault_unrecover",6,3,0,0,1),
-                    new FaultInfo("接触器检测故障(PCU),bcu_cont_fault_unrecover",6,4,0,0,1),
-                    new FaultInfo("主回路MOS异常(PCU),bcu_es_ctrl_fault_unrecover",6,5,0,0,1),
-                    new FaultInfo("母线短路永久故障(PCU),bcu_bus_scp_unrecover",6,6,0,0,1),
-                    new FaultInfo("主回路关断异常(PCU),bcu_es_ctrl_off_fault_unrecover",6,7,0,0,1),
+                    new FaultInfo("电感电流瞬时过流保护,bcu_dcdc_ocp_instant",1,0,0,0,1),
+                    new FaultInfo("电感电流CBC过流保护,bcu_dcdc_cbc_ocp",1,1,0,0,1),
+                    new FaultInfo("放电电流瞬时过流保护,bcu_dchg_ocp_instant",1,2,0,0,1),
+                    new FaultInfo("充电电流瞬时过流保护,bcu_chg_ocp_instant",1,3,0,0,1),
+                    new FaultInfo("电池电压瞬时过压保护,bcu_bat_ovp_instant",1,4,0,0,1),
+                    new FaultInfo("母线电压瞬时过压保护,bcu_bus_ovp_instant",1,5,0,0,1),
+                    new FaultInfo("母线短路保护,bcu_bus_scp",1,6,0,0,1),
+                    new FaultInfo("母线反接故障,bcu_bus_rpp",1,7,0,0,1),
+                    new FaultInfo("BCU-COM过压过流故障,bcu_com_ovpocp",2,0,0,0,1),
+                    new FaultInfo("预留,BYTE2>>bit1",2,1,0,0,1),
+                    new FaultInfo("预留,BYTE2>>bit2",2,2,0,0,1),
+                    new FaultInfo("预留,BYTE2>>bit3",2,3,0,0,1),
+                    new FaultInfo("预留,BYTE2>>bit4",2,4,0,0,1),
+                    new FaultInfo("预留,BYTE2>>bit5",2,5,0,0,1),
+                    new FaultInfo("预留,BYTE2>>bit6",2,6,0,0,1),
+                    new FaultInfo("预留,BYTE2>>bit7",2,7,0,0,1),
+                    new FaultInfo("电流采样一致性故障,bcu_current_consistency",3,0,0,0,1),
+                    new FaultInfo("电感电流平均值过载保护1,bcu_dcdc_avg_opp1",3,1,0,0,1),
+                    new FaultInfo("电感电流平均值过载保护2,bcu_dcdc_avg_opp2",3,2,0,0,1),
+                    new FaultInfo("母线电压平均值过压保护,bcu_bus_avg_ovp",3,3,0,0,1),
+                    new FaultInfo("环境温度过温保护,bcu_env_otp",3,4,0,0,1),
+                    new FaultInfo("环境温度采样异常,bcu_env_sa",3,5,0,0,1),
+                    new FaultInfo("散热器温度过温保护,bcu_hs_otp",3,6,0,0,1),
+                    new FaultInfo("散热器温度采样异常,bcu_hs_sa",3,7,0,0,1),
+                    new FaultInfo("Can通信故障,bcu_can_comm_fault",4,0,0,0,1),
+                    new FaultInfo("BCU-COM心跳检测,bcu_com_heartbeat_fault",4,1,0,0,1),
+                    new FaultInfo("加热膜故障,bcu_heating_film_fault",4,2,0,0,1),
+                    new FaultInfo("预留,BYTE4>>bit3",4,3,0,0,1),
+                    new FaultInfo("预留,BYTE4>>bit4",4,4,0,0,1),
+                    new FaultInfo("预留,BYTE4>>bit5",4,5,0,0,1),
+                    new FaultInfo("预留,BYTE4>>bit6",4,6,0,0,1),
+                    new FaultInfo("预留,BYTE4>>bit7",4,7,0,0,1),
+                    new FaultInfo("预留,BYTE5>>bit0",5,0,0,0,1),
+                    new FaultInfo("预留,BYTE5>>bit1",5,1,0,0,1),
+                    new FaultInfo("预留,BYTE5>>bit2",5,2,0,0,1),
+                    new FaultInfo("预留,BYTE5>>bit3",5,3,0,0,1),
+                    new FaultInfo("预留,BYTE5>>bit4",5,4,0,0,1),
+                    new FaultInfo("预留,BYTE5>>bit5",5,5,0,0,1),
+                    new FaultInfo("预留,BYTE5>>bit6",5,6,0,0,1),
+                    new FaultInfo("预留,BYTE5>>bit7",5,7,0,0,1),
+                    new FaultInfo("预留,BYTE6>>bit0",6,0,0,0,1),
+                    new FaultInfo("预留,BYTE6>>bit1",6,1,0,0,1),
+                    new FaultInfo("预留,BYTE6>>bit2",6,2,0,0,1),
+                    new FaultInfo("预留,BYTE6>>bit3",6,3,0,0,1),
+                    new FaultInfo("预留,BYTE6>>bit4",6,4,0,0,1),
+                    new FaultInfo("预留,BYTE6>>bit5",6,5,0,0,1),
+                    new FaultInfo("预留,BYTE6>>bit6",6,6,0,0,1),
+                    new FaultInfo("预留,BYTE6>>bit7",6,7,0,0,1),
+                    new FaultInfo("充电大电流零偏校准错误,bcu_ichg_calibrate_fault_unrecover",7,0,0,0,1),
+                    new FaultInfo("放电大电流零偏校准错误,bcu_idchg_calibrate_fault_unrecover",7,1,0,0,1),
+                    new FaultInfo("电感电流零偏校准错误,bcu_dcdc_calibrate_fault_unrecover",7,2,0,0,1),
+                    new FaultInfo("继电器故障,bcu_relay_fault_unrecover",7,3,0,0,1),
+                    new FaultInfo("接触器检测故障,bcu_cont_fault_unrecover",7,4,0,0,1),
+                    new FaultInfo("主回路MOS异常,bcu_es_ctrl_fault_unrecover",7,5,0,0,1),
+                    new FaultInfo("母线短路永久故障,bcu_bus_scp_unrecover",7,6,0,0,1),
+                    new FaultInfo("主回路关断异常,bcu_es_ctrl_off_fault_unrecover",7,7,0,0,1),
 
         };
     }

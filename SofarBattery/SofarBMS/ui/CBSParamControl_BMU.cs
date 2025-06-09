@@ -95,8 +95,6 @@ namespace SofarBMS.ui
                 {"txt_80", "总体过放提示解除(V)"}
             };
         private int index = 1;
-
-        private int bmuAddress = 0x1;
         private bool readFlag = true;
 
         public CBSParamControl_BMU()
@@ -125,7 +123,7 @@ namespace SofarBMS.ui
                         {
                             await Task.Delay(1000);
                             byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-                            ecanHelper.Send(bytes, new byte[] { 0xE0, (byte)(bmuAddress + 0x80), 0x2E, 0x10 });
+                            ecanHelper.Send(bytes, new byte[] { 0xE0, (byte)(FrmMain.BMS_ID + 0x80), 0x2E, 0x10 });
 
                             readFlag = false;
                         }
@@ -291,7 +289,7 @@ namespace SofarBMS.ui
         /// <param name="e"></param>
         private void btnParameter_70_Click(object sender, EventArgs e)
         {
-            paramVM.SelectedAddress_BMU = (byte)(bmuAddress + 0x00);
+            paramVM.SelectedAddress_BMU = (byte)(FrmMain.BMS_ID + 0x00);
             if (!paramVM.Read())
             {
                 //读取失败提示
@@ -379,6 +377,7 @@ namespace SofarBMS.ui
 
             if (checkList.Any(t => t))
             {
+                //paramVM.SelectedAddress_BMU = (byte)(FrmMain.BMS_ID + 0x00);
                 if (paramVM.Write(checkList.ToArray(), paramList))
                 {
                     MessageBox.Show(FrmMain.GetString("keyWriteSuccess"));
