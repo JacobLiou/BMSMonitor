@@ -1,5 +1,4 @@
-﻿using NPOI.SS.Formula.Functions;
-using Sofar.ConnectionLibs.CAN;
+﻿using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
 using System.Diagnostics;
 using System.Text;
@@ -97,9 +96,9 @@ namespace SofarBMS.UI
         private void AnalysisData(uint obj_ID, byte[] data)
         {
             uint id = obj_ID | 0xff;
+            Debug.WriteLine(id.ToString("X8"));
             if (!(id == 0x07FB41FF || id == 0x07fE41FF || id == 0x07FF41FF || id == 0x07FF5FFF))
                 return;
-
 
             switch (flag)
             {
@@ -230,7 +229,7 @@ namespace SofarBMS.UI
                     _cts = new CancellationTokenSource();
                     Task.Run(() =>
                     {
-                        int counter = 3;
+                        int counter = 5;
                         while (!_cts.IsCancellationRequested)
                         {
                             if (flag == 1)
@@ -246,7 +245,7 @@ namespace SofarBMS.UI
                                         {
                                             startDownloadFlag1(Convert.ToByte(cbbChip_role.SelectedIndex), txtChip_code.Text, file_size, 1024);
                                         }));
-                                        Thread.Sleep(1000);
+                                        Thread.Sleep(200);
                                         counter--;
                                     }
 
@@ -271,42 +270,6 @@ namespace SofarBMS.UI
                                         flag = 2;
                                         counter = 0;
                                     }
-                                    /*if (DevList.Count != 0)
-                                    {
-                                        this.Invoke(new Action(() =>
-                                        {
-                                            lblUpgrade_05.Text = LanguageHelper.GetLanguage("Upgrade_Start") + DevList.Count;
-                                            lblUpgrade_05.ForeColor = Color.Black;
-                                        }));
-
-                                        flag = 2;
-                                        counter = 0;
-                                    }
-                                    else
-                                    {
-                                        counter = counter + 1;
-
-                                        if (counter <= 5)
-                                        {
-                                            Debug.WriteLine(DateTime.Now.ToString("HH:mm:ss:ffff") + " FB：" + counter);
-
-                                            this.Invoke(new Action(() =>
-                                            {
-                                                startDownloadFlag1(Convert.ToByte(cbbChip_role.SelectedIndex), txtChip_code.Text, file_size, 1024);
-                                            }));
-                                            Thread.Sleep(200);
-                                        }
-                                        else
-                                        {
-                                            this.Invoke(new Action(() =>
-                                            {
-                                                lblUpgrade_05.Text = LanguageHelper.GetLanguage("Response_Timed");
-                                                lblUpgrade_05.ForeColor = System.Drawing.Color.Red;
-                                            }));
-
-                                            Init();
-                                        }
-                                    }*/
                                 }
                             }
                             else if (flag == 2)
@@ -470,14 +433,6 @@ namespace SofarBMS.UI
 
             flag = 0;
             State = false;
-
-            //Stopwatch stopwatch = Stopwatch.StartNew();
-            //Task.Run(async delegate
-            //{
-            //    this.Invoke(new Action(() => { btnUpgrade_04.Enabled = false; }));
-            //    await Task.Delay(15000);
-            //    this.Invoke(new Action(() => { btnUpgrade_04.Enabled = true; }));
-            //});
 
             retry = 0;
             file_size = 0;
@@ -666,17 +621,17 @@ namespace SofarBMS.UI
                 if (!_cts.IsCancellationRequested)
                 {
                     bool result = ecanHelper.Send(data, canid);
-                    //if (!result)
-                    //{
-                    //    if (retry >= 10 && State)
-                    //    {
-                    //        Init();//发送无效，自动结束升级！
-                    //    }
+                    if (!result)
+                    {
+                        if (retry >= 10 && State)
+                        {
+                            AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), BitConverter.ToUInt32(canid, 0).ToString("X"), "Communication error, task terminated!");
+                            Init();//发送无效，自动结束升级！
+                        }
 
-                    //    retry++;
-                    //    AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), BitConverter.ToUInt32(canid, 0).ToString("X"), "sending failed!");
-                    //}
-                    //else
+                        retry++;
+                    }
+                    else
                     {
                         if (mark != 0xFD)
                             AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), BitConverter.ToUInt32(canid, 0).ToString("X"), $"PACK_ID:{groupIndex},Data:{BitConverter.ToString(data)}");
