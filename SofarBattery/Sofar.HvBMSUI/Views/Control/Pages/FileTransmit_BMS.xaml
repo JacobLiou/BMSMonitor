@@ -14,6 +14,7 @@
             <Grid Grid.Column="1" Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
@@ -42,10 +43,24 @@
                         </StackPanel>
 
                         <TextBlock Text="BCU设备地址 " Grid.Row="1" VerticalAlignment="Center"/>
-                        <TextBox Text="{Binding slaveAddress, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Width="170"/>
+                        <!--<TextBox Text="{Binding slaveAddress, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Width="170"/>-->
+                        <ComboBox x:Name="ckbAddress_BCU" FontSize="16" Grid.Row="1" Grid.Column="1" Width="170" BorderThickness="1" ItemsSource="{Binding Address_BCU_List}" SelectedItem="{Binding SelectedAddress_BCU,Mode=TwoWay}">
+                            <ComboBox.ToolTip>
+                                <ToolTip Background="LightGreen" Placement="MousePoint"  Foreground="Black">
+                                    切换此地址可读取对应BCU设备的实时数据
+                                </ToolTip>
+                            </ComboBox.ToolTip>
+                        </ComboBox>
                         <TextBlock Text="BMU设备地址 " Grid.Row="2" VerticalAlignment="Center"/>
-                        <TextBox Text="{Binding subDeviceAddress, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" Width="170"/>
-
+                        <!--<TextBox Text="{Binding subDeviceAddress, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" Width="170"/>-->
+                        <ComboBox x:Name="ckbAddress_BMU" FontSize="16" Grid.Row="2" Grid.Column="1" Width="170" BorderThickness="1" ItemsSource="{Binding Address_BMU_List}" SelectedItem="{Binding SelectedAddress_BMU,Mode=TwoWay}">
+                            <ComboBox.ToolTip>
+                                <ToolTip Background="LightGreen" Placement="MousePoint"  Foreground="Black">
+                                    切换此地址可读取对应BCU设备的实时数据
+                                </ToolTip>
+                            </ComboBox.ToolTip>
+                        </ComboBox>
+                        
                         <TextBlock Text="读取条数" Grid.Row="1" Grid.Column="2"  VerticalAlignment="Center" TextAlignment="Center" Visibility="{Binding VisibleAttributes}"/>
                         <TextBox Text="{Binding readCount, Mode=TwoWay}" Width="170" Grid.Row="1" Grid.Column="3" Visibility="{Binding VisibleAttributes}"/>
                         <TextBlock Text="起始位置 " Grid.Row="2" Grid.Column="2" VerticalAlignment="Center"   TextAlignment="Center" Visibility="{Binding VisibleAttributes}"/>
@@ -53,7 +68,17 @@
                     </Grid>
                 </GroupBox>
 
-                <ListView Name="lvUpgradeLog" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding FileTransmitLogList}">
+
+                <GroupBox Header="读取进度" Grid.Row="1" Style="{x:Null}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="文件大小" VerticalAlignment="Center"/>
+                        <TextBox Width="100" Margin="10 0" Text="{Binding FileSize}"/>
+                        <TextBlock Text="读取进度" VerticalAlignment="Center"/>
+                        <ProgressBar Width="500" Margin="10 0" Height="20" Value="{Binding ProgressValue}"/>
+                    </StackPanel>
+                </GroupBox>
+                
+                <ListView Name="lvUpgradeLog" Grid.Row="2" Grid.Column="0" ItemsSource="{Binding FileTransmitLogList}">
                     <ListView.Resources>
                         <!-- 自定义样式 -->
                         <Style TargetType="ListViewItem">

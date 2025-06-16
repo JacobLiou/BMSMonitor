@@ -1,4 +1,5 @@
-﻿using Sofar.ConnectionLibs.CAN;
+﻿using NPOI.SS.Formula.Functions;
+using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
 using System.Diagnostics;
 using System.Text;
@@ -33,7 +34,7 @@ namespace SofarBMS.UI
         private List<int> ErrorList = new List<int>();
         private List<byte[]> ResultList = new List<byte[]>();
         private Dictionary<uint, int> DevState = new Dictionary<uint, int>();
-        private CancellationTokenSource _cts = new CancellationTokenSource();
+        private static CancellationTokenSource _cts = null;
 
         #endregion
 
@@ -151,13 +152,7 @@ namespace SofarBMS.UI
                                 lblUpgrade_05.ForeColor = System.Drawing.Color.Green;
                                 progressBar1.Value = 0;
 
-                                //初始化变量
-                                _cts.Cancel();
-                                flag = 0;
-                                State = false;
-                                groupIndex = 0;
-                                DevList.Clear();
-                                DevState.Clear();
+                                Init();
                             }
                         }));
                     }
@@ -210,63 +205,82 @@ namespace SofarBMS.UI
         {
             string path = txtUpgradeFile.Text.Trim();
 
-            if (string.IsNullOrEmpty(path) || !File.Exists(path))
+            if (!string.IsNullOrEmpty(path) && File.Exists(path))
             {
-                MessageBox.Show(LanguageHelper.GetLanguage("Upgrade_FileSelect"));
-                return;
-            }
-
-            using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
-            {
-                // 正确计算总数据块数
-                file_size = (int)Math.Ceiling((double)fs.Length / 1024);
-
-                // 读取文件数据
-                BinaryReader r = new BinaryReader(fs);
-                fileData = r.ReadBytes((int)fs.Length);
-            }
-
-            // 初始化进度条
-            progressBar1.Maximum = file_size > 0 ? file_size - 1 : 0;
-
-            if (State == false)
-            {
-                State = true;
-                flag = 1;
-
-                //进入升级
-                _cts = new CancellationTokenSource();
-                //设置新的log文件
-                //LogHelper.SubDirectory = "Download";
-                //LogHelper.CreateNewLogger();
-                //LogHelper.AddLog("**************** 程序下载日志 ****************");
-
-                //0XFB多线程处理，轮询获取设备情况
-                Task.Factory.StartNew(async () =>
+                using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
                 {
-                    int counter = 0;
+                    // 正确计算总数据块数
+                    file_size = (Convert.ToInt32(fs.Length / 1024) + Convert.ToInt32((file_size % 1024) != 0 ? 1 : 0) - 1);
+                    int x = (int)Math.Ceiling((double)fs.Length / 1024);
 
-                    while (!_cts.IsCancellationRequested)
+                    // 读取文件数据
+                    BinaryReader r = new BinaryReader(fs);
+                    fileData = r.ReadBytes((int)fs.Length);
+                }
+
+                // 初始化进度条
+                progressBar1.Maximum = file_size - 1 <= 0 ? 0 : file_size - 1;//file_size;
+
+                // 判断升级状态
+                if (State == false)
+                {
+                    flag = 1;
+                    State = true;
+
+                    _cts = new CancellationTokenSource();
+                    Task.Run(() =>
                     {
-                        //mResetEvent.WaitOne(); //用来控制是否需要暂停和继续
-
-                        switch (flag)
+                        int counter = 3;
+                        while (!_cts.IsCancellationRequested)
                         {
-                            case 1:
-                                //Thread.Sleep(3000);
-
+                            if (flag == 1)
+                            {
                                 // 访问集合时加锁
-                                lock (_devListLock)
+                                //lock (_devListLock)
                                 {
-                                    if (DevList.Count != 0)
+                                    while (counter > 0)
                                     {
-                                        counter = 0;
-                                        flag = 2;
+                                        Debug.WriteLine(DateTime.Now.ToString("HH:mm:ss:ffff") + " FB：" + counter);
+
+                                        this.Invoke(new Action(() =>
+                                        {
+                                            startDownloadFlag1(Convert.ToByte(cbbChip_role.SelectedIndex), txtChip_code.Text, file_size, 1024);
+                                        }));
+                                        Thread.Sleep(1000);
+                                        counter--;
+                                    }
+
+                                    if (DevList.Count == 0)
+                                    {
+                                        this.Invoke(new Action(() =>
+                                        {
+                                            lblUpgrade_05.Text = LanguageHelper.GetLanguage("Response_Timed");
+                                            lblUpgrade_05.ForeColor = System.Drawing.Color.Red;
+                                        }));
+
+                                        Init();
+                                    }
+                                    else
+                                    {
                                         this.Invoke(new Action(() =>
                                         {
                                             lblUpgrade_05.Text = LanguageHelper.GetLanguage("Upgrade_Start") + DevList.Count;
-                                            lblUpgrade_05.ForeColor = System.Drawing.Color.Black;
+                                            lblUpgrade_05.ForeColor = Color.Black;
                                         }));
+
+                                        flag = 2;
+                                        counter = 0;
+                                    }
+                                    /*if (DevList.Count != 0)
+                                    {
+                                        this.Invoke(new Action(() =>
+                                        {
+                                            lblUpgrade_05.Text = LanguageHelper.GetLanguage("Upgrade_Start") + DevList.Count;
+                                            lblUpgrade_05.ForeColor = Color.Black;
+                                        }));
+
+                                        flag = 2;
+                                        counter = 0;
                                     }
                                     else
                                     {
@@ -274,12 +288,13 @@ namespace SofarBMS.UI
 
                                         if (counter <= 5)
                                         {
-                                            Debug.WriteLine(System.DateTime.Now.ToString("HH:mm:ss:ffff") + " FB：" + counter);
+                                            Debug.WriteLine(DateTime.Now.ToString("HH:mm:ss:ffff") + " FB：" + counter);
 
                                             this.Invoke(new Action(() =>
                                             {
                                                 startDownloadFlag1(Convert.ToByte(cbbChip_role.SelectedIndex), txtChip_code.Text, file_size, 1024);
                                             }));
+                                            Thread.Sleep(200);
                                         }
                                         else
                                         {
@@ -289,25 +304,24 @@ namespace SofarBMS.UI
                                                 lblUpgrade_05.ForeColor = System.Drawing.Color.Red;
                                             }));
 
-                                            _cts.Cancel();
+                                            Init();
                                         }
-                                    }
+                                    }*/
                                 }
+                            }
+                            else if (flag == 2)
+                            {
+                                Thread.Sleep(TX_INTERVAL_TIME);
 
-                                await Task.Delay(3000);
-                                break;
-                            case 2:
                                 AddLog(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FC", "PACK_ID" + groupIndex);
                                 startDownloadPack2(groupIndex, 1024);
+                                Thread.Sleep(TX_INTERVAL_TIME);
 
                                 int offset = groupIndex * 1024;
-
-                                Thread.Sleep(TX_INTERVAL_TIME);
 
                                 for (int i = 0; i < 1024; i += 8)
                                 {
                                     startDownloadData3(offset + i);
-
                                     Thread.Sleep(TX_INTERVAL_TIME_Data);
                                 }
 
@@ -317,88 +331,90 @@ namespace SofarBMS.UI
                                     progressBar1.Value = groupIndex;
                                 }));
 
-                                //Thread.Sleep(TX_INTERVAL_TIME);
 
                                 //当前包数据未发送完成
                                 if (groupIndex != file_size - 1)
+                                {
                                     groupIndex++;
+                                }
                                 else
                                 {
                                     flag = 4;
                                 }
-                                break;
-                            case 4:
-                                do
+                            }
+                            else if (flag == 4)
+                            {
+                                //do
+                                //{
+                                ErrorList.Clear();
+                                ResultList.Clear();
+
+                                byte[] dataCRC = new byte[fileData.Length - 1024];
+
+                                Buffer.BlockCopy(fileData, 0, dataCRC, 0, dataCRC.Length);
+
+                                this.Invoke(new Action(() =>
                                 {
-                                    ErrorList.Clear();
-                                    ResultList.Clear();
+                                    startDownloadCheck4(Convert.ToByte(cbbChip_role.SelectedIndex), txtChip_code.Text, dataCRC);
+                                }));
+                                Thread.Sleep(TX_INTERVAL_TIME + 2000);
 
+                                //if (ResultList.Count == 0)
+                                //    continue;
+                                //if (ResultList.Count != DevList.Count)
+                                //    continue;
 
-                                    byte[] dataCRC = new byte[fileData.Length - 1024];
+                                int[][] arr = new int[ResultList.Count][];//不规则二位数组，行、不确定列
 
-                                    Buffer.BlockCopy(fileData, 0, dataCRC, 0, dataCRC.Length);
+                                for (int i = 0; i < ResultList.Count; i++)
+                                {
+                                    byte[] rec = ResultList[i]; //模拟接收到的数据
 
-                                    this.Invoke(new Action(() =>
+                                    int[] error = Check(rec).ToArray();
+
+                                    arr[i] = error;
+                                }
+
+                                //二维数组的集合
+                                for (int ii = 0; ii < arr.Length; ++ii)
+                                {
+                                    foreach (int j in arr[ii])
                                     {
-                                        startDownloadCheck4(Convert.ToByte(cbbChip_role.SelectedIndex), txtChip_code.Text, dataCRC);
-                                    }));
+                                        if (!ErrorList.Contains(j))
+                                        {
+                                            ErrorList.Add(j);
+                                        }
+                                    }
+                                }
 
-                                    Thread.Sleep(500);
+                                for (int i = 0; i < ErrorList.Count; i++)
+                                {
+                                    //根据坐标地址，计算出第几包；在该处执行FC+FD的数据下发
+                                    groupIndex = ErrorList[i] % 24 == 0 ? ErrorList[i] / 24 - 1 : ErrorList[i] / 24;
+                                    //Debug.WriteLine($"第{groupIndex}组异常，Pack为{ErrorList[i]} ");
+                                    //AddLog(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FE", $"第{groupIndex}组异常，Pack为{ErrorList[i]}");
+
+                                    startDownloadPack2(ErrorList[i] - 1, 1024);
                                     Thread.Sleep(TX_INTERVAL_TIME);
 
-                                    if (ResultList.Count == 0)
-                                        continue;
+                                    int offset = (ErrorList[i] - 1) * 1024;
 
-                                    int[][] arr = new int[ResultList.Count][];//不规则二位数组，行、不确定列
-
-                                    for (int i = 0; i < ResultList.Count; i++)
+                                    for (int j = 0; j < 1024; j += 8)
                                     {
-                                        byte[] rec = ResultList[i]; //模拟接收到的数据
-
-                                        int[] error = Check(rec).ToArray();
-
-                                        arr[i] = error;
+                                        startDownloadData3(offset + j);
+                                        Thread.Sleep(TX_INTERVAL_TIME_Data);
                                     }
+                                    Thread.Sleep(TX_INTERVAL_TIME);
+                                }
+                                //} while (ErrorList.Count != 0);
 
-                                    //二维数组的集合
-                                    for (int ii = 0; ii < arr.Length; ++ii)
-                                    {
-                                        foreach (int j in arr[ii])
-                                        {
-                                            if (!ErrorList.Contains(j))
-                                            {
-                                                ErrorList.Add(j);
-                                            }
-                                        }
-                                    }
+                                if (ErrorList.Count == 0)//ResultList.Count >= DevList.Count && 
+                                    flag = 5;
+                            }
+                            else if (flag == 5)
+                            {
+                                Thread.Sleep(2000);
 
-                                    for (int i = 0; i < ErrorList.Count; i++)
-                                    {
-                                        //根据坐标地址，计算出第几包；在该处执行FC+FD的数据下发
-                                        groupIndex = ErrorList[i] % 24 == 0 ? ErrorList[i] / 24 - 1 : ErrorList[i] / 24;
-                                        //Debug.WriteLine($"第{groupIndex}组异常，Pack为{ErrorList[i]} ");
-                                        //AddLog(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), "FE", $"第{groupIndex}组异常，Pack为{ErrorList[i]}");
-
-                                        startDownloadPack2(ErrorList[i] - 1, 1024);
-
-                                        Thread.Sleep(TX_INTERVAL_TIME);
-
-                                        offset = (ErrorList[i] - 1) * 1024;
-
-                                        for (int j = 0; j < 1024; j += 8)
-                                        {
-                                            startDownloadData3(offset + j);
-
-                                            Thread.Sleep(TX_INTERVAL_TIME_Data);
-                                        }
-                                        Thread.Sleep(TX_INTERVAL_TIME);
-                                    }
-                                } while (ErrorList.Count != 0);
-
-                                flag = 5;
-
-                                break;
-                            case 5:
                                 if (counter <= 5)
                                 {
                                     Debug.WriteLine(System.DateTime.Now.ToString("HH:mm:ss:ffff") + " FF：" + counter);
@@ -408,7 +424,7 @@ namespace SofarBMS.UI
                                         startDownloadState5(Convert.ToByte(cbbChip_role.SelectedIndex), txtChip_code.Text);
                                     }));
                                 }
-                                else if (counter > 10)
+                                else
                                 {
                                     StringBuilder sb = new StringBuilder();
 
@@ -428,42 +444,46 @@ namespace SofarBMS.UI
                                         lblUpgrade_05.ForeColor = System.Drawing.Color.Red;
                                     }));
 
-                                    _cts.Cancel();
+                                    Init();
                                 }
 
                                 counter = counter + 1;
-                                Thread.Sleep(3000);
-                                break;
+                            }
                         }
-                    }
-                });
-
-                //注册一个委托：这个委托将任务取消的时候调用
-                _cts.Token.Register(() =>
+                    }, _cts.Token);
+                }
+                else
                 {
-                    //在这个地方可以编写自己要处理的逻辑
-                    Debug.WriteLine(System.DateTime.Now.ToString("HH:mm:ss:ffff") + "任务取消，开启清理工作....");
-
-                    _cts.Cancel();
-                    State = false;
-                    file_size = 0;
-                });
+                    Init();
+                }
             }
             else
             {
-                _cts.Cancel();//取消线程
-
-                State = false;
-
-                flag = 0;
-                file_size = 0;
-                groupIndex = 0;
-                progressBar1.Value = 0;
-                lblUpgrade_05.Text = "";
-
-                DevList.Clear();
-                DevState.Clear();
+                MessageBox.Show(LanguageHelper.GetLanguage("Upgrade_FileSelect"));
             }
+        }
+
+        public void Init()
+        {
+            _cts.Cancel();
+            _cts.Dispose();
+
+            flag = 0;
+            State = false;
+
+            //Stopwatch stopwatch = Stopwatch.StartNew();
+            //Task.Run(async delegate
+            //{
+            //    this.Invoke(new Action(() => { btnUpgrade_04.Enabled = false; }));
+            //    await Task.Delay(15000);
+            //    this.Invoke(new Action(() => { btnUpgrade_04.Enabled = true; }));
+            //});
+
+            retry = 0;
+            file_size = 0;
+            groupIndex = 0;
+            DevList.Clear();
+            DevState.Clear();
         }
 
         private void cbbChip_role_SelectedIndexChanged(object sender, EventArgs e)
@@ -623,6 +643,7 @@ namespace SofarBMS.UI
             }
         }
 
+        int retry = 0;
         /// <summary>
         /// 组装指令函数
         /// </summary>
@@ -642,8 +663,26 @@ namespace SofarBMS.UI
                     canid = new byte[] { 0x41, 0xBF, mark, 0x07 };
                 }
 
-                ecanHelper.Send(data, canid);
-                AddLog(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), BitConverter.ToUInt32(canid, 0).ToString("X"), $"PACK_ID:{groupIndex},Data:{BitConverter.ToString(data)}");
+                if (!_cts.IsCancellationRequested)
+                {
+                    bool result = ecanHelper.Send(data, canid);
+                    //if (!result)
+                    //{
+                    //    if (retry >= 10 && State)
+                    //    {
+                    //        Init();//发送无效，自动结束升级！
+                    //    }
+
+                    //    retry++;
+                    //    AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), BitConverter.ToUInt32(canid, 0).ToString("X"), "sending failed!");
+                    //}
+                    //else
+                    {
+                        if (mark != 0xFD)
+                            AddLog(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff"), BitConverter.ToUInt32(canid, 0).ToString("X"), $"PACK_ID:{groupIndex},Data:{BitConverter.ToString(data)}");
+                    }
+                }
+
                 //LogHelper.AddLog($"[send]-{DateTime.Now.ToString("HH:mm:ss.fff"),-15}\t0x{BitConverter.ToUInt32(canid, 0).ToString("X")}    {groupIndex} {BitConverter.ToString(data)}\r\n");
             }
             catch (Exception ex)

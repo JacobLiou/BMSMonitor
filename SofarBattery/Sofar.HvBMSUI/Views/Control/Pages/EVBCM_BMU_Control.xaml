@@ -1065,9 +1065,11 @@
                         <TextBox x:Name="txtBMSSoftwareVersion" Visibility="Collapsed" Margin="10,0,0,0"    Text="{Binding BMSSoftwareVersion,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                         <Label Content="BMS硬件版本" Visibility="Collapsed" Margin="20,0,0,0" Width="100"/>
                         <TextBox x:Name="txtBMSHardwareVersion" Visibility="Collapsed" Margin="10,0,0,0"    Text="{Binding BMSHardwareVersion,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="0x06A软件版本" Margin="20,0,0,0" Width="100"/>
+                        <Label Content="软件版本" Margin="20,0,0,0" Width="100"/>
                         <TextBox x:Name="txtBMUSaftwareVersion" Margin="10,0,0,0"    Text="{Binding BMUSaftwareVersion,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="0x06C厂家信息" Margin="20,0,0,0" Width="100"/>
+                        <Label Content="硬件版本" Margin="20,0,0,0" Width="100"/>
+                        <TextBox x:Name="txtBMUHardwareVersion" Margin="10,0,0,0"    Text="{Binding BMUHardwareVersion,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                        <Label Content="厂家信息" Margin="20,0,0,0" Width="100"/>
                         <TextBox x:Name="txtManufacturerName" Margin="10,0,0,0"     Text="{Binding ManufacturerName,UpdateSourceTrigger=PropertyChanged}"     Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                         <Label Content="供应商名称" Margin="20,0,0,0" Width="100"/>
                         <TextBox x:Name="txtRegisterName" Margin="10,0,0,0"     Text="{Binding RegisterName,UpdateSourceTrigger=PropertyChanged}"     Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />

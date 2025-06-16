@@ -817,12 +817,22 @@ namespace Sofar.HvBMSUI.ViewModels
 
         private string _bmuSoftwareVersion;
         /// <summary>
-        /// BMU软件版本
+        /// BMU软件版本（0x06A）
         /// </summary>
         public string BMUSaftwareVersion
         {
             get => _bmuSoftwareVersion;
             set => SetProperty(ref _bmuSoftwareVersion, value);
+        }
+
+        private string _bmuHardwareVersion;
+        /// <summary>
+        /// BMU硬件版本（0x06A）
+        /// </summary>
+        public string BMUHardwareVersion
+        {
+            get => _bmuHardwareVersion;
+            set => SetProperty(ref _bmuHardwareVersion, value);
         }
 
         private string _bmuCanVersion;
@@ -867,7 +877,7 @@ namespace Sofar.HvBMSUI.ViewModels
 
         private string _manufacturerName;
         /// <summary>
-        /// 厂家名称
+        /// 厂家名称（0x06C）
         /// </summary>
         public string ManufacturerName
         {
@@ -1309,6 +1319,43 @@ namespace Sofar.HvBMSUI.ViewModels
         {
             get => _electrolyteLeakageConcentration;
             set => SetProperty(ref _electrolyteLeakageConcentration, value);
+        }
+
+        /// <summary>
+        /// 电解液漏液浓度(电池包1)
+        /// </summary>
+        private string _electrolyteLeakageConcentrationPack1;
+        public string ElectrolyteLeakageConcentrationPack1
+        {
+            get => _electrolyteLeakageConcentrationPack1;
+            set => SetProperty(ref _electrolyteLeakageConcentrationPack1, value);
+        }
+        /// <summary>
+        /// 电解液漏液浓度(电池包2)
+        /// </summary>
+        private string _electrolyteLeakageConcentrationPack2;
+        public string ElectrolyteLeakageConcentrationPack2
+        {
+            get => _electrolyteLeakageConcentrationPack2;
+            set => SetProperty(ref _electrolyteLeakageConcentrationPack2, value);
+        }
+        /// <summary>
+        /// 电解液漏液浓度(电池包3)
+        /// </summary>
+        private string _electrolyteLeakageConcentrationPack3;
+        public string ElectrolyteLeakageConcentrationPack3
+        {
+            get => _electrolyteLeakageConcentrationPack3;
+            set => SetProperty(ref _electrolyteLeakageConcentrationPack3, value);
+        }
+        /// <summary>
+        /// 电解液漏液浓度(电池包4)
+        /// </summary>
+        private string _electrolyteLeakageConcentrationPack4;
+        public string ElectrolyteLeakageConcentrationPack4
+        {
+            get => _electrolyteLeakageConcentrationPack4;
+            set => SetProperty(ref _electrolyteLeakageConcentrationPack4, value);
         }
 
         // 记录报警信息的数据列表
@@ -4309,7 +4356,7 @@ namespace Sofar.HvBMSUI.ViewModels
                         BatMinCellTemp = strs[2];
                         BatMinCellTempNum = strs[3];
                         BatAverageTemp = strs[4];
-                        BatDiffCellTemp = (Convert.ToInt32(strs[0]) - Convert.ToInt32(strs[2])).ToString();
+                        BatDiffCellTemp = (decimal.Parse(BatMaxCellTemp) - decimal.Parse(BatMinCellTemp)).ToString();
 
                         model.BatMaxCellTemp = Convert.ToDouble(strs[0]);
                         model.BatMaxCellTempNum = Convert.ToUInt16(strs[1]);
@@ -4595,6 +4642,22 @@ namespace Sofar.HvBMSUI.ViewModels
                                 //电解液漏液浓度
                                 ElectrolyteLeakageConcentration = (((data[1] << 8) | data[2])).ToString();
                                 break;
+                            case 0x05:
+                                strs = new string[3];
+                                for (int i = 0; i < strs.Length; i++)
+                                {
+                                    strs[i] = BytesToIntger(data[i * 2 + 2], data[i * 2 + 1]);
+                                }
+
+                                //电池包1~3电解液漏液浓度
+                                ElectrolyteLeakageConcentrationPack1 = strs[0];
+                                ElectrolyteLeakageConcentrationPack2 = strs[1];
+                                ElectrolyteLeakageConcentrationPack3 = strs[2];
+                                break;
+                            case 0x06:
+                                //电池包4电解液漏液浓度
+                                ElectrolyteLeakageConcentrationPack4 = BytesToIntger(data[2], data[1]);
+                                break;
                             default:
                                 break;
                         }
@@ -4608,7 +4671,7 @@ namespace Sofar.HvBMSUI.ViewModels
                         }
                         BMUSaftwareVersion = Encoding.ASCII.GetString(new byte[] { data[0] }) + string.Join("", softwareVersion);
                         BMUCanVersion = Encoding.ASCII.GetString(new byte[] { data[5], data[6] });
-
+                        BMUHardwareVersion = $"{Convert.ToInt16(data[4])}";
                         model.BMUSaftwareVersion = BMUSaftwareVersion;
                         model.BMUCanVersion = BMUCanVersion;
                         break;
@@ -5113,8 +5176,8 @@ namespace Sofar.HvBMSUI.ViewModels
                         break;
                     //参数标定0x1022XXE0 //电池包
                     case 0x22:
-                        Pack_stop_volt = (numbers[0] * 0.1).ToString();
-                        Pack_stop_cur = (numbers[1] * 0.01).ToString();
+                        Pack_stop_volt = (numbers[0] * 0.1).ToString("F1");
+                        Pack_stop_cur = (numbers[1] * 0.01).ToString("F2");
                         break;
                     //参数标定0x1023XXE0 
                     case 0x23:
@@ -5130,8 +5193,8 @@ namespace Sofar.HvBMSUI.ViewModels
                     //参数标定0x1025XXE0 
                     case 0x25:
                         soc = (numbers[0] * 0.1).ToString();
-                        Full_chg_capacity = (numbers[1] * 0.1).ToString();
-                        Surplus_capacity = (numbers[2] * 0.1).ToString();
+                        Full_chg_capacity = (numbers[1] * 0.1).ToString("F1");
+                        Surplus_capacity = (numbers[2] * 0.1).ToString("F1");
                         soh = (numbers[3] * 0.1).ToString();
                         break;
                     //时间标定0x1026FFE0
@@ -5192,22 +5255,22 @@ namespace Sofar.HvBMSUI.ViewModels
                         switch (data[0])
                         {
                             case 0x01:
-                                Cali_items_1 = ((data[1] + (data[2] << 8)) * 0.1).ToString();
+                                Cali_items_1 = ((data[1] + (data[2] << 8)) * 0.1).ToString("F1");
                                 break;
                             case 0x02:
-                                Cali_items_2 = ((data[1] + (data[2] << 8)) * 0.1).ToString();
+                                Cali_items_2 = ((data[1] + (data[2] << 8)) * 0.1).ToString("F1");
                                 break;
                             case 0x03:
-                                Cali_items_3 = ((data[1] + (data[2] << 8)) * 0.01).ToString();
+                                Cali_items_3 = ((data[1] + (data[2] << 8)) * 0.01).ToString("F2");
                                 break;
                             case 0x04:
-                                Cali_items_4 = ((data[1] + (data[2] << 8)) * 0.01).ToString();
+                                Cali_items_4 = ((data[1] + (data[2] << 8)) * 0.01).ToString("F2");
                                 break;
                             case 0x05:
-                                Cali_items_5 = ((data[1] + (data[2] << 8)) * 0.01).ToString();
+                                Cali_items_5 = ((data[1] + (data[2] << 8)) * 0.01).ToString("F2");
                                 break;
                             case 0x06:
-                                Cali_items_6 = ((data[1] + (data[2] << 8)) * 0.01).ToString();
+                                Cali_items_6 = ((data[1] + (data[2] << 8)) * 0.01).ToString("F2");
                                 break;
                         }
                         break;

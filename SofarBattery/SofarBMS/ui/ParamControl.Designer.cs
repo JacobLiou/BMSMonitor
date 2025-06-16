@@ -1661,6 +1661,7 @@
             this.btnParameter_74.TabIndex = 24;
             this.btnParameter_74.Text = "导出";
             this.btnParameter_74.UseVisualStyleBackColor = false;
+            this.btnParameter_74.Visible = false;
             this.btnParameter_74.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // btnParameter_73
@@ -1676,6 +1677,7 @@
             this.btnParameter_73.TabIndex = 22;
             this.btnParameter_73.Text = "导入";
             this.btnParameter_73.UseVisualStyleBackColor = false;
+            this.btnParameter_73.Visible = false;
             this.btnParameter_73.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // btnParameter_71
@@ -1691,6 +1693,7 @@
             this.btnParameter_71.TabIndex = 20;
             this.btnParameter_71.Text = "写入";
             this.btnParameter_71.UseVisualStyleBackColor = false;
+            this.btnParameter_71.Visible = false;
             this.btnParameter_71.Click += new System.EventHandler(this.btnWrite_Click);
             // 
             // btnParameter_70
@@ -1721,6 +1724,7 @@
             this.btnParameter_72.TabIndex = 23;
             this.btnParameter_72.Text = "恢复默认值";
             this.btnParameter_72.UseVisualStyleBackColor = false;
+            this.btnParameter_72.Visible = false;
             this.btnParameter_72.Click += new System.EventHandler(this.btnInit_Click);
             // 
             // panel1

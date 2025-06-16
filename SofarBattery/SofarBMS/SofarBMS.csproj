@@ -8,7 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>SofarBMS</RootNamespace>
     <AssemblyName>SofarBMS</AssemblyName>
-    <ApplicationIcon>Icon.ico</ApplicationIcon>
+	  <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,13 +28,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Icon.ico" />
-    <Content Include="images\ball.png" />
-    <Content Include="images\chushihua.png" />
-    <Content Include="images\daoru.png" />
-    <Content Include="images\debugtool.png" />
-    <Content Include="images\logo.ico" />
-    <Content Include="images\xierushujuku.png" />
+	  <Content Include="Icon.ico" />
+	  <Content Include="images\ball.png" />
+	  <Content Include="images\chushihua.png" />
+	  <Content Include="images\daoru.png" />
+	  <Content Include="images\debugtool.png" />
+	  <Content Include="images\logo.ico" />
+	  <Content Include="images\xierushujuku.png" />
     <Content Include="images\zhongzhi.png" />
   </ItemGroup>
 
@@ -50,7 +50,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\A15_G3Monitor\G3Monitor\EntryDatabase\EntryDatabase.csproj" />
-    <ProjectReference Include="..\..\..\B6_License授权工具\LicenseIntegration\LicenseIntegration.csproj" />
     <ProjectReference Include="..\..\..\平台软件组-基础类库\协议类库\SofarDeviceSDK\Sofar.ConnectionLibs\Sofar.ConnectionLibs.csproj" />
     <ProjectReference Include="..\..\..\A21_设备监控系统\Sofarsolar.BMS\Sofarsolar.BMS\Sofar.BMS.csproj" />
   </ItemGroup>

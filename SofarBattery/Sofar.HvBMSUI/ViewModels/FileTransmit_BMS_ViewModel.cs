@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using PowerKit.UI.Common;
 using Sofar.BMSLib;
 using Sofar.BMSUI.Common;
 using Sofar.ProtocolLib;
@@ -56,7 +57,6 @@ namespace Sofar.HvBMSUI.ViewModels
             set { _startLocal = value; OnPropertyChanged(); }
         }
 
-
         private bool _state = false;
         /// <summary>
         /// 文件传输状态
@@ -83,25 +83,6 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-        private int _slaveAddress = 0x81;
-        /// <summary>
-        /// BCU设备地址
-        /// </summary>
-        public int slaveAddress
-        {
-            get { return _slaveAddress; }
-            set { _slaveAddress = value; OnPropertyChanged(); }
-        }
-
-        private int _subDeviceAddress = 0;
-        /// <summary>
-        /// BMU设备地址
-        /// </summary>
-        public int subDeviceAddress
-        {
-            get { return _subDeviceAddress; }
-            set { _subDeviceAddress = value; OnPropertyChanged(); }
-        }
 
         // 文件类型列表
         public ObservableCollection<string> FileNumberList { get; } = new ObservableCollection<string>
@@ -124,7 +105,7 @@ namespace Sofar.HvBMSUI.ViewModels
                 if (_selectedFileNumber != value)
                 {
                     _selectedFileNumber = value;
-                    OnPropertyChanged(nameof(SelectedFileNumber));                                 
+                    OnPropertyChanged(nameof(SelectedFileNumber));
                 }
             }
         }
@@ -147,37 +128,42 @@ namespace Sofar.HvBMSUI.ViewModels
                 {
                     _selectedModeName = value;
                     OnPropertyChanged(nameof(SelectedModeName));
-                    if(value == "BCU")
+                    if (value == "BCU")
                     {
-                        subDeviceAddress = 0;
+                        //subDeviceAddress = 0;
+                        SelectedAddress_BMU = "0";
                     }
                     else
                     {
-                        subDeviceAddress = 1;
+                        //subDeviceAddress = 1;
+                        SelectedAddress_BMU = "1";
                     }
-                } 
+                }
             }
         }
 
-        private bool _isReadAll_Checked;
+        private bool _isReadAll_Checked = true;
         /// <summary>
         /// 是否读取所有文件
         /// </summary>
         public bool IsReadAll_Checked
         {
             get { return _isReadAll_Checked; }
-            set { _isReadAll_Checked = value;
+            set
+            {
+                _isReadAll_Checked = value;
                 if (value)
                 {
                     VisibleAttributes = "Collapsed";
-                   
+
                 }
                 else
                 {
                     VisibleAttributes = "Visible";
-                   
+
                 }
-                OnPropertyChanged(); }
+                OnPropertyChanged();
+            }
         }
 
         private bool _isTransmitEnable = true;
@@ -199,7 +185,7 @@ namespace Sofar.HvBMSUI.ViewModels
             get { return _isModeNameEnable; }
             set { _isModeNameEnable = value; OnPropertyChanged(); }
         }
-       
+
 
         private string _visibleAttributes = "Visible";
         /// <summary>
@@ -211,13 +197,76 @@ namespace Sofar.HvBMSUI.ViewModels
             set { _visibleAttributes = value; OnPropertyChanged(); }
         }
 
-        public static CancellationTokenSource cts = new CancellationTokenSource();
+        public ObservableCollection<string> Address_BCU_List { get; } = new ObservableCollection<string>
+        {
+             "E8",
+             "E9",
+             "EA",
+             "EB",
+             "EC",
+             "ED",
+             "EE",
+             "EF",
+             "F0",
+             "F1",
+             "F2"
+        };
+
+        private string _selectedAddress_BCU = "E8";
+        /// <summary>
+        /// BCU地址设置
+        /// </summary>
+        public string SelectedAddress_BCU
+        {
+            get { return _selectedAddress_BCU; }
+            set
+            {
+                _selectedAddress_BCU = value;
+                OnPropertyChanged(nameof(SelectedAddress_BCU));
+                slaveAddress = Convert.ToByte(value, 16);
+            }
+        }
+
+        private byte slaveAddress;
+
+        public ObservableCollection<string> Address_BMU_List { get; } = new ObservableCollection<string>
+        {
+             "0",
+             "1",
+             "2",
+             "3",
+             "4",
+             "5",
+             "6",
+             "7",
+             "8"
+        };
+
+        private string _selectedAddress_BMU = "0";
+        /// <summary>
+        /// BCU地址设置
+        /// </summary>
+        public string SelectedAddress_BMU
+        {
+            get { return _selectedAddress_BMU; }
+            set
+            {
+                _selectedAddress_BCU = value;
+                OnPropertyChanged(nameof(_selectedAddress_BMU));
+                subDeviceAddress = Convert.ToByte(value);
+            }
+        }
+
+        private byte subDeviceAddress;
+
+
+        public CancellationTokenSource cts = new CancellationTokenSource();
         private CancellationTokenSource _token = new CancellationTokenSource();
         BaseCanHelper baseCanHelper = null;
         //变量定义
         //5min特性数据文件表头
         private readonly string FiveMinHeadStr_BCU = "故障ID,时间年,月,日,时,分,秒,电池簇累加电压(V),SOC(%),SOH(%),电池簇电流(A),DI状态,DO状态,系统状态,其他状态,告警等级,告警信息1,告警信息2,告警信息3,告警信息4,告警信息5,告警信息6,告警信息7,告警信息8,告警信息9,告警信息10,告警信息11,告警信息12,告警信息13,告警信息14,告警信息15,告警信息16,最高pack电压(V),最低pack电压(V),最高pack电压序号,最低pack电压序号,组端电流2,高压绝缘阻抗(kΩ),母线侧电压(V),负载端电压(V),辅助电源电压(V),电池簇充电电流上限(A),电池簇放电电流上限(A),P+功率端子温度(℃),P-功率端子温度(℃),B+功率端子温度(℃),B-功率端子温度(℃),环境温度(℃),累计充电安时(Ah),累计放电安时(Ah),累计充电瓦时(Wh),累计放电瓦时(Wh),PACK1最大单体电压(mV),PACK2最大单体电压(mV),PACK3最大单体电压(mV),PACK4最大单体电压(mV),PACK5最大单体电压(mV),PACK6最大单体电压(mV),PACK7最大单体电压(mV),PACK8最大单体电压(mV),PACK1最小单体电压(mV),PACK2最小单体电压(mV),PACK3最小单体电压(mV),PACK4最小单体电压(mV),PACK5最小单体电压(mV),PACK6最小单体电压(mV),PACK7最小单体电压(mV),PACK8最小单体电压(mV),PACK1平均单体电压(mV),PACK2平均单体电压(mV),PACK3平均单体电压(mV),PACK4平均单体电压(mV),PACK5平均单体电压(mV),PACK6平均单体电压(mV),PACK7平均单体电压(mV),PACK8平均单体电压(mV),PACK1最大单体温度(℃),PACK2最大单体温度(℃),PACK3最大单体温度(℃),PACK4最大单体温度(℃),PACK5最大单体温度(℃),PACK6最大单体温度(℃),PACK7最大单体温度(℃),PACK8最大单体温度(℃),PACK1最小单体温度(℃),PACK2最小单体温度(℃),PACK3最小单体温度(℃),PACK4最小单体温度(℃),PACK5最小单体温度(℃),PACK6最小单体温度(℃),PACK7最小单体温度(℃),PACK8最小单体温度(℃),PACK1平均单体温度,PACK2平均单体温度,PACK3平均单体温度,PACK4平均单体温度,PACK5平均单体温度,PACK6平均单体温度,PACK7平均单体温度,PACK8平均单体温度,U32预留1,预留2,预留3,预留4,预留5,预留6,预留7,预留8,预留9,预留10,预留11,预留12,预留13,U8预留1";
-        private readonly string FiveMinHeadStr_BMU = "故障ID,时间年,月,日,时,分,秒,电池采集电压(V),电池累计电压(V),SOC显示值(%),SOH显示值(%),SOC计算值,SOH计算值,电池电流(A),最高单体电压(mV),最低单体电压(mV),最高单体电压序号,最低单体电压序号,最高单体温度(℃),最低单体温度(℃),最高单体温度序号,最低单体温度序号,充电电流上限(A),放电电流上限(A),系统状态,其他状态,告警等级,告警信息1,告警信息2,告警信息3,告警信息4,告警信息5,告警信息6,告警信息7,告警信息8,告警信息9,告警信息10,告警信息11,告警信息12,告警信息13,告警信息14,告警信息15,告警信息16,告警信息17,告警信息18,告警信息19,告警信息20,辅助供电电压(V),累计放电安时(Ah),累计充电安时(Ah),累计放电瓦时(Wh),累计充电瓦时(Wh),环境温度(℃),均衡温度1(℃),均衡温度2(℃),均衡温度3(℃),均衡温度4(℃),均衡温度5(℃),均衡温度6(℃),均衡温度7(℃),均衡温度8(℃),功率端子温度1(℃),功率端子温度2(℃),1-16串均衡状态,17-32串均衡状态,33-48串均衡状态,49-64串均衡状态,单体电压1(mV),单体电压2(mV),单体电压3(mV),单体电压4(mV),单体电压5(mV),单体电压6(mV),单体电压7(mV),单体电压8(mV),单体电压9(mV),单体电压10(mV),单体电压11(mV),单体电压12(mV),单体电压13(mV),单体电压14(mV),单体电压15(mV),单体电压16(mV),单体电压17(mV),单体电压18(mV),单体电压19(mV),单体电压20(mV),单体电压21(mV),单体电压22(mV),单体电压23(mV),单体电压24(mV),单体电压25(mV),单体电压26(mV),单体电压27(mV),单体电压28(mV),单体电压29(mV),单体电压30(mV),单体电压31(mV),单体电压32(mV),单体电压33(mV),单体电压34(mV),单体电压35(mV),单体电压36(mV),单体电压37(mV),单体电压38(mV),单体电压39(mV),单体电压40(mV),单体电压41(mV),单体电压42(mV),单体电压43(mV),单体电压44(mV),单体电压45(mV),单体电压46(mV),单体电压47(mV),单体电压48(mV),单体电压49(mV),单体电压50(mV),单体电压51(mV),单体电压52(mV),单体电压53(mV),单体电压54(mV),单体电压55(mV),单体电压56(mV),单体电压57(mV),单体电压58(mV),单体电压59(mV),单体电压60(mV),单体电压61(mV),单体电压62(mV),单体电压63(mV),单体电压64(mV),单体温度1(℃),单体温度2(℃),单体温度3(℃),单体温度4(℃),单体温度5(℃),单体温度6(℃),单体温度7(℃),单体温度8(℃),单体温度9(℃),单体温度10(℃),单体温度11(℃),单体温度12(℃),单体温度13(℃),单体温度14(℃),单体温度15(℃),单体温度16(℃),单体温度17(℃),单体温度18(℃),单体温度19(℃),单体温度20(℃),单体温度21(℃),单体温度22(℃),单体温度23(℃),单体温度24(℃),单体温度25(℃),单体温度26(℃),单体温度27(℃),单体温度28(℃),单体温度29(℃),单体温度30(℃),单体温度31(℃),单体温度32(℃),U32预留1,预留2,预留3,预留4,U8预留1,预留2,预留3";
+        private readonly string FiveMinHeadStr_BMU = "故障ID,时间年,月,日,时,分,秒,电池采集电压(V),电池累计电压(V),SOC显示值(%),SOH显示值(%),SOC计算值,SOH计算值,电池电流(A),最高单体电压(mV),最低单体电压(mV),最高单体电压序号,最低单体电压序号,最高单体温度(℃),最低单体温度(℃),最高单体温度序号,最低单体温度序号,充电电流上限(A),放电电流上限(A),系统状态,其他状态,告警等级,告警信息1,告警信息2,告警信息3,告警信息4,告警信息5,告警信息6,告警信息7,告警信息8,告警信息9,告警信息10,告警信息11,告警信息12,告警信息13,告警信息14,告警信息15,告警信息16,告警信息17,告警信息18,告警信息19,告警信息20,辅助供电电压(V),累计充电安时(Ah),累计放电安时(Ah),累计充电瓦时(Wh),累计放电瓦时(Wh),环境温度(℃),均衡温度1(℃),均衡温度2(℃),均衡温度3(℃),均衡温度4(℃),均衡温度5(℃),均衡温度6(℃),均衡温度7(℃),均衡温度8(℃),功率端子温度1(℃),功率端子温度2(℃),1-16串均衡状态,17-32串均衡状态,33-48串均衡状态,49-64串均衡状态,单体电压1(mV),单体电压2(mV),单体电压3(mV),单体电压4(mV),单体电压5(mV),单体电压6(mV),单体电压7(mV),单体电压8(mV),单体电压9(mV),单体电压10(mV),单体电压11(mV),单体电压12(mV),单体电压13(mV),单体电压14(mV),单体电压15(mV),单体电压16(mV),单体电压17(mV),单体电压18(mV),单体电压19(mV),单体电压20(mV),单体电压21(mV),单体电压22(mV),单体电压23(mV),单体电压24(mV),单体电压25(mV),单体电压26(mV),单体电压27(mV),单体电压28(mV),单体电压29(mV),单体电压30(mV),单体电压31(mV),单体电压32(mV),单体电压33(mV),单体电压34(mV),单体电压35(mV),单体电压36(mV),单体电压37(mV),单体电压38(mV),单体电压39(mV),单体电压40(mV),单体电压41(mV),单体电压42(mV),单体电压43(mV),单体电压44(mV),单体电压45(mV),单体电压46(mV),单体电压47(mV),单体电压48(mV),单体电压49(mV),单体电压50(mV),单体电压51(mV),单体电压52(mV),单体电压53(mV),单体电压54(mV),单体电压55(mV),单体电压56(mV),单体电压57(mV),单体电压58(mV),单体电压59(mV),单体电压60(mV),单体电压61(mV),单体电压62(mV),单体电压63(mV),单体电压64(mV),单体温度1(℃),单体温度2(℃),单体温度3(℃),单体温度4(℃),单体温度5(℃),单体温度6(℃),单体温度7(℃),单体温度8(℃),单体温度9(℃),单体温度10(℃),单体温度11(℃),单体温度12(℃),单体温度13(℃),单体温度14(℃),单体温度15(℃),单体温度16(℃),单体温度17(℃),单体温度18(℃),单体温度19(℃),单体温度20(℃),单体温度21(℃),单体温度22(℃),单体温度23(℃),单体温度24(℃),单体温度25(℃),单体温度26(℃),单体温度27(℃),单体温度28(℃),单体温度29(℃),单体温度30(℃),单体温度31(℃),单体温度32(℃),单体温度33(℃),单体温度34(℃),单体温度35(℃),单体温度36(℃),U32预留1,预留2,预留3,预留4,预留5,预留6,预留7,预留8,预留9,U8预留1,预留2,预留3";
 
         //代号,数据类型,数据长度,精度,单位
         //5min特性数据文件内容，故障录波文件内容
@@ -498,6 +547,10 @@ SOH计算值,U32,1,0.001,%
 单体温度30,I8,1,1,℃
 单体温度31,I8,1,1,℃
 单体温度32,I8,1,1,℃
+单体温度33,I8,1,1,℃
+单体温度34,I8,1,1,℃
+单体温度35,I8,1,1,℃
+单体温度36,I8,1,1,℃
 预留1,U32,1,,
 预留2,U32,1,,
 预留3,U32,1,,
@@ -529,7 +582,7 @@ SOH计算值,U32,1,0.001,%
         {
             baseCanHelper = new CommandOperation(BMSConfig.ConfigManager).baseCanHelper;
             cts = new CancellationTokenSource();
-            if (FileTransmitLogList == null) 
+            if (FileTransmitLogList == null)
                 FileTransmitLogList = new ObservableCollection<FileTransmitLogData>();
 
             bcuFileTypeConfigs = new Dictionary<int, FileTypeConfig>()
@@ -549,33 +602,37 @@ SOH计算值,U32,1,0.001,%
 
         public void Load()
         {
-            cts = new CancellationTokenSource();
-
             Task.Factory.StartNew(() =>
             {
                 if (baseCanHelper.CommunicationType == "Ecan")
                 {
-                    lock (EcanHelper._locker)
+                    while (!cts.IsCancellationRequested)
                     {
-                        while (EcanHelper._task.Count > 0
-                            && !cts.IsCancellationRequested)
+                        lock (EcanHelper._locker)
                         {
-                            CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
+                            while (EcanHelper._task.Count > 0
+                                && !cts.IsCancellationRequested)
+                            {
+                                CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
-                            Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
+                                Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
+                            }
                         }
                     }
                 }
                 else
                 {
-                    lock (ControlcanHelper._locker)
+                    while (!cts.IsCancellationRequested)
                     {
-                        while (ControlcanHelper._task.Count > 0
-                            && !cts.IsCancellationRequested)
+                        lock (ControlcanHelper._locker)
                         {
-                            VCI_CAN_OBJ ch = (VCI_CAN_OBJ)ControlcanHelper._task.Dequeue();
+                            while (ControlcanHelper._task.Count > 0
+                                && !cts.IsCancellationRequested)
+                            {
+                                VCI_CAN_OBJ ch = (VCI_CAN_OBJ)ControlcanHelper._task.Dequeue();
 
-                            Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
+                                Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
+                            }
                         }
                     }
                 }
@@ -654,14 +711,14 @@ SOH计算值,U32,1,0.001,%
 
         private void EndTransmit()
         {
-            //按钮禁用15s
+            /*//按钮禁用15s
             Stopwatch stopwatch = Stopwatch.StartNew();
             Task.Run(async delegate
             {
                 Application.Current.Dispatcher.Invoke(() => { IsTransmitEnable = false; });
                 await Task.Delay(15000);
                 Application.Current.Dispatcher.Invoke(() => { IsTransmitEnable = true; });
-            });
+            });*/
 
             // 释放资源
             _token.Cancel();

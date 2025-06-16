@@ -1,21 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Sofar.BMS;
-using Sofar.ConnectionLibs.CAN;
-using Sofar.ConnectionLibs.CAN.Driver.ECAN;
+﻿using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
+using System.Data;
+using System.Reflection;
+using System.Text;
 
 namespace SofarBMS.UI
 {
@@ -23,6 +11,7 @@ namespace SofarBMS.UI
     {
         // 取消令牌源
         public static CancellationTokenSource cts = null;
+        private static CancellationTokenSource _cts = null;
 
         // ECAN助手实例
         private EcanHelper ecanHelper = EcanHelper.Instance;
@@ -35,6 +24,8 @@ namespace SofarBMS.UI
 
         byte[] canid = new byte[4] { 0xE0, FrmMain.BMS_ID, 0x2D, 0x10 };
         byte[] bytes = new byte[8] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+
 
         public StorageInfoControl()
         {
@@ -85,7 +76,7 @@ namespace SofarBMS.UI
 
             Task.Factory.StartNew(async () =>
             {
-                cts = new CancellationTokenSource();
+                _cts = new CancellationTokenSource();
 
                 //执行步骤一，等待响应后执行步骤二
                 bytes[0] = 0x01;
@@ -94,7 +85,7 @@ namespace SofarBMS.UI
 
                 while (true)
                 {
-                    if (cts.IsCancellationRequested)
+                    if (_cts.IsCancellationRequested)
                         return;
 
                     //执行步骤二，等待响应AA后停止
@@ -213,11 +204,11 @@ namespace SofarBMS.UI
 
             Task.Factory.StartNew(async () =>
             {
-                cts = new CancellationTokenSource();
+                _cts = new CancellationTokenSource();
 
                 while (true)
                 {
-                    if (cts.IsCancellationRequested)
+                    if (_cts.IsCancellationRequested)
                         return;
 
                     bytes[0] = 0x02;
@@ -254,8 +245,8 @@ namespace SofarBMS.UI
             }
 
             resetEvent.Reset(); //变更为线程暂停运行
-            if (cts != null)
-                cts.Cancel();
+            if (_cts != null)
+                _cts.Cancel();
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -291,10 +282,10 @@ namespace SofarBMS.UI
                     {
                         resetEvent.Reset();
 
-                        if (cts != null)
+                        if (_cts != null)
                         {
-                            cts.Dispose();
-                            cts.Cancel();
+                            _cts.Cancel();
+                            //_cts.Dispose();
                         }
                     }
                     else

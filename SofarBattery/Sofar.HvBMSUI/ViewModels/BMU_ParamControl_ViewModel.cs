@@ -1018,8 +1018,6 @@ namespace Sofar.HvBMSUI.ViewModels
                             }
                         }
                     }
-
-
                 }
             }, cts.Token);
         }
@@ -1271,7 +1269,6 @@ namespace Sofar.HvBMSUI.ViewModels
                     break;
             }
         }
-
 
         public ICommand InitCmd => new RelayCommand<Window>(Init);
         public ICommand ReadCmd => new RelayCommand<Window>(Read);

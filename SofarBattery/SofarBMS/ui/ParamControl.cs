@@ -566,10 +566,10 @@ namespace SofarBMS.UI
                     txt_4.Text = numbers[3].ToString();
                     break;
                 case 0x11://总体过充
-                    txt_5.Text = (numbers[0] * 0.1).ToString();
-                    txt_6.Text = (numbers[1] * 0.1).ToString();
-                    txt_7.Text = (numbers[2] * 0.1).ToString();
-                    txt_8.Text = (numbers[3] * 0.1).ToString();
+                    txt_5.Text = (numbers[0] * 0.1).ToString("F1");
+                    txt_6.Text = (numbers[1] * 0.1).ToString("F1");
+                    txt_7.Text = (numbers[2] * 0.1).ToString("F1");
+                    txt_8.Text = (numbers[3] * 0.1).ToString("F1");
                     break;
                 case 0x12://单体过放
                     txt_9.Text = numbers[0].ToString();
@@ -578,22 +578,22 @@ namespace SofarBMS.UI
                     txt_12.Text = numbers[3].ToString();
                     break;
                 case 0x13://总体过放
-                    txt_13.Text = (numbers[0] * 0.1).ToString();
-                    txt_14.Text = (numbers[1] * 0.1).ToString();
-                    txt_15.Text = (numbers[2] * 0.1).ToString();
-                    txt_16.Text = (numbers[3] * 0.1).ToString();
+                    txt_13.Text = (numbers[0] * 0.1).ToString("F1");
+                    txt_14.Text = (numbers[1] * 0.1).ToString("F1");
+                    txt_15.Text = (numbers[2] * 0.1).ToString("F1");
+                    txt_16.Text = (numbers[3] * 0.1).ToString("F1");
                     break;
                 case 0x14://充电过流
-                    txt_17.Text = (numbers[0] * 0.01).ToString();
-                    txt_18.Text = (numbers[1] * 0.01).ToString();
-                    txt_19.Text = (numbers[2] * 0.01).ToString();
-                    txt_20.Text = (numbers[3] * 0.01).ToString();
+                    txt_17.Text = (numbers[0] * 0.01).ToString("F2");
+                    txt_18.Text = (numbers[1] * 0.01).ToString("F2");
+                    txt_19.Text = (numbers[2] * 0.01).ToString("F2");
+                    txt_20.Text = (numbers[3] * 0.01).ToString("F2");
                     break;
                 case 0x15://放电过流
-                    txt_21.Text = (numbers[0] * 0.01).ToString();
-                    txt_22.Text = (numbers[1] * 0.01).ToString();
-                    txt_23.Text = (numbers[2] * 0.01).ToString();
-                    txt_24.Text = (numbers[3] * 0.01).ToString();
+                    txt_21.Text = (numbers[0] * 0.01).ToString("F2");
+                    txt_22.Text = (numbers[1] * 0.01).ToString("F2");
+                    txt_23.Text = (numbers[2] * 0.01).ToString("F2");
+                    txt_24.Text = (numbers[3] * 0.01).ToString("F2");
                     break;
                 case 0x16://充电/放电高温
                     txt_25.Text = (numbers_bit[0] - 40).ToString();
@@ -639,8 +639,8 @@ namespace SofarBMS.UI
                     txt_57.Text = (numbers_bit[7] - 40).ToString();
                     break;
                 case 0x22://电池包
-                    txt_58.Text = (numbers[0] * 0.1).ToString();
-                    txt_59.Text = (numbers[1] * 0.01).ToString();
+                    txt_58.Text = (numbers[0] * 0.1).ToString("F1");
+                    txt_59.Text = (numbers[1] * 0.01).ToString("F2");
                     break;
                 case 0x1A://MOS
                     txt_60.Text = (numbers_bit[0] - 40).ToString();

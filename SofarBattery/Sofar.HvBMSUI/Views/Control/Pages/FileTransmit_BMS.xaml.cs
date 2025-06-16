@@ -36,6 +36,7 @@ namespace Sofar.HvBMSUI.Control.Pages
         {
             if (DataContext is FileTransmit_BMS_ViewModel viewModel)
             {
+                viewModel.cts = new CancellationTokenSource();
                 viewModel.Load();
             }
         }

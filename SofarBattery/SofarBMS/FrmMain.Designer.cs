@@ -64,7 +64,7 @@ namespace SofarBMS
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1391, 672);
+            this.panel1.Size = new System.Drawing.Size(1391, 694);
             this.panel1.TabIndex = 27;
             // 
             // Menu
@@ -89,6 +89,7 @@ namespace SofarBMS
             this.statusStrip1.Size = new System.Drawing.Size(1391, 22);
             this.statusStrip1.TabIndex = 28;
             this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip1.Visible = false;
             // 
             // toolStripStatusLabel1
             // 
@@ -112,7 +113,7 @@ namespace SofarBMS
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1391, 712);
+            this.splitContainer1.Size = new System.Drawing.Size(1391, 734);
             this.splitContainer1.SplitterDistance = 34;
             this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 29;
@@ -141,7 +142,7 @@ namespace SofarBMS
             // btnAlarmInfo
             // 
             this.btnAlarmInfo.AutoSize = true;
-            this.btnAlarmInfo.BackColor = System.Drawing.Color.Blue;
+            this.btnAlarmInfo.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnAlarmInfo.FlatAppearance.BorderSize = 0;
             this.btnAlarmInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAlarmInfo.ForeColor = System.Drawing.SystemColors.Control;
@@ -152,6 +153,7 @@ namespace SofarBMS
             this.btnAlarmInfo.TabIndex = 56;
             this.btnAlarmInfo.Text = "报警记录";
             this.btnAlarmInfo.UseVisualStyleBackColor = false;
+            this.btnAlarmInfo.Visible = false;
             this.btnAlarmInfo.Click += new System.EventHandler(this.btnAlarmInfo_Click);
             // 
             // btnStratListen
@@ -187,7 +189,7 @@ namespace SofarBMS
             // cbbIDP
             // 
             this.cbbIDP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbIDP.Font = new System.Drawing.Font("宋体", 11.5F);
+            this.cbbIDP.Font = new System.Drawing.Font("宋体", 11.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbbIDP.FormattingEnabled = true;
             this.cbbIDP.Items.AddRange(new object[] {
             "1",
@@ -216,7 +218,7 @@ namespace SofarBMS
             // 
             this.cbbBaud.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbBaud.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cbbBaud.Font = new System.Drawing.Font("宋体", 11.5F);
+            this.cbbBaud.Font = new System.Drawing.Font("宋体", 11.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbbBaud.FormattingEnabled = true;
             this.cbbBaud.Items.AddRange(new object[] {
             "250Kbps",
@@ -226,11 +228,12 @@ namespace SofarBMS
             this.cbbBaud.Name = "cbbBaud";
             this.cbbBaud.Size = new System.Drawing.Size(85, 23);
             this.cbbBaud.TabIndex = 42;
+            this.cbbBaud.Visible = false;
             // 
             // cbbID
             // 
             this.cbbID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbID.Font = new System.Drawing.Font("宋体", 11.5F);
+            this.cbbID.Font = new System.Drawing.Font("宋体", 11.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbbID.FormattingEnabled = true;
             this.cbbID.Items.AddRange(new object[] {
             "1",
@@ -266,6 +269,7 @@ namespace SofarBMS
             this.lblSp_01.Size = new System.Drawing.Size(44, 17);
             this.lblSp_01.TabIndex = 41;
             this.lblSp_01.Text = "波特率";
+            this.lblSp_01.Visible = false;
             // 
             // lblSp_03
             // 
@@ -313,12 +317,13 @@ namespace SofarBMS
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.Menu);
             this.Controls.Add(this.statusStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.Menu;
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BMS电池上位机V1.0.2.8.20250609";
+            this.Text = "BMS电池上位机V1.0.2.8.20250612";
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();

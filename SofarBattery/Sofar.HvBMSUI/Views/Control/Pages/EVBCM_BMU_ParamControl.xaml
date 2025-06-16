@@ -294,7 +294,7 @@
                 </GroupBox>-->
 
                 <!--充放电高温-->
-                <GroupBox Header="充放电高温" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Margin="5 10">
+                <GroupBox Header="充放电高温" Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Margin="5 10">
                     <Grid Margin="0,5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -341,7 +341,7 @@
                 </GroupBox>
 
                 <!--充放电低温-->
-                <GroupBox Header="充放电低温" Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Margin="5 10">
+                <GroupBox Header="充放电低温" Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Margin="5 10">
                     <Grid Margin="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -426,7 +426,7 @@
                 </GroupBox>-->
 
                 <!--单体超限/低-->
-                <GroupBox Header="单体超限/低" Grid.Row="1" Grid.Column="2" Margin="5 10">
+                <GroupBox Header="单体超限/低" Grid.Row="0" Grid.Column="2" Margin="5 10">
                     <Grid Margin="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -456,7 +456,7 @@
                 </GroupBox>
 
                 <!--低电量-->
-                <GroupBox Header="低电量" Grid.Row="0" Grid.Column="2" Margin="5 10">
+                <GroupBox Header="低电量" Grid.Row="1" Grid.Column="2" Margin="5 10">
                     <Grid Margin="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -559,7 +559,7 @@
                 </GroupBox>-->
 
                 <!--单体过充、过放提示-->
-                <GroupBox Header="单体过充、过放提示" Grid.Row="2" Grid.Column="2" Margin="5 10">
+                <GroupBox Header="单体过充、过放提示" Grid.Row="0" Grid.Column="1" Margin="5 10">
                     <Grid Margin="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -589,7 +589,7 @@
                 </GroupBox>
 
                 <!--单体电压过大提示-->
-                <GroupBox Header="单体压差过大提示" Grid.Row="0" Grid.Column="3" Margin="5 10">
+                <GroupBox Header="单体压差过大提示" Grid.Row="2" Grid.Column="1" Margin="5 10">
                     <Grid Margin="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -619,7 +619,7 @@
                 </GroupBox>
 
                 <!--单体电压过大故障-->
-                <GroupBox Header="单体压差过大故障" Grid.Row="1" Grid.Column="3" Margin="5 10">
+                <GroupBox Header="单体压差过大故障" Grid.Row="3" Grid.Column="1" Margin="5 10">
                     <Grid Margin="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -725,7 +725,7 @@
                 </GroupBox>
 
                 <!--总体过充过放提示-->
-                <GroupBox Header="总体过充过放提示" Grid.Row="3" Grid.Column="2" Margin="5 10">
+                <GroupBox Header="总体过充过放提示" Grid.Row="1" Grid.Column="1" Margin="5 10">
                     <Grid Margin="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
