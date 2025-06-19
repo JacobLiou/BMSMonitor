@@ -5985,7 +5985,7 @@ namespace Sofar.HvBMSUI.ViewModels
                             case 0x02: // 报警等级 2：一般报警                               
                             case 0x03: // 报警等级 3：轻微报警
                             case 0x04: // 报警等级 4：设备硬件故障
-                                AnalyzeAlarm2(2, sequenceNumber, data, msg2, AlarmType, faultTagSource.ToString());
+                                AnalyzeAlarm_3E(2, sequenceNumber, data, msg2, AlarmType, faultTagSource.ToString());
                                 break;
                         }
                         break;
@@ -6079,7 +6079,7 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-        private void AnalyzeAlarm2(int ByteNum, int sequenceNumber, byte[] data, string[] msg, string alarmLevel, string faultTagSource)
+        private void AnalyzeAlarm_3E(int ByteNum, int sequenceNumber, byte[] data, string[] msg, string alarmLevel, string faultTagSource)
         {
             for (int i = 1; i < ByteNum; i++)
             {
@@ -6101,7 +6101,6 @@ namespace Sofar.HvBMSUI.ViewModels
                                     AlarmNumber = (AlarmMessageDataList.Count + 1).ToString(),
                                     AlarmStartTime = StartTime,
                                     AlarmLevel = alarmLevel,
-                                    //BatterySectionNumber = faultTagSource,
                                     AlarmMessage = $"【异常报警🚨】 {msg[0]}",
                                     isEnd = "否"
                                 });

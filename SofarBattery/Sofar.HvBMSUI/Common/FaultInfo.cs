@@ -361,14 +361,14 @@ namespace PowerKit.UI.Common
 
         public static List<FaultInfo> FaultInfos3_new = new List<FaultInfo>()
         {
-            new FaultInfo("afe断链",1,0,0,0,2),
-            new FaultInfo("霍尔电流差异过大提示",1,1,0,0,2),
-            new FaultInfo("环境温度采集失效提示",1,2,0,0,2),
-            new FaultInfo("电解液漏液检测传感器异常提示",1,3,0,0,2),
-            new FaultInfo("单体温度采集异常提示",1,4,0,0,2),
-            new FaultInfo("保留,Res",1,5,0,0,2),
-            new FaultInfo("保留,Res",1,6,0,0,2),
-            new FaultInfo("保留,Res",1,7,0,0,2),
+            new FaultInfo("afe断链",1,0,0,0,3),
+            new FaultInfo("霍尔电流差异过大提示",1,1,0,0,3),
+            new FaultInfo("环境温度采集失效提示",1,2,0,0,3),
+            new FaultInfo("电解液漏液检测传感器异常提示",1,3,0,0,3),
+            new FaultInfo("单体温度采集异常提示",1,4,0,0,3),
+            new FaultInfo("保留,Res",1,5,0,0,3),
+            new FaultInfo("保留,Res",1,6,0,0,3),
+            new FaultInfo("保留,Res",1,7,0,0,3),
         };
     }
 }
