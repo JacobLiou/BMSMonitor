@@ -946,7 +946,7 @@ namespace Sofar.HvBMSUI.ViewModels
         {
             if (baseCanHelper.IsConnection)
             {
-                IsShowMessage = true;
+                IsShowMessage = false;
                 byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
                 byte Address_BMU = Convert.ToByte(SelectedAddress_BMU);
                 // 17个故障报警参数
@@ -996,25 +996,26 @@ namespace Sofar.HvBMSUI.ViewModels
                 {
                     if (baseCanHelper.CommunicationType == "Ecan")
                     {
-                        lock (EcanHelper._locker)
+
+                        while (EcanHelper._task.Count > 0 && !cts.IsCancellationRequested)
                         {
-                            while (EcanHelper._task.Count > 0
-                                && !cts.IsCancellationRequested)
+                            if (EcanHelper._task.TryDequeue(out CAN_OBJ ch))
                             {
-                                CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
                                 Application.Current.Dispatcher.Invoke(() => { analysisData(ch.ID, ch.Data); });
                             }
                         }
+
                     }
                     else
                     {
                         lock (ControlcanHelper._locker)
                         {
-                            while (ControlcanHelper._task.Count > 0
-                                && !cts.IsCancellationRequested)
+                            while (ControlcanHelper._task.Count > 0 && !cts.IsCancellationRequested)
                             {
-                                VCI_CAN_OBJ ch = (VCI_CAN_OBJ)ControlcanHelper._task.Dequeue();
-                                Application.Current.Dispatcher.Invoke(() => { analysisData(ch.ID, ch.Data); });
+                                if (ControlcanHelper._task.TryDequeue(out VCI_CAN_OBJ ch))
+                                {
+                                    Application.Current.Dispatcher.Invoke(() => { analysisData(ch.ID, ch.Data); });
+                                }
                             }
                         }
                     }
@@ -1311,7 +1312,7 @@ namespace Sofar.HvBMSUI.ViewModels
 
             byte[] bytes = new byte[8] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
             byte Address_BMU = Convert.ToByte(SelectedAddress_BMU);
-            
+
             IsShowMessage = true;
             if (!baseCanHelper.Send(bytes, new byte[] { 0xE0, Address_BMU, 0x2E, 0x10 }))
             {
@@ -1921,7 +1922,7 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-        private byte[] Uint16ToBytes_8_Offset(string t1, string t2, string t3, string t4, string t5, string t6, string t7, string t8, double scaling1, double scaling2, double scaling3, double scaling4, double scaling5, double scaling6, double scaling7, double scaling8,int offset1, int offset2, int offset3, int offset4, int offset5, int offset6, int offset7, int offset8)
+        private byte[] Uint16ToBytes_8_Offset(string t1, string t2, string t3, string t4, string t5, string t6, string t7, string t8, double scaling1, double scaling2, double scaling3, double scaling4, double scaling5, double scaling6, double scaling7, double scaling8, int offset1, int offset2, int offset3, int offset4, int offset5, int offset6, int offset7, int offset8)
         {
             byte byte1 = (byte)(Convert.ToUInt32(float.Parse(t1) / scaling1 - offset1));
             byte byte2 = (byte)(Convert.ToUInt32(float.Parse(t2) / scaling2 - offset2));

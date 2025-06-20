@@ -401,6 +401,7 @@ namespace PowerKit.UI.Models
         private string _alarmStartTime; //报警开始时间
         private string _alarmStopTime;  //报警结束时间
         private string _alarmLevel;     //报警等级
+        private string _alarmStatus;    //报警状态描述
         private string _alarmMessage;   //报警信息描述
         private string _id;             //设备ID
                                         //private string _batterySectionNumber;
@@ -469,7 +470,18 @@ namespace PowerKit.UI.Models
                 }
             }
         }
-
+        public string AlarmStatus
+        {
+            get { return _alarmStatus; }
+            set
+            {
+                if (_alarmStatus != value)
+                {
+                    _alarmStatus = value;
+                    OnPropertyChanged(nameof(AlarmStatus));
+                }
+            }
+        }
         public string AlarmMessage
         {
             get { return _alarmMessage; }

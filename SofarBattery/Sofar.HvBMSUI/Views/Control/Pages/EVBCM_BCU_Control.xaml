@@ -7,11 +7,13 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              xmlns:viewmodels="clr-namespace:Sofar.HvBMSUI.ViewModels" 
              d:DataContext="{d:DesignInstance Type=viewmodels:BCU_Control_ViewModel}" mc:Ignorable="d" 
-             d:DesignHeight="2900" Width="1480">
+             d:DesignHeight="2900" d:DesignWidth="1480">
 
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-        <Grid Margin="10" Background="White">
-            <Grid.RowDefinitions>
+        <Grid Background="White">
+            <!-- 6 行 1 列 GroupBox 布局 -->
+            <Grid Margin="10,10,0,0">
+                <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -117,8 +119,8 @@
                             </Button.ToolTip>
                         </Button>
                     </StackPanel>
-                    <StackPanel Margin="10">
-                        <DataGrid Name="BatteryDataGrid1" Grid.Row="5" Grid.Column="0" MaxHeight="400" BorderBrush="Gray" BorderThickness="1.5" IsReadOnly="True"  ScrollViewer.VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False"  HeadersVisibility="All"  GridLinesVisibility="All" Margin="0,0,0,10"
+                    <StackPanel Margin="10" HorizontalAlignment="Left">
+                            <DataGrid Name="BatteryDataGrid1" Grid.Row="5" Grid.Column="0" Width="1230" MaxHeight="400" BorderBrush="Gray" BorderThickness="1.5" IsReadOnly="True"  ScrollViewer.VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False"  HeadersVisibility="All"  GridLinesVisibility="All" Margin="0,0,0,10"
                            ItemsSource="{Binding AlarmMessageDataList}">
                             <DataGrid.Resources>
                                 <Style TargetType="DataGridColumnHeader">
@@ -155,14 +157,22 @@
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>-->
-                                <DataGridTextColumn Header="报警描述" Width="550" Binding="{Binding AlarmMessage}" >
+                                
+                                <DataGridTextColumn Header="报警描述" Width="350" Binding="{Binding AlarmMessage}" >
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
                                             <Setter Property="HorizontalAlignment" Value="Center"/>
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Header="是否结束" Width="125" Binding="{Binding isEnd}" >
+                                    <DataGridTextColumn Header="报警状态" Width="125" Binding="{Binding AlarmStatus}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="是否结束" Width="125" Binding="{Binding isEnd}" >
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
                                             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -2664,6 +2674,7 @@
                     </GroupBox>
                 </Grid>
             </GroupBox>
+        </Grid>
         </Grid>
     </ScrollViewer>
 </UserControl>

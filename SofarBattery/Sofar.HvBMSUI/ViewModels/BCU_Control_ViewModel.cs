@@ -3567,7 +3567,7 @@ namespace Sofar.HvBMSUI.ViewModels
 
         private void ChangeBatteryList(int totalCell)
         {
-            if (batteryVoltageDataList != null 
+            if (batteryVoltageDataList != null
                 && batteryVoltageDataList.Count == totalCell)
                 return;
 
@@ -3638,7 +3638,7 @@ namespace Sofar.HvBMSUI.ViewModels
 
         private void ChangeEquilibriumList(int batterySeries)
         {
-            if (PassiveEquilibriumCheckBoxItems != null 
+            if (PassiveEquilibriumCheckBoxItems != null
                 && PassiveEquilibriumCheckBoxItems.Count == batterySeries)
                 return;
 
@@ -4564,31 +4564,27 @@ namespace Sofar.HvBMSUI.ViewModels
 
                     if (baseCanHelper.CommunicationType == "Ecan")
                     {
-                        lock (EcanHelper._locker)
-                        {
-                            while (EcanHelper._task.Count > 0
-                                && !cts.IsCancellationRequested)
-                            {
-                                CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
+                        while (EcanHelper._task.Count > 0 && !cts.IsCancellationRequested)
+                        {
+                            if (EcanHelper._task.TryDequeue(out CAN_OBJ ch))
+                            {
                                 Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
                                 //Log.Info($"{System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")} 接收CAN数据:{BitConverter.ToString(ch.Data).Replace("-", " ")}  帧ID:{ch.ID.ToString("X8")}");
-
                             }
                         }
+
                     }
                     else
                     {
                         lock (ControlcanHelper._locker)
                         {
-                            while (ControlcanHelper._task.Count > 0
-                                && !cts.IsCancellationRequested)
+                            while (ControlcanHelper._task.Count > 0 && !cts.IsCancellationRequested)
                             {
-                                VCI_CAN_OBJ ch = (VCI_CAN_OBJ)ControlcanHelper._task.Dequeue();
-
-                                Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
-                                //Log.Info($"{System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")} 接收CAN数据:{BitConverter.ToString(ch.Data).Replace("-", " ")}  帧ID:{ch.ID.ToString("X8")}");
-
+                                if (ControlcanHelper._task.TryDequeue(out VCI_CAN_OBJ ch))
+                                {
+                                    Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
+                                }
                             }
                         }
                     }
@@ -6015,13 +6011,14 @@ namespace Sofar.HvBMSUI.ViewModels
                         {
                             if (!AlarmMessageDataList.Any(x => x.AlarmMessage.Contains(msg[0]) && x.isEnd == "否" && x.AlarmLevel == alarmLevel))
                             {
-                                AlarmMessageDataList.Add(new AlarmMessageData
+                                AlarmMessageDataList.Insert(0, new AlarmMessageData
                                 {
                                     AlarmNumber = (AlarmMessageDataList.Count + 1).ToString(),
                                     AlarmStartTime = StartTime,
                                     AlarmLevel = alarmLevel,
                                     //BatterySectionNumber = BatterySectionNumber,
-                                    AlarmMessage = $"【异常报警🚨】 {msg[0]}",
+                                    AlarmMessage = msg[0],
+                                    AlarmStatus = "【异常报警🚨】",
                                     isEnd = "否"
                                 });
                             }
@@ -6040,7 +6037,8 @@ namespace Sofar.HvBMSUI.ViewModels
                             if (activeAlarm != null)
                             {
                                 activeAlarm.AlarmStopTime = StopTime;
-                                activeAlarm.AlarmMessage = $"【报警解除🆗】 {msg[0]}";
+                                activeAlarm.AlarmMessage = msg[0];
+                                activeAlarm.AlarmStatus = $"【报警解除🆗】";
                                 activeAlarm.isEnd = "是";
                             }
                         }
@@ -6048,16 +6046,15 @@ namespace Sofar.HvBMSUI.ViewModels
                 }
             }
 
-            var alarmMessageDataList = AlarmMessageDataList.Where(x => x.AlarmLevel == "一般报警" ||
-                                                                       x.AlarmLevel == "轻微报警" ||
-                                                                       x.AlarmLevel == "严重报警" ||
-                                                                       x.AlarmLevel == "设备硬件故障").ToList();
+            var alarmMessageDataList = AlarmMessageDataList.Where(x => x.isEnd == "否"
+                && (x.AlarmLevel == "一般报警" || x.AlarmLevel == "轻微报警" || x.AlarmLevel == "严重报警" || x.AlarmLevel == "设备硬件故障")).ToList();
+
+            model.MinorAlarm = "";
+            model.GeneralAlarm = "";
+            model.SevereAlarm = "";
+            model.EquipmentHardwareFailureAlarm = "";
             if (alarmMessageDataList.Any())
             {
-                model.MinorAlarm = "";
-                model.GeneralAlarm = "";
-                model.SevereAlarm = "";
-                model.EquipmentHardwareFailureAlarm = "";
                 foreach (var alarmMessageData in alarmMessageDataList)
                 {
                     switch (alarmMessageData.AlarmLevel)
@@ -6096,12 +6093,13 @@ namespace Sofar.HvBMSUI.ViewModels
                         {
                             if (!AlarmMessageDataList.Any(x => x.AlarmMessage.Contains(msg[0]) && x.isEnd == "否" && x.AlarmLevel == alarmLevel))
                             {
-                                AlarmMessageDataList.Add(new AlarmMessageData
+                                AlarmMessageDataList.Insert(0, new AlarmMessageData
                                 {
                                     AlarmNumber = (AlarmMessageDataList.Count + 1).ToString(),
                                     AlarmStartTime = StartTime,
                                     AlarmLevel = alarmLevel,
-                                    AlarmMessage = $"【异常报警🚨】 {msg[0]}",
+                                    AlarmMessage = msg[0],
+                                    AlarmStatus = "【异常报警🚨】",
                                     isEnd = "否"
                                 });
                             }
@@ -6120,7 +6118,9 @@ namespace Sofar.HvBMSUI.ViewModels
                             if (activeAlarm != null)
                             {
                                 activeAlarm.AlarmStopTime = StopTime;
-                                activeAlarm.AlarmMessage = $"【报警解除🆗】 {msg[0]}";
+
+                                activeAlarm.AlarmMessage = msg[0];
+                                activeAlarm.AlarmStatus = $"【报警解除🆗】";
                                 activeAlarm.isEnd = "是";
                             }
                         }
@@ -6128,10 +6128,12 @@ namespace Sofar.HvBMSUI.ViewModels
                 }
             }
 
-            var alarmMessageDataList = AlarmMessageDataList.Where(x => x.AlarmLevel == "一般报警" ||
-                                                                       x.AlarmLevel == "轻微报警" ||
-                                                                       x.AlarmLevel == "严重报警" ||
-                                                                       x.AlarmLevel == "设备硬件故障").ToList();
+            var alarmMessageDataList = AlarmMessageDataList.Where(x => x.isEnd == "否"
+                && (x.AlarmLevel == "一般报警" || x.AlarmLevel == "轻微报警" || x.AlarmLevel == "严重报警" || x.AlarmLevel == "设备硬件故障")).ToList();
+            model.MinorAlarm = "";
+            model.GeneralAlarm = "";
+            model.SevereAlarm = "";
+            model.EquipmentHardwareFailureAlarm = "";
             if (alarmMessageDataList.Any())
             {
                 foreach (var alarmMessageData in alarmMessageDataList)
@@ -6139,16 +6141,16 @@ namespace Sofar.HvBMSUI.ViewModels
                     switch (alarmMessageData.AlarmLevel)
                     {
                         case "轻微报警":
-                            model.MinorAlarm = alarmMessageData.AlarmMessage;
+                            model.MinorAlarm += alarmMessageData.AlarmMessage + ";";
                             break;
                         case "一般报警":
-                            model.GeneralAlarm = alarmMessageData.AlarmMessage;
+                            model.GeneralAlarm += alarmMessageData.AlarmMessage + ";";
                             break;
                         case "严重报警":
-                            model.SevereAlarm = alarmMessageData.AlarmMessage;
+                            model.SevereAlarm += alarmMessageData.AlarmMessage + ";";
                             break;
                         case "设备硬件故障":
-                            model.EquipmentHardwareFailureAlarm = alarmMessageData.AlarmMessage;
+                            model.EquipmentHardwareFailureAlarm += alarmMessageData.AlarmMessage + ";";
                             break;
                     }
                 }

@@ -1816,7 +1816,7 @@ namespace Sofar.HvBMSUI.ViewModels
         {
             if (bmsOper.IsConnection)
             {
-                IsShowMessage = true;
+                IsShowMessage = false;
                 bmsOper.ReadBCUParam(Convert.ToInt32(SelectedAddress_BCU, 16));
             }
 
@@ -1826,25 +1826,25 @@ namespace Sofar.HvBMSUI.ViewModels
                 {
                     if (bmsOper.CommunicationType == "Ecan")
                     {
-                        lock (EcanHelper._locker)
+                        while (EcanHelper._task.Count > 0 && !cts.IsCancellationRequested)
                         {
-                            while (EcanHelper._task.Count > 0
-                                && !cts.IsCancellationRequested)
+                            if (EcanHelper._task.TryDequeue(out CAN_OBJ ch))
                             {
-                                CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
                                 Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
                             }
+
                         }
                     }
                     else
                     {
                         lock (ControlcanHelper._locker)
                         {
-                            while (ControlcanHelper._task.Count > 0
-                                && !cts.IsCancellationRequested)
+                            while (ControlcanHelper._task.Count > 0 && !cts.IsCancellationRequested)
                             {
-                                VCI_CAN_OBJ ch = (VCI_CAN_OBJ)ControlcanHelper._task.Dequeue();
-                                Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
+                                if (ControlcanHelper._task.TryDequeue(out VCI_CAN_OBJ ch))
+                                {
+                                    Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
+                                }
                             }
                         }
                     }

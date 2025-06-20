@@ -69,7 +69,8 @@ namespace Sofar.BMSLib
 
         /*创建一个更新收发数据显示的线程*/
         public readonly static object _locker = new object();
-        public static Queue<CAN_OBJ> _task = new Queue<CAN_OBJ>();
+        public readonly static object _lockerSend = new object();
+        public static ConcurrentQueue<CAN_OBJ> _task = new ConcurrentQueue<CAN_OBJ>();
         public ConcurrentDictionary<int, Byte[]> Devices = new ConcurrentDictionary<int, Byte[]>();
 
         public static EventWaitHandle _wh = new AutoResetEvent(false);
@@ -193,52 +194,53 @@ namespace Sofar.BMSLib
         public override bool Send(Byte[] data, byte[] canid)
         {
 
-
-            CAN_OBJ co = new CAN_OBJ();
-            co.SendType = 0;
-            co.DataLen = 8;
-            co.Data = data;
-            co.ID = BitConverter.ToUInt32(canid, 0);
-
-            gSendMsgBuf[gSendMsgBufHead].ID = co.ID;
-            gSendMsgBuf[gSendMsgBufHead].Data = co.Data;
-            gSendMsgBuf[gSendMsgBufHead].DataLen = co.DataLen;
-            gSendMsgBuf[gSendMsgBufHead].ExternFlag = 1;
-            gSendMsgBuf[gSendMsgBufHead].RemoteFlag = 0;
-            gSendMsgBufHead++;
-            if (gSendMsgBufHead >= SEND_MSG_BUF_MAX)
+            lock (_lockerSend)
             {
-                gSendMsgBufHead = 0;
-            }
+                CAN_OBJ co = new CAN_OBJ();
+                co.SendType = 0;
+                co.DataLen = 8;
+                co.Data = data;
+                co.ID = BitConverter.ToUInt32(canid, 0);
 
-            CAN_OBJ[] coMsg = new CAN_OBJ[1];
-
-            if (gSendMsgBufHead != gSendMsgBufTail)
-            {
-                coMsg[0] = gSendMsgBuf[gSendMsgBufTail];
-                gSendMsgBufTail++;
-
-                if (gSendMsgBufTail >= SEND_MSG_BUF_MAX)
+                gSendMsgBuf[gSendMsgBufHead].ID = co.ID;
+                gSendMsgBuf[gSendMsgBufHead].Data = co.Data;
+                gSendMsgBuf[gSendMsgBufHead].DataLen = co.DataLen;
+                gSendMsgBuf[gSendMsgBufHead].ExternFlag = 1;
+                gSendMsgBuf[gSendMsgBufHead].RemoteFlag = 0;
+                gSendMsgBufHead++;
+                if (gSendMsgBufHead >= SEND_MSG_BUF_MAX)
                 {
-                    gSendMsgBufTail = 0;
+                    gSendMsgBufHead = 0;
                 }
-                LogAction?.Invoke(1, HexDataHelper.GetDebugByteString(data, "Send：0x" + co.ID.ToString("X")));
-                if (ECANHelper.Transmit(_devType, _devIndex, _channel, coMsg, 1) == ECANStatus.STATUS_OK)
+
+                CAN_OBJ[] coMsg = new CAN_OBJ[1];
+
+                if (gSendMsgBufHead != gSendMsgBufTail)
                 {
-                    CAN_ERR_INFO err_info = new CAN_ERR_INFO();
-                    var v = ECANHelper.ReadErrInfo(_devType, _devIndex, _channel, out err_info) == ECANStatus.STATUS_OK;
-                    if (err_info.ErrCode == 0x00)//成功
+                    coMsg[0] = gSendMsgBuf[gSendMsgBufTail];
+                    gSendMsgBufTail++;
+
+                    if (gSendMsgBufTail >= SEND_MSG_BUF_MAX)
                     {
-                        //Log.Info($"{System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")} CAN通信协议—发送数据:{BitConverter.ToString(data).Replace("-", " ")}  帧ID:{co.ID.ToString("X8")}");
-                        return true;
+                        gSendMsgBufTail = 0;
                     }
-                    else if (err_info.ErrCode == 0x400)
+                    LogAction?.Invoke(1, HexDataHelper.GetDebugByteString(data, "Send：0x" + co.ID.ToString("X")));
+                    if (ECANHelper.Transmit(_devType, _devIndex, _channel, coMsg, 1) == ECANStatus.STATUS_OK)
                     {
-                        //Log.Info($"{System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")}-->CAN通信协议—发送失败");
+                        CAN_ERR_INFO err_info = new CAN_ERR_INFO();
+                        var v = ECANHelper.ReadErrInfo(_devType, _devIndex, _channel, out err_info) == ECANStatus.STATUS_OK;
+                        if (err_info.ErrCode == 0x00)//成功
+                        {
+                            //Log.Info($"{System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")} CAN通信协议—发送数据:{BitConverter.ToString(data).Replace("-", " ")}  帧ID:{co.ID.ToString("X8")}");
+                            return true;
+                        }
+                        else if (err_info.ErrCode == 0x400)
+                        {
+                            //Log.Info($"{System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")}-->CAN通信协议—发送失败");
+                        }
                     }
                 }
             }
-
             return false;
         }
 
@@ -367,7 +369,7 @@ namespace Sofar.BMSLib
                 //Debug.WriteLine($"{System.DateTime.Now.ToString("hh:mm:ss:fff")} 入队数据   帧ID:{CANOBJ.ID.ToString("X8")}");
                 //LogAction?.Invoke(1, HexDataHelper.GetDebugByteString(CANOBJ.Data, "Recv：0x" + CANOBJ.ID.ToString("X")));
                 _task.Enqueue(CANOBJ);
-                _wh.Set();
+                //_wh.Set();
             }
         }
 
