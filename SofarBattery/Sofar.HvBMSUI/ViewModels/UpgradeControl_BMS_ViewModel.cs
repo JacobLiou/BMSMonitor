@@ -305,18 +305,15 @@ namespace Sofar.HvBMSUI.ViewModels
             {
                 if (baseCanHelper.CommunicationType == "Ecan")
                 {
-                    while (!cts.IsCancellationRequested)
+
+                    while (EcanHelper._task.Count > 0 && !cts.IsCancellationRequested)
                     {
-                        lock (EcanHelper._locker)
+                        if (EcanHelper._task.TryDequeue(out CAN_OBJ ch))
                         {
-                            while (EcanHelper._task.Count > 0
-                                && !_token.IsCancellationRequested)
-                            {
-                                CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
-                                Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
-                            }
+                            Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
                         }
                     }
+
                 }
                 else
                 {
@@ -324,11 +321,12 @@ namespace Sofar.HvBMSUI.ViewModels
                     {
                         lock (ControlcanHelper._locker)
                         {
-                            while (ControlcanHelper._task.Count > 0
-                                && !_token.IsCancellationRequested)
+                            while (ControlcanHelper._task.Count > 0 && !cts.IsCancellationRequested)
                             {
-                                VCI_CAN_OBJ ch = (VCI_CAN_OBJ)ControlcanHelper._task.Dequeue();
-                                Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
+                                if (ControlcanHelper._task.TryDequeue(out VCI_CAN_OBJ ch))
+                                {
+                                    Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
+                                }
                             }
                         }
                     }

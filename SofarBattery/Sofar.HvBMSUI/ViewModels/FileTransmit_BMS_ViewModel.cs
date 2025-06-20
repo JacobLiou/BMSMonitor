@@ -606,19 +606,15 @@ SOH计算值,U32,1,0.001,%
             {
                 if (baseCanHelper.CommunicationType == "Ecan")
                 {
-                    while (!cts.IsCancellationRequested)
-                    {
-                        lock (EcanHelper._locker)
-                        {
-                            while (EcanHelper._task.Count > 0
-                                && !cts.IsCancellationRequested)
-                            {
-                                CAN_OBJ ch = (CAN_OBJ)EcanHelper._task.Dequeue();
 
-                                Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
-                            }
+                    while (EcanHelper._task.Count > 0 && !cts.IsCancellationRequested)
+                    {
+                        if (EcanHelper._task.TryDequeue(out CAN_OBJ ch))
+                        {
+                            Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
                         }
                     }
+
                 }
                 else
                 {
@@ -626,12 +622,12 @@ SOH计算值,U32,1,0.001,%
                     {
                         lock (ControlcanHelper._locker)
                         {
-                            while (ControlcanHelper._task.Count > 0
-                                && !cts.IsCancellationRequested)
+                            while (ControlcanHelper._task.Count > 0 && !cts.IsCancellationRequested)
                             {
-                                VCI_CAN_OBJ ch = (VCI_CAN_OBJ)ControlcanHelper._task.Dequeue();
-
-                                Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
+                                if (ControlcanHelper._task.TryDequeue(out VCI_CAN_OBJ ch))
+                                {
+                                    Application.Current.Dispatcher.Invoke(() => { AnalysisData(ch.ID, ch.Data); });
+                                }
                             }
                         }
                     }

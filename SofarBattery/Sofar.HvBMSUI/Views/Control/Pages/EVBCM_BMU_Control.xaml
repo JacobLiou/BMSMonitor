@@ -7,1078 +7,1087 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              xmlns:viewmodels="clr-namespace:Sofar.HvBMSUI.ViewModels" 
              d:DataContext="{d:DesignInstance Type=viewmodels:BMU_Control_ViewModel}" mc:Ignorable="d" 
-             d:DesignHeight="3000" Width="1500">
+             d:DesignHeight="3000" d:DesignWidth="1651">
 
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,10">
-        <!-- 10 行 1 列 GroupBox 布局 -->
-        <Grid Margin="10,10,0,0" Background="White">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1480"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+        <Grid Background="White">
+            <!-- 10 行 1 列 GroupBox 布局 -->
+            <Grid Margin="10,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1480"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-            <!--数据采集及存储设置 第 1 行 第 1 列-->
-            <GroupBox Header="数据采集及存储设置" Grid.Row="0" Grid.Column="0">
-                <StackPanel Orientation="Horizontal" >
-                    <Label Content="数据采集间隔(ms): " Width="120"  VerticalAlignment="Center" />
-                    <TextBox x:Name="txtDataCollectionInterval" Margin="0,10,0,10" Text="{Binding DataCollectionInterval,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                    <Button x:Name="btnStartDataCollection" Margin="5" Content="启动数据采集" IsEnabled="{Binding IsStartDataCollectionEnabled,UpdateSourceTrigger=PropertyChanged}" Command="{Binding StartDataCollectionCmd}"/>
-                    <Button x:Name="btnStopDataCollection" Margin="5" Content="停止数据采集"  IsEnabled="{Binding IsStopDataCollectionEnabled,UpdateSourceTrigger=PropertyChanged}" Command="{Binding StopDataCollectionCmd}"/>
-                    <CheckBox x:Name="ckStartDataSaving" Margin="50,0,0,0" Content="启动数据保存" IsChecked="{Binding IsChecked_StartDataSaving}"/>
-                    <Label Content="数据保存间隔(ms): " Margin="50,0,0,0" Width="120" VerticalAlignment="Center" />
-                    <TextBox x:Name="txtDataStorageInterval" Margin="0,10,0,10" Text="{Binding DataStorageInterval}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center"/>
-                    <Label Content="BMU设备地址" FontSize="16" Foreground="PaleVioletRed"    Margin="20,0,0,0" Width="120"  VerticalAlignment="Center" />
-                    <ComboBox x:Name="ckbAddress_BMU"  FontSize="16" Width="100" BorderBrush="PaleVioletRed" Foreground="PaleVioletRed" Margin="10,0,0,0" BorderThickness="1" ItemsSource="{Binding Request7List}"   SelectedItem="{Binding SelectedRequest7,Mode=TwoWay}">
-                        <ComboBox.ToolTip>
-                            <ToolTip Background="LightGreen" Placement="MousePoint"  Foreground="Black">
-                                切换此地址可读取对应BMU设备的实时数据
-                            </ToolTip>
-                        </ComboBox.ToolTip>
-                    </ComboBox>
-                </StackPanel>
-            </GroupBox>
-
-            <!--状态信息 第 2 行 第 1 列-->
-            <GroupBox Header="状态信息" Grid.Row="1" Grid.Column="0" Margin="0,10,0,0">
-                <StackPanel>
-                    <!-- 第一行 -->
+                <!--数据采集及存储设置 第 1 行 第 1 列-->
+                <GroupBox Header="数据采集及存储设置" Grid.Row="0" Grid.Column="0">
                     <StackPanel Orientation="Horizontal" >
-                        <Label Content="电池电压 (V)" Margin="5,0,0,0" Width="120"/>
-                        <TextBox x:Name="txtBatteryVolt" Margin="0,0,0,0" Text="{Binding BatteryVolt,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="负载电压 (V)" Margin="25,0,0,0" Width="120"/>
-                        <TextBox x:Name="txtLoadVolt" Margin="0,0,0,0"    Text="{Binding LoadVolt,UpdateSourceTrigger=PropertyChanged}"       Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="低压电池电流 (A)" Margin="25,0,0,0" Width="120"/>
-                        <TextBox x:Name="txtBatteryCurrent" Margin="0,0,0,0"    Text="{Binding BatteryCurrent,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"   VerticalContentAlignment="Center" />
-                        <Label Content="SOC (%)" Margin="25,0,0,0" Width="120"/>
-                        <TextBox x:Name="txtSOC" Margin="0,0,0,0"    Text="{Binding SOC,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="SOH (%)" Margin="25,0,0,0" Width="120"/>
-                        <TextBox x:Name="txtSOH" Margin="0,0,0,0"     Text="{Binding SOH,UpdateSourceTrigger=PropertyChanged}"     Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                        <Label Content="数据采集间隔(ms): " Width="120"  VerticalAlignment="Center" />
+                        <TextBox x:Name="txtDataCollectionInterval" Margin="0,10,0,10" Text="{Binding DataCollectionInterval,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                        <Button x:Name="btnStartDataCollection" Margin="5" Content="启动数据采集" IsEnabled="{Binding IsStartDataCollectionEnabled,UpdateSourceTrigger=PropertyChanged}" Command="{Binding StartDataCollectionCmd}"/>
+                        <Button x:Name="btnStopDataCollection" Margin="5" Content="停止数据采集"  IsEnabled="{Binding IsStopDataCollectionEnabled,UpdateSourceTrigger=PropertyChanged}" Command="{Binding StopDataCollectionCmd}"/>
+                        <CheckBox x:Name="ckStartDataSaving" Margin="50,0,0,0" Content="启动数据保存" IsChecked="{Binding IsChecked_StartDataSaving}"/>
+                        <Label Content="数据保存间隔(ms): " Margin="50,0,0,0" Width="120" VerticalAlignment="Center" />
+                        <TextBox x:Name="txtDataStorageInterval" Margin="0,10,0,10" Text="{Binding DataStorageInterval}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center"/>
+                        <Label Content="BMU设备地址" FontSize="16" Foreground="PaleVioletRed"    Margin="20,0,0,0" Width="120"  VerticalAlignment="Center" />
+                        <ComboBox x:Name="ckbAddress_BMU"  FontSize="16" Width="100" BorderBrush="PaleVioletRed" Foreground="PaleVioletRed" Margin="10,0,0,0" BorderThickness="1" ItemsSource="{Binding Request7List}"   SelectedItem="{Binding SelectedRequest7,Mode=TwoWay}">
+                            <ComboBox.ToolTip>
+                                <ToolTip Background="LightGreen" Placement="MousePoint"  Foreground="Black">
+                                    切换此地址可读取对应BMU设备的实时数据
+                                </ToolTip>
+                            </ComboBox.ToolTip>
+                        </ComboBox>
                     </StackPanel>
+                </GroupBox>
 
-                    <!-- 第二行 -->
-                    <StackPanel Orientation="Horizontal" Margin="5,5,0,0">
-                        <Label Content="剩余容量 (Ah)"  Width="120"/>
-                        <TextBox x:Name="txtRemainingCapacity" Margin="0,0,0,0"    Text="{Binding RemainingCapacity,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="满充容量 (Ah)" Margin="25,0,0,0" Width="120"/>
-                        <TextBox x:Name="txtFullCapacity" Margin="0,0,0,0"     Text="{Binding FullCapacity,UpdateSourceTrigger=PropertyChanged}"     Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="循环次数" Margin="25,0,0,0" Width="120"/>
-                        <TextBox x:Name="txtCycleTime" Margin="0,0,0,0" Text="{Binding CycleTime,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="累计放电量 (KWh)" Margin="25,0,0,0" Width="120"/>
-                        <TextBox x:Name="txtCumulativeDischargeCapacity" Margin="0,0,0,0" Text="{Binding CumulativeDischargeCapacity,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="累计充电量 (KWh)" Margin="25,0,0,0" Width="120"/>
-                        <TextBox x:Name="txtCumulativeChargeCapacity" Margin="0,0,0,0" Text="{Binding CumulativeChargeCapacity,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                    </StackPanel>
-
-                    <!-- 第三行 -->
-                    <StackPanel Orientation="Horizontal" Margin="5,5,0,0">
-                        <Label Content="累计充电容量(Ah)"  Width="120"/>
-                        <TextBox x:Name="txtTotalChgCap" Margin="0,0,0,0" Text="{Binding TotalChgCap,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="累计放电容量(Ah)" Margin="25,0,0,0" Width="120"/>
-                        <TextBox x:Name="txtTotalDsgCap" Margin="0,0,0,0" Text="{Binding TotalDsgCap,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="BMS状态" Margin="25,0,0,0" Width="120"/>
-                        <TextBox x:Name="txtBmsStatus" Margin="0,0,0,0" Text="{Binding BmsStatus,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="充电电流上限(A)" Margin="25,0,0,0" Width="120"/>
-                        <TextBox x:Name="txtChargeCurrentLimitation" Margin="0,0,0,0" Text="{Binding ChargeCurrentLimitation,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="放电电流上限(A)" Margin="25,0,0,0" Width="120"/>
-                        <TextBox x:Name="txtDischargeCurrentLimitation" Margin="0,0,0,0" Text="{Binding DischargeCurrentLimitation,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                    </StackPanel>
-
-                    <!-- 第四行 -->
-                    <StackPanel Orientation="Horizontal" Margin="5,5,0,0">
-                        <Label Content="故障等级" Width="120"/>
-                        <CheckBox Content="提示告警" IsChecked="{Binding AlarmLevelBit3,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                        <CheckBox Content="一般告警" IsChecked="{Binding AlarmLevelBit2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="10 0 0 0"/>
-                        <CheckBox Content="严重告警" IsChecked="{Binding AlarmLevelBit1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="10 0 0 0"/>
-                        <CheckBox Content="硬件故障" IsChecked="{Binding AlarmLevelBit0,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="10 0 0 0"/>
-                    </StackPanel>
-
-                    <!-- 第五行 -->
-                    <StackPanel Margin="5,5,0,0">
+                <!--状态信息 第 2 行 第 1 列-->
+                <GroupBox Header="状态信息" Grid.Row="1" Grid.Column="0" Margin="0,10,0,0">
+                    <StackPanel>
+                        <!-- 第一行 -->
                         <StackPanel Orientation="Horizontal" >
-                            <Label Content="系统状态" Width="120"/>
+                            <Label Content="电池电压 (V)" Margin="5,0,0,0" Width="120"/>
+                            <TextBox x:Name="txtBatteryVolt" Margin="0,0,0,0" Text="{Binding BatteryVolt,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Label Content="负载电压 (V)" Margin="25,0,0,0" Width="120"/>
+                            <TextBox x:Name="txtLoadVolt" Margin="0,0,0,0"    Text="{Binding LoadVolt,UpdateSourceTrigger=PropertyChanged}"       Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Label Content="低压电池电流 (A)" Margin="25,0,0,0" Width="120"/>
+                            <TextBox x:Name="txtBatteryCurrent" Margin="0,0,0,0"    Text="{Binding BatteryCurrent,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"   VerticalContentAlignment="Center" />
+                            <Label Content="SOC (%)" Margin="25,0,0,0" Width="120"/>
+                            <TextBox x:Name="txtSOC" Margin="0,0,0,0"    Text="{Binding SOC,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Label Content="SOH (%)" Margin="25,0,0,0" Width="120"/>
+                            <TextBox x:Name="txtSOH" Margin="0,0,0,0"     Text="{Binding SOH,UpdateSourceTrigger=PropertyChanged}"     Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                        </StackPanel>
 
-                            <Ellipse Width="12" Height="12" VerticalAlignment="Center" Margin="2 0 0 0">
-                                <Ellipse.Style>
-                                    <Style TargetType="Ellipse">
-                                        <Setter Property="Fill" Value="Transparent" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsChargeEnable}" Value="False">
-                                                <Setter Property="Fill" Value="Red" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding IsChargeEnable}" Value="True">
-                                                <Setter Property="Fill" Value="Green" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Ellipse.Style>
-                            </Ellipse>
-                            <Label Content="允许充电" Width="70"/>
+                        <!-- 第二行 -->
+                        <StackPanel Orientation="Horizontal" Margin="5,5,0,0">
+                            <Label Content="剩余容量 (Ah)"  Width="120"/>
+                            <TextBox x:Name="txtRemainingCapacity" Margin="0,0,0,0"    Text="{Binding RemainingCapacity,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Label Content="满充容量 (Ah)" Margin="25,0,0,0" Width="120"/>
+                            <TextBox x:Name="txtFullCapacity" Margin="0,0,0,0"     Text="{Binding FullCapacity,UpdateSourceTrigger=PropertyChanged}"     Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Label Content="循环次数" Margin="25,0,0,0" Width="120"/>
+                            <TextBox x:Name="txtCycleTime" Margin="0,0,0,0" Text="{Binding CycleTime,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Label Content="累计放电量 (KWh)" Margin="25,0,0,0" Width="120"/>
+                            <TextBox x:Name="txtCumulativeDischargeCapacity" Margin="0,0,0,0" Text="{Binding CumulativeDischargeCapacity,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Label Content="累计充电量 (KWh)" Margin="25,0,0,0" Width="120"/>
+                            <TextBox x:Name="txtCumulativeChargeCapacity" Margin="0,0,0,0" Text="{Binding CumulativeChargeCapacity,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                        </StackPanel>
 
-                            <Ellipse Width="12" Height="12" VerticalAlignment="Center" Margin="-2 0 0 0">
-                                <Ellipse.Style>
-                                    <Style TargetType="Ellipse">
-                                        <Setter Property="Fill" Value="Transparent" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsDischargeEnable}" Value="False">
-                                                <Setter Property="Fill" Value="Red" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding IsDischargeEnable}" Value="True">
-                                                <Setter Property="Fill" Value="Green" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Ellipse.Style>
-                            </Ellipse>
-                            <Label Content="允许放电" Width="70"/>
+                        <!-- 第三行 -->
+                        <StackPanel Orientation="Horizontal" Margin="5,5,0,0">
+                            <Label Content="累计充电容量(Ah)"  Width="120"/>
+                            <TextBox x:Name="txtTotalChgCap" Margin="0,0,0,0" Text="{Binding TotalChgCap,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Label Content="累计放电容量(Ah)" Margin="25,0,0,0" Width="120"/>
+                            <TextBox x:Name="txtTotalDsgCap" Margin="0,0,0,0" Text="{Binding TotalDsgCap,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Label Content="BMS状态" Margin="25,0,0,0" Width="120"/>
+                            <TextBox x:Name="txtBmsStatus" Margin="0,0,0,0" Text="{Binding BmsStatus,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Label Content="充电电流上限(A)" Margin="25,0,0,0" Width="120"/>
+                            <TextBox x:Name="txtChargeCurrentLimitation" Margin="0,0,0,0" Text="{Binding ChargeCurrentLimitation,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Label Content="放电电流上限(A)" Margin="25,0,0,0" Width="120"/>
+                            <TextBox x:Name="txtDischargeCurrentLimitation" Margin="0,0,0,0" Text="{Binding DischargeCurrentLimitation,UpdateSourceTrigger=PropertyChanged}" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                        </StackPanel>
 
-                            <Ellipse Width="12" Height="12" VerticalAlignment="Center" Margin="-2 0 0 0">
-                                <Ellipse.Style>
-                                    <Style TargetType="Ellipse">
-                                        <Setter Property="Fill" Value="Transparent" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsBmuCutOffRequest}" Value="False">
-                                                <Setter Property="Fill" Value="Red" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding IsBmuCutOffRequest}" Value="True">
-                                                <Setter Property="Fill" Value="Green" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Ellipse.Style>
-                            </Ellipse>
-                            <Label Content="切断继电器" Width="70"/>
+                        <!-- 第四行 -->
+                        <StackPanel Orientation="Horizontal" Margin="5,5,0,0">
+                            <Label Content="故障等级" Width="120"/>
+                            <CheckBox Content="提示告警" IsChecked="{Binding AlarmLevelBit3,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox Content="一般告警" IsChecked="{Binding AlarmLevelBit2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="10 0 0 0"/>
+                            <CheckBox Content="严重告警" IsChecked="{Binding AlarmLevelBit1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="10 0 0 0"/>
+                            <CheckBox Content="硬件故障" IsChecked="{Binding AlarmLevelBit0,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="10 0 0 0"/>
+                        </StackPanel>
 
-                            <Ellipse Width="12" Height="12" VerticalAlignment="Center">
-                                <Ellipse.Style>
-                                    <Style TargetType="Ellipse">
-                                        <Setter Property="Fill" Value="Transparent" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsBmuPowOffRequest}" Value="False">
-                                                <Setter Property="Fill" Value="Red" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding IsBmuPowOffRequest}" Value="True">
-                                                <Setter Property="Fill" Value="Green" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Ellipse.Style>
-                            </Ellipse>
-                            <Label Content="BMU关机" Width="70"/>
+                        <!-- 第五行 -->
+                        <StackPanel Margin="5,5,0,0">
+                            <StackPanel Orientation="Horizontal" >
+                                <Label Content="系统状态" Width="120"/>
 
-                            <Ellipse Width="12" Height="12" VerticalAlignment="Center">
-                                <Ellipse.Style>
-                                    <Style TargetType="Ellipse">
-                                        <Setter Property="Fill" Value="Transparent" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsForceChrgRequest}" Value="False">
-                                                <Setter Property="Fill" Value="Red" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding IsForceChrgRequest}" Value="True">
-                                                <Setter Property="Fill" Value="Green" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Ellipse.Style>
-                            </Ellipse>
-                            <Label Content="请求强充" Width="70"/>
+                                <Ellipse Width="12" Height="12" VerticalAlignment="Center" Margin="2 0 0 0">
+                                    <Ellipse.Style>
+                                        <Style TargetType="Ellipse">
+                                            <Setter Property="Fill" Value="Transparent" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsChargeEnable}" Value="False">
+                                                    <Setter Property="Fill" Value="Red" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding IsChargeEnable}" Value="True">
+                                                    <Setter Property="Fill" Value="Green" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Ellipse.Style>
+                                </Ellipse>
+                                <Label Content="允许充电" Width="70"/>
 
-                            <Ellipse Width="12" Height="12" VerticalAlignment="Center">
-                                <Ellipse.Style>
-                                    <Style TargetType="Ellipse">
-                                        <Setter Property="Fill" Value="Transparent" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsChagreStatus}" Value="False">
-                                                <Setter Property="Fill" Value="Red" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding IsChagreStatus}" Value="True">
-                                                <Setter Property="Fill" Value="Green" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Ellipse.Style>
-                            </Ellipse>
-                            <Label Content="充满" Width="45"/>
+                                <Ellipse Width="12" Height="12" VerticalAlignment="Center" Margin="-2 0 0 0">
+                                    <Ellipse.Style>
+                                        <Style TargetType="Ellipse">
+                                            <Setter Property="Fill" Value="Transparent" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsDischargeEnable}" Value="False">
+                                                    <Setter Property="Fill" Value="Red" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding IsDischargeEnable}" Value="True">
+                                                    <Setter Property="Fill" Value="Green" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Ellipse.Style>
+                                </Ellipse>
+                                <Label Content="允许放电" Width="70"/>
 
-                            <Ellipse Width="12" Height="12" VerticalAlignment="Center">
-                                <Ellipse.Style>
-                                    <Style TargetType="Ellipse">
-                                        <Setter Property="Fill" Value="Transparent" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsDisChargeStatus}" Value="False">
-                                                <Setter Property="Fill" Value="Red" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding IsDisChargeStatus}" Value="True">
-                                                <Setter Property="Fill" Value="Green" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Ellipse.Style>
-                            </Ellipse>
-                            <Label Content="放空" Width="45"/>
+                                <Ellipse Width="12" Height="12" VerticalAlignment="Center" Margin="-2 0 0 0">
+                                    <Ellipse.Style>
+                                        <Style TargetType="Ellipse">
+                                            <Setter Property="Fill" Value="Transparent" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsBmuCutOffRequest}" Value="False">
+                                                    <Setter Property="Fill" Value="Red" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding IsBmuCutOffRequest}" Value="True">
+                                                    <Setter Property="Fill" Value="Green" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Ellipse.Style>
+                                </Ellipse>
+                                <Label Content="切断继电器" Width="70"/>
 
-                            <Ellipse Width="12" Height="12" VerticalAlignment="Center">
-                                <Ellipse.Style>
-                                    <Style TargetType="Ellipse">
-                                        <Setter Property="Fill" Value="Transparent" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsDiIO}" Value="False">
-                                                <Setter Property="Fill" Value="Red" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding IsDiIO}" Value="True">
-                                                <Setter Property="Fill" Value="Green" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Ellipse.Style>
-                            </Ellipse>
-                            <Label Content="编址输入电平" Width="85"/>
+                                <Ellipse Width="12" Height="12" VerticalAlignment="Center">
+                                    <Ellipse.Style>
+                                        <Style TargetType="Ellipse">
+                                            <Setter Property="Fill" Value="Transparent" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsBmuPowOffRequest}" Value="False">
+                                                    <Setter Property="Fill" Value="Red" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding IsBmuPowOffRequest}" Value="True">
+                                                    <Setter Property="Fill" Value="Green" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Ellipse.Style>
+                                </Ellipse>
+                                <Label Content="BMU关机" Width="70"/>
 
-                            <Ellipse Width="12" Height="12" VerticalAlignment="Center">
-                                <Ellipse.Style>
-                                    <Style TargetType="Ellipse">
-                                        <Setter Property="Fill" Value="Transparent" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsChargeIO}" Value="False">
-                                                <Setter Property="Fill" Value="Red" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding IsChargeIO}" Value="True">
-                                                <Setter Property="Fill" Value="Green" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Ellipse.Style>
-                            </Ellipse>
-                            <Label Content="补电输入电平" Width="85"/>
+                                <Ellipse Width="12" Height="12" VerticalAlignment="Center">
+                                    <Ellipse.Style>
+                                        <Style TargetType="Ellipse">
+                                            <Setter Property="Fill" Value="Transparent" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsForceChrgRequest}" Value="False">
+                                                    <Setter Property="Fill" Value="Red" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding IsForceChrgRequest}" Value="True">
+                                                    <Setter Property="Fill" Value="Green" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Ellipse.Style>
+                                </Ellipse>
+                                <Label Content="请求强充" Width="70"/>
+
+                                <Ellipse Width="12" Height="12" VerticalAlignment="Center">
+                                    <Ellipse.Style>
+                                        <Style TargetType="Ellipse">
+                                            <Setter Property="Fill" Value="Transparent" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsChagreStatus}" Value="False">
+                                                    <Setter Property="Fill" Value="Red" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding IsChagreStatus}" Value="True">
+                                                    <Setter Property="Fill" Value="Green" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Ellipse.Style>
+                                </Ellipse>
+                                <Label Content="充满" Width="45"/>
+
+                                <Ellipse Width="12" Height="12" VerticalAlignment="Center">
+                                    <Ellipse.Style>
+                                        <Style TargetType="Ellipse">
+                                            <Setter Property="Fill" Value="Transparent" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsDisChargeStatus}" Value="False">
+                                                    <Setter Property="Fill" Value="Red" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding IsDisChargeStatus}" Value="True">
+                                                    <Setter Property="Fill" Value="Green" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Ellipse.Style>
+                                </Ellipse>
+                                <Label Content="放空" Width="45"/>
+
+                                <Ellipse Width="12" Height="12" VerticalAlignment="Center">
+                                    <Ellipse.Style>
+                                        <Style TargetType="Ellipse">
+                                            <Setter Property="Fill" Value="Transparent" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsDiIO}" Value="False">
+                                                    <Setter Property="Fill" Value="Red" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding IsDiIO}" Value="True">
+                                                    <Setter Property="Fill" Value="Green" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Ellipse.Style>
+                                </Ellipse>
+                                <Label Content="编址输入电平" Width="85"/>
+
+                                <Ellipse Width="12" Height="12" VerticalAlignment="Center">
+                                    <Ellipse.Style>
+                                        <Style TargetType="Ellipse">
+                                            <Setter Property="Fill" Value="Transparent" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsChargeIO}" Value="False">
+                                                    <Setter Property="Fill" Value="Red" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding IsChargeIO}" Value="True">
+                                                    <Setter Property="Fill" Value="Green" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Ellipse.Style>
+                                </Ellipse>
+                                <Label Content="补电输入电平" Width="85"/>
+                            </StackPanel>
                         </StackPanel>
                     </StackPanel>
-                </StackPanel>
-            </GroupBox>
+                </GroupBox>
 
-            <!--电池信息 第 3 行 第 1 列-->
-            <GroupBox Header="电池信息" Grid.Row="2" Grid.Column="0" Margin="0,10">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="36"/>
-                        <RowDefinition Height="36"/>
-                        <RowDefinition Height="36"/>
-                        <RowDefinition Height="36"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+                <!--电池信息 第 3 行 第 1 列-->
+                <GroupBox Header="电池信息" Grid.Row="2" Grid.Column="0" Margin="0,10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="36"/>
+                            <RowDefinition Height="36"/>
+                            <RowDefinition Height="36"/>
+                            <RowDefinition Height="36"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
 
-                    <!-- 单体电压 -->
-                    <Label Content="最高电压编号" VerticalAlignment="Center"/>
-                    <TextBox x:Name="txtBatMaxCellVoltNum" Text="{Binding BatMaxCellVoltNum,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
-                    <Label Content="最高电压 (mV)" Grid.Column="2" VerticalAlignment="Center"/>
-                    <TextBox x:Name="txtBatMaxCellVolt" Text="{Binding BatMaxCellVolt,UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
-                    <Label Content="最低电压编号" Grid.Column="4" VerticalAlignment="Center"/>
-                    <TextBox x:Name="txtBatMinCellVoltNum" Text="{Binding BatMinCellVoltNum,UpdateSourceTrigger=PropertyChanged}" Grid.Column="5" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
-                    <Label Content="最低电压 (mV)" Grid.Column="6" VerticalAlignment="Center"/>
-                    <TextBox x:Name="txtBatMinCellVolt" Text="{Binding BatMinCellVolt,UpdateSourceTrigger=PropertyChanged}" Grid.Column="7" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
-                    <Label Content="平均电压 (mV)" Grid.Column="8" VerticalAlignment="Center"/>
-                    <TextBox x:Name="txtBatAvgCellVolt" Text="{Binding BatAvgCellVolt,UpdateSourceTrigger=PropertyChanged}" Grid.Column="9" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
-                    <Label Content="单体压差 (mV)" Grid.Column="10" VerticalAlignment="Center"/>
-                    <TextBox x:Name="txtBatDiffCellVolt" Text="{Binding BatDiffCellVolt,UpdateSourceTrigger=PropertyChanged}" Grid.Column="11" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
+                        <!-- 单体电压 -->
+                        <Label Content="最高电压编号" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtBatMaxCellVoltNum" Text="{Binding BatMaxCellVoltNum,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
+                        <Label Content="最高电压 (mV)" Grid.Column="2" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtBatMaxCellVolt" Text="{Binding BatMaxCellVolt,UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
+                        <Label Content="最低电压编号" Grid.Column="4" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtBatMinCellVoltNum" Text="{Binding BatMinCellVoltNum,UpdateSourceTrigger=PropertyChanged}" Grid.Column="5" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
+                        <Label Content="最低电压 (mV)" Grid.Column="6" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtBatMinCellVolt" Text="{Binding BatMinCellVolt,UpdateSourceTrigger=PropertyChanged}" Grid.Column="7" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
+                        <Label Content="平均电压 (mV)" Grid.Column="8" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtBatAvgCellVolt" Text="{Binding BatAvgCellVolt,UpdateSourceTrigger=PropertyChanged}" Grid.Column="9" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
+                        <Label Content="单体压差 (mV)" Grid.Column="10" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtBatDiffCellVolt" Text="{Binding BatDiffCellVolt,UpdateSourceTrigger=PropertyChanged}" Grid.Column="11" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
 
-                    <!-- 单体温度 -->
-                    <Label Content="最高温度编号" Grid.Row="1" VerticalAlignment="Center"/>
-                    <TextBox x:Name="txtBatMaxCellTempNum" Text="{Binding BatMaxCellTempNum,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
-                    <Label Content="最高温度 (℃)" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center"/>
-                    <TextBox x:Name="txtBatMaxCellTemp" Text="{Binding BatMaxCellTemp,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="3" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
-                    <Label Content="最低温度编号"  Grid.Row="1" Grid.Column="4" VerticalAlignment="Center"/>
-                    <TextBox x:Name="txtBatMinCellTempNum" Text="{Binding BatMinCellTempNum,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="5" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
-                    <Label Content="最低温度 (℃)" Grid.Row="1" Grid.Column="6" VerticalAlignment="Center"/>
-                    <TextBox x:Name="txtBatMinCellTemp" Text="{Binding BatMinCellTemp,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="7" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
-                    <Label Content="平均温度 (℃)" Grid.Row="1" Grid.Column="8" VerticalAlignment="Center"/>
-                    <TextBox Text="{Binding BatAverageTemp,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="9" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
-                    <Label Content="单体温差 (℃)" Grid.Row="1" Grid.Column="10" VerticalAlignment="Center"/>
-                    <TextBox Text="{Binding BatDiffCellTemp,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="11" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
+                        <!-- 单体温度 -->
+                        <Label Content="最高温度编号" Grid.Row="1" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtBatMaxCellTempNum" Text="{Binding BatMaxCellTempNum,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
+                        <Label Content="最高温度 (℃)" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtBatMaxCellTemp" Text="{Binding BatMaxCellTemp,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="3" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
+                        <Label Content="最低温度编号"  Grid.Row="1" Grid.Column="4" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtBatMinCellTempNum" Text="{Binding BatMinCellTempNum,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="5" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
+                        <Label Content="最低温度 (℃)" Grid.Row="1" Grid.Column="6" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtBatMinCellTemp" Text="{Binding BatMinCellTemp,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="7" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
+                        <Label Content="平均温度 (℃)" Grid.Row="1" Grid.Column="8" VerticalAlignment="Center"/>
+                        <TextBox Text="{Binding BatAverageTemp,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="9" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
+                        <Label Content="单体温差 (℃)" Grid.Row="1" Grid.Column="10" VerticalAlignment="Center"/>
+                        <TextBox Text="{Binding BatDiffCellTemp,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="11" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
 
-                    <!-- 其他温度 -->
-                    <Label Content="电解液漏液浓度" Grid.Row="2" VerticalAlignment="Center"/>
-                    <TextBox Text="{Binding ElectrolyteLeakageConcentration,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
-                    <Label Content="环境温度 (℃)" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center"/>
-                    <TextBox x:Name="txtEnvTemperature" Text="{Binding EnvTemperature,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="3" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                    <!--<Label Content="MOS温度 (℃)" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center"/>
+                        <!-- 其他温度 -->
+                        <Label Content="电解液漏液浓度" Grid.Row="2" VerticalAlignment="Center"/>
+                        <TextBox Text="{Binding ElectrolyteLeakageConcentration,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
+                        <Label Content="环境温度 (℃)" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtEnvTemperature" Text="{Binding EnvTemperature,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="3" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                        <!--<Label Content="MOS温度 (℃)" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center"/>
                     <TextBox x:Name="txtMosTemperature" Text="{Binding MosTemperature,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="3" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />-->
-                    <Label Content="功率正端子温度 (℃)" Grid.Row="2" Grid.Column="4" VerticalAlignment="Center"/>
-                    <TextBox x:Name="txtPowerTemperture1" Text="{Binding PowerTemperture1,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="5" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                    <Label Content="功率负端子温度 (℃)" Grid.Row="2" Grid.Column="6" VerticalAlignment="Center"/>
-                    <TextBox x:Name="txtPowerTemperture2" Text="{Binding PowerTemperture2,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="7" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                    <!--<Label Content="主动均衡温度1 (℃)" Grid.Row="2" Grid.Column="8" VerticalAlignment="Center"/>
+                        <Label Content="功率正端子温度 (℃)" Grid.Row="2" Grid.Column="4" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtPowerTemperture1" Text="{Binding PowerTemperture1,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="5" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                        <Label Content="功率负端子温度 (℃)" Grid.Row="2" Grid.Column="6" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtPowerTemperture2" Text="{Binding PowerTemperture2,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="7" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                        <!--<Label Content="主动均衡温度1 (℃)" Grid.Row="2" Grid.Column="8" VerticalAlignment="Center"/>
                     <TextBox x:Name="txtDCDC_temperature1" Text="{Binding DCDC_temperature1,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="9" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
                     <Label Content="主动均衡温度2 (℃)" Grid.Row="2" Grid.Column="10" VerticalAlignment="Center"/>
                     <TextBox x:Name="txtDCDC_temperature2" Text="{Binding DCDC_temperature2,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="11" Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />-->
-                    <Label Content="放空同步下降soc" Grid.Row="2" Grid.Column="8" VerticalAlignment="Center"/>
-                    <TextBox x:Name="txtSyncFallSoc" Text="{Binding SyncFallSoc,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="9" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
-                    <Label Content="复位方式" Grid.Row="2" Grid.Column="10" VerticalAlignment="Center"/>
-                    <TextBox x:Name="txtResetMode" Text="{Binding ResetMode,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="11" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
+                        <Label Content="放空同步下降soc" Grid.Row="2" Grid.Column="8" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtSyncFallSoc" Text="{Binding SyncFallSoc,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="9" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
+                        <Label Content="复位方式" Grid.Row="2" Grid.Column="10" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtResetMode" Text="{Binding ResetMode,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="11" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
 
-                    <!-- 电池信息 -->
-                    <Label Content="辅源电压 (V)" Grid.Row="3" VerticalAlignment="Center"/>
-                    <TextBox x:Name="txtAuxVolt" Text="{Binding AuxVolt,UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
-                    <Label Content="标定容量 (Ah)" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center"/>
-                    <TextBox x:Name="txtBatNominalCapacity" Text="{Binding BatNominalCapacity,UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="3" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
+                        <!-- 电池信息 -->
+                        <Label Content="辅源电压 (V)" Grid.Row="3" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtAuxVolt" Text="{Binding AuxVolt,UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
+                        <Label Content="标定容量 (Ah)" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtBatNominalCapacity" Text="{Binding BatNominalCapacity,UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="3" Width="80" TextAlignment="Center" VerticalContentAlignment="Center" />
                     </Grid>
-            </GroupBox>
+                </GroupBox>
 
-            <!--版本号(调整至最后一行) 第 4 行 第 1 列-->
-            <GroupBox Header="报警信息" Grid.Row="3" Grid.Column="0" Margin="0,0,0,10">
-                <StackPanel Margin="10">
-                    <StackPanel Orientation="Horizontal"  Grid.Row="8" Grid.Column="0">
-                        <Button x:Name="txtRefreshAlarmMessage" Content="刷新报警信息" Margin="10" Width="120" Command="{Binding RefreshAlarmMessageCmd}">
-                            <Button.ToolTip>
-                                <ToolTip Background="LightGreen" Placement="MousePoint"  Foreground="Black">
-                                    点击此按钮可将已结束的报警信息取消显示
-                                </ToolTip>
-                            </Button.ToolTip>
-                        </Button>
-                    </StackPanel>
-                    <StackPanel Margin="10"  Orientation="Horizontal">
-                        <!-- 报警信息表格-->
-                        <DataGrid  BorderBrush="Gray" BorderThickness="1.5" MaxHeight="400" Name="BatteryDataGrid1"  IsReadOnly="True"  ScrollViewer.VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False"  HeadersVisibility="All"  GridLinesVisibility="All" Margin="0,0,0,10"
+                <!--版本号(调整至最后一行) 第 4 行 第 1 列-->
+                <GroupBox Header="报警信息" Grid.Row="3" Grid.Column="0" Margin="0,0,0,10">
+                    <StackPanel Margin="10">
+                        <StackPanel Orientation="Horizontal"  Grid.Row="8" Grid.Column="0">
+                            <Button x:Name="txtRefreshAlarmMessage" Content="刷新报警信息" Margin="10" Width="120" Command="{Binding RefreshAlarmMessageCmd}">
+                                <Button.ToolTip>
+                                    <ToolTip Background="LightGreen" Placement="MousePoint"  Foreground="Black">
+                                        点击此按钮可将已结束的报警信息取消显示
+                                    </ToolTip>
+                                </Button.ToolTip>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Margin="10"   HorizontalAlignment="Left">
+                            <!-- 报警信息表格-->
+                            <DataGrid  BorderBrush="Gray" BorderThickness="1.5" Width="1230" MaxHeight="400" Name="BatteryDataGrid1"  IsReadOnly="True"  ScrollViewer.VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False"  HeadersVisibility="All"  GridLinesVisibility="All" Margin="0,0,0,10"
                            ItemsSource="{Binding AlarmMessageDataList}">
-                            <DataGrid.Resources>
-                                <Style TargetType="DataGridColumnHeader">
-                                    <Setter Property="FontWeight" Value="Bold"/>
-                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                </Style>
-                            </DataGrid.Resources>
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="序号" Width="75" Binding="{Binding AlarmNumber}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="报警开始时间" Width="180" Binding="{Binding AlarmStartTime}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="报警类型" Width="150" Binding="{Binding AlarmLevel}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <!--<DataGridTextColumn Header="BMU地址" Width="100" Binding="{Binding ID}" >
+                                <DataGrid.Resources>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    </Style>
+                                </DataGrid.Resources>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="序号" Width="75" Binding="{Binding AlarmNumber}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="报警开始时间" Width="180" Binding="{Binding AlarmStartTime}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="报警类型" Width="150" Binding="{Binding AlarmLevel}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <!--<DataGridTextColumn Header="BMU地址" Width="100" Binding="{Binding ID}" >
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
                                             <Setter Property="HorizontalAlignment" Value="Center"/>
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>-->
-                                <DataGridTextColumn Header="报警描述" Width="530" Binding="{Binding AlarmMessage}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="是否结束" Width="100" Binding="{Binding isEnd}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="结束时间" Width="180" Binding="{Binding AlarmStopTime}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                                    <DataGridTextColumn Header="报警描述" Width="350" Binding="{Binding AlarmMessage}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="报警状态" Width="125" Binding="{Binding AlarmStatus}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="是否结束" Width="100" Binding="{Binding isEnd}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="结束时间" Width="180" Binding="{Binding AlarmStopTime}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-            </GroupBox>
+                </GroupBox>
 
-            <!--电压\温度\SOC\SOH\均衡状态 第 5 行 第 1 列-->
-            <GroupBox Header="BMS实时信息(电压:V SOC:% SOH:% 温度:℃)" Grid.Row="4" Grid.Column="0" Margin="0,0,0,10">
-                <StackPanel >
-                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                        <RadioButton x:Name="rbBatteryVoltage" Margin="10,0,0,0" Content="BMS电池单体电压" IsChecked="{Binding IsChecked_BatteryVoltage}"/>
-                        <RadioButton x:Name="rbBatterySOC" Margin="100,0,0,0" Content="BMS单电芯的SOC" IsChecked="{Binding IsChecked_BatterySOC}"/>
-                        <RadioButton x:Name="rbBatterySOH" Margin="100,0,0,0" Content="BMS单电芯的SOH" IsChecked="{Binding IsChecked_BatterySOH}"/>
-                        <RadioButton x:Name="rbBatteryTemperature" Margin="100,0,0,0" Content="BMS电池温度" IsChecked="{Binding IsChecked_BatteryTemperature}"/>
-                        <RadioButton x:Name="rbBatteryEquilibriumState" Margin="100,0,0,0" Content="BMS电池均衡状态 " IsChecked="{Binding IsChecked_BatteryEquilibriumState}"/>
-                        <RadioButton x:Name="rbBatteryEquilibriumTemperature" Margin="100,0,0,0" Content="BMS电池均衡温度 " IsChecked="{Binding IsChecked_BatteryEquilibriumTemperature}"/>
-                    </StackPanel>
+                <!--电压\温度\SOC\SOH\均衡状态 第 5 行 第 1 列-->
+                <GroupBox Header="BMS实时信息(电压:V SOC:% SOH:% 温度:℃)" Grid.Row="4" Grid.Column="0" Margin="0,0,0,10">
+                    <StackPanel >
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <RadioButton x:Name="rbBatteryVoltage" Margin="10,0,0,0" Content="BMS电池单体电压" IsChecked="{Binding IsChecked_BatteryVoltage}"/>
+                            <RadioButton x:Name="rbBatterySOC" Margin="100,0,0,0" Content="BMS单电芯的SOC" IsChecked="{Binding IsChecked_BatterySOC}"/>
+                            <RadioButton x:Name="rbBatterySOH" Margin="100,0,0,0" Content="BMS单电芯的SOH" IsChecked="{Binding IsChecked_BatterySOH}"/>
+                            <RadioButton x:Name="rbBatteryTemperature" Margin="100,0,0,0" Content="BMS电池温度" IsChecked="{Binding IsChecked_BatteryTemperature}"/>
+                            <RadioButton x:Name="rbBatteryEquilibriumState" Margin="100,0,0,0" Content="BMS电池均衡状态 " IsChecked="{Binding IsChecked_BatteryEquilibriumState}"/>
+                            <RadioButton x:Name="rbBatteryEquilibriumTemperature" Margin="100,0,0,0" Content="BMS电池均衡温度 " IsChecked="{Binding IsChecked_BatteryEquilibriumTemperature}"/>
+                        </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                        <DataGrid  BorderBrush="Gray" BorderThickness="1.5" Name="BatteryDataGrid" AutoGenerateColumns="False" CanUserAddRows="False"  HeadersVisibility="All" GridLinesVisibility="All"  Margin="10"
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <DataGrid  BorderBrush="Gray" BorderThickness="1.5" Name="BatteryDataGrid" AutoGenerateColumns="False" CanUserAddRows="False"  HeadersVisibility="All" GridLinesVisibility="All"  Margin="10"
                                     ItemsSource="{Binding BatteryData_BMU_List}"  MaxHeight="350" ScrollViewer.VerticalScrollBarVisibility="Auto" IsReadOnly="True">
-                            <DataGrid.Resources>
-                                <Style TargetType="DataGridColumnHeader">
-                                    <Setter Property="FontWeight" Value="Bold"/>
-                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                </Style>
-                            </DataGrid.Resources>
+                                <DataGrid.Resources>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    </Style>
+                                </DataGrid.Resources>
 
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="模块编号" Width="80" Binding="{Binding DataName}">
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="索引名称" Width="85" Binding="{Binding IndexName}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="模块编号" Width="80" Binding="{Binding DataName}">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="索引名称" Width="85" Binding="{Binding IndexName}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
 
-                                <DataGridTextColumn Header="1"        Width="75" Binding="{Binding Value1}">
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="2"        Width="75" Binding="{Binding Value2}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="3"        Width="75" Binding="{Binding Value3}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="4"        Width="75" Binding="{Binding Value4}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="5"        Width="75" Binding="{Binding Value5}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="6"        Width="75" Binding="{Binding Value6}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="7"        Width="75" Binding="{Binding Value7}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="8"        Width="75" Binding="{Binding Value8}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="9"        Width="75" Binding="{Binding Value9}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="10"       Width="75" Binding="{Binding Value10}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="11"       Width="75" Binding="{Binding Value11}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="12"       Width="75" Binding="{Binding Value12}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="13"       Width="75" Binding="{Binding Value13}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="14"       Width="75" Binding="{Binding Value14}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="15"       Width="75" Binding="{Binding Value15}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="16"       Width="75" Binding="{Binding Value16}" >
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                                    <DataGridTextColumn Header="1"        Width="75" Binding="{Binding Value1}">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="2"        Width="75" Binding="{Binding Value2}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="3"        Width="75" Binding="{Binding Value3}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="4"        Width="75" Binding="{Binding Value4}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="5"        Width="75" Binding="{Binding Value5}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="6"        Width="75" Binding="{Binding Value6}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="7"        Width="75" Binding="{Binding Value7}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="8"        Width="75" Binding="{Binding Value8}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="9"        Width="75" Binding="{Binding Value9}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="10"       Width="75" Binding="{Binding Value10}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="11"       Width="75" Binding="{Binding Value11}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="12"       Width="75" Binding="{Binding Value12}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="13"       Width="75" Binding="{Binding Value13}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="14"       Width="75" Binding="{Binding Value14}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="15"       Width="75" Binding="{Binding Value15}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="16"       Width="75" Binding="{Binding Value16}" >
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-            </GroupBox>
+                </GroupBox>
 
-            <!--参数设置 第 10 行 第 1 列-->
-            <GroupBox Header="参数设置" Grid.Row="10"  Grid.Column="0" Margin="0,0,0,10">
-                <StackPanel  >
-                    <StackPanel Orientation="Horizontal" Margin="20,10,0,10">
-                        <Button Content="读取从控所有参数" Command="{Binding ReadAllParameterCmd}"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" >
-                        <Label Content="ATE Flash测试: " Margin="20,0,0,0" Width="90"  VerticalAlignment="Center" />
-                        <TextBox x:Name="txtFlashData" Margin="15,0,0,10" Text="{Binding FlashData,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Button x:Name="btnWriteFlashData" Margin="5" Content="写入" Command="{Binding WriteFlashDataCmd}"/>
-                        <Label Content="时间: " Margin="5,0,0,0" Width="35"  VerticalAlignment="Center" />
-                        <DatePicker x:Name="datePicker" Width="100" Margin="10,0,0,0" BorderThickness="1" SelectedDate="{Binding SelectedDate, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                        <ComboBox   x:Name="cbbHour"    Width="50"  Margin="5,0,0,0"  BorderThickness="1" ItemsSource="{Binding HourList}"   SelectedItem="{Binding SelectedHour,   Mode=TwoWay}"/>
-                        <ComboBox   x:Name="cbbMinute"  Width="50"  Margin="5,0,0,0"  BorderThickness="1" ItemsSource="{Binding MinuteList}" SelectedItem="{Binding SelectedMinute, Mode=TwoWay}"/>
-                        <ComboBox   x:Name="cbbSecond"  Width="50"  Margin="5,0,0,0"  BorderThickness="1" ItemsSource="{Binding SecondList}" SelectedItem="{Binding SelectedSecond, Mode=TwoWay}"/>
-                        <Button x:Name="btnWrite_0x26" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x26_Cmd}"/>
-                        <Label Content="PACK条形码: " Margin="5,0,0,0" Width="79"  VerticalAlignment="Center" />
-                        <TextBox x:Name="txtPACK_SN" Margin="5,0,0,10"   Text="{Binding PACK_SN,UpdateSourceTrigger=PropertyChanged}" Width="160" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Button x:Name="btnWrite_0x27" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x27_Cmd}"/>
-                        <Label Content="BOARD条形码: " Margin="5,0,0,0" Width="90"  VerticalAlignment="Center" />
-                        <TextBox x:Name="txtBOARD_SN" Margin="5,0,0,10"   Text="{Binding BOARD_SN,UpdateSourceTrigger=PropertyChanged}" Width="160" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Button x:Name="btnWrite_0x28" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x28_Cmd}" RenderTransformOrigin="0.85,0.505"/>
-                    </StackPanel>
+                <!--参数设置 第 10 行 第 1 列-->
+                <GroupBox Header="参数设置" Grid.Row="10"  Grid.Column="0" Margin="0,0,0,10">
+                    <StackPanel  >
+                        <StackPanel Orientation="Horizontal" Margin="20,10,0,10">
+                            <Button Content="读取从控所有参数" Command="{Binding ReadAllParameterCmd}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" >
+                            <Label Content="ATE Flash测试: " Margin="20,0,0,0" Width="90"  VerticalAlignment="Center" />
+                            <TextBox x:Name="txtFlashData" Margin="15,0,0,10" Text="{Binding FlashData,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Button x:Name="btnWriteFlashData" Margin="5" Content="写入" Command="{Binding WriteFlashDataCmd}"/>
+                            <Label Content="时间: " Margin="5,0,0,0" Width="35"  VerticalAlignment="Center" />
+                            <DatePicker x:Name="datePicker" Width="100" Margin="10,0,0,0" BorderThickness="1" SelectedDate="{Binding SelectedDate, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            <ComboBox   x:Name="cbbHour"    Width="50"  Margin="5,0,0,0"  BorderThickness="1" ItemsSource="{Binding HourList}"   SelectedItem="{Binding SelectedHour,   Mode=TwoWay}"/>
+                            <ComboBox   x:Name="cbbMinute"  Width="50"  Margin="5,0,0,0"  BorderThickness="1" ItemsSource="{Binding MinuteList}" SelectedItem="{Binding SelectedMinute, Mode=TwoWay}"/>
+                            <ComboBox   x:Name="cbbSecond"  Width="50"  Margin="5,0,0,0"  BorderThickness="1" ItemsSource="{Binding SecondList}" SelectedItem="{Binding SelectedSecond, Mode=TwoWay}"/>
+                            <Button x:Name="btnWrite_0x26" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x26_Cmd}"/>
+                            <Label Content="PACK条形码: " Margin="5,0,0,0" Width="79"  VerticalAlignment="Center" />
+                            <TextBox x:Name="txtPACK_SN" Margin="5,0,0,10"   Text="{Binding PACK_SN,UpdateSourceTrigger=PropertyChanged}" Width="160" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Button x:Name="btnWrite_0x27" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x27_Cmd}"/>
+                            <Label Content="BOARD条形码: " Margin="5,0,0,0" Width="90"  VerticalAlignment="Center" />
+                            <TextBox x:Name="txtBOARD_SN" Margin="5,0,0,10"   Text="{Binding BOARD_SN,UpdateSourceTrigger=PropertyChanged}" Width="160" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Button x:Name="btnWrite_0x28" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x28_Cmd}" RenderTransformOrigin="0.85,0.505"/>
+                        </StackPanel>
 
-                    <!--<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Width="1731" Height="2012">-->
+                        <!--<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Width="1731" Height="2012">-->
 
-                    <Grid>
                         <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <GroupBox Grid.Row="0"  Grid.Column="0" Margin="21,10,911,10" >
-                                <StackPanel Width="555">
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="老化模式" Margin="20,0,0,0" Width="80"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbRequest1" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Request1List}"   SelectedItem="{Binding SelectedRequest1,Mode=TwoWay}"/>
-                                    </StackPanel>
+                                <GroupBox Grid.Row="0"  Grid.Column="0" Margin="21,10,911,10" >
+                                    <StackPanel Width="555">
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="老化模式" Margin="20,0,0,0" Width="80"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbRequest1" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Request1List}"   SelectedItem="{Binding SelectedRequest1,Mode=TwoWay}"/>
+                                        </StackPanel>
 
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="标定模式" Margin="20,0,0,0" Width="80"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbRequest2" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Request2List}"   SelectedItem="{Binding SelectedRequest2,Mode=TwoWay}"/>
-                                    </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="标定模式" Margin="20,0,0,0" Width="80"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbRequest2" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Request2List}"   SelectedItem="{Binding SelectedRequest2,Mode=TwoWay}"/>
+                                        </StackPanel>
 
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="ATE测试模式" Margin="20,0,0,0" Width="80"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbRequest3" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Request3List}"   SelectedItem="{Binding SelectedRequest3,Mode=TwoWay}"/>
-                                    </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="ATE测试模式" Margin="20,0,0,0" Width="80"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbRequest3" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Request3List}"   SelectedItem="{Binding SelectedRequest3,Mode=TwoWay}"/>
+                                        </StackPanel>
 
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="PCU老化模式" Margin="20,0,0,0" Width="80"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbRequest4" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Request4List}"   SelectedItem="{Binding SelectedRequest4,Mode=TwoWay}"/>
-                                    </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="PCU老化模式" Margin="20,0,0,0" Width="80"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbRequest4" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Request4List}"   SelectedItem="{Binding SelectedRequest4,Mode=TwoWay}"/>
+                                        </StackPanel>
 
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="强制控制开关" Margin="20,0,0,0" Width="80"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbRequest5" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Request5List}"   SelectedItem="{Binding SelectedRequest5,Mode=TwoWay}"/>
-                                    </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="强制控制开关" Margin="20,0,0,0" Width="80"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbRequest5" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Request5List}"   SelectedItem="{Binding SelectedRequest5,Mode=TwoWay}"/>
+                                        </StackPanel>
 
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="标定参数恢复" Margin="20,0,0,0" Width="80"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbRequest6" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Request6List}"   SelectedItem="{Binding SelectedRequest6,Mode=TwoWay}"/>
-                                    </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="标定参数恢复" Margin="20,0,0,0" Width="80"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbRequest6" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Request6List}"   SelectedItem="{Binding SelectedRequest6,Mode=TwoWay}"/>
+                                        </StackPanel>
 
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="BMU地址" Margin="20,0,0,0" Width="80"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbRequest7" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Request7List}"   SelectedItem="{Binding SelectedRequest7,Mode=TwoWay}"/>
-                                        <Button x:Name="btnWriteRequestData" Margin="10,0,0,0" Content="写入" Command="{Binding WriteRequestDataCmd}"/>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="BMU地址" Margin="20,0,0,0" Width="80"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbRequest7" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Request7List}"   SelectedItem="{Binding SelectedRequest7,Mode=TwoWay}"/>
+                                            <Button x:Name="btnWriteRequestData" Margin="10,0,0,0" Content="写入" Command="{Binding WriteRequestDataCmd}"/>
+                                        </StackPanel>
                                     </StackPanel>
-                                </StackPanel>
-                            </GroupBox>
+                                </GroupBox>
 
-                            <GroupBox  Grid.Row="0" Margin="536,10,471,10" >
-                                <StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="均衡开启电压 (mV) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding Bal_open_volt,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                    </StackPanel>
+                                <GroupBox  Grid.Row="0" Margin="536,10,471,10" >
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="均衡开启电压 (mV) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding Bal_open_volt,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                        </StackPanel>
 
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="均衡开启压差 (mV) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding Bal_open_volt_diff,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                    </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="均衡开启压差 (mV) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding Bal_open_volt_diff,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                        </StackPanel>
 
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="满充电压 (mV) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding Full_chg_volt,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                    </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="满充电压 (mV) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding Full_chg_volt,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                        </StackPanel>
 
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="加热膜开启温度 (℃) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding Heating_film_open_temp,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                    </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="加热膜开启温度 (℃) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding Heating_film_open_temp,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                        </StackPanel>
 
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="加热膜关闭温度 (℃) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding HeatingHeating_film_close_temp,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                        <Button x:Name="btnWrite_0x21" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x21_Cmd}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" Margin="0,20,0,0" >
-                                        <Label Content="电池包截止电压 (V) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding Pack_stop_volt,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="加热膜关闭温度 (℃) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding HeatingHeating_film_close_temp,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                            <Button x:Name="btnWrite_0x21" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x21_Cmd}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,20,0,0" >
+                                            <Label Content="电池包截止电压 (V) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding Pack_stop_volt,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
 
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="电池包截止电流 (A) " Margin="20,0,0,0" Width="120"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding Pack_stop_cur,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                            <Button x:Name="btnWrite_0x22" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x22_Cmd}"/>
+                                        </StackPanel>
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="电池包截止电流 (A) " Margin="20,0,0,0" Width="120"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding Pack_stop_cur,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                        <Button x:Name="btnWrite_0x22" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x22_Cmd}"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </GroupBox>
+                                </GroupBox>
 
-                            <GroupBox  Grid.Row="0" Margin="976,10,31,10" >
-                                <StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="额定容量 (AH) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding Rated_capacity,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="单体电压个数 (NA) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding Cell_Volt_Num,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="单体温度个数 (NA) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding Cell_temp_num,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                        <Button x:Name="btnWrite_0x23" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x23_Cmd}"/>
-                                    </StackPanel>
-
-
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="累计充电容量 (mAH) " Margin="20,20,0,0" Width="120"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding Cumulative_Chg_Capacity,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="累计放电容量 (mAH) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding Cumulative_dsg_capacity,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                        <Button x:Name="btnWrite_0x24" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x24_Cmd}"/>
-                                    </StackPanel>
-
-                                    <StackPanel Orientation="Horizontal" Margin="0,20,0,0" >
-                                        <Label Content="SOC (%) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding soc,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="满充容量 (AH) " Margin="20,0,0,0" Width="120"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding Full_chg_capacity,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Label Content="剩余容量 (%) " Margin="20,0,0,0" Width="120"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding Surplus_capacity,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="SOH (%) " Margin="20,0,0,0" Width="120"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding soh,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                        <Button x:Name="btnWrite_0x25" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x25_Cmd}"/>
-                                    </StackPanel>
-
-                                </StackPanel>
-                            </GroupBox>
-
-                            <GroupBox Grid.Row="1"  Grid.Column="0" Margin="21,10,911,27" >
-                                <StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="电芯品牌" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbCell_brand" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Cell_brandList}"   SelectedItem="{Binding SelectedCell_brand,Mode=TwoWay}"/>
-                                    </StackPanel>
-
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="电芯型号编号" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbCell_model_num" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Cell_model_numList}"   SelectedItem="{Binding SelectedCell_model_num,Mode=TwoWay}"/>
-                                    </StackPanel>
-
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="清除FLASH标志功能码" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbClr_FLASH_flag_func" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Clr_FLASH_flag_funcList}"   SelectedItem="{Binding SelectedClr_FLASH_flag_func,Mode=TwoWay}"/>
-                                    </StackPanel>
-
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="查询FLASH标志功能码" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbQuery_FLASH_flag_func" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Query_FLASH_flag_funcList}"   SelectedItem="{Binding SelectedQuery_FLASH_flag_func,Mode=TwoWay}"/>
-
-                                        <Button x:Name="btnWrite_0x29" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x29_Cmd}"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </GroupBox>
-                            <GroupBox Grid.Row="1" Margin="536,10,471,27">
-                                <StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="强制休眠" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbForce_sleep" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Force_sleepList}"   SelectedItem="{Binding SelectedForce_sleep,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x2B_0_0_1" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2B_0_0_1_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="告警保护蜂鸣器功能" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbAlarm_protection_beep" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Alarm_protection_beepList}"   SelectedItem="{Binding SelectedAlarm_protection_beep,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x2B_0_2_3" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2B_0_2_3_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="告警保护指示灯功能" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbAlarm_protection_led" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Alarm_protection_ledList}"   SelectedItem="{Binding SelectedAlarm_protection_led,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x2B_0_4_5" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2B_0_4_5_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="加热功能" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbHeat" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding HeatList}"   SelectedItem="{Binding SelectedHeat,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x2B_0_6_7" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2B_0_6_7_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="清除系统锁" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbClr_system_lock" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Clr_system_lockList}"   SelectedItem="{Binding SelectedClr_system_lock,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x2B_1_0_1" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2B_1_0_1_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="强制控制开关" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbForce_ctrl_switch" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Force_ctrl_switchList}"   SelectedItem="{Binding SelectedForce_ctrl_switch,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x2B_6_" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2B_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-
-                                        <Button x:Name="btnWrite_0x2B_6_" Margin="345,0,0,0" Content="写入" Command="{Binding Write_0x2B_Cmd}"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </GroupBox>
-
-                            <GroupBox  Grid.Row="1" Margin="976,10,31,27" >
-                                <StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="校准总压(0-1000V) " Margin="20,10,0,0" Width="140"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding Cali_items_1,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                        <Button x:Name="btnWriteCali_items_1" Margin="10,0,0,0" Content="写入" Command="{Binding WriteCali_items_1_Cmd}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="校准负载电压(0-1000V) " Margin="20,10,0,0" Width="140"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding Cali_items_2,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                        <Button x:Name="btnWriteCali_items_2" Margin="10,10,0,0" Content="写入" Command="{Binding WriteCali_items_2_Cmd}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="校准充电电流(0-50A) " Margin="20,10,0,0" Width="140"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding Cali_items_3,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                        <Button x:Name="btnWriteCali_items_3" Margin="10,10,0,0" Content="写入" Command="{Binding WriteCali_items_3_Cmd}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="校准充电小电流(0-5A) " Margin="20,10,0,0" Width="140"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding Cali_items_4,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                        <Button x:Name="btnWriteCali_items_4" Margin="10,10,0,0" Content="写入" Command="{Binding WriteCali_items_4_Cmd}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="校准放电电流(0-50A) " Margin="20,10,0,0" Width="140"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding Cali_items_5,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                        <Button x:Name="btnWriteCali_items_5" Margin="10,10,0,0" Content="写入" Command="{Binding WriteCali_items_5_Cmd}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="校准放电小电流(0-5A) " Margin="20,10,0,0" Width="140"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="15,0,0,0" Text="{Binding Cali_items_6,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                        <Button x:Name="btnWriteCali_items_6" Margin="10,10,0,0" Content="写入" Command="{Binding WriteCali_items_6_Cmd}"/>
-                                    </StackPanel>
+                                <GroupBox  Grid.Row="0" Margin="976,10,31,10" >
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="额定容量 (AH) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding Rated_capacity,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="单体电压个数 (NA) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding Cell_Volt_Num,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="单体温度个数 (NA) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding Cell_temp_num,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                            <Button x:Name="btnWrite_0x23" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x23_Cmd}"/>
+                                        </StackPanel>
 
 
-                                </StackPanel>
-                            </GroupBox>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="累计充电容量 (mAH) " Margin="20,20,0,0" Width="120"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding Cumulative_Chg_Capacity,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="累计放电容量 (mAH) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding Cumulative_dsg_capacity,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                            <Button x:Name="btnWrite_0x24" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x24_Cmd}"/>
+                                        </StackPanel>
 
-                            <GroupBox Grid.Row="2" Grid.Column="0" Margin="21,10,911,27">
-                                <StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="充电Mos控制" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbchg_mos_ctrl" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding chg_mos_ctrlList}"   SelectedItem="{Binding Selectedchg_mos_ctrl,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x2F_0_0_1" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_0_0_1_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="放电Mos控制" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbdsg_mos_ctrl" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding dsg_mos_ctrlList}"   SelectedItem="{Binding Selecteddsg_mos_ctrl,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x2F_0_2_3" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_0_2_3_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="预充Mos控制" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbpre_chg_mos_ctrl" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding pre_chg_mos_ctrlList}"   SelectedItem="{Binding Selectedpre_chg_mos_ctrl,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x2F_0_4_5" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_0_4_5_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="加热膜控制" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbheating_film_ctrl" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding heating_film_ctrlList}"   SelectedItem="{Binding Selectedheating_film_ctrl,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x2F_0_6_7" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_0_6_7_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="强制休眠" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbforce_sleep" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding force_sleepList}"   SelectedItem="{Binding Selectedforce_sleep,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x2F_1_0_1" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_1_0_1_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="蜂鸣器开启" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbbeep_open" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding beep_openList}"   SelectedItem="{Binding Selectedbeep_open,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x2F_1_2_3" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_1_2_3_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="充电急停控制" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbchg_stop_ctrl" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding chg_stop_ctrlList}"   SelectedItem="{Binding Selectedchg_stop_ctrl,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x2F_1_4_5" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_1_4_5_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="加热继电器IOS状态" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbheating_relay_driveI0S" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding heating_relay_drive_I0SList}"   SelectedItem="{Binding Selectedheating_relay_drive_I0S,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x2F_1_6_7" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_1_6_7_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="ID_OP控制" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbID_OP_ctrl" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding ID_OP_ctrlList}"   SelectedItem="{Binding SelectedID_OP_ctrl,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x2F_2_0_1" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_2_0_1_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="ID_IN状态" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbID_IN_state" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding ID_IN_stateList}"   SelectedItem="{Binding SelectedID_IN_state,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x2F_2_2_3" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_2_2_3_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="IDM_OP控制" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbIDM_OP_ctrl" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding IDM_OP_ctrlList}"   SelectedItem="{Binding SelectedIDM_OP_ctrl,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x2F_2_4_5" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_2_4_5_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="IDM_IN状态" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbIDM_IN_state" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding IDM_IN_stateList}"   SelectedItem="{Binding SelectedIDM_IN_state,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x2F_2_6_7" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_2_6_7_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="强制均衡控制1-8" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="5,0,0,0" Text="{Binding force_bal_ctrl_1_8,UpdateSourceTrigger=PropertyChanged}" Width="250" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                        <!--<Button x:Name="btnWrite_0x2F_4" Margin="15,0,0,0" Content="写入" Command="{Binding Write_0x2F_4_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="强制均衡控制9-16" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="5,0,0,0" Text="{Binding force_bal_ctrl_9_16,UpdateSourceTrigger=PropertyChanged}" Width="250" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                        <!--<Button x:Name="btnWrite_0x2F_5" Margin="15,0,0,0" Content="写入" Command="{Binding Write_0x2F_5_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="强制控制开关" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbforce_ctrl_switch" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding force_ctrl_switchList}"   SelectedItem="{Binding Selectedforce_ctrl_switch,Mode=TwoWay}"/>
-                                        <Button x:Name="btnWrite_0x2F_6" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_Cmd}"/>
-                                    </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,20,0,0" >
+                                            <Label Content="SOC (%) " Margin="20,10,0,0" Width="120"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding soc,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="满充容量 (AH) " Margin="20,0,0,0" Width="120"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding Full_chg_capacity,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
 
-                                </StackPanel>
-                            </GroupBox>
-
-
-                            <GroupBox Grid.Row="2" Margin="536,10,471,27">
-                                <StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="llc强制放电" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbllc_force_dsg" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding llc_force_dsgList}"   SelectedItem="{Binding Selectedllc_force_dsg,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x1E_0_0_1" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2E_0_0_1_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="llc强制充电" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbLED_ctrl" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding llc_force_chgList}"   SelectedItem="{Binding Selectedllc_force_chg,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x1E_0_2_3" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2E_0_2_3_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="LED灯控制" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbhw_wdg_ctrl" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding LED_ctrlList}"   SelectedItem="{Binding SelectedLED_ctrl,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x1E_0_4_5" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2E_0_4_5_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="硬件看门狗控制" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbllc_force_chg" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding hw_wdg_ctrlList}"   SelectedItem="{Binding Selectedhw_wdg_ctrl,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x1E_0_6_7" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2E_0_6_7_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="强制控制开关" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbForceCtrlSwitch" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding ForceCtrlSwitchList}"   SelectedItem="{Binding SelectedForceCtrlSwitch,Mode=TwoWay}"/>
-                                        <!--<Button x:Name="btnWrite_0x1E_6" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x1E_Cmd}"/>-->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-
-                                        <Button x:Name="btnWrite_0x1E_6" Margin="345,0,0,0" Content="写入" Command="{Binding Write_0x1E_Cmd}"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </GroupBox>
-
-                            <GroupBox  Grid.Row="2" Margin="976,10,31,27" >
-                                <StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="电池包电流(A) " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="5,0,0,0" Text="{Binding PackCurrent,UpdateSourceTrigger=PropertyChanged}" Width="165" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="充放电状态 " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbBatteryStatus" Width="165" Margin="5,10,0,0" BorderThickness="1" ItemsSource="{Binding BatteryStatusList}"   SelectedItem="{Binding SelectedBatteryStatus,Mode=TwoWay}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="充满状态 " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbFullChagreStatus" Width="165" Margin="5,10,0,0" BorderThickness="1" ItemsSource="{Binding FullChagreStatusList}"   SelectedItem="{Binding SelectedFullChagreStatus,Mode=TwoWay}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="放空状态 " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbFullDischargeStatus" Width="165" Margin="5,10,0,0" BorderThickness="1" ItemsSource="{Binding FullDischargeStatusList}"   SelectedItem="{Binding SelectedFullDischargeStatus,Mode=TwoWay}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="关机状态 " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbShutDown" Width="165" Margin="5,10,0,0" BorderThickness="1" ItemsSource="{Binding ShutDownList}"   SelectedItem="{Binding SelectedShutDown,Mode=TwoWay}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="均衡补电标志 " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbBalRecharge" Width="165" Margin="5,10,0,0" BorderThickness="1" ItemsSource="{Binding BalRechargeList}"   SelectedItem="{Binding SelectedBalRecharge,Mode=TwoWay}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="复归标志 " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbrecover_flag" Width="165" Margin="5,10,0,0" BorderThickness="1" ItemsSource="{Binding RecoverFlagList}"   SelectedItem="{Binding SelectedRecoverFlag,Mode=TwoWay}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="剩余容量 (%) " Margin="20,0,0,0" Width="120"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding Surplus_capacity,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="SOH (%) " Margin="20,0,0,0" Width="120"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding soh,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                            <Button x:Name="btnWrite_0x25" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x25_Cmd}"/>
+                                        </StackPanel>
 
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="同步下降soc " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="5,0,0,0" Text="{Binding Sync_Fall_Soc,UpdateSourceTrigger=PropertyChanged}" Width="165" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                        <Button x:Name="btnWrite0x060" Margin="10,10,0,0" Content="写入" Command="{Binding Write0x060_Cmd}"/>
-                                    </StackPanel>
+                                </GroupBox>
 
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="主动均衡充电使能 " Margin="20,20,0,0" Width="145"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbWriteActiveBalanceCtrl" Width="165" Margin="5,20,0,0" BorderThickness="1" ItemsSource="{Binding ActiveBalanceCtrlList}"   SelectedItem="{Binding SelectedActiveBalanceCtrl,Mode=TwoWay}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="设置主动均衡电流(mA) " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="5,0,0,0" Text="{Binding Pack_Active_Balance_Cur,UpdateSourceTrigger=PropertyChanged}" Width="165" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="设置主动均衡容量(mAH) " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
-                                        <TextBox  Margin="5,0,0,0" Text="{Binding Pack_Active_Balance_Cap,UpdateSourceTrigger=PropertyChanged}" Width="165" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                                        <Button x:Name="btnWrite0x061" Margin="10,10,0,0" Content="写入" Command="{Binding Write0x061_Cmd}"/>
-                                    </StackPanel>
+                                <GroupBox Grid.Row="1"  Grid.Column="0" Margin="21,10,911,27" >
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="电芯品牌" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbCell_brand" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Cell_brandList}"   SelectedItem="{Binding SelectedCell_brand,Mode=TwoWay}"/>
+                                        </StackPanel>
 
-                                </StackPanel>
-                            </GroupBox>
-                            
-                            <GroupBox Grid.Row="3" Grid.Column="0" Header="被动均衡状态设置" Margin="10">
-                                <StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="主从控制标志" Margin="20,0,0,0" Width="200"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbchg_mos_ctl" Width="250" Margin="10,0,0,0" BorderThickness="1" ItemsSource="{Binding MasterSlaveControlFlagList}"   SelectedItem="{Binding SelectedMasterSlaveControlFlag,Mode=TwoWay}"/>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="电芯型号编号" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbCell_model_num" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Cell_model_numList}"   SelectedItem="{Binding SelectedCell_model_num,Mode=TwoWay}"/>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="清除FLASH标志功能码" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbClr_FLASH_flag_func" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Clr_FLASH_flag_funcList}"   SelectedItem="{Binding SelectedClr_FLASH_flag_func,Mode=TwoWay}"/>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="查询FLASH标志功能码" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbQuery_FLASH_flag_func" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Query_FLASH_flag_funcList}"   SelectedItem="{Binding SelectedQuery_FLASH_flag_func,Mode=TwoWay}"/>
+
+                                            <Button x:Name="btnWrite_0x29" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x29_Cmd}"/>
+                                        </StackPanel>
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <Label Content="包序号N" Margin="20,10,0,0" Width="200"  VerticalAlignment="Center" />
-                                        <ComboBox x:Name="ckbchg_mos_ct" Width="250" Margin="10,10,0,0" BorderThickness="1" ItemsSource="{Binding PackageNumberList}"   SelectedItem="{Binding SelectedPackageNumber,Mode=TwoWay}"/>
-                                        <Button x:Name="btnWritePassiveEquilibriumState" Margin="10,10,0,0" Content="写入" Command="{Binding WritePassiveEquilibriumState_Cmd}"/>
+                                </GroupBox>
+                                <GroupBox Grid.Row="1" Margin="536,10,471,27">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="强制休眠" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbForce_sleep" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Force_sleepList}"   SelectedItem="{Binding SelectedForce_sleep,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x2B_0_0_1" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2B_0_0_1_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="告警保护蜂鸣器功能" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbAlarm_protection_beep" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Alarm_protection_beepList}"   SelectedItem="{Binding SelectedAlarm_protection_beep,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x2B_0_2_3" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2B_0_2_3_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="告警保护指示灯功能" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbAlarm_protection_led" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Alarm_protection_ledList}"   SelectedItem="{Binding SelectedAlarm_protection_led,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x2B_0_4_5" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2B_0_4_5_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="加热功能" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbHeat" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding HeatList}"   SelectedItem="{Binding SelectedHeat,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x2B_0_6_7" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2B_0_6_7_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="清除系统锁" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbClr_system_lock" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Clr_system_lockList}"   SelectedItem="{Binding SelectedClr_system_lock,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x2B_1_0_1" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2B_1_0_1_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="强制控制开关" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbForce_ctrl_switch" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding Force_ctrl_switchList}"   SelectedItem="{Binding SelectedForce_ctrl_switch,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x2B_6_" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2B_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+
+                                            <Button x:Name="btnWrite_0x2B_6_" Margin="345,0,0,0" Content="写入" Command="{Binding Write_0x2B_Cmd}"/>
+                                        </StackPanel>
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
-                                        <GroupBox Header="{Binding PassiveEquilibriumState}"  BorderBrush="Gray" BorderThickness="2" Style="{x:Null}" Width="1100" >
-                                            <!-- 使用 ItemsControl 动态生成 CheckBox -->
-                                            <ItemsControl ItemsSource="{Binding PassiveEquilibriumCheckBoxItems}">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <UniformGrid Columns="8" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <!-- 定义每个 CheckBox 的样式和绑定 -->
-                                                        <CheckBox Content="{Binding Label}" IsChecked="{Binding IsChecked, Mode=TwoWay}" Margin="5" />
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
-                                        </GroupBox>
+                                </GroupBox>
+
+                                <GroupBox  Grid.Row="1" Margin="976,10,31,27" >
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="校准总压(0-1000V) " Margin="20,10,0,0" Width="140"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding Cali_items_1,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                            <Button x:Name="btnWriteCali_items_1" Margin="10,0,0,0" Content="写入" Command="{Binding WriteCali_items_1_Cmd}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="校准负载电压(0-1000V) " Margin="20,10,0,0" Width="140"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding Cali_items_2,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                            <Button x:Name="btnWriteCali_items_2" Margin="10,10,0,0" Content="写入" Command="{Binding WriteCali_items_2_Cmd}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="校准充电电流(0-50A) " Margin="20,10,0,0" Width="140"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding Cali_items_3,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                            <Button x:Name="btnWriteCali_items_3" Margin="10,10,0,0" Content="写入" Command="{Binding WriteCali_items_3_Cmd}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="校准充电小电流(0-5A) " Margin="20,10,0,0" Width="140"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding Cali_items_4,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                            <Button x:Name="btnWriteCali_items_4" Margin="10,10,0,0" Content="写入" Command="{Binding WriteCali_items_4_Cmd}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="校准放电电流(0-50A) " Margin="20,10,0,0" Width="140"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding Cali_items_5,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                            <Button x:Name="btnWriteCali_items_5" Margin="10,10,0,0" Content="写入" Command="{Binding WriteCali_items_5_Cmd}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="校准放电小电流(0-5A) " Margin="20,10,0,0" Width="140"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="15,0,0,0" Text="{Binding Cali_items_6,UpdateSourceTrigger=PropertyChanged}" Width="100" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                            <Button x:Name="btnWriteCali_items_6" Margin="10,10,0,0" Content="写入" Command="{Binding WriteCali_items_6_Cmd}"/>
+                                        </StackPanel>
+
+
                                     </StackPanel>
-                                </StackPanel>
-                            </GroupBox>
+                                </GroupBox>
+
+                                <GroupBox Grid.Row="2" Grid.Column="0" Margin="21,10,911,27">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="充电Mos控制" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbchg_mos_ctrl" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding chg_mos_ctrlList}"   SelectedItem="{Binding Selectedchg_mos_ctrl,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x2F_0_0_1" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_0_0_1_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="放电Mos控制" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbdsg_mos_ctrl" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding dsg_mos_ctrlList}"   SelectedItem="{Binding Selecteddsg_mos_ctrl,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x2F_0_2_3" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_0_2_3_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="预充Mos控制" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbpre_chg_mos_ctrl" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding pre_chg_mos_ctrlList}"   SelectedItem="{Binding Selectedpre_chg_mos_ctrl,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x2F_0_4_5" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_0_4_5_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="加热膜控制" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbheating_film_ctrl" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding heating_film_ctrlList}"   SelectedItem="{Binding Selectedheating_film_ctrl,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x2F_0_6_7" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_0_6_7_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="强制休眠" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbforce_sleep" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding force_sleepList}"   SelectedItem="{Binding Selectedforce_sleep,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x2F_1_0_1" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_1_0_1_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="蜂鸣器开启" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbbeep_open" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding beep_openList}"   SelectedItem="{Binding Selectedbeep_open,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x2F_1_2_3" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_1_2_3_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="充电急停控制" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbchg_stop_ctrl" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding chg_stop_ctrlList}"   SelectedItem="{Binding Selectedchg_stop_ctrl,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x2F_1_4_5" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_1_4_5_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="加热继电器IOS状态" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbheating_relay_driveI0S" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding heating_relay_drive_I0SList}"   SelectedItem="{Binding Selectedheating_relay_drive_I0S,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x2F_1_6_7" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_1_6_7_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="ID_OP控制" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbID_OP_ctrl" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding ID_OP_ctrlList}"   SelectedItem="{Binding SelectedID_OP_ctrl,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x2F_2_0_1" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_2_0_1_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="ID_IN状态" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbID_IN_state" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding ID_IN_stateList}"   SelectedItem="{Binding SelectedID_IN_state,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x2F_2_2_3" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_2_2_3_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="IDM_OP控制" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbIDM_OP_ctrl" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding IDM_OP_ctrlList}"   SelectedItem="{Binding SelectedIDM_OP_ctrl,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x2F_2_4_5" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_2_4_5_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="IDM_IN状态" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbIDM_IN_state" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding IDM_IN_stateList}"   SelectedItem="{Binding SelectedIDM_IN_state,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x2F_2_6_7" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_2_6_7_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="强制均衡控制1-8" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="5,0,0,0" Text="{Binding force_bal_ctrl_1_8,UpdateSourceTrigger=PropertyChanged}" Width="250" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                            <!--<Button x:Name="btnWrite_0x2F_4" Margin="15,0,0,0" Content="写入" Command="{Binding Write_0x2F_4_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="强制均衡控制9-16" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="5,0,0,0" Text="{Binding force_bal_ctrl_9_16,UpdateSourceTrigger=PropertyChanged}" Width="250" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                            <!--<Button x:Name="btnWrite_0x2F_5" Margin="15,0,0,0" Content="写入" Command="{Binding Write_0x2F_5_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="强制控制开关" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbforce_ctrl_switch" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding force_ctrl_switchList}"   SelectedItem="{Binding Selectedforce_ctrl_switch,Mode=TwoWay}"/>
+                                            <Button x:Name="btnWrite_0x2F_6" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2F_Cmd}"/>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </GroupBox>
+
+
+                                <GroupBox Grid.Row="2" Margin="536,10,471,27">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="llc强制放电" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbllc_force_dsg" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding llc_force_dsgList}"   SelectedItem="{Binding Selectedllc_force_dsg,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x1E_0_0_1" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2E_0_0_1_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="llc强制充电" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbLED_ctrl" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding llc_force_chgList}"   SelectedItem="{Binding Selectedllc_force_chg,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x1E_0_2_3" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2E_0_2_3_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="LED灯控制" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbhw_wdg_ctrl" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding LED_ctrlList}"   SelectedItem="{Binding SelectedLED_ctrl,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x1E_0_4_5" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2E_0_4_5_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="硬件看门狗控制" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbllc_force_chg" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding hw_wdg_ctrlList}"   SelectedItem="{Binding Selectedhw_wdg_ctrl,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x1E_0_6_7" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x2E_0_6_7_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="强制控制开关" Margin="20,0,0,0" Width="130"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbForceCtrlSwitch" Width="250" Margin="5" BorderThickness="1" ItemsSource="{Binding ForceCtrlSwitchList}"   SelectedItem="{Binding SelectedForceCtrlSwitch,Mode=TwoWay}"/>
+                                            <!--<Button x:Name="btnWrite_0x1E_6" Margin="10,0,0,0" Content="写入" Command="{Binding Write_0x1E_Cmd}"/>-->
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+
+                                            <Button x:Name="btnWrite_0x1E_6" Margin="345,0,0,0" Content="写入" Command="{Binding Write_0x1E_Cmd}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </GroupBox>
+
+                                <GroupBox  Grid.Row="2" Margin="976,10,31,27" >
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="电池包电流(A) " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="5,0,0,0" Text="{Binding PackCurrent,UpdateSourceTrigger=PropertyChanged}" Width="165" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="充放电状态 " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbBatteryStatus" Width="165" Margin="5,10,0,0" BorderThickness="1" ItemsSource="{Binding BatteryStatusList}"   SelectedItem="{Binding SelectedBatteryStatus,Mode=TwoWay}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="充满状态 " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbFullChagreStatus" Width="165" Margin="5,10,0,0" BorderThickness="1" ItemsSource="{Binding FullChagreStatusList}"   SelectedItem="{Binding SelectedFullChagreStatus,Mode=TwoWay}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="放空状态 " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbFullDischargeStatus" Width="165" Margin="5,10,0,0" BorderThickness="1" ItemsSource="{Binding FullDischargeStatusList}"   SelectedItem="{Binding SelectedFullDischargeStatus,Mode=TwoWay}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="关机状态 " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbShutDown" Width="165" Margin="5,10,0,0" BorderThickness="1" ItemsSource="{Binding ShutDownList}"   SelectedItem="{Binding SelectedShutDown,Mode=TwoWay}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="均衡补电标志 " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbBalRecharge" Width="165" Margin="5,10,0,0" BorderThickness="1" ItemsSource="{Binding BalRechargeList}"   SelectedItem="{Binding SelectedBalRecharge,Mode=TwoWay}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="复归标志 " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbrecover_flag" Width="165" Margin="5,10,0,0" BorderThickness="1" ItemsSource="{Binding RecoverFlagList}"   SelectedItem="{Binding SelectedRecoverFlag,Mode=TwoWay}"/>
+
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="同步下降soc " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="5,0,0,0" Text="{Binding Sync_Fall_Soc,UpdateSourceTrigger=PropertyChanged}" Width="165" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                            <Button x:Name="btnWrite0x060" Margin="10,10,0,0" Content="写入" Command="{Binding Write0x060_Cmd}"/>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="主动均衡充电使能 " Margin="20,20,0,0" Width="145"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbWriteActiveBalanceCtrl" Width="165" Margin="5,20,0,0" BorderThickness="1" ItemsSource="{Binding ActiveBalanceCtrlList}"   SelectedItem="{Binding SelectedActiveBalanceCtrl,Mode=TwoWay}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="设置主动均衡电流(mA) " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="5,0,0,0" Text="{Binding Pack_Active_Balance_Cur,UpdateSourceTrigger=PropertyChanged}" Width="165" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Label Content="设置主动均衡容量(mAH) " Margin="20,10,0,0" Width="145"  VerticalAlignment="Center" />
+                                            <TextBox  Margin="5,0,0,0" Text="{Binding Pack_Active_Balance_Cap,UpdateSourceTrigger=PropertyChanged}" Width="165" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                                            <Button x:Name="btnWrite0x061" Margin="10,10,0,0" Content="写入" Command="{Binding Write0x061_Cmd}"/>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </GroupBox>
+
+                                <GroupBox Grid.Row="3" Grid.Column="0" Header="被动均衡状态设置" Margin="10">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="主从控制标志" Margin="20,0,0,0" Width="200"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbchg_mos_ctl" Width="250" Margin="10,0,0,0" BorderThickness="1" ItemsSource="{Binding MasterSlaveControlFlagList}"   SelectedItem="{Binding SelectedMasterSlaveControlFlag,Mode=TwoWay}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <Label Content="包序号N" Margin="20,10,0,0" Width="200"  VerticalAlignment="Center" />
+                                            <ComboBox x:Name="ckbchg_mos_ct" Width="250" Margin="10,10,0,0" BorderThickness="1" ItemsSource="{Binding PackageNumberList}"   SelectedItem="{Binding SelectedPackageNumber,Mode=TwoWay}"/>
+                                            <Button x:Name="btnWritePassiveEquilibriumState" Margin="10,10,0,0" Content="写入" Command="{Binding WritePassiveEquilibriumState_Cmd}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="0,10,0,0" >
+                                            <GroupBox Header="{Binding PassiveEquilibriumState}"  BorderBrush="Gray" BorderThickness="2" Style="{x:Null}" Width="1100" >
+                                                <!-- 使用 ItemsControl 动态生成 CheckBox -->
+                                                <ItemsControl ItemsSource="{Binding PassiveEquilibriumCheckBoxItems}">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <UniformGrid Columns="8" />
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <!-- 定义每个 CheckBox 的样式和绑定 -->
+                                                            <CheckBox Content="{Binding Label}" IsChecked="{Binding IsChecked, Mode=TwoWay}" Margin="5" />
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </GroupBox>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </GroupBox>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                    <!--</ScrollViewer>-->
-                </StackPanel>
-            </GroupBox>
-
-            <GroupBox Header="版本号" Grid.Row="9" Grid.Column="0" Margin="0,0,0,10">
-                <StackPanel Margin="9">
-                    <!-- 第一行 -->
-                    <StackPanel Orientation="Horizontal" Margin="5,5,0,0">
-                        <Label Content="序列号" Margin="5,0,0,0" Width="50"/>
-                        <TextBox x:Name="txtSN" Margin="10,0,0,0" Text="{Binding SN,UpdateSourceTrigger=PropertyChanged}" Width="160" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="BMS软件版本" Visibility="Collapsed" Margin="20,0,0,0" Width="100"/>
-                        <TextBox x:Name="txtBMSSoftwareVersion" Visibility="Collapsed" Margin="10,0,0,0"    Text="{Binding BMSSoftwareVersion,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="BMS硬件版本" Visibility="Collapsed" Margin="20,0,0,0" Width="100"/>
-                        <TextBox x:Name="txtBMSHardwareVersion" Visibility="Collapsed" Margin="10,0,0,0"    Text="{Binding BMSHardwareVersion,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="软件版本" Margin="20,0,0,0" Width="100"/>
-                        <TextBox x:Name="txtBMUSaftwareVersion" Margin="10,0,0,0"    Text="{Binding BMUSaftwareVersion,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="硬件版本" Margin="20,0,0,0" Width="100"/>
-                        <TextBox x:Name="txtBMUHardwareVersion" Margin="10,0,0,0"    Text="{Binding BMUHardwareVersion,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="厂家信息" Margin="20,0,0,0" Width="100"/>
-                        <TextBox x:Name="txtManufacturerName" Margin="10,0,0,0"     Text="{Binding ManufacturerName,UpdateSourceTrigger=PropertyChanged}"     Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="供应商名称" Margin="20,0,0,0" Width="100"/>
-                        <TextBox x:Name="txtRegisterName" Margin="10,0,0,0"     Text="{Binding RegisterName,UpdateSourceTrigger=PropertyChanged}"     Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
-                        <Label Content="锂电池类型" Margin="20,0,0,0" Width="100"/>
-                        <TextBox x:Name="txtBatType" Margin="10,0,0,0"     Text="{Binding BatType,UpdateSourceTrigger=PropertyChanged}"     Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                        <!--</ScrollViewer>-->
                     </StackPanel>
-                </StackPanel>
-            </GroupBox>
+                </GroupBox>
 
+                <GroupBox Header="版本号" Grid.Row="9" Grid.Column="0" Margin="0,0,0,10">
+                    <StackPanel Margin="9">
+                        <!-- 第一行 -->
+                        <StackPanel Orientation="Horizontal" Margin="5,5,0,0">
+                            <Label Content="序列号" Margin="5,0,0,0" Width="50"/>
+                            <TextBox x:Name="txtSN" Margin="10,0,0,0" Text="{Binding SN,UpdateSourceTrigger=PropertyChanged}" Width="160" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Label Content="BMS软件版本" Visibility="Collapsed" Margin="20,0,0,0" Width="100"/>
+                            <TextBox x:Name="txtBMSSoftwareVersion" Visibility="Collapsed" Margin="10,0,0,0"    Text="{Binding BMSSoftwareVersion,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Label Content="BMS硬件版本" Visibility="Collapsed" Margin="20,0,0,0" Width="100"/>
+                            <TextBox x:Name="txtBMSHardwareVersion" Visibility="Collapsed" Margin="10,0,0,0"    Text="{Binding BMSHardwareVersion,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Label Content="软件版本" Margin="20,0,0,0" Width="100"/>
+                            <TextBox x:Name="txtBMUSaftwareVersion" Margin="10,0,0,0"    Text="{Binding BMUSaftwareVersion,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Label Content="硬件版本" Margin="20,0,0,0" Width="100"/>
+                            <TextBox x:Name="txtBMUHardwareVersion" Margin="10,0,0,0"    Text="{Binding BMUHardwareVersion,UpdateSourceTrigger=PropertyChanged}"    Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Label Content="厂家信息" Margin="20,0,0,0" Width="100"/>
+                            <TextBox x:Name="txtManufacturerName" Margin="10,0,0,0"     Text="{Binding ManufacturerName,UpdateSourceTrigger=PropertyChanged}"     Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Label Content="供应商名称" Margin="20,0,0,0" Width="100"/>
+                            <TextBox x:Name="txtRegisterName" Margin="10,0,0,0"     Text="{Binding RegisterName,UpdateSourceTrigger=PropertyChanged}"     Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                            <Label Content="锂电池类型" Margin="20,0,0,0" Width="100"/>
+                            <TextBox x:Name="txtBatType" Margin="10,0,0,0"     Text="{Binding BatType,UpdateSourceTrigger=PropertyChanged}"     Width="80" TextAlignment="Center"  VerticalContentAlignment="Center" />
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+
+            </Grid>
         </Grid>
     </ScrollViewer>
 </UserControl>

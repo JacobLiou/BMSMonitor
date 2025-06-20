@@ -41,7 +41,7 @@ namespace Sofar.BMSLib
 
         /*创建一个更新收发数据显示的线程*/
         public readonly static object _locker = new object();
-        public new static Queue<VCI_CAN_OBJ> _task = new Queue<VCI_CAN_OBJ>();
+        public new static ConcurrentQueue<VCI_CAN_OBJ> _task = new ConcurrentQueue<VCI_CAN_OBJ>();
         public new ConcurrentDictionary<int, Byte[]> Devices = new ConcurrentDictionary<int, Byte[]>();
         public static EventWaitHandle _wh = new AutoResetEvent(false);
 
@@ -573,7 +573,7 @@ namespace Sofar.BMSLib
             {
                 //LogAction?.Invoke(1, HexDataHelper.GetDebugByteString(CANOBJ.Data, "Recv：0x" + CANOBJ.ID.ToString("X")));
                 _task.Enqueue(CANOBJ);
-                _wh.Set();
+                //_wh.Set();
             }
         }
 

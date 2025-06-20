@@ -176,6 +176,7 @@ namespace PowerKit.UI.Models
             private string _alarmStopTime;
             private string _alarmLevel;
             private string _alarmMessage;
+            private string _alarmStatus;
             private string _id;
             private string _batterySectionNumber;
 
@@ -271,6 +272,19 @@ namespace PowerKit.UI.Models
                     {
                         _alarmMessage = value;
                         OnPropertyChanged(nameof(AlarmMessage));
+                    }
+                }
+            }
+
+            public string AlarmStatus
+            {
+                get { return _alarmStatus; }
+                set
+                {
+                    if (_alarmStatus != value)
+                    {
+                        _alarmStatus = value;
+                        OnPropertyChanged(nameof(AlarmStatus));
                     }
                 }
             }
