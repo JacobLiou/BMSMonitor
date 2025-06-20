@@ -96,7 +96,6 @@ namespace SofarBMS.UI
         private void AnalysisData(uint obj_ID, byte[] data)
         {
             uint id = obj_ID | 0xff;
-            Debug.WriteLine(id.ToString("X8"));
             if (!(id == 0x07FB41FF || id == 0x07fE41FF || id == 0x07FF41FF || id == 0x07FF5FFF))
                 return;
 
@@ -167,20 +166,7 @@ namespace SofarBMS.UI
 
             if (openFile.ShowDialog() == DialogResult.OK)
             {
-                string filename = openFile.FileName;
-
-                /*using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read))
-                {
-                    file_size = (Convert.ToInt32(fs.Length / 1024) + Convert.ToInt32((file_size % 1024) != 0 ? 1 : 0) - 1);
-
-                    BinaryReader r = new BinaryReader(fs);
-
-                    fileData = r.ReadBytes((int)fs.Length);
-
-                    r.Close();
-                }*/
-
-                txtUpgradeFile.Text = filename;
+                txtUpgradeFile.Text = openFile.FileName;
 
                 string bin = openFile.SafeFileName;
                 if (bin.Contains("BMS"))
@@ -229,47 +215,43 @@ namespace SofarBMS.UI
                     _cts = new CancellationTokenSource();
                     Task.Run(() =>
                     {
-                        int counter = 5;
+                        int counter = 10;
                         while (!_cts.IsCancellationRequested)
                         {
                             if (flag == 1)
                             {
-                                // 访问集合时加锁
-                                //lock (_devListLock)
+                                while (counter > 0)
                                 {
-                                    while (counter > 0)
+                                    //Debug.WriteLine(DateTime.Now.ToString("HH:mm:ss:ffff") + " FB：" + counter);
+
+                                    this.Invoke(new Action(() =>
                                     {
-                                        Debug.WriteLine(DateTime.Now.ToString("HH:mm:ss:ffff") + " FB：" + counter);
+                                        startDownloadFlag1(Convert.ToByte(cbbChip_role.SelectedIndex), txtChip_code.Text, file_size, 1024);
+                                    }));
+                                    Thread.Sleep(1000);
+                                    counter--;
+                                }
 
-                                        this.Invoke(new Action(() =>
-                                        {
-                                            startDownloadFlag1(Convert.ToByte(cbbChip_role.SelectedIndex), txtChip_code.Text, file_size, 1024);
-                                        }));
-                                        Thread.Sleep(200);
-                                        counter--;
-                                    }
-
-                                    if (DevList.Count == 0)
+                                if (DevList.Count == 0)
+                                {
+                                    this.Invoke(new Action(() =>
                                     {
-                                        this.Invoke(new Action(() =>
-                                        {
-                                            lblUpgrade_05.Text = LanguageHelper.GetLanguage("Response_Timed");
-                                            lblUpgrade_05.ForeColor = System.Drawing.Color.Red;
-                                        }));
+                                        lblUpgrade_05.Text = LanguageHelper.GetLanguage("Response_Timed");
+                                        lblUpgrade_05.ForeColor = System.Drawing.Color.Red;
+                                    }));
 
-                                        Init();
-                                    }
-                                    else
+                                    Init();
+                                }
+                                else
+                                {
+                                    this.Invoke(new Action(() =>
                                     {
-                                        this.Invoke(new Action(() =>
-                                        {
-                                            lblUpgrade_05.Text = LanguageHelper.GetLanguage("Upgrade_Start") + DevList.Count;
-                                            lblUpgrade_05.ForeColor = Color.Black;
-                                        }));
+                                        lblUpgrade_05.Text = LanguageHelper.GetLanguage("Upgrade_Start") + DevList.Count;
+                                        lblUpgrade_05.ForeColor = Color.Black;
+                                    }));
 
-                                        flag = 2;
-                                        counter = 0;
-                                    }
+                                    flag = 2;
+                                    counter = 0;
                                 }
                             }
                             else if (flag == 2)
