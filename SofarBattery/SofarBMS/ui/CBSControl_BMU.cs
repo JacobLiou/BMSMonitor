@@ -18,6 +18,7 @@ namespace SofarBMS.ui
         public static CancellationTokenSource cts = null;
         private EcanHelper ecanHelper = EcanHelper.Instance;
         public BMURealDataVM RealDataVM = new BMURealDataVM();
+        public BmuRealtimeData model { get; set; } = new();
 
         private List<batteryVoltageData> batteryVoltageDataList = new();
         private List<batterySocData> batterySocDataList = new();
@@ -52,6 +53,25 @@ namespace SofarBMS.ui
                         p = FrmMain.BMS_ID;
                         this.Invoke(() => { ClearInputControls(this); });
                     }
+
+                    //if (model != null && initCount >= InitCountThreshold)
+                    //{
+                    //    //var fileName = $"BTS5K_{DateTime.Now:yyyy-MM-dd}.csv";
+                    //    //var filePath = Path.Combine(logDirectory, fileName);
+
+                    //    //lock (_fileLock)
+                    //    //{
+                    //    //    if (!File.Exists(filePath))
+                    //    //    {
+                    //    //        InitLogWriter(filePath);
+                    //    //    }
+                    //    //    _logWriter?.WriteLine(model.GetValue());
+                    //    //}
+
+                    //    //initCount = 0;
+                    //    //model = new RealtimeData_BTS5K();
+                    //}
+
 
                     if (ecanHelper.IsConnected)
                     {
@@ -107,16 +127,18 @@ namespace SofarBMS.ui
                 return;
 
             string[] strs;
+            string[] controls;
             byte[] canid = BitConverter.GetBytes(canID);
 
             try
             {
                 switch (canID | 0xff)
                 {
-
                     case 0x1027E0FF:
                         string strSn = AnalysisSN(data);
                         if (!string.IsNullOrEmpty(strSn)) txtSN.Text = strSn;
+
+                        model.SerialNumber = strSn;
                         break;
                     case 0x1004FFFF:
                     case 0x1004E0FF:
@@ -125,11 +147,16 @@ namespace SofarBMS.ui
                         {
                             strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
                         }
+                        controls = new string[4] { "txtBatteryVolt", "txtLoadVolt", "txtBatteryCurrent", "txtSOC" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
 
-                        txtBatteryVolt.Text = strs[0];
-                        txtLoadVolt.Text = strs[1];
-                        txtBatteryCurrent.Text = strs[2];
-                        txtSOC.Text = strs[3];
+                        model.BatteryVoltage = Convert.ToDouble(strs[0]);
+                        model.LoadVoltage = Convert.ToDouble(strs[1]);
+                        model.BatteryCurrent = Convert.ToDouble(strs[2]);
+                        model.SOC = Convert.ToDouble(strs[3]);
                         break;
                     case 0x1005FFFF:
                     case 0x1005E0FF:
@@ -139,6 +166,12 @@ namespace SofarBMS.ui
                         txtBatMinCellVolt.Text = strs[2] = BytesToIntger(data[4], data[3]);
                         txtBatMinCellVoltNum.Text = strs[3] = BytesToIntger(0x00, data[5]);
                         txtBatDiffCellVolt.Text = (Convert.ToInt32(strs[0]) - Convert.ToInt32(strs[2])).ToString();
+
+                        model.MaxVoltageCellId = ushort.Parse(strs[1]);
+                        model.MaxVoltage = ushort.Parse(strs[0]);
+                        model.MinVoltageCellId = ushort.Parse(strs[3]);
+                        model.MinVoltage = ushort.Parse(strs[2]);
+                        model.VoltageDifference = ushort.Parse((Convert.ToInt32(strs[0]) - Convert.ToInt32(strs[2])).ToString());
                         break;
                     case 0x1006FFFF:
                     case 0x1006E0FF:
@@ -147,11 +180,19 @@ namespace SofarBMS.ui
                         txtBatMaxCellTempNum.Text = strs[1] = BytesToIntger(0x00, data[2]);
                         txtBatMinCellTemp.Text = strs[2] = BytesToIntger(data[4], data[3], 0.1);
                         txtBatMinCellTempNum.Text = strs[3] = BytesToIntger(0x00, data[5]);
+
+                        model.MaxTemperatureCellId = ushort.Parse(strs[1]);
+                        model.MaxTemperature = Convert.ToDouble(strs[0]);
+                        model.MinTemperatureCellId = ushort.Parse(strs[3]);
+                        model.MinTemperature = Convert.ToDouble(strs[2]);
                         break;
                     case 0x1007FFFF:
                     case 0x1007E0FF:
-                        txtTotalChgCap.Text = (Convert.ToDouble(((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] & 0xff)) * 0.001)).ToString();
-                        txtTotalDsgCap.Text = (Convert.ToDouble(((data[7] << 24) + (data[6] << 16) + (data[5] << 8) + (data[4] & 0xff)) * 0.001)).ToString();
+                        string totalDischargedCapacity = txtTotalChgCap.Text = (Convert.ToDouble(((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] & 0xff)) * 0.001)).ToString();
+                        string totalChargedCapacity = txtTotalDsgCap.Text = (Convert.ToDouble(((data[7] << 24) + (data[6] << 16) + (data[5] << 8) + (data[4] & 0xff)) * 0.001)).ToString();
+
+                        model.TotalDischargedCapacity = Convert.ToDouble(totalDischargedCapacity);
+                        model.TotalChargedCapacity = Convert.ToDouble(totalChargedCapacity);
                         break;
                     case 0x1008FFFF:
                     case 0x1008E0FF:
@@ -166,11 +207,16 @@ namespace SofarBMS.ui
                         {
                             strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
                         }
+                        controls = new string[4] { "txtCellvoltage1", "txtCellvoltage2", "txtCellvoltage3", "txtCellvoltage4" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
 
-                        txtCellvoltage1.Text = strs[0];
-                        txtCellvoltage2.Text = strs[1];
-                        txtCellvoltage3.Text = strs[2];
-                        txtCellvoltage4.Text = strs[3];
+                        model.CellVoltage1 = Convert.ToUInt16(strs[0]);
+                        model.CellVoltage2 = Convert.ToUInt16(strs[1]);
+                        model.CellVoltage3 = Convert.ToUInt16(strs[2]);
+                        model.CellVoltage4 = Convert.ToUInt16(strs[3]);
                         break;
                     case 0x100AFFFF:
                     case 0x100AE0FF:
@@ -180,11 +226,16 @@ namespace SofarBMS.ui
                         {
                             strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
                         }
+                        controls = new string[4] { "txtCellvoltage5", "txtCellvoltage6", "txtCellvoltage7", "txtCellvoltage8" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
 
-                        txtCellvoltage5.Text = strs[0];
-                        txtCellvoltage6.Text = strs[1];
-                        txtCellvoltage7.Text = strs[2];
-                        txtCellvoltage8.Text = strs[3];
+                        model.CellVoltage5 = Convert.ToUInt16(strs[0]);
+                        model.CellVoltage6 = Convert.ToUInt16(strs[1]);
+                        model.CellVoltage7 = Convert.ToUInt16(strs[2]);
+                        model.CellVoltage8 = Convert.ToUInt16(strs[3]);
                         break;
                     case 0x100BFFFF:
                     case 0x100BE0FF:
@@ -194,11 +245,16 @@ namespace SofarBMS.ui
                         {
                             strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
                         }
+                        controls = new string[4] { "txtCellvoltage9", "txtCellvoltage10", "txtCellvoltage11", "txtCellvoltage12" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
 
-                        txtCellvoltage9.Text = strs[0];
-                        txtCellvoltage10.Text = strs[1];
-                        txtCellvoltage11.Text = strs[2];
-                        txtCellvoltage12.Text = strs[3];
+                        model.CellVoltage9 = Convert.ToUInt16(strs[0]);
+                        model.CellVoltage10 = Convert.ToUInt16(strs[1]);
+                        model.CellVoltage11 = Convert.ToUInt16(strs[2]);
+                        model.CellVoltage12 = Convert.ToUInt16(strs[3]);
                         break;
                     case 0x100CFFFF:
                     case 0x100CE0FF:
@@ -208,11 +264,16 @@ namespace SofarBMS.ui
                         {
                             strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2]);
                         }
+                        controls = new string[4] { "txtCellvoltage13", "txtCellvoltage14", "txtCellvoltage15", "txtCellvoltage16" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
 
-                        txtCellvoltage13.Text = strs[0];
-                        txtCellvoltage14.Text = strs[1];
-                        txtCellvoltage15.Text = strs[2];
-                        txtCellvoltage16.Text = strs[3];
+                        model.CellVoltage13 = Convert.ToUInt16(strs[0]);
+                        model.CellVoltage14 = Convert.ToUInt16(strs[1]);
+                        model.CellVoltage15 = Convert.ToUInt16(strs[2]);
+                        model.CellVoltage16 = Convert.ToUInt16(strs[3]);
                         break;
                     case 0x100DFFFF:
                     case 0x100DE0FF:
@@ -222,11 +283,16 @@ namespace SofarBMS.ui
                         {
                             strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
                         }
+                        controls = new string[4] { "txtCelltemperature1", "txtCelltemperature2", "txtCelltemperature3", "txtCelltemperature4" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
 
-                        txtCelltemperature1.Text = strs[0];
-                        txtCelltemperature2.Text = strs[1];
-                        txtCelltemperature3.Text = strs[2];
-                        txtCelltemperature4.Text = strs[3];
+                        model.CellTemperature1 = Convert.ToUInt16(strs[0]);
+                        model.CellTemperature2 = Convert.ToUInt16(strs[1]);
+                        model.CellTemperature3 = Convert.ToUInt16(strs[2]);
+                        model.CellTemperature4 = Convert.ToUInt16(strs[3]);
                         break;
                     case 0x100EFFFF:
                     case 0x100EE0FF:
@@ -235,32 +301,41 @@ namespace SofarBMS.ui
                         {
                             strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
                         }
+                        controls = new string[3] { "txtMosTemperature", "txtEnvTemperature", "txtSOH" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
 
-                        txtMosTemperature.Text = strs[0];
-                        txtEnvTemperature.Text = strs[1];
-                        txtSOH.Text = strs[2];
+                        model.MosTemperature = Convert.ToDouble(strs[0]);
+                        model.AmbientTemperature = Convert.ToDouble(strs[1]);
+                        model.SOH = Convert.ToDouble(strs[2]);
                         break;
                     case 0x100FFFFF:
                     case 0x100FE0FF:
-                        string RemainingCapacity = BytesToIntger(data[1], data[0], 0.1);
-                        string FullCapacity = BytesToIntger(data[3], data[2], 0.1);
-                        string CycleTime = BytesToIntger(data[5], data[4]);
+                        strs = new string[3] { "0.1", "0.1", "1" };
+                        for (int i = 0; i < strs.Length; i++)
+                        {
+                            strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
+                        }
+                        controls = new string[3] { "txtRemainingCapacity", "txtFullCapacity", "txtCycleTime" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
 
-                        txtRemainingCapacity.Text = RemainingCapacity;
-                        txtFullCapacity.Text = FullCapacity;
-                        txtCycleTime.Text = CycleTime;
+                        model.RemainingCapacity = Convert.ToDouble(strs[0]);
+                        model.FullCapacity = Convert.ToDouble(strs[1]);
+                        model.CycleTime = ushort.Parse(strs[2]);
                         break;
                     case 0x1040FFFF:
                     case 0x1040E0FF:
-                        txtCumulativeDischargeCapacity.Text = ((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] & 0xff)).ToString();
-                        txtCumulativeChargeCapacity.Text = (((data[7] << 24) + (data[6] << 16) + (data[5] << 8) + (data[4] & 0xff))).ToString();
+                        string CumulativeDischargeCapacity = txtCumulativeDischargeCapacity.Text = ((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] & 0xff)).ToString();
+                        string CumulativeChargeCapacity = txtCumulativeChargeCapacity.Text = (((data[7] << 24) + (data[6] << 16) + (data[5] << 8) + (data[4] & 0xff))).ToString();
+
+                        model.CumulativeDischargeCapacity = Convert.ToDouble(CumulativeDischargeCapacity);
+                        model.CumulativeChargeCapacity = Convert.ToDouble(CumulativeChargeCapacity);
                         break;
-                    //case 0x1041FFFF:
-                    //case 0x1041E0FF:
-                    //    BMS均衡温度1 - 2
-                    //    txtBalance_temperature1.Text = BytesToIntger(data[1], data[0], 0.1);
-                    //    txtBalance_temperature2.Text = BytesToIntger(data[3], data[2], 0.1);
-                    //    break;
                     case 0x1042FFFF:
                     case 0x1042E0FF:
                         //BMS均衡温度5-8
@@ -269,11 +344,16 @@ namespace SofarBMS.ui
                         {
                             strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
                         }
+                        controls = new string[4] { "txtCelltemperature5", "txtCelltemperature6", "txtCelltemperature7", "txtCelltemperature8" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
 
-                        txtCelltemperature5.Text = strs[0];
-                        txtCelltemperature6.Text = strs[1];
-                        txtCelltemperature7.Text = strs[2];
-                        txtCelltemperature8.Text = strs[3];
+                        model.CellTemperature5 = Convert.ToUInt16(strs[0]);
+                        model.CellTemperature6 = Convert.ToUInt16(strs[1]);
+                        model.CellTemperature7 = Convert.ToUInt16(strs[2]);
+                        model.CellTemperature8 = Convert.ToUInt16(strs[3]);
                         break;
                     case 0x104AFFFF:
                     case 0x104AE0FF:
@@ -282,11 +362,17 @@ namespace SofarBMS.ui
                         {
                             strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
                         }
+                        controls = new string[4] { "txtPowerTemperture1", "txtPowerTemperture2", "txtDcdcTemperature1", "txtDcdcTemperature2" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
 
-                        txtPowerTemperture1.Text = strs[0];//功率正端子温度
-                        txtPowerTemperture2.Text = strs[1];//功率负端子温度
-                        txtDcdcTemperature1.Text = strs[2];//加热膜电流->主动均衡温度1
-                        txtDcdcTemperature2.Text = strs[3]; //加热膜电压->主动均衡温度2
+                        //P+端子温度，P-端子温度,主动均衡温度1,主动均衡温度2
+                        model.PositiveTerminalTemperature = Convert.ToDouble(strs[0]);
+                        model.NegativeTerminalTemperature = Convert.ToDouble(strs[1]);
+                        model.ActiveBalanceTemperature1 = Convert.ToDouble(strs[2]);
+                        model.ActiveBalanceTemperature2 = Convert.ToDouble(strs[3]);
                         break;
                     case 0x104BFFFF:
                     case 0x104BE0FF:
@@ -302,15 +388,9 @@ namespace SofarBMS.ui
                         string HeatRequest = "0:无请求无禁止 1:请求加热 2:禁止加热";
                         switch (data[1] & 0x03)
                         {
-                            case 0:
-                                HeatRequest = "NONE";
-                                break;
-                            case 1:
-                                HeatRequest = "请求加热";
-                                break;
-                            case 2:
-                                HeatRequest = "禁止加热";
-                                break;
+                            case 0: HeatRequest = "NONE"; break;
+                            case 1: HeatRequest = "请求加热"; break;
+                            case 2: HeatRequest = "禁止加热"; break;
                             default:
                                 break;
                         }
@@ -353,11 +433,16 @@ namespace SofarBMS.ui
                         {
                             strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
                         }
+                        controls = new string[4] { "txtBalanceBusVoltage", "txtBalanceCurrent", "txtActiveBalanceMaxCellVolt", "txtBatAverageTemp" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
 
-                        txtBalanceBusVoltage.Text = strs[0];
-                        txtBalanceCurrent.Text = strs[1];
-                        txtActiveBalanceMaxCellVolt.Text = strs[2];
-                        txtBatAverageTemp.Text = strs[3];
+                        model.BalanceBusVoltage = Convert.ToDouble(strs[0]);
+                        model.BalanceCurrent = Convert.ToDouble(strs[1]);
+                        model.ActiveBalanceMaxCellVoltage = Convert.ToDouble(strs[2]);
+                        model.AverageCellTemperature = Convert.ToDouble(strs[3]);
                         break;
                     case 0x1049FFFF:
                     case 0x1049E0FF:
@@ -366,10 +451,15 @@ namespace SofarBMS.ui
                         {
                             strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
                         }
+                        controls = new string[3] { "txtActiveBalanceCellSoc", "txtActiveBalanceAccCap", "txtActiveBalanceRemainCap" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
 
-                        txtActiveBalanceCellSoc.Text = strs[0];
-                        txtActiveBalanceAccCap.Text = strs[1];
-                        txtActiveBalanceRemainCap.Text = strs[2];
+                        model.ActiveBalanceCellSoc = Convert.ToDouble(strs[0]);
+                        model.ActiveBalanceAccumulatedCapacity = Convert.ToDouble(strs[1]);
+                        model.ActiveBalanceRemainingCapacity = Convert.ToDouble(strs[2]);
                         break;
                     case 0x106AFFFF:
                     case 0x106AE0FF:
@@ -378,10 +468,10 @@ namespace SofarBMS.ui
                         {
                             softwareVersion[i] = data[i + 1].ToString().PadLeft(2, '0');
                         }
-
-                        txtBmuSaftwareVersion.Text = Encoding.ASCII.GetString(new byte[] { data[0] }) + string.Join("", softwareVersion);
-                        txtBmuHardwareVersion.Text = $"{(short)data[4]}";
-                        txtBmuCanVersion.Text = Encoding.ASCII.GetString(new byte[] { data[5], data[6] });
+                        string saftwareVersion = Encoding.ASCII.GetString(new byte[] { data[0] }) + string.Join("", softwareVersion);
+                        txtBmuSaftwareVersion.Text = model.BMUSaftwareVersion = saftwareVersion;
+                        txtBmuHardwareVersion.Text = model.BMUHardwareVersion = $"{(short)data[4]}";
+                        txtBmuCanVersion.Text = model.BMUCanVersion = Encoding.ASCII.GetString(new byte[] { data[5], data[6] });
                         break;
                     case 0x106BFFFF:
                     case 0x106BE0FF:
@@ -390,17 +480,22 @@ namespace SofarBMS.ui
                         {
                             strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
                         }
+                        controls = new string[3] { "txtBatNominalCapacity", "txtRegisterName", "txtBatType" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
 
-                        txtBatNominalCapacity.Text = strs[0];
-                        txtRegisterName.Text = strs[1];//0：AMASS 1：LIFANG
-                        txtBatType.Text = strs[2];
+                        model.NominalCapacity = Convert.ToDouble(strs[0]);
+                        model.RegisterName = strs[1];
+                        model.BatteryType = strs[2];
                         break;
                     case 0x106CFFFF:
                     case 0x106CE0FF:
                         //厂家信息
                         StringBuilder manufacturerName = new StringBuilder();
                         manufacturerName.Append(Encoding.ASCII.GetString(data));
-                        txtManufacturerName.Text = manufacturerName.ToString();
+                        txtManufacturerName.Text = model.ManufacturerName = manufacturerName.ToString();
                         break;
                     case 0x106DFFFF:
                     case 0x106DE0FF:
@@ -409,11 +504,16 @@ namespace SofarBMS.ui
                         {
                             strs[i] = BytesToIntger(data[i * 2 + 1], data[i * 2], Convert.ToDouble(strs[i]));
                         }
+                        controls = new string[3] { "txtAuxVolt", "txtChgCurOffsetVolt", "txtDsgCurOffsetVolt" };
+                        for (int i = 0; i < controls.Length; i++)
+                        {
+                            (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
+                        }
+                        txtResetMode.Text = model.ResetMode = Enum.Parse(typeof(Reset_Mode), (Convert.ToInt32(data[6].ToString("X2"), 16) & 0x0f).ToString()).ToString();
 
-                        txtAuxVolt.Text = strs[0];
-                        txtChgCurOffsetVolt.Text = strs[1];
-                        txtDsgCurOffsetVolt.Text = strs[2];
-                        txtResetMode.Text = Enum.Parse(typeof(Reset_Mode), (Convert.ToInt32(data[6].ToString("X2"), 16) & 0x0f).ToString()).ToString();
+                        model.AuxiliaryVoltage = Convert.ToDouble(strs[0]);
+                        model.ChargeCurrentOffset = Convert.ToDouble(strs[1]);
+                        model.DischargeCurrentOffset = Convert.ToDouble(strs[2]);
                         break;
                     case 0x107081FF:
                     case 0x1070E0FF:
@@ -610,62 +710,11 @@ namespace SofarBMS.ui
                     //0x073：BMS均衡温度 N1=1+(N-1)*30+3*(M-1)
                     case 0x107381FF:
                     case 0x1073E0FF:
-                        txtBalance_temperature1.Text = BytesToIntger(data[3], data[2], 0.1);
-                        txtBalance_temperature2.Text = BytesToIntger(data[5], data[4], 0.1);
-                        /*// Byte 1:帧序号 1~10 10帧 1帧3个电池温度数据
-                        frameNumber = data[0];
-                        // Byte 2: 包序号 1~N
-                        sequenceNumber = data[1];
+                        string balanceTemperature1 = txtBalance_temperature1.Text = BytesToIntger(data[3], data[2], 0.1);
+                        string balanceTemperature2 = txtBalance_temperature2.Text = BytesToIntger(data[5], data[4], 0.1);
 
-                        if (sequenceNumber >= 0x01)
-                        {
-                            if (frameNumber >= 0x01 && frameNumber <= 0x0A)
-                            {
-                                int startBatteryIndex = GetEquilibriumStartIndex(sequenceNumber, frameNumber);
-                                ProcessEquilibriumTemperature(startBatteryIndex, data);
-                            }
-                        }
-                        int GetEquilibriumStartIndex(int sequenceNumber, int frameNumber)
-                        {
-                            // 每个包有30个电池温度，每帧 3个电池温度数据                       
-                            return (sequenceNumber - 1) * 30 + (frameNumber - 1) * 3;
-                        }
-
-                        void ProcessEquilibriumTemperature(int startBatteryIndex, byte[] data)
-                        {
-                            var batteryEquilibriumTemperatures = new string[3 + startBatteryIndex];
-                            for (int k = 0; k < 3; k++)
-                            {
-                                int byteIndex = 2 + k * 2;
-                                Int16 equilibriumTemperatureRaw = (short)((data[byteIndex + 1] << 8) | data[byteIndex]); // [3:2] 2:低位，3:高位
-                                                                                                                         // 温度数据 0.1/bit 
-                                batteryEquilibriumTemperatures[startBatteryIndex + k] = (equilibriumTemperatureRaw * 0.1).ToString("F1");// 保留1位小数
-                            }
-
-
-                            for (int i = startBatteryIndex; i < batteryEquilibriumTemperatures.Length; i++)
-                            {
-                                string cellNumber = (i + 1).ToString() + "#";
-
-                                // 查找是否已存在该编号的记录
-                                var existingData = batteryEquilibriumTemperatureDataList.FirstOrDefault(data => data.CellNumber == cellNumber);
-                                if (existingData != null)
-                                {
-                                    // 更新已有记录的均衡温度值
-                                    existingData.BatteryEquilibriumTemperature = batteryEquilibriumTemperatures[i];
-                                }
-                                else
-                                {
-                                    // 新增记录
-                                    batteryEquilibriumTemperatureDataList.Add(new batteryEquilibriumTemperatureData
-                                    {
-                                        CellNumber = (i + 1).ToString() + "#",
-                                        BatteryEquilibriumTemperature = batteryEquilibriumTemperatures[i]
-                                    });
-                                }
-                            }
-                        }*/
-
+                        model.BalanceTemperature1 = Convert.ToDouble(balanceTemperature1);
+                        model.BalanceTemperature2 = Convert.ToDouble(balanceTemperature2);
                         break;
                     // 0x0A0：BMS单电芯的SOC
                     case 0x10A0FFFF:
@@ -678,12 +727,6 @@ namespace SofarBMS.ui
                         {
                             int startBatteryIndex = GetbatterySOCStartIndex(frameNumber);
                             ProcessBatterySOC(startBatteryIndex, data);
-
-                            //for (int i = 1; i <= 8; i++)
-                            //{
-                            //    TextBox c = this.Controls.Find("txtCelltemperature" + i, true)[0] as TextBox;
-                            //    c.Text = batterySocDataList[i - 1].ToString();
-                            //}
                         }
 
                         //最后一帧
@@ -964,7 +1007,7 @@ namespace SofarBMS.ui
 
                         // 查找激活报警记录以确认解除
                         var query = FrmMain.AlarmList.FirstOrDefault(t => t.Id == FrmMain.BMS_ID && t.Type == type && t.Content == "BMU:" + msg[0] && t.State == 0);
-                        if (type=="故障" && msg[0].StartsWith("功率端子温度采样"))
+                        if (type == "故障" && msg[0].StartsWith("功率端子温度采样"))
                         {
 
                         }
@@ -1053,19 +1096,19 @@ namespace SofarBMS.ui
             }
             else if (unit == 0.1)
             {
-                value = (long.Parse(value) / 10.0f).ToString();
+                value = (long.Parse(value) / 10.0f).ToString("F1");
             }
             else if (unit == 0.01)
             {
-                value = (long.Parse(value) / 100.0f).ToString();
+                value = (long.Parse(value) / 100.0f).ToString("F2");
             }
             else if (unit == 0.001)
             {
-                value = (long.Parse(value) / 1000.0f).ToString();
+                value = (long.Parse(value) / 1000.0f).ToString("F3");
             }
             else if (unit == 0.0001)
             {
-                value = (long.Parse(value) / 10000).ToString();
+                value = (long.Parse(value) / 10000).ToString("F4");
             }
 
             return value;

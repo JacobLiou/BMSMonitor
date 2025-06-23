@@ -580,7 +580,7 @@ StartListen,启动总线监听,Start bus listen";
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_13"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //参数信息
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_23"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //固件升级
 
-            /*//添加“CBS高压储能项目”菜单
+            //添加“CBS高压储能项目”菜单
             tsmiMenu = AddContextMenu(LanguageHelper.GetLanguage("tsmi_5"), Menu.Items, null);                              //CBS高压储能电池
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_55"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //运行信息(BCU)
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_56"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //参数信息(BCU)
@@ -588,7 +588,7 @@ StartListen,启动总线监听,Start bus listen";
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_59"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //参数信息(BMU)
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_12"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //系统设置
             AddContextMenu(LanguageHelper.GetLanguage("tsmi_53"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //固件升级
-            AddContextMenu(LanguageHelper.GetLanguage("tsmi_54"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //文件传输*/
+            AddContextMenu(LanguageHelper.GetLanguage("tsmi_54"), tsmiMenu.DropDownItems, new EventHandler(MenuClicked));   //文件传输
 
             //添加“语言”菜单
             if (isShowLanagugeMenu)
