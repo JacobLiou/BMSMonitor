@@ -4,6 +4,7 @@ using PowerKit.UI.Models;
 using Sofar.BMSLib;
 using Sofar.BMSUI;
 using Sofar.BMSUI.Common;
+using Sofar.HvBMSLib;
 using Sofar.HvBMSUI.Models;
 using Sofar.ProtocolLib;
 using System;
@@ -131,6 +132,10 @@ namespace Sofar.HvBMSUI.ViewModels
             {
                 _selectedAddress_BCU = value;
                 AlarmMessageDataList.Clear();
+                model.MinorAlarm = "";
+                model.GeneralAlarm = "";
+                model.SevereAlarm = "";
+                model.EquipmentHardwareFailureAlarm = "";
                 FaultInfo.FaultInfos4.ForEach(x => x.State = 0);
                 OnPropertyChanged(nameof(SelectedAddress_BCU));
             }
@@ -4731,7 +4736,10 @@ namespace Sofar.HvBMSUI.ViewModels
             byte Address_BCU = Convert.ToByte(Convert.ToInt32(SelectedAddress_BCU, 16));
             byte[] canid = BitConverter.GetBytes(canID);
             if (canid[0] != Address_BCU || !(canid[0] == Address_BCU && canid[1] == 0xF4 /*&& canid[3] == 0x18*/)) return;
-
+            if (baseCanHelper.CommunicationType == "Ecan")
+            {
+                EcanHelper.Instance().GetLogAction()?.Invoke(1, HexDataHelper.GetDebugByteString(data, "Recv：0x" + canID.ToString("X")));
+            }
             string[] batteryVoltages = new string[3840];
             string[] batterySocs = new string[3840];
             string[] batterySohs = new string[3840];
@@ -5994,53 +6002,61 @@ namespace Sofar.HvBMSUI.ViewModels
             }
         }
 
-        public void AnalyzeAlarm(int ByteNum, int sequenceNumber, byte[] data, string[] msg, string alarmLevel)
+        public void AnalyzeAlarm(int ByteNum, int frameNum, byte[] data, string[] msg, string alarmLevel)
         {
             for (int i = 1; i < ByteNum; i++)
             {
                 for (short j = 0; j < 8; j++)
                 {
-                    int alarmType = sequenceNumber == 0x04 ? 2 : 1;
+                    int alarmType = frameNum;
                     if (GetBit(data[i], j) == 1)
                     {
                         // 报警状态为激活
-                        UpdateAlarmState(out msg, i, j, alarmType, 0, sequenceNumber);//state=0 未激活
+                        UpdateAlarmState(out msg, i, j, alarmType, 0, frameNum);//state=0 未激活
                         string StartTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                         // 检查是否已有激活报警记录
                         if (msg[0] != null)
                         {
-                            if (!AlarmMessageDataList.Any(x => x.AlarmMessage.Contains(msg[0]) && x.isEnd == "否" && x.AlarmLevel == alarmLevel))
+
+                            // 如果原来已存在改故障，还没结束，不执行添加
+                            if (AlarmMessageDataList.Count > 0
+                                && AlarmMessageDataList.Any(x => x.AlarmMessage.Contains(msg[0]) && x.isEnd == "否" && x.AlarmLevel == alarmLevel))
                             {
-                                AlarmMessageDataList.Insert(0, new AlarmMessageData
-                                {
-                                    AlarmNumber = (AlarmMessageDataList.Count + 1).ToString(),
-                                    AlarmStartTime = StartTime,
-                                    AlarmLevel = alarmLevel,
-                                    //BatterySectionNumber = BatterySectionNumber,
-                                    AlarmMessage = msg[0],
-                                    AlarmStatus = "【异常报警🚨】",
-                                    isEnd = "否"
-                                });
+                                continue;
                             }
+                            AlarmMessageDataList.Insert(0, new AlarmMessageData
+                            {
+                                AlarmNumber = (AlarmMessageDataList.Count + 1).ToString(),
+                                AlarmStartTime = StartTime,
+                                AlarmLevel = alarmLevel,
+                                //BatterySectionNumber = BatterySectionNumber,
+                                AlarmMessage = msg[0],
+                                AlarmStatus = "【异常报警🚨】",
+                                isEnd = "否"
+                            });
                         }
                     }
                     else
                     {
                         // 解除报警状态
-                        UpdateAlarmState(out msg, i, j, alarmType, 1, sequenceNumber);//state=1 可解除
+                        UpdateAlarmState(out msg, i, j, alarmType, 1, frameNum);//state=1 可解除
 
                         string StopTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                         // 查找激活报警记录以确认解除
                         if (msg[0] != null)
                         {
-                            var activeAlarm = AlarmMessageDataList.FirstOrDefault(x => x.AlarmMessage.Contains(msg[0]) && x.isEnd == "否" && x.AlarmLevel == alarmLevel);
-                            if (activeAlarm != null)
+                            if (AlarmMessageDataList.Count > 0)
                             {
-                                activeAlarm.AlarmStopTime = StopTime;
-                                activeAlarm.AlarmMessage = msg[0];
-                                activeAlarm.AlarmStatus = $"【报警解除🆗】";
-                                activeAlarm.isEnd = "是";
+                                var activeAlarm = AlarmMessageDataList.FirstOrDefault(x => x.AlarmMessage.Contains(msg[0]) && x.isEnd == "否" && x.AlarmLevel == alarmLevel);
+                                if (activeAlarm != null)
+                                {
+                                    activeAlarm.AlarmStopTime = StopTime;
+                                    activeAlarm.AlarmMessage = msg[0];
+                                    activeAlarm.AlarmStatus = $"【报警解除🆗】";
+                                    activeAlarm.isEnd = "是";
+                                }
                             }
+
                         }
                     }
                 }
@@ -6091,18 +6107,22 @@ namespace Sofar.HvBMSUI.ViewModels
                         // 检查是否已有激活报警记录
                         if (msg[0] != null)
                         {
-                            if (!AlarmMessageDataList.Any(x => x.AlarmMessage.Contains(msg[0]) && x.isEnd == "否" && x.AlarmLevel == alarmLevel))
+                            // 如果原来已存在改故障，还没结束，不执行添加
+                            if (AlarmMessageDataList.Count > 0
+                                && AlarmMessageDataList.Any(x => x.AlarmMessage.Contains(msg[0]) && x.isEnd == "否" && x.AlarmLevel == alarmLevel))
                             {
-                                AlarmMessageDataList.Insert(0, new AlarmMessageData
-                                {
-                                    AlarmNumber = (AlarmMessageDataList.Count + 1).ToString(),
-                                    AlarmStartTime = StartTime,
-                                    AlarmLevel = alarmLevel,
-                                    AlarmMessage = msg[0],
-                                    AlarmStatus = "【异常报警🚨】",
-                                    isEnd = "否"
-                                });
+                                continue;
                             }
+                            AlarmMessageDataList.Insert(0, new AlarmMessageData
+                            {
+                                AlarmNumber = (AlarmMessageDataList.Count + 1).ToString(),
+                                AlarmStartTime = StartTime,
+                                AlarmLevel = alarmLevel,
+                                AlarmMessage = msg[0],
+                                AlarmStatus = "【异常报警🚨】",
+                                isEnd = "否"
+                            });
+
                         }
                     }
                     else
@@ -6114,15 +6134,19 @@ namespace Sofar.HvBMSUI.ViewModels
                         // 查找激活报警记录以确认解除
                         if (msg[0] != null)
                         {
-                            var activeAlarm = AlarmMessageDataList.FirstOrDefault(x => x.AlarmMessage.Contains(msg[0]) && x.isEnd == "否" && x.AlarmLevel == alarmLevel);
-                            if (activeAlarm != null)
+                            if (AlarmMessageDataList.Count > 0)
                             {
-                                activeAlarm.AlarmStopTime = StopTime;
+                                var activeAlarm = AlarmMessageDataList.FirstOrDefault(x => x.AlarmMessage.Contains(msg[0]) && x.isEnd == "否" && x.AlarmLevel == alarmLevel);
+                                if (activeAlarm != null)
+                                {
+                                    activeAlarm.AlarmStopTime = StopTime;
 
-                                activeAlarm.AlarmMessage = msg[0];
-                                activeAlarm.AlarmStatus = $"【报警解除🆗】";
-                                activeAlarm.isEnd = "是";
+                                    activeAlarm.AlarmMessage = msg[0];
+                                    activeAlarm.AlarmStatus = $"【报警解除🆗】";
+                                    activeAlarm.isEnd = "是";
+                                }
                             }
+
                         }
                     }
                 }
@@ -6215,7 +6239,11 @@ namespace Sofar.HvBMSUI.ViewModels
                 ConstantDef.BatteryCellNumber = 64;
                 ConstantDef.BatteryTemperatureNumber = 36;
             }
-
+            AlarmMessageDataList.Clear();
+            model.MinorAlarm = "";
+            model.GeneralAlarm = "";
+            model.SevereAlarm = "";
+            model.EquipmentHardwareFailureAlarm = "";
             if (baseCanHelper.Send(bytes, can_id)) MessageBoxHelper.Success("写入成功！", "提示", null, ButtonType.OK);
             else MessageBoxHelper.Warning("写入失败！", "提示", null, ButtonType.OK);
         }
@@ -6338,10 +6366,10 @@ namespace Sofar.HvBMSUI.ViewModels
         /// <param name="type"></param>
         /// <param name="state"></param>
         /// <returns></returns>
-        public string[] UpdateAlarmState(out string[] msg, int row, int column, int type, int state, int alarmLevel)
+        public string[] UpdateAlarmState(out string[] msg, int byteIndex, int bitIndex, int type, int state, int alarmLevel)
         {
             msg = new string[2];
-            FaultInfo faultInfo = FaultInfo.FaultInfos4.FirstOrDefault(f => f.Byte == row && f.Bit == column && f.Type == type && f.State == state && f.Value == alarmLevel);
+            FaultInfo faultInfo = FaultInfo.FaultInfos4.FirstOrDefault(f => f.Byte == byteIndex && f.Bit == bitIndex && f.Type == type && f.State == state);//&& f.Value == alarmLevel
 
             if (faultInfo != null)
             {
