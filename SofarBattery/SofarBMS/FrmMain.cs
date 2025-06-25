@@ -73,9 +73,9 @@ StartListen,启动总线监听,Start bus listen";
         {
             InitializeComponent();
 
-            //// 单机运行
-            //if (!LicenseIntegration.LicenseManager.In(@"Software\Sofar\SofarBMS\License"))
-            //    Environment.Exit(0);
+            // 单机运行
+            if (!LicenseIntegration.LicenseManager.In(@"Software\Sofar\SofarBMS\License"))
+                Environment.Exit(0);
         }
         public FrmMain(ref bool IsConnection) : this()
         {

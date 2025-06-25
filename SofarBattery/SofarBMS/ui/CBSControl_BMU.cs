@@ -5,12 +5,18 @@ using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
 using SofarBMS.Model;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace SofarBMS.ui
 {
     public partial class CBSControl_BMU : UserControl
     {
+        public CBSControl_BMU()
+        {
+            InitializeComponent();
+        }
+
         public int SelectedRequest7 => FrmMain.BMS_ID;
 
         private string[] packSN = new string[3];
@@ -25,11 +31,16 @@ namespace SofarBMS.ui
         private List<batterySohData> batterySohDataList = new();
         private List<batteryTemperatureData> batteryTemperatureDataList = new();
         private List<batteryEquilibriumStateData> batteryEquilibriumStateDataList = new();
-        private List<batteryEquilibriumTemperatureData> batteryEquilibriumTemperatureDataList = new();
 
-        public CBSControl_BMU()
+        // 实时数据存储
+
+        private string filePath
         {
-            InitializeComponent();
+            get
+            {
+                string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Log");
+                return Path.Combine(directory, $"BMU_{DateTime.Now:yyyy-MM-dd}.csv");
+            }
         }
 
         private void CBSControl_BMU_Load(object sender, EventArgs e)
@@ -42,47 +53,241 @@ namespace SofarBMS.ui
                 }
             });
 
+            // 初始化计时器（优化后）
+            // InitializeTimers();
+
             int p = -1;
             cts = new CancellationTokenSource();
-            Task.Run(async delegate
+            Task.Run(() =>
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    if (p == -1 || p != FrmMain.BMS_ID)
+                    if (p == -1
+                    || p != FrmMain.BMS_ID)
                     {
                         p = FrmMain.BMS_ID;
-                        this.Invoke(() => { ClearInputControls(this); });
+                        ClearInputControls(this);
                     }
 
-                    //if (model != null && initCount >= InitCountThreshold)
-                    //{
-                    //    //var fileName = $"BTS5K_{DateTime.Now:yyyy-MM-dd}.csv";
-                    //    //var filePath = Path.Combine(logDirectory, fileName);
-
-                    //    //lock (_fileLock)
-                    //    //{
-                    //    //    if (!File.Exists(filePath))
-                    //    //    {
-                    //    //        InitLogWriter(filePath);
-                    //    //    }
-                    //    //    _logWriter?.WriteLine(model.GetValue());
-                    //    //}
-
-                    //    //initCount = 0;
-                    //    //model = new RealtimeData_BTS5K();
-                    //}
-
-
-                    if (ecanHelper.IsConnected)
+                    if (!ecanHelper.IsConnected)
                     {
-                        RealDataVM.SelectedRequest7 = FrmMain.BMS_ID;// 切换ID时，需同步更新
-                        RealDataVM.ReadAllParameter();
-                        await Task.Delay(1000);
+                        Thread.Sleep(1000);
+                        continue;
+                    }
+
+
+                    RealDataVM.SelectedRequest7 = FrmMain.BMS_ID;// 切换ID时，需同步更新
+                    RealDataVM.ReadAllParameter();
+                    Thread.Sleep(1000);
+
+                    if (model != null)
+                    {
+                        this.Invoke(() =>
+                        {
+                            model.Fault = richTextBox1.Text.ToString();
+                            model.Protection = richTextBox2.Text.ToString();
+                            model.Warning = richTextBox3.Text.ToString();
+                            model.Prompt = richTextBox4.Text.ToString();
+                        });
+
+                        try
+                        {
+                            for (int index = 0; index < 16; index++)
+                            {
+                                model.SOC_Array[index] = Convert.ToDouble(batterySocDataList[index].SOC);
+                                model.SOH_Array[index] = Convert.ToDouble(batterySohDataList[index].SOH);
+                            }
+                        }
+                        catch (Exception)
+                        {
+                        }
+
+                        lock (_fileLock)
+                        {
+                            if (!File.Exists(filePath))
+                            {
+                                InitLogWriter(filePath);
+                            }
+                            _logWriter?.WriteLine(model.GetValue());
+                        }
                     }
                 }
             });
 
             ecanHelper.AnalysisDataInvoked += RealDataVM_AnalysisDataInvoked;
+        }
+
+        // 使用 StreamWriter 保持文件流打开（注意线程安全）
+        private static StreamWriter _logWriter;
+
+        // 初始化日志写入器
+        void InitLogWriter(string filePath)
+        {
+            lock (_fileLock)
+            {
+                _logWriter?.Dispose();
+                _logWriter = new StreamWriter(filePath, append: true) { AutoFlush = true };
+                if (new FileInfo(filePath).Length == 0)
+                {
+                    _logWriter.WriteLine(model.GetHeader());
+                }
+            }
+        }
+
+        private void InitializeTimers()
+        {
+            // 数据采集定时器（保持5秒间隔）
+            System.Timers.Timer timer = new System.Timers.Timer(5000);
+            timer.Elapsed += async (s, e) =>
+            {
+                try
+                {
+                    if (!ecanHelper.IsConnected || model == null)
+                        return;
+
+                    this.Invoke(() =>
+                    {
+                        model.Fault = richTextBox1.Text.ToString();
+                        model.Protection = richTextBox2.Text.ToString();
+                        model.Warning = richTextBox3.Text.ToString();
+                        model.Prompt = richTextBox4.Text.ToString();
+                    });
+
+                    for (int index = 0; index < 16; index++)
+                    {
+                        model.SOC_Array[index] = Convert.ToDouble(batterySocDataList[index].SOC);
+                        model.SOH_Array[index] = Convert.ToDouble(batterySohDataList[index].SOH);
+                    }
+
+                    // 获取当前文件路径（确保路径一致性）
+                    string filePath = this.filePath;
+                    string data = model.GetValue();
+
+                    // 在UI线程安全执行
+                    if (this.InvokeRequired)
+                    {
+                        this.Invoke((Action)(() => AppendDataToCsv(filePath, data)));
+                    }
+                    else
+                    {
+                        AppendDataToCsv(filePath, data);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //this.BeginInvoke((Action)(() =>
+                    //    MessageBox.Show($"CSV写入错误: {ex.Message}", "数据记录错误",
+                    //                  MessageBoxButtons.OK, MessageBoxIcon.Error)));
+                }
+            };
+            timer.AutoReset = true;
+            timer.Enabled = true;
+        }
+
+        private readonly object _fileLock = new object();
+        private (string Date, bool HeaderWritten) _fileState = ("", false);
+        private const int MAX_RETRIES = 3;
+        private const int RETRY_DELAY_MS = 300;
+
+
+        private void AppendDataToCsv(string filePath, string data)
+        {
+            int retryCount = 0;
+            while (retryCount < MAX_RETRIES)
+            {
+                try
+                {
+                    lock (_fileLock)
+                    {
+                        // 确保目录存在（首次尝试时创建）
+                        string directory = Path.GetDirectoryName(filePath);
+                        if (!Directory.Exists(directory))
+                        {
+                            Directory.CreateDirectory(directory);
+                        }
+
+                        // 检查日期变更
+                        string currentDate = DateTime.Now.ToString("yyyy-MM-dd");
+                        if (currentDate != _fileState.Date)
+                        {
+                            _fileState = (currentDate, false);
+                        }
+
+                        // 使用更安全的文件访问模式
+                        using (var stream = new FileStream(
+                            filePath,
+                            FileMode.OpenOrCreate,
+                            FileAccess.Write,
+                            FileShare.ReadWrite)) // 允许其他进程读取
+                        {
+                            bool isNewFile = stream.Length == 0;
+                            bool writeHeader = isNewFile || !_fileState.HeaderWritten;
+
+                            using (var sw = new StreamWriter(stream, Encoding.UTF8))
+                            {
+                                // 新文件处理
+                                if (writeHeader)
+                                {
+                                    if (isNewFile)
+                                    {
+                                        stream.Position = 0;
+                                    }
+                                    else // 现有文件但未写入表头
+                                    {
+                                        // 移动到文件末尾追加表头
+                                        stream.Position = stream.Length;
+                                        if (stream.Length > 0)
+                                        {
+                                            sw.WriteLine(); // 确保新行
+                                        }
+                                    }
+
+                                    sw.WriteLine(model.GetHeader());
+                                    _fileState.HeaderWritten = true;
+                                }
+                                else
+                                {
+                                    stream.Position = stream.Length;
+                                }
+
+                                sw.WriteLine(data);
+                            }
+                        }
+                        return; // 成功写入后退出
+                    }
+                }
+                catch (IOException ex) when (IsFileLocked(ex))
+                {
+                    retryCount++;
+                    if (retryCount >= MAX_RETRIES)
+                    {
+                        // 最终失败处理
+                        //this.BeginInvoke((Action)(() =>
+                        //    MessageBox.Show($"无法写入文件：{filePath}\n文件被其他程序锁定。",
+                        //                  "文件访问错误",
+                        //                  MessageBoxButtons.OK,
+                        //                  MessageBoxIcon.Warning)));
+                        return;
+                    }
+
+                    // 指数退避重试
+                    int delay = RETRY_DELAY_MS * (int)Math.Pow(2, retryCount);
+                    Thread.Sleep(delay);
+                }
+                catch (Exception ex)
+                {
+                    this.BeginInvoke((Action)(() =>
+                        MessageBox.Show($"写入错误: {ex.Message}", "数据记录错误")));
+                    return;
+                }
+            }
+        }
+
+        // 检测文件锁定异常
+        private bool IsFileLocked(IOException ex)
+        {
+            int errorCode = Marshal.GetHRForException(ex) & 0xFFFF;
+            return errorCode == 32 || errorCode == 33; // 32=共享冲突, 33=进程锁定
         }
 
         private void RealDataVM_AnalysisDataInvoked(object? sender, object e)
@@ -102,17 +307,39 @@ namespace SofarBMS.ui
 
         public void ClearInputControls(Control control)
         {
-            foreach (Control ctrl in control.Controls)
+            // 在UI线程安全执行
+            if (this.InvokeRequired)
             {
-                // 清空当前控件（如果是文本框或富文本框）
-                if (ctrl is TextBox)
-                    ((TextBox)ctrl).Clear();
-                else if (ctrl is RichTextBox)
-                    ((RichTextBox)ctrl).Clear();
+                this.Invoke((Action)(() =>
+                {
+                    foreach (Control ctrl in control.Controls)
+                    {
+                        // 清空当前控件（如果是文本框或富文本框）
+                        if (ctrl is TextBox)
+                            ((TextBox)ctrl).Clear();
+                        else if (ctrl is RichTextBox)
+                            ((RichTextBox)ctrl).Clear();
 
-                // 递归处理容器控件
-                if (ctrl.HasChildren)
-                    ClearInputControls(ctrl);
+                        // 递归处理容器控件
+                        if (ctrl.HasChildren)
+                            ClearInputControls(ctrl);
+                    }
+                }));
+            }
+            else
+            {
+                foreach (Control ctrl in control.Controls)
+                {
+                    // 清空当前控件（如果是文本框或富文本框）
+                    if (ctrl is TextBox)
+                        ((TextBox)ctrl).Clear();
+                    else if (ctrl is RichTextBox)
+                        ((RichTextBox)ctrl).Clear();
+
+                    // 递归处理容器控件
+                    if (ctrl.HasChildren)
+                        ClearInputControls(ctrl);
+                }
             }
         }
         #region 帧数据解析

@@ -107,8 +107,8 @@
         public string Warning { get; set; } = string.Empty;
         public string Prompt { get; set; } = string.Empty;
 
-        // SOC，SOH各10个
-        public double[] SOC_Array { get; set; } = new double[10];
+        // SOC，SOH各16个
+        public double[] SOC_Array { get; set; } = new double[16];
         public double SOC1 => SOC_Array[0];
         public double SOC2 => SOC_Array[1];
         public double SOC3 => SOC_Array[2];
@@ -119,8 +119,14 @@
         public double SOC8 => SOC_Array[7];
         public double SOC9 => SOC_Array[8];
         public double SOC10 => SOC_Array[9];
+        public double SOC11 => SOC_Array[10];
+        public double SOC12 => SOC_Array[11];
+        public double SOC13 => SOC_Array[12];
+        public double SOC14 => SOC_Array[13];
+        public double SOC15 => SOC_Array[14];
+        public double SOC16 => SOC_Array[15];
 
-        public double[] SOH_Array { get; set; } = new double[10];
+        public double[] SOH_Array { get; set; } = new double[16];
         public double SOH1 => SOH_Array[0];
         public double SOH2 => SOH_Array[1];
         public double SOH3 => SOH_Array[2];
@@ -131,6 +137,12 @@
         public double SOH8 => SOH_Array[7];
         public double SOH9 => SOH_Array[8];
         public double SOH10 => SOH_Array[9];
+        public double SOH11 => SOH_Array[10];
+        public double SOH12 => SOH_Array[11];
+        public double SOH13 => SOH_Array[12];
+        public double SOH14 => SOH_Array[13];
+        public double SOH15 => SOH_Array[14];
+        public double SOH16 => SOH_Array[15];
 
 
         // 列顺序定义（按实际业务顺序排列）
@@ -234,6 +246,12 @@
             nameof(SOC8),
             nameof(SOC9),
             nameof(SOC10),
+            nameof(SOC11),
+            nameof(SOC12),
+            nameof(SOC13),
+            nameof(SOC14),
+            nameof(SOC15),
+            nameof(SOC16),
             nameof(SOH1),
             nameof(SOH2),
             nameof(SOH3),
@@ -244,6 +262,12 @@
             nameof(SOH8),
             nameof(SOH9),
             nameof(SOH10),
+            nameof(SOH11),
+            nameof(SOH12),
+            nameof(SOH13),
+            nameof(SOH14),
+            nameof(SOH15),
+            nameof(SOH16),
     };
 
         // 属性到中文列名的映射
@@ -351,6 +375,12 @@
             [nameof(SOC8)] = "SOC8",
             [nameof(SOC9)] = "SOC9",
             [nameof(SOC10)] = "SOC10",
+            [nameof(SOC11)] = "SOC11",
+            [nameof(SOC12)] = "SOC12",
+            [nameof(SOC13)] = "SOC13",
+            [nameof(SOC14)] = "SOC14",
+            [nameof(SOC15)] = "SOC15",
+            [nameof(SOC16)] = "SOC16",
 
             [nameof(SOH1)] = "SOH1",
             [nameof(SOH2)] = "SOH2",
@@ -362,9 +392,13 @@
             [nameof(SOH8)] = "SOH8",
             [nameof(SOH9)] = "SOH9",
             [nameof(SOH10)] = "SOH10",
+            [nameof(SOH11)] = "SOC11",
+            [nameof(SOH12)] = "SOC12",
+            [nameof(SOH13)] = "SOC13",
+            [nameof(SOH14)] = "SOC14",
+            [nameof(SOH15)] = "SOC15",
+            [nameof(SOH16)] = "SOC16",
         };
-
-
 
         public string GetHeader() => string.Join(",", CsvFields.Select(f => PropertyHeaderMap[f]));
 

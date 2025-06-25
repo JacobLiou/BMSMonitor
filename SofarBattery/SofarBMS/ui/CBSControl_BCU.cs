@@ -1,4 +1,5 @@
-﻿using Sofar.BMS.Common;
+﻿using NPOI.POIFS.Crypt.Dsig;
+using Sofar.BMS.Common;
 using Sofar.BMS.Models;
 using Sofar.ConnectionLibs.CAN;
 using SofarBMS.Helper;
@@ -6,49 +7,48 @@ using SofarBMS.Model;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Reflection.Metadata;
+using System.Runtime.InteropServices;
 using System.Text;
-using System.Timers;
 
 namespace SofarBMS.UI
 {
     public partial class CBSControl_BCU : UserControl
     {
-        public static CancellationTokenSource cts = null;
+        public CBSControl_BCU()
+        {
+            InitializeComponent();
+        }
 
-        // BCU序列号
+        public static CancellationTokenSource cts = null;
+        private EcanHelper ecanHelper = EcanHelper.Instance;
         private string[] packSN = new string[3];
+        private BcuRealtimeData model = new();
 
         //多簇数据存储
         private int bindingType;
-        private List<batteryVoltageData> batteryVoltageDataList = new();
         private List<batterySocData> batterySocDataList = new();
         private List<batterySohData> batterySohDataList = new();
+        private List<batteryVoltageData> batteryVoltageDataList = new();
         private List<batteryTemperatureData> batteryTemperatureDataList = new();
-        private RealtimeData_CBS5000S_BCU model = null;
 
-        // 实时数据存储
-        public static System.Timers.Timer timer;
-        private string _csvFilePath => GetDailyFilePath(); //CSV文件路径
-                                                           // 动态生成每日文件
-        private string GetDailyFilePath()
+        private string filePath
         {
-            string directory = Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory,
-                "Log",
-                DateTime.Now.ToString("yyyy-MM")
-            );
-
-            Directory.CreateDirectory(directory); // 确保目录存在
-
-            return Path.Combine(
-                directory,
-                $"CBS5000_BCU_{DateTime.Now:yyyy-MM-dd}.csv"
-            );
+            get
+            {
+                string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Log");//, DateTime.Now.ToString("yyyy-MM")
+                return Path.Combine(directory, $"BCU_{DateTime.Now:yyyy-MM-dd}.csv");
+            }
         }
+        private readonly object _fileLock = new object();
+        private (string Date, bool HeaderWritten) _fileState = ("", false);
+        private const int MAX_RETRIES = 3;
+        private const int RETRY_DELAY_MS = 300;
+
         /// <summary>
         /// 通用电池数据
         /// </summary>
-        private ObservableCollection<IBatteryData> _batteryDataList;
+        private ObservableCollection<IBatteryData> _batteryDataList = new();
         public ObservableCollection<IBatteryData> BatteryDataList
         {
             get => _batteryDataList;
@@ -66,18 +66,6 @@ namespace SofarBMS.UI
                 {
                     dataGridView1.DataSource = _batteryDataList?.ToList(); // 强制刷新
                 });
-                /*if (_batteryDataList != value)
-                {
-                    _batteryDataList = value;
-
-                    // 确保在 UI 线程操作
-                    this.Invoke((MethodInvoker)delegate
-                    {
-                        dataGridView1.DataSource = _batteryDataList;
-                    });
-
-                    //OnPropertyChanged(nameof(BatteryDataList)); // 如果其他控件需要属性变更通知
-                }*/
             }
         }
 
@@ -89,27 +77,20 @@ namespace SofarBMS.UI
             });
         }
 
-        private EcanHelper ecanHelper = EcanHelper.Instance;
-
-        public CBSControl_BCU()
-        {
-            InitializeComponent();
-        }
-
         private void RTAControl_Load(object sender, EventArgs e)
         {
-            //// UI初始化
-            //this.Invoke(() =>
-            //{
-            //    foreach (Control item in this.Controls)
-            //    {
-            //        GetControls(item);
-            //    }
-            this.dataGridView1.AutoGenerateColumns = false;
-            //});
+            // UI初始化
+            this.Invoke(() =>
+            {
+                foreach (Control item in this.Controls)
+                {
+                    GetControls(item);
+                }
+                this.dataGridView1.AutoGenerateColumns = false;
+            });
 
             // 初始化计时器（优化后）
-            InitializeTimers();
+            //InitializeTimers();
 
             // 初始化取消令牌
             cts = new CancellationTokenSource();
@@ -120,19 +101,21 @@ namespace SofarBMS.UI
                 const int MAX_RETRY = 3;
                 while (!cts.IsCancellationRequested)
                 {
-                    if (p == -1 || p != FrmMain.BCU_ID)
+                    if (p == -1
+                    || p != FrmMain.BCU_ID)
                     {
                         p = FrmMain.BCU_ID;
-                        this.Invoke(() => { ClearInputControls(this); });
+                        ClearInputControls(this);
                     }
+
+                    if (!ecanHelper.IsConnected)
+                    {
+                        Thread.Sleep(1000);
+                        continue;
+                    }
+
                     try
                     {
-                        if (!ecanHelper.IsConnected)
-                        {
-                            await Task.Delay(1000, cts.Token);
-                            continue;
-                        }
-
                         // 使用Burst模式发送命令（减少await次数）
                         var sendTasks = new List<Task>();
 
@@ -164,9 +147,7 @@ namespace SofarBMS.UI
                         await Task.WhenAll(sendTasks).WaitAsync(TimeSpan.FromSeconds(30), cts.Token);
 
                         // 统一等待时间（替代多次Delay）
-                        await Task.Delay(1000, cts.Token);
-
-                        //Thread.Sleep(1000);
+                        Thread.Sleep(1000);
                     }
                     catch (OperationCanceledException)
                     {
@@ -176,24 +157,69 @@ namespace SofarBMS.UI
                     catch (Exception ex)
                     {
                         Debug.WriteLine($"CAN通信异常: {ex.Message}");
-                        await Task.Delay(5000, cts.Token); // 错误恢复间隔
+                        Thread.Sleep(5000);  // 错误恢复间隔
                     }
                     finally
                     {
-                        Debug.WriteLine("Model初始化时间" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff"));
-                        model = null;
+                        if (model != null)
+                        {
+                            this.Invoke((Action)(() =>
+                            {
+                                model.Fault = richTextBox1.Text.Replace("\n", "，").Replace("\r", "，");
+                                model.Protection = richTextBox2.Text.Replace("\n", "，").Replace("\r", "，");
+                                model.Warning = richTextBox3.Text.Replace("\n", "，").Replace("\r", "，");
+                                model.Prompt = richTextBox4.Text.Replace("\n", "，").Replace("\r", "，");
+                            }));
+
+                            try
+                            {
+                                for (int group = 0; group < 12; group++)
+                                {
+                                    // 计算当前组在A中的起始位置（每组18个元素）
+                                    int startA = group * 18;
+                                    // 计算当前组在B中的起始位置（每组16个元素）
+                                    int startB = group * 16;
+
+                                    // 复制当前组的16个有效数据
+                                    for (int i = 0; i < 16; i++)
+                                    {
+                                        model.Voltage_Array[startB + i] = batteryVoltageDataList[startA + i].Voltage;
+                                        model.SOC_Array[startB + i] = batterySocDataList[startA + i].SOC;
+                                        model.SOH_Array[startB + i] = batterySohDataList[startA + i].SOH;
+                                    }
+
+                                    // 计算当前组在A中的起始位置（每组18个元素）
+                                    startA = group * 12;
+                                    // 计算当前组在B中的起始位置（每组16个元素）
+                                    startB = group * 8;
+
+                                    // 复制当前组的8个有效数据
+                                    for (int i = 0; i < 8; i++)
+                                    {
+                                        model.Tempeartrue_Array[startB + i] = batteryTemperatureDataList[startA + i].Temperature;
+                                    }
+                                }
+                            }
+                            catch (Exception)
+                            {
+
+                            }
+
+                            lock (_fileLock)
+                            {
+                                if (!File.Exists(filePath))
+                                {
+                                    InitLogWriter(filePath);
+                                }
+                                _logWriter?.WriteLine(model.GetValue());
+                            }
+                        }
                     }
                 }
             }, cts.Token);
 
             // 事件订阅
             ecanHelper.AnalysisDataInvoked += ServiceBase_AnalysisDataInvoked;
-
-            /* timer = new System.Timers.Timer(5000); // 设置时间间隔为5000毫秒（5秒）
-            timer.Elapsed += OnTimedEvent;
-            timer.AutoReset = true; // 确保定时器重复执行
-            timer.Enabled = true;  // 启用定时器
-            */
         }
 
         // 新增辅助方法：带重试机制的命令发送
@@ -217,32 +243,91 @@ namespace SofarBMS.UI
             }
         }
 
+        // 使用 StreamWriter 保持文件流打开（注意线程安全）
+        private static StreamWriter _logWriter;
+
+        // 初始化日志写入器
+        void InitLogWriter(string filePath)
+        {
+            lock (_fileLock)
+            {
+                _logWriter?.Dispose();
+                _logWriter = new StreamWriter(filePath, append: true) { AutoFlush = true };
+                if (new FileInfo(filePath).Length == 0)
+                {
+                    _logWriter.WriteLine(model.GetHeader());
+                }
+            }
+        }
+
         // 初始化计时器（与数据存储优化结合）
         private void InitializeTimers()
         {
             // 数据采集定时器（保持5秒间隔）
-            timer = new System.Timers.Timer(5000);
+            System.Timers.Timer timer = new System.Timers.Timer(5000);
             timer.Elapsed += async (s, e) =>
             {
+                Debug.WriteLine($"{System.DateTime.Now.ToString("HH:mm:ss:ffff")}数据采集正在进行！！！");
                 try
                 {
-                    var data = model?.GetValue();
-                    Debug.WriteLine(data);
-                    //if (!string.IsNullOrEmpty(data))
+                    if (!ecanHelper.IsConnected || model == null)
+                        return;
+
+                    //this.Invoke((Action)(() =>
                     //{
-                    //    lock (_dataQueue)
-                    //    {
-                    //        _dataQueue.Enqueue(data);
-                    //        if (_dataQueue.Count >= BufferFlushThreshold)
-                    //        {
-                    //            Monitor.Pulse(_dataQueue); // 触发立即写入
-                    //        }
-                    //    }
-                    //}
+                    //    model.Fault = richTextBox1.Text.Replace("\n", "，").Replace("\r", "，");
+                    //    model.Protection = richTextBox2.Text.Replace("\n", "，").Replace("\r", "，");
+                    //    model.Warning = richTextBox3.Text.Replace("\n", "，").Replace("\r", "，");
+                    //    model.Prompt = richTextBox4.Text.Replace("\n", "，").Replace("\r", "，");
+                    //}));
+
+                    for (int group = 0; group < 12; group++)
+                    {
+                        // 计算当前组在A中的起始位置（每组18个元素）
+                        int startA = group * 18;
+                        // 计算当前组在B中的起始位置（每组16个元素）
+                        int startB = group * 16;
+
+                        // 复制当前组的16个有效数据
+                        for (int i = 0; i < 16; i++)
+                        {
+                            model.Voltage_Array[startB + i] = batteryVoltageDataList[startA + i].Voltage;
+                            model.SOC_Array[startB + i] = batterySocDataList[startA + i].SOC;
+                            model.SOH_Array[startB + i] = batterySohDataList[startA + i].SOH;
+                        }
+
+                        // 计算当前组在A中的起始位置（每组18个元素）
+                        startA = group * 12;
+                        // 计算当前组在B中的起始位置（每组16个元素）
+                        startB = group * 8;
+
+                        // 复制当前组的8个有效数据
+                        for (int i = 0; i < 8; i++)
+                        {
+                            model.Tempeartrue_Array[startB + i] = batteryTemperatureDataList[startA + i].Temperature;
+                        }
+                    }
+
+                    // 获取当前文件路径（确保路径一致性）
+                    string filePath = this.filePath;
+                    string data = model.GetValue();
+
+                    // 在UI线程安全执行
+                    if (this.InvokeRequired)
+                    {
+                        this.Invoke((Action)(() => AppendDataToCsv(filePath, data)));
+                    }
+                    else
+                    {
+                        AppendDataToCsv(filePath, data);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"数据采集失败: {ex.Message}");
+                    //Debug.WriteLine($"数据采集失败: {ex.Message}");
+                    //this.BeginInvoke((Action)(() =>
+                    //    MessageBox.Show($"CSV写入错误: {ex.Message}", "数据记录错误",
+                    //                  MessageBoxButtons.OK, MessageBoxIcon.Error)));
                 }
             };
             timer.AutoReset = true;
@@ -264,6 +349,7 @@ namespace SofarBMS.UI
             }
         }
 
+        #region 解析数据
         public void AnalysisData(uint canID, byte[] data)
         {
             if ((canID & 0xff) != FrmMain.BCU_ID)
@@ -271,7 +357,7 @@ namespace SofarBMS.UI
 
             if (model == null)
             {
-                model = new RealtimeData_CBS5000S_BCU();
+                model = new BcuRealtimeData();
                 model.PackID = FrmMain.BCU_ID.ToString("X2");
             }
 
@@ -289,16 +375,22 @@ namespace SofarBMS.UI
                             case 0x01:
                                 var diTypeDic = new Dictionary<short, string>()
                                 {
-                                   {0, "pbExternalCANAddressingInputIOStatus" },
-                                   {1, "pbContactorPositiveSwitchDetectionHighLevelClosure" },
-                                   {2, "pbContactorNegativeSwitchDetectionHighLevelClosure" },
-                                   {3, "pbDryContactInput1Channel" },
-                                   {4, "pbADC1115_1Feedback1" },
-                                   {5, "pbADC1115_1Feedback2" },
-                                   {6, "pbChargingWakeUp" }
+                                   {0, "pbCCDetectionStatus" },
+                                   {1, "pbRelay1Status" },
+                                   {2, "pbRelay2Status" },
+                                   {3, "pbButtonWakeupStatus" },
+                                   {4, "pbInverterWakeupStatus" },
+                                   {5, "pbDCRelayControlSignal" },
                                 };
 
                                 UpdateControlStatus(diTypeDic, Convert.ToUInt16(BytesToIntger(0x00, data[1])));
+
+                                model.CCDetectionStatus = MyCustomConverter.GetBit(data[1], 0);
+                                model.Relay1Status = MyCustomConverter.GetBit(data[1], 1);
+                                model.Relay2Status = MyCustomConverter.GetBit(data[1], 2);
+                                model.ButtonWakeupStatus = MyCustomConverter.GetBit(data[1], 3);
+                                model.InverterWakeupStatus = MyCustomConverter.GetBit(data[1], 4);
+                                model.DCRelayControlSignal = MyCustomConverter.GetBit(data[1], 5);
                                 break;
                             case 0x02:
                                 //继电器类型保留
@@ -314,6 +406,11 @@ namespace SofarBMS.UI
                                 };
 
                                 UpdateControlStatus(chgAndDischargeStateDic, Convert.ToUInt16(BytesToIntger(0x00, data[1])));
+                                model.ChagreStatus = MyCustomConverter.GetBit(data[1], 0);
+                                model.DischargeStatus = MyCustomConverter.GetBit(data[1], 1);
+                                model.ForceChargeStatus = MyCustomConverter.GetBit(data[1], 2);
+                                model.FullyCharged = MyCustomConverter.GetBit(data[1], 3);
+                                model.FullyDischarged = MyCustomConverter.GetBit(data[1], 4);
                                 break;
                             case 0x04:
                                 var chargBalancedStateDic = new Dictionary<short, string>
@@ -433,11 +530,11 @@ namespace SofarBMS.UI
                                     (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
                                 }
 
-                                model.Power_Terminal_Temperature1 = Convert.ToDouble(strs[0]);
-                                model.Power_Terminal_Temperature2 = Convert.ToDouble(strs[1]);
-                                model.Power_Terminal_Temperature3 = Convert.ToDouble(strs[2]);
-                                model.Power_Terminal_Temperature4 = Convert.ToDouble(strs[3]);
-                                model.Ambient_Temperature = Convert.ToDouble(strs[4]);
+                                model.PowerTerminalTemperature1 = Convert.ToDouble(strs[0]);
+                                model.PowerTerminalTemperature2 = Convert.ToDouble(strs[1]);
+                                model.PowerTerminalTemperature3 = Convert.ToDouble(strs[2]);
+                                model.PowerTerminalTemperature4 = Convert.ToDouble(strs[3]);
+                                model.AmbientTemperature = Convert.ToDouble(strs[4]);
                                 break;
                             case 0xF0:
                                 //模拟量数据1~7
@@ -461,9 +558,9 @@ namespace SofarBMS.UI
                                 txtBus_sampling_voltage.Text = strs[1];
                                 txtBattery_cumulative_sum_voltage.Text = strs[2];
 
-                                model.Battery_Sampling_Voltage1 = Convert.ToDouble(strs[0]);
-                                model.Bus_Sampling_Voltage = Convert.ToDouble(strs[1]);
-                                model.Battery_Summing_Voltage = Convert.ToDouble(strs[2]);
+                                model.BatterySamplingVoltage1 = Convert.ToDouble(strs[0]);
+                                model.BusSamplingVoltage = Convert.ToDouble(strs[1]);
+                                model.BatterySummingVoltage = Convert.ToDouble(strs[2]);
                                 break;
                             case 0x02:
                                 strs = new string[2];
@@ -474,8 +571,8 @@ namespace SofarBMS.UI
                                 txtHeating_film_voltage.Text = strs[0];
                                 txtHeating_film_MOSvoltage.Text = strs[1];
 
-                                model.HeatingFilm_Voltage = Convert.ToDouble(strs[0]);
-                                model.HeatingFilm_MosVoltage = Convert.ToDouble(strs[1]);
+                                model.HeatingFilmVoltage = Convert.ToDouble(strs[0]);
+                                model.HeatingFilmMosVoltage = Convert.ToDouble(strs[1]);
                                 break;
                             case 0x03:
                                 strs = new string[1];
@@ -483,7 +580,7 @@ namespace SofarBMS.UI
 
                                 //绝缘电阻电压（0.1V）
                                 txtInsulation_resistance_voltage.Text = strs[0];
-                                model.Insulation_Resistance = Convert.ToDouble(strs[0]);
+                                model.InsulationResistance = Convert.ToDouble(strs[0]);
                                 break;
                             case 0x04:
                                 strs = new string[1];
@@ -491,7 +588,7 @@ namespace SofarBMS.UI
 
                                 //辅源电压（1mV）
                                 txtAuxiliary_source_voltage.Text = strs[0];
-                                model.Auxiliary_Power_Supply_Voltage = Convert.ToDouble(strs[0]);
+                                model.AuxiliaryPowerSupplyVoltage = Convert.ToDouble(strs[0]);
                                 break;
                             default:
                                 break;
@@ -508,7 +605,7 @@ namespace SofarBMS.UI
                                 //簇电流（0.1A）
                                 txtLoad_Voltage.Text = strs[0];
 
-                                model.Cluster_Current = Convert.ToDouble(strs[0]);
+                                model.ClusterCurrent = Convert.ToDouble(strs[0]);
                                 break;
                             default:
                                 break;
@@ -530,12 +627,12 @@ namespace SofarBMS.UI
                             (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
                         }
 
-                        model.Cluster_Max_Cell_Volt = Convert.ToDouble(strs[0]);
-                        model.Cluster_Max_Cell_Volt_Pack = Convert.ToUInt16(strs[1]);
-                        model.Cluster_Max_Cell_VoltNum = Convert.ToUInt16(strs[2]);
-                        model.Cluster_Min_Cell_Volt = Convert.ToDouble(strs[3]);
-                        model.Cluster_Min_Cell_Volt_Pack = Convert.ToUInt16(strs[4]);
-                        model.Cluster_Min_Cell_Volt_Num = Convert.ToUInt16(strs[5]);
+                        model.ClusterMaxCellVolt = Convert.ToDouble(strs[0]);
+                        model.ClusterMaxCellVoltPack = Convert.ToUInt16(strs[1]);
+                        model.ClusterMaxCellVoltNum = Convert.ToUInt16(strs[2]);
+                        model.ClusterMinCellVolt = Convert.ToDouble(strs[3]);
+                        model.ClusterMinCellVoltPack = Convert.ToUInt16(strs[4]);
+                        model.ClusterMinCellVoltNum = Convert.ToUInt16(strs[5]);
                         break;
                     //0x0BB:BCU遥测数据上报5--簇最高最低单体温度信息
                     case 0x10BBE0FF:
@@ -553,12 +650,12 @@ namespace SofarBMS.UI
                             (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
                         }
 
-                        model.Cluster_Max_Cell_Temp = Convert.ToDouble(strs[0]);
-                        model.Cluster_Max_Cell_Temp_Pack = Convert.ToUInt16(strs[1]);
-                        model.Cluster_Max_Cell_Temp_Num = Convert.ToUInt16(strs[2]);
-                        model.Cluster_Min_Cell_Temp = Convert.ToDouble(strs[3]);
-                        model.Cluster_Min_Cell_Temp_Pack = Convert.ToUInt16(strs[4]);
-                        model.Cluster_Min_Cell_Temp_Num = Convert.ToUInt16(strs[5]);
+                        model.ClusterMaxCellTemp = Convert.ToDouble(strs[0]);
+                        model.ClusterMaxCellTempPack = Convert.ToUInt16(strs[1]);
+                        model.ClusterMaxCellTempNum = Convert.ToUInt16(strs[2]);
+                        model.ClusterMinCellTemp = Convert.ToDouble(strs[3]);
+                        model.ClusterMinCellTempPack = Convert.ToUInt16(strs[4]);
+                        model.ClusterMinCellTempNum = Convert.ToUInt16(strs[5]);
                         break;
                     //0x0BC:BCU遥信数据2--簇充放电限流限压值
                     case 0x10BCE0FF:
@@ -574,10 +671,10 @@ namespace SofarBMS.UI
                             (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
                         }
 
-                        model.Battery_Charge_Voltage = Convert.ToDouble(strs[0]);
-                        model.Charge_Current_Limitation = Convert.ToDouble(strs[1]);
-                        model.Discharge_Current_Limitation = Convert.ToDouble(strs[2]);
-                        model.Battery_Discharge_Voltage = Convert.ToDouble(strs[3]);
+                        model.BatteryChargeVoltage = Convert.ToDouble(strs[0]);
+                        model.ChargeCurrentLimitation = Convert.ToDouble(strs[1]);
+                        model.DischargeCurrentLimitation = Convert.ToDouble(strs[2]);
+                        model.BatteryDischargeVoltage = Convert.ToDouble(strs[3]);
                         break;
                     //0x0BD:BCU遥测数据2->>BCU版本号信息
                     case 0x10BDE0FF:
@@ -612,9 +709,9 @@ namespace SofarBMS.UI
                             (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
                         }
 
-                        model.Remaining_Total_Capacity = Convert.ToDouble(strs[0]);
-                        model.Bat_Average_Temp = Convert.ToDouble(strs[1]);
-                        model.Cluster_Rate_Power = Convert.ToDouble(strs[2]);
+                        model.RemainingTotalCapacity = Convert.ToDouble(strs[0]);
+                        model.BatAverageTemp = Convert.ToDouble(strs[1]);
+                        model.ClusterRatePower = Convert.ToDouble(strs[2]);
                         model.Cycles = Convert.ToDouble(strs[3]);
                         break;
                     //0x0BF:BCU遥信数据5--簇基本信息
@@ -635,11 +732,11 @@ namespace SofarBMS.UI
                                     (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
                                 }
 
-                                txtBms_State.Text = model.Bms_State = Enum.Parse(typeof(BMSState), (Convert.ToInt32(data[1].ToString("X2"), 16) & 0x0f).ToString()).ToString();
+                                txtBms_State.Text = model.BmsState = Enum.Parse(typeof(BMSState), (Convert.ToInt32(data[1].ToString("X2"), 16) & 0x0f).ToString()).ToString();
 
-                                model.Cluster_SOC = Convert.ToUInt16(strs[1]);
-                                model.Cluster_SOH = Convert.ToUInt16(strs[2]);
-                                model.Cluster_BatPack_Num = Convert.ToUInt16(strs[3]);
+                                model.ClusterSOC = Convert.ToUInt16(strs[1]);
+                                model.ClusterSOH = Convert.ToUInt16(strs[2]);
+                                model.ClusterBatPackNum = Convert.ToUInt16(strs[3]);
                                 break;
                             default:
                                 break;
@@ -660,7 +757,7 @@ namespace SofarBMS.UI
                         date.Append(numbers_bit[4]);
                         date.Append(":");
                         date.Append(numbers_bit[5]);
-                        txtBCU_System_Time.Text = model.BCU_SytemTime = date.ToString();
+                        txtBCU_System_Time.Text = model.BCUSytemTime = date.ToString();
                         break;
                     //0x0C1:BCU遥测数据上报3---其他数据
                     case 0x10C1E0FF:
@@ -683,13 +780,13 @@ namespace SofarBMS.UI
                                 }
                                 textBox3.Text = status;
 
-                                checkBox5.Checked = data[4] == 1 ? true : false;
+                                ckRealtimeData_BCU_3.Checked = data[4] == 1 ? true : false;
 
-                                checkBox1.Checked = (data[5] & 0x01) == 0x01 ? true : false;
-                                checkBox2.Checked = (data[5] & 0x02) == 0x02 ? true : false;
-                                checkBox3.Checked = (data[5] & 0x04) == 0x04 ? true : false;
+                                ckRealtimeData_BCU_6.Checked = (data[5] & 0x01) == 0x01 ? true : false;
+                                ckRealtimeData_BCU_7.Checked = (data[5] & 0x02) == 0x02 ? true : false;
+                                ckRealtimeData_BCU_8.Checked = (data[5] & 0x04) == 0x04 ? true : false;
 
-                                checkBox4.Checked = data[6] == 1 ? true : false;
+                                ckRealtimeData_BCU_4.Checked = data[6] == 1 ? true : false;
                                 break;
                             case 0x02:
                                 textBox1.Text = $"0x{data[2].ToString("X2")}{data[1].ToString("X2")}";
@@ -769,9 +866,9 @@ namespace SofarBMS.UI
                                     (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
                                 }
 
-                                model.Inductive_Current_Sampling4 = Convert.ToDouble(strs[0]);
-                                model.Discharge_High_Current_Sampling = Convert.ToDouble(strs[1]);
-                                model.Charge_High_Current_Sampling = Convert.ToDouble(strs[2]);
+                                model.InductiveCurrentSampling4 = Convert.ToDouble(strs[0]);
+                                model.DischargeHighCurrentSampling = Convert.ToDouble(strs[1]);
+                                model.ChargeHighCurrentSampling = Convert.ToDouble(strs[2]);
                                 break;
                             case 0x03:
                                 strs = new string[3];
@@ -786,9 +883,9 @@ namespace SofarBMS.UI
                                     (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
                                 }
 
-                                model.Contactor_Voltage = Convert.ToDouble(strs[0]);
-                                model.Battery_Cluster_Voltage1 = Convert.ToDouble(strs[1]);
-                                model.High_Bus_Voltage = Convert.ToDouble(strs[2]);
+                                model.ContactorVoltage = Convert.ToDouble(strs[0]);
+                                model.BatteryClusterVoltage1 = Convert.ToDouble(strs[1]);
+                                model.HighBusVoltage = Convert.ToDouble(strs[2]);
                                 break;
                             case 0x04:
                                 strs = new string[3];
@@ -802,8 +899,8 @@ namespace SofarBMS.UI
                                     (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
                                 }
 
-                                model.HeatingFilm_Power_Supply_Voltage = Convert.ToDouble(strs[0]);
-                                model.Battery_Sampling_Voltage2 = Convert.ToDouble(strs[1]);
+                                model.HeatingFilmPowerSupplyVoltage = Convert.ToDouble(strs[0]);
+                                model.BatterySamplingVoltage2 = Convert.ToDouble(strs[1]);
                                 break;
                             case 0x05:
                                 strs = new string[4];
@@ -819,10 +916,10 @@ namespace SofarBMS.UI
                                     (this.Controls.Find(controls[i], true)[0] as TextBox).Text = strs[i];
                                 }
 
-                                model.Radiator_temperature1 = Convert.ToDouble(strs[0]);
-                                model.Radiator_temperature2 = Convert.ToDouble(strs[1]);
-                                model.Radiator_temperature3 = Convert.ToDouble(strs[2]);
-                                model.Radiator_temperature4 = Convert.ToDouble(strs[3]);
+                                model.RadiatorTemperature1 = Convert.ToDouble(strs[0]);
+                                model.RadiatorTemperature2 = Convert.ToDouble(strs[1]);
+                                model.RadiatorTemperature3 = Convert.ToDouble(strs[2]);
+                                model.RadiatorTemperature4 = Convert.ToDouble(strs[3]);
                                 break;
                             case 0x06:
                                 //软件版本号，硬件版本号，SCI协议版本号
@@ -860,12 +957,12 @@ namespace SofarBMS.UI
 
                                 if (Enum.TryParse(typeof(WorkState_DCDC), strs[0], out workState))
                                 {
-                                    txtWorkState.Text = model.PCU_WorkState = Enum.Parse(typeof(WorkState_DCDC), strs[0]).ToString();
+                                    txtWorkState.Text = model.PCUWorkState = Enum.Parse(typeof(WorkState_DCDC), strs[0]).ToString();
                                 }
 
                                 if (Enum.TryParse(typeof(BatteryState_DCDC), strs[1], out dcdcState))
                                 {
-                                    txtDCDC_State.Text = model.PCU_BatteryState = Enum.Parse(typeof(BatteryState_DCDC), strs[1]).ToString();
+                                    txtDCDC_State.Text = model.PCUBatteryState = Enum.Parse(typeof(BatteryState_DCDC), strs[1]).ToString();
                                 }
                                 break;
                             case 0x02:
@@ -873,7 +970,6 @@ namespace SofarBMS.UI
                                 break;
                             case 0x03:
                                 //故障数据8,协议未补充
-
                                 break;
                             case 0x04:
                                 //遥信数据：充电限载电流值，放电限载电流值
@@ -882,8 +978,8 @@ namespace SofarBMS.UI
                                 txtChargeLimitCurrentValue.Text = (val1 * 0.01).ToString("F2");
                                 txtDischargeLimitCurrentValue.Text = (val2 * 0.01).ToString("F2");
 
-                                model.Discharge_Limit_Current_Value = val1;
-                                model.Charge_Limit_Current_Value = val2;
+                                model.DischargeLimitCurrent = val1;
+                                model.ChargeLimitCurrent = val2;
                                 break;
                             default:
                                 break;
@@ -1297,6 +1393,8 @@ namespace SofarBMS.UI
             return lists;
         }
 
+        #endregion
+
         // 切换单簇多PACK信息
         private void rbBatterySwitch_Click(object sender, EventArgs e)
         {
@@ -1419,37 +1517,104 @@ namespace SofarBMS.UI
             return dataList;
         }
 
-
-        private void OnTimedEvent(Object source, ElapsedEventArgs e)
+        private void AppendDataToCsv(string filePath, string data)
         {
-            // 在UI线程中执行操作，因为文件操作通常不涉及UI更新，但如果有需要，可以使用Invoke
-            try
+            int retryCount = 0;
+            while (retryCount < MAX_RETRIES)
             {
-                // 示例：追加一行数据到CSV文件
-                AppendDataToCsv(model.GetValue());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}");
+                try
+                {
+                    lock (_fileLock)
+                    {
+                        // 确保目录存在（首次尝试时创建）
+                        string directory = Path.GetDirectoryName(filePath);
+                        if (!Directory.Exists(directory))
+                        {
+                            Directory.CreateDirectory(directory);
+                        }
+
+                        // 检查日期变更
+                        string currentDate = DateTime.Now.ToString("yyyy-MM-dd");
+                        if (currentDate != _fileState.Date)
+                        {
+                            _fileState = (currentDate, false);
+                        }
+
+                        // 使用更安全的文件访问模式
+                        using (var stream = new FileStream(
+                            filePath,
+                            FileMode.OpenOrCreate,
+                            FileAccess.Write,
+                            FileShare.ReadWrite)) // 允许其他进程读取
+                        {
+                            bool isNewFile = stream.Length == 0;
+                            bool writeHeader = isNewFile || !_fileState.HeaderWritten;
+
+                            using (var sw = new StreamWriter(stream, Encoding.UTF8))
+                            {
+                                // 新文件处理
+                                if (writeHeader)
+                                {
+                                    if (isNewFile)
+                                    {
+                                        stream.Position = 0;
+                                    }
+                                    else // 现有文件但未写入表头
+                                    {
+                                        // 移动到文件末尾追加表头
+                                        stream.Position = stream.Length;
+                                        if (stream.Length > 0)
+                                        {
+                                            sw.WriteLine(); // 确保新行
+                                        }
+                                    }
+
+                                    sw.WriteLine(model.GetHeader());
+                                    _fileState.HeaderWritten = true;
+                                }
+                                else
+                                {
+                                    stream.Position = stream.Length;
+                                }
+
+                                sw.WriteLine(data);
+                            }
+                        }
+                        return; // 成功写入后退出
+                    }
+                }
+                catch (IOException ex) when (IsFileLocked(ex))
+                {
+                    retryCount++;
+                    if (retryCount >= MAX_RETRIES)
+                    {
+                        // 最终失败处理
+                        this.BeginInvoke((Action)(() =>
+                            MessageBox.Show($"无法写入文件：{filePath}\n文件被其他程序锁定。",
+                                          "文件访问错误",
+                                          MessageBoxButtons.OK,
+                                          MessageBoxIcon.Warning)));
+                        return;
+                    }
+
+                    // 指数退避重试
+                    int delay = RETRY_DELAY_MS * (int)Math.Pow(2, retryCount);
+                    Thread.Sleep(delay);
+                }
+                catch (Exception ex)
+                {
+                    this.BeginInvoke((Action)(() =>
+                        MessageBox.Show($"写入错误: {ex.Message}", "数据记录错误")));
+                    return;
+                }
             }
         }
 
-        private void AppendDataToCsv(string data)
+        // 检测文件锁定异常
+        private bool IsFileLocked(IOException ex)
         {
-            // 确保文件存在，如果不存在则创建
-            if (!File.Exists(_csvFilePath))
-            {
-                using (StreamWriter sw = File.CreateText(_csvFilePath))
-                {
-                    sw.WriteLine(model.GetHeader()); // 可选：写入表头
-                }
-            }
-
-            // 追加数据
-            using (StreamWriter sw = File.AppendText(_csvFilePath))
-            {
-                sw.WriteLine(data);
-            }
+            int errorCode = Marshal.GetHRForException(ex) & 0xFFFF;
+            return errorCode == 32 || errorCode == 33; // 32=共享冲突, 33=进程锁定
         }
 
         private int[] BytesToBit(byte[] data)
@@ -1489,132 +1654,43 @@ namespace SofarBMS.UI
             return value;
         }
 
-
         public void ClearInputControls(Control control)
         {
-            foreach (Control ctrl in control.Controls)
+            if (this.InvokeRequired)
             {
-                // 清空当前控件（如果是文本框或富文本框）
-                if (ctrl is TextBox)
-                    ((TextBox)ctrl).Clear();
-                else if (ctrl is RichTextBox)
-                    ((RichTextBox)ctrl).Clear();
-
-                // 递归处理容器控件
-                if (ctrl.HasChildren)
-                    ClearInputControls(ctrl);
-            }
-        }
-
-        #region 翻译所用得函数
-        private void GetControls(Control c)
-        {
-            if (c is GroupBox || c is TabControl)
-            {
-                c.Text = LanguageHelper.GetLanguage(c.Name.Remove(0, 2));
-
-                foreach (Control item in c.Controls)
+                this.Invoke((Action)(() =>
                 {
-                    this.GetControls(item);
-                }
+                    foreach (Control ctrl in control.Controls)
+                    {
+                        // 清空当前控件（如果是文本框或富文本框）
+                        if (ctrl is TextBox)
+                            ((TextBox)ctrl).Clear();
+                        else if (ctrl is RichTextBox)
+                            ((RichTextBox)ctrl).Clear();
+
+                        // 递归处理容器控件
+                        if (ctrl.HasChildren)
+                            ClearInputControls(ctrl);
+                    }
+                }));
             }
             else
             {
-                string name = c.Name;
-
-                if (c is CheckBox)
+                foreach (Control ctrl in control.Controls)
                 {
-                    c.Text = LanguageHelper.GetLanguage(name.Remove(0, 2));
+                    // 清空当前控件（如果是文本框或富文本框）
+                    if (ctrl is TextBox)
+                        ((TextBox)ctrl).Clear();
+                    else if (ctrl is RichTextBox)
+                        ((RichTextBox)ctrl).Clear();
 
-                    LTooltip(c as CheckBox, c.Text);
-                }
-                else if (c is RadioButton)
-                {
-                    c.Text = LanguageHelper.GetLanguage(name.Remove(0, 2));
-
-                    LTooltip(c as RadioButton, c.Text);
-                }
-                else if (c is Label)
-                {
-                    c.Text = LanguageHelper.GetLanguage(name.Remove(0, 3));
-
-                    LTooltip(c as Label, c.Text);
-                }
-                else if (c is Button)
-                {
-                    if (name.Contains("Set"))
-                    {
-                        c.Text = LanguageHelper.GetLanguage("Settings");
-                    }
-                    else if (name.Contains("_Close"))
-                    {
-                        c.Text = LanguageHelper.GetLanguage("Systemset_43");
-                    }
-                    else if (name.Contains("_Open"))
-                    {
-                        c.Text = LanguageHelper.GetLanguage("Systemset_44");
-                    }
-                    else if (name.Contains("_Lifted"))
-                    {
-                        c.Text = LanguageHelper.GetLanguage("Systemset_45");
-                    }
-                    else
-                    {
-                        c.Text = LanguageHelper.GetLanguage(name.Remove(0, 3));
-
-                    }
-                }
-                else if (c is TabPage | c is Panel)
-                {
-                    foreach (Control item in c.Controls)
-                    {
-                        this.GetControls(item);
-                    }
+                    // 递归处理容器控件
+                    if (ctrl.HasChildren)
+                        ClearInputControls(ctrl);
                 }
             }
+
         }
-
-        public static void LTooltip(Control control, string value)
-        {
-            if (value.Length == 0) return;
-            control.Text = Abbreviation(control, value);
-            var tip = new ToolTip();
-            tip.IsBalloon = false;
-            tip.ShowAlways = true;
-            tip.SetToolTip(control, value);
-        }
-
-        public static string Abbreviation(Control control, string str)
-        {
-            if (str == null)
-            {
-                return null;
-            }
-            int strWidth = FontWidth(control.Font, control, str);
-
-            //获取label最长可以显示多少字符
-            int len = control.Width * str.Length / strWidth;
-
-            if (len > 20 && len < str.Length)
-
-            {
-                return str.Substring(0, 20) + "...";
-            }
-            else
-            {
-                return str;
-            }
-        }
-
-        private static int FontWidth(Font font, Control control, string str)
-        {
-            using (Graphics g = control.CreateGraphics())
-            {
-                SizeF siF = g.MeasureString(str, font);
-                return (int)siF.Width;
-            }
-        }
-        #endregion
 
         #region BMS发送内部电池故障信息-模块处理
         /// <summary>
@@ -1887,20 +1963,20 @@ namespace SofarBMS.UI
             switch (faultNum)
             {
                 case 1:
-                    faultInfos = FaultNotify;
+                    faultInfos = FaultInfo.FaultNotify;
                     if (devType != "CBS5000")
                     {
-                        faultInfos = FaultNotify_DCDC;
+                        faultInfos = FaultInfo.FaultNotify_DCDC;
                     }
                     break;
                 case 2:
-                    faultInfos = ProtectNotify;
+                    faultInfos = FaultInfo.ProtectNotify;
                     break;
                 case 3:
-                    faultInfos = WarningNotify;
+                    faultInfos = FaultInfo.WarningNotify;
                     break;
                 case 4:
-                    faultInfos = PromptNotify;
+                    faultInfos = FaultInfo.PromptNotify;
                     break;
                 default: break;
             }
@@ -1919,157 +1995,115 @@ namespace SofarBMS.UI
         }
         #endregion
 
-        public List<FaultInfo> FaultNotify = new List<FaultInfo>() {
-                    new FaultInfo("过流失能,Clu Over_Curr_Disable",1,0,0,0,1),
-                    new FaultInfo("充电严重过流锁死(BCU),Chg_Over_Curr_Lock",1,1,0,0,1),
-                    new FaultInfo("放电严重过流锁死(BCU),Dsg_Over_Curr_Lock",1,2,0,0,1),
-                    new FaultInfo("预留,resBit3",1,3,0,0,1),
-                    new FaultInfo("电流大环零点不良(BCU),BOARD_CURR_BIG_RING_BADNESS",1,4,0,0,1),
-                    new FaultInfo("电流小环零点不良(BCU),BOARD_CURR_LITTLE_RING_BADNESS",1,5,0,0,1),
-                    new FaultInfo("BMU连接器温度采样异常,BMU_Connect_Temp_Abnormal_Fault",1,6,0,0,1),//(BCU)
-                    new FaultInfo("BCU连接器温度采样异常,BCU_Connect_Temp_Abnormal_Fault",1,7,0,0,1),//(BCU)
-                    new FaultInfo("簇电压压差过大(BCU),BOARD_TOTAL_VOLT_DIFF_OVER",2,0,0,0,1),
-                    new FaultInfo("辅源异常(BCU),BOARD_VOLT_9V_ERR",2,1,0,0,1),
-                    new FaultInfo("flash存储错误(BCU),BOARD_FLASH_ERR",2,2,0,0,1),
-                    new FaultInfo("预留,resBit3",2,3,0,0,1),
-                    new FaultInfo("主回路保险丝熔断(BCU),BOARD_MAIN_CIRCUIT_BLOWN_FUSE",2,4,0,0,1),
-                    new FaultInfo("正继电器粘连(BCU),BOARD_POSITIVE_RELAY_ADHESION",2,5,0,0,1),
-                    new FaultInfo("负继电器粘连(BCU),BOARD_NEGATIVE_RELAY_ADHESION",2,6,0,0,1),
-                    new FaultInfo("绝缘异常(BCU),BOARD_INSUALATION_FAULT",2,7,0,0,1),
-                    new FaultInfo("内can编址失败(BCU),BOARD_INNER_CAN_ADDR_FAULT",3,0,0,0,1),
-                    new FaultInfo("电池包数目异常(BCU),BOARD_PACK_NUM_FAULT",3,1,0,0,1),
-                    new FaultInfo("采样异常(BCU),BOARD_SAMPLE_FAULT",3,2,0,0,1),
-                    new FaultInfo("BCU与BMU 内CAN通讯故障,BMU_BCU_Com_Fault",3,3,0,0,1),
-                    new FaultInfo("预充异常(BCU),BOARD_PRE_CHARGE_FAULT",3,4,0,0,1),
-                    new FaultInfo("加热膜回路故障,BOARD_HEAT_CIR_ERR",3,5,0,0,1),
-                    new FaultInfo("CC检测故障,Connect Check",3,6,0,0,1),
-                    new FaultInfo("逆变器与BCU通讯故障,BCU_PCU_Com_Fault",3,7,0,0,1),
-                    new FaultInfo("BCU功率模块通讯故障,BCU-PWR_Com_Fault",4,0,0,0,1),
-                    new FaultInfo("接触器故障,Contactor_Fault",4,1,0,0,1),
-                    new FaultInfo("断路器故障,Breaker_Fault",4,2,0,0,1),
-                    new FaultInfo("预留,resBit3",4,3,0,0,1),
-                    new FaultInfo("预留,resBit4",4,4,0,0,1),
-                    new FaultInfo("预留,resBit5",4,5,0,0,1),
-                    new FaultInfo("预留,resBit6",4,6,0,0,1),
-                    new FaultInfo("预留,resBit7",4,7,0,0,1)
-        };
-        public List<FaultInfo> ProtectNotify = new List<FaultInfo>()
+        #region 翻译所用得函数
+        private void GetControls(Control c)
         {
-                    new FaultInfo("电池簇电压过低保护(BCU),Clu_Low_Voltage_Protec",1,0,0,0,2),
-                    new FaultInfo("电池簇电压过高保护(BCU),Clu_High_Voltage_Protect",1,1,0,0,2),
-                    new FaultInfo("电池簇充电过流保护(BCU),Clu_Chg_Over_Currr_Prot",1,2,0,0,2),
-                    new FaultInfo("电池簇放电过流保护(BCU),Clu_Dsg_Over_Currr_Prot",1,3,0,0,2),
-                    new FaultInfo("预留,resBit4",1,4,0,0,2),
-                    new FaultInfo("预留,resBit5",1,5,0,0,2),
-                    new FaultInfo("预留,resBit6",1,6,0,0,2),
-                    new FaultInfo("预留,resBit7",1,7,0,0,2),
-                    new FaultInfo("BCU连接器过温保护(BCU),BCU_CONNECT_TEMP_OVER_PROTECT",2,0,0,0,2),
-                    new FaultInfo("充电电流超限保护,Charge Current Over Limit Pro",2,1,0,0,2),
-                    new FaultInfo("放电电流超限保护,BMU_Connect_Temp_Over_Pro",2,2,0,0,2),
-                    new FaultInfo("BMU连接器过温保护(BCU),BMU_Connect_Temp_Over_Pro",2,3,0,0,2),
-                    new FaultInfo("BCU-PWR 心跳IO异常,BCU-PWR_Heart_Abnormal",2,4,0,0,2),
-                    new FaultInfo("断路器开路,Breaker_Open_Pro",2,5,0,0,2),
-                    new FaultInfo("预留,resBit6",2,6,0,0,2),
-                    new FaultInfo("预留,resBit7",2,7,0,0,2)
-        };
-        public List<FaultInfo> WarningNotify = new List<FaultInfo>()
-        {
-                    new FaultInfo("电池簇电压过低告警(BCU),Clu Low Voltage Alm",1,0,0,0,3),
-                    new FaultInfo("电池簇电压过高告警(BCU),Clu High Voltage Alm",1,1,0,0,3),
-                    new FaultInfo("电池簇充电过流告警(BCU),Clu_Chg_Over_Currr Alm",1,2,0,0,3),
-                    new FaultInfo("电池簇放电过流告警1(BCU),Clu_Dsg_Over_Currr Alm1",1,3,0,0,3),
-                    new FaultInfo("SOC过低告警(BCU),Soc_low_Alm",1,4,0,0,3),
-                    new FaultInfo("电池簇放电过流告警2(BCU),Clu_Dsg_Over_Currr Alm2",1,5,0,0,3),
-                    new FaultInfo("预留,resBit6",1,6,0,0,3),
-                    new FaultInfo("预留,resBit7",1,7,0,0,3),
-                    new FaultInfo("预留,resBit0",2,0,0,0,3),
-                    new FaultInfo("BCU与BMU 内CAN通讯告警,BMU_BCU_Com_Alm",2,1,0,0,3),
-                    new FaultInfo("预留,resBit2",2,2,0,0,3),
-                    new FaultInfo("预留,resBit3",2,3,0,0,3),
-                    new FaultInfo("预留,resBit4",2,4,0,0,3),
-                    new FaultInfo("充电电流超限告警,Charge Current Over Limit Alm",2,5,0,0,3),
-                    new FaultInfo("放电电流超限告警,Discharge Current Over Limit Alm",2,6,0,0,3),
-                    new FaultInfo("预留,resBit7",2,7,0,0,3)
-        };
-        public List<FaultInfo> PromptNotify = new List<FaultInfo>()
-        {
-                    new FaultInfo("加热继电器粘连(BCU),BOARD_HEAT_RELAY_ADHESION",1,0,0,0,4),
-                    new FaultInfo("加热功率异常(BCU),BOARD_HEAT_POWER_ERR",1,1,0,0,4),
-                    new FaultInfo("加热长时间无功率(BCU),BOARD_HEAT_POWER_NULL",1,2,0,0,4),
-                    new FaultInfo("加热单次超时(BCU),BOARD_HEAT_OVER_TIME",1,3,0,0,4),
-                    new FaultInfo("加热膜阻值异常(BCU),BOARD_HEAT_RES_ERR",1,4,0,0,4),
-                    new FaultInfo("加热MOS异常,BOARD_HEAT_MOS_ERR",1,5,0,0,4),
-                    new FaultInfo("加热保险丝异常,BOARD_HEAT_FUSE_ERR",1,6,0,0,4),
-                    new FaultInfo("预留,Res bit7",1,7,0,0,4),
-                    new FaultInfo("单板过温告警,BOARD_BCU_TEMP_OVER_ALM",2,0,0,0,4),
-                    new FaultInfo("单板低温告警,BOARD_BCU_TEMP_UNDER_ALM",2,1,0,0,4),
-                    new FaultInfo("预留,Res bit2",2,2,0,0,4),
-                    new FaultInfo("BCU与逆变器通讯提示,BCU_PCS_Com_Tip",2,3,0,0,4),
-                    new FaultInfo("预留,Res bit4",2,4,0,0,4),
-                    new FaultInfo("预留,Res bit5",2,5,0,0,4),
-                    new FaultInfo("预留,Res bit6",2,6,0,0,4),
-                    new FaultInfo("预留,Res bit7",2,7,0,0,4)
-        };
+            if (c is GroupBox || c is TabControl)
+            {
+                c.Text = LanguageHelper.GetLanguage(c.Name.Remove(0, 2));
 
-        //PCU
-        public List<FaultInfo> FaultNotify_DCDC = new List<FaultInfo>() {
-                    new FaultInfo("电感电流瞬时过流保护,bcu_dcdc_ocp_instant",1,0,0,0,1),
-                    new FaultInfo("电感电流CBC过流保护,bcu_dcdc_cbc_ocp",1,1,0,0,1),
-                    new FaultInfo("放电电流瞬时过流保护,bcu_dchg_ocp_instant",1,2,0,0,1),
-                    new FaultInfo("充电电流瞬时过流保护,bcu_chg_ocp_instant",1,3,0,0,1),
-                    new FaultInfo("电池电压瞬时过压保护,bcu_bat_ovp_instant",1,4,0,0,1),
-                    new FaultInfo("母线电压瞬时过压保护,bcu_bus_ovp_instant",1,5,0,0,1),
-                    new FaultInfo("母线短路保护,bcu_bus_scp",1,6,0,0,1),
-                    new FaultInfo("母线反接故障,bcu_bus_rpp",1,7,0,0,1),
-                    new FaultInfo("BCU-COM过压过流故障,bcu_com_ovpocp",2,0,0,0,1),
-                    new FaultInfo("预留,BYTE2>>bit1",2,1,0,0,1),
-                    new FaultInfo("预留,BYTE2>>bit2",2,2,0,0,1),
-                    new FaultInfo("预留,BYTE2>>bit3",2,3,0,0,1),
-                    new FaultInfo("预留,BYTE2>>bit4",2,4,0,0,1),
-                    new FaultInfo("预留,BYTE2>>bit5",2,5,0,0,1),
-                    new FaultInfo("预留,BYTE2>>bit6",2,6,0,0,1),
-                    new FaultInfo("预留,BYTE2>>bit7",2,7,0,0,1),
-                    new FaultInfo("电流采样一致性故障,bcu_current_consistency",3,0,0,0,1),
-                    new FaultInfo("电感电流平均值过载保护1,bcu_dcdc_avg_opp1",3,1,0,0,1),
-                    new FaultInfo("电感电流平均值过载保护2,bcu_dcdc_avg_opp2",3,2,0,0,1),
-                    new FaultInfo("母线电压平均值过压保护,bcu_bus_avg_ovp",3,3,0,0,1),
-                    new FaultInfo("环境温度过温保护,bcu_env_otp",3,4,0,0,1),
-                    new FaultInfo("环境温度采样异常,bcu_env_sa",3,5,0,0,1),
-                    new FaultInfo("散热器温度过温保护,bcu_hs_otp",3,6,0,0,1),
-                    new FaultInfo("散热器温度采样异常,bcu_hs_sa",3,7,0,0,1),
-                    new FaultInfo("Can通信故障,bcu_can_comm_fault",4,0,0,0,1),
-                    new FaultInfo("BCU-COM心跳检测,bcu_com_heartbeat_fault",4,1,0,0,1),
-                    new FaultInfo("加热膜故障,bcu_heating_film_fault",4,2,0,0,1),
-                    new FaultInfo("预留,BYTE4>>bit3",4,3,0,0,1),
-                    new FaultInfo("预留,BYTE4>>bit4",4,4,0,0,1),
-                    new FaultInfo("预留,BYTE4>>bit5",4,5,0,0,1),
-                    new FaultInfo("预留,BYTE4>>bit6",4,6,0,0,1),
-                    new FaultInfo("预留,BYTE4>>bit7",4,7,0,0,1),
-                    new FaultInfo("预留,BYTE5>>bit0",5,0,0,0,1),
-                    new FaultInfo("预留,BYTE5>>bit1",5,1,0,0,1),
-                    new FaultInfo("预留,BYTE5>>bit2",5,2,0,0,1),
-                    new FaultInfo("预留,BYTE5>>bit3",5,3,0,0,1),
-                    new FaultInfo("预留,BYTE5>>bit4",5,4,0,0,1),
-                    new FaultInfo("预留,BYTE5>>bit5",5,5,0,0,1),
-                    new FaultInfo("预留,BYTE5>>bit6",5,6,0,0,1),
-                    new FaultInfo("预留,BYTE5>>bit7",5,7,0,0,1),
-                    new FaultInfo("预留,BYTE6>>bit0",6,0,0,0,1),
-                    new FaultInfo("预留,BYTE6>>bit1",6,1,0,0,1),
-                    new FaultInfo("预留,BYTE6>>bit2",6,2,0,0,1),
-                    new FaultInfo("预留,BYTE6>>bit3",6,3,0,0,1),
-                    new FaultInfo("预留,BYTE6>>bit4",6,4,0,0,1),
-                    new FaultInfo("预留,BYTE6>>bit5",6,5,0,0,1),
-                    new FaultInfo("预留,BYTE6>>bit6",6,6,0,0,1),
-                    new FaultInfo("预留,BYTE6>>bit7",6,7,0,0,1),
-                    new FaultInfo("充电大电流零偏校准错误,bcu_ichg_calibrate_fault_unrecover",7,0,0,0,1),
-                    new FaultInfo("放电大电流零偏校准错误,bcu_idchg_calibrate_fault_unrecover",7,1,0,0,1),
-                    new FaultInfo("电感电流零偏校准错误,bcu_dcdc_calibrate_fault_unrecover",7,2,0,0,1),
-                    new FaultInfo("继电器故障,bcu_relay_fault_unrecover",7,3,0,0,1),
-                    new FaultInfo("接触器检测故障,bcu_cont_fault_unrecover",7,4,0,0,1),
-                    new FaultInfo("主回路MOS异常,bcu_es_ctrl_fault_unrecover",7,5,0,0,1),
-                    new FaultInfo("母线短路永久故障,bcu_bus_scp_unrecover",7,6,0,0,1),
-                    new FaultInfo("主回路关断异常,bcu_es_ctrl_off_fault_unrecover",7,7,0,0,1),
+                foreach (Control item in c.Controls)
+                {
+                    this.GetControls(item);
+                }
+            }
+            else
+            {
+                string name = c.Name;
 
-        };
+                if (c is CheckBox)
+                {
+                    c.Text = LanguageHelper.GetLanguage(name.Remove(0, 2));
+
+                    LTooltip(c as CheckBox, c.Text);
+                }
+                else if (c is RadioButton)
+                {
+                    c.Text = LanguageHelper.GetLanguage(name.Remove(0, 2));
+
+                    LTooltip(c as RadioButton, c.Text);
+                }
+                else if (c is Label)
+                {
+                    c.Text = LanguageHelper.GetLanguage(name.Remove(0, 3));
+
+                    LTooltip(c as Label, c.Text);
+                }
+                else if (c is Button)
+                {
+                    if (name.Contains("Set"))
+                    {
+                        c.Text = LanguageHelper.GetLanguage("Settings");
+                    }
+                    else if (name.Contains("_Close"))
+                    {
+                        c.Text = LanguageHelper.GetLanguage("Systemset_43");
+                    }
+                    else if (name.Contains("_Open"))
+                    {
+                        c.Text = LanguageHelper.GetLanguage("Systemset_44");
+                    }
+                    else if (name.Contains("_Lifted"))
+                    {
+                        c.Text = LanguageHelper.GetLanguage("Systemset_45");
+                    }
+                    else
+                    {
+                        c.Text = LanguageHelper.GetLanguage(name.Remove(0, 3));
+
+                    }
+                }
+                else if (c is TabPage | c is Panel)
+                {
+                    foreach (Control item in c.Controls)
+                    {
+                        this.GetControls(item);
+                    }
+                }
+            }
+        }
+
+        public static void LTooltip(Control control, string value)
+        {
+            if (value.Length == 0) return;
+            control.Text = Abbreviation(control, value);
+            var tip = new ToolTip();
+            tip.IsBalloon = false;
+            tip.ShowAlways = true;
+            tip.SetToolTip(control, value);
+        }
+
+        public static string Abbreviation(Control control, string str)
+        {
+            if (str == null)
+            {
+                return null;
+            }
+            int strWidth = FontWidth(control.Font, control, str);
+
+            //获取label最长可以显示多少字符
+            int len = control.Width * str.Length / strWidth;
+
+            if (len > 20 && len < str.Length)
+
+            {
+                return str.Substring(0, 20) + "...";
+            }
+            else
+            {
+                return str;
+            }
+        }
+
+        private static int FontWidth(Font font, Control control, string str)
+        {
+            using (Graphics g = control.CreateGraphics())
+            {
+                SizeF siF = g.MeasureString(str, font);
+                return (int)siF.Width;
+            }
+        }
+        #endregion
+
     }
 }

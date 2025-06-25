@@ -112,17 +112,18 @@
             this.pbChagreStatus = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.ckRealtimeData_BCU_3 = new System.Windows.Forms.CheckBox();
+            this.ckRealtimeData_BCU_4 = new System.Windows.Forms.CheckBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblRealtimeData_BCU_9 = new System.Windows.Forms.Label();
+            this.lblRealtimeData_BCU_5 = new System.Windows.Forms.Label();
+            this.ckRealtimeData_BCU_8 = new System.Windows.Forms.CheckBox();
+            this.ckRealtimeData_BCU_7 = new System.Windows.Forms.CheckBox();
+            this.ckRealtimeData_BCU_6 = new System.Windows.Forms.CheckBox();
+            this.lblRealtimeData_BCU_2 = new System.Windows.Forms.Label();
+            this.lblRealtimeData_BCU_1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -154,15 +155,15 @@
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.gbDi_Status_Get = new System.Windows.Forms.GroupBox();
             this.lblDCrelay_control_signal_transmission = new System.Windows.Forms.Label();
-            this.pbADC1115_1Feedback2 = new System.Windows.Forms.PictureBox();
-            this.pbADC1115_1Feedback1 = new System.Windows.Forms.PictureBox();
+            this.pbDCRelayControlSignal = new System.Windows.Forms.PictureBox();
+            this.pbInverterWakeupStatus = new System.Windows.Forms.PictureBox();
             this.lblADC1115_1Feedback1 = new System.Windows.Forms.Label();
-            this.pbDryContactInput1Channel = new System.Windows.Forms.PictureBox();
+            this.pbButtonWakeupStatus = new System.Windows.Forms.PictureBox();
             this.lblDryContactInput1Channel = new System.Windows.Forms.Label();
-            this.pbContactorNegativeSwitchDetectionHighLevelClosure = new System.Windows.Forms.PictureBox();
+            this.pbRelay2Status = new System.Windows.Forms.PictureBox();
             this.lblContactorNegativeSwitchDetectionHighLevelClosure = new System.Windows.Forms.Label();
-            this.pbContactorPositiveSwitchDetectionHighLevelClosure = new System.Windows.Forms.PictureBox();
-            this.pbExternalCANAddressingInputIOStatus = new System.Windows.Forms.PictureBox();
+            this.pbRelay1Status = new System.Windows.Forms.PictureBox();
+            this.pbCCDetectionStatus = new System.Windows.Forms.PictureBox();
             this.lblContactorPositiveSwitchDetectionHighLevelClosure = new System.Windows.Forms.Label();
             this.lblExternalCANAddressingInputIOStatus = new System.Windows.Forms.Label();
             this.gbBalanceDchgStatus = new System.Windows.Forms.GroupBox();
@@ -279,7 +280,6 @@
             this.gbRealtimeData_103 = new System.Windows.Forms.GroupBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.gbOperationInformation.SuspendLayout();
             this.gbRealtimeData_102.SuspendLayout();
             this.gbSystemInformation.SuspendLayout();
@@ -293,12 +293,12 @@
             this.gbRealtimeData_93.SuspendLayout();
             this.gbRealtimeData_105.SuspendLayout();
             this.gbDi_Status_Get.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbADC1115_1Feedback2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbADC1115_1Feedback1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbDryContactInput1Channel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbContactorNegativeSwitchDetectionHighLevelClosure)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbContactorPositiveSwitchDetectionHighLevelClosure)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbExternalCANAddressingInputIOStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDCRelayControlSignal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInverterWakeupStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbButtonWakeupStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRelay2Status)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRelay1Status)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCCDetectionStatus)).BeginInit();
             this.gbBalanceDchgStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBatteryPackBalancedState_12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBatteryPackBalancedState_11)).BeginInit();
@@ -1179,33 +1179,43 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.checkBox5);
-            this.groupBox2.Controls.Add(this.checkBox4);
+            this.groupBox2.Controls.Add(this.ckRealtimeData_BCU_3);
+            this.groupBox2.Controls.Add(this.ckRealtimeData_BCU_4);
             this.groupBox2.Controls.Add(this.textBox3);
             this.groupBox2.Controls.Add(this.textBox2);
             this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.checkBox3);
-            this.groupBox2.Controls.Add(this.checkBox2);
-            this.groupBox2.Controls.Add(this.checkBox1);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.lblRealtimeData_BCU_9);
+            this.groupBox2.Controls.Add(this.lblRealtimeData_BCU_5);
+            this.groupBox2.Controls.Add(this.ckRealtimeData_BCU_8);
+            this.groupBox2.Controls.Add(this.ckRealtimeData_BCU_7);
+            this.groupBox2.Controls.Add(this.ckRealtimeData_BCU_6);
+            this.groupBox2.Controls.Add(this.lblRealtimeData_BCU_2);
+            this.groupBox2.Controls.Add(this.lblRealtimeData_BCU_1);
             this.groupBox2.Location = new System.Drawing.Point(242, 73);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(153, 347);
             this.groupBox2.TabIndex = 69;
             this.groupBox2.TabStop = false;
             // 
-            // checkBox4
+            // ckRealtimeData_BCU_3
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(6, 111);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(75, 21);
-            this.checkBox4.TabIndex = 21;
-            this.checkBox4.Text = "降损模式";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.ckRealtimeData_BCU_3.AutoSize = true;
+            this.ckRealtimeData_BCU_3.Location = new System.Drawing.Point(6, 84);
+            this.ckRealtimeData_BCU_3.Name = "ckRealtimeData_BCU_3";
+            this.ckRealtimeData_BCU_3.Size = new System.Drawing.Size(75, 21);
+            this.ckRealtimeData_BCU_3.TabIndex = 22;
+            this.ckRealtimeData_BCU_3.Text = "系统接入";
+            this.ckRealtimeData_BCU_3.UseVisualStyleBackColor = true;
+            // 
+            // ckRealtimeData_BCU_4
+            // 
+            this.ckRealtimeData_BCU_4.AutoSize = true;
+            this.ckRealtimeData_BCU_4.Location = new System.Drawing.Point(6, 111);
+            this.ckRealtimeData_BCU_4.Name = "ckRealtimeData_BCU_4";
+            this.ckRealtimeData_BCU_4.Size = new System.Drawing.Size(75, 21);
+            this.ckRealtimeData_BCU_4.TabIndex = 21;
+            this.ckRealtimeData_BCU_4.Text = "降损模式";
+            this.ckRealtimeData_BCU_4.UseVisualStyleBackColor = true;
             // 
             // textBox3
             // 
@@ -1233,71 +1243,71 @@
             this.textBox1.Size = new System.Drawing.Size(145, 23);
             this.textBox1.TabIndex = 9;
             // 
-            // label6
+            // lblRealtimeData_BCU_9
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(5, 259);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(114, 17);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "pack1~16锁死标识";
+            this.lblRealtimeData_BCU_9.AutoSize = true;
+            this.lblRealtimeData_BCU_9.Location = new System.Drawing.Point(5, 259);
+            this.lblRealtimeData_BCU_9.Name = "lblRealtimeData_BCU_9";
+            this.lblRealtimeData_BCU_9.Size = new System.Drawing.Size(114, 17);
+            this.lblRealtimeData_BCU_9.TabIndex = 8;
+            this.lblRealtimeData_BCU_9.Text = "pack1~16锁死标识";
             // 
-            // label4
+            // lblRealtimeData_BCU_5
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 145);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 17);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "编址状态";
+            this.lblRealtimeData_BCU_5.AutoSize = true;
+            this.lblRealtimeData_BCU_5.Location = new System.Drawing.Point(6, 145);
+            this.lblRealtimeData_BCU_5.Name = "lblRealtimeData_BCU_5";
+            this.lblRealtimeData_BCU_5.Size = new System.Drawing.Size(56, 17);
+            this.lblRealtimeData_BCU_5.TabIndex = 6;
+            this.lblRealtimeData_BCU_5.Text = "编址状态";
             // 
-            // checkBox3
+            // ckRealtimeData_BCU_8
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(6, 223);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(100, 21);
-            this.checkBox3.TabIndex = 4;
-            this.checkBox3.Text = "Mac地址冲突";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.ckRealtimeData_BCU_8.AutoSize = true;
+            this.ckRealtimeData_BCU_8.Location = new System.Drawing.Point(6, 223);
+            this.ckRealtimeData_BCU_8.Name = "ckRealtimeData_BCU_8";
+            this.ckRealtimeData_BCU_8.Size = new System.Drawing.Size(100, 21);
+            this.ckRealtimeData_BCU_8.TabIndex = 4;
+            this.ckRealtimeData_BCU_8.Text = "Mac地址冲突";
+            this.ckRealtimeData_BCU_8.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // ckRealtimeData_BCU_7
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(6, 196);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(95, 21);
-            this.checkBox2.TabIndex = 3;
-            this.checkBox2.Text = "can冲突标识";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.ckRealtimeData_BCU_7.AutoSize = true;
+            this.ckRealtimeData_BCU_7.Location = new System.Drawing.Point(6, 196);
+            this.ckRealtimeData_BCU_7.Name = "ckRealtimeData_BCU_7";
+            this.ckRealtimeData_BCU_7.Size = new System.Drawing.Size(95, 21);
+            this.ckRealtimeData_BCU_7.TabIndex = 3;
+            this.ckRealtimeData_BCU_7.Text = "can冲突标识";
+            this.ckRealtimeData_BCU_7.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // ckRealtimeData_BCU_6
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 170);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(75, 21);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "编码完成";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.ckRealtimeData_BCU_6.AutoSize = true;
+            this.ckRealtimeData_BCU_6.Location = new System.Drawing.Point(6, 170);
+            this.ckRealtimeData_BCU_6.Name = "ckRealtimeData_BCU_6";
+            this.ckRealtimeData_BCU_6.Size = new System.Drawing.Size(75, 21);
+            this.ckRealtimeData_BCU_6.TabIndex = 2;
+            this.ckRealtimeData_BCU_6.Text = "编码完成";
+            this.ckRealtimeData_BCU_6.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // lblRealtimeData_BCU_2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "绝缘阻抗状态";
+            this.lblRealtimeData_BCU_2.AutoSize = true;
+            this.lblRealtimeData_BCU_2.Location = new System.Drawing.Point(6, 55);
+            this.lblRealtimeData_BCU_2.Name = "lblRealtimeData_BCU_2";
+            this.lblRealtimeData_BCU_2.Size = new System.Drawing.Size(80, 17);
+            this.lblRealtimeData_BCU_2.TabIndex = 1;
+            this.lblRealtimeData_BCU_2.Text = "绝缘阻抗状态";
             // 
-            // label1
+            // lblRealtimeData_BCU_1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "绝缘阻抗(KΩ)";
+            this.lblRealtimeData_BCU_1.AutoSize = true;
+            this.lblRealtimeData_BCU_1.Location = new System.Drawing.Point(6, 25);
+            this.lblRealtimeData_BCU_1.Name = "lblRealtimeData_BCU_1";
+            this.lblRealtimeData_BCU_1.Size = new System.Drawing.Size(82, 17);
+            this.lblRealtimeData_BCU_1.TabIndex = 0;
+            this.lblRealtimeData_BCU_1.Text = "绝缘阻抗(KΩ)";
             // 
             // groupBox1
             // 
@@ -1585,15 +1595,15 @@
             // gbDi_Status_Get
             // 
             this.gbDi_Status_Get.Controls.Add(this.lblDCrelay_control_signal_transmission);
-            this.gbDi_Status_Get.Controls.Add(this.pbADC1115_1Feedback2);
-            this.gbDi_Status_Get.Controls.Add(this.pbADC1115_1Feedback1);
+            this.gbDi_Status_Get.Controls.Add(this.pbDCRelayControlSignal);
+            this.gbDi_Status_Get.Controls.Add(this.pbInverterWakeupStatus);
             this.gbDi_Status_Get.Controls.Add(this.lblADC1115_1Feedback1);
-            this.gbDi_Status_Get.Controls.Add(this.pbDryContactInput1Channel);
+            this.gbDi_Status_Get.Controls.Add(this.pbButtonWakeupStatus);
             this.gbDi_Status_Get.Controls.Add(this.lblDryContactInput1Channel);
-            this.gbDi_Status_Get.Controls.Add(this.pbContactorNegativeSwitchDetectionHighLevelClosure);
+            this.gbDi_Status_Get.Controls.Add(this.pbRelay2Status);
             this.gbDi_Status_Get.Controls.Add(this.lblContactorNegativeSwitchDetectionHighLevelClosure);
-            this.gbDi_Status_Get.Controls.Add(this.pbContactorPositiveSwitchDetectionHighLevelClosure);
-            this.gbDi_Status_Get.Controls.Add(this.pbExternalCANAddressingInputIOStatus);
+            this.gbDi_Status_Get.Controls.Add(this.pbRelay1Status);
+            this.gbDi_Status_Get.Controls.Add(this.pbCCDetectionStatus);
             this.gbDi_Status_Get.Controls.Add(this.lblContactorPositiveSwitchDetectionHighLevelClosure);
             this.gbDi_Status_Get.Controls.Add(this.lblExternalCANAddressingInputIOStatus);
             this.gbDi_Status_Get.Location = new System.Drawing.Point(398, 254);
@@ -1615,25 +1625,25 @@
             this.lblDCrelay_control_signal_transmission.TabIndex = 22;
             this.lblDCrelay_control_signal_transmission.Text = "直流继电器控制信号传输";
             // 
-            // pbADC1115_1Feedback2
+            // pbDCRelayControlSignal
             // 
-            this.pbADC1115_1Feedback2.BackColor = System.Drawing.Color.Green;
-            this.pbADC1115_1Feedback2.Location = new System.Drawing.Point(531, 25);
-            this.pbADC1115_1Feedback2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pbADC1115_1Feedback2.Name = "pbADC1115_1Feedback2";
-            this.pbADC1115_1Feedback2.Size = new System.Drawing.Size(11, 12);
-            this.pbADC1115_1Feedback2.TabIndex = 21;
-            this.pbADC1115_1Feedback2.TabStop = false;
+            this.pbDCRelayControlSignal.BackColor = System.Drawing.Color.Green;
+            this.pbDCRelayControlSignal.Location = new System.Drawing.Point(531, 25);
+            this.pbDCRelayControlSignal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbDCRelayControlSignal.Name = "pbDCRelayControlSignal";
+            this.pbDCRelayControlSignal.Size = new System.Drawing.Size(11, 12);
+            this.pbDCRelayControlSignal.TabIndex = 21;
+            this.pbDCRelayControlSignal.TabStop = false;
             // 
-            // pbADC1115_1Feedback1
+            // pbInverterWakeupStatus
             // 
-            this.pbADC1115_1Feedback1.BackColor = System.Drawing.Color.Green;
-            this.pbADC1115_1Feedback1.Location = new System.Drawing.Point(413, 25);
-            this.pbADC1115_1Feedback1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pbADC1115_1Feedback1.Name = "pbADC1115_1Feedback1";
-            this.pbADC1115_1Feedback1.Size = new System.Drawing.Size(11, 12);
-            this.pbADC1115_1Feedback1.TabIndex = 19;
-            this.pbADC1115_1Feedback1.TabStop = false;
+            this.pbInverterWakeupStatus.BackColor = System.Drawing.Color.Green;
+            this.pbInverterWakeupStatus.Location = new System.Drawing.Point(413, 25);
+            this.pbInverterWakeupStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbInverterWakeupStatus.Name = "pbInverterWakeupStatus";
+            this.pbInverterWakeupStatus.Size = new System.Drawing.Size(11, 12);
+            this.pbInverterWakeupStatus.TabIndex = 19;
+            this.pbInverterWakeupStatus.TabStop = false;
             // 
             // lblADC1115_1Feedback1
             // 
@@ -1645,15 +1655,15 @@
             this.lblADC1115_1Feedback1.TabIndex = 18;
             this.lblADC1115_1Feedback1.Text = "逆变器唤醒状态";
             // 
-            // pbDryContactInput1Channel
+            // pbButtonWakeupStatus
             // 
-            this.pbDryContactInput1Channel.BackColor = System.Drawing.Color.Green;
-            this.pbDryContactInput1Channel.Location = new System.Drawing.Point(309, 25);
-            this.pbDryContactInput1Channel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pbDryContactInput1Channel.Name = "pbDryContactInput1Channel";
-            this.pbDryContactInput1Channel.Size = new System.Drawing.Size(11, 12);
-            this.pbDryContactInput1Channel.TabIndex = 15;
-            this.pbDryContactInput1Channel.TabStop = false;
+            this.pbButtonWakeupStatus.BackColor = System.Drawing.Color.Green;
+            this.pbButtonWakeupStatus.Location = new System.Drawing.Point(309, 25);
+            this.pbButtonWakeupStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbButtonWakeupStatus.Name = "pbButtonWakeupStatus";
+            this.pbButtonWakeupStatus.Size = new System.Drawing.Size(11, 12);
+            this.pbButtonWakeupStatus.TabIndex = 15;
+            this.pbButtonWakeupStatus.TabStop = false;
             // 
             // lblDryContactInput1Channel
             // 
@@ -1665,15 +1675,15 @@
             this.lblDryContactInput1Channel.TabIndex = 14;
             this.lblDryContactInput1Channel.Text = "按钮唤醒状态";
             // 
-            // pbContactorNegativeSwitchDetectionHighLevelClosure
+            // pbRelay2Status
             // 
-            this.pbContactorNegativeSwitchDetectionHighLevelClosure.BackColor = System.Drawing.Color.Green;
-            this.pbContactorNegativeSwitchDetectionHighLevelClosure.Location = new System.Drawing.Point(208, 25);
-            this.pbContactorNegativeSwitchDetectionHighLevelClosure.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pbContactorNegativeSwitchDetectionHighLevelClosure.Name = "pbContactorNegativeSwitchDetectionHighLevelClosure";
-            this.pbContactorNegativeSwitchDetectionHighLevelClosure.Size = new System.Drawing.Size(11, 12);
-            this.pbContactorNegativeSwitchDetectionHighLevelClosure.TabIndex = 13;
-            this.pbContactorNegativeSwitchDetectionHighLevelClosure.TabStop = false;
+            this.pbRelay2Status.BackColor = System.Drawing.Color.Green;
+            this.pbRelay2Status.Location = new System.Drawing.Point(208, 25);
+            this.pbRelay2Status.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbRelay2Status.Name = "pbRelay2Status";
+            this.pbRelay2Status.Size = new System.Drawing.Size(11, 12);
+            this.pbRelay2Status.TabIndex = 13;
+            this.pbRelay2Status.TabStop = false;
             // 
             // lblContactorNegativeSwitchDetectionHighLevelClosure
             // 
@@ -1685,25 +1695,25 @@
             this.lblContactorNegativeSwitchDetectionHighLevelClosure.TabIndex = 12;
             this.lblContactorNegativeSwitchDetectionHighLevelClosure.Text = "继电器2状态";
             // 
-            // pbContactorPositiveSwitchDetectionHighLevelClosure
+            // pbRelay1Status
             // 
-            this.pbContactorPositiveSwitchDetectionHighLevelClosure.BackColor = System.Drawing.Color.Green;
-            this.pbContactorPositiveSwitchDetectionHighLevelClosure.Location = new System.Drawing.Point(113, 25);
-            this.pbContactorPositiveSwitchDetectionHighLevelClosure.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pbContactorPositiveSwitchDetectionHighLevelClosure.Name = "pbContactorPositiveSwitchDetectionHighLevelClosure";
-            this.pbContactorPositiveSwitchDetectionHighLevelClosure.Size = new System.Drawing.Size(11, 12);
-            this.pbContactorPositiveSwitchDetectionHighLevelClosure.TabIndex = 7;
-            this.pbContactorPositiveSwitchDetectionHighLevelClosure.TabStop = false;
+            this.pbRelay1Status.BackColor = System.Drawing.Color.Green;
+            this.pbRelay1Status.Location = new System.Drawing.Point(113, 25);
+            this.pbRelay1Status.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbRelay1Status.Name = "pbRelay1Status";
+            this.pbRelay1Status.Size = new System.Drawing.Size(11, 12);
+            this.pbRelay1Status.TabIndex = 7;
+            this.pbRelay1Status.TabStop = false;
             // 
-            // pbExternalCANAddressingInputIOStatus
+            // pbCCDetectionStatus
             // 
-            this.pbExternalCANAddressingInputIOStatus.BackColor = System.Drawing.Color.Green;
-            this.pbExternalCANAddressingInputIOStatus.Location = new System.Drawing.Point(13, 25);
-            this.pbExternalCANAddressingInputIOStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pbExternalCANAddressingInputIOStatus.Name = "pbExternalCANAddressingInputIOStatus";
-            this.pbExternalCANAddressingInputIOStatus.Size = new System.Drawing.Size(11, 12);
-            this.pbExternalCANAddressingInputIOStatus.TabIndex = 5;
-            this.pbExternalCANAddressingInputIOStatus.TabStop = false;
+            this.pbCCDetectionStatus.BackColor = System.Drawing.Color.Green;
+            this.pbCCDetectionStatus.Location = new System.Drawing.Point(13, 25);
+            this.pbCCDetectionStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbCCDetectionStatus.Name = "pbCCDetectionStatus";
+            this.pbCCDetectionStatus.Size = new System.Drawing.Size(11, 12);
+            this.pbCCDetectionStatus.TabIndex = 5;
+            this.pbCCDetectionStatus.TabStop = false;
             // 
             // lblContactorPositiveSwitchDetectionHighLevelClosure
             // 
@@ -2940,16 +2950,6 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(6, 84);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(75, 21);
-            this.checkBox5.TabIndex = 22;
-            this.checkBox5.Text = "系统接入";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
             // CBSControl_BCU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -2978,12 +2978,12 @@
             this.gbRealtimeData_105.ResumeLayout(false);
             this.gbDi_Status_Get.ResumeLayout(false);
             this.gbDi_Status_Get.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbADC1115_1Feedback2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbADC1115_1Feedback1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbDryContactInput1Channel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbContactorNegativeSwitchDetectionHighLevelClosure)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbContactorPositiveSwitchDetectionHighLevelClosure)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbExternalCANAddressingInputIOStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDCRelayControlSignal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInverterWakeupStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbButtonWakeupStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRelay2Status)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRelay1Status)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCCDetectionStatus)).EndInit();
             this.gbBalanceDchgStatus.ResumeLayout(false);
             this.gbBalanceDchgStatus.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBatteryPackBalancedState_12)).EndInit();
@@ -3135,17 +3135,17 @@
         private System.Windows.Forms.Label lblBatteryPack_7_BalancedState;
         private System.Windows.Forms.Label lblBatteryPack_6_BalancedState;
         private System.Windows.Forms.GroupBox gbDi_Status_Get;
-        private System.Windows.Forms.PictureBox pbADC1115_1Feedback1;
+        private System.Windows.Forms.PictureBox pbInverterWakeupStatus;
         private System.Windows.Forms.Label lblADC1115_1Feedback1;
-        private System.Windows.Forms.PictureBox pbDryContactInput1Channel;
+        private System.Windows.Forms.PictureBox pbButtonWakeupStatus;
         private System.Windows.Forms.Label lblDryContactInput1Channel;
-        private System.Windows.Forms.PictureBox pbContactorNegativeSwitchDetectionHighLevelClosure;
+        private System.Windows.Forms.PictureBox pbRelay2Status;
         private System.Windows.Forms.Label lblContactorNegativeSwitchDetectionHighLevelClosure;
-        private System.Windows.Forms.PictureBox pbContactorPositiveSwitchDetectionHighLevelClosure;
-        private System.Windows.Forms.PictureBox pbExternalCANAddressingInputIOStatus;
+        private System.Windows.Forms.PictureBox pbRelay1Status;
+        private System.Windows.Forms.PictureBox pbCCDetectionStatus;
         private System.Windows.Forms.Label lblContactorPositiveSwitchDetectionHighLevelClosure;
         private System.Windows.Forms.Label lblExternalCANAddressingInputIOStatus;
-        private System.Windows.Forms.PictureBox pbADC1115_1Feedback2;
+        private System.Windows.Forms.PictureBox pbDCRelayControlSignal;
         private System.Windows.Forms.TextBox txtSN;
         private System.Windows.Forms.Label lblRealtimeData_72;
         private System.Windows.Forms.TextBox txtHardware_Version_BCU;
@@ -3268,17 +3268,17 @@
         private PictureBox pbBatteryPackBalancedState_11;
         private Label lblBatteryPackBalancedState_11;
         private GroupBox groupBox2;
-        private Label label1;
-        private Label label2;
-        private CheckBox checkBox3;
-        private CheckBox checkBox2;
-        private CheckBox checkBox1;
-        private Label label4;
-        private Label label6;
+        private Label lblRealtimeData_BCU_1;
+        private Label lblRealtimeData_BCU_2;
+        private CheckBox ckRealtimeData_BCU_8;
+        private CheckBox ckRealtimeData_BCU_7;
+        private CheckBox ckRealtimeData_BCU_6;
+        private Label lblRealtimeData_BCU_5;
+        private Label lblRealtimeData_BCU_9;
         private TextBox textBox1;
         private TextBox textBox2;
         private TextBox textBox3;
-        private CheckBox checkBox4;
-        private CheckBox checkBox5;
+        private CheckBox ckRealtimeData_BCU_4;
+        private CheckBox ckRealtimeData_BCU_3;
     }
 }

@@ -142,10 +142,6 @@
             this.lblRealtimeData_16 = new System.Windows.Forms.Label();
             this.lblRealtimeData_14 = new System.Windows.Forms.Label();
             this.gbRealtimeData_108 = new System.Windows.Forms.GroupBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.lblRealtimeData_163 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblRealtimeData_162 = new System.Windows.Forms.Label();
             this.pbChargeIO = new System.Windows.Forms.PictureBox();
             this.lblRealtimeData_148 = new System.Windows.Forms.Label();
             this.pbDiIO = new System.Windows.Forms.PictureBox();
@@ -263,8 +259,6 @@
             this.groupBox1.SuspendLayout();
             this.gbRealtimeData_100.SuspendLayout();
             this.gbRealtimeData_108.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbChargeIO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDiIO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDischargeStatus)).BeginInit();
@@ -329,7 +323,7 @@
             // pbForceChrgRequest
             // 
             this.pbForceChrgRequest.BackColor = System.Drawing.Color.Green;
-            this.pbForceChrgRequest.Location = new System.Drawing.Point(327, 24);
+            this.pbForceChrgRequest.Location = new System.Drawing.Point(332, 25);
             this.pbForceChrgRequest.Margin = new System.Windows.Forms.Padding(4);
             this.pbForceChrgRequest.Name = "pbForceChrgRequest";
             this.pbForceChrgRequest.Size = new System.Drawing.Size(12, 13);
@@ -348,7 +342,7 @@
             // pbBmuPowOffRequest
             // 
             this.pbBmuPowOffRequest.BackColor = System.Drawing.Color.Green;
-            this.pbBmuPowOffRequest.Location = new System.Drawing.Point(246, 24);
+            this.pbBmuPowOffRequest.Location = new System.Drawing.Point(251, 25);
             this.pbBmuPowOffRequest.Margin = new System.Windows.Forms.Padding(4);
             this.pbBmuPowOffRequest.Name = "pbBmuPowOffRequest";
             this.pbBmuPowOffRequest.Size = new System.Drawing.Size(12, 13);
@@ -368,7 +362,7 @@
             // pbBmuCutOffRequest
             // 
             this.pbBmuCutOffRequest.BackColor = System.Drawing.Color.Green;
-            this.pbBmuCutOffRequest.Location = new System.Drawing.Point(158, 24);
+            this.pbBmuCutOffRequest.Location = new System.Drawing.Point(163, 25);
             this.pbBmuCutOffRequest.Margin = new System.Windows.Forms.Padding(4);
             this.pbBmuCutOffRequest.Name = "pbBmuCutOffRequest";
             this.pbBmuCutOffRequest.Size = new System.Drawing.Size(12, 13);
@@ -387,7 +381,7 @@
             // pbDischargeEnable
             // 
             this.pbDischargeEnable.BackColor = System.Drawing.Color.Green;
-            this.pbDischargeEnable.Location = new System.Drawing.Point(82, 24);
+            this.pbDischargeEnable.Location = new System.Drawing.Point(87, 25);
             this.pbDischargeEnable.Margin = new System.Windows.Forms.Padding(4);
             this.pbDischargeEnable.Name = "pbDischargeEnable";
             this.pbDischargeEnable.Size = new System.Drawing.Size(12, 13);
@@ -1458,12 +1452,7 @@
             // 
             // gbRealtimeData_108
             // 
-            this.gbRealtimeData_108.Controls.Add(this.pictureBox2);
-            this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_163);
-            this.gbRealtimeData_108.Controls.Add(this.pictureBox1);
-            this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_162);
             this.gbRealtimeData_108.Controls.Add(this.pbChargeIO);
-            this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_148);
             this.gbRealtimeData_108.Controls.Add(this.pbDiIO);
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_147);
             this.gbRealtimeData_108.Controls.Add(this.pbDischargeStatus);
@@ -1480,59 +1469,20 @@
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_151);
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_152);
             this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_153);
-            this.gbRealtimeData_108.Location = new System.Drawing.Point(455, 448);
+            this.gbRealtimeData_108.Controls.Add(this.lblRealtimeData_148);
+            this.gbRealtimeData_108.Location = new System.Drawing.Point(455, 465);
             this.gbRealtimeData_108.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.gbRealtimeData_108.Name = "gbRealtimeData_108";
             this.gbRealtimeData_108.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.gbRealtimeData_108.Size = new System.Drawing.Size(698, 69);
+            this.gbRealtimeData_108.Size = new System.Drawing.Size(698, 52);
             this.gbRealtimeData_108.TabIndex = 39;
             this.gbRealtimeData_108.TabStop = false;
             this.gbRealtimeData_108.Text = "系统状态";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Green;
-            this.pictureBox2.Location = new System.Drawing.Point(158, 45);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(12, 13);
-            this.pictureBox2.TabIndex = 23;
-            this.pictureBox2.TabStop = false;
-            // 
-            // lblRealtimeData_163
-            // 
-            this.lblRealtimeData_163.AutoSize = true;
-            this.lblRealtimeData_163.Location = new System.Drawing.Point(173, 43);
-            this.lblRealtimeData_163.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblRealtimeData_163.Name = "lblRealtimeData_163";
-            this.lblRealtimeData_163.Size = new System.Drawing.Size(56, 17);
-            this.lblRealtimeData_163.TabIndex = 22;
-            this.lblRealtimeData_163.Text = "加热请求";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Green;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 45);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(12, 13);
-            this.pictureBox1.TabIndex = 21;
-            this.pictureBox1.TabStop = false;
-            // 
-            // lblRealtimeData_162
-            // 
-            this.lblRealtimeData_162.AutoSize = true;
-            this.lblRealtimeData_162.Location = new System.Drawing.Point(21, 43);
-            this.lblRealtimeData_162.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblRealtimeData_162.Name = "lblRealtimeData_162";
-            this.lblRealtimeData_162.Size = new System.Drawing.Size(80, 17);
-            this.lblRealtimeData_162.TabIndex = 20;
-            this.lblRealtimeData_162.Text = "告警阈值同步";
-            // 
             // pbChargeIO
             // 
             this.pbChargeIO.BackColor = System.Drawing.Color.Green;
-            this.pbChargeIO.Location = new System.Drawing.Point(602, 24);
+            this.pbChargeIO.Location = new System.Drawing.Point(607, 25);
             this.pbChargeIO.Margin = new System.Windows.Forms.Padding(4);
             this.pbChargeIO.Name = "pbChargeIO";
             this.pbChargeIO.Size = new System.Drawing.Size(12, 13);
@@ -1542,7 +1492,7 @@
             // lblRealtimeData_148
             // 
             this.lblRealtimeData_148.AutoSize = true;
-            this.lblRealtimeData_148.Location = new System.Drawing.Point(616, 22);
+            this.lblRealtimeData_148.Location = new System.Drawing.Point(621, 23);
             this.lblRealtimeData_148.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_148.Name = "lblRealtimeData_148";
             this.lblRealtimeData_148.Size = new System.Drawing.Size(80, 17);
@@ -1552,7 +1502,7 @@
             // pbDiIO
             // 
             this.pbDiIO.BackColor = System.Drawing.Color.Green;
-            this.pbDiIO.Location = new System.Drawing.Point(507, 24);
+            this.pbDiIO.Location = new System.Drawing.Point(512, 25);
             this.pbDiIO.Margin = new System.Windows.Forms.Padding(4);
             this.pbDiIO.Name = "pbDiIO";
             this.pbDiIO.Size = new System.Drawing.Size(12, 13);
@@ -1562,7 +1512,7 @@
             // lblRealtimeData_147
             // 
             this.lblRealtimeData_147.AutoSize = true;
-            this.lblRealtimeData_147.Location = new System.Drawing.Point(521, 22);
+            this.lblRealtimeData_147.Location = new System.Drawing.Point(526, 23);
             this.lblRealtimeData_147.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_147.Name = "lblRealtimeData_147";
             this.lblRealtimeData_147.Size = new System.Drawing.Size(80, 17);
@@ -1572,7 +1522,7 @@
             // pbDischargeStatus
             // 
             this.pbDischargeStatus.BackColor = System.Drawing.Color.Green;
-            this.pbDischargeStatus.Location = new System.Drawing.Point(455, 24);
+            this.pbDischargeStatus.Location = new System.Drawing.Point(460, 25);
             this.pbDischargeStatus.Margin = new System.Windows.Forms.Padding(4);
             this.pbDischargeStatus.Name = "pbDischargeStatus";
             this.pbDischargeStatus.Size = new System.Drawing.Size(12, 13);
@@ -1582,7 +1532,7 @@
             // lblRealtimeData_127
             // 
             this.lblRealtimeData_127.AutoSize = true;
-            this.lblRealtimeData_127.Location = new System.Drawing.Point(470, 22);
+            this.lblRealtimeData_127.Location = new System.Drawing.Point(475, 23);
             this.lblRealtimeData_127.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_127.Name = "lblRealtimeData_127";
             this.lblRealtimeData_127.Size = new System.Drawing.Size(32, 17);
@@ -1592,7 +1542,7 @@
             // pbChargeStatus
             // 
             this.pbChargeStatus.BackColor = System.Drawing.Color.Green;
-            this.pbChargeStatus.Location = new System.Drawing.Point(403, 24);
+            this.pbChargeStatus.Location = new System.Drawing.Point(408, 25);
             this.pbChargeStatus.Margin = new System.Windows.Forms.Padding(4);
             this.pbChargeStatus.Name = "pbChargeStatus";
             this.pbChargeStatus.Size = new System.Drawing.Size(12, 13);
@@ -1602,7 +1552,7 @@
             // lblRealtimeData_126
             // 
             this.lblRealtimeData_126.AutoSize = true;
-            this.lblRealtimeData_126.Location = new System.Drawing.Point(418, 22);
+            this.lblRealtimeData_126.Location = new System.Drawing.Point(423, 23);
             this.lblRealtimeData_126.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_126.Name = "lblRealtimeData_126";
             this.lblRealtimeData_126.Size = new System.Drawing.Size(32, 17);
@@ -1612,7 +1562,7 @@
             // pbChargeEnable
             // 
             this.pbChargeEnable.BackColor = System.Drawing.Color.Green;
-            this.pbChargeEnable.Location = new System.Drawing.Point(6, 24);
+            this.pbChargeEnable.Location = new System.Drawing.Point(11, 25);
             this.pbChargeEnable.Margin = new System.Windows.Forms.Padding(4);
             this.pbChargeEnable.Name = "pbChargeEnable";
             this.pbChargeEnable.Size = new System.Drawing.Size(12, 13);
@@ -1622,7 +1572,7 @@
             // lblRealtimeData_149
             // 
             this.lblRealtimeData_149.AutoSize = true;
-            this.lblRealtimeData_149.Location = new System.Drawing.Point(342, 22);
+            this.lblRealtimeData_149.Location = new System.Drawing.Point(347, 23);
             this.lblRealtimeData_149.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_149.Name = "lblRealtimeData_149";
             this.lblRealtimeData_149.Size = new System.Drawing.Size(56, 17);
@@ -1632,7 +1582,7 @@
             // lblRealtimeData_150
             // 
             this.lblRealtimeData_150.AutoSize = true;
-            this.lblRealtimeData_150.Location = new System.Drawing.Point(261, 22);
+            this.lblRealtimeData_150.Location = new System.Drawing.Point(266, 23);
             this.lblRealtimeData_150.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_150.Name = "lblRealtimeData_150";
             this.lblRealtimeData_150.Size = new System.Drawing.Size(61, 17);
@@ -1642,7 +1592,7 @@
             // lblRealtimeData_151
             // 
             this.lblRealtimeData_151.AutoSize = true;
-            this.lblRealtimeData_151.Location = new System.Drawing.Point(173, 22);
+            this.lblRealtimeData_151.Location = new System.Drawing.Point(178, 23);
             this.lblRealtimeData_151.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_151.Name = "lblRealtimeData_151";
             this.lblRealtimeData_151.Size = new System.Drawing.Size(86, 17);
@@ -1652,7 +1602,7 @@
             // lblRealtimeData_152
             // 
             this.lblRealtimeData_152.AutoSize = true;
-            this.lblRealtimeData_152.Location = new System.Drawing.Point(97, 22);
+            this.lblRealtimeData_152.Location = new System.Drawing.Point(102, 23);
             this.lblRealtimeData_152.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_152.Name = "lblRealtimeData_152";
             this.lblRealtimeData_152.Size = new System.Drawing.Size(56, 17);
@@ -1662,7 +1612,7 @@
             // lblRealtimeData_153
             // 
             this.lblRealtimeData_153.AutoSize = true;
-            this.lblRealtimeData_153.Location = new System.Drawing.Point(21, 22);
+            this.lblRealtimeData_153.Location = new System.Drawing.Point(26, 23);
             this.lblRealtimeData_153.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealtimeData_153.Name = "lblRealtimeData_153";
             this.lblRealtimeData_153.Size = new System.Drawing.Size(56, 17);
@@ -2279,7 +2229,7 @@
             this.gbRealtimeData_102.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.gbRealtimeData_102.Name = "gbRealtimeData_102";
             this.gbRealtimeData_102.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.gbRealtimeData_102.Size = new System.Drawing.Size(696, 183);
+            this.gbRealtimeData_102.Size = new System.Drawing.Size(696, 200);
             this.gbRealtimeData_102.TabIndex = 35;
             this.gbRealtimeData_102.TabStop = false;
             this.gbRealtimeData_102.Text = "温度信息(°C)";
@@ -2688,8 +2638,6 @@
             this.gbRealtimeData_100.PerformLayout();
             this.gbRealtimeData_108.ResumeLayout(false);
             this.gbRealtimeData_108.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbChargeIO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDiIO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDischargeStatus)).EndInit();
@@ -2888,10 +2836,6 @@
         private Label lblRealtimeData_20;
         private Label lblRealtimeData_19;
         private Label lblRealtimeData_18;
-        private PictureBox pictureBox1;
-        private Label lblRealtimeData_162;
-        private PictureBox pictureBox2;
-        private Label lblRealtimeData_163;
         private GroupBox gbRealtimeData_160;
         private TextBox txtSOC16;
         private TextBox txtSOC15;

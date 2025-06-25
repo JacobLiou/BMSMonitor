@@ -1,178 +1,185 @@
-﻿using System.Collections.Generic;
-
-namespace SofarBMS.Model
+﻿namespace SofarBMS.Model
 {
-    public class RealtimeData_CBS5000S_BCU
+    public class BcuRealtimeData
     {
         // 列顺序定义（按实际业务顺序排列）
-        private static readonly string[] CsvFields =
-        {
-            nameof(CreateDate),
-            nameof(PackID),
-            nameof(Fault),
-            nameof(Warning),
-            nameof(Protection),
-            nameof(Fault2),
-            nameof(Warning2),
-            nameof(Protection2),
-            nameof(Di_Status_Get),
-            nameof(Balance_Chg_Status),
-            nameof(Balance_Dchg_Status),
-            nameof(Relay_Status),
-            nameof(Other_Dev_Status),
-            nameof(Power_Terminal_Temperature1),
-            nameof(Power_Terminal_Temperature2),
-            nameof(Power_Terminal_Temperature3),
-            nameof(Power_Terminal_Temperature4),
-            nameof(Ambient_Temperature),
-            nameof(Battery_Sampling_Voltage1),
-            nameof(Battery_Sampling_Voltage2),
-            nameof(Bus_Sampling_Voltage),
-            nameof(Battery_Summing_Voltage),
-            nameof(HeatingFilm_Voltage),
-            nameof(HeatingFilm_MosVoltage),
-            nameof(Insulation_Resistance),
-            nameof(Auxiliary_Power_Supply_Voltage),
-            nameof(Cluster_Current),
-            nameof(Cluster_Max_Cell_Volt),
-            nameof(Cluster_Max_Cell_Volt_Pack),
-            nameof(Cluster_Max_Cell_VoltNum),
-            nameof(Cluster_Min_Cell_Volt),
-            nameof(Cluster_Min_Cell_Volt_Pack),
-            nameof(Cluster_Min_Cell_Volt_Num),
-            nameof(Cluster_Max_Cell_Temp),
-            nameof(Cluster_Max_Cell_Temp_Pack),
-            nameof(Cluster_Max_Cell_Temp_Num),
-            nameof(Cluster_Min_Cell_Temp),
-            nameof(Cluster_Min_Cell_Temp_Pack),
-            nameof(Cluster_Min_Cell_Temp_Num),
-            nameof(Battery_Charge_Voltage),
-            nameof(Charge_Current_Limitation),
-            nameof(Discharge_Current_Limitation),
-            nameof(Battery_Discharge_Voltage),
+        private static readonly string[] CsvFields = {
+            nameof(BCUSytemTime),
+            nameof(SN),
             nameof(BCUSoftwareVersion),
             nameof(BCUHardwareVersion),
-            nameof(CANProtocolVersion),
-            nameof(Remaining_Total_Capacity),
-            nameof(Bat_Average_Temp),
-            nameof(Cluster_Rate_Power),
+            nameof(PackID),
+            nameof(Fault),
+            nameof(Protection),
+            nameof(Warning),
+            nameof(Prompt),
+            nameof(PCUFault),
+            nameof(CCDetectionStatus),
+            nameof(Relay1Status),
+            nameof(Relay2Status),
+            nameof(ButtonWakeupStatus),
+            nameof(InverterWakeupStatus),
+            nameof(DCRelayControlSignal),
+            nameof(ChagreStatus),
+            nameof(DischargeStatus),
+            nameof(ForceChargeStatus),
+            nameof(FullyCharged),
+            nameof(FullyDischarged),
+            nameof(BatteryChargeVoltage),
+            nameof(ChargeCurrentLimitation),
+            nameof(DischargeCurrentLimitation),
+            nameof(BatteryDischargeVoltage),
+            nameof(ClusterCurrent),
+            nameof(BmsState),
+            nameof(ClusterSOC),
+            nameof(ClusterSOH),
+            nameof(ClusterBatPackNum),
+            nameof(PowerTerminalTemperature1),
+            nameof(PowerTerminalTemperature2),
+            nameof(PowerTerminalTemperature3),
+            nameof(PowerTerminalTemperature4),
+            nameof(AmbientTemperature),
+            nameof(BatAverageTemp),
             nameof(Cycles),
-            nameof(Bms_State),
-            nameof(Cluster_SOC),
-            nameof(Cluster_SOH),
-            nameof(Cluster_BatPack_Num),
-            nameof(BCU_SytemTime),
-            nameof(SN),
-            nameof(Inductive_Current_Sampling1),
-            nameof(Inductive_Current_Sampling2),
-            nameof(Inductive_Current_Sampling3),
-            nameof(Inductive_Current_Sampling4),
-            nameof(Discharge_Current_Limitation),
-            nameof(Charge_Current_Limitation),
-            nameof(Contactor_Voltage),
-            nameof(Battery_Cluster_Voltage1),
-            nameof(High_Bus_Voltage),
-            nameof(HeatingFilm_Power_Supply_Voltage),
-            nameof(Radiator_temperature1),
-            nameof(Radiator_temperature2),
-            nameof(Radiator_temperature3),
-            nameof(Radiator_temperature4),
+            nameof(RemainingTotalCapacity),
+            nameof(ClusterRatePower),
+            nameof(BatterySamplingVoltage1),
+            nameof(BusSamplingVoltage),
+            nameof(BatterySummingVoltage),
+            nameof(HeatingFilmVoltage),
+            nameof(HeatingFilmMosVoltage),
+            nameof(InsulationResistance),
+            nameof(AuxiliaryPowerSupplyVoltage),
+            nameof(ClusterMaxCellVolt),
+            nameof(ClusterMaxCellVoltPack),
+            nameof(ClusterMaxCellVoltNum),
+            nameof(ClusterMinCellVolt),
+            nameof(ClusterMinCellVoltPack),
+            nameof(ClusterMinCellVoltNum),
+            nameof(ClusterMaxCellTemp),
+            nameof(ClusterMaxCellTempPack),
+            nameof(ClusterMaxCellTempNum),
+            nameof(ClusterMinCellTemp),
+            nameof(ClusterMinCellTempPack),
+            nameof(ClusterMinCellTempNum),
+            nameof(PCUWorkState),
+            nameof(PCUBatteryState),
+            nameof(InductiveCurrentSampling1),
+            nameof(InductiveCurrentSampling2),
+            nameof(InductiveCurrentSampling3),
+            nameof(InductiveCurrentSampling4),
+            nameof(DischargeCurrentLimitation),
+            nameof(ChargeCurrentLimitation),
+            nameof(ContactorVoltage),
+            nameof(BatteryClusterVoltage1),
+            nameof(HighBusVoltage),
+            nameof(HeatingFilmPowerSupplyVoltage),
+            nameof(BatterySamplingVoltage2),
+            nameof(RadiatorTemperature1),
+            nameof(RadiatorTemperature2),
+            nameof(RadiatorTemperature3),
+            nameof(RadiatorTemperature4),
+            nameof(DischargeLimitCurrent),
+            nameof(ChargeLimitCurrent),
             nameof(PCUSoftwareVersion),
             nameof(PCUHardwareVersion),
             nameof(SCIProtocolVersion),
-            nameof(PCU_WorkState),
-            nameof(PCU_BatteryState),
-            nameof(Discharge_Limit_Current_Value),
-            nameof(Charge_Limit_Current_Value)
-    };
+            nameof(CANProtocolVersion)};
 
         // 属性到中文列名的映射
         private static readonly Dictionary<string, string> PropertyHeaderMap = new()
         {
             [nameof(CreateDate)] = "记录时间",
-            [nameof(PackID)] = "电池ID",
-            [nameof(Fault)] = "故障信息1",
-            [nameof(Warning)] = "告警信息1",
-            [nameof(Protection)] = "保护信息1",
-            [nameof(Fault2)] = "故障信息2",
-            [nameof(Warning2)] = "告警信息2",
-            [nameof(Protection2)] = "保护信息2",
-            [nameof(Di_Status_Get)] = "BCU的di状态",
-            [nameof(Balance_Chg_Status)] = "电池包充均衡状态",
-            [nameof(Balance_Dchg_Status)] = "电池包放均衡状态",
-            [nameof(Relay_Status)] = "继电器状态",
-            [nameof(Other_Dev_Status)] = "器件的状态",
-            [nameof(Power_Terminal_Temperature1)] = "P+端子温度",
-            [nameof(Power_Terminal_Temperature2)] = "P-端子温度",
-            [nameof(Power_Terminal_Temperature3)] = "B+端子温度",
-            [nameof(Power_Terminal_Temperature4)] = "B-端子温度",
-            [nameof(Ambient_Temperature)] = "环境温度",
-            [nameof(Battery_Sampling_Voltage1)] = "电池采样电压1",
-            [nameof(Battery_Sampling_Voltage2)] = "电池电压采样2",
-            [nameof(Bus_Sampling_Voltage)] = "母线采样电压",
-            [nameof(Battery_Summing_Voltage)] = "电池累加和电压",
-            [nameof(HeatingFilm_Voltage)] = "加热膜供电电压",
-            [nameof(HeatingFilm_MosVoltage)] = "加热膜MOS电压",
-            [nameof(Insulation_Resistance)] = "绝缘电阻电压",
-            [nameof(Auxiliary_Power_Supply_Voltage)] = "辅源电压",
-            [nameof(Cluster_Current)] = "簇电流",
-            [nameof(Cluster_Max_Cell_Volt)] = "簇最高单体电压",
-            [nameof(Cluster_Max_Cell_Volt_Pack)] = "簇最高单体电压所在pack",
-            [nameof(Cluster_Max_Cell_VoltNum)] = "簇最高单体电压所在pack的第几个位置",
-            [nameof(Cluster_Min_Cell_Volt)] = "簇最低单体电压",
-            [nameof(Cluster_Min_Cell_Volt_Pack)] = "簇最低单体电压所在pack",
-            [nameof(Cluster_Min_Cell_Volt_Num)] = "簇最低单体电压所在pack的第几位置",
-            [nameof(Cluster_Max_Cell_Temp)] = "簇最高单体温度",
-            [nameof(Cluster_Max_Cell_Temp_Pack)] = "簇最高单体温度所在pack",
-            [nameof(Cluster_Max_Cell_Temp_Num)] = "簇最高单体温度所在pack的第几个位置",
-            [nameof(Cluster_Min_Cell_Temp)] = "簇最低单体温度",
-            [nameof(Cluster_Min_Cell_Temp_Pack)] = "簇最低单体温度所在pack",
-            [nameof(Cluster_Min_Cell_Temp_Num)] = "簇最低单体温度所在pack的第几个位置",
-            [nameof(Battery_Charge_Voltage)] = "充电电压",
-            [nameof(Charge_Current_Limitation)] = "充电电流上限",
-            [nameof(Discharge_Current_Limitation)] = "放电电流上限",
-            [nameof(Battery_Discharge_Voltage)] = "放电截止电压",
+            [nameof(SN)] = "序列号",
+            [nameof(BCUSytemTime)] = "系统时间",
             [nameof(BCUSoftwareVersion)] = "BCU软件版本号",
             [nameof(BCUHardwareVersion)] = "BCU硬件版本号",
-            [nameof(CANProtocolVersion)] = "CAN协议版本号",
-            [nameof(Remaining_Total_Capacity)] = "总剩余容量",
-            [nameof(Bat_Average_Temp)] = "电池平均温度",
-            [nameof(Cluster_Rate_Power)] = "额定功率",
+            [nameof(PackID)] = "电池ID",
+            [nameof(Fault)] = "故障信息",
+            [nameof(Protection)] = "保护信息",
+            [nameof(Warning)] = "告警信息",
+            [nameof(Prompt)] = "提示信息",
+            [nameof(PCUFault)] = "PCU故障信息",
+            [nameof(CCDetectionStatus)] = "CC检测状态",
+            [nameof(Relay1Status)] = "继电器1状态",
+            [nameof(Relay2Status)] = "继电器2状态",
+            [nameof(ButtonWakeupStatus)] = "按钮唤醒状态",
+            [nameof(InverterWakeupStatus)] = "逆变器唤醒状态",
+            [nameof(DCRelayControlSignal)] = "直流继电器控制信号传输",
+            [nameof(ChagreStatus)] = "充电允许",
+            [nameof(DischargeStatus)] = "放电允许",
+            [nameof(ForceChargeStatus)] = "强制充电",
+            [nameof(FullyCharged)] = "满充",
+            [nameof(FullyDischarged)] = "放空",
+
+            [nameof(BatteryChargeVoltage)] = "充电电压",
+            [nameof(ChargeCurrentLimitation)] = "充电电流上限",
+            [nameof(DischargeCurrentLimitation)] = "放电电流上限",
+            [nameof(BatteryDischargeVoltage)] = "放电截止电压",
+            [nameof(ClusterCurrent)] = "簇电流",
+            [nameof(BmsState)] = "BMS状态",
+            [nameof(ClusterSOC)] = "电池簇SOC",
+            [nameof(ClusterSOH)] = "电池簇SOH",
+            [nameof(ClusterBatPackNum)] = "簇内电池包数量",
+            [nameof(PowerTerminalTemperature1)] = "P+端子温度",
+            [nameof(PowerTerminalTemperature2)] = "P-端子温度",
+            [nameof(PowerTerminalTemperature3)] = "B+端子温度",
+            [nameof(PowerTerminalTemperature4)] = "B-端子温度",
+            [nameof(AmbientTemperature)] = "环境温度",
+            [nameof(BatAverageTemp)] = "电池平均温度",
             [nameof(Cycles)] = "循环次数",
-            [nameof(Bms_State)] = "BCU上送的BMS状态",
-            [nameof(Cluster_SOC)] = "电池簇SOC",
-            [nameof(Cluster_SOH)] = "电池簇SOH",
-            [nameof(Cluster_BatPack_Num)] = "簇内电池包数量",
-            [nameof(BCU_SytemTime)] = "BCU系统时间",
-            [nameof(SN)] = "BCU序列号",
-            [nameof(Inductive_Current_Sampling1)] = "电感电流采样1",
-            [nameof(Inductive_Current_Sampling2)] = "电感电流采样2",
-            [nameof(Inductive_Current_Sampling3)] = "电感电流采样3",
-            [nameof(Inductive_Current_Sampling4)] = "电感电流采样4",
-            [nameof(Discharge_Current_Limitation)] = "放电大电流采样",
-            [nameof(Charge_Current_Limitation)] = "充电大电流采样",
-            [nameof(Contactor_Voltage)] = "接触器电压",
-            [nameof(Battery_Cluster_Voltage1)] = "电池簇电压1",
-            [nameof(High_Bus_Voltage)] = "高压母线电压",
-            [nameof(HeatingFilm_Power_Supply_Voltage)] = "加热膜供电电压",
-            [nameof(Radiator_temperature1)] = "散热器温度1",
-            [nameof(Radiator_temperature2)] = "散热器温度2",
-            [nameof(Radiator_temperature3)] = "散热器温度3",
-            [nameof(Radiator_temperature4)] = "散热器温度4",
+            [nameof(RemainingTotalCapacity)] = "总剩余容量",
+            [nameof(ClusterRatePower)] = "额定功率",
+            [nameof(BatterySamplingVoltage1)] = "电池采样电压1",
+            [nameof(BusSamplingVoltage)] = "母线采样电压",
+            [nameof(BatterySummingVoltage)] = "电池累加和电压",
+            [nameof(HeatingFilmVoltage)] = "加热膜供电电压",
+            [nameof(HeatingFilmMosVoltage)] = "加热膜MOS电压",
+            [nameof(InsulationResistance)] = "绝缘电阻电压",
+            [nameof(AuxiliaryPowerSupplyVoltage)] = "辅源电压",
+
+            [nameof(ClusterMaxCellVolt)] = "最高单体电压",
+            [nameof(ClusterMaxCellVoltPack)] = "最高单体电压所在pack",
+            [nameof(ClusterMaxCellVoltNum)] = "最高单体电压所在pack的第几个位置",
+            [nameof(ClusterMinCellVolt)] = "最低单体电压",
+            [nameof(ClusterMinCellVoltPack)] = "最低单体电压所在pack",
+            [nameof(ClusterMinCellVoltNum)] = "最低单体电压所在pack的第几位置",
+            [nameof(ClusterMaxCellTemp)] = "最高单体温度",
+            [nameof(ClusterMaxCellTempPack)] = "最高单体温度所在pack",
+            [nameof(ClusterMaxCellTempNum)] = "最高单体温度所在pack的第几个位置",
+            [nameof(ClusterMinCellTemp)] = "最低单体温度",
+            [nameof(ClusterMinCellTempPack)] = "最低单体温度所在pack",
+            [nameof(ClusterMinCellTempNum)] = "最低单体温度所在pack的第几个位置",
+
+            [nameof(PCUWorkState)] = "PCU工作状态",
+            [nameof(PCUBatteryState)] = "PCU运行状态",
+            [nameof(InductiveCurrentSampling1)] = "电感电流采样1",
+            [nameof(InductiveCurrentSampling2)] = "电感电流采样2",
+            [nameof(InductiveCurrentSampling3)] = "电感电流采样3",
+            [nameof(InductiveCurrentSampling4)] = "电感电流采样4",
+            [nameof(DischargeCurrentLimitation)] = "放电大电流采样",
+            [nameof(ChargeCurrentLimitation)] = "充电大电流采样",
+            [nameof(ContactorVoltage)] = "接触器电压",
+            [nameof(BatteryClusterVoltage1)] = "电池簇电压1",
+            [nameof(HighBusVoltage)] = "高压母线电压",
+            [nameof(HeatingFilmPowerSupplyVoltage)] = "加热膜供电电压",
+            [nameof(BatterySamplingVoltage2)] = "电池采样电压2",
+            [nameof(RadiatorTemperature1)] = "散热器温度1",
+            [nameof(RadiatorTemperature2)] = "散热器温度2",
+            [nameof(RadiatorTemperature3)] = "散热器温度3",
+            [nameof(RadiatorTemperature4)] = "散热器温度4",
+            [nameof(DischargeLimitCurrent)] = "充电限载电流值",
+            [nameof(ChargeLimitCurrent)] = "放电限载电流值",
             [nameof(PCUSoftwareVersion)] = "PCU软件版本号",
             [nameof(PCUHardwareVersion)] = "PCU硬件版本号",
             [nameof(SCIProtocolVersion)] = "SCI协议版本号",
-            [nameof(PCU_WorkState)] = "PCU工作状态",
-            [nameof(PCU_BatteryState)] = "PCU运行状态",
-            [nameof(Discharge_Limit_Current_Value)] = "充电限载电流值",
-            [nameof(Charge_Limit_Current_Value)] = "放电限载电流值"
+            [nameof(CANProtocolVersion)] = "CAN协议版本号",
         };
-
 
         private static List<string> customizeFields = new List<string>();
         private static Dictionary<string, string> CustomizePropertyHeaderMap = new Dictionary<string, string>();//readonly
 
-        public RealtimeData_CBS5000S_BCU()
+        public BcuRealtimeData()
         {
             CreateDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
@@ -225,81 +232,87 @@ namespace SofarBMS.Model
 
         }
 
-        public string PackID { get; set; }
+        public string PackID { get; set; } = string.Empty;
         public string CreateDate { get; } // 只读，构造时初始化
 
         // 0x0B6:BCU遥信数据上报1：
-        public double Di_Status_Get { get; set; }
-        public double Balance_Chg_Status { get; set; }
-        public double Balance_Dchg_Status { get; set; }
-        public double Relay_Status { get; set; }
-        public double Other_Dev_Status { get; set; }
+        public double CCDetectionStatus { get; set; }
+        public double Relay1Status { get; set; }
+        public double Relay2Status { get; set; }
+        public double ButtonWakeupStatus { get; set; }
+        public double InverterWakeupStatus { get; set; }
+        public double DCRelayControlSignal { get; set; }
+        //充放电相关状态
+        public double ChagreStatus { get; set; }
+        public double DischargeStatus { get; set; }
+        public double ForceChargeStatus { get; set; }
+        public double FullyCharged { get; set; }
+        public double FullyDischarged { get; set; }
 
         //0x0B7:BCU遥信数据上报2
-        public double Power_Terminal_Temperature1 { get; set; }
-        public double Power_Terminal_Temperature2 { get; set; }
-        public double Power_Terminal_Temperature3 { get; set; }
-        public double Power_Terminal_Temperature4 { get; set; }
-        public double Ambient_Temperature { get; set; }
+        public double PowerTerminalTemperature1 { get; set; }
+        public double PowerTerminalTemperature2 { get; set; }
+        public double PowerTerminalTemperature3 { get; set; }
+        public double PowerTerminalTemperature4 { get; set; }
+        public double AmbientTemperature { get; set; }
 
         //0x0B8:BCU遥信数据上报3
-        public double Battery_Sampling_Voltage1 { get; set; }
-        public double Bus_Sampling_Voltage { get; set; }
-        public double Battery_Summing_Voltage { get; set; }
-        public double HeatingFilm_Voltage { get; set; }
-        public double HeatingFilm_MosVoltage { get; set; }
-        public double Insulation_Resistance { get; set; }
-        public double Auxiliary_Power_Supply_Voltage { get; set; }
-        //public double Fuse_Voltage { get; set; }
-        //public double Power_Voltage { get; set; }
+        public double BatterySamplingVoltage1 { get; set; }
+        public double BusSamplingVoltage { get; set; }
+        public double BatterySummingVoltage { get; set; }
+        public double HeatingFilmVoltage { get; set; }
+        public double HeatingFilmMosVoltage { get; set; }
+        public double InsulationResistance { get; set; }
+        public double AuxiliaryPowerSupplyVoltage { get; set; }
+        //public double FuseVoltage { get; set; }
+        //public double PowerVoltage { get; set; }
 
         //0x0B9:BCU遥信数据上报4
-        public double Cluster_Current { get; set; }
+        public double ClusterCurrent { get; set; }
 
         //0x0BA:BCU遥信数据上报5
-        public double Cluster_Max_Cell_Volt { get; set; }
-        public ushort Cluster_Max_Cell_Volt_Pack { get; set; }
-        public ushort Cluster_Max_Cell_VoltNum { get; set; }
-        public double Cluster_Min_Cell_Volt { get; set; }
-        public ushort Cluster_Min_Cell_Volt_Pack { get; set; }
-        public ushort Cluster_Min_Cell_Volt_Num { get; set; }
+        public double ClusterMaxCellVolt { get; set; }
+        public ushort ClusterMaxCellVoltPack { get; set; }
+        public ushort ClusterMaxCellVoltNum { get; set; }
+        public double ClusterMinCellVolt { get; set; }
+        public ushort ClusterMinCellVoltPack { get; set; }
+        public ushort ClusterMinCellVoltNum { get; set; }
 
         //0x0BB:BCU遥信数据上报6
-        public double Cluster_Max_Cell_Temp { get; set; }
-        public ushort Cluster_Max_Cell_Temp_Pack { get; set; }
-        public ushort Cluster_Max_Cell_Temp_Num { get; set; }
-        public double Cluster_Min_Cell_Temp { get; set; }
-        public ushort Cluster_Min_Cell_Temp_Pack { get; set; }
-        public ushort Cluster_Min_Cell_Temp_Num { get; set; }
+        public double ClusterMaxCellTemp { get; set; }
+        public ushort ClusterMaxCellTempPack { get; set; }
+        public ushort ClusterMaxCellTempNum { get; set; }
+        public double ClusterMinCellTemp { get; set; }
+        public ushort ClusterMinCellTempPack { get; set; }
+        public ushort ClusterMinCellTempNum { get; set; }
 
         //0x0BC:BCU遥测数据1
-        public double Battery_Charge_Voltage { get; set; }
-        public double Charge_Current_Limitation { get; set; }
-        public double Discharge_Current_Limitation { get; set; }
-        public double Battery_Discharge_Voltage { get; set; }
+        public double BatteryChargeVoltage { get; set; }
+        public double ChargeCurrentLimitation { get; set; }
+        public double DischargeCurrentLimitation { get; set; }
+        public double BatteryDischargeVoltage { get; set; }
 
         //0x0BD:BCU遥测数据2
-        public string BCUSoftwareVersion { get; set; }
-        public string BCUHardwareVersion { get; set; }
-        public string CANProtocolVersion { get; set; }
-        //public double Cluster_Voltage { get; set; }
-        //public double Cluster_Current { get; set; }
-        //public double Max_Power_Terminal_Temperature { get; set; }
+        public string BCUSoftwareVersion { get; set; } = string.Empty;
+        public string BCUHardwareVersion { get; set; } = string.Empty;
+        public string CANProtocolVersion { get; set; } = string.Empty;
+        //public double ClusterVoltage { get; set; }
+        //public double ClusterCurrent { get; set; }
+        //public double MaxPowerTerminalTemperature { get; set; }
 
         //0x0BE:BCU遥测数据3
-        public double Remaining_Total_Capacity { get; set; }
-        public double Bat_Average_Temp { get; set; }
-        public double Cluster_Rate_Power { get; set; }
+        public double RemainingTotalCapacity { get; set; }
+        public double BatAverageTemp { get; set; }
+        public double ClusterRatePower { get; set; }
         public double Cycles { get; set; }
-        //public double Bat_Bus_Volt { get; set; }
-
+        //public double BatBusVolt { get; set; }
 
         //0x0BF:BCU遥测数据4
-        public string Bms_State { get; set; }
-        public ushort Cluster_SOC { get; set; }
-        public ushort Cluster_SOH { get; set; }
-        public ushort Cluster_BatPack_Num { get; set; }
-        //public ushort HW_Version { get; set; }
+        public string BmsState { get; set; } = string.Empty;
+        public ushort ClusterSOC { get; set; }
+        public ushort ClusterSOH { get; set; }
+        public ushort ClusterBatPackNum { get; set; }
+        //public ushort HWVersion { get; set; }
 
         //0x0C0:BCU系统时间
         //public string Year { get; set; }
@@ -308,68 +321,52 @@ namespace SofarBMS.Model
         //public string Hour { get; set; }
         //public string Minute { get; set; }
         //public string Second { get; set; }
-        public string BCU_SytemTime { get; set; }
-
-        //0x0C1:模拟量与测试结果1(一般用于ate测试)
-        //public double Max_Ring_Charge_Zero_Volt { get; set; }
-        //public double Min_Ring_Charge_Zero_Volt { get; set; }
-        //public double Max_Ring_Discharge_Zero_Volt { get; set; }
-        //public double Min_Ring_Discharge_Zero_Volt { get; set; }
-
-        //0x0C2:模拟量与测试结果2
-        //public double RT1_Temperature { get; set; } // 修正拼写错误
-        //public string Eeprom_Test_Result { get; set; }
-        //public string Test_Result_485 { get; set; }
-        //public string CAN1_Test_Result { get; set; }
-        //public string CAN2_Test_Result { get; set; }
-        //public string CAN3_Test_Result { get; set; }
+        public string BCUSytemTime { get; set; } = string.Empty;
 
         //0x0F3:序列号
-        public string SN { get; set; }
+        public string SN { get; set; } = string.Empty;
 
         //0x0C7:模拟量(DSP)
-        public double Inductive_Current_Sampling1 { get; set; }
-        public double Inductive_Current_Sampling2 { get; set; }
-        public double Inductive_Current_Sampling3 { get; set; }
+        public double InductiveCurrentSampling1 { get; set; }
+        public double InductiveCurrentSampling2 { get; set; }
+        public double InductiveCurrentSampling3 { get; set; }
 
-        public double Inductive_Current_Sampling4 { get; set; }
-        public double Discharge_High_Current_Sampling { get; set; }
-        public double Charge_High_Current_Sampling { get; set; }
+        public double InductiveCurrentSampling4 { get; set; }
+        public double DischargeHighCurrentSampling { get; set; }
+        public double ChargeHighCurrentSampling { get; set; }
 
-        public double Contactor_Voltage { get; set; }
-        public double Battery_Cluster_Voltage1 { get; set; }
-        public double High_Bus_Voltage { get; set; }
+        public double ContactorVoltage { get; set; }
+        public double BatteryClusterVoltage1 { get; set; }
+        public double HighBusVoltage { get; set; }
 
-        public double HeatingFilm_Power_Supply_Voltage { get; set; }
-        public double Battery_Sampling_Voltage2 { get; set; }
+        public double HeatingFilmPowerSupplyVoltage { get; set; }
+        public double BatterySamplingVoltage2 { get; set; }
 
-        public double Radiator_temperature1 { get; set; }
-        public double Radiator_temperature2 { get; set; }
-        public double Radiator_temperature3 { get; set; }
-        public double Radiator_temperature4 { get; set; }
+        public double RadiatorTemperature1 { get; set; }
+        public double RadiatorTemperature2 { get; set; }
+        public double RadiatorTemperature3 { get; set; }
+        public double RadiatorTemperature4 { get; set; }
 
-        public string PCUSoftwareVersion { get; set; }
-        public string PCUHardwareVersion { get; set; }
-        public string SCIProtocolVersion { get; set; }
+        public string PCUSoftwareVersion { get; set; } = string.Empty;
+        public string PCUHardwareVersion { get; set; } = string.Empty;
+        public string SCIProtocolVersion { get; set; } = string.Empty;
 
-        //public string Reset_Mode { get; set; }
-        //public double Dry2_In_Status { get; set; }
-        //public string Wake_Source { get; set; }
+        //public string ResetMode { get; set; }
+        //public double Dry2InStatus { get; set; }
+        //public string WakeSource { get; set; }
 
         //0x0C8:遥信数据(DSP)
-        public string PCU_WorkState { get; set; }
-        public string PCU_BatteryState { get; set; }
+        public string PCUWorkState { get; set; } = string.Empty;
+        public string PCUBatteryState { get; set; } = string.Empty;
 
-        public double Discharge_Limit_Current_Value { get; set; }
-        public double Charge_Limit_Current_Value { get; set; }
+        public double DischargeLimitCurrent { get; set; }
+        public double ChargeLimitCurrent { get; set; }
 
-
-        public string Fault { get; set; }
-        public string Warning { get; set; }
-        public string Protection { get; set; }
-        public string Fault2 { get; set; }
-        public string Warning2 { get; set; }
-        public string Protection2 { get; set; }
+        public string Fault { get; set; } = string.Empty;
+        public string Warning { get; set; } = string.Empty;
+        public string Protection { get; set; } = string.Empty;
+        public string Prompt { get; set; } = string.Empty;
+        public string PCUFault { get; set; } = string.Empty;
 
         //0x681:电芯电压
         public string[] Voltage_Array { get; set; } = new string[192];
