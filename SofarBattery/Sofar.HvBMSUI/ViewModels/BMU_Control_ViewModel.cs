@@ -4,6 +4,7 @@ using PowerKit.UI.Models;
 using Sofar.BMSLib;
 using Sofar.BMSUI;
 using Sofar.BMSUI.Common;
+using Sofar.HvBMSLib;
 using Sofar.HvBMSUI.Models;
 using Sofar.ProtocolLib;
 using System.Collections.ObjectModel;
@@ -4281,7 +4282,10 @@ namespace Sofar.HvBMSUI.ViewModels
                 return;
             //if (canid[0] != Address_BMU || !(canid[0] == Address_BMU && canid[1] == 0x81 /*&& canid[3] == 0x18*/)) 
             //    return;
-
+            if (baseCanHelper.CommunicationType == "Ecan")
+            {
+                EcanHelper.Instance().GetLogAction()?.Invoke(1, HexDataHelper.GetDebugByteString(data, "Recv：0x" + canID.ToString("X")));
+            }
 
             if (model == null) model = new RealtimeData_BMS1500V_BMU();
             string[] strs;

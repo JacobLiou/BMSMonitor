@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using Sofar.BMSLib;
 using Sofar.BMSUI;
 using Sofar.BMSUI.Common;
+using Sofar.HvBMSLib;
 using Sofar.ProtocolLib;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -1028,6 +1029,12 @@ namespace Sofar.HvBMSUI.ViewModels
 
             byte[] canid = BitConverter.GetBytes(canID);
             if (canid[0] != Address_BMU || !(canid[0] == Address_BMU && (canid[1] == 0xE0 || canid[1] == 0xFF) && canid[3] == 0x10)) return;
+
+            if (baseCanHelper.CommunicationType == "Ecan")
+            {
+                EcanHelper.Instance().GetLogAction()?.Invoke(1, HexDataHelper.GetDebugByteString(data, "Recv：0x" + canID.ToString("X")));
+            }
+
             int[] numbers = BytesToUint16(data);
             int[] numbers_bit = BytesToBit(data);
             Parameters.Clear();

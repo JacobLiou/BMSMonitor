@@ -30,8 +30,9 @@ namespace Sofar.BMSLib
 
         }
 
-        private static readonly object obj = new object();
 
+        private static readonly object obj = new object();
+        private static uint[] recvIds;
         private string _baudRate;
         private UInt32 _devType;
         private UInt32 _devIndex;
@@ -45,6 +46,8 @@ namespace Sofar.BMSLib
                 _devIndex = Convert.ToUInt32(config.CAN_DevIndex);
                 _channel = Convert.ToUInt32(config.CAN_Channel);
             }
+
+            recvIds = Protocols.protocols.Select(p => (uint)p.Id).ToArray();
 
         }
         public override bool IsConnection { get; set; }
@@ -272,26 +275,9 @@ namespace Sofar.BMSLib
                         }
 
                         //进入队列前，先进行筛选（集合内的ID可加入至队列，否则过滤掉）
-                        foreach (Protocols item in Protocols.protocols)
+                        if (recvIds.Contains(coMsg.ID | 0xff))
                         {
-                            //uint index = 0x00;
-                            //switch (item.Index)
-                            //{
-                            //    case 0: index = 0xff000000; break;
-                            //    case 1: index = 0xff0000; break;
-                            //    case 2: index = 0xff00; break;
-                            //    case 3: index = 0xff; break;
-                            //}
-
-                            uint revId = coMsg.ID | 0xff;
-                            uint devId = AnalysisID_EVBCM(coMsg.ID);
-                            if (revId == item.Id)
-                            {
-                                //EnqueueTask(coMsg);
-                                ReceivecEventHandler(coMsg);
-                                //Log.Info($"{System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")} CAN通信协议—接收数据:{coMsg}  帧ID:{revId.ToString("X8")}");
-                                break;
-                            }
+                            ReceivecEventHandler(coMsg);
                         }
                     }
                 }

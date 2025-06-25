@@ -3,6 +3,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,9 +13,9 @@ namespace Sofar.BMSLib
     {
         protected Action<int, string> LogAction;
         public BaseCanHelper() { }
-       
+
         ///*创建一个更新收发数据显示的线程*/
-       // public readonly static object _locker = new object();
+        // public readonly static object _locker = new object();
         //public  static Queue<CAN_OBJ> _task = new Queue<CAN_OBJ>();
         //public ConcurrentDictionary<int, Byte[]> Devices = new ConcurrentDictionary<int, Byte[]>();
 
@@ -23,21 +24,21 @@ namespace Sofar.BMSLib
 
         public virtual void Connect()
         {
-           
+
         }
-        public virtual  bool Send(Byte[] data, byte[] canid)
+        public virtual bool Send(Byte[] data, byte[] canid)
         {
             return false;
         }
 
         public virtual void Receive()
         {
-           
+
         }
 
         public virtual string ReadError()
         {
-           return "";
+            return "";
         }
         /// <summary>
         /// 注销日志委托
@@ -49,6 +50,8 @@ namespace Sofar.BMSLib
         /// </summary>
         /// <param name="action"></param>
         public virtual void SetLogAction(Action<int, string> action) => LogAction = action;
+
+        public virtual Action<int, string> GetLogAction() => LogAction;
 
 
 

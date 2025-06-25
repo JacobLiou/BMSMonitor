@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using Sofar.BMSLib;
 using Sofar.BMSUI;
 using Sofar.BMSUI.Common;
+using Sofar.HvBMSLib;
 using Sofar.ProtocolLib;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -1869,7 +1870,10 @@ namespace Sofar.HvBMSUI.ViewModels
             //主控回复 CANID:0x1804F4E8 0x01 0xF4 0x02 0x58 0x02 0xBC 0x32 0xFF
             byte[] canid = BitConverter.GetBytes(canID);
             if (canid[0] != Address_BCU || !(canid[0] == Address_BCU && canid[1] == 0xF4 && canid[3] == 0x18)) return;
-
+            if (bmsOper.CommunicationType == "Ecan")
+            {
+                bmsOper.baseCanHelper.GetLogAction()?.Invoke(1, HexDataHelper.GetDebugByteString(data, "Recv：0x" + canID.ToString("X")));
+            }
             Parameters.Clear();
             Parameters.Add(new ParamViewModel { ControlName = "组端总电压轻微报警下限值(V)", Value = AlarmParameter_1_1 });
             Parameters.Add(new ParamViewModel { ControlName = "组端总电压一般报警下限值(V)", Value = AlarmParameter_1_2 });
